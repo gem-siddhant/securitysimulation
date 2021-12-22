@@ -20,4 +20,4 @@ phases:
 artifacts:
     files:
         - '**/*'
-    base-directory: 'dist/skedular-frontend'
+    base-directory: 'dist/gift-project'
