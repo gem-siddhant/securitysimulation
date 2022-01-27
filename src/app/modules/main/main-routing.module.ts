@@ -1,10 +1,14 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddCampaignComponent } from './add-campaign/add-campaign.component';
 import { GiftComponent } from './gift/gift.component';
 
 const routes: Routes = [{
   path:'gifts',
-  component: GiftComponent
+  component: GiftComponent,
+},{
+  path:'add-campaign',
+  component:AddCampaignComponent
 }];
 
 @NgModule({
