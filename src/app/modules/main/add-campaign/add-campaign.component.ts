@@ -20,6 +20,8 @@ phisingForm:FormGroup;
 test: any = null;
 file: File = this.test;
 submitted=false;
+response:any;
+api_hit=false;
 changeTriggered=false;
   constructor( private formBuilder: FormBuilder,private http:HttpClient) {
     this.phisingForm = this.formBuilder.group({});
@@ -55,14 +57,19 @@ changeTriggered=false;
       'templateAmount':this.phisingForm.value.reward_amount.toString(),
       'templateNo':this.phisingForm.value.tempate_select,
       'templateRewardType':this.phisingForm.value.reward_type,
-      'templateHeading':'Phising email!'
+      'templateHeading':this.phisingForm.value.subject
     }
     console.log('FORM',reqBody);
     let con = JSON.stringify(reqBody);
     formData.append("details",con);
     formData.append("file",this.file);
-    this.http.post('https://7665-203-115-84-239.ngrok.io/upload',formData).subscribe((data)=>{
+    this.http.post('https://7a9c-124-253-122-181.ngrok.io/upload',formData).subscribe((data)=>{
       // console.log('API',data);
+      if(data){
+        console.log(data);
+        this.api_hit=true;
+        this.response=data;
+      }
     })
   }
 }
