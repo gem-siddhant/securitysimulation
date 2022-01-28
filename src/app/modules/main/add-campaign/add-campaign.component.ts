@@ -19,6 +19,7 @@ export class AddCampaignComponent implements OnInit {
 phisingForm:FormGroup;
 test: any = null;
 file: File = this.test;
+submitted=false;
 changeTriggered=false;
   constructor( private formBuilder: FormBuilder,private http:HttpClient) {
     this.phisingForm = this.formBuilder.group({});
@@ -32,7 +33,8 @@ changeTriggered=false;
       desc:['',Validators.required],
       reward_amount:['',Validators.required],
       tempate_select:[0,Validators.required],
-      attachmentFile:['']
+      attachmentFile:[''],
+      subject:['',Validators.required]
 
     });
   }
@@ -41,6 +43,10 @@ changeTriggered=false;
     this.file = event.target.files[0];
   }
   submitForm(){
+    console.log(this.file);
+    this.submitted=true;
+    if(this.phisingForm.invalid)
+    return;
     console.log(this.phisingForm.value);
     const formData :any= new FormData();
     let reqBody={
@@ -49,13 +55,14 @@ changeTriggered=false;
       'templateAmount':this.phisingForm.value.reward_amount.toString(),
       'templateNo':this.phisingForm.value.tempate_select,
       'templateRewardType':this.phisingForm.value.reward_type,
-      // 'file':this.file
+      'templateHeading':'Phising email!'
     }
     console.log('FORM',reqBody);
     let con = JSON.stringify(reqBody);
     formData.append("details",con);
-    this.http.post('https://774e-203-115-84-239.ngrok.io/upload',formData).subscribe((data)=>{
-      console.log('API',data);
+    formData.append("file",this.file);
+    this.http.post('https://7665-203-115-84-239.ngrok.io/upload',formData).subscribe((data)=>{
+      // console.log('API',data);
     })
   }
 }

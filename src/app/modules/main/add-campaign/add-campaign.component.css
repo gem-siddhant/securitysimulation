@@ -31,6 +31,9 @@ color: #9B2F9B;
   height: 50px;
   background: rgba(155, 47, 155, 0.05);
 }
+.template-image{
+  width: 100%;
+}
 .attachment-display{
   margin-left: 5px;
   text-decoration: none;
