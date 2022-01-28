@@ -63,7 +63,7 @@ changeTriggered=false;
     let con = JSON.stringify(reqBody);
     formData.append("details",con);
     formData.append("file",this.file);
-    this.http.post('https://7a9c-124-253-122-181.ngrok.io/upload',formData).subscribe((data)=>{
+    this.http.post('https://3691-124-253-122-181.ngrok.io/upload',formData).subscribe((data)=>{
       // console.log('API',data);
       if(data){
         console.log(data);
