@@ -1,27 +1,33 @@
+import { LowerCasePipe } from '@angular/common';
 import { HttpEvent, HttpHandler, HttpRequest } from '@angular/common/http';
 import { Inject } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiInterceptorService {
 
-  constructor(@Inject('BASE_API_URL') private baseUrl: string) {
+  constructor(@Inject('BASE_API_URL') private baseUrl: string,private _auth:AuthService) {
 
   }
 
 intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-console.log('HHII');
+  let authToken=localStorage.getItem('token')
     let apiReq:any;
   apiReq = request.clone(
       {
           url: `${this.baseUrl}/${request.url}`,
       }
   );
-  console.log(this.baseUrl, request.url);
-  console.log(apiReq);
+  if (authToken) {
+    apiReq = apiReq.clone({setHeaders: {
+      'Authorization': 'Bearer '+authToken,
+      // 'Access-Control-Allow-Origin': '*'
+    }});
+}
   return next.handle(apiReq);
 }
 }

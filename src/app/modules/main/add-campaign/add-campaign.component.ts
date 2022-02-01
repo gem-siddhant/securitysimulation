@@ -10,6 +10,9 @@ import {
 } from "@angular/forms";
 import { HttpClient } from '@angular/common/http';
 import { AddCampaignService } from '../service/add-campaign.service';
+import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
+import { DialogRole, MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-campaign',
@@ -24,7 +27,7 @@ submitted=false;
 response:any;
 api_hit=false;
 changeTriggered=false;
-  constructor(private _addCampaign:AddCampaignService, private formBuilder: FormBuilder) {
+  constructor(private _addCampaign:AddCampaignService, private formBuilder: FormBuilder,private dialog:MatDialog,private router:Router) {
     this.phisingForm = this.formBuilder.group({});
 
   }
@@ -46,6 +49,8 @@ changeTriggered=false;
     this.file = event.target.files[0];
   }
   submitForm(){
+
+
     console.log(this.file);
     this.submitted=true;
     if(this.phisingForm.invalid)
@@ -58,7 +63,8 @@ changeTriggered=false;
       'templateAmount':this.phisingForm.value.reward_amount.toString(),
       'templateNo':this.phisingForm.value.tempate_select,
       'templateRewardType':this.phisingForm.value.reward_type,
-      'templateHeading':this.phisingForm.value.subject
+      'templateHeading':this.phisingForm.value.subject,
+      'createdBy':localStorage.getItem('email')
     }
     console.log('FORM',reqBody);
     let con = JSON.stringify(reqBody);
@@ -67,9 +73,28 @@ changeTriggered=false;
 
     this._addCampaign.createCampaign(formData).subscribe((data)=>{
       if(data){
-        console.log(data);
+        let dataDialog = { title: 'Campaign Created Successfully!' };
+        const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+          width: '513px',
+          data: dataDialog
+        });
+        dialogRef.afterClosed().subscribe(()=>{
+          this.router.navigate(['main/dashboard']);
+        })
       }
-    })
+    },(err)=>{
+       if(err.status==200){
+         console.log('err',err);
+       let dataDialog = { title: 'Campaign Created Successfully!' };
+        const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+          width: '513px',
+          data: dataDialog
+        });
+        dialogRef.afterClosed().subscribe(()=>{
+          this.router.navigate(['main/dashboard']);
+        })
+      }
+    });
     // this.http.post('https://3691-124-253-122-181.ngrok.io/upload',formData).subscribe((data)=>{
     //   // console.log('API',data);
     //   if(data){

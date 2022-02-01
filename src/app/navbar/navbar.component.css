@@ -1,0 +1,267 @@
+.navbar {
+  background: #ffffff;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0px;
+  z-index: 200;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  padding-right: 0;
+}
+.width-css{
+  width: 44% !important;
+  margin-right: 150px;
+}
+
+
+.active-tab{
+  background-color: transparent;
+  border-bottom: 3px solid #9b2f9b;
+  margin-bottom: -18px;
+}
+
+.a {
+  width: 100%;
+}
+a:hover {
+  cursor: pointer;
+  text-decoration: none;
+}
+ul li a {
+  display: inline;
+}
+li {
+  display: inline-block;
+}
+.ml-auto {
+  left: auto !important;
+  right: 0px;
+}
+.w-full {
+  width: 100%;
+}
+::ng-deep .mat-menu-content {
+  max-height: 400px;
+  /* width: 350px; */
+}
+.notification-text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #757575;
+}
+
+.centre_align {
+  text-align: center;
+}
+.view_more {
+  border: none;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  letter-spacing: 0.02em;
+  color: #9b2f9b;
+  background: #ffffff;
+}
+.ml-auto {
+  left: auto !important;
+  right: 0px;
+}
+.w-full {
+  width: 100%;
+}
+.dropdown-header {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+}
+/* ::ng-deep .mat-menu-panel{
+max-width: unset !important;
+overflow-x: hidden !important;
+margin-left: auto;
+} */
+::ng-deep #cdk-overlay-0 {
+  width: 20rem;
+}
+.ul-notification {
+  padding-left: 5px;
+  padding-top: 7px;
+}
+.notification-container {
+  width: 340px;
+}
+
+.mm_size {
+  width: 100%;
+}
+
+.bd-highlight {
+  margin-left: 5px;
+}
+.w-full {
+  width: 100%;
+}
+.bell {
+  transform: rotate(15.01deg);
+}
+::ng-deep .mat-menu-panel {
+  /* max-width: unset !important; */
+  overflow-x: hidden !important;
+  margin-left: auto;
+  min-width: 400px !important;
+}
+::ng-deep #cdk-overlay-0 {
+  width: 20rem;
+}
+/* .ul-notification{
+    padding-left: 10px;
+    padding-top: 7px;
+} */
+.notification-row {
+  width: 100%;
+}
+.header-text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+}
+.image-container {
+  display: flex;
+  align-items: center;
+  margin-top: 25px;
+  /* width:2%; */
+}
+.notification-container {
+  width: 340px;
+}
+.heading {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.02em;
+  color: #000000;
+  margin-left: 20px;
+}
+.view-text {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: right;
+  letter-spacing: 0.02em;
+  color: #9b2f9b;
+  margin-left: 87px;
+}
+.notification-count {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.02em;
+  color: rgba(0, 0, 0, 0.6);
+  margin-left: 10px;
+}
+
+.time-date {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+
+  color: rgba(0, 0, 0, 0.3);
+}
+.no-new-notification {
+  margin-left: 20px;
+}
+.yuph {
+  display: flex;
+  justify-content: end;
+}
+.vertical-align {
+  display: flex;
+  align-items: center;
+}
+.top-mar {
+  margin-top: 0.15rem !important;
+}
+
+.faq {
+  margin-top: -6px !important;
+  /* margin-left: -15px; */
+}
+.w-241{
+  min-width: 241px;
+  max-width: 320px;
+}
+
+
+@media (min-width:320px) and (max-width:480px) {
+  .width-css{
+    width: auto !important;
+    margin-right: 0px !important;
+  }
+  .brand-tab-label1,.brand-tab-label2{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  .brand-tab-label4{
+    margin-left: 3px !important;
+  }
+   .ml-2{
+     margin-left: 0px!important;
+   }
+   .faq{
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
+   }
+
+   .faq-icon{
+    width: 20px !important;
+    margin-right: 3px;
+   }
+   .faq-text{
+     margin-right: 7px !important;
+   }
+   .active-tab{
+    margin-bottom: 6px;
+  }
+}
+
+@media (min-width:520px) and (max-width:540px) {
+  .active-tab{
+    margin-bottom: 5px;
+  }
+}
+
+@media (min-width:560px) and (max-width:768px) {
+  .active-tab{
+    margin-bottom: 0px;
+  }
+}
+
+
+@media (min-width:768px) and (max-width:1024px) {
+  .active-tab{
+    margin-bottom: 5px;
+  }
+}

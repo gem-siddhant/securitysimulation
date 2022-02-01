@@ -8,11 +8,19 @@ import { AddCampaignComponent } from './add-campaign/add-campaign.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { LoginComponent } from './login/login.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { CampaignViewComponent } from './campaign-view/campaign-view.component';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
     GiftComponent,
-    AddCampaignComponent
+    AddCampaignComponent,
+    LoginComponent,
+    DashboardComponent,
+    CampaignViewComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +29,9 @@ import {MatInputModule} from '@angular/material/input';
     MatRadioModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule,
+    MatIconModule
   ]
 })
 export class MainModule { }

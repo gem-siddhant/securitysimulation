@@ -45,6 +45,10 @@ color: #9B2F9B;
   color: #000000;
   cursor: pointer;
 }
+.border-rem{
+  border: none;
+background: none;
+}
 #add_btn {
   border: none;
   border-radius: 5px;
