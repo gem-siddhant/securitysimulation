@@ -7,7 +7,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { GiftComponent } from './gift/gift.component';
 import { LoginComponent } from './login/login.component';
 
-const routes: Routes = [{
+const routes: Routes = [
+  {path:'',
+  component:LoginComponent
+},
+  {
   path:'login',
   component:LoginComponent
 },

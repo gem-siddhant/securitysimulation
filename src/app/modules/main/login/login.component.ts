@@ -31,6 +31,9 @@ export class LoginComponent implements OnInit {
       id:['',Validators.required],
       password:['',Validators.required]
     });
+    if(localStorage.getItem('token')){
+      this.router.navigate(["/main/dashboard"]);
+    }
   }
   submit(){
     if(this.loginForm.invalid)

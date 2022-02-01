@@ -3,6 +3,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './AuthGuard/auth.guard';
 
 const routes: Routes = [{
+  path: '',
+  loadChildren: () =>
+    import('./modules/main/main.module').then((m) => m.MainModule)
+},{
   path: 'main',
   loadChildren: () =>
     import('./modules/main/main.module').then((m) => m.MainModule)
