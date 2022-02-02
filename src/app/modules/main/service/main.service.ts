@@ -12,12 +12,13 @@ export class MainService {
    getAllCampaigns(email:any){
     return this.http.post<any>('dashboard', email);
    }
+   sendUserDetails(obj:any){
+     console.log('send user data',obj);
+    return this.http.post<any>('register/click', obj);
+   }
    getCompaignDetails(id:any){
-     let obj:any={
-       id:5
-     }
-     let test:any='5';
-    return this.http.get<any>('get/task', test);
+let test:any=Number(id);
+    return this.http.post<any>('task', test);
 
    }
 }

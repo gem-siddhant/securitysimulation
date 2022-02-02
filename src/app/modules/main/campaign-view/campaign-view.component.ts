@@ -12,7 +12,9 @@ campaignId:any;
   constructor(private route: ActivatedRoute,
     private _router: Router,
     private _mainService:MainService) { }
-
+readEmail:any=[];
+openEmail:any=[];
+allData:any=[];
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: any) => {
@@ -22,7 +24,22 @@ campaignId:any;
   }
   getCampaignDetails(id:any){
     this._mainService.getCompaignDetails(id).subscribe((data)=>{
-      console.log(data);
+     if(data){
+       this.allData=data.result;
+        for(let element of data.result){
+
+          if(element.read==true)
+          {
+            this.readEmail.push(element.email);
+          }
+          if(element.ipAddress){
+            let obj={email:'',ip:''};
+            obj.email=element.email;
+            obj.ip=element.ipAddress;
+            this.openEmail.push(obj);
+          }
+        }
+     }
     })
   }
 

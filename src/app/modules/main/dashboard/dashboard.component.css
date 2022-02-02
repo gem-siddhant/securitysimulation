@@ -49,3 +49,7 @@ a{
   display: flex;
   justify-content: end;
 }
+.align-center{
+  display: flex;
+  justify-content: center;
+}

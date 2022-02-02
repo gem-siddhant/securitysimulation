@@ -4,7 +4,10 @@
       <button id="add_btn" routerLink="/main/add-campaign">ADD CAMPAIGN</button>
     </div>
   </div>
-  <div class="row mt-3">
+  <div class="row mt-5">
+    <div *ngIf="this.campaigns.length==0" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading align-center ">
+      No Campaign added.
+    </div>
     <div *ngFor="let element of this.campaigns; let i = index" >
         <div *ngIf="(i)%3==0" class="row">
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 box">
@@ -12,7 +15,7 @@
             <div class="body">
               <p class="heading">{{campaigns[i].name}}</p>
               <p class="body-text">No. of victims:{{campaigns[i].emails.length}}</p>
-              <button id="add_btn">View Results</button>
+              <button id="add_btn"(click)="routeView(this.campaigns[i].id)">View Results</button>
             </div>
           </a>
           </div>
@@ -21,7 +24,7 @@
               <div class="body">
                 <p class="heading">{{campaigns[i+1].name}}</p>
                 <p class="body-text">No. of victims:{{campaigns[i+1].emails.length}}</p>
-                <button id="add_btn">View Results</button>
+                <button id="add_btn" (click)="routeView(this.campaigns[i+1].id)">View Results</button>
               </div>
             </a>
             </div>
@@ -30,7 +33,7 @@
                 <div class="body">
                   <p class="heading">{{campaigns[i+2].name}}</p>
                   <p class="body-text">No. of victims:{{campaigns[i+2].emails.length}}</p>
-                  <button id="add_btn">View Results</button>
+                  <button id="add_btn" (click)="routeView(this.campaigns[i+2].id)">View Results</button>
                 </div>
               </a>
               </div>

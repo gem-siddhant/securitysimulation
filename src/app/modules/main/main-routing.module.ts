@@ -17,7 +17,6 @@ const routes: Routes = [
 },
   {
   path:'gifts',
-  canActivate:[AuthGuard],
   component: GiftComponent,
 },{
   path:'add-campaign',

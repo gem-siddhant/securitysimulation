@@ -1,1 +1,40 @@
-<p>campaign-view works!</p>
+<div class="container">
+  <div class="row mb-3 mt-4">
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+    <button routerLink="/main/dashboard" class="border-rem">
+      <mat-icon>keyboard_arrow_left</mat-icon>
+    </button>
+  </div>
+</div>
+  <div class="row mt-3">
+    <div class="cal-lg-12 col-md-12 col-sm-12 col-xs-12 heading">
+      Result
+    </div>
+    <div class="cal-lg-12 col-md-12 col-sm-12 col-xs-12 sub-head mt-3">
+      Employees who read the email:
+      <p class="mt-2" *ngIf="this.readEmail.length==0">None</p>
+      <div *ngFor="let element of this.readEmail">
+        <p class="mt-2">{{element}}</p>
+      </div>
+    </div>
+    <div class="cal-lg-12 col-md-12 col-sm-12 col-xs-12 sub-head mt-3">
+      Employees who opened the email:
+      <p class="mt-2" *ngIf="this.openEmail.length==0">None</p>
+      <div *ngFor="let element of this.openEmail">
+        <div class="mt-2">Email: {{element.email}} IpAddress:{{element.ip}}</div>
+      </div>
+    </div>
+    <div class="cal-lg-12 col-md-12 col-sm-12 col-xs-12 sub-head mt-3">
+      Employees in campaign:
+      <!-- <p class="mt-2" *ngIf="this.openEmail.length==0">None</p> -->
+      <div *ngFor="let element of this.allData">
+        <div class="mt-2">{{element.email}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5">
+      <button id="add_btn"   (click)="this.getCampaignDetails(this.campaignId)">REFRESH</button>
+    </div>
+  </div>
+</div>
