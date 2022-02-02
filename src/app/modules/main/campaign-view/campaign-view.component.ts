@@ -23,6 +23,9 @@ allData:any=[];
     this.getCampaignDetails(this.campaignId);
   }
   getCampaignDetails(id:any){
+    this.readEmail=[];
+    this.openEmail=[];
+    this.allData=[];
     this._mainService.getCompaignDetails(id).subscribe((data)=>{
      if(data){
        this.allData=data.result;
