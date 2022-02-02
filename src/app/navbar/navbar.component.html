@@ -1,50 +1,10 @@
-<div class="navbar">
-  <div class="row w-100">
-    <div class="sm-10">
-      <div class="container">
-        <div class="brand-logo">
-          <a class="navbar-brand" href="#">
-            <img src='../../assets/images/gemini-brand-logo.svg' alt="" width="100%" height="100%">
-          </a>
-        </div>
-        <div class="container width-css brand-tabs">
-          <div class="row w-241">
-            <div class="col-6" [routerLinkActive]="['active-tab']" [routerLinkActiveOptions]="{exact:true}">
-              <a class="d-flex flex-row brand-tab-label1 justify-content-center align-items-center mt-2" routerLink="/main/dashboard">
-                <img class="vertical-align top-mar faq" src='../../assets/images/home.svg'>
-                <span class="ml-2 text-dark">Home</span>
-              </a>
-            </div>
-            <div class="col-6" [routerLinkActive]="['active-tab']">
-              <a class="d-flex flex-row brand-tab-label2 justify-content-center align-items-center mt-2" routerLink="/main/add-campaign">
-                <img class="vertical-align top-mar faq" src='../../assets/images/event.svg'>
-                <span class="ml-2 text-dark">Add Campaigns</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div [ngClass]="{'col-sm-2': !mobile, 'col-4': mobile}" class="yuph vertical-align">
-      <div class="row">
-        <div [ngClass]="{'col-sm-4': !mobile, 'col-3': mobile}">
+<nav *ngIf="this.getUser()" class="navbar">
+  <a class="navbar-brand">SecSim</a>
+  <form class="form-inline mr-3">
           <mat-icon>
-            <!-- <a>
-              <img class="rounded-circle vertical-align top-mar faq" routerLink="/faq-section"
-                src='../../assets/images/faq.svg'>
-            </a> -->
-          </mat-icon>
-        </div>
-
-        <div [ngClass]="{'col-sm-4': !mobile, 'col-4': mobile}">
-          <mat-icon>
-            <a (click)="Logout()">
-              <img class="rounded-circle vertical-align" src='../../assets/images/logout.svg'>
-            </a>
-          </mat-icon>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+      <a (click)="Logout()">
+        <img class="rounded-circle vertical-align" src='../../assets/images/logout.svg'>
+      </a>
+    </mat-icon>
+  </form>
+</nav>

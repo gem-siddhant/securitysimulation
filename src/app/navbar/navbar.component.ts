@@ -7,6 +7,8 @@ import {
   MatSnackBarVerticalPosition,
 } from '@angular/material/snack-bar';
 import { MatMenuTrigger } from '@angular/material/menu';
+import { MainService } from '../modules/main/service/main.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -32,14 +34,17 @@ export class NavbarComponent implements OnInit {
   unreadData:any;
   currentDate:any;
 
-  constructor() {
+  constructor(private _auth:AuthService) {
     this.mobile = false;
   }
 
   ngOnInit() {
 
   }
+  getUser(){
+    return localStorage.getItem('token');
+  }
 Logout(){
-
+  this._auth.logout();
 }
 }

@@ -1,6 +1,6 @@
 .navbar {
-  background: #ffffff;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
+  background: #9b2f9b;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0px;
   z-index: 200;
@@ -10,6 +10,9 @@
   justify-content: space-between;
   padding: 0.5rem 1rem;
   padding-right: 0;
+}
+.navbar-brand{
+  color:#ffffff;
 }
 .width-css{
   width: 44% !important;
