@@ -11,21 +11,21 @@
       Result
     </div>
     <div class="cal-lg-12 col-md-12 col-sm-12 col-xs-12 sub-head mt-3">
-      Employees who received the email:
+      Employees who received the email: {{this.readEmail.length}}
       <p class="mt-2" *ngIf="this.readEmail.length==0">None</p>
       <div *ngFor="let element of this.readEmail">
         <p class="mt-2">{{element}}</p>
       </div>
     </div>
     <div class="cal-lg-12 col-md-12 col-sm-12 col-xs-12 sub-head mt-3">
-      Employees who opened the email:
+      Employees who opened the email: {{this.openEmail.length}}
       <p class="mt-2" *ngIf="this.openEmail.length==0">None</p>
       <div *ngFor="let element of this.openEmail">
         <div class="mt-2">Email: {{element.email}} IpAddress:{{element.ip}}</div>
       </div>
     </div>
     <div class="cal-lg-12 col-md-12 col-sm-12 col-xs-12 sub-head mt-3">
-      Employees in campaign:
+      Employees in campaign: {{this.allData.length}}
       <!-- <p class="mt-2" *ngIf="this.openEmail.length==0">None</p> -->
       <div *ngFor="let element of this.allData">
         <div class="mt-2">{{element.email}}</div>
