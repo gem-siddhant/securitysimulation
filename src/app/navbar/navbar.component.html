@@ -1,10 +1,19 @@
 <nav *ngIf="this.getUser()" class="navbar">
-  <a class="navbar-brand">Security Simulation</a>
-  <form class="form-inline mr-3">
-          <mat-icon>
-      <a (click)="Logout()">
-        <img class="rounded-circle vertical-align" src='../../assets/images/logout.svg'>
+  <div class="row w-100">
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+      <div class="brand-logo">
+        <a class="navbar-brand" href="#">
+      <img class="logo" src="../../assets/images/pirates of gemini.svg">
       </a>
-    </mat-icon>
-  </form>
+    </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 vertical-align">
+        <mat-icon class="logout">
+    <a (click)="Logout()">
+      <img class="rounded-circle vertical-align" src='../../assets/images/logout.svg'>
+    </a>
+  </mat-icon>
+    </div>
+    </div>
 </nav>
+

@@ -1,43 +1,179 @@
-<div class="container">
-  <div class="row mt-5 align-end">
+<div class="row">
+  <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 offset-2">
+  <div class="row align-end">
     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 mt-5">
-      <button id="add_btn" routerLink="/main/add-campaign">ADD CAMPAIGN</button>
+      <button id="add_btn" routerLink="/main/add-campaign">Create Campaign</button>
     </div>
   </div>
-  <div class="row mt-5">
+  <div class="row">
+  <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading-bold">
+History
+  </div>
+  </div>
+  <div class="row mt-3">
     <div *ngIf="this.campaigns.length==0" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading align-center ">
       No Campaign added.
     </div>
     <div *ngFor="let element of this.campaigns; let i = index" >
         <div *ngIf="(i)%3==0" class="row">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 box">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 box">
           <a class="tile">
-            <div class="body">
-              <p class="heading">{{campaigns[i].name}}</p>
-              <p class="body-text">No. of victims:{{campaigns[i].emails.length}}</p>
-              <button id="add_btn"(click)="routeView(this.campaigns[i].id)">View Results</button>
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading mt-3" >
+                {{campaigns[i].name}}
+              </div>
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" >
+                {{campaigns[i].name}}
+              </div>
+              <div class="row mb-3 mt-2">
+              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sub-heading-1 mt-1" >
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1">
+                  Read
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2">
+                  12
+                </div>
+              </div>
+              </div>
+              <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 sub-heading-1 mt-1" >
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1">
+                    Delivered
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2">
+                    15
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sub-heading-1 mt-1" >
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1">
+                    Rest
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2">
+                    9
+                  </div>
+                  </div>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                  <div class="row">
+                    <div (click)="routeView(this.campaigns[i].id)" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1 justify mt-3">
+                    <p><span class="underline">View More</span></p>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
             </div>
           </a>
           </div>
-          <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 box" *ngIf="(i+1)<this.campaigns.length">
+          <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 box" *ngIf="(i+1)<this.campaigns.length">
             <a class="tile">
-              <div class="body">
-                <p class="heading">{{campaigns[i+1].name}}</p>
-                <p class="body-text">No. of victims:{{campaigns[i+1].emails.length}}</p>
-                <button id="add_btn" (click)="routeView(this.campaigns[i+1].id)">View Results</button>
+              <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading mt-3" >
+                  {{campaigns[i+1].name}}
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" >
+                  {{campaigns[i+1].name}}
+                </div>
+                <div class="row mb-3 mt-2">
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sub-heading-1 mt-1" >
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1">
+                    Read
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2">
+                    12
+                  </div>
+                </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 sub-heading-1 mt-1" >
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1">
+                      Delivered
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2">
+                      15
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sub-heading-1 mt-1" >
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1">
+                      Rest
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2">
+                      9
+                    </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                    <div class="row">
+                      <div (click)="routeView(this.campaigns[i+1].id)" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1 justify mt-3">
+                      <p><span class="underline">View More</span></p>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
               </div>
             </a>
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 box" *ngIf="(i+2)<this.campaigns.length" >
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 box" *ngIf="(i+2)<this.campaigns.length" >
               <a class="tile">
-                <div class="body">
-                  <p class="heading">{{campaigns[i+2].name}}</p>
-                  <p class="body-text">No. of victims:{{campaigns[i+2].emails.length}}</p>
-                  <button id="add_btn" (click)="routeView(this.campaigns[i+2].id)">View Results</button>
+                <div class="row">
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading mt-3" >
+                    {{campaigns[i+2].name}}
+                  </div>
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" >
+                    {{campaigns[i+2].name}}
+                  </div>
+                  <div class="row mb-3 mt-2">
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sub-heading-1 mt-1" >
+                  <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1">
+                      Read
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2">
+                      12
+                    </div>
+                  </div>
+                  </div>
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 sub-heading-1 mt-1" >
+                    <div class="row">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1">
+                        Delivered
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2">
+                        15
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sub-heading-1 mt-1" >
+                    <div class="row">
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1">
+                        Rest
+                      </div>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2">
+                        9
+                      </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                      <div class="row">
+                        <div (click)="routeView(this.campaigns[i+2].id)" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1 justify mt-3">
+                        <p><span class="underline">View More</span></p>
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </a>
               </div>
 </div>
   </div>
+</div>
 </div>
 </div>

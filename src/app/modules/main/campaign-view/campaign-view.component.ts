@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MainService } from '../service/main.service';
 
+
 @Component({
   selector: 'app-campaign-view',
   templateUrl: './campaign-view.component.html',
@@ -15,6 +16,7 @@ campaignId:any;
 readEmail:any=[];
 openEmail:any=[];
 allData:any=[];
+
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: any) => {
