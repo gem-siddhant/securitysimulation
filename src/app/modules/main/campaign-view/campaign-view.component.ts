@@ -29,8 +29,7 @@ pieChartPlugins:any = [];
 
   ngOnInit(): void {
     this.pieChartOptions = this.createOptions();
-    this.pieChartLabels = ['Read', 'Delivered', 'Remaining'];
-    this.pieChartData = [1, 2, 3];
+    this.pieChartLabels = ['Clicked', 'Delivered'];
     this.pieChartType = 'pie';
     this.pieChartLegend = true;
     this.pieChartPlugins = [pluginLabels];
@@ -73,6 +72,7 @@ pieChartPlugins:any = [];
             this.openEmail.push(obj);
           }
         }
+        this.pieChartData = [this.openEmail.length, this.readEmail.length];
      }
     })
   }
