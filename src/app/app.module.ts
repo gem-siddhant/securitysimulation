@@ -14,6 +14,7 @@ import {MatIconModule} from '@angular/material/icon';
 import { ApiInterceptorService } from './services/api-interceptor.service';
 import {ConfirmationModalComponent} from './shared/confirmation-modal/confirmation-modal.component';
 import {NavbarComponent} from '../app/navbar/navbar.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {NavbarComponent} from '../app/navbar/navbar.component';
     AppRoutingModule,
     NoopAnimationsModule,
     HttpClientModule,
-    MatIconModule
+    MatIconModule,
+    ChartsModule
 
   ],
   providers: [  { provide: 'BASE_API_URL', useValue: environment.apiUrl },

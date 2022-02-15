@@ -13,7 +13,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { CampaignViewComponent } from './campaign-view/campaign-view.component';
 import {MatIconModule} from '@angular/material/icon';
-
+import { ChartsModule } from 'ng2-charts';
 @NgModule({
   declarations: [
     GiftComponent,
@@ -31,7 +31,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatFormFieldModule,
     MatInputModule,
     MatDialogModule,
-    MatIconModule
+    MatIconModule,
+    ChartsModule
   ]
 })
 export class MainModule { }

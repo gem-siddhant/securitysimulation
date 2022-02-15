@@ -31,7 +31,14 @@
     </div>
   </div>
   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 circle-box">
-
+    <canvas baseChart *ngIf="pieChartData"
+    [data]="pieChartData"
+    [labels]="pieChartLabels"
+    [chartType]="pieChartType"
+    [options]="pieChartOptions"
+    [plugins]="pieChartPlugins"
+    [legend]="pieChartLegend">
+  </canvas>
   </div>
 </div>
 </div>
