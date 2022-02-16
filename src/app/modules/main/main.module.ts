@@ -15,6 +15,10 @@ import { CampaignViewComponent } from './campaign-view/campaign-view.component';
 import {MatIconModule} from '@angular/material/icon';
 import { ChartsModule } from 'ng2-charts';
 import {MatCardModule} from '@angular/material/card';
+import { MatTableModule } from '@angular/material/table'
+import {MatSelectModule} from '@angular/material/select';
+
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -35,7 +39,10 @@ import {MatCardModule} from '@angular/material/card';
     MatDialogModule,
     MatIconModule,
     ChartsModule,
-    MatCardModule
+    MatCardModule,
+    MatTableModule,
+    MatSelectModule,
+    FormsModule
   ]
 })
 export class MainModule { }
