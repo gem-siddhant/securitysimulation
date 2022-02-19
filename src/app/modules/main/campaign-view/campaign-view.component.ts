@@ -21,9 +21,12 @@ campaignId:any;
     private _mainService:MainService) {
   this.viewData={id:0,email:'',ipAddress:'',status:''};
     }
-readEmail:any=[];
-openEmail:any=[];
-allData:any=[];
+    nameCampaign:any;
+    emailSubject:any;
+    desc:any;
+clicked_len:any;
+read_len:any;
+delivered_len:any;
 pieChartOptions!: ChartOptions;
 pieChartLabels!: Label[];
 pieChartData!: SingleDataSet;
@@ -37,7 +40,7 @@ pieChartPlugins:any = [];
 @ViewChild(MatSort, { static: true }) sort!: MatSort;
   ngOnInit(): void {
     this.pieChartOptions = this.createOptions();
-    this.pieChartLabels = ['Clicked', 'Delivered'];
+    this.pieChartLabels = ['Clicked', 'Read','Delivered'];
     this.pieChartType = 'pie';
     this.pieChartLegend = true;
     this.pieChartPlugins = [pluginLabels];
@@ -63,7 +66,7 @@ pieChartPlugins:any = [];
   filterDrop(){
     console.log(this.select_val);
     let filterValue=this.select_val;
-       filterValue = filterValue.trim(); // Remove whitespace
+       filterValue = filterValue.trim();
      filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
      this.dataSource.filter = filterValue;
 
@@ -83,44 +86,26 @@ pieChartPlugins:any = [];
     }
   }
   getCampaignDetails(id:any){
-    this.readEmail=[];
-    this.openEmail=[];
-    this.allData=[];
+
     this._mainService.getCompaignDetails(id).subscribe((data)=>{
      if(data){
-       this.allData=data.result;
+       this.clicked_len=data.openedCount;
+       this.delivered_len=data.deliveredCount;
+       this.read_len=data.readCount;
+       this.nameCampaign=data.template.heading;
+       this.emailSubject=data.template.subject;
+       this.desc=data.template.description;
        let i=1;
        for(let element of data.result){
          element.id=i;
          if(!element.ipAddress){
           element.ipAddress='NA';
          }
-         if(element.read)
-         {
-           element.status='Read';
-         }
-        else if(element.delivered && !element.read){
-          element.status='Delivered';
-        }
-        else{
-          element.status='Not Delivered';
-        }
+
         ++i;
        }
-        for(let element of data.result){
 
-          if(element.read==true)
-          {
-            this.readEmail.push(element.email);
-          }
-          if(element.ipAddress){
-            let obj={email:'',ip:''};
-            obj.email=element.email;
-            obj.ip=element.ipAddress;
-            this.openEmail.push(obj);
-          }
-        }
-        this.pieChartData = [this.openEmail.length, this.readEmail.length];
+        this.pieChartData = [this.clicked_len, this.read_len,this.delivered_len];
         this.dataSource = new MatTableDataSource<view_data>(data.result);
         this.dataSource.sort = this.sort;
      }

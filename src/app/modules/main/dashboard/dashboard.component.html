@@ -23,44 +23,44 @@ History
                 {{campaigns[i].name}}
               </div>
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" >
-                {{campaigns[i].name}}
+                {{campaigns[i].subject}}
               </div>
               <div class="row mb-3 mt-2">
-              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sub-heading-1 mt-1" >
+              <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 sub-heading-1 mt-1" >
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1">
-                  Read
+                  Clicked
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2">
-                  12
+                  {{campaigns[i].opened}}
                 </div>
               </div>
               </div>
-              <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 sub-heading-1 mt-1" >
+              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sub-heading-1 mt-1" >
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1">
-                    Delivered
+                    Read
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2">
-                    15
+                    {{campaigns[i].read}}
                   </div>
                 </div>
               </div>
               <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sub-heading-1 mt-1" >
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1">
-                    Rest
+                    Del.
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2">
-                    9
+                    {{campaigns[i].delivered}}
                   </div>
                   </div>
                 </div>
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                  <div class="row">
-                    <div (click)="routeView(this.campaigns[i].id)" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1 justify mt-3">
+                  <!-- <div class="row"> -->
+                    <div (click)="routeView(this.campaigns[i].taskId)" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1 justify mt-3">
                     <p><span class="underline">View More</span></p>
-                    </div>
+                    <!-- </div> -->
 
                   </div>
                 </div>
@@ -75,44 +75,44 @@ History
                   {{campaigns[i+1].name}}
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" >
-                  {{campaigns[i+1].name}}
+                  {{campaigns[i+1].subject}}
                 </div>
                 <div class="row mb-3 mt-2">
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sub-heading-1 mt-1" >
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 sub-heading-1 mt-1" >
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1">
-                    Read
+                    Clicked
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2">
-                    12
+                    {{campaigns[i+1].opened}}
                   </div>
                 </div>
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 sub-heading-1 mt-1" >
+                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sub-heading-1 mt-1" >
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1">
-                      Delivered
+                      Read
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2">
-                      15
+                      {{campaigns[i+1].read}}
                     </div>
                   </div>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sub-heading-1 mt-1" >
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1">
-                      Rest
+                      Del.
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2">
-                      9
+                      {{campaigns[i+1].delivered}}
                     </div>
                     </div>
                   </div>
                   <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                    <div class="row">
-                      <div (click)="routeView(this.campaigns[i+1].id)" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1 justify mt-3">
+                    <!-- <div class="row"> -->
+                      <div (click)="routeView(this.campaigns[i+1].taskId)" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1 justify mt-3">
                       <p><span class="underline">View More</span></p>
-                      </div>
+                      <!-- </div> -->
 
                     </div>
                   </div>
@@ -127,44 +127,44 @@ History
                     {{campaigns[i+2].name}}
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" >
-                    {{campaigns[i+2].name}}
+                    {{campaigns[i+2].subject}}
                   </div>
                   <div class="row mb-3 mt-2">
-                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sub-heading-1 mt-1" >
+                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 sub-heading-1 mt-1" >
                   <div class="row">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1">
-                      Read
+                      Clicked
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2">
-                      12
+                      {{campaigns[i+2].opened}}
                     </div>
                   </div>
                   </div>
-                  <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 sub-heading-1 mt-1" >
+                  <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sub-heading-1 mt-1" >
                     <div class="row">
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1">
-                        Delivered
+                        Read
                       </div>
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2">
-                        15
+                        {{campaigns[i+2].read}}
                       </div>
                     </div>
                   </div>
                   <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 sub-heading-1 mt-1" >
                     <div class="row">
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1">
-                        Rest
+                        Del.
                       </div>
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2">
-                        9
+                        {{campaigns[i+2].delivered}}
                       </div>
                       </div>
                     </div>
                     <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-                      <div class="row">
-                        <div (click)="routeView(this.campaigns[i+2].id)" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1 justify mt-3">
+                      <!-- <div class="row"> -->
+                        <div (click)="routeView(this.campaigns[i+2].taskId)" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-1 justify mt-3">
                         <p><span class="underline">View More</span></p>
-                        </div>
+                        <!-- </div> -->
 
                       </div>
                     </div>
