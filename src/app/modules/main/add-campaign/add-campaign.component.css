@@ -1,20 +1,25 @@
 .main-title{
-  font-family: Roboto;
+
+font-family: Poppins;
 font-style: normal;
 font-weight: 500;
-font-size: 32px;
+font-size: 30px;
 line-height: 150%;
 color: #9B2F9B;
 }
 .sub-head{
-  font-family: Roboto;
+  font-family: Poppins;
 font-style: normal;
 font-weight: normal;
 font-size: 20px;
 color: #9B2F9B;
 }
+.inline-block {
+  display: inline-block;
+  margin-right: 20px;
+}
 #attachment_btn {
-  font-family: Roboto;
+  font-family: Poppins;
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -37,7 +42,7 @@ color: #9B2F9B;
 .attachment-display{
   margin-left: 5px;
   text-decoration: none;
-  font-family: Roboto;
+  font-family: Poppins;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
@@ -55,7 +60,7 @@ background: none;
   width: 100%;
   height: 45px;
   background: #9b2f9b;
-  font-family: Roboto;
+  font-family: Poppins;
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
@@ -65,4 +70,25 @@ background: none;
   color: #ffffff;
   margin-bottom: 7px;
 }
+.form-box{
+  border: 1px solid #D37ACB;
+border-radius: 5px;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #D37ACB!important;
 
+}
+
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+  color: #D37ACB!important;
+}
+.margin-des{
+  margin-right: 30px;
+}
+.margin-l{
+  margin-left: 50px;
+}
+.align-vert{
+  display: flex;
+  align-items: center;
+}
