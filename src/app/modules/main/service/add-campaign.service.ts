@@ -10,4 +10,8 @@ export class AddCampaignService {
   createCampaign(formData: any) {
     return this.http.post<any>('upload', formData);
   }
+  getPrefilled(id:any){
+    return this.http.post<any>('prefilled/data', id);
+
+  }
 }

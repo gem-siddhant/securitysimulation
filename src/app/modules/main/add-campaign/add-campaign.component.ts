@@ -37,30 +37,95 @@ submitted=false;
 response:any;
 api_hit=false;
 changeTriggered=false;
-testhtml:any=`<div dir="ltr">
-<span style="color:rgb(80,0,80)">
-   <p class="MsoNormal" style="margin-right:0cm;margin-left:0cm;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;text-align:justify"><span style="font-size:10pt;font-family:Verdana,sans-serif;color:black">Dear All ,&nbsp;</span></p>
-   <p class="MsoNormal" style="margin-right:0cm;margin-left:0cm;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;text-align:justify"><span style="font-size:10pt;font-family:Verdana,sans-serif;color:black">&nbsp;</span><u></u><u></u></p>
-   <p class="MsoNormal" style="margin-right:0cm;margin-left:0cm;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;text-align:justify"><span style="font-size:10pt;font-family:Verdana,sans-serif;color:black">As we are getting closer to the end of the current FY 2021-22, we are initiating the process of submission of investment proofs for income tax on the GreytHR portal (Payroll portal).&nbsp;</span><u></u><u></u></p>
-   <p class="MsoNormal" style="margin-right:0cm;margin-left:0cm;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;text-align:justify"><span style="font-size:10pt;font-family:Verdana,sans-serif;color:black"><br></span></p>
-   <p class="MsoNormal" style="margin-right:0cm;margin-left:0cm;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;text-align:justify"><span style="font-size:10pt;font-family:Verdana,sans-serif;color:black">Due to the current pandemic situation, we solicit your timely participation to ensure that this year end exercise is effective and completed on time .</span><span style="color:black;font-family:Verdana,sans-serif;font-size:10pt">Please note that the final date for submission of investment proofs</span><span style="color:black;font-family:Verdana,sans-serif;font-size:10pt">&nbsp;</span><b style="color:black;font-family:Verdana,sans-serif;font-size:10pt"><span style="background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial">is&nbsp;18th&nbsp;February 2022</span>&nbsp;</b><span style="color:black;font-family:Verdana,sans-serif;font-size:10pt">and you can start uploading investment proofs on GreytHR portal post effective&nbsp;</span><b style="color:black;font-family:Verdana,sans-serif;font-size:10pt"><span style="background-image:initial;background-position:initial;background-size:initial;background-repeat:initial;background-origin:initial;background-clip:initial">7th&nbsp;February 2022, 12:30 PM&nbsp; onwards&nbsp;.</span></b></p>
-   <p class="MsoNormal" style="margin-right:0cm;margin-left:0cm;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;text-align:justify"><u></u></p>
-   <p class="MsoNormal" style="margin-right:0cm;margin-left:0cm;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;text-align:justify"><b><span style="font-size:10pt;font-family:Verdana,sans-serif;color:black">Please find attached documents having</span></b><span style="font-size:10pt;font-family:Verdana,sans-serif;color:black">&nbsp;:&nbsp;</span><u></u><u></u></p>
-   <p style="margin-right:0cm;margin-left:39.75pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;text-align:justify"><span style="font-size:10pt;font-family:Verdana,sans-serif;color:black">1.</span><span style="font-size:7pt;color:black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-size:10pt;font-family:Verdana,sans-serif;color:black">Instructions for submitting Investment Proofs</span><u></u><u></u></p>
-   <p style="margin-right:0cm;margin-left:39.75pt;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;text-align:justify"><span style="font-size:10pt;font-family:Verdana,sans-serif;color:black">2.</span><span style="font-size:7pt;color:black">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-size:10pt;font-family:Verdana,sans-serif;color:black">Instructions for submitting The Flexi Proofs</span><u></u><u></u></p>
-   <p class="MsoNormal" style="margin-right:0cm;margin-left:0cm;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;text-align:justify"><b><span style="font-size:10pt;font-family:Verdana,sans-serif;color:black">Steps for Submission of POI’s :</span></b><u></u><u></u></p>
-   <p style="margin-right:0cm;margin-left:0cm;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;text-align:justify"><span style="font-size:10pt;font-family:Verdana,sans-serif;color:black">1.</span><span style="font-size:7pt;color:black">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-size:10pt;font-family:Verdana,sans-serif;color:black">Login onto GreytHR Portal :&nbsp;
+prefilled:any={heading:'',amount:'',rewardType:'',subject:'',description:''};
+testhtml:any=`<table style="background:#fff;border:1px solid #d9d9d9" border="0" align="center" width="650px" cellspacing="0" cellpadding="0">
+<tbody>
+  <tr>
+    <td style="padding:10px 15px;width:620px">
+      <table style="border:0;width:620px;text-align:center" cellpadding="0" cellspacing="0">
+        <tbody><tr>
+          <td style="text-align:center;vertical-align:middle;font-size:0"><img src="https://www.linkpicture.com/q/unnamed-1_15.png" border="0" height="80" class="CToWUd"></td>
 
-     <button style="background:#9b2f9b;border:none;border-radius:5px;color:#ffffff;height:25px;width:70px">LOGIN</button>
+        </tr>
+      </tbody></table>
+    </td>
+  </tr>
+  <tr>
+    <td><img src="https://ci6.googleusercontent.com/proxy/_hPTizEaz8VXHMdHoHW93gyd1nTxebOFczq7PAI0GqNAk34zenmiQF2Rd1g6uD6DgDLOStyVxVm3PJzlRdRLVzuJCkd9EfkQW6cg80CrMm9ibw2B6Co=s0-d-e1-ft#https://img.pineperks.in/resources/images/email/voucher-details.jpg" style="display:block;width:650px" width="650px" border="0" class="CToWUd a6T" tabindex="0"><div class="a6S" dir="ltr" style="opacity: 0.01; left: 630.5px; top: 345px;"><div id=":1ev" class="T-I J-J5-Ji aQv T-I-ax7 L3 a5q" role="button" tabindex="0" aria-label="Download attachment " data-tooltip-class="a1V" data-tooltip="Download"><div class="akn"><div class="aSK J-J5-Ji aYr"></div></div></div></div></td>
+  </tr>
+  <tr>
+    <td style="line-height:10px;background:#f6861f">&nbsp;</td>
+  </tr>
+  <tr>
+    <td bgcolor="#fff" style="background:#f6861f">
+      <table border="0" align="center" width="634" cellspacing="0" cellpadding="0">
+        <tbody>
+          <tr>
+            <td style="padding:10px" align="left" valign="top">
 
-   </span><u></u><u></u></p>
-   <p style="margin-right:0cm;margin-left:0cm;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;text-align:justify"><span style="font-size:10pt;font-family:Verdana,sans-serif;color:black">2.</span><span style="font-size:7pt;color:black">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-size:10pt;font-family:Verdana,sans-serif;color:black">After logging on above mentioned link by your respective credentials click on Salary tab on left side ribbon of GreytHR dashboard.</span><u></u><u></u></p>
-   <p style="margin-right:0cm;margin-left:0cm;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;text-align:justify"><span style="font-size:10pt;font-family:Verdana,sans-serif;color:black">3.</span><span style="font-size:7pt;color:black">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-size:10pt;font-family:Verdana,sans-serif;color:black">Click on Proof of Investment option &amp; submit your proofs by adding attachment against each of your claim.</span><u></u><u></u></p>
-   <p style="margin-right:0cm;margin-left:0cm;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;text-align:justify"><span style="font-size:10pt;font-family:Verdana,sans-serif;color:black">4.</span><span style="font-size:7pt;color:black">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="font-size:10pt;font-family:Verdana,sans-serif;color:black">After submitting your proofs you will get a confirmation mail as well.</span><u></u><u></u></p>
-   <p style="margin-right:0cm;margin-left:0cm;font-size:12pt;font-family:&quot;Times New Roman&quot;,serif;text-align:justify"><u></u><u></u></p>
+              <table style="margin:0 auto" border="0" width="100%" cellspacing="0" cellpadding="0">
+                <tbody>
+                  <tr>
+                    <td colspan="2" style="padding-top:14px;font-family:Calibri,Arial,sans-serif;color:#fff;font-size:17px" align="left" valign="top"><strong>Dear Arihant Singla,</strong></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" style="padding-top:14px;font-family:Calibri,Arial,sans-serif;color:#fff;font-size:16px" align="left" valign="top">As a part of welcome program for our project Contripoint, we are provding amazon vouchers to the employees. You can find details of your amazon voucher with this email.</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" style="padding-top:14px;font-family:Calibri,Arial,sans-serif;color:#fff;font-size:16px" align="left" valign="top">Details of your Amazon <span class="il">Gift</span> <span class="il">Voucher</span> are given below -</td>
+                  </tr>
 
-</span>
-</div>`
+                  <tr>
+                    <td colspan="2" style="padding-top:7px;font-family:Calibri,Arial,sans-serif;color:#fff;font-size:16px">
+                      <table style="background:#e3750f;padding:10px;width:604px" cellpadding="0" cellspacing="5" border="0">
+                        <tbody><tr>
+                          <td style="font-family:Calibri,Arial,sans-serif;color:#fff;font-size:16px;width:200px;padding:0" valign="top">Brand</td>
+
+                          <td style="font-family:Calibri,Arial,sans-serif;color:#fff;font-size:16px;width:50px;padding:0" valign="top">:</td>
+
+                          <td style="font-family:Calibri,Arial,sans-serif;color:#fff;font-size:16px;width:250px;padding:0" valign="top">Amazon</td>
+                        </tr>
+                        <tr>
+                          <td style="font-family:Calibri,Arial,sans-serif;color:#fff;font-size:16px;width:200px;padding:0" valign="top"><span class="il">Voucher</span> Value</td>
+
+                          <td style="font-family:Calibri,Arial,sans-serif;color:#fff;font-size:16px;width:50px;padding:0" valign="top">:</td>
+
+                          <td style="font-family:Calibri,Arial,sans-serif;color:#fff;font-size:16px;width:250px;padding:0" valign="top">Rs. 500.00</td>
+                        </tr>
+
+                      </tbody></table>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td colspan="2" style="padding-top:10px;font-family:Calibri,Arial,sans-serif;color:#fff;font-size:16px" align="left" valign="top">Click on the following button to avail your gift vouchers:</td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" style="padding-top:12px;font-family:Calibri,Arial,sans-serif;color:#fff;font-size:24px" align="left" valign="top"><button style="height:40px; width:150px;background-color: #ed1c6a; color:#fff;border:none; border-radius: 20px; font-size: 18px;">Click Here!</button></td>
+                  </tr>
+
+                  <tr>
+                    <td colspan="2" style="padding-top:14px;font-family:Calibri,Arial,sans-serif;color:#fff;font-size:16px" align="left" valign="top">Cheers,</td>
+                  </tr>
+
+                  <tr>
+                    <td colspan="2" style="font-family:Calibri,Arial,sans-serif;color:#fff;font-size:16px" align="left" valign="top">Team Contripoint</td>
+                  </tr>
+
+                </tbody>
+              </table>
+
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </td>
+  </tr>
+
+
+
+</tbody>
+</table>`
 testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   constructor(private _addCampaign:AddCampaignService,
      private formBuilder: FormBuilder,
@@ -72,19 +137,51 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
 
   ngOnInit(): void {
     this.phisingForm = this.formBuilder.group({
-      name:['', Validators.required],
-      reward_type:['',Validators.required],
-      desc:['',Validators.required],
-      reward_amount:['',Validators.required],
+      name:['', ],
+      reward_type:[''],
+      desc:[''],
+      reward_amount:[''],
       tempate_select:[0,Validators.required],
       attachmentFile:[''],
-      subject:['',Validators.required]
+      subject:['']
 
     });
+
+
   }
   onChange(event: any) {
     this.changeTriggered = true;
     this.file = event.target.files[0];
+  }
+  getPreFilledData(id:any){
+    this._addCampaign.getPrefilled(id).subscribe((data)=>{
+      console.log('data',data)
+      this.prefilled=data;
+      if(this.prefilled.heading){
+        this.phisingForm.value.name=this.prefilled.heading;
+        this.phisingForm.controls["name"].setValidators([
+          Validators.required,
+        ]);
+      }
+      if(this.prefilled.rewardType){
+        this.phisingForm.value.reward_type=this.prefilled.rewardType;
+        this.phisingForm.controls["reward_type"].setValidators([
+          Validators.required,
+        ]);
+      }
+      if(this.prefilled.subject){
+        this.phisingForm.value.subject=this.prefilled.subject;
+        this.phisingForm.controls["subject"].setValidators([
+          Validators.required,
+        ]);
+      }
+      if(this.prefilled.amount){
+        this.phisingForm.value.amount=this.prefilled.amount;
+        this.phisingForm.controls["reward_amount"].setValidators([
+          Validators.required,
+        ]);
+      }
+    })
   }
   submitForm(){
 
