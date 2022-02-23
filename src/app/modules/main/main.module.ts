@@ -19,6 +19,7 @@ import { MatTableModule } from '@angular/material/table'
 import {MatSelectModule} from '@angular/material/select';
 
 import { FormsModule } from '@angular/forms';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { FormsModule } from '@angular/forms';
     MatCardModule,
     MatTableModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot()
   ]
 })
 export class MainModule { }

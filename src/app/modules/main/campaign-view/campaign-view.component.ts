@@ -8,6 +8,7 @@ import {view_data} from './view.model';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { elementAt } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-campaign-view',
@@ -18,7 +19,8 @@ export class CampaignViewComponent implements OnInit {
 campaignId:any;
   constructor(private route: ActivatedRoute,
     private _router: Router,
-    private _mainService:MainService) {
+    private _mainService:MainService,
+    private toastr: ToastrService) {
   this.viewData={id:0,email:'',ipAddress:'',status:''};
     }
     nameCampaign:any;
@@ -109,6 +111,8 @@ pieChartPlugins:any = [];
         this.dataSource = new MatTableDataSource<view_data>(data.result);
         this.dataSource.sort = this.sort;
      }
+    },err=>{
+      this.toastr.error("Error in loading data");
     })
   }
 

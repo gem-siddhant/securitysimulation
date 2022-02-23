@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { MainService } from '../service/main.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,7 +11,8 @@ import { MainService } from '../service/main.service';
 export class DashboardComponent implements OnInit {
 campaigns:any=[];
   constructor(private _main:MainService,
-    private router:Router) { }
+    private router:Router,
+    private toastr:ToastrService) { }
 
   ngOnInit(): void {
     this.getAllCampaigns();
@@ -24,6 +26,8 @@ campaigns:any=[];
         console.log(data);
         this.campaigns=data;
       }
+    },err=>{
+      this.toastr.error("Error in loading data");
     })
   }
 }

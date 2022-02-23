@@ -14,6 +14,8 @@ import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/co
 import { DialogRole, MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ToastrService } from 'ngx-toastr';
+
 @Pipe({ name: 'safeHtml'})
 export class SafeHtmlPipe implements PipeTransform  {
   constructor(private sanitized: DomSanitizer) {}
@@ -130,67 +132,56 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   constructor(private _addCampaign:AddCampaignService,
      private formBuilder: FormBuilder,
      private dialog:MatDialog,private router:Router,
-     private sanitized: DomSanitizer) {
+     private sanitized: DomSanitizer,
+     private toastr:ToastrService) {
     this.phisingForm = this.formBuilder.group({});
 
   }
 
   ngOnInit(): void {
-    this.phisingForm = this.formBuilder.group({
-      name:['', ],
-      reward_type:[''],
-      desc:[''],
-      reward_amount:[''],
-      tempate_select:[0,Validators.required],
-      attachmentFile:[''],
-      subject:['']
-
-    });
-
-
+this.phisingForm = this.formBuilder.group({
+  name:['',Validators.required],
+  reward_type:[''],
+  desc:[''],
+  reward_amount:[''],
+  tempate_select:[0,Validators.required],
+  attachmentFile:[''],
+  subject:['']
+});
   }
   onChange(event: any) {
     this.changeTriggered = true;
     this.file = event.target.files[0];
   }
   getPreFilledData(id:any){
+
     this._addCampaign.getPrefilled(id).subscribe((data)=>{
+
       console.log('data',data)
       this.prefilled=data;
-      if(this.prefilled.heading){
-        this.phisingForm.value.name=this.prefilled.heading;
-        this.phisingForm.controls["name"].setValidators([
-          Validators.required,
-        ]);
+      if(this.prefilled.subject){
+        this.phisingForm.value.subject=this.prefilled.subject;
+
       }
       if(this.prefilled.rewardType){
         this.phisingForm.value.reward_type=this.prefilled.rewardType;
-        this.phisingForm.controls["reward_type"].setValidators([
-          Validators.required,
-        ]);
       }
-      if(this.prefilled.subject){
-        this.phisingForm.value.subject=this.prefilled.subject;
-        this.phisingForm.controls["subject"].setValidators([
-          Validators.required,
-        ]);
+
+      if(this.prefilled.description){
+        this.phisingForm.value.desc=this.prefilled.description;
+
       }
       if(this.prefilled.amount){
         this.phisingForm.value.amount=this.prefilled.amount;
-        this.phisingForm.controls["reward_amount"].setValidators([
-          Validators.required,
-        ]);
       }
     })
   }
   submitForm(){
-
-
     console.log(this.file);
     this.submitted=true;
     if(this.phisingForm.invalid)
     return;
-    console.log(this.phisingForm.value);
+    console.log('FORM',this.phisingForm.value);
     const formData :any= new FormData();
     let reqBody={
       'name':this.phisingForm.value.name,
@@ -199,7 +190,8 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       'templateNo':this.phisingForm.value.tempate_select,
       'templateRewardType':this.phisingForm.value.reward_type,
       'templateHeading':this.phisingForm.value.subject,
-      'createdBy':localStorage.getItem('email')
+      'createdBy':localStorage.getItem('email'),
+
     }
     console.log('FORM',reqBody);
     let con = JSON.stringify(reqBody);
@@ -218,6 +210,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
         })
       }
     },(err)=>{
+
        if(err.status==200){
          console.log('err',err);
        let dataDialog = { title: 'Campaign Created Successfully!' };
@@ -228,6 +221,9 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
         dialogRef.afterClosed().subscribe(()=>{
           this.router.navigate(['main/dashboard']);
         })
+      }
+      else{
+        this.toastr.error("Error in adding campaign.");
       }
     });
     // this.http.post('https://3691-124-253-122-181.ngrok.io/upload',formData).subscribe((data)=>{

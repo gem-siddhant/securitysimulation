@@ -11,6 +11,8 @@ import {
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { MainService } from '../service/main.service';
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -22,7 +24,8 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private _MainService:MainService,
     private _auth:AuthService,
-    private router:Router) {
+    private router:Router,
+    private toastr: ToastrService) {
     this.loginForm = this.formBuilder.group({});
   }
 
@@ -50,6 +53,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('email',data.data.email);
         this.router.navigate(["/main/dashboard"]);
       }
+    },err=>{
+      this.toastr.error("Error in loading data");
     })
   }
 

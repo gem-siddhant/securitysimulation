@@ -15,6 +15,7 @@ import { ApiInterceptorService } from './services/api-interceptor.service';
 import {ConfirmationModalComponent} from './shared/confirmation-modal/confirmation-modal.component';
 import {NavbarComponent} from '../app/navbar/navbar.component';
 import { ChartsModule } from 'ng2-charts';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ChartsModule } from 'ng2-charts';
     NoopAnimationsModule,
     HttpClientModule,
     MatIconModule,
-    ChartsModule
+    ChartsModule,
+    ToastrModule.forRoot()
 
   ],
   providers: [  { provide: 'BASE_API_URL', useValue: environment.apiUrl },
