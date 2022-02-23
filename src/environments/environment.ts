@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://7384-182-78-210-30.ngrok.io'
+  apiUrl: 'https://secsimapi.geminisolutions.com'
 };
 
 /*
