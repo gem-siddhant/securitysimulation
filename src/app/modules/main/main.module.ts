@@ -17,7 +17,7 @@ import { ChartsModule } from 'ng2-charts';
 import {MatCardModule} from '@angular/material/card';
 import { MatTableModule } from '@angular/material/table'
 import {MatSelectModule} from '@angular/material/select';
-
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -44,7 +44,8 @@ import { ToastrModule } from 'ngx-toastr';
     MatTableModule,
     MatSelectModule,
     FormsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatProgressSpinnerModule
   ]
 })
 export class MainModule { }
