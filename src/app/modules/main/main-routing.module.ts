@@ -6,6 +6,7 @@ import { CampaignViewComponent } from './campaign-view/campaign-view.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GiftComponent } from './gift/gift.component';
 import { LoginComponent } from './login/login.component';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
   {path:'',
@@ -30,6 +31,9 @@ const routes: Routes = [
   path:'view/:id',
   canActivate:[AuthGuard],
   component:CampaignViewComponent
+},{
+  path:'sign-up',
+  component:SignUpComponent
 }
 ];
 

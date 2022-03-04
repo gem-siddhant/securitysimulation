@@ -21,4 +21,7 @@ let test:any=Number(id);
     return this.http.post<any>('task', test);
 
    }
+   signUp(form:any){
+      return this.http.post<any>('add/user',form);
+   }
 }

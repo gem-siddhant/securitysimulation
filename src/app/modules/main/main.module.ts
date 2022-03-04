@@ -20,6 +20,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ToastrModule } from 'ngx-toastr';
     AddCampaignComponent,
     LoginComponent,
     DashboardComponent,
-    CampaignViewComponent
+    CampaignViewComponent,
+    SignUpComponent
   ],
   imports: [
     CommonModule,
