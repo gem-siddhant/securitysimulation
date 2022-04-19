@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MainService } from '../service/main.service';
 import { ChartType, ChartOptions } from 'chart.js';
@@ -9,19 +9,28 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { elementAt } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-campaign-view',
   templateUrl: './campaign-view.component.html',
   styleUrls: ['./campaign-view.component.css']
 })
+
+
 export class CampaignViewComponent implements OnInit {
 campaignId:any;
+  datenow = new Date();
+  nowFormatted: string;
+
+
   constructor(private route: ActivatedRoute,
     private _router: Router,
     private _mainService:MainService,
-    private toastr: ToastrService) {
-  this.viewData={id:0,email:'',ipAddress:'',status:''};
+    private toastr: ToastrService) 
+    {
+       this.viewData={id:0,email:'',ipAddress:'',status:''};
+       this.nowFormatted = formatDate(this.datenow, 'dd-MM-yyyy', 'en-US');
     }
     nameCampaign:any;
     emailSubject:any;
@@ -37,18 +46,19 @@ pieChartLegend!: boolean;
 viewData:view_data;
 select_val:any='';
 dataSource:any;
+test: any= "test"
 displayedColumns: string[] = ['sno','email', 'ip' , 'status'];
 pieChartPlugins:any = [];
 @ViewChild(MatSort, { static: true }) sort!: MatSort;
   ngOnInit(): void {
     this.pieChartOptions = this.createOptions();
-    this.pieChartLabels = ['Clicked', 'Read','Delivered'];
+    this.pieChartLabels = ['Clicked', 'Not Delivered','Delivered'];
     this.pieChartType = 'pie';
     this.pieChartLegend = true;
     this.pieChartPlugins = [pluginLabels];
     this.dataSource = new MatTableDataSource<view_data>([]);
     this.route.paramMap.subscribe((params: any) => {
-      this.campaignId = params.get('id');
+    this.campaignId = params.get('id');
     });
     this.getCampaignDetails(this.campaignId);
   }

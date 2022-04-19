@@ -21,7 +21,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { SignUpComponent } from './sign-up/sign-up.component';
-
+import { MatTableExporterModule } from 'mat-table-exporter';
 @NgModule({
   declarations: [
     GiftComponent,
@@ -47,7 +47,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     MatSelectModule,
     FormsModule,
     ToastrModule.forRoot(),
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatTableExporterModule
   ]
 })
 export class MainModule { }

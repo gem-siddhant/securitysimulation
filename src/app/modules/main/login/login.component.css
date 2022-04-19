@@ -67,3 +67,20 @@ line-height: 150%;
 color: #D37ACB;
   text-decoration: none;
 }
+.btn_login{
+  background:#9f4b9c;
+  color: #FFFF;
+  padding: 10px;
+  margin: 20px;
+  margin-left: 89px;
+  align-content: center;
+  border-radius: 30px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  box-shadow: #ed04ed;
+  display: flex;
+  justify-content: center;
+  border: rgba(0, 0, 0, 0.25);
+  
+}

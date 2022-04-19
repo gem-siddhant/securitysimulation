@@ -30,4 +30,5 @@ campaigns:any=[];
       this.toastr.error("Error in loading data");
     })
   }
+
 }

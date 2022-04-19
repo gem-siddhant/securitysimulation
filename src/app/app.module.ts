@@ -15,9 +15,26 @@ import {ConfirmationModalComponent} from './shared/confirmation-modal/confirmati
 import {NavbarComponent} from '../app/navbar/navbar.component';
 import { ChartsModule } from 'ng2-charts';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
+import { MatTableExporterModule } from 'mat-table-exporter';
 import { ToastrModule } from 'ngx-toastr';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { InteractionType, IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
+import { msalConfig } from './app.config';
+import { MsalGuard, MsalBroadcastService, MsalModule, MsalService, MSAL_GUARD_CONFIG, MSAL_INSTANCE, MsalGuardConfiguration, MsalRedirectComponent } from '@azure/msal-angular';
+import { LoaderService } from './modules/main/service/loader.service';
+export function MSALInstanceFactory(): IPublicClientApplication {
+  return new PublicClientApplication(msalConfig);
+}
 
+export function MSALGuardConfigFactory(): MsalGuardConfiguration {
+  return { 
+    interactionType: InteractionType.Redirect,
+  };
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,11 +49,30 @@ import { ToastrModule } from 'ngx-toastr';
     ChartsModule,
     MatProgressSpinnerModule,
     ToastrModule.forRoot(),
-    BrowserAnimationsModule
-
+    BrowserAnimationsModule,
+    MatTableExporterModule,
+    MatButtonModule,
+    MatIconModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatPaginatorModule,
   ],
-  providers: [  { provide: 'BASE_API_URL', useValue: environment.apiUrl },
-  { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptorService, multi: true }],
-  bootstrap: [AppComponent]
-})
+  providers: [ LoaderService,
+    {
+      provide: MSAL_INSTANCE,
+      useFactory: MSALInstanceFactory
+    },
+    {
+      provide: MSAL_GUARD_CONFIG,
+      useFactory: MSALGuardConfigFactory
+    },
+    MsalService,
+    MsalGuard,
+    MsalBroadcastService, 
+    { provide: 'BASE_API_URL', useValue: environment.apiUrl },
+    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptorService, multi: true }],
+      bootstrap: [AppComponent] 
+    })
 export class AppModule { }
