@@ -5,9 +5,9 @@ const isIE = window.navigator.userAgent.indexOf("MSIE ") > -1 || window.navigato
 
 export const msalConfig: Configuration = {
     auth: {
-        clientId: 'b53257a5-cd5a-4f2a-92fc-80f9ab75ffb9', 
+        clientId: 'c008b918-497e-4cf9-b518-790eab23f462', 
         authority: 'https://login.microsoftonline.com/b9806c7d-9280-4e44-afea-6dc0ff495c2f', 
-        redirectUri: 'http://randomweb001.s3-website.us-east-2.amazonaws.com/#/main/login', 
+        redirectUri: 'http://localhost:4200/#/', 
         postLogoutRedirectUri: '/', 
         navigateToLoginRequestUrl: true, 
     },
