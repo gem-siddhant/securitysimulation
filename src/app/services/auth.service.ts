@@ -29,7 +29,25 @@ export class AuthService {
   getNotificationModalBoolean(){
     return this.notificationBoolean
   }
-  loginMethod(creds:any){
+  loginMethod(creds: string, token:string): Observable<any>{
+    const obj={
+      'email' :creds
+    }
     return this.http.post<any>('login', creds);
+   }
+  setToken( email?: any,backend_token?:any) {
+    return new Promise<void>((resolve, reject) => {
+      localStorage.setItem('email',email);
+      this.loginMethod(email,backend_token).subscribe((item: any)=> {
+      if (item)
+      {
+        localStorage.setItem('token',item.body.token);
+        resolve();
+      }
+      else{
+        reject();
+      }
+    });
+  })
    }
 }
