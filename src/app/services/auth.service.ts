@@ -41,7 +41,7 @@ export class AuthService {
       this.loginMethod(email,backend_token).subscribe((item: any)=> {
       if (item)
       {
-        localStorage.setItem('token',item.body.token);
+        localStorage.setItem('token',item.message);
         resolve();
       }
       else{

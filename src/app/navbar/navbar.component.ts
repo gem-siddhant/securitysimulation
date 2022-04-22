@@ -33,7 +33,7 @@ export class NavbarComponent implements OnInit {
   pageNo:number=1;
   unreadData:any;
   currentDate:any;
-
+  content:string="Please press OK to Download your user guide";
   constructor(private _auth:AuthService) {
     this.mobile = false;
   }
@@ -46,5 +46,9 @@ export class NavbarComponent implements OnInit {
   }
 Logout(){
   this._auth.logout();
+}
+toogletag(content: any)
+{
+  alert(content)
 }
 }
