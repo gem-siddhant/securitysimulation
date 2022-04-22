@@ -75,7 +75,6 @@ export class LoginComponent implements OnInit {
   loginWithMicrosoft2(){
     this.authService.loginPopup({...this.msalGuardConfig.authRequest} as PopupRequest).subscribe((response: AuthenticationResult)=>{
       if(response){
-        console.log("res",response);
         this._authUserService.setToken(response.account?.username,response.accessToken).then(()=>{
           this.router.navigate(['/main/dashboard']);
         sessionStorage.clear();

@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { DomSanitizer } from '@angular/platform-browser';
+
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -9,6 +11,7 @@ import {
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MainService } from '../modules/main/service/main.service';
 import { AuthService } from '../services/auth.service';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-navbar',
@@ -16,6 +19,7 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  showme:boolean=false;
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   durationInSeconds = 5;
@@ -33,16 +37,28 @@ export class NavbarComponent implements OnInit {
   pageNo:number=1;
   unreadData:any;
   currentDate:any;
-
-  constructor(private _auth:AuthService) {
+  content:string="Please press OK to Download your user guide";
+  fileUrl: any = "test.pdf";
+  require: any 
+  apiService: any;
+  sourcePath ="E:\cybersec\devsecond\securitysimulation\src\app\navbar\test.pdf";
+  fileName = "sample.pdf";
+  //const FileSaver = require('file-saver');
+  constructor(private _auth:AuthService, private sanitizer: DomSanitizer) {
     this.mobile = false;
   }
-
+  invoiceId(invoiceId: any) {
+    throw new Error('Method not implemented.');
+  }
   ngOnInit() {
-
+    
   }
   getUser(){
     return localStorage.getItem('token');
+  }
+  toogletag(content: any)
+  {
+    alert(content)
   }
 Logout(){
   this._auth.logout();

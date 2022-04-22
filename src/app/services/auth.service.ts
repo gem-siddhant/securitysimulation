@@ -39,9 +39,12 @@ export class AuthService {
     return new Promise<void>((resolve, reject) => {
       localStorage.setItem('email',email);
       this.loginMethod(email,backend_token).subscribe((item: any)=> {
+      console.log('responsetoken',item);
+      console.log('item',item.message);
       if (item)
       {
-        localStorage.setItem('token',item.body.token);
+        localStorage.setItem('token',item.message);
+        
         resolve();
       }
       else{

@@ -23,3 +23,8 @@ justify-content: end;
 .logout{
   margin-right: 10%;
 }
+#info{
+  border: none;
+  background:transparent; 
+  padding: 20px;
+}
