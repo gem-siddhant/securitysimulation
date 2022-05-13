@@ -36,6 +36,7 @@ import { MatTableExporterModule } from 'mat-table-exporter';
     MainRoutingModule,
     HttpClientModule,
     MatRadioModule,
+    MatTableExporterModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
@@ -48,7 +49,6 @@ import { MatTableExporterModule } from 'mat-table-exporter';
     FormsModule,
     ToastrModule.forRoot(),
     MatProgressSpinnerModule,
-    MatTableExporterModule
   ]
 })
 export class MainModule { }
