@@ -36,7 +36,7 @@ campaignId:any;
     emailSubject:any;
     desc:any;
 clicked_len:any;
-read_len:any;
+undelivered_len:any;
 delivered_len:any;
 pieChartOptions!: ChartOptions;
 pieChartLabels!: Label[];
@@ -52,7 +52,7 @@ pieChartPlugins:any = [];
 @ViewChild(MatSort, { static: true }) sort!: MatSort;
   ngOnInit(): void {
     this.pieChartOptions = this.createOptions();
-    this.pieChartLabels = ['Clicked', 'Not Delivered','Delivered'];
+    this.pieChartLabels = ['Clicked', 'Delivered','NotDelivered'];
     this.pieChartType = 'pie';
     this.pieChartLegend = true;
     this.pieChartPlugins = [pluginLabels];
@@ -103,10 +103,11 @@ pieChartPlugins:any = [];
      if(data){
        this.clicked_len=data.openedCount;
        this.delivered_len=data.deliveredCount;
-       this.read_len=data.readCount;
+       this.undelivered_len=data.totalEmails;
        this.nameCampaign=data.template.heading;
        this.emailSubject=data.template.subject;
        this.desc=data.template.description;
+
        let i=1;
        for(let element of data.result){
          element.id=i;
@@ -117,7 +118,7 @@ pieChartPlugins:any = [];
         ++i;
        }
 
-        this.pieChartData = [this.clicked_len, this.read_len,this.delivered_len];
+        this.pieChartData = [this.clicked_len, this.delivered_len,this.undelivered_len];
         this.dataSource = new MatTableDataSource<view_data>(data.result);
         this.dataSource.sort = this.sort;
      }
