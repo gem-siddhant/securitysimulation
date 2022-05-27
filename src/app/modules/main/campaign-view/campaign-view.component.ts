@@ -125,20 +125,21 @@ i: number = 1;
         ++i;
        }
        console.log(this.notdelivered);
-       while(this.notdelivered>=1)
+       while(this.notdelivered!=0)
        {
-        
           if(this.clicked_len)
            {
             this.notdelivered--;
             this.pieChartData = [this.clicked_len, this.delivered_len,this.notdelivered]
            }
          
-        if(this.delivered_len)
+        else if(this.delivered_len)
         {
           this.notdelivered--;
           this.pieChartData = [this.clicked_len, this.delivered_len,this.notdelivered]
-        }
+         }
+          //this.pieChartData = [this.clicked_len, this.delivered_len,this.notdelivered]
+        
         else
         {
         this.pieChartData = [this.clicked_len, this.delivered_len,this.notdelivered];
