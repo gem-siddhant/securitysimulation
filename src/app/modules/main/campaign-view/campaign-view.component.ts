@@ -10,6 +10,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { elementAt } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { formatDate } from '@angular/common';
+import { not } from '@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-campaign-view',
@@ -22,6 +23,7 @@ export class CampaignViewComponent implements OnInit {
 campaignId:any;
   datenow = new Date();
   nowFormatted: string;
+  notdelivered: any;
 
 
   constructor(private route: ActivatedRoute,
@@ -49,10 +51,11 @@ dataSource:any;
 test: any= "test"
 displayedColumns: string[] = ['sno','email', 'ip' , 'status'];
 pieChartPlugins:any = [];
+i: number = 1;
 @ViewChild(MatSort, { static: true }) sort!: MatSort;
   ngOnInit(): void {
     this.pieChartOptions = this.createOptions();
-    this.pieChartLabels = ['Clicked', 'Delivered','NotDelivered'];
+    this.pieChartLabels = ['Clicked', 'Delivered', 'NotDelivered'];
     this.pieChartType = 'pie';
     this.pieChartLegend = true;
     this.pieChartPlugins = [pluginLabels];
@@ -69,7 +72,7 @@ pieChartPlugins:any = [];
           plugins: {
               labels: {
                 render: 'percentage',
-                fontColor: ['green', 'white', 'red'],
+                fontColor: ['green', 'white', 'blue'],
                 precision: 2
               }
           },
@@ -78,8 +81,12 @@ pieChartPlugins:any = [];
   filterDrop(){
     console.log(this.select_val);
     let filterValue=this.select_val;
-       filterValue = filterValue.trim();
+      filterValue = filterValue.trim();
      filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+     if(filterValue.status=='DELIVERED')
+     {
+       this.notdelivered--;
+     }
      this.dataSource.filter = filterValue;
 
   }
@@ -103,7 +110,7 @@ pieChartPlugins:any = [];
      if(data){
        this.clicked_len=data.openedCount;
        this.delivered_len=data.deliveredCount;
-       this.undelivered_len=data.totalEmails;
+       this.notdelivered=data.totalCount;
        this.nameCampaign=data.template.heading;
        this.emailSubject=data.template.subject;
        this.desc=data.template.description;
@@ -117,8 +124,26 @@ pieChartPlugins:any = [];
 
         ++i;
        }
-
-        this.pieChartData = [this.clicked_len, this.delivered_len,this.undelivered_len];
+       console.log(this.notdelivered);
+       while(this.notdelivered>=1)
+       {
+        
+          if(this.clicked_len)
+           {
+            this.notdelivered--;
+            this.pieChartData = [this.clicked_len, this.delivered_len,this.notdelivered]
+           }
+         
+        if(this.delivered_len)
+        {
+          this.notdelivered--;
+          this.pieChartData = [this.clicked_len, this.delivered_len,this.notdelivered]
+        }
+        else
+        {
+        this.pieChartData = [this.clicked_len, this.delivered_len,this.notdelivered];
+        }
+      }
         this.dataSource = new MatTableDataSource<view_data>(data.result);
         this.dataSource.sort = this.sort;
      }
