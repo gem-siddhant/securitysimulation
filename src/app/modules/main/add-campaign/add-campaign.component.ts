@@ -68,7 +68,7 @@ this.phisingForm = this.formBuilder.group({
   attachmentFile:[''],
   subject:[''],
   email:['',Validators.required],
-  password:['',Validators.required]
+  //password:['',Validators.required]
 });
 
   }
@@ -76,7 +76,7 @@ this.phisingForm = this.formBuilder.group({
     this.changeTriggered = true;
     this.file = event.target.files[0];
   }
-  getPreFilledData(id:any){
+  getPreFilledData(id:any,){
 
     this._addCampaign.getPrefilled(id).subscribe((data)=>{
 
@@ -100,6 +100,7 @@ this.phisingForm = this.formBuilder.group({
     })
   }
   submitForm(){
+
     console.log(this.file);
     this.submitted=true;
     if(this.phisingForm.invalid)
@@ -115,7 +116,7 @@ this.phisingForm = this.formBuilder.group({
       'templateHeading':this.phisingForm.value.subject,
       'createdBy':localStorage.getItem('email'),
       'email':this.phisingForm.value.email,
-      'password':this.phisingForm.value.password
+      //'password':this.phisingForm.value.password
 
     }
     console.log('FORM',reqBody);
