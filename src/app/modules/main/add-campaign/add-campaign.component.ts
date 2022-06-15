@@ -68,7 +68,7 @@ this.phisingForm = this.formBuilder.group({
   attachmentFile:[''],
   subject:[''],
   email:['',Validators.required],
-  //password:['',Validators.required]
+  password:['',Validators.required]
 });
 
   }
@@ -116,7 +116,7 @@ this.phisingForm = this.formBuilder.group({
       'templateHeading':this.phisingForm.value.subject,
       'createdBy':localStorage.getItem('email'),
       'email':this.phisingForm.value.email,
-      //'password':this.phisingForm.value.password
+      'password':this.phisingForm.value.password
 
     }
     console.log('FORM',reqBody);
