@@ -126,7 +126,7 @@ i: number = 1;
        }
 
       
-        this.notdelivered = data.notdeliveredCount
+        this.notdelivered = data.notDeliveredCount
          this.pieChartData = [this.clicked_len, this.delivered_len,this.notdelivered];
          console.log(this.notdelivered);
         this.dataSource = new MatTableDataSource<view_data>(data.result);
