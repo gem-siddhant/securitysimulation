@@ -13,6 +13,7 @@
   font-size: 13px;
   line-height: 150%;
   color: #9B2F9B;
+
   }
   
   .sub-heading{
@@ -303,6 +304,7 @@
     background:transparent;
   }
   .export-btn
+
 /* @media only screen and (min-width: 1024px) {
 .amazon{
   background-image: url(../../../../assets/images/amazon.svg);
@@ -369,6 +371,7 @@ body {
   background:transparent;
 }
 .export-btn
+
   {
     position: absolute;
     right: 70px;
