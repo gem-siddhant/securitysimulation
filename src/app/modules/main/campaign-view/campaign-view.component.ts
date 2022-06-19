@@ -104,8 +104,9 @@ i: number = 1;
       return data[sortHeaderId];
     }
   }
-  getCampaignDetails(id:any){
 
+  getCampaignDetails(id:any){
+    
     this._mainService.getCompaignDetails(id).subscribe((data)=>{
      if(data){
        this.clicked_len=data.openedCount;
@@ -114,7 +115,7 @@ i: number = 1;
        this.nameCampaign=data.template.heading;
        this.emailSubject=data.template.subject;
        this.desc=data.template.description;
-
+      
        let i=1;
        for(let element of data.result){
          element.id=i;
@@ -123,6 +124,7 @@ i: number = 1;
          }
 
         ++i;
+
        }
        let k=1;
        for (let element of data.result)
@@ -144,9 +146,17 @@ i: number = 1;
         this.notdelivered = data.notDeliveredCount
          this.pieChartData = [this.clicked_len, this.delivered_len,this.notdelivered];
          console.log(this.notdelivered);
+
+        
+       }
+     this.delivered_len = data.deliveredCount;
+     this.clicked_len = data.openedCount;
+      this.notdelivered = data.notdeliveredCount;
+      console.log(this.notdelivered)
+        this.pieChartData = [this.clicked_len, this.delivered_len,this.notdelivered]
         this.dataSource = new MatTableDataSource<view_data>(data.result);
         this.dataSource.sort = this.sort;
-     }
+     
     },err=>{
       this.toastr.error("Error in loading data");
     })
