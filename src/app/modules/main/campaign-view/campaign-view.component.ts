@@ -146,17 +146,9 @@ i: number = 1;
         this.notdelivered = data.notDeliveredCount
          this.pieChartData = [this.clicked_len, this.delivered_len,this.notdelivered];
          console.log(this.notdelivered);
-
-        
-       }
-     this.delivered_len = data.deliveredCount;
-     this.clicked_len = data.openedCount;
-      this.notdelivered = data.notdeliveredCount;
-      console.log(this.notdelivered)
-        this.pieChartData = [this.clicked_len, this.delivered_len,this.notdelivered]
         this.dataSource = new MatTableDataSource<view_data>(data.result);
         this.dataSource.sort = this.sort;
-     
+      }
     },err=>{
       this.toastr.error("Error in loading data");
     })
