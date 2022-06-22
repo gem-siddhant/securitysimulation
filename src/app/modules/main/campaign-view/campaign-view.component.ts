@@ -1,13 +1,13 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MainService } from '../service/main.service';
-import { ChartType, ChartOptions } from 'chart.js';
+import { ChartType, ChartOptions, Chart } from 'chart.js';
 import { SingleDataSet, Label } from 'ng2-charts';
 import * as pluginLabels from 'chartjs-plugin-labels';
 import {view_data} from './view.model';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { elementAt } from 'rxjs';
+import { elementAt, startWith } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { formatDate } from '@angular/common';
 import { not } from '@angular/compiler/src/output/output_ast';
@@ -55,16 +55,18 @@ i: number = 1;
 @ViewChild(MatSort, { static: true }) sort!: MatSort;
   ngOnInit(): void {
     this.pieChartOptions = this.createOptions();
-    this.pieChartLabels = ['Clicked', 'Delivered', 'NotDelivered'];
+    this.pieChartLabels = ['Clicked','Delivered','NotDeliverd'];
     this.pieChartType = 'pie';
     this.pieChartLegend = true;
     this.pieChartPlugins = [pluginLabels];
+    Chart.defaults['padding'] = 20,
     this.dataSource = new MatTableDataSource<view_data>([]);
     this.route.paramMap.subscribe((params: any) => {
     this.campaignId = params.get('id');
     });
     this.getCampaignDetails(this.campaignId);
   }
+  
   private createOptions(): ChartOptions {
     return {
       responsive: true,
@@ -76,6 +78,14 @@ i: number = 1;
                 precision: 2
               }
           },
+          legend: {
+            display: true,
+            position: 'left',
+            align: 'start',
+            fullWidth : true,
+            
+          }
+         
     };
   }
   filterDrop(){

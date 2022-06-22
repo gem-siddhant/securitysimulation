@@ -4,7 +4,16 @@
   font-weight: 500;
   font-size: 20px;
   line-height: 150%;
-  color: #9B2F9B;
+  color: #9B2F9B;  
+  }
+  span{
+    font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 25px;
+line-height: 30px;
+color: #205072;
+padding-left: 10px;
   }
   .sub-heading-1{
   font-family: Poppins;
@@ -25,10 +34,9 @@
     color: #D37ACB;
   }
   .circle-box{
-    border: 1px solid #9B2F9B;
-  box-sizing: border-box;
-  filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.25));
-  border-radius: 8px;
+    background: #FFFFFF;
+    box-shadow: 3px 3px 10px rgba(32, 80, 114, 0.1);
+    border-radius: 5px;
   
   }
   .border-rem{
@@ -373,11 +381,12 @@ body {
 .export-btn
   {
     position: absolute;
-    right: 70px;
+    top: 370px;
+    right: 460px;
     height: 40px;
     width: 150px;
     border-radius: 5px;
-    background-color: #9e179e;
+    background-color:  #205072;
     /*box-shadow: -3px 3px #f9ccf9;*/
     border: rgba(0, 0, 0, 0.25);
     color:#eee;
@@ -388,4 +397,16 @@ body {
     text-align: center;
     line-height: 150%;
     margin-top: 10px;
+  }
+  .detail{
+  position: absolute;
+left: 6.25%;
+right: 51.66%;
+top: 23.41%;
+bottom: 18%;
+padding: 5px;
+background: #ffffff;
+box-shadow: 3px 3px 10px rgba(32, 80, 114, 0.1);
+border-radius: 5px;
+text-size-adjust: auto;
   }

@@ -17,31 +17,32 @@
   <form [formGroup]="phisingForm" >
 <div class="row mb-3">
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-head mb-3">
-   Choose Template
+   Choose Any One Template
   </div>
-  <div class="row">
+  <div class="row temp-pad">
 
      <mat-radio-group formControlName="tempate_select" aria-label="Select an option">
     <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> -->
       <div class=" col-lg-2 col-md-2 col-sm-2 col-xs-2 inline-block">
     <img class="template-image mb-2" src="../../../../assets/images/template1.png">
     <mat-radio-button
-    (click)="getPreFilledData(1)" [value]=1>Option 1</mat-radio-button>
+    (click)="getPreFilledData(1)" [value]=1>Amazon Template</mat-radio-button>
   </div>
   <!-- </div> -->
   <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> -->
     <div class=" col-lg-2 col-md-2 col-sm-2 col-xs-2 inline-block">
     <img class="template-image mb-2" src="../../../../assets/images/accounts.png">
-    <mat-radio-button (click)="getPreFilledData(3)" [value]=3>Option 2</mat-radio-button>
+    <mat-radio-button (click)="getPreFilledData(3)" [value]=3>Accounts Template</mat-radio-button>
     </div>
   <!-- </div> -->
   <div class=" col-lg-2 col-md-2 col-sm-2 col-xs-2 inline-block">
     <img class="template-image mb-2" src="../../../../assets/images/macbook_template.jpeg">
-    <mat-radio-button (click)="getPreFilledData(5)" [value]=5>Option 3</mat-radio-button>
+    <mat-radio-button (click)="getPreFilledData(5)" [value]=5>IT Template</mat-radio-button>
     </div>
   </mat-radio-group>
 </div>
 </div>
+<div class="fill-details">Fill in the details</div>
 <div class="row" *ngIf="this.phisingForm.value.tempate_select!=0">
   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-box margin-des">
 <div class="row mt-3 " >
@@ -104,8 +105,8 @@
   </div>
   <div class="row mt-2">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-      <label for="firsting" id="attachment_btn"><img
-              src="../../../../assets/images/attachment_purple.svg"> Upload .csv of victims emails.</label>
+      <label for="firsting" id="attachment_btn" style="font-size: 16px;"><img style="width:30px; height: 30px;"
+              src="../../../../assets/images/attachment1.png"> Upload .csv of victims emails.</label>
       <input type="file" accept=".csv" id="firsting" class="form-control" formControlName="attachmentFile"
           (change)="onChange($event)">
   </div>
