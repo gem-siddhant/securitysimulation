@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://secsimapi.geminisolutions.com'
+  apiUrl: 'https://devsecsimapi.geminisolutions.com'
 };
 
 /*
