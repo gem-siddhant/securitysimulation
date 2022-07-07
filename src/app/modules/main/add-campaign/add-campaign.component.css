@@ -40,9 +40,7 @@ padding-top: 5px;
   /* identical to box height */
   color: #205072;
 }
-.form-control{
-  display: none;
-}
+
 .attachment-div {
   display: flex;
   align-items: center;
@@ -87,16 +85,17 @@ background: none;
 .form-box{
   border: 1px solid #205072;;
 border-radius: 5px;
-margin-left: 30%;
+margin-left: 11%;
 margin-top: 2%;
 background: #FFFFFF;
 box-shadow: 3px 3px 10px rgba(32, 80, 114, 0.1);
 border-radius: 5px;
+width: 74%;
 }
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
   color: #205072;
-
 }
+
 
 ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
   color: #205072;
@@ -162,6 +161,39 @@ left: 13.20%;
 width:74%;
 right: 6.74%;
 }
-.w-100{
-  color: #626262;
+input.in{
+  width: 200px;
+  padding-right: 60px;
+  margin-right: 60px;
 }
+div.pair1{
+  display: inline-block;
+  margin-right: 110px;
+  padding-bottom: 10px;
+  margin-left: 10px;
+}
+div.pair{
+  display: inline-block;
+  margin-left: 80px;
+  padding-bottom: 10px;
+}
+.formdata{
+  display: inline-block;
+}
+.name{
+  padding-top: 5px;
+  font-size: 16px;
+  display: inline-block;
+}
+.first{
+  display: inline-block;
+  padding-left: 10px;
+}
+#in{
+  width: 130%;
+}
+/*body{
+  background-image: url(../../../../assets/images/web_bg.png);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}*/

@@ -15,17 +15,16 @@
   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
     <div class="detail">
 
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3 sub-heading">
-      Email Subject
-    </div>
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3 sub-heading-1">
-      {{this.emailSubject}}
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3 sub-heading" >
+      Email Subject :
+      <span id="emailsub">{{this.emailSubject}}</span>
 
     </div>
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3 sub-heading">
       Description
+      
     </div>
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3 sub-heading-1">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-3 sub-heading" id="desc">
     {{this.desc}}
     </div>
   </div>
@@ -48,28 +47,28 @@
 </div>
 
   <div class="card mt-5">
-    <div class="body" >
+    <div class="body" id="tablepart" >
       <div class="materialTableHeader">
-        <div class="row">
-          <div class="col-4 center-vert-align">
-                <h2 class="activity-type-text mt-4">
+        <div class="row" >
+          <div class="col-2 center-vert-align">
+                <h2 class="activity-type-text mt-4" id="h2-tag">
                   All Entries
                 </h2>
           </div>
-          <div class="col-4 mt-3">
+          <div class="col-4 mt-1">
+            <div class="search" id="search-btn"> <i class="fa fa-search"></i> <input  (keyup)="applyFilter($event)" type="text"  class="form-control" placeholder="Search by Name"> </div>
+          </div>
+        
+          <div class="col-4 mt-3" id="filter" >
             <mat-form-field appearance="outline">
-              <mat-label>Filter</mat-label>
-              <mat-select (selectionChange)="filterDrop()" [(ngModel)]="this.select_val">
+              <mat-label id="filtername">Filter</mat-label>
+              <mat-select style="background-color: white; padding: 10px; margin: -10px;border-radius: 5px;" (selectionChange)="filterDrop()" [(ngModel)]="this.select_val">
                 <mat-option value="">All</mat-option>
                 <mat-option value="Clicked">Clicked</mat-option>
                 <mat-option value="Delivered" >Delivered</mat-option>
                 <mat-option value="Not Delivered">Not Delivered</mat-option>
               </mat-select>
             </mat-form-field>
-          </div>
-          
-          <div class="col-4 mt-1">
-                <div class="search"> <i class="fa fa-search"></i> <input  (keyup)="applyFilter($event)" type="text"  class="form-control" placeholder="Search by Name"> </div>
           </div>
           
         </div>
@@ -98,7 +97,7 @@
          <!-- Status Column -->
         <ng-container matColumnDef="status">
           <th class="head" mat-header-cell *matHeaderCellDef mat-sort-header="status">Status</th>
-          <td class="myDesc txt-col" mat-cell *matCellDef="let element" ><a>{{element.status}}</a></td>
+          <td class="myDesc txt-col" mat-cell *matCellDef="let element" ><a id="status-id">{{element.status}}</a></td>
         </ng-container>
 
 
