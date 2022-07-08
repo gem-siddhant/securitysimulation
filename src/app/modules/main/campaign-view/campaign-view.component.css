@@ -270,7 +270,7 @@ padding-left: 10px;
   }
   .col-size{
     width: 12.5rem!important;
-  } */
+  }
   
   #tablepart{
     background-color: #d6eafa;
@@ -323,7 +323,6 @@ padding-left: 10px;
     width: 150px;
     border-radius: 5px;
     background-color:  #205072;
-    /*box-shadow: -3px 3px #f9ccf9;*/
     border: rgba(0, 0, 0, 0.25);
     color:#eee;
     font-family: Poppins;

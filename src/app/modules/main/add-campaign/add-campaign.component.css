@@ -37,7 +37,6 @@ padding-top: 5px;
   font-weight: 500;
   font-size: 14px;
   border: none;
-  /* identical to box height */
   color: #205072;
 }
 
@@ -57,7 +56,6 @@ padding-top: 5px;
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
-  /* line-height: 21px; */
   color: #000000;
   cursor: pointer;
 }
@@ -76,7 +74,6 @@ background: none;
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
-  /* identical to box height */
   text-align: center;
   color: #ffffff;
   margin-bottom: 7px;
@@ -124,7 +121,6 @@ width: 74%;
 .overlay {
   height: 100vh;
   width: 100%;
-  /* background-color: rgba(0, 0, 0, 0.286); */
   z-index: 99999;
   top: 0;
   left: 0;
@@ -142,13 +138,9 @@ width: 74%;
 .fill-details{
   position: absolute;
 height: 40px;
-
 top: 630px;
-
 background: #205072;
 border-radius: 5px;
-
-/*adding text */
 font-family: 'Poppins';
 font-style: normal;
 font-weight: 500;
@@ -192,8 +184,3 @@ div.pair{
 #in{
   width: 130%;
 }
-/*body{
-  background-image: url(../../../../assets/images/web_bg.png);
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-}*/
