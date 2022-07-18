@@ -1,17 +1,21 @@
 import { HttpClient } from '@angular/common/http';
+import { BoundElementProperty } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { isTemplateLiteral } from 'typescript';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   notificationBoolean: boolean = false;
   mail = new BehaviorSubject<any>(null);
-  constructor(private http:HttpClient,private router:Router) { }
+  constructor(private http:HttpClient,private router:Router) {
+    
+   }
   checkLogin(){
     if(localStorage.getItem('token')){
-      return true;
+          return true;
     }
     return false;
   }
@@ -20,7 +24,9 @@ export class AuthService {
     this.router.navigate(["/main/login"]);
 
   }
+
   getEmployeeDetailBehaviorSubject(): Observable<any> {
+
     return this.mail.asObservable();
   }
   setNotificationModalBoolean(value: boolean) {
@@ -37,17 +43,21 @@ export class AuthService {
    }
   setToken( email?: any,backend_token?:any) {
     return new Promise<void>((resolve, reject) => {
-      localStorage.setItem('email',email);
+      localStorage.setItem('email',email);   
       this.loginMethod(email,backend_token).subscribe((item: any)=> {
       if (item)
       {
-        localStorage.setItem('token',item.message);
-        resolve();
+        localStorage.setItem('Manager',(item.data.isManager));
+        localStorage.setItem('token',(item.message));
+        resolve();   
       }
       else{
         reject();
       }
+  
     });
   })
    }
-}
+
+  }
+

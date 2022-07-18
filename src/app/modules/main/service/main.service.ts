@@ -16,8 +16,9 @@ export class MainService {
      console.log('send user data',obj);
     return this.http.post<any>('register/click', obj);
    }
+   
    getCompaignDetails(id:any){
-let test:any=Number(id);
+    let test:any=Number(id);
     return this.http.post<any>('task', test);
 
    }

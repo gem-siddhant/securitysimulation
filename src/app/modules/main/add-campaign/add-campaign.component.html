@@ -15,7 +15,8 @@
   </div>
 </div>
 
-  <form [formGroup]="phisingForm" >
+<!--checking whether manager or not-->
+  <form [formGroup]="phisingForm">
 <div class="row mb-3">
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-head mb-3">
    Choose Any One Template
@@ -43,6 +44,128 @@
   </mat-radio-group>
 </div>
 </div>
+<div *ngIf="manager=='false'">
+  <div class="fill-details">Fill in the details</div>
+  <div class="row" *ngIf="this.phisingForm.value.tempate_select!=0">
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-box margin-des">
+  
+    <div class="first">
+    <div class="name">
+      <mat-form-field appearance="outline" style="width:420px !important">
+        <mat-label>Name of Campaign</mat-label>
+        <input matInput type="text" [value]="this.prefilled.heading"  formControlName="name">
+      </mat-form-field>
+      </div>
+      &nbsp;
+      <div class="name">
+        <mat-form-field  appearance="outline" style="width:428px !important">
+          <mat-label>Email's Subject</mat-label>
+          <input matInput type="text" [value]="this.prefilled.subject" id="in" formControlName="subject">
+        </mat-form-field>
+        &nbsp;
+      </div>
+      </div>
+  
+  <div class="row">
+    
+  </div>
+  
+  <!--reward type field-->
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <mat-form-field appearance="outline" [ngClass]="{'hide-class':this.prefilled.rewardType==null}" style="width:97.35% !important;padding-top: 5px;
+      font-size: 16px;  padding-left: 10px;">
+        <mat-label>Reward Type</mat-label>
+        <input matInput type="text" [value]="this.prefilled.rewardType" formControlName="reward_type">
+      </mat-form-field>
+    </div>
+  </div>
+  
+  <!--Amount type field-->
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <mat-form-field class="w-100" appearance="outline" [ngClass]="{'hide-class':this.prefilled.amount==null}" style="width:97.35% !important;padding-top: 5px;
+      font-size: 16px;  padding-left: 10px;">
+        <mat-label>Amount</mat-label>
+        <input matInput type="number" [value]="this.prefilled.amount" formControlName="reward_amount">
+      </mat-form-field>
+    </div>
+  </div>
+  
+  <!--description type field-->
+    <div class="row">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <mat-form-field class="w-100" appearance="outline" [ngClass]="{'hide-class':this.prefilled.description==null}" style="width:97.35% !important;padding-top: 5px;
+        font-size: 16px; padding-left: 10px;">
+          <mat-label>Description</mat-label>
+          <textarea matInput type="text" [value]="this.prefilled.description" formControlName="desc"></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+  
+    <!--email and password for simulation-->
+  
+    <div class="first">
+      <div class="name">
+        <mat-form-field appearance="outline" style="width:420px !important">
+          <mat-label>Email for simulation</mat-label>
+          <input matInput type="text" formControlName="email">
+        </mat-form-field>
+        &nbsp;
+      </div>
+      <div class="name">
+        <mat-form-field appearance="outline" style="width:428px !important">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password">
+        </mat-form-field>
+      </div>
+      &nbsp;
+    </div>
+  
+  
+    <div>
+    <div class="row mt-2" >
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5" style="margin-left: 12px;">
+        <label for="firsting" id="attachment_btn" style="font-size: 16px;"><img style="width:20px; height: 20px;"
+                src="../../../../assets/images/attachment1.png"> Upload .csv of victims emails.</label>
+        <input type="file" accept=".csv" id="firsting" class="form-control" formControlName="attachmentFile"
+            (change)="onChange($event)">
+    </div>
+    </div>
+  
+    <div class="row mt-2 " *ngIf="changeTriggered==true && this.file!=null">
+      <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 attachment-div" >
+        <img class="mr-2" src="../../../../assets/images/attachment_black.svg">
+          <a class="attachment-display" style="width:220px !important">{{file.name}}</a>
+  
+      </div>
+  
+    </div>
+    <mat-error *ngIf="this.submitted==true && this.file==null">
+      Please upload file.
+    </mat-error>
+  </div>
+  
+    <div class="row mt-3">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <button type="submit" mat-raised-button id="add_btn" (click)="submitForm()" >Send Campaign</button>
+    </div>
+    </div>
+  
+  </div>
+  <!-- <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 form-box">
+    <div class="preview" [innerHTML]="testFINAL">
+  
+    </div>
+  </div> -->
+  </div>
+  </div>
+
+
+
+<!--if manager is true-->
+
+<div *ngIf="manager == 'true'">
 <div class="fill-details">Fill in the details</div>
 <div class="row" *ngIf="this.phisingForm.value.tempate_select!=0">
   <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-box margin-des">
@@ -120,8 +243,11 @@
     &nbsp;
   </div>
 
-
-  <div class="row mt-2">
+<div>
+  <input type="radio" value="true" (click)="tooglereportee()" style="margin-left:12px;" formControlName="radio" isChecked="false" >Send to reportees
+</div>
+  <div *ngIf="csv">
+  <div class="row mt-2" >
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5" style="margin-left: 12px;">
       <label for="firsting" id="attachment_btn" style="font-size: 16px;"><img style="width:20px; height: 20px;"
               src="../../../../assets/images/attachment1.png"> Upload .csv of victims emails.</label>
@@ -129,6 +255,7 @@
           (change)="onChange($event)">
   </div>
   </div>
+
   <div class="row mt-2 " *ngIf="changeTriggered==true && this.file!=null">
     <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 attachment-div" >
       <img class="mr-2" src="../../../../assets/images/attachment_black.svg">
@@ -137,9 +264,11 @@
     </div>
 
   </div>
-  <mat-error *ngIf="this.submitted==true && this.file==null ">
+  <mat-error *ngIf="this.submitted==true && this.file==null">
     Please upload file.
   </mat-error>
+</div>
+
   <div class="row mt-3">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
       <button type="submit" mat-raised-button id="add_btn" (click)="submitForm()" >Send Campaign</button>
@@ -152,6 +281,7 @@
 
   </div>
 </div> -->
+</div>
 </div>
 </form>
 

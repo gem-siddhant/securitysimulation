@@ -1,4 +1,4 @@
-import { Component, OnInit, Pipe, PipeTransform, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Pipe, PipeTransform, ViewEncapsulation } from '@angular/core';
 import {
   FormGroup,
   FormGroupDirective,
@@ -17,6 +17,10 @@ import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { ToastrService } from 'ngx-toastr';
+import { SELECT_PANEL_INDENT_PADDING_X } from '@angular/material/select/select';
+import { delay } from 'rxjs';
+import { ExitStatus } from 'typescript';
+import { MatRadioButton } from '@angular/material/radio';
 
 @Pipe({ name: 'safeHtml'})
 export class SafeHtmlPipe implements PipeTransform  {
@@ -47,6 +51,10 @@ mode: ProgressSpinnerMode = 'indeterminate';
 changeTriggered=false;
 prefilled:any={heading:'',amount:'',rewardType:'',subject:'',description:''};
 testhtml:any='';
+csv:boolean=true;
+//manager:any = "true";
+manager:any = localStorage.getItem('Manager');
+@Output() close: EventEmitter<any> = new EventEmitter();
 testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   constructor(private _addCampaign:AddCampaignService,
      private formBuilder: FormBuilder,
@@ -59,7 +67,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   }
 
   ngOnInit(): void {
-this.phisingForm = this.formBuilder.group({
+  this.phisingForm = this.formBuilder.group({
   name:['',Validators.required],
   reward_type:[''],
   desc:[''],
@@ -68,19 +76,23 @@ this.phisingForm = this.formBuilder.group({
   attachmentFile:[''],
   subject:[''],
   email:['',Validators.required],
-  password:['',Validators.required]
+  password:['',Validators.required],
+  radio:[''||'false']
 });
 
+  }
+  tooglereportee()
+  {
+  this.csv=!this.csv
   }
   onChange(event: any) {
     this.changeTriggered = true;
     this.file = event.target.files[0];
+    
   }
-  getPreFilledData(id:any,){
-
+  getPreFilledData(id:any){
     this._addCampaign.getPrefilled(id).subscribe((data)=>{
-
-      console.log('data',data)
+      console.log('data',data.subject)
       this.prefilled=data;
       if(this.prefilled.subject){
         this.phisingForm.value.subject=this.prefilled.subject;
@@ -116,13 +128,35 @@ this.phisingForm = this.formBuilder.group({
       'templateHeading':this.phisingForm.value.subject,
       'createdBy':localStorage.getItem('email'),
       'email':this.phisingForm.value.email,
-      'password':this.phisingForm.value.password
-
+      'password':this.phisingForm.value.password,
+      'sendToReporters' : this.phisingForm.value.radio
     }
     console.log('FORM',reqBody);
     let con = JSON.stringify(reqBody);
     formData.append("details",con);
-    formData.append("file",this.file);
+    
+    if(this.manager=='true')
+    {
+    const localfile = "../../../../assets/pdf/fallbackcsv.csv"
+    var local = new File(["foo"], localfile, {
+      type: "file/csv"
+    });
+      if(this.file==null && this.phisingForm.value.radio == "false")
+      {
+        formData.append("file",this.file);
+      }
+      else if(this.file!=null){
+        formData.append("file",this.file);
+      }
+      else{
+        formData.append("file",local)
+      }
+    }
+    else
+    {
+      formData.append("file",this.file);
+    }
+
     this.StoreData=false;
     this._addCampaign.createCampaign(formData).subscribe((data)=>{
       if(data){

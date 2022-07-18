@@ -1,8 +1,10 @@
 import { LowerCasePipe } from '@angular/common';
 import { HttpEvent, HttpHandler, HttpRequest } from '@angular/common/http';
+import { localizedString } from '@angular/compiler/src/output/output_ast';
 import { Inject } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { LoaderService } from '../modules/main/service/loader.service';
 import { AuthService } from './auth.service';
 
 @Injectable({

@@ -25,6 +25,8 @@ campaigns:any=[];
       if(data){
         console.log(data);
         this.campaigns=data;
+        console.log(localStorage.getItem('email'))
+        console.log(localStorage.getItem('Manager'))
       }
     },err=>{
       this.toastr.error("Error in loading data");
