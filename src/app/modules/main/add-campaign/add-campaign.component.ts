@@ -49,7 +49,7 @@ value = 50;
 api_hit=false;
 mode: ProgressSpinnerMode = 'indeterminate';
 changeTriggered=false;
-prefilled:any={heading:'',amount:'',rewardType:'',subject:'',description:''};
+prefilled:any={heading:'',amount:'',rewardType:'',subject:'',description:'',addNote:'',emailSignature:''};
 testhtml:any='';
 csv:boolean=true;
 //manager:any = "true";
@@ -77,7 +77,9 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   subject:[''],
   email:['',Validators.required],
   password:['',Validators.required],
-  radio:[''||'false']
+  radio:[''||'false'],
+  addnote:[''],
+  footer:['',Validators.required]
 });
 
   }
@@ -106,6 +108,15 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
         this.phisingForm.value.desc=this.prefilled.description;
 
       }
+
+      if(this.prefilled.addNote){
+        this.phisingForm.value.addnote=this.prefilled.addNote;
+      }
+
+      if(this.prefilled.emailSignature){
+        this.phisingForm.value.footer=this.prefilled.emailSignature;
+      }
+
       if(this.prefilled.amount){
         this.phisingForm.value.amount=this.prefilled.amount;
       }
@@ -129,7 +140,9 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       'createdBy':localStorage.getItem('email'),
       'email':this.phisingForm.value.email,
       'password':this.phisingForm.value.password,
-      'sendToReporters' : this.phisingForm.value.radio
+      'sendToReporters' : this.phisingForm.value.radio,
+      'addNote' : this.phisingForm.value.addnote,
+      'emailSignature': this.phisingForm.value.footer
     }
     console.log('FORM',reqBody);
     let con = JSON.stringify(reqBody);
