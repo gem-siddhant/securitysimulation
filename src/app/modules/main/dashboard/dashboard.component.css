@@ -158,8 +158,21 @@ color: #626262;
   margin-left: 100px;
   padding-top: 5px;
 }
-/*.body{
-   background-image: url(../../../../assets/images/web_bg.png);
-   background-attachment: fixed;
-   background-position-x: left;
-}*/
+.archive{
+  align-items:center;background: #205072;
+  border-radius: 7px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 150%;
+  color: azure;
+  width: 20%;
+  margin-top: 20px;
+  margin-left: 38%;
+  margin-bottom: 30px;
+  border: none;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+}
