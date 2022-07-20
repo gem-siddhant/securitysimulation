@@ -9,6 +9,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
+isShow = true;
 campaigns:any=[];
   constructor(private _main:MainService,
     private router:Router,
@@ -19,6 +20,10 @@ campaigns:any=[];
   }
   routeView(id:any){
     this.router.navigate(['main/view',id]);
+  }
+ 
+  toggleDisplay() {
+    this.isShow = !this.isShow;
   }
   getAllCampaigns(){
     this._main.getAllCampaigns(localStorage.getItem('email')).subscribe((data)=>{
