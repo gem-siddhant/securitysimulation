@@ -21,6 +21,7 @@ import { SELECT_PANEL_INDENT_PADDING_X } from '@angular/material/select/select';
 import { delay } from 'rxjs';
 import { ExitStatus } from 'typescript';
 import { MatRadioButton } from '@angular/material/radio';
+import { PasswordGrantConstants } from '@azure/msal-common/dist/utils/Constants';
 
 @Pipe({ name: 'safeHtml'})
 export class SafeHtmlPipe implements PipeTransform  {
@@ -51,7 +52,7 @@ mode: ProgressSpinnerMode = 'indeterminate';
 changeTriggered=false;
 prefilled:any={heading:'',amount:'',rewardType:'',subject:'',description:'',addNote:'',emailSignature:''};
 testhtml:any='';
-csv:boolean=true;
+options:boolean=true;
 //manager:any = "true";
 manager:any = localStorage.getItem('Manager');
 @Output() close: EventEmitter<any> = new EventEmitter();
@@ -83,10 +84,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
 });
 
   }
-  tooglereportee()
-  {
-  this.csv=!this.csv
-  }
+  
   onChange(event: any) {
     this.changeTriggered = true;
     this.file = event.target.files[0];
@@ -95,6 +93,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   getPreFilledData(id:any){
     this._addCampaign.getPrefilled(id).subscribe((data)=>{
       console.log('data',data.subject)
+      console.log(this.phisingForm.value.radio)
       this.prefilled=data;
       if(this.prefilled.subject){
         this.phisingForm.value.subject=this.prefilled.subject;
@@ -122,6 +121,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       }
     })
   }
+
   submitForm(){
 
     console.log(this.file);
@@ -154,20 +154,29 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     var local = new File(["foo"], localfile, {
       type: "file/csv"
     });
-      if(this.file==null && this.phisingForm.value.radio == "false")
+      if(this.file!=null && this.file.size==0)
       {
-        formData.append("file",this.file);
+        this.toastr.error("empty csv can not be uploaded");
+        //formData.append("file",this.file);
       }
-      else if(this.file!=null){
-        formData.append("file",this.file);
+      else if(this.phisingForm.value.radio==true){
+        
+        formData.append("file",local);
       }
       else{
-        formData.append("file",local)
+        formData.append("file",this.file)
       }
     }
     else
     {
+      if(this.file.size == 0)
+      {
+        console.log(this.file.size)
+        this.toastr.error("empty csv can not be uploaded");
+      }
+      else{
       formData.append("file",this.file);
+      }
     }
 
     this.StoreData=false;
@@ -209,4 +218,5 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     //   }
     // })
   }
+
 }

@@ -50,7 +50,6 @@ padding-top: 5px;
   width: 100%;
 }
 .attachment-display{
-  margin-left: 5px;
   text-decoration: none;
   font-family: Poppins;
   font-style: normal;
@@ -63,7 +62,7 @@ padding-top: 5px;
   border: none;
 background: none;
 }
-#add_btn {
+.add_btn {
   border: none;
   border-radius: 5px;
   width: 100%;
@@ -77,7 +76,6 @@ background: none;
   text-align: center;
   color: #ffffff;
   margin-bottom: 7px;
-  opacity: 0.7;
 }
 .form-box{
   border: 1px solid #205072;;
