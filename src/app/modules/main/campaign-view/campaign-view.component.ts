@@ -21,10 +21,12 @@ import { not } from '@angular/compiler/src/output/output_ast';
 
 export class CampaignViewComponent implements OnInit {
 campaignId:any;
+endcampaignId:any;
   datenow = new Date();
   nowFormatted: string;
   notdelivered: any;
-
+  submitted = false;
+  ID: boolean = true;
 
   constructor(private route: ActivatedRoute,
     private _router: Router,
@@ -63,8 +65,10 @@ i: number = 1;
     this.dataSource = new MatTableDataSource<view_data>([]);
     this.route.paramMap.subscribe((params: any) => {
     this.campaignId = params.get('id');
+    this.endcampaignId= params.get('id');
     });
     this.getCampaignDetails(this.campaignId);
+    //this.endcampaign(this.endcampaignId);
   }
   
   private createOptions(): ChartOptions {
@@ -114,9 +118,9 @@ i: number = 1;
       return data[sortHeaderId];
     }
   }
-
+  
   getCampaignDetails(id:any){
-    
+    localStorage.setItem('ID',id);
     this._mainService.getCompaignDetails(id).subscribe((data)=>{
      if(data){
        this.clicked_len=data.openedCount;
@@ -161,6 +165,24 @@ i: number = 1;
       }
     },err=>{
       this.toastr.error("Error in loading data");
+    })
+  }
+
+  endcamp()
+  {
+    this.submitted=true;
+    let id: any = Number;
+    id = localStorage.getItem('ID')
+    //let con = JSON.stringify(reqBody);
+    //id.append('details_id',con)
+    console.log(id)
+    this.ID= false;
+    this._mainService.endcampaign(id).subscribe((data)=>{
+      if(data)
+      {
+        this.ID=true;
+        this.toastr.info("Campaign ended successfully");
+      }
     })
   }
 

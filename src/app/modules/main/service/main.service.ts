@@ -20,7 +20,11 @@ export class MainService {
    getCompaignDetails(id:any){
     let test:any=Number(id);
     return this.http.post<any>('task', test);
+   }
 
+   endcampaign(id:any){
+    let end: any= Number(id);
+    return this.http.post<any>('endCampaign',end);
    }
    signUp(form:any){
       return this.http.post<any>('add/user',form);

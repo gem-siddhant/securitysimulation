@@ -69,7 +69,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
 
   ngOnInit(): void {
   this.phisingForm = this.formBuilder.group({
-  name:['',Validators.required],
+  name:[''],
   reward_type:[''],
   desc:[''],
   reward_amount:[''],
@@ -80,7 +80,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   password:['',Validators.required],
   radio:[''||'false'],
   addnote:[''],
-  footer:['',Validators.required]
+  footer:['']
 });
 
   }
@@ -95,6 +95,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       console.log('data',data.subject)
       console.log(this.phisingForm.value.radio)
       this.prefilled=data;
+      console.log(this.prefilled)
       if(this.prefilled.subject){
         this.phisingForm.value.subject=this.prefilled.subject;
 
