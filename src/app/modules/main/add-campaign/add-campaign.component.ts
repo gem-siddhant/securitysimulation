@@ -53,6 +53,7 @@ changeTriggered=false;
 prefilled:any={heading:'',amount:'',rewardType:'',subject:'',description:'',addNote:'',emailSignature:''};
 testhtml:any='';
 options:boolean=true;
+attachment:boolean=true;
 //manager:any = "true";
 manager:any = localStorage.getItem('Manager');
 @Output() close: EventEmitter<any> = new EventEmitter();
@@ -80,7 +81,9 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   password:['',Validators.required],
   radio:[''||'false'],
   addnote:[''],
-  footer:['']
+  footer:[''],
+  radio2:[''||'false'],
+  fileattach:[''||'attachment.pdf']
 });
 
   }
@@ -143,7 +146,9 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       'password':this.phisingForm.value.password,
       'sendToReporters' : this.phisingForm.value.radio,
       'addNote' : this.phisingForm.value.addnote,
-      'emailSignature': this.phisingForm.value.footer
+      'emailSignature': this.phisingForm.value.footer,
+      'sendAttachment': this.phisingForm.value.radio2,
+      'attachmentName': this.phisingForm.value.fileattach
     }
     console.log('FORM',reqBody);
     let con = JSON.stringify(reqBody);

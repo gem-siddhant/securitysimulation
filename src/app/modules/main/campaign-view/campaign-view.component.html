@@ -48,7 +48,7 @@
 
 <div class="row mt-3">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-    <button type="submit" mat-raised-button class="add_btn" (click)="endcamp()"  >End Campaign</button>
+    <button type="submit" mat-raised-button class="add_btn" (click)="endcamp(); click=true;" [disabled]="click"  >End Campaign</button>
 </div>
 </div>
 

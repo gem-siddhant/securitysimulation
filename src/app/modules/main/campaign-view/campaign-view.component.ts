@@ -39,6 +39,7 @@ endcampaignId:any;
     nameCampaign:any;
     emailSubject:any;
     desc:any;
+    click = false;
 clicked_len:any;
 undelivered_len:any;
 delivered_len:any;
