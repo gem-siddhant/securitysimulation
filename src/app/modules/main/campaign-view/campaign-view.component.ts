@@ -27,7 +27,7 @@ endcampaignId:any;
   notdelivered: any;
   submitted = false;
   ID: boolean = true;
-
+  isendactive: any;
   constructor(private route: ActivatedRoute,
     private _router: Router,
     private _mainService:MainService,
@@ -39,7 +39,7 @@ endcampaignId:any;
     nameCampaign:any;
     emailSubject:any;
     desc:any;
-    click = false;
+    clickbtn:boolean= false;
 clicked_len:any;
 undelivered_len:any;
 delivered_len:any;
@@ -123,6 +123,14 @@ i: number = 1;
   getCampaignDetails(id:any){
     localStorage.setItem('ID',id);
     this._mainService.getCompaignDetails(id).subscribe((data)=>{
+     localStorage.setItem('isactive',data.isActive); 
+     this.isendactive = localStorage.getItem('isactive')
+     console.log(this.isendactive)
+     if(this.isendactive == 'false')
+     {
+       this.clickbtn = true;
+     }
+     console.log("click",this.clickbtn)
      if(data){
        this.clicked_len=data.openedCount;
        this.delivered_len=data.deliveredCount;

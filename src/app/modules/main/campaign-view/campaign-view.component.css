@@ -358,3 +358,17 @@ text-size-adjust: auto;
   font-size: 18px;
   display: inline-block;
 }
+.endcamp{
+  position:absolute;
+  border-radius: 5px;
+    background-color:  #205072;
+    border: rgba(0, 0, 0, 0.25);
+    color:#eee;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    text-align: center;
+    line-height: 150%;
+    height: 30px;
+}
