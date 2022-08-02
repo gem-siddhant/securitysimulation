@@ -72,22 +72,21 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
 
   ngOnInit(): void {
   this.phisingForm = this.formBuilder.group({
-  name:[''],
+  name:['',Validators.required],
   reward_type:[''],
-  desc:[''],
+  desc:['',Validators.required],
   reward_amount:[''],
   tempate_select:[0,Validators.required],
   attachmentFile:[''],
-  subject:[''],
+  subject:['',Validators.required],
   email:['',Validators.required],
   password:['',Validators.required],
   radio:[''||'false'],
-  addnote:[''],
-  footer:[''],
+  addnote:['',Validators.required],
+  footer:['',Validators.required],
   radio2:[''||'false'],
   fileattach:[''||'attachment.pdf']
 });
-
   }
   
   onChange(event: any) {
@@ -101,6 +100,12 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       console.log(this.phisingForm.value.radio)
       this.prefilled=data;
       console.log(this.prefilled)
+
+      if(this.prefilled.heading)
+      {
+        this.toastr.error("please edit the fields before creating campaign")
+        this.phisingForm.value.name = this.prefilled.heading;
+      }
       if(this.prefilled.subject){
         this.phisingForm.value.subject=this.prefilled.subject;
 
@@ -126,8 +131,10 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
         this.phisingForm.value.amount=this.prefilled.amount;
       }
     })
+    console.log(this.phisingForm.value.footer)
+    console.log( this.phisingForm.value.addnote)
   }
-
+ 
   submitForm(){
 
     console.log(this.file);

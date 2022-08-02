@@ -98,7 +98,7 @@
         <mat-form-field class="w-100" appearance="outline" [ngClass]="{'hide-class':this.prefilled.description==null}" style="width:97.35% !important;padding-top: 5px;
         font-size: 16px; padding-left: 10px;">
           <mat-label>Description</mat-label>
-          <textarea matInput type="text" [value]="this.prefilled.description" formControlName="desc" maxlength="400"></textarea>
+          <textarea matInput type="text" [value]="this.prefilled.description" formControlName="desc" maxlength="1500"></textarea>
         </mat-form-field>
       </div>
     </div>
@@ -231,7 +231,7 @@
   <div class="name">
     <mat-form-field appearance="outline" style="width:420px !important">
       <mat-label>Name of Campaign</mat-label>
-      <input matInput type="text" [value]="this.prefilled.heading"  formControlName="name" maxlength="15">
+      <input matInput type="text" [value]="this.prefilled.heading"  formControlName="name" maxlength="40">
     </mat-form-field>
     </div>
     &nbsp;
@@ -276,7 +276,7 @@
       <mat-form-field class="w-100" appearance="outline" [ngClass]="{'hide-class':this.prefilled.description==null}" style="width:97.35% !important;padding-top: 5px;
       font-size: 16px; padding-left: 10px;">
         <mat-label>Description</mat-label>
-        <textarea matInput type="text" [value]="this.prefilled.description" formControlName="desc" maxlength="400"></textarea>
+        <textarea matInput type="text" [value]="this.prefilled.description" formControlName="desc" maxlength="1500"></textarea>
       </mat-form-field>
     </div>
   </div>

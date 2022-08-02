@@ -22,9 +22,7 @@ campaigns:any=[];
     this.router.navigate(['main/view',id]);
   }
  
-  toggleDisplay() {
-    this.isShow = !this.isShow;
-  }
+ 
   getAllCampaigns(){
     this._main.getAllCampaigns(localStorage.getItem('email')).subscribe((data)=>{
       if(data){
