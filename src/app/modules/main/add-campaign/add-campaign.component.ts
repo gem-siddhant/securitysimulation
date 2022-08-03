@@ -85,7 +85,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   addnote:['',Validators.required],
   footer:['',Validators.required],
   radio2:[''||'false'],
-  fileattach:[''||'attachment.pdf']
+  fileattach:[''||'attachment']
 });
   }
   
