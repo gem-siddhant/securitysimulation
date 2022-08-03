@@ -69,7 +69,7 @@ i: number = 1;
     this.endcampaignId= params.get('id');
     });
     this.getCampaignDetails(this.campaignId);
-    //this.endcampaign(this.endcampaignId);
+    
   }
   
   private createOptions(): ChartOptions {
@@ -94,7 +94,7 @@ i: number = 1;
     };
   }
   filterDrop(){
-    console.log(this.select_val);
+   
     let filterValue=this.select_val;
       filterValue = filterValue.trim();
      filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
@@ -125,12 +125,12 @@ i: number = 1;
     this._mainService.getCompaignDetails(id).subscribe((data)=>{
      localStorage.setItem('isactive',data.isActive); 
      this.isendactive = localStorage.getItem('isactive')
-     console.log(this.isendactive)
+    
      if(this.isendactive == 'false')
      {
        this.clickbtn = true;
      }
-     console.log("click",this.clickbtn)
+    
      if(data){
        this.clicked_len=data.openedCount;
        this.delivered_len=data.deliveredCount;
@@ -167,8 +167,7 @@ i: number = 1;
 
       
         this.notdelivered = data.notDeliveredCount
-         this.pieChartData = [this.clicked_len, this.delivered_len,this.notdelivered];
-         console.log(this.notdelivered);
+        this.pieChartData = [this.clicked_len, this.delivered_len,this.notdelivered];
         this.dataSource = new MatTableDataSource<view_data>(data.result);
         this.dataSource.sort = this.sort;
       }
@@ -182,9 +181,6 @@ i: number = 1;
     this.submitted=true;
     let id: any = Number;
     id = localStorage.getItem('ID')
-    //let con = JSON.stringify(reqBody);
-    //id.append('details_id',con)
-    console.log(id)
     this.ID= false;
     this._mainService.endcampaign(id).subscribe((data)=>{
       if(data)

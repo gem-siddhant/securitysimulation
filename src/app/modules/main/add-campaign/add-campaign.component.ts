@@ -96,14 +96,14 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   }
   getPreFilledData(id:any){
     this._addCampaign.getPrefilled(id).subscribe((data)=>{
-      console.log('data',data.subject)
-      console.log(this.phisingForm.value.radio)
       this.prefilled=data;
-      console.log(this.prefilled)
-
+      let dataDialog = { title: 'Please edit the fields before creating campaign' };
+      const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+        width: '493px',
+        data: dataDialog
+      });
       if(this.prefilled.heading)
       {
-        this.toastr.error("please edit the fields before creating campaign")
         this.phisingForm.value.name = this.prefilled.heading;
       }
       if(this.prefilled.subject){
@@ -131,17 +131,13 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
         this.phisingForm.value.amount=this.prefilled.amount;
       }
     })
-    console.log(this.phisingForm.value.footer)
-    console.log( this.phisingForm.value.addnote)
+
   }
  
   submitForm(){
-
-    console.log(this.file);
     this.submitted=true;
     if(this.phisingForm.invalid)
     return;
-    console.log('FORM',this.phisingForm.value);
     const formData :any= new FormData();
     let reqBody={
       'name':this.phisingForm.value.name,
@@ -159,7 +155,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       'sendAttachment': this.phisingForm.value.radio2,
       'attachmentName': this.phisingForm.value.fileattach
     }
-    console.log('FORM',reqBody);
+  
     let con = JSON.stringify(reqBody);
     formData.append("details",con);
     
@@ -172,7 +168,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       if(this.file!=null && this.file.size==0)
       {
         this.toastr.error("empty csv can not be uploaded");
-        //formData.append("file",this.file);
+       
       }
       else if(this.phisingForm.value.radio==true){
         
@@ -186,7 +182,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     {
       if(this.file.size == 0)
       {
-        console.log(this.file.size)
+
         this.toastr.error("empty csv can not be uploaded");
       }
       else{
@@ -224,14 +220,6 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
         this.toastr.error("Error in adding campaign.");
       }
     });
-    // this.http.post('https://3691-124-253-122-181.ngrok.io/upload',formData).subscribe((data)=>{
-    //   // console.log('API',data);
-    //   if(data){
-    //     console.log(data);
-    //     this.api_hit=true;
-    //     this.response=data;
-    //   }
-    // })
   }
 
 }

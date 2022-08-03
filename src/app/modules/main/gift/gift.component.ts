@@ -30,7 +30,6 @@ export class GiftComponent implements OnInit {
 
   }
   sendData(emailID:any,ip:any,id:any){
-    console.log(emailID,ip);
     let obj={
       'email':emailID,
       'ip':ip,

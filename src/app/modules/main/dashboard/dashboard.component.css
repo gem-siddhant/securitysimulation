@@ -15,7 +15,6 @@
   font-weight: 700;
   font-size: 25px;
   line-height: 30px;
-  /* identical to box height */
   color: #205072;
   mix-blend-mode: normal;
   padding: 10px;
@@ -51,7 +50,6 @@ font-style: normal;
 font-weight: 700;
 font-size: 12px;
 line-height: 18px;
-/* identical to box height */
 color: #205072;
 padding-top: 10px;
 }
@@ -76,7 +74,6 @@ font-style: normal;
 font-weight: 400;
 font-size: 14px;
 line-height: 21px;
-/* identical to box height */
 color: #626262;
 
 }
@@ -97,16 +94,12 @@ color: #626262;
   font-weight: 500;
   font-size: 18px;
   line-height: 150%;
-  /* identical to box height, or 27px */
-
   text-align: center;
-
   color: #FAFAFA;
 }
 
 .box{
   border: 1px solid;
-  /* height: 150px; */
   margin-bottom: 10px;
   border: 1px solid #d5e0f3;
   box-sizing: border-box;

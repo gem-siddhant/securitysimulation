@@ -96,10 +96,6 @@ export class LoginComponent implements OnInit {
         })
       }
     })
-    //this._MainService.login(isManager,).subscribe((data)=>
-    //{
-     // console.log('manager',data.isManager)
-    //})
 
   }
   loginWithMicrosoft(){
@@ -123,36 +119,6 @@ export class LoginComponent implements OnInit {
       }
     }
   }
-  
-
-
-    //this.loginForm = this.formBuilder.group({
-     // id:['',Validators.required],
-     // password:['',Validators.required]
-   // if(localStorage.getItem('token')){
-     // this.router.navigate(["/main/dashboard"]);
-    //}
-  //}
- // submit(){
-   // if(this.loginForm.invalid)
-    //return;
-    //let obj={
-     // "email":this.loginForm.value.id,
-      //"password":this.loginForm.value.password
-   // }
-    //this._auth.loginMethod(obj).subscribe((data)=>{
-     // if(data){
-      //  console.log(data.data);
-       /// console.log(data.message);
-        ///localStorage.setItem('token',data.message);
-        //localStorage.setItem('email',data.data.email);
-        //this.router.navigate(["/main/dashboard"]);
-     // }
-    //},err=>{
-     /// this.toastr.error("Error in loading data");
-    ///})
-  //}
-
 }
 
 
