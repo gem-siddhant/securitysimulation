@@ -16,8 +16,8 @@ export class GiftComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(
       params => {
-        this.email =  params['email'];
-        this.id =  params['taskId'];
+        this.email =  params[''];
+        this.id =  params[''];
       }
     )
     console.log('email',this.email);
