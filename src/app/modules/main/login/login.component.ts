@@ -19,6 +19,7 @@ import { filter, takeUntil } from 'rxjs/operators';
 import { InteractionStatus, InteractionType, PopupRequest, RedirectRequest } from '@azure/msal-browser';
 import { MatDialog } from '@angular/material/dialog';
 import { ResponsiveService } from 'src/app/services/responsive.service';
+import { AddCampaignService } from '../service/add-campaign.service';
 
 @Component({
   selector: 'app-login',
@@ -31,7 +32,9 @@ export class LoginComponent implements OnInit {
   loginDisplay = false;
   private readonly _destroying$ = new Subject<void>();
   mobile: boolean = false;
+  
   constructor(private formBuilder: FormBuilder,
+    private _addCampaign:AddCampaignService,
     private _MainService:MainService,
     private _auth:AuthService,
     private router:Router,
@@ -60,6 +63,7 @@ export class LoginComponent implements OnInit {
     this.onResize();
     this._responsiveService.checkWidth();
     if (this._authUserService.checkLogin()) {
+      
       this.router.navigate(['/main/dashboard']);
     }
     this._authUserService.setNotificationModalBoolean(true)
@@ -77,19 +81,22 @@ export class LoginComponent implements OnInit {
       if(response){
         console.log("res",response);
         this._authUserService.setToken(response.account?.username,response.accessToken).then(()=>{
-          this.router.navigate(['/main/dashboard']);
+        this.router.navigate(['/main/dashboard']);
         sessionStorage.clear();
         }).then(()=>{
           this._authUserService.getEmployeeDetailBehaviorSubject().subscribe(item => {
             if (item) {
+              
               if (item.notifications && this._authUserService.getNotificationModalBoolean()) {
                 this._authUserService.setNotificationModalBoolean(false);
+                
               }
             }
           });
         })
       }
     })
+
   }
   loginWithMicrosoft(){
     if (this.msalGuardConfig.interactionType === InteractionType.Popup) {
@@ -111,35 +118,7 @@ export class LoginComponent implements OnInit {
         this.authService.loginRedirect();
       }
     }
-
-
   }
-
-    //this.loginForm = this.formBuilder.group({
-     // id:['',Validators.required],
-     // password:['',Validators.required]
-   // if(localStorage.getItem('token')){
-     // this.router.navigate(["/main/dashboard"]);
-    //}
-  //}
- // submit(){
-   // if(this.loginForm.invalid)
-    //return;
-    //let obj={
-     // "email":this.loginForm.value.id,
-      //"password":this.loginForm.value.password
-   // }
-    //this._auth.loginMethod(obj).subscribe((data)=>{
-     // if(data){
-      //  console.log(data.data);
-       /// console.log(data.message);
-        ///localStorage.setItem('token',data.message);
-        //localStorage.setItem('email',data.data.email);
-        //this.router.navigate(["/main/dashboard"]);
-     // }
-    //},err=>{
-     /// this.toastr.error("Error in loading data");
-    ///})
-  //}
-
 }
+
+

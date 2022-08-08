@@ -4,5 +4,9 @@
 html, body { height: 100%; }
 body {
    margin: 0;
-   background-color: #FDF8FD;
+   background-color: #e2f4f4;
+   background-image: url('./assets/images/web_bg.png');
+   background-attachment: fixed;
+   background-size: auto;
+   background-repeat: no-repeat;
 }

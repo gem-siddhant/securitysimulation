@@ -16,10 +16,15 @@ export class MainService {
      console.log('send user data',obj);
     return this.http.post<any>('register/click', obj);
    }
+   
    getCompaignDetails(id:any){
-let test:any=Number(id);
+    let test:any=Number(id);
     return this.http.post<any>('task', test);
+   }
 
+   endcampaign(id:any){
+    let end: any= Number(id);
+    return this.http.post<any>('endCampaign',end);
    }
    signUp(form:any){
       return this.http.post<any>('add/user',form);

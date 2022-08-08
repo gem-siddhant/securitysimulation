@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { MatTableExporterModule } from 'mat-table-exporter';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 @NgModule({
   declarations: [
     GiftComponent,
@@ -49,6 +50,7 @@ import { MatTableExporterModule } from 'mat-table-exporter';
     FormsModule,
     ToastrModule.forRoot(),
     MatProgressSpinnerModule,
+    MatDatepickerModule,
   ]
 })
 export class MainModule { }

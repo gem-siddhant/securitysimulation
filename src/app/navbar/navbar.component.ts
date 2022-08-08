@@ -9,6 +9,7 @@ import {
 import { MatMenuTrigger } from '@angular/material/menu';
 import { MainService } from '../modules/main/service/main.service';
 import { AuthService } from '../services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-navbar',
@@ -33,8 +34,9 @@ export class NavbarComponent implements OnInit {
   pageNo:number=1;
   unreadData:any;
   currentDate:any;
-  content:string="Please press OK to Download your user guide";
-  constructor(private _auth:AuthService) {
+  content:string="Downloading your User Manual";
+  constructor(private _auth:AuthService,
+    private toastr:ToastrService) {
     this.mobile = false;
   }
 
@@ -47,8 +49,8 @@ export class NavbarComponent implements OnInit {
 Logout(){
   this._auth.logout();
 }
-toogletag(content: any)
+toogletag(content:any )
 {
-  alert(content)
+  this.toastr.show(content);
 }
 }

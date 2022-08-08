@@ -1,13 +1,13 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MainService } from '../service/main.service';
-import { ChartType, ChartOptions } from 'chart.js';
+import { ChartType, ChartOptions, Chart } from 'chart.js';
 import { SingleDataSet, Label } from 'ng2-charts';
 import * as pluginLabels from 'chartjs-plugin-labels';
 import {view_data} from './view.model';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { elementAt } from 'rxjs';
+import { elementAt, startWith } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { formatDate } from '@angular/common';
 import { not } from '@angular/compiler/src/output/output_ast';
@@ -21,11 +21,13 @@ import { not } from '@angular/compiler/src/output/output_ast';
 
 export class CampaignViewComponent implements OnInit {
 campaignId:any;
+endcampaignId:any;
   datenow = new Date();
   nowFormatted: string;
   notdelivered: any;
-
-
+  submitted = false;
+  ID: boolean = true;
+  isendactive: any;
   constructor(private route: ActivatedRoute,
     private _router: Router,
     private _mainService:MainService,
@@ -37,6 +39,7 @@ campaignId:any;
     nameCampaign:any;
     emailSubject:any;
     desc:any;
+    clickbtn:boolean= false;
 clicked_len:any;
 undelivered_len:any;
 delivered_len:any;
@@ -55,16 +58,20 @@ i: number = 1;
 @ViewChild(MatSort, { static: true }) sort!: MatSort;
   ngOnInit(): void {
     this.pieChartOptions = this.createOptions();
-    this.pieChartLabels = ['Clicked', 'Delivered', 'NotDelivered'];
+    this.pieChartLabels = ['Clicked','Delivered','NotDeliverd'];
     this.pieChartType = 'pie';
     this.pieChartLegend = true;
     this.pieChartPlugins = [pluginLabels];
+    Chart.defaults['padding'] = 20,
     this.dataSource = new MatTableDataSource<view_data>([]);
     this.route.paramMap.subscribe((params: any) => {
     this.campaignId = params.get('id');
+    this.endcampaignId= params.get('id');
     });
     this.getCampaignDetails(this.campaignId);
+    
   }
+  
   private createOptions(): ChartOptions {
     return {
       responsive: true,
@@ -76,10 +83,18 @@ i: number = 1;
                 precision: 2
               }
           },
+          legend: {
+            display: true,
+            position: 'left',
+            align: 'start',
+            fullWidth : true,
+            
+          }
+         
     };
   }
   filterDrop(){
-    console.log(this.select_val);
+   
     let filterValue=this.select_val;
       filterValue = filterValue.trim();
      filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
@@ -104,9 +119,18 @@ i: number = 1;
       return data[sortHeaderId];
     }
   }
+  
   getCampaignDetails(id:any){
-
+    localStorage.setItem('ID',id);
     this._mainService.getCompaignDetails(id).subscribe((data)=>{
+     localStorage.setItem('isactive',data.isActive); 
+     this.isendactive = localStorage.getItem('isactive')
+    
+     if(this.isendactive == 'false')
+     {
+       this.clickbtn = true;
+     }
+    
      if(data){
        this.clicked_len=data.openedCount;
        this.delivered_len=data.deliveredCount;
@@ -114,7 +138,7 @@ i: number = 1;
        this.nameCampaign=data.template.heading;
        this.emailSubject=data.template.subject;
        this.desc=data.template.description;
-
+      
        let i=1;
        for(let element of data.result){
          element.id=i;
@@ -123,6 +147,7 @@ i: number = 1;
          }
 
         ++i;
+
        }
        let k=1;
        for (let element of data.result)
@@ -142,13 +167,27 @@ i: number = 1;
 
       
         this.notdelivered = data.notDeliveredCount
-         this.pieChartData = [this.clicked_len, this.delivered_len,this.notdelivered];
-         console.log(this.notdelivered);
+        this.pieChartData = [this.clicked_len, this.delivered_len,this.notdelivered];
         this.dataSource = new MatTableDataSource<view_data>(data.result);
         this.dataSource.sort = this.sort;
-     }
+      }
     },err=>{
       this.toastr.error("Error in loading data");
+    })
+  }
+
+  endcamp()
+  {
+    this.submitted=true;
+    let id: any = Number;
+    id = localStorage.getItem('ID')
+    this.ID= false;
+    this._mainService.endcampaign(id).subscribe((data)=>{
+      if(data)
+      {
+        this.ID=true;
+        this.toastr.info("Campaign ended successfully");
+      }
     })
   }
 

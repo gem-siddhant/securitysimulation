@@ -19,6 +19,7 @@ justify-content: end;
 
 .logo{
   margin-left: 8%;
+  height: 40px;
 }
 .logout{
   margin-right: 10%;

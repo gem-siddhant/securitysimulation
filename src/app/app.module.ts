@@ -26,6 +26,7 @@ import { InteractionType, IPublicClientApplication, PublicClientApplication } fr
 import { msalConfig } from './app.config';
 import { MsalGuard, MsalBroadcastService, MsalModule, MsalService, MSAL_GUARD_CONFIG, MSAL_INSTANCE, MsalGuardConfiguration, MsalRedirectComponent } from '@azure/msal-angular';
 import { LoaderService } from './modules/main/service/loader.service';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
 }
@@ -58,6 +59,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MatTableModule,
     MatFormFieldModule,
     MatPaginatorModule,
+    MatDatepickerModule,
   ],
   providers: [ LoaderService,
     {
