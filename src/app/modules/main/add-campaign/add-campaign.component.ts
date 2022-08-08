@@ -97,11 +97,6 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   getPreFilledData(id:any){
     this._addCampaign.getPrefilled(id).subscribe((data)=>{
       this.prefilled=data;
-      let dataDialog = { title: 'Please edit the fields before creating campaign' };
-      const dialogRef = this.dialog.open(ConfirmationModalComponent, {
-        width: '493px',
-        data: dataDialog
-      });
       if(this.prefilled.heading)
       {
         this.phisingForm.value.name = this.prefilled.heading;
@@ -136,6 +131,26 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
  
   submitForm(){
     this.submitted=true;
+    if (this.phisingForm.value.name == "")
+    {
+      this.toastr.error("Please EDIT the name of campaign");
+    }
+    if (this.phisingForm.value.subject == "")
+    {
+      this.toastr.error("Please EDIT the Subject")
+    }
+    if (this.phisingForm.value.desc == "")
+    {
+      this.toastr.error("Please EDIT the description")
+    }
+    if (this.phisingForm.value.addnote == "")
+    {
+      this.toastr.error("Please EDIT the Add note")
+    }
+    if (this.phisingForm.value.footer == "")
+    {
+      this.toastr.error("Please EDIT the Email Signature")
+    }
     if(this.phisingForm.invalid)
     return;
     const formData :any= new FormData();
