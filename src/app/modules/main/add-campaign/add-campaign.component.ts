@@ -85,7 +85,8 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   addnote:['',Validators.required],
   footer:['',Validators.required],
   radio2:[''||'false'],
-  fileattach:[''||'attachment']
+  fileattach:[''||'attachment'],
+  filecontent:[''||'Please provide the content that you want in your custom file']
 });
   }
   
@@ -168,7 +169,8 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       'addNote' : this.phisingForm.value.addnote,
       'emailSignature': this.phisingForm.value.footer,
       'sendAttachment': this.phisingForm.value.radio2,
-      'attachmentName': this.phisingForm.value.fileattach
+      'attachmentName': this.phisingForm.value.fileattach,
+      'fileContent':this.phisingForm.value.fileContent
     }
   
     let con = JSON.stringify(reqBody);
