@@ -242,14 +242,14 @@
   <div class="name">
     <mat-form-field appearance="outline" style="width:420px !important">
       <mat-label>Name of Campaign</mat-label>
-      <input matInput type="text" [value]="this.prefilled.heading"  formControlName="name" maxlength="40">
+      <input matInput type="text" [value]="this.prefilled.heading"  formControlName="name" maxlength="30">
     </mat-form-field>
     </div>
     &nbsp;
     <div class="name">
       <mat-form-field  appearance="outline" style="width:418px !important">
         <mat-label>Email's Subject</mat-label>
-        <input matInput type="text" [value]="this.prefilled.subject" id="in" formControlName="subject" maxlength="50">
+        <input matInput type="text" [value]="this.prefilled.subject" id="in" formControlName="subject" maxlength="100">
       </mat-form-field>
       &nbsp;
     </div>
@@ -298,7 +298,7 @@
       <mat-form-field class="w-100" appearance="outline" [ngClass]="{'hide-class':this.prefilled.addNote==null}" style="width:97.35% !important;padding-top: 5px;
       font-size: 16px; padding-left: 10px;">
       <mat-label>Add Note</mat-label>
-      <textarea matInput type="text" [value]="this.prefilled.addNote" formControlName="addnote" maxlength="50"></textarea>
+      <textarea matInput type="text" [value]="this.prefilled.addNote" formControlName="addnote" maxlength="200"></textarea>
       </mat-form-field>
     </div>
   </div>
@@ -309,7 +309,7 @@
       <mat-form-field class="w-100" appearance="outline" [ngClass]="{'hide-class':this.prefilled.emailSignature==null}" style="width:97.35% !important;padding-top: 5px;
       font-size: 16px; padding-left: 10px;">
       <mat-label>Email Signature</mat-label>
-      <textarea matInput type="text" [value]="this.prefilled.emailSignature" formControlName="footer" maxlength="20"></textarea>
+      <textarea matInput type="text" [value]="this.prefilled.emailSignature" formControlName="footer" maxlength="50"></textarea>
       </mat-form-field>
     </div>
   </div>

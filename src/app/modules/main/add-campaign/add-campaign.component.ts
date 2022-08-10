@@ -170,7 +170,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       'emailSignature': this.phisingForm.value.footer,
       'sendAttachment': this.phisingForm.value.radio2,
       'attachmentName': this.phisingForm.value.fileattach,
-      'fileContent':this.phisingForm.value.fileContent
+      'fileContent':this.phisingForm.value.filecontent
     }
   
     let con = JSON.stringify(reqBody);
