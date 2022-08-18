@@ -23,6 +23,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 @NgModule({
   declarations: [
     GiftComponent,
@@ -51,6 +52,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     ToastrModule.forRoot(),
     MatProgressSpinnerModule,
     MatDatepickerModule,
+    NgxMaterialTimepickerModule
   ]
 })
 export class MainModule { }

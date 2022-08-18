@@ -24,6 +24,7 @@ import { delay } from 'rxjs';
 import { ExitStatus } from 'typescript';
 import { MatRadioButton } from '@angular/material/radio';
 import { PasswordGrantConstants } from '@azure/msal-common/dist/utils/Constants';
+import { SchedulelaterComponent } from 'src/app/shared/schedulelater/schedulelater.component';
 
 @Pipe({ name: 'safeHtml'})
 export class SafeHtmlPipe implements PipeTransform  {
@@ -56,8 +57,8 @@ prefilled:any={heading:'',amount:'',rewardType:'',subject:'',description:'',addN
 testhtml:any='';
 options:boolean=true;
 attachment:boolean=true;
-//manager:any = "true";
-manager:any = localStorage.getItem('Manager');
+manager:any = "true";
+//manager:any = localStorage.getItem('Manager');
 @Output() close: EventEmitter<any> = new EventEmitter();
 testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   constructor(private _addCampaign:AddCampaignService,
@@ -86,6 +87,8 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   footer:['',Validators.required],
   radio2:[''||'false'],
   fileattach:[''||'attachment'],
+  date:[''],
+  time:[''],
   filecontent:[''||'Please provide the content that you want in your custom file']
 });
   }
@@ -129,6 +132,14 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     })
 
   }
+
+  schedulelater()
+  {
+    const dialogRef = this.dialog.open(SchedulelaterComponent, {
+      width: '513px',
+      height: '200px'
+    });
+  }
  
   submitForm(){
     this.submitted=true;
@@ -170,7 +181,10 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       'emailSignature': this.phisingForm.value.footer,
       'sendAttachment': this.phisingForm.value.radio2,
       'attachmentName': this.phisingForm.value.fileattach,
-      'fileContent':this.phisingForm.value.filecontent
+      'fileContent':this.phisingForm.value.filecontent,
+      'scheduleDate':this.phisingForm.value.date,
+      'scheduleTIme':this.phisingForm.value.time,
+      'scheduleTimeZone':'IST'
     }
   
     let con = JSON.stringify(reqBody);

@@ -8,11 +8,14 @@ export class AddCampaignService {
 
   constructor(private http:HttpClient) { }
   createCampaign(formData: any) {
-    return this.http.post<any>('upload', formData);
+    return this.http.post<any>('schedule/task', formData);
   }
   getPrefilled(id:any){
     return this.http.post<any>('prefilled/data', id);
 
+  }
+  schedulecampagin(formData:any){
+    return this.http.post<any>('/schedule/task',formData);
   }
 
 }

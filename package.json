@@ -30,6 +30,7 @@
     "jquery": "^3.6.0",
     "mat-table-exporter": "^10.2.4",
     "ng2-charts": "^2.2.0",
+    "ngx-material-timepicker": "^5.5.3",
     "ngx-toastr": "^14.2.1",
     "rxjs": "~7.4.0",
     "tslib": "^2.3.0",

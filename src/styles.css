@@ -10,3 +10,10 @@ body {
    background-size: auto;
    background-repeat: no-repeat;
 }
+.timepicker-overlay {
+   z-index: 1100 !important;
+ }
+ 
+ .timepicker-backdrop-overlay {
+   z-index: 1100 !important;
+ }
