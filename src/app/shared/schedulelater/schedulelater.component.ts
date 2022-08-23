@@ -22,7 +22,10 @@ export class SchedulelaterComponent implements OnInit {
   submitted = false;
   test: any = null;
   file: File = this.test;
-manager:any = "true";
+  manager:any = "true";
+  options:boolean=true;
+  attachment:boolean=true;
+  changeTriggered=false;
   constructor( @Inject(MAT_DIALOG_DATA) public data: any,
     private _addCampaign:AddCampaignService,
     private dialog:MatDialog,private router:Router,
@@ -39,10 +42,16 @@ manager:any = "true";
         date:[''],
         time:[''],
         tzone:['IST'],
+        attachmentFile:[''],
+        radio:[''||'false'],
       }
     );
   }
-
+  onChange(event: any) {
+    this.changeTriggered = true;
+    this.file = event.target.files[0];
+    
+  }
   schedulelater(){
     console.log(localStorage.getItem('name'))
     console.log(localStorage.getItem('file'))
@@ -75,7 +84,38 @@ manager:any = "true";
     console.log(this.phisingForm.value.tzone)
     let con = JSON.stringify(reqBody);
     formData.append("details",con);
-    formData.append("file",localStorage.getItem('file'));
+    if(this.manager=='true')
+    {
+    const localfile = "../../../../assets/pdf/fallbackcsv.csv"
+    var local = new File(["foo"], localfile, {
+      type: "file/csv"
+    });
+      if(this.file!=null && this.file.size==0)
+      {
+        this.toastr.error("empty csv can not be uploaded");
+       
+      }
+      else if(this.phisingForm.value.radio==true){
+        
+        formData.append("file",local);
+      }
+      else{
+        formData.append("file",this.file)
+      }
+    }
+    else
+    {
+      if(this.file.size == 0)
+      {
+
+        this.toastr.error("empty csv can not be uploaded");
+      }
+      else{
+      formData.append("file",this.file);
+      }
+    }
+
+
     this.StoreData=false;
     this._addCampaign.createCampaign(formData).subscribe((data)=>{
       if(data){

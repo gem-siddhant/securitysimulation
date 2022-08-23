@@ -136,8 +136,8 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   schedulelater()
   {
     const dialogRef = this.dialog.open(SchedulelaterComponent, {
-      width: '513px',
-      height: '200px'
+      width: '603px',
+      height: '500px'
     });
   }
  
@@ -235,7 +235,6 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       }
     }
 
-    localStorage.setItem('upfile',this.phisingForm.value.attachmentFile)
 
     this.StoreData=false;
     this._addCampaign.createCampaign(formData).subscribe((data)=>{
