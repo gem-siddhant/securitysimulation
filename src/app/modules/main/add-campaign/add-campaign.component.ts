@@ -143,6 +143,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
  
   submitForm(){
     this.submitted=true;
+    console.log(this.phisingForm.value.name)
     if (this.phisingForm.value.name == "")
     {
       this.toastr.error("Please EDIT the name of campaign");
@@ -182,11 +183,24 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       'sendAttachment': this.phisingForm.value.radio2,
       'attachmentName': this.phisingForm.value.fileattach,
       'fileContent':this.phisingForm.value.filecontent,
-      'scheduleDate':this.phisingForm.value.date,
-      'scheduleTIme':this.phisingForm.value.time,
-      'scheduleTimeZone':'IST'
     }
-  
+    localStorage.setItem('name',this.phisingForm.value.name);
+    localStorage.setItem('templateRewardType',this.phisingForm.value.reward_type);
+    localStorage.setItem('templateDescription',this.phisingForm.value.desc);
+    localStorage.setItem('templateAmount',this.phisingForm.value.reward_amount);
+    localStorage.setItem('templateNo',this.phisingForm.value.tempate_select);
+    localStorage.setItem('templateHeading',this.phisingForm.value.subject);
+    localStorage.setItem('email1',this.phisingForm.value.email);
+    localStorage.setItem('password',this.phisingForm.value.password);
+    localStorage.setItem('sendToReporters', this.phisingForm.value.radio);
+    localStorage.setItem('addNote',this.phisingForm.value.addnote);
+    localStorage.setItem('emailSignature',this.phisingForm.value.footer);
+    localStorage.setItem('sendAttachment',this.phisingForm.value.radio2);
+    localStorage.setItem('attachmentName',this.phisingForm.value.fileattach);
+    localStorage.setItem('fileContent',this.phisingForm.value.filecontent);
+
+
+
     let con = JSON.stringify(reqBody);
     formData.append("details",con);
     
@@ -220,6 +234,8 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       formData.append("file",this.file);
       }
     }
+
+    localStorage.setItem('upfile',this.phisingForm.value.attachmentFile)
 
     this.StoreData=false;
     this._addCampaign.createCampaign(formData).subscribe((data)=>{

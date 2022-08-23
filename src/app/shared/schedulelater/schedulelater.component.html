@@ -1,3 +1,5 @@
+<form [formGroup]="phisingForm">
+
 <mat-form-field class="example-full-width" appearance="fill" style="margin-left: 15px;">
   <mat-label style="height: 30px;">Choose a date</mat-label>
   <input matInput [matDatepicker]="picker" formControlName="date">
@@ -11,8 +13,11 @@
 
   <input placeholder="12hr format" formControlName="time" aria-label="12hr format" [ngxTimepicker]="default" readonly style="margin-left: 30px ;height: 40px; width: 170px;">
   <ngx-material-timepicker #default></ngx-material-timepicker>
-  <div class="name">
+  <div>
     <button type="submit" mat-raised-button class="add_btn" (click)="schedulelater()" style="width:430px !important; margin-top: 35px;margin-left: 15px;">Schedule Campaign</button>
   </div>
+    
+</form>
+
 
 

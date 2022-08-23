@@ -31,6 +31,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { SchedulelaterComponent } from './shared/schedulelater/schedulelater.component';
 import { MatInputModule } from '@angular/material/input';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { ReactiveFormsModule } from '@angular/forms';
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
 }
@@ -67,7 +68,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    ReactiveFormsModule
   ],
   providers: [ LoaderService,
     {
