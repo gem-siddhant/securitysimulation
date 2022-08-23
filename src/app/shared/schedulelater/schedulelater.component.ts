@@ -69,7 +69,7 @@ manager:any = "true";
       'fileContent':localStorage.getItem('fileContent'),
       'file':localStorage.getItem('file'),
       'scheduleDate':this.phisingForm.value.date,
-      'scheduleTIme':this.phisingForm.value.time,
+      'scheduleTime':this.phisingForm.value.time,
       'scheduleTimeZone':this.phisingForm.value.tzone,
     }
     console.log(this.phisingForm.value.tzone)
