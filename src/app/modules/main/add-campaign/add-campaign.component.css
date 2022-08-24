@@ -4,14 +4,14 @@
   font-weight: 500;
   font-size: 20px;
   line-height: 30px;
-  color: #205072;
+  color: white;
   mix-blend-mode: normal;
 }
 .sub-head{
 position: absolute;
-left: 6.50%;
-width:93%;
-right: 6.74%;
+left: 12.50%;
+width:76%;
+right: 14.74%;
 top: 24.74%;
 bottom: 70.05%;
 height: 35px;
@@ -21,7 +21,7 @@ font-weight: 500;
 font-size: 18px;
 line-height: 27px;
 color: #ffffff;
-background: #205072;
+background: #531D89;
 border-radius: 5px;
 padding-top: 5px;
 }
@@ -88,12 +88,12 @@ border-radius: 5px;
 width: 74%;
 }
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
-  color: #205072;
+  color: white;
 }
 
 
 ::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
-  color: #205072;
+  color: white;
 }
 .margin-des{
   margin-right: 30px;
@@ -137,7 +137,7 @@ width: 74%;
   position: absolute;
 height: 40px;
 top: 630px;
-background: #205072;
+background: #531D89;
 border-radius: 5px;
 font-family: 'Poppins';
 font-style: normal;
