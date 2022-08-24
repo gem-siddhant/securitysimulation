@@ -32,6 +32,7 @@ import { SchedulelaterComponent } from './shared/schedulelater/schedulelater.com
 import { MatInputModule } from '@angular/material/input';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SendcampaignComponent } from './shared/sendcampaign/sendcampaign.component';
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
 }
@@ -46,7 +47,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     AppComponent,
     ConfirmationModalComponent,
     NavbarComponent,
-    SchedulelaterComponent
+    SchedulelaterComponent,
+    SendcampaignComponent
   ],
   imports: [
     BrowserModule,

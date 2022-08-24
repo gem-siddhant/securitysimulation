@@ -25,6 +25,7 @@ import { ExitStatus } from 'typescript';
 import { MatRadioButton } from '@angular/material/radio';
 import { PasswordGrantConstants } from '@azure/msal-common/dist/utils/Constants';
 import { SchedulelaterComponent } from 'src/app/shared/schedulelater/schedulelater.component';
+import { SendcampaignComponent } from 'src/app/shared/sendcampaign/sendcampaign.component';
 
 @Pipe({ name: 'safeHtml'})
 export class SafeHtmlPipe implements PipeTransform  {
@@ -136,11 +137,67 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   schedulelater()
   {
     const dialogRef = this.dialog.open(SchedulelaterComponent, {
-      width: '603px',
-      height: '500px'
+      width: '523px',
+      height: '390px'
     });
+    if (this.phisingForm.value.name == "")
+    {
+      this.toastr.error("Please EDIT the name of campaign");
+    }
+    if (this.phisingForm.value.subject == "")
+    {
+      this.toastr.error("Please EDIT the Subject")
+    }
+    if (this.phisingForm.value.desc == "")
+    {
+      this.toastr.error("Please EDIT the description")
+    }
+    if (this.phisingForm.value.addnote == "")
+    {
+      this.toastr.error("Please EDIT the Add note")
+    }
+    if (this.phisingForm.value.footer == "")
+    {
+      this.toastr.error("Please EDIT the Email Signature")
+    }
+    localStorage.setItem('name',this.phisingForm.value.name);
+    localStorage.setItem('templateRewardType',this.phisingForm.value.reward_type);
+    localStorage.setItem('templateDescription',this.phisingForm.value.desc);
+    localStorage.setItem('templateAmount',this.phisingForm.value.reward_amount);
+    localStorage.setItem('templateNo',this.phisingForm.value.tempate_select);
+    localStorage.setItem('templateHeading',this.phisingForm.value.subject);
+    localStorage.setItem('email1',this.phisingForm.value.email);
+    localStorage.setItem('password',this.phisingForm.value.password);
+    localStorage.setItem('sendToReporters', this.phisingForm.value.radio);
+    localStorage.setItem('addNote',this.phisingForm.value.addnote);
+    localStorage.setItem('emailSignature',this.phisingForm.value.footer);
+    localStorage.setItem('sendAttachment',this.phisingForm.value.radio2);
+    localStorage.setItem('attachmentName',this.phisingForm.value.fileattach);
+    localStorage.setItem('fileContent',this.phisingForm.value.filecontent);
   }
  
+  sendcampaign()
+  {
+    const dialogRef = this.dialog.open(SendcampaignComponent, {
+      width: '523px',
+      height: '330px',
+  });
+    localStorage.setItem('name',this.phisingForm.value.name);
+    localStorage.setItem('templateRewardType',this.phisingForm.value.reward_type);
+    localStorage.setItem('templateDescription',this.phisingForm.value.desc);
+    localStorage.setItem('templateAmount',this.phisingForm.value.reward_amount);
+    localStorage.setItem('templateNo',this.phisingForm.value.tempate_select);
+    localStorage.setItem('templateHeading',this.phisingForm.value.subject);
+    localStorage.setItem('email1',this.phisingForm.value.email);
+    localStorage.setItem('password',this.phisingForm.value.password);
+    localStorage.setItem('sendToReporters', this.phisingForm.value.radio);
+    localStorage.setItem('addNote',this.phisingForm.value.addnote);
+    localStorage.setItem('emailSignature',this.phisingForm.value.footer);
+    localStorage.setItem('sendAttachment',this.phisingForm.value.radio2);
+    localStorage.setItem('attachmentName',this.phisingForm.value.fileattach);
+    localStorage.setItem('fileContent',this.phisingForm.value.filecontent);
+}
+
   submitForm(){
     this.submitted=true;
     console.log(this.phisingForm.value.name)
@@ -184,20 +241,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       'attachmentName': this.phisingForm.value.fileattach,
       'fileContent':this.phisingForm.value.filecontent,
     }
-    localStorage.setItem('name',this.phisingForm.value.name);
-    localStorage.setItem('templateRewardType',this.phisingForm.value.reward_type);
-    localStorage.setItem('templateDescription',this.phisingForm.value.desc);
-    localStorage.setItem('templateAmount',this.phisingForm.value.reward_amount);
-    localStorage.setItem('templateNo',this.phisingForm.value.tempate_select);
-    localStorage.setItem('templateHeading',this.phisingForm.value.subject);
-    localStorage.setItem('email1',this.phisingForm.value.email);
-    localStorage.setItem('password',this.phisingForm.value.password);
-    localStorage.setItem('sendToReporters', this.phisingForm.value.radio);
-    localStorage.setItem('addNote',this.phisingForm.value.addnote);
-    localStorage.setItem('emailSignature',this.phisingForm.value.footer);
-    localStorage.setItem('sendAttachment',this.phisingForm.value.radio2);
-    localStorage.setItem('attachmentName',this.phisingForm.value.fileattach);
-    localStorage.setItem('fileContent',this.phisingForm.value.filecontent);
+    
 
 
 
@@ -267,5 +311,4 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       }
     });
   }
-
 }
