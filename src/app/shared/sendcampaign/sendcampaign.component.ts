@@ -9,11 +9,11 @@ import { ToastrService } from 'ngx-toastr';
 import { AddCampaignService } from 'src/app/modules/main/service/add-campaign.service';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 @Component({
-  selector: 'app-schedulelater',
-  templateUrl: './schedulelater.component.html',
-  styleUrls: ['./schedulelater.component.css']
+  selector: 'app-sendcampaign',
+  templateUrl: './sendcampaign.component.html',
+  styleUrls: ['./sendcampaign.component.css']
 })
-export class SchedulelaterComponent implements OnInit {
+export class SendcampaignComponent implements OnInit {
   StoreData:boolean=true;
   DialogData:any;
   credsForm:FormGroup;
@@ -26,22 +26,19 @@ export class SchedulelaterComponent implements OnInit {
   options:boolean=true;
   attachment:boolean=true;
   changeTriggered=false;
-  constructor( @Inject(MAT_DIALOG_DATA) public data: any,
-    private _addCampaign:AddCampaignService,
-    private dialog:MatDialog,private router:Router,
-    private formBuilder: FormBuilder,
-    private sanitized: DomSanitizer,
-    private toastr:ToastrService ){
-      this.phisingForm = this.formBuilder.group({});
-      this.credsForm = this.formBuilder.group({});
-    }
-  
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+  private _addCampaign:AddCampaignService,
+  private dialog:MatDialog,private router:Router,
+  private formBuilder: FormBuilder,
+  private sanitized: DomSanitizer,
+  private toastr:ToastrService) {
+    this.phisingForm = this.formBuilder.group({});
+    this.credsForm = this.formBuilder.group({}); 
+   }
+
   ngOnInit(): void {
     this.phisingForm = this.formBuilder.group(
       {
-        date:[''],
-        time:[''],
-        tzone:['IST'],
         attachmentFile:[''],
         radio:[''||'false'],
       }
@@ -49,9 +46,9 @@ export class SchedulelaterComponent implements OnInit {
   }
   onChange(event: any) {
     this.changeTriggered = true;
-    this.file = event.target.files[0];
-    
+    this.file = event.target.files[0];    
   }
+
   schedulelater(){
     console.log(localStorage.getItem('name'))
     console.log(localStorage.getItem('file'))
@@ -75,10 +72,6 @@ export class SchedulelaterComponent implements OnInit {
       'emailSignature': localStorage.getItem('emailSignature'),
       'sendAttachment': localStorage.getItem('sendAttachment'),
       'attachmentName': localStorage.getItem('attachmentName'),
-      'fileContent':localStorage.getItem('fileContent'),
-      'scheduleDate':this.phisingForm.value.date,
-      'scheduleTime':this.phisingForm.value.time,
-      'scheduleTimeZone':this.phisingForm.value.tzone,
     }
     console.log(this.phisingForm.value.tzone)
     let con = JSON.stringify(reqBody);
@@ -116,7 +109,7 @@ export class SchedulelaterComponent implements OnInit {
 
 
     this.StoreData=false;
-    this._addCampaign.schedulecampagin(formData).subscribe((data)=>{
+    this._addCampaign.createCampaign(formData).subscribe((data)=>{
       if(data){
         this.StoreData=true;
         let dataDialog = { title: 'Campaign Schedule Successfully!' };
@@ -146,5 +139,4 @@ export class SchedulelaterComponent implements OnInit {
       }
     });
   }
-
 }

@@ -11,12 +11,12 @@
   
 </mat-form-field>
 
-  <input placeholder="12hr format" formControlName="time" aria-label="12hr format" [ngxTimepicker]="default" readonly style="margin-left: 30px ;height: 40px; width: 170px;">
+  <input placeholder="12hr format" formControlName="time" aria-label="12hr format" [ngxTimepicker]="default" readonly style="margin-left: 30px ;height: 40px; width: 155px;">
   <ngx-material-timepicker #default></ngx-material-timepicker>
   
 
 <div>
-  <h3 style="margin-left: 12px; margin-bottom: 5px;margin-top: 5px;font-size: 15px;">Send To Reportees</h3>
+  <h2 style="margin-left: 12px; margin-bottom: 5px;margin-top: 5px;font-size: 15px;">Send To Reportees</h2>
 
 <div>
   <input name="radio"  [(ngModel)]="options" type="radio" [value]="true" [checked]="options" style="margin-left:12px;" formControlName="radio"  >Yes
@@ -30,7 +30,7 @@
 </div>
   <div *ngIf="!options">
   <div class="row mt-2" >
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5" style="margin-left: 12px;">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-11" style="margin-left: 12px;">
       <label for="firsting" id="attachment_btn" style="font-size: 16px;"><img style="width:20px; height: 20px;"
               src="../../../../assets/images/attachment1.png"> Upload .csv file with custom emails.</label>
       <input type="file" accept=".csv" id="firsting" class="form-control" formControlName="attachmentFile"
@@ -39,9 +39,9 @@
   </div>
 
   <div class="row mt-2 " *ngIf="changeTriggered==true && this.file!=null">
-    <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 attachment-div" >
+    <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 attachment-div" >
       <img class="mr-2" src="../../../../assets/images/attachment_black.svg">
-        <a class="attachment-display" style="width:300px !important">{{file.name}}</a>
+        <a class="attachment-display" style="width:305px !important">{{file.name}}</a>
 
     </div>
 
@@ -53,7 +53,7 @@
 
 </div>
 <div>
-  <button type="submit" mat-raised-button class="add_btn" (click)="schedulelater()" style="width:430px !important; margin-top: 35px;margin-left: 15px;">Schedule Campaign</button>
+  <button type="submit" mat-raised-button class="add_btn" (click)="schedulelater()" style="width:418px !important; margin-top: 35px;margin-left: 15px;">Schedule Campaign</button>
 </div>
     
 </form>
