@@ -11,12 +11,12 @@
     <div  *ngIf="this.getUser()" class="col-lg-4 col-md-4 col-sm-4 col-xs-4 vertical-align">
       <div>
         <a download href="../../../../assets/pdfs/simulation_user_manual.pdf" id="info" (click)="toogletag(content)" title="download manual">
-         <img src="../../../../assets/images/user2.png">
+         <img style="color: white;" src="../../../../assets/images/user2.png">
         </a>
     </div>
         <mat-icon class="logout">
     <a (click)="Logout()" title="Logout">
-      <img class="rounded-circle vertical-align" src='../../assets/images/logout.svg'>
+      <span class="material-icons">logout</span>
     </a>
   </mat-icon>
     </div>

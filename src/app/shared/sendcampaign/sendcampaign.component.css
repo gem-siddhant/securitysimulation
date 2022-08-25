@@ -20,7 +20,17 @@
     display: flex;
     align-items: center;
     height: 30px;
-    background-color: rgb(202, 247, 232);
+    background-color: #a192b0;
     margin-left: 21px;
     border-radius: 5px;
   }
+  .heading{
+    margin-left: 12px; margin-bottom: 5px;margin-top: 5px;font-size: 25px;
+    color:#531D89;
+  }
+  input[type="radio"] {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+    transform: scale(1.5);
+  }
+ 
