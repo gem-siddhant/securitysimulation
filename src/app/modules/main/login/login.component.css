@@ -126,3 +126,24 @@ opacity: 0.4;
   border: rgba(0, 0, 0, 0.25);
   z-index: 3;
 }
+.onboarding{
+  color: #FFFF;
+  padding-top: 2px;
+  padding-bottom:25px;
+  position: absolute;
+  left: 19.06%;
+  right: 67.54%;
+  top: 72%;
+  bottom: 32.2%;
+  background: #205072;
+  align-content: center;
+  border-radius: 20px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: large;
+  display: flex;
+  justify-content: center;
+  border: rgba(0, 0, 0, 0.25);
+  z-index: 3;
+}

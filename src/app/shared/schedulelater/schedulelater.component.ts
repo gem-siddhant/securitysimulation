@@ -5,6 +5,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { NgxMaterialTimepickerTheme } from 'ngx-material-timepicker';
 import { ToastrService } from 'ngx-toastr';
 import { AddCampaignService } from 'src/app/modules/main/service/add-campaign.service';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
@@ -26,7 +27,8 @@ export class SchedulelaterComponent implements OnInit {
   options:boolean=true;
   attachment:boolean=true;
   changeTriggered=false;
-  constructor( @Inject(MAT_DIALOG_DATA) public data: any,
+  constructor( public dialogRef: MatDialogRef<SchedulelaterComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     private _addCampaign:AddCampaignService,
     private dialog:MatDialog,private router:Router,
     private formBuilder: FormBuilder,
@@ -52,9 +54,13 @@ export class SchedulelaterComponent implements OnInit {
     this.file = event.target.files[0];
     
   }
+  onClose() {
+    this.dialogRef.close();
+  }  
   schedulelater(){
     console.log(localStorage.getItem('name'))
     console.log(localStorage.getItem('file'))
+    //this.phisingForm.value.date =  new Date((this.phisingForm.value.dat).utcOffset('+0000').format('YYYY-MM-DD HH:MM'))
     this.submitted = true;
     
     if(this.phisingForm.invalid)
@@ -144,7 +150,25 @@ export class SchedulelaterComponent implements OnInit {
       else{
         this.toastr.error("Error in adding campaign.");
       }
-    });
+    });this.dialogRef.close();
   }
+  moment(dat: any) {
+    throw new Error('Method not implemented.');
+  }
+  darkTheme: NgxMaterialTimepickerTheme = {
+    container: {
+        bodyBackgroundColor: '#424242',
+        buttonColor: '#fff'
+    },
+    dial: {
+        dialBackgroundColor: '#555',
+    },
+    clockFace: {
+        clockFaceBackgroundColor: '#555',
+        clockHandColor: '#9fbd90',
+        clockFaceTimeInactiveColor: '#fff'
+    }
+};
+
 
 }

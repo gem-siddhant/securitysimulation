@@ -76,6 +76,11 @@ export class LoginComponent implements OnInit {
       this.mobile = isMobile;
     });
   }
+
+  onboard()
+  {
+    
+  }
   loginWithMicrosoft2(){
     this.authService.loginPopup({...this.msalGuardConfig.authRequest} as PopupRequest).subscribe((response: AuthenticationResult)=>{
       if(response){

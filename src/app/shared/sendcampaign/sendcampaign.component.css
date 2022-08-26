@@ -33,4 +33,11 @@
     -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
     transform: scale(1.5);
   }
- 
+  .add_btn{
+    background: #66209D;
+    border-radius: 5px;
+    width:418px !important; margin-top: 35px;margin-left: 15px;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+   }

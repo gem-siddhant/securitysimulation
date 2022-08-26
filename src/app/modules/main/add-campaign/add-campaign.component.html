@@ -148,15 +148,15 @@
     <!--send attachment-->
 <!--no attachment part-->
 <div>
-  <h3 style="margin-left: 15px;margin-bottom: 5px;font-size: 15px;">Send Attachment</h3>
+  <h3 style="margin-left: 15px;margin-bottom: 5px;font-size: 15px;color: #531D89;">Send Attachment</h3>
 </div>
 <div>
   <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="false" [checked]="!attachment" style="margin-left:12px;font-size: 14px;" formControlName="radio2"  >No
-</div>
+
 <!--no attachment part ended-->
 
 <!--send attachment start-->
-<div>
+
   <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="true" [checked]="attachment" style="margin-left:12px;margin-top:15px; font-size: 14px;margin-bottom: 5px;" formControlName="radio2"  >Yes
 </div>
 <!--provide your custom name-->
@@ -310,16 +310,16 @@
 <!--send attachment-->
 <!--no attachment part-->
 <div>
-  <h3 style="margin-left: 15px;margin-bottom: 5px;font-size: 15px;">Send Attachment</h3>
+  <h3 style="margin-left: 15px;margin-bottom: 5px;font-size: 15px;color: #531D89;">Send Attachment</h3>
 </div>
 <div>
   <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="false" [checked]="!attachment" style="margin-left:12px;font-size: 14px;" formControlName="radio2"  >No
-</div>
+
 <!--no attachment part ended-->
 
 <!--send attachment start-->
-<div>
-  <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="true" [checked]="attachment" style="margin-left:12px;margin-top:15px; font-size: 14px;margin-bottom: 5px;" formControlName="radio2"  >Yes
+
+  <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="true" [checked]="attachment" style="margin-left:180px;margin-top:15px; font-size: 14px;margin-bottom: 5px;" formControlName="radio2"  >Yes
 </div>
 <!--provide your custom name-->
 <div *ngIf="attachment">
