@@ -5,6 +5,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 import { NgxMaterialTimepickerTheme } from 'ngx-material-timepicker';
 import { ToastrService } from 'ngx-toastr';
 import { AddCampaignService } from 'src/app/modules/main/service/add-campaign.service';
@@ -62,7 +63,7 @@ export class SchedulelaterComponent implements OnInit {
     console.log(localStorage.getItem('file'))
     //this.phisingForm.value.date =  new Date((this.phisingForm.value.dat).utcOffset('+0000').format('YYYY-MM-DD HH:MM'))
     this.submitted = true;
-    
+    const scheduledate = moment(this.phisingForm.value.date).format("DD/MM/YYYY");
     if(this.phisingForm.invalid)
     return;
     const formData :any= new FormData();
@@ -82,7 +83,7 @@ export class SchedulelaterComponent implements OnInit {
       'sendAttachment': localStorage.getItem('sendAttachment'),
       'attachmentName': localStorage.getItem('attachmentName'),
       'fileContent':localStorage.getItem('fileContent'),
-      'scheduleDate':this.phisingForm.value.date,
+      'scheduleDate':scheduledate,
       'scheduleTime':this.phisingForm.value.time,
       'scheduleTimeZone':this.phisingForm.value.tzone,
     }

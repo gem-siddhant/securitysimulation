@@ -33,6 +33,8 @@ import { MatInputModule } from '@angular/material/input';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SendcampaignComponent } from './shared/sendcampaign/sendcampaign.component';
+import { OnboardingComponent } from './shared/onboarding/onboarding.component';
+
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
 }
@@ -48,7 +50,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     ConfirmationModalComponent,
     NavbarComponent,
     SchedulelaterComponent,
-    SendcampaignComponent
+    SendcampaignComponent,
+    OnboardingComponent
   ],
   imports: [
     BrowserModule,

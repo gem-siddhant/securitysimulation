@@ -11,9 +11,9 @@ DialogData:any;
     @Inject(MAT_DIALOG_DATA) public data: any) {
 
     }
-    onClose() {
+  onClose() {
       this.dialogRef.close();
-    }
+    }  
   ngOnInit(): void {
   }
 

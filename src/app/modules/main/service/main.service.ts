@@ -29,4 +29,7 @@ export class MainService {
    signUp(form:any){
       return this.http.post<any>('add/user',form);
    }
+   onboard(form:any){
+    return this.http.post<any>('add/user',form);
+ }
 }

@@ -25,11 +25,7 @@ const routes: Routes = [
   canActivate:[AuthGuard],
   component:AddCampaignComponent
 },
-{
-  path:'shared/schedulelater',
-  canActivate:[AuthGuard],
-  component:SchedulelaterComponent
-},
+
 {
   path:'dashboard',
   canActivate:[AuthGuard],
