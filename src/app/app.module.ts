@@ -34,6 +34,7 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SendcampaignComponent } from './shared/sendcampaign/sendcampaign.component';
 import { OnboardingComponent } from './shared/onboarding/onboarding.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
@@ -74,7 +75,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MatNativeDateModule,
     MatInputModule,
     NgxMaterialTimepickerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDialogModule
   ],
   providers: [ LoaderService,
     {

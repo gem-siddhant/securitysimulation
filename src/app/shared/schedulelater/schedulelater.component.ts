@@ -63,7 +63,7 @@ export class SchedulelaterComponent implements OnInit {
     console.log(localStorage.getItem('file'))
     //this.phisingForm.value.date =  new Date((this.phisingForm.value.dat).utcOffset('+0000').format('YYYY-MM-DD HH:MM'))
     this.submitted = true;
-    const scheduledate = moment(this.phisingForm.value.date).format("DD/MM/YYYY");
+    const scheduledate = moment(this.phisingForm.value.date).format("YYYY-MM-DD");
     if(this.phisingForm.invalid)
     return;
     const formData :any= new FormData();
@@ -158,16 +158,16 @@ export class SchedulelaterComponent implements OnInit {
   }
   darkTheme: NgxMaterialTimepickerTheme = {
     container: {
-        bodyBackgroundColor: '#424242',
+        bodyBackgroundColor: '#66209D',
         buttonColor: '#fff'
     },
     dial: {
-        dialBackgroundColor: '#555',
+        dialBackgroundColor: '#66209D',
     },
     clockFace: {
-        clockFaceBackgroundColor: '#555',
-        clockHandColor: '#9fbd90',
-        clockFaceTimeInactiveColor: '#fff'
+        clockFaceBackgroundColor: '#fff',
+        clockHandColor: '#312936;',
+        clockFaceTimeInactiveColor: 'black'
     }
 };
 

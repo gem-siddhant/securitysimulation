@@ -51,3 +51,14 @@
  .radiolabel{
   font-size: 18px;padding-left: 5px;color: #626262;
  }
+ ::ng-deep .mat-datepicker-toggle{
+  color:#66209D;
+}
+.ui-datepicker {
+  background: #333;
+  border: 1px solid #555;
+  color: #EEE;
+}
+.datepick{
+  padding-left: 2.69%;
+}
