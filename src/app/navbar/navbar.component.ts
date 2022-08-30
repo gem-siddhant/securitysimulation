@@ -14,6 +14,7 @@ import { SendcampaignComponent } from '../shared/sendcampaign/sendcampaign.compo
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SchedulelaterComponent } from '../shared/schedulelater/schedulelater.component';
 import { Router } from '@angular/router';
+import { ScheduleCampComponent } from '../shared/schedule-camp/schedule-camp.component';
 
 @Component({
   selector: 'app-navbar',
@@ -62,9 +63,10 @@ toogletag(content:any )
 }
 scheduled()
 {
-  const dialogRef = this.dialog.open(SendcampaignComponent, {
+  const dialogRef = this.dialog.open(ScheduleCampComponent, {
     width: '523px',
     height: '330px',
+    
 });
 }
 }

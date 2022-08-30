@@ -20,7 +20,6 @@ import { InteractionStatus, InteractionType, PopupRequest, RedirectRequest } fro
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ResponsiveService } from 'src/app/services/responsive.service';
 import { AddCampaignService } from '../service/add-campaign.service';
-import { OnboardingComponent } from 'src/app/shared/onboarding/onboarding.component';
 
 @Component({
   selector: 'app-login',
@@ -79,13 +78,7 @@ export class LoginComponent implements OnInit {
   }
 
   onboard()
-  {
-    const dialogRef = this.dialog.open(OnboardingComponent, {
-      width: '610px',
-      height: '390px'
-    });
-    
-  }
+  { }
   loginWithMicrosoft2(){
     this.authService.loginPopup({...this.msalGuardConfig.authRequest} as PopupRequest).subscribe((response: AuthenticationResult)=>{
       if(response){

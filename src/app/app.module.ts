@@ -33,7 +33,7 @@ import { MatInputModule } from '@angular/material/input';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SendcampaignComponent } from './shared/sendcampaign/sendcampaign.component';
-import { OnboardingComponent } from './shared/onboarding/onboarding.component';
+import { ScheduleCampComponent } from './shared/schedule-camp/schedule-camp.component';
 import { MatDialogModule } from '@angular/material/dialog';
 
 export function MSALInstanceFactory(): IPublicClientApplication {
@@ -52,7 +52,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     NavbarComponent,
     SchedulelaterComponent,
     SendcampaignComponent,
-    OnboardingComponent
+    ScheduleCampComponent
   ],
   imports: [
     BrowserModule,
