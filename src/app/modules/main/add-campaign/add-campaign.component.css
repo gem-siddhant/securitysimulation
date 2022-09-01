@@ -9,8 +9,8 @@
 }
 .sub-head{
 position: absolute;
-left: 6.50%;
-width:93%;
+left: 13%;
+width:75%;
 right: 6.74%;
 top: 24.74%;
 bottom: 70.05%;
@@ -21,7 +21,7 @@ font-weight: 500;
 font-size: 18px;
 line-height: 27px;
 color: #ffffff;
-background: #205072;
+background: #461A8F;
 border-radius: 5px;
 padding-top: 5px;
 }
@@ -137,7 +137,7 @@ width: 74%;
   position: absolute;
 height: 40px;
 top: 630px;
-background: #205072;
+background: #461A8F;
 border-radius: 5px;
 font-family: 'Poppins';
 font-style: normal;

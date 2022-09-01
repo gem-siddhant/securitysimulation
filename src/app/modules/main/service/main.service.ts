@@ -27,7 +27,7 @@ export class MainService {
     return this.http.post<any>('endCampaign',end);
    }
    signUp(form:any){
-      return this.http.post<any>('add/user',form);
+      return this.http.post<any>('/onboard/user',form);
    }
    onboard(form:any){
     return this.http.post<any>('add/user',form);
