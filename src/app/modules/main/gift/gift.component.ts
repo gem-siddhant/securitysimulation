@@ -16,11 +16,11 @@ export class GiftComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(
       params => {
-        this.email =  params['email'];
-        this.id =  params['taskId'];
+        this.email =  params['token'];
+        this.id =  params['val'];
       }
     )
-    console.log('email',this.email);
+    console.log('token',this.email);
     console.log('id',this.id);
     this.http.get<{ip:string}>('https://jsonip.com')
     .subscribe( data => {
@@ -31,9 +31,9 @@ export class GiftComponent implements OnInit {
   }
   sendData(emailID:any,ip:any,id:any){
     let obj={
-      'email':emailID,
+      'token':emailID,
       'ip':ip,
-      'taskId':id
+      'val':id
     }
     this._mainService.sendUserDetails(obj).subscribe((data:any)=>{
       if(data){
