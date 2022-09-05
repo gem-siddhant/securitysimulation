@@ -174,6 +174,9 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     localStorage.setItem('sendAttachment',this.phisingForm.value.radio2);
     localStorage.setItem('attachmentName',this.phisingForm.value.fileattach);
     localStorage.setItem('fileContent',this.phisingForm.value.filecontent);
+    dialogRef.afterClosed().subscribe(()=>{
+      this.router.navigate(['main/dashboard']);
+    })
   }
  
   sendcampaign()
@@ -197,7 +200,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     localStorage.setItem('attachmentName',this.phisingForm.value.fileattach);
     localStorage.setItem('fileContent',this.phisingForm.value.filecontent);
     dialogRef.afterClosed().subscribe(()=>{
-      this.router.navigate(['main/dashboard']);
+      this.router.navigate(['main/add-campaign']);
     })
 }
 
@@ -243,6 +246,8 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       'sendAttachment': this.phisingForm.value.radio2,
       'attachmentName': this.phisingForm.value.fileattach,
       'fileContent':this.phisingForm.value.filecontent,
+
+  
     }
     
 

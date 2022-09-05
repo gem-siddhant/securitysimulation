@@ -54,8 +54,8 @@ color: #9B2F9B;
   margin-bottom: 7px;
 }
 .sub-head{
-  position: absolute;
-  left: 19%;
+  position: relative;
+  left: 20%;
   width:60%;
   top: 5.74%;
   height: 35px;
@@ -68,5 +68,5 @@ color: #9B2F9B;
   background: #66209D;
   border-radius: 5px;
   padding-top: 5px;
-  background: #312936;
+
   }
