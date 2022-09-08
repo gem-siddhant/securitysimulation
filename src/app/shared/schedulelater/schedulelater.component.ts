@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
@@ -42,7 +42,7 @@ export class SchedulelaterComponent implements OnInit {
   ngOnInit(): void {
     this.phisingForm = this.formBuilder.group(
       {
-        date:[''],
+        date:['',Validators.required],
         time:[''],
         tzone:['IST'],
         attachmentFile:[''],

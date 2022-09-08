@@ -32,4 +32,11 @@ export class MainService {
    onboard(form:any){
     return this.http.post<any>('add/user',form);
  }
+  scheduled(email:any){
+    return this.http.post<any>('get/scheduled/tasks',email);
+  }   
+  deleteschedule(jobkey:any)
+  {
+    return this.http.post<any>('delete/job',jobkey);
+  } 
 }

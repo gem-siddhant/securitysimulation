@@ -4,6 +4,7 @@ import { MainService } from '../service/main.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatTableDataSource } from '@angular/material/table';
 import { view_data } from '../campaign-view/view.model';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-dashboard',
@@ -30,7 +31,16 @@ campaigns:any=[];
   getAllCampaigns(){
     this._main.getAllCampaigns(localStorage.getItem('email')).subscribe((data)=>{
       if(data){
+        
         this.campaigns=data;
+        for(let ele of this.campaigns)
+        {
+          let created = moment(ele.created_on).format("YYYY-MM-DD");
+          console.log(ele.taskId)
+        }
+        console.log(this.campaigns)
+
+        //this.campaigns=data;
       }
     },err=>{
       this.toastr.error("Error in loading data");
