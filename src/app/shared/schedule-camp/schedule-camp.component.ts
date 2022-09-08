@@ -69,7 +69,7 @@ export class ScheduleCampComponent implements OnInit {
         {
           const jobkey = ele.scheduledJobKey
           console.log(ele.scheduledJobKey)
-          let key = JSON.stringify(job)
+          let key = (job)
           let reqbody2 = {
             'jobKey': key
           }
