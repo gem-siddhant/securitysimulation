@@ -19,7 +19,7 @@
   </div>
   <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 box2" >
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading mt-3" >
-        <button style="margin-right: 25px;"><mat-icon >alarm_off</mat-icon></button>
+        <button (click)="Reschedule(this.campaigns[i].scheduledJobKey)" style="margin-right: 25px;"><mat-icon >alarm_off</mat-icon></button>
         <button (click)="deleteschedule(this.campaigns[i].scheduledJobKey)"><mat-icon>delete</mat-icon> </button>
     </div> 
 </div>

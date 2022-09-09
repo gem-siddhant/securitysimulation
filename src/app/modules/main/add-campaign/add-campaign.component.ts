@@ -200,7 +200,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     localStorage.setItem('attachmentName',this.phisingForm.value.fileattach);
     localStorage.setItem('fileContent',this.phisingForm.value.filecontent);
     dialogRef.afterClosed().subscribe(()=>{
-      this.router.navigate(['main/add-campaign']);
+      this.router.navigate(['main/dashboard']);
     })
 }
 

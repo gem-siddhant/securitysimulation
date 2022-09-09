@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { MainService } from 'src/app/modules/main/service/main.service';
 
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
+import { RescheduleComponent } from '../reschedule/reschedule.component';
 
 @Component({
   selector: 'app-schedule-camp',
@@ -76,18 +77,43 @@ export class ScheduleCampComponent implements OnInit {
           this._schedule.deleteschedule(reqbody2).subscribe((data)=>{
             if (data)
             {
+              let dataDialog = { title: 'Campaign ReScheduled Successfully!' };
               this.dialog.open(ConfirmationModalComponent, {
                 width: '513px',
+                data: dataDialog
               });
             }
-        })
-
+          },
+            (err)=>{
+              this.StoreData=true;
+               if(err.status==200){
+                 console.log('err',err);
+               let dataDialog = { title: 'Campaign deleted Successfully!' };
+                const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+                  width: '600px',
+                  data: dataDialog
+                });
+                dialogRef.afterClosed().subscribe(()=>{
+                  this.router.navigate(['main/dashboard']);
+                })
+              }
+              else{
+                
+              }
+            })
         }
   }
-},err=>{
-  this.toastr.error("Error in loading data");
-})
+});this.dialogRef.close();
+}
 
+Reschedule(job:any)
+{
+  const dialogRef = this.dialog.open(RescheduleComponent, {
+    width: '650px',
+    height: '350px', 
+    });  
+    localStorage.setItem('jobkey',job)
+    this.dialogRef.close();
 }
 }
 

@@ -1,4 +1,5 @@
 <body>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <div *ngIf="this.StoreData==false" class="overlay">
   <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value" diameter="50" *ngIf="this.StoreData==false"></mat-progress-spinner>
 </div>
@@ -26,19 +27,19 @@
      <mat-radio-group formControlName="tempate_select" aria-label="Select an option">
     <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> -->
       <div class=" col-lg-2 col-md-2 col-sm-2 col-xs-2 inline-block">
-    <img class="template-image mb-2" src="../../../../assets/images/template1.png">
+    <img class="template-image mb-2" src="../../../../assets/images/template1.png" style="width: 100%;">
     <mat-radio-button
     (click)="getPreFilledData(1)" [value]=1 style="color: white;">Amazon Template</mat-radio-button>
   </div>
   <!-- </div> -->
   <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> -->
     <div class=" col-lg-2 col-md-2 col-sm-2 col-xs-2 inline-block">
-    <img class="template-image mb-2" src="../../../../assets/images/accounts.png">
+    <img class="template-image mb-2" src="../../../../assets/images/accounts.png" style="width: 100%;">
     <mat-radio-button (click)="getPreFilledData(3)" [value]=3 style="color: white;">Accounts Template</mat-radio-button>
     </div>
   <!-- </div> -->
   <div class=" col-lg-2 col-md-2 col-sm-2 col-xs-2 inline-block">
-    <img class="template-image mb-2" src="../../../../assets/images/macbook_template.jpeg">
+    <img class="template-image mb-2" src="../../../../assets/images/macbook_template.jpeg" style="width: 100%;">
     <mat-radio-button (click)="getPreFilledData(5)" [value]=5 style="color: white;">IT Template</mat-radio-button>
     </div>
   </mat-radio-group>

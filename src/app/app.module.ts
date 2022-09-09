@@ -36,6 +36,7 @@ import { SendcampaignComponent } from './shared/sendcampaign/sendcampaign.compon
 import { ScheduleCampComponent } from './shared/schedule-camp/schedule-camp.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
+import { RescheduleComponent } from './shared/reschedule/reschedule.component';
 
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
@@ -53,7 +54,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     NavbarComponent,
     SchedulelaterComponent,
     SendcampaignComponent,
-    ScheduleCampComponent
+    ScheduleCampComponent,
+    RescheduleComponent
   ],
   imports: [
     BrowserModule,

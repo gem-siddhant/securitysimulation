@@ -17,5 +17,9 @@ export class AddCampaignService {
   schedulecampagin(formData:any){
     return this.http.post<any>('schedule/task',formData);
   }
+  reshedule(formData:any)
+  {
+    return this.http.post<any>('reschedule/tasks',formData);
+  }
 
 }
