@@ -21,12 +21,16 @@ export class SendcampaignComponent implements OnInit {
   api_hit:boolean=true;
   submitted = false;
   test: any = null;
+  value = 50;
+  mode: ProgressSpinnerMode = 'indeterminate';
+  color: ThemePalette = 'primary';
   file: File = this.test;
   manager:any = "true";
   options:boolean=true;
   attachment:boolean=true;
   changeTriggered=false;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
+  public dialogRef: MatDialogRef<SendcampaignComponent>,
   private _addCampaign:AddCampaignService,
   private dialog:MatDialog,private router:Router,
   private formBuilder: FormBuilder,
@@ -49,7 +53,7 @@ export class SendcampaignComponent implements OnInit {
     this.file = event.target.files[0];    
   }
 
-  schedulelater(){
+  sendnow(){
     console.log(localStorage.getItem('name'))
     console.log(localStorage.getItem('file'))
     this.submitted = true;
@@ -110,9 +114,10 @@ export class SendcampaignComponent implements OnInit {
 
     this.StoreData=false;
     this._addCampaign.createCampaign(formData).subscribe((data)=>{
+      this.dialogRef.close()
       if(data){
         this.StoreData=true;
-        let dataDialog = { title: 'Campaign Schedule Successfully!' };
+        let dataDialog = { title: 'Campaign Sent Successfully!' };
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {
           width: '600px',
           data: dataDialog
@@ -125,18 +130,19 @@ export class SendcampaignComponent implements OnInit {
       this.StoreData=true;
        if(err.status==200){
          console.log('err',err);
-       let dataDialog = { title: 'Campaign Schedule Successfully!' };
+       let dataDialog = { title: 'Campaign Sent Successfully!' };
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {
           width: '600px',
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{
           this.router.navigate(['main/dashboard']);
-        })
+        });
       }
       else{
         this.toastr.error("Error in adding campaign.");
       }
-    });
+  });
+ 
   }
 }

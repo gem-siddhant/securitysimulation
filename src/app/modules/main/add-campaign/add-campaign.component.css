@@ -1,3 +1,5 @@
+@media screen and (max-width: 2000px) 
+{ 
 .main-title{
   font-family: 'Poppins';
   font-style: normal;
@@ -9,12 +11,6 @@
 }
 .sub-head{
 position: absolute;
-left: 13%;
-width:75%;
-right: 6.74%;
-top: 24.74%;
-bottom: 70.05%;
-height: 35px;
 font-family: 'Poppins';
 font-style: normal;
 font-weight: 500;
@@ -23,7 +19,7 @@ line-height: 27px;
 color: #ffffff;
 background: #461A8F;
 border-radius: 5px;
-padding-top: 5px;
+align-items: center;
 }
 .inline-block {
   display: inline-block;
@@ -186,3 +182,4 @@ div.pair{
   padding-left: 10px;
 }
 
+}

@@ -21,6 +21,9 @@ export class SchedulelaterComponent implements OnInit {
   credsForm:FormGroup;
   phisingForm: FormGroup;
   api_hit:boolean=true;
+  value = 50;
+  mode: ProgressSpinnerMode = 'indeterminate';
+  color: ThemePalette = 'primary';
   submitted = false;
   test: any = null;
   file: File = this.test;
@@ -55,9 +58,7 @@ export class SchedulelaterComponent implements OnInit {
     this.file = event.target.files[0];
     
   }
-  onClose() {
-    this.dialogRef.close();
-  }  
+  
   schedulelater(){
     console.log(localStorage.getItem('name'))
     console.log(localStorage.getItem('file'))
@@ -124,6 +125,7 @@ export class SchedulelaterComponent implements OnInit {
 
     this.StoreData=false;
     this._addCampaign.schedulecampagin(formData).subscribe((data)=>{
+      this.dialogRef.close()
       if(data){
         this.StoreData=true;
         let dataDialog = { title: 'Campaign Schedule Successfully!' };
@@ -151,7 +153,7 @@ export class SchedulelaterComponent implements OnInit {
       else{
         this.toastr.error("Error in adding campaign.");
       }
-    });this.dialogRef.close();
+    });
   }
   moment(dat: any) {
     throw new Error('Method not implemented.');

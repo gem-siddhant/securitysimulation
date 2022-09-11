@@ -1,3 +1,6 @@
+<div *ngIf="this.StoreData==false" class="overlay">
+  <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value" diameter="50" *ngIf="this.StoreData==false"></mat-progress-spinner>
+</div>
 <form [formGroup]="phisingForm">
 <!--
 <mat-form-field class="example-full-width" appearance="fill" style="margin-left: 15px;">

@@ -174,9 +174,6 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     localStorage.setItem('sendAttachment',this.phisingForm.value.radio2);
     localStorage.setItem('attachmentName',this.phisingForm.value.fileattach);
     localStorage.setItem('fileContent',this.phisingForm.value.filecontent);
-    dialogRef.afterClosed().subscribe(()=>{
-      this.router.navigate(['main/dashboard']);
-    })
   }
  
   sendcampaign()
@@ -198,10 +195,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     localStorage.setItem('emailSignature',this.phisingForm.value.footer);
     localStorage.setItem('sendAttachment',this.phisingForm.value.radio2);
     localStorage.setItem('attachmentName',this.phisingForm.value.fileattach);
-    localStorage.setItem('fileContent',this.phisingForm.value.filecontent);
-    dialogRef.afterClosed().subscribe(()=>{
-      this.router.navigate(['main/dashboard']);
-    })
+    localStorage.setItem('fileContent',this.phisingForm.value.filecontent); 
 }
 
   submitForm(){

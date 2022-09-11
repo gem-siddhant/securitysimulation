@@ -1,3 +1,6 @@
+<div *ngIf="this.StoreData==false" class="overlay">
+  <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value" diameter="50" *ngIf="this.StoreData==false"></mat-progress-spinner>
+</div>
 <form [formGroup]="phisingForm">
     <div>
       <h2 class="heading">Send To Reportees</h2>
@@ -35,7 +38,7 @@
     
     </div>
     <div>
-      <button type="submit" mat-raised-button class="add_btn" (click)="schedulelater()" style="width:430px !important; margin-top: 35px;margin-left: 15px; font-size: 18px;">Send Campaign Now</button>
+      <button type="submit" mat-raised-button class="add_btn" (click)="sendnow()" style="width:430px !important; margin-top: 35px;margin-left: 15px; font-size: 18px;">Send Campaign Now</button>
     </div>
         
     </form>
