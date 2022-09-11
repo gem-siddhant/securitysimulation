@@ -124,6 +124,7 @@ export class SchedulelaterComponent implements OnInit {
 
 
     this.StoreData=false;
+    
     this._addCampaign.schedulecampagin(formData).subscribe((data)=>{
       this.dialogRef.close()
       if(data){
@@ -141,6 +142,7 @@ export class SchedulelaterComponent implements OnInit {
       this.StoreData=true;
        if(err.status==200){
          console.log('err',err);
+         this.dialogRef.close()
        let dataDialog = { title: 'Campaign Schedule Successfully!' };
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {
           width: '600px',

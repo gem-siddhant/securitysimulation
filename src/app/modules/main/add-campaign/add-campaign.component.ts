@@ -138,7 +138,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   {
     const dialogRef = this.dialog.open(SchedulelaterComponent, {
       width: '523px',
-      height: '390px'
+      height: '330px',
     });
     if (this.phisingForm.value.name == "")
     {
