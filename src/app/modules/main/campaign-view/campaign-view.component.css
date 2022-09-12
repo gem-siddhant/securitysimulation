@@ -53,12 +53,14 @@ padding-left: 10px;
     background: #FFFFFF;
     box-shadow: 3px 3px 10px rgba(32, 80, 114, 0.1);
     border-radius: 5px;
+    
   }
   .circle-box1{
-      margin-right: 5px;
+      margin-right: 8%;
       background: #FFFFFF;
       box-shadow: 3px 3px 10px rgba(32, 80, 114, 0.1);
       border-radius: 5px;
+
     
   }
   .border-rem{
@@ -322,7 +324,6 @@ padding-left: 10px;
 .export-btn
   {
     position: absolute;
-
     width: 150px;
     border-radius: 5px;
     background-color:  #7A2AB4;
@@ -333,8 +334,7 @@ padding-left: 10px;
     font-weight: 500;
     font-size: 15px;
     text-align: center;
-    line-height: 150%;
-    margin-top: 10px;
+    position: relative;
   }
   .detail{
   position: absolute;

@@ -20,6 +20,7 @@ color: #ffffff;
 background: #461A8F;
 border-radius: 5px;
 align-items: center;
+left: 13.20%;
 }
 .inline-block {
   display: inline-block;
@@ -82,6 +83,7 @@ background: #FFFFFF;
 box-shadow: 3px 3px 10px rgba(32, 80, 114, 0.1);
 border-radius: 5px;
 width: 74%;
+
 }
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
   color: #205072;

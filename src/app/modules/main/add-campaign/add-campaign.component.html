@@ -18,27 +18,27 @@
 
 <!--checking whether manager or not-->
   <form [formGroup]="phisingForm">
-<div class="row mb-3">
-  <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 sub-head mb-3 ms-4">
-   Choose Any One Template
-  </div>
-  <div class="row temp-pad">
+    <div class="row mb-3">
+      <div class="col-lg-9 col-md-6 col-sm-5 col-xs-5 sub-head">
+       Choose Template
+      </div>
+  <div class="row temp-pad ">
 
      <mat-radio-group formControlName="tempate_select" aria-label="Select an option">
     <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> -->
-      <div class=" col-lg-2 col-md-2 col-sm-2 col-xs-2 inline-block">
+      <div class=" col-lg-4 col-md-2 col-sm-2 col-xs-2 inline-block">
     <img class="template-image mb-2" src="../../../../assets/images/template1.png" style="width: 100%;">
     <mat-radio-button
     (click)="getPreFilledData(1)" [value]=1 style="color: white;">Amazon Template</mat-radio-button>
   </div>
   <!-- </div> -->
   <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> -->
-    <div class=" col-lg-2 col-md-2 col-sm-2 col-xs-2 inline-block">
+    <div class=" col-lg-4 col-md-2 col-sm-2 col-xs-2 inline-block">
     <img class="template-image mb-2" src="../../../../assets/images/accounts.png" style="width: 100%;">
     <mat-radio-button (click)="getPreFilledData(3)" [value]=3 style="color: white;">Accounts Template</mat-radio-button>
     </div>
   <!-- </div> -->
-  <div class=" col-lg-2 col-md-2 col-sm-2 col-xs-2 inline-block">
+  <div class=" col-lg-4 col-md-2 col-sm-2 col-xs-2 inline-block">
     <img class="template-image mb-2" src="../../../../assets/images/macbook_template.jpeg" style="width: 100%;">
     <mat-radio-button (click)="getPreFilledData(5)" [value]=5 style="color: white;">IT Template</mat-radio-button>
     </div>
@@ -46,7 +46,7 @@
 </div>
 </div>
 <div *ngIf="manager=='false'">
-  <div class="fill-details">Fill in the details</div>
+  <div class="sub-head col-lg-9 col-md-6 col-sm-5 col-xs-5">Fill in the details</div>
   <div class="row" *ngIf="this.phisingForm.value.tempate_select!=0">
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-box margin-des">
   
