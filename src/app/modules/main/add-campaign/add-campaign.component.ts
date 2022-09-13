@@ -137,29 +137,10 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   schedulelater()
   {
     const dialogRef = this.dialog.open(SchedulelaterComponent, {
-      width: '523px',
+      width: '770px',
       height: '330px',
-    });
-    if (this.phisingForm.value.name == "")
-    {
-      this.toastr.error("Please EDIT the name of campaign");
-    }
-    if (this.phisingForm.value.subject == "")
-    {
-      this.toastr.error("Please EDIT the Subject")
-    }
-    if (this.phisingForm.value.desc == "")
-    {
-      this.toastr.error("Please EDIT the description")
-    }
-    if (this.phisingForm.value.addnote == "")
-    {
-      this.toastr.error("Please EDIT the Add note")
-    }
-    if (this.phisingForm.value.footer == "")
-    {
-      this.toastr.error("Please EDIT the Email Signature")
-    }
+    }); 
+    
     localStorage.setItem('name',this.phisingForm.value.name);
     localStorage.setItem('templateRewardType',this.phisingForm.value.reward_type);
     localStorage.setItem('templateDescription',this.phisingForm.value.desc);

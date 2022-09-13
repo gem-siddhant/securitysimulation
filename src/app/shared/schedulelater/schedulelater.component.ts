@@ -17,6 +17,7 @@ import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-m
 })
 export class SchedulelaterComponent implements OnInit {
   StoreData:boolean=true;
+  selected = 'None';
   DialogData:any;
   credsForm:FormGroup;
   phisingForm: FormGroup;
@@ -46,8 +47,8 @@ export class SchedulelaterComponent implements OnInit {
     this.phisingForm = this.formBuilder.group(
       {
         date:['',Validators.required],
-        time:[''],
-        tzone:['IST'],
+        time:['',Validators.required],
+        timezone:[''],
         attachmentFile:[''],
         radio:[''||'false'],
       }
@@ -67,6 +68,21 @@ export class SchedulelaterComponent implements OnInit {
     const scheduledate = moment(this.phisingForm.value.date).format("YYYY-MM-DD");
     if(this.phisingForm.invalid)
     return;
+    if(localStorage.getItem('name')=="" || localStorage.getItem('templateDescription') == "" || localStorage.getItem('templateHeading') == "" || localStorage.getItem('addNote')== "" || localStorage.getItem('emailSignature')=="")
+    {
+      this.toastr.error("please EDIT the Fields")
+      return;
+    }
+    if(localStorage.getItem('email1') == "")
+    {
+      this.toastr.error("please provide email id")
+      return
+    }
+    if(localStorage.getItem('password') == "")
+    {
+      this.toastr.error("please provide password")
+      return
+    }
     const formData :any= new FormData();
     let reqBody={
       'name': localStorage.getItem('name'),
@@ -86,7 +102,7 @@ export class SchedulelaterComponent implements OnInit {
       'fileContent':localStorage.getItem('fileContent'),
       'scheduleDate':scheduledate,
       'scheduleTime':this.phisingForm.value.time,
-      'scheduleTimeZone':this.phisingForm.value.tzone,
+      'scheduleTimeZone':this.phisingForm.value.timezone,
     }
     console.log(this.phisingForm.value.tzone)
     let con = JSON.stringify(reqBody);
@@ -122,9 +138,7 @@ export class SchedulelaterComponent implements OnInit {
       }
     }
 
-
-    this.StoreData=false;
-    
+    this.StoreData=false;  
     this._addCampaign.schedulecampagin(formData).subscribe((data)=>{
       this.dialogRef.close()
       if(data){

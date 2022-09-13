@@ -57,9 +57,24 @@ export class SendcampaignComponent implements OnInit {
     console.log(localStorage.getItem('name'))
     console.log(localStorage.getItem('file'))
     this.submitted = true;
-    
     if(this.phisingForm.invalid)
     return;
+    if(localStorage.getItem('name')=="" || localStorage.getItem('templateDescription') == "" || localStorage.getItem('templateHeading') == "" || localStorage.getItem('addNote')== "" || localStorage.getItem('emailSignature')=="")
+    {
+      this.toastr.error("please EDIT the Fields")
+      return;
+    }
+    if(localStorage.getItem('email1') == "")
+    {
+      this.toastr.error("please provide email id")
+      return
+    }
+    if(localStorage.getItem('password') == "")
+    {
+      this.toastr.error("please provide password")
+      return
+    }
+  
     const formData :any= new FormData();
     let reqBody={
       'name': localStorage.getItem('name'),

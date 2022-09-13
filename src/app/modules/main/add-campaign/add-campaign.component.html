@@ -215,18 +215,18 @@
 <div *ngIf="manager == 'true'">
 <div class="fill-details">Fill in the details</div>
 <div class="row" *ngIf="this.phisingForm.value.tempate_select!=0">
-  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-box margin-des">
+  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-box mt-4">
 
-  <div class="first">
-  <div class="name">
-    <mat-form-field appearance="outline" style="width:420px !important">
+  <div class="first container col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <div class="name  row col-lg-6 col-md-12 col-sm-12 col-xs-12">
+    <mat-form-field appearance="outline" >
       <mat-label>Name of Campaign</mat-label>
       <input matInput type="text" [value]="this.prefilled.heading"  formControlName="name" maxlength="30">
     </mat-form-field>
     </div>
     &nbsp;
-    <div class="name">
-      <mat-form-field  appearance="outline" style="width:418px !important">
+    <div class="name row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <mat-form-field  appearance="outline">
         <mat-label>Email's Subject</mat-label>
         <input matInput type="text" [value]="this.prefilled.subject" id="in" formControlName="subject" maxlength="100">
       </mat-form-field>
