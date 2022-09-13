@@ -41,7 +41,7 @@
 <div>
   <h2 class="heading">Send To Reportees</h2>
 
-  <div class="radiogrp">
+  <div class="radiogrp col-xs-12 col-sm-12 col-md-12 col-lg-11">
     <div>
       <input name="radio"  [(ngModel)]="options" type="radio" [value]="true" [checked]="options" style="margin-left:15px;font-size: 40px;" formControlName="radio"  ><label class="radiolabel">Yes</label>
      
@@ -63,7 +63,7 @@
   <div class="row mt-2 " *ngIf="changeTriggered==true && this.file!=null">
     <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 attachment-div" >
       <img class="mr-2" src="../../../../assets/images/attachment_black.svg">
-        <a class="attachment-display" style="width:305px !important">{{file.name}}</a>
+        <a class="attachment-display" style="width:320px !important">{{file.name}}</a>
 
     </div>
 
@@ -74,7 +74,7 @@
 </div>
 
 </div>
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+<div class="row col-lg-11 col-md-12 col-sm-12 col-xs-12">
   <button type="submit" mat-raised-button class="add_btn" (click)="schedulelater()">Schedule Campaign</button>
 </div>
     
@@ -130,7 +130,7 @@
     <div class="row mt-2 " *ngIf="changeTriggered==true && this.file!=null">
       <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 attachment-div" >
         <img class="mr-2" src="../../../../assets/images/attachment_black.svg">
-          <a class="attachment-display" style="width:305px !important">{{file.name}}</a>
+          <a class="attachment-display" style="width:340px !important">{{file.name}}</a>
   
       </div>
   
@@ -140,7 +140,7 @@
     </mat-error>
   </div>
 
-  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <button type="submit" mat-raised-button class="add_btn" (click)="schedulelater()">Schedule Campaign</button>
   </div>
 </div>

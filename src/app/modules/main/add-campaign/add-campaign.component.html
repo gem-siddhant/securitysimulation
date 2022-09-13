@@ -11,7 +11,7 @@
       <mat-icon style="color: white;">keyboard_arrow_left</mat-icon>
     </button>
   </div>
-  <div class="col-lg-8 col-md-10 col-sm-10 col-xs-10 main-title" style="color: white;">
+  <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 main-title" style="color: white;">
     Create Phising Campaign
   </div>
 </div>
@@ -26,19 +26,19 @@
 
      <mat-radio-group formControlName="tempate_select" aria-label="Select an option">
     <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> -->
-      <div class=" col-lg-4 col-md-2 col-sm-2 col-xs-2 inline-block">
+      <div class=" row col-lg-4 col-md-4 col-sm-2 col-xs-2 inline-block">
     <img class="template-image mb-2" src="../../../../assets/images/template1.png" style="width: 100%;">
     <mat-radio-button
     (click)="getPreFilledData(1)" [value]=1 style="color: white;">Amazon Template</mat-radio-button>
   </div>
   <!-- </div> -->
   <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> -->
-    <div class=" col-lg-4 col-md-2 col-sm-2 col-xs-2 inline-block">
+    <div class=" row col-lg-4 col-md-2 col-sm-2 col-xs-2 inline-block">
     <img class="template-image mb-2" src="../../../../assets/images/accounts.png" style="width: 100%;">
     <mat-radio-button (click)="getPreFilledData(3)" [value]=3 style="color: white;">Accounts Template</mat-radio-button>
     </div>
   <!-- </div> -->
-  <div class=" col-lg-4 col-md-2 col-sm-2 col-xs-2 inline-block">
+  <div class=" row col-lg-4 col-md-2 col-sm-2 col-xs-2 inline-block">
     <img class="template-image mb-2" src="../../../../assets/images/macbook_template.jpeg" style="width: 100%;">
     <mat-radio-button (click)="getPreFilledData(5)" [value]=5 style="color: white;">IT Template</mat-radio-button>
     </div>
@@ -46,20 +46,18 @@
 </div>
 </div>
 <div *ngIf="manager=='false'">
-  <div class="sub-head col-lg-9 col-md-6 col-sm-5 col-xs-5">Fill in the details</div>
+  <div class="sub-head row col-lg-9 col-md-6 col-sm-5 col-xs-5">Fill in the details</div>
   <div class="row" *ngIf="this.phisingForm.value.tempate_select!=0">
-    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-box margin-des">
-  
-    <div class="first">
-    <div class="name">
-      <mat-form-field appearance="outline" style="width:420px !important">
+    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 form-box">
+    <div class="first row col-lg-12 col-md-12 col-sm-12 col-xs-6">
+    <div class="name row">
+      <mat-form-field appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0">
         <mat-label>Name of Campaign</mat-label>
         <input matInput type="text" [value]="this.prefilled.heading"  formControlName="name" maxlength="25">
       </mat-form-field>
-      </div>
-      &nbsp;
-      <div class="name">
-        <mat-form-field  appearance="outline" style="width:418px !important">
+    
+      
+        <mat-form-field  appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6">
           <mat-label>Email's Subject</mat-label>
           <input matInput type="text" [value]="this.prefilled.subject" id="in" formControlName="subject" maxlength="70">
         </mat-form-field>
@@ -72,10 +70,9 @@
   </div>
   
   <!--reward type field-->
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <mat-form-field appearance="outline" [ngClass]="{'hide-class':this.prefilled.rewardType==null}" style="width:97.35% !important;padding-top: 5px;
-      font-size: 16px;  padding-left: 10px;">
+  <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="row first">
+      <mat-form-field appearance="outline" class="col col-lg-12 col-md-12 col-sm-12 col-xs-6" [ngClass]="{'hide-class':this.prefilled.rewardType==null}">
         <mat-label>Reward Type</mat-label>
         <input matInput type="text" [value]="this.prefilled.rewardType" formControlName="reward_type">
       </mat-form-field>
@@ -83,10 +80,9 @@
   </div>
   
   <!--Amount type field-->
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <mat-form-field class="w-100" appearance="outline" [ngClass]="{'hide-class':this.prefilled.amount==null}" style="width:97.35% !important;padding-top: 5px;
-      font-size: 16px;  padding-left: 10px;">
+  <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="row first">
+      <mat-form-field class="w-100" appearance="outline" class="col col-lg-12 col-md-6 col-sm-12 col-xs-6 w-100" [ngClass]="{'hide-class':this.prefilled.amount==null}">
         <mat-label>Amount</mat-label>
         <input matInput type="number" [value]="this.prefilled.amount" formControlName="reward_amount">
       </mat-form-field>
@@ -94,10 +90,9 @@
   </div>
   
   <!--description type field-->
-    <div class="row">
-      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <mat-form-field class="w-100" appearance="outline" [ngClass]="{'hide-class':this.prefilled.description==null}" style="width:97.35% !important;padding-top: 5px;
-        font-size: 16px; padding-left: 10px;">
+    <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+      <div class="row first">
+        <mat-form-field class="w-100" appearance="outline" class="col col-lg-12 col-md-6 col-sm-12 col-xs-6 w-100" [ngClass]="{'hide-class':this.prefilled.description==null}">
           <mat-label>Description</mat-label>
           <textarea matInput type="text" [value]="this.prefilled.description" formControlName="desc" maxlength="1500"></textarea>
         </mat-form-field>
@@ -106,10 +101,9 @@
 
     
   <!--Note if needed -->
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <mat-form-field class="w-100" appearance="outline" [ngClass]="{'hide-class':this.prefilled.addNote==null}" style="width:97.35% !important;padding-top: 5px;
-      font-size: 16px; padding-left: 10px;">
+  <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="row first">
+      <mat-form-field class="w-100" appearance="outline" class="col col-lg-12 col-md-6 col-sm-12 col-xs-6 w-100" [ngClass]="{'hide-class':this.prefilled.addNote==null}">
       <mat-label>Add Note</mat-label>
       <textarea matInput type="text" [value]="this.prefilled.addNote" formControlName="addnote" maxlength="200"></textarea>
       </mat-form-field>
@@ -117,10 +111,9 @@
   </div>
 
   <!--email signature at footer-->
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <mat-form-field class="w-100" appearance="outline" [ngClass]="{'hide-class':this.prefilled.emailSignature==null}" style="width:97.35% !important;padding-top: 5px;
-      font-size: 16px; padding-left: 10px;">
+  <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="row first">
+      <mat-form-field class="w-100" appearance="outline" class="col col-lg-12 col-md-6 col-sm-12 col-xs-6 w-100" [ngClass]="{'hide-class':this.prefilled.emailSignature==null}">
       <mat-label>Email Signature</mat-label>
       <textarea matInput type="text" [value]="this.prefilled.emailSignature" formControlName="footer" maxlength="40"></textarea>
       </mat-form-field>
@@ -129,16 +122,14 @@
   
     <!--email and password for simulation-->
   
-    <div class="first">
-      <div class="name">
-        <mat-form-field appearance="outline" style="width:420px !important">
+    <div class="first  row col-lg-12 col-md-12 col-sm-12 col-xs-6">
+      <div class="name row">
+        <mat-form-field appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0">
           <mat-label>Email for simulation</mat-label>
           <input matInput type="text" formControlName="email">
         </mat-form-field>
-        &nbsp;
-      </div>
-      <div class="name">
-        <mat-form-field appearance="outline" style="width:428px !important">
+ 
+        <mat-form-field appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0" >
           <mat-label>Password</mat-label>
           <input matInput type="password" formControlName="password">
         </mat-form-field>
@@ -148,34 +139,31 @@
 
     <!--send attachment-->
 <!--no attachment part-->
-<div>
-  <h3 style="margin-left: 15px;margin-bottom: 5px;font-size: 15px;color: #531D89;">Send Attachment</h3>
-</div>
-<div>
-  <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="false" [checked]="!attachment" style="margin-left:12px;font-size: 14px;" formControlName="radio2"  >No
+<div class="row col-lg-6 col-md-6 col-sm-6 col-xs-6">
+  <h3 style="margin-left: 15px;margin-bottom: 5px;font-size: 15px;color: #531D89;" class="row col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0">Send Attachment</h3>
+
+  <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="false" [checked]="!attachment" style="margin-left:12px;font-size: 11px;margin-right: 2%;" class="col col-lg-1 col-md-3 col-sm-3 col-xs-3" formControlName="radio2"  >No
 
 <!--no attachment part ended-->
 
 <!--send attachment start-->
 
-  <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="true" [checked]="attachment" style="margin-left:12px;margin-top:15px; font-size: 14px;margin-bottom: 5px;" formControlName="radio2"  >Yes
+  <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="true" [checked]="attachment" style="margin-left:12px; font-size: 11px;margin-right: 2%;" class="row col-lg-1 col-md-2 col-sm-3 col-xs-3 p-2" formControlName="radio2"  >Yes
 </div>
 <!--provide your custom name-->
 <div *ngIf="attachment">
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <mat-form-field class="w-100" appearance="outline" aria-placeholder="attachment.pdf" style="width:97.35% !important;padding-top: 5px;
-      font-size: 16px; padding-left: 10px;">
+  <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="row first">
+      <mat-form-field class="w-100" class="col col-lg-12 col-md-6 col-sm-12 col-xs-6 w-100" appearance="outline" aria-placeholder="attachment.pdf">
       <mat-label>Provide the file name</mat-label>
       <textarea matInput type="text" formControlName="fileattach" maxlength="50"></textarea>
       </mat-form-field>
     </div>
   </div>
 <!--Code for provide attachment content-->
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <mat-form-field class="w-100" appearance="outline" aria-placeholder="attachment.pdf" style="width:97.35% !important;padding-top: 5px;
-      font-size: 16px; padding-left: 10px;">
+  <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="row first">
+      <mat-form-field class="w-100" class="col col-lg-12 col-md-6 col-sm-12 col-xs-6 w-100" appearance="outline" aria-placeholder="attachment.pdf">
       <mat-label>Provide File content</mat-label>
       <textarea matInput type="text" formControlName="filecontent" maxlength="200"></textarea>
       </mat-form-field>
@@ -188,17 +176,37 @@
 <!--end of file custome name-->
 <!--end of attachment part -->
 
-<div class="first">
-  <div class="name">
-    <button type="submit" mat-raised-button class="add_btn" (click)="sendcampaign()"  style="width:420px !important" >Send Campaign</button>
-    &nbsp;
-  </div>
-  <div class="name">
-    <button type="submit" mat-raised-button class="add_btn" (click)="schedulelater()"   style="width:420px !important">Schedule Later</button>
-  </div>
-  &nbsp;
-</div>
+
+
+<div>
+  <div>
+    <button type="submit"  mat-raised-button class=" add_btn" (click)="submit()"   >Send to me</button>
+
   
+    <button type="submit" mat-raised-button class="add_btn" (click)="sendcampaign()" >Send Campaign</button>
+   
+  
+    <button type="submit" mat-raised-button class="add_btn" (click)="schedulelater()" >Schedule Later</button>
+  </div>
+
+</div>
+
+<!-- <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group mr-2" role="group" aria-label="First group">
+    <button type="button" class="btn btn-secondary add_btn" (click)="submit()" >Send to me</button>
+  </div>
+
+  <div class="btn-group mr-2" role="group" aria-label="Second group">
+    
+    <button type="button" class="btn btn-secondary add_btn inline-block"  (click)="sendcampaign()">Send Campaign</button>
+  </div>
+
+  <div class="btn-group" role="group" aria-label="Third group">
+    <button type="button" class="btn btn-secondary add_btn inline-block" (click)="schedulelater()" >Schedule Later</button>
+  </div>
+</div> -->
+
+
   </div>
   <!-- <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 form-box">
     <div class="preview" [innerHTML]="testFINAL">
@@ -213,36 +221,34 @@
 <!--if manager is true-->
 
 <div *ngIf="manager == 'true'">
-<div class="fill-details">Fill in the details</div>
+<div class="sub-head row col-lg-9 col-md-6 col-sm-5 col-xs-5">Fill in the details</div>
 <div class="row" *ngIf="this.phisingForm.value.tempate_select!=0">
-  <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 form-box mt-4">
+  <div class="col-lg-9 col-md-6 col-sm-6 col-xs-6 form-box">
 
-  <div class="first container col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  <div class="name  row col-lg-6 col-md-12 col-sm-12 col-xs-12">
-    <mat-form-field appearance="outline" >
-      <mat-label>Name of Campaign</mat-label>
-      <input matInput type="text" [value]="this.prefilled.heading"  formControlName="name" maxlength="30">
-    </mat-form-field>
-    </div>
-    &nbsp;
-    <div class="name row col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <mat-form-field  appearance="outline">
-        <mat-label>Email's Subject</mat-label>
-        <input matInput type="text" [value]="this.prefilled.subject" id="in" formControlName="subject" maxlength="100">
-      </mat-form-field>
-      &nbsp;
-    </div>
-    </div>
+    <div class="first row col-lg-12 col-md-12 col-sm-12 col-xs-6">
+      <div class="name row">
+        <mat-form-field appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0">
+          <mat-label>Name of Campaign</mat-label>
+          <input matInput type="text" [value]="this.prefilled.heading"  formControlName="name" maxlength="25">
+        </mat-form-field>
+      
+        
+          <mat-form-field  appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6">
+            <mat-label>Email's Subject</mat-label>
+            <input matInput type="text" [value]="this.prefilled.subject" id="in" formControlName="subject" maxlength="70">
+          </mat-form-field>
+          &nbsp;
+        </div>
+        </div>
 
 <div class="row">
   
 </div>
 
 <!--reward type field-->
-<div class="row">
-  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <mat-form-field appearance="outline" [ngClass]="{'hide-class':this.prefilled.rewardType==null}" style="width:97.35% !important;padding-top: 5px;
-    font-size: 16px;  padding-left: 10px;">
+<div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <div class="row first">
+    <mat-form-field appearance="outline" class="col col-lg-12 col-md-12 col-sm-12 col-xs-6" [ngClass]="{'hide-class':this.prefilled.rewardType==null}">
       <mat-label>Reward Type</mat-label>
       <input matInput type="text" [value]="this.prefilled.rewardType" formControlName="reward_type">
     </mat-form-field>
@@ -250,10 +256,9 @@
 </div>
 
 <!--Amount type field-->
-<div class="row">
-  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-    <mat-form-field class="w-100" appearance="outline" [ngClass]="{'hide-class':this.prefilled.amount==null}" style="width:97.35% !important;padding-top: 5px;
-    font-size: 16px;  padding-left: 10px;">
+<div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+  <div class="row first">
+    <mat-form-field class="col col-lg-12 col-md-6 col-sm-12 col-xs-6 w-100" appearance="outline" [ngClass]="{'hide-class':this.prefilled.amount==null}">
       <mat-label>Amount</mat-label>
       <input matInput type="number" [value]="this.prefilled.amount" formControlName="reward_amount">
     </mat-form-field>
@@ -261,10 +266,9 @@
 </div>
 
 <!--description type field-->
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <mat-form-field class="w-100" appearance="outline" [ngClass]="{'hide-class':this.prefilled.description==null}" style="width:97.35% !important;padding-top: 5px;
-      font-size: 16px; padding-left: 10px;">
+  <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+    <div class="row first">
+      <mat-form-field class="col col-lg-12 col-md-6 col-sm-12 col-xs-6 w-100" appearance="outline" [ngClass]="{'hide-class':this.prefilled.description==null}">
         <mat-label>Description</mat-label>
         <textarea matInput type="text" [value]="this.prefilled.description" formControlName="desc" maxlength="1500"></textarea>
       </mat-form-field>
@@ -272,10 +276,9 @@
   </div>
 
   <!--Note if needed -->
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <mat-form-field class="w-100" appearance="outline" [ngClass]="{'hide-class':this.prefilled.addNote==null}" style="width:97.35% !important;padding-top: 5px;
-      font-size: 16px; padding-left: 10px;">
+  <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="row first">
+      <mat-form-field class="col col-lg-12 col-md-6 col-sm-12 col-xs-6  w-100" appearance="outline" [ngClass]="{'hide-class':this.prefilled.addNote==null}">
       <mat-label>Add Note</mat-label>
       <textarea matInput type="text" [value]="this.prefilled.addNote" formControlName="addnote" maxlength="200"></textarea>
       </mat-form-field>
@@ -283,10 +286,9 @@
   </div>
 
   <!--email signature at footer-->
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-      <mat-form-field class="w-100" appearance="outline" [ngClass]="{'hide-class':this.prefilled.emailSignature==null}" style="width:97.35% !important;padding-top: 5px;
-      font-size: 16px; padding-left: 10px;">
+  <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="row first">
+      <mat-form-field class="col col-lg-12 col-md-6 col-sm-12 col-xs-6  w-100" appearance="outline" [ngClass]="{'hide-class':this.prefilled.emailSignature==null}">
       <mat-label>Email Signature</mat-label>
       <textarea matInput type="text" [value]="this.prefilled.emailSignature" formControlName="footer" maxlength="50"></textarea>
       </mat-form-field>
@@ -295,16 +297,14 @@
 
   <!--email and password for simulation-->
 
-  <div class="first">
-    <div class="name">
-      <mat-form-field appearance="outline" style="width:420px !important">
+  <div class="first  row col-lg-12 col-md-12 col-sm-12 col-xs-6">
+    <div class="name row">
+      <mat-form-field appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0">
         <mat-label>Email for simulation</mat-label>
         <input matInput type="text" formControlName="email">
       </mat-form-field>
-      &nbsp;
-    </div>
-    <div class="name">
-      <mat-form-field appearance="outline" style="width:428px !important">
+
+      <mat-form-field appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0" >
         <mat-label>Password</mat-label>
         <input matInput type="password" formControlName="password">
       </mat-form-field>
@@ -314,17 +314,16 @@
 
 <!--send attachment-->
 <!--no attachment part-->
-<div>
-  <h3 style="margin-left: 15px;margin-bottom: 5px;font-size: 15px;color: #531D89;">Send Attachment</h3>
-</div>
-<div>
-  <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="false" [checked]="!attachment" style="margin-left:12px;font-size: 14px;" formControlName="radio2"  >No
+<div class="row col-lg-6 col-md-6 col-sm-6 col-xs-6">
+  <h3 style="margin-left: 15px;margin-bottom: 5px;font-size: 15px;color: #531D89;" class="row col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0">Send Attachment</h3>
+
+  <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="false" [checked]="!attachment" style="margin-left:12px;font-size: 11px;margin-right: 2%;" class="col col-lg-1 col-md-3 col-sm-3 col-xs-3" formControlName="radio2"  >No
 
 <!--no attachment part ended-->
 
 <!--send attachment start-->
 
-  <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="true" [checked]="attachment" style="margin-left:180px;margin-top:15px; font-size: 14px;margin-bottom: 5px;" formControlName="radio2"  >Yes
+  <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="true" [checked]="attachment" style="margin-left:12px; font-size: 11px;margin-right: 2%;" class="row col-lg-1 col-md-2 col-sm-3 col-xs-3 p-2" formControlName="radio2"  >Yes
 </div>
 <!--provide your custom name-->
 <div *ngIf="attachment">
@@ -357,15 +356,17 @@
   
 </div>
 
-<div class="first">
-  <div class="name">
-    <button type="submit" mat-raised-button class="add_btn" (click)="sendcampaign()"  style="width:420px !important" >Send Campaign</button>
-    &nbsp;
+<div>
+  <div>
+    <button type="submit"  mat-raised-button class=" add_btn" (click)="submit()"   >Send to me</button>
+
+  
+    <button type="submit" mat-raised-button class="add_btn" (click)="sendcampaign()" >Send Campaign</button>
+   
+  
+    <button type="submit" mat-raised-button class="add_btn" (click)="schedulelater()" >Schedule Later</button>
   </div>
-  <div class="name">
-    <button type="submit" mat-raised-button class="add_btn" (click)="schedulelater()"   style="width:420px !important">Schedule Later</button>
-  </div>
-  &nbsp;
+
 </div>
 </div>
 <!-- <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 form-box">

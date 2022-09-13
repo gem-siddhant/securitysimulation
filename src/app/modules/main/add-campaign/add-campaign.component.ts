@@ -179,7 +179,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     localStorage.setItem('fileContent',this.phisingForm.value.filecontent); 
 }
 
-  submitForm(){
+  submit(){
     this.submitted=true;
     console.log(this.phisingForm.value.name)
     if (this.phisingForm.value.name == "")
@@ -228,41 +228,9 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
 
     let con = JSON.stringify(reqBody);
     formData.append("details",con);
-    
-    if(this.manager=='true')
-    {
-    const localfile = "../../../../assets/pdf/fallbackcsv.csv"
-    var local = new File(["foo"], localfile, {
-      type: "file/csv"
-    });
-      if(this.file!=null && this.file.size==0)
-      {
-        this.toastr.error("empty csv can not be uploaded");
-       
-      }
-      else if(this.phisingForm.value.radio==true){
-        
-        formData.append("file",local);
-      }
-      else{
-        formData.append("file",this.file)
-      }
-    }
-    else
-    {
-      if(this.file.size == 0)
-      {
-
-        this.toastr.error("empty csv can not be uploaded");
-      }
-      else{
-      formData.append("file",this.file);
-      }
-    }
-
-
+  
     this.StoreData=false;
-    this._addCampaign.createCampaign(formData).subscribe((data)=>{
+    this._addCampaign.sendtome(reqBody).subscribe((data)=>{
       if(data){
         this.StoreData=true;
         let dataDialog = { title: 'Campaign Created Successfully!' };

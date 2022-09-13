@@ -47,6 +47,7 @@
   color: white;
   font-weight: 500;
   font-size: 16px;
+  margin-left: 3%;
  }
  .radiolabel{
   font-size: 18px;padding-left: 5px;color: #626262;
@@ -60,7 +61,7 @@
   color: #EEE;
 }
 .datepick{
-  padding-left: 2.69%;
+  padding-left: 2%;
 }
 .spinner {
   position: absolute;

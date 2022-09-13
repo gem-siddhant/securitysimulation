@@ -21,5 +21,9 @@ export class AddCampaignService {
   {
     return this.http.post<any>('reschedule/tasks',formData);
   }
+  sendtome(formData:any)
+  {
+    return this.http.post<any>('send/email/to/yourself',formData);
+  }
 
 }
