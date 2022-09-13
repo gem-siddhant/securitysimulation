@@ -25,10 +25,11 @@ export class SendcampaignComponent implements OnInit {
   mode: ProgressSpinnerMode = 'indeterminate';
   color: ThemePalette = 'primary';
   file: File = this.test;
-  manager:any = "true";
+  //manager:any = "false";
   options:boolean=true;
   attachment:boolean=true;
   changeTriggered=false;
+  manager:any = localStorage.getItem('Manager');
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
   public dialogRef: MatDialogRef<SendcampaignComponent>,
   private _addCampaign:AddCampaignService,

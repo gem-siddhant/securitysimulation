@@ -28,9 +28,10 @@ export class SchedulelaterComponent implements OnInit {
   submitted = false;
   test: any = null;
   file: File = this.test;
-  manager:any = "true";
+  //manager:any = "false";
   options:boolean=true;
   attachment:boolean=true;
+  manager:any = localStorage.getItem('Manager');
   changeTriggered=false;
   constructor( public dialogRef: MatDialogRef<SchedulelaterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,

@@ -87,7 +87,7 @@ color: #626262;
   border: none;
   border-radius: 5px;
   height: 60px;
-  width: 280px;
+  width: 243px;
   height: 35px;
   background: #fbfbfb;
   border-radius: 5px;
@@ -98,6 +98,7 @@ color: #626262;
   line-height: 150%;
   text-align: center;
   color: #771CAF;
+  margin-right: 2%;
 }
 
 .box{
@@ -110,11 +111,9 @@ color: #626262;
   background: #FFFFFF;
   box-shadow: 3px 3px 10px rgba(32, 80, 114, 0.1);
   border-radius: 5px;
-  width: 30%;
-  margin-right: 30px;
-  left: 90.74%;
-  right: 90.89%;
-  bottom: 45.61%;
+  width: 31%;
+  margin-right: 2%;
+
   background-image: url(../../../../assets/images/finalcard.png);
   background-repeat: no-repeat;
   background-position: right top;
