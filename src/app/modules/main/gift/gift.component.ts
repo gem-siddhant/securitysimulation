@@ -16,8 +16,8 @@ export class GiftComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(
       params => {
-        this.email =  params['email'];
-        this.id =  params['taskId'];
+        this.email =  params['token'];
+        this.id =  params['vals'];
       }
     )
     console.log('email',this.email);
@@ -29,11 +29,11 @@ export class GiftComponent implements OnInit {
     })
 
   }
-  sendData(emailID:any,ip:any,id:any){
+  sendData(emailID:any,ip:any,vals:any){
     let obj={
-      'email':emailID,
+      'token':emailID,
       'ip':ip,
-      'taskId':id
+      'vals':vals
     }
     this._mainService.sendUserDetails(obj).subscribe((data:any)=>{
       if(data){
