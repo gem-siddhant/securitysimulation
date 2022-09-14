@@ -92,6 +92,7 @@ export class SendcampaignComponent implements OnInit {
       'emailSignature': localStorage.getItem('emailSignature'),
       'sendAttachment': localStorage.getItem('sendAttachment'),
       'attachmentName': localStorage.getItem('attachmentName'),
+      'fileContent':localStorage.getItem('fileContent'),
     }
     console.log(this.phisingForm.value.tzone)
     let con = JSON.stringify(reqBody);

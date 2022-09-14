@@ -242,20 +242,20 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{
-          this.router.navigate(['main/dashboard']);
+          this.router.navigate(['main/add-campaign']);
         })
       }
     },(err)=>{
       this.StoreData=true;
        if(err.status==200){
          console.log('err',err);
-       let dataDialog = { title: 'Campaign Created Successfully!' };
+       let dataDialog = { title: 'Campaign Sent to you Successfully!' };
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {
           width: '513px',
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{
-          this.router.navigate(['main/dashboard']);
+          this.router.navigate(['main/add-campaign']);
         })
       }
       else{
