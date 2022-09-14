@@ -26,6 +26,7 @@ import { MatRadioButton } from '@angular/material/radio';
 import { PasswordGrantConstants } from '@azure/msal-common/dist/utils/Constants';
 import { SchedulelaterComponent } from 'src/app/shared/schedulelater/schedulelater.component';
 import { SendcampaignComponent } from 'src/app/shared/sendcampaign/sendcampaign.component';
+import { JsonPipe } from '@angular/common';
 
 @Pipe({ name: 'safeHtml'})
 export class SafeHtmlPipe implements PipeTransform  {
@@ -78,7 +79,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   reward_type:[''],
   desc:['',Validators.required],
   reward_amount:[''],
-  tempate_select:[0,Validators.required],
+  tempate_select:['',Validators.required],
   attachmentFile:[''],
   subject:['',Validators.required],
   email:['',Validators.required],
@@ -204,12 +205,14 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     }
     if(this.phisingForm.invalid)
     return;
+    const tempno = JSON.stringify(this.phisingForm.value.tempate_select)
+    const sendattach = JSON.stringify(this.phisingForm.value.radio2)
     const formData :any= new FormData();
     let reqBody={
       'name':this.phisingForm.value.name,
       'templateDescription':this.phisingForm.value.desc,
       'templateAmount':this.phisingForm.value.reward_amount.toString(),
-      'templateNo':this.phisingForm.value.tempate_select,
+      'templateNo':tempno,
       'templateRewardType':this.phisingForm.value.reward_type,
       'templateHeading':this.phisingForm.value.subject,
       'createdBy':localStorage.getItem('email'),
@@ -218,7 +221,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       'sendToReporters' : this.phisingForm.value.radio,
       'addNote' : this.phisingForm.value.addnote,
       'emailSignature': this.phisingForm.value.footer,
-      'sendAttachment': this.phisingForm.value.radio2,
+      'sendAttachment': sendattach,
       'attachmentName': this.phisingForm.value.fileattach,
       'attachmentText':this.phisingForm.value.filecontent
     }

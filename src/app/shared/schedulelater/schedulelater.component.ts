@@ -77,12 +77,12 @@ export class SchedulelaterComponent implements OnInit {
     if(localStorage.getItem('email1') == "")
     {
       this.toastr.error("please provide email id")
-      return
+      return;
     }
     if(localStorage.getItem('password') == "")
     {
       this.toastr.error("please provide password")
-      return
+      return;
     }
     const formData :any= new FormData();
     let reqBody={
