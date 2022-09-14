@@ -58,7 +58,7 @@ prefilled:any={heading:'',amount:'',rewardType:'',subject:'',description:'',addN
 testhtml:any='';
 options:boolean=true;
 attachment:boolean=true;
-manager:any = "false";
+manager:any = "true";
 //manager:any = localStorage.getItem('Manager');
 @Output() close: EventEmitter<any> = new EventEmitter();
 testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
@@ -220,7 +220,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       'emailSignature': this.phisingForm.value.footer,
       'sendAttachment': this.phisingForm.value.radio2,
       'attachmentName': this.phisingForm.value.fileattach,
-      'fileContent':this.phisingForm.value.filecontent
+      'attachmentText':this.phisingForm.value.filecontent
     }
     
 
