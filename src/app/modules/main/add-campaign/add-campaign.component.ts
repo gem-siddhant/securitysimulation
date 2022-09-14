@@ -59,8 +59,8 @@ prefilled:any={heading:'',amount:'',rewardType:'',subject:'',description:'',addN
 testhtml:any='';
 options:boolean=true;
 attachment:boolean=true;
-manager:any = "true";
-//manager:any = localStorage.getItem('Manager');
+//manager:any = "true";
+manager:any = localStorage.getItem('Manager');
 @Output() close: EventEmitter<any> = new EventEmitter();
 testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   constructor(private _addCampaign:AddCampaignService,
