@@ -1,0 +1,64 @@
+.timepicker-overlay{
+    z-index: 10000000 !important;
+}
+.timepicker-backdrop-overlay{
+    z-index: 10000000 !important;
+}
+.attachment-display{
+    text-decoration: none;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: #000000;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  #attachment_btn {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    border: none;
+    color: #205072;
+  }
+  
+  .attachment-div {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    background-color: rgb(202, 247, 232);
+    margin-left: 21px;
+    border-radius: 5px;
+  }
+  .heading{
+    margin-left: 12px; margin-bottom: 5px;margin-top: 5px;font-size: 20px;
+    color:#531D89;
+  }
+  input[type="radio"] {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+    transform: scale(1.5);
+  }
+ .add_btn{
+  background: #66209D;
+  border-radius: 5px;
+  width:418px !important; margin-top: 35px;margin-left: 15px;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+ }
+ .radiolabel{
+  font-size: 18px;padding-left: 5px;color: #626262;
+ }
+ ::ng-deep .mat-datepicker-toggle{
+  color:#66209D;
+}
+.ui-datepicker {
+  background: #333;
+  border: 1px solid #555;
+  color: #EEE;
+}
+.datepick{
+  padding-left: 2.69%;
+}

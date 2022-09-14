@@ -27,6 +27,17 @@ import { msalConfig } from './app.config';
 import { MsalGuard, MsalBroadcastService, MsalModule, MsalService, MSAL_GUARD_CONFIG, MSAL_INSTANCE, MsalGuardConfiguration, MsalRedirectComponent } from '@azure/msal-angular';
 import { LoaderService } from './modules/main/service/loader.service';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { SchedulelaterComponent } from './shared/schedulelater/schedulelater.component';
+import { MatInputModule } from '@angular/material/input';
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SendcampaignComponent } from './shared/sendcampaign/sendcampaign.component';
+import { ScheduleCampComponent } from './shared/schedule-camp/schedule-camp.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DatePipe } from '@angular/common';
+import { RescheduleComponent } from './shared/reschedule/reschedule.component';
+
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
 }
@@ -40,7 +51,11 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
   declarations: [
     AppComponent,
     ConfirmationModalComponent,
-    NavbarComponent
+    NavbarComponent,
+    SchedulelaterComponent,
+    SendcampaignComponent,
+    ScheduleCampComponent,
+    RescheduleComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +75,11 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MatFormFieldModule,
     MatPaginatorModule,
     MatDatepickerModule,
+    MatNativeDateModule,
+    MatInputModule,
+    NgxMaterialTimepickerModule,
+    ReactiveFormsModule,
+    MatDialogModule,
   ],
   providers: [ LoaderService,
     {

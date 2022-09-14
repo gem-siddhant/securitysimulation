@@ -14,5 +14,16 @@ export class AddCampaignService {
     return this.http.post<any>('prefilled/data', id);
 
   }
+  schedulecampagin(formData:any){
+    return this.http.post<any>('schedule/task',formData);
+  }
+  reshedule(formData:any)
+  {
+    return this.http.post<any>('reschedule/tasks',formData);
+  }
+  sendtome(formData:any)
+  {
+    return this.http.post<any>('send/email/to/yourself',formData);
+  }
 
 }

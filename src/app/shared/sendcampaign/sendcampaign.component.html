@@ -1,0 +1,75 @@
+<div *ngIf="this.StoreData==false" class="overlay">
+  <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value" diameter="50" *ngIf="this.StoreData==false"></mat-progress-spinner>
+</div>
+<form [formGroup]="phisingForm">
+    <div *ngIf="manager== 'true'">
+      <h2 class="heading">Send To Reportees</h2>
+    
+      <div class="radiogrp">
+    <div>
+      <input name="radio"  [(ngModel)]="options" type="radio" [value]="true" [checked]="options" style="margin-left:12px;font-size: 40px;" formControlName="radio"  ><label style="font-size: 20px;padding-left: 5px;color: #626262;">Yes</label>
+     
+    <!--if send via csv is selected -->  
+      <input name="radio" [(ngModel)]="options" type="radio" [value]="false" [checked]="!options" style="margin-left:150px; margin-top: 15px; font-size: 40px;margin-bottom: 10px;" formControlName="radio" ><label style="font-size: 20px;padding-left: 5px;color: #626262;">No</label>
+    </div>
+  </div>
+      <div *ngIf="!options">
+      <div class="row mt-2" >
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-11" style="margin-left: 12px;">
+          <label for="firsting" id="attachment_btn" style="font-size: 16px;"><img style="width:20px; height: 20px;"
+                  src="../../../../assets/images/attachment1.png"> Upload .csv file with custom emails.</label>
+          <input type="file" accept=".csv" id="firsting" class="form-control" formControlName="attachmentFile"
+              (change)="onChange($event)">
+      </div>
+      </div>
+    
+      <div class="row mt-2 " *ngIf="changeTriggered==true && this.file!=null">
+        <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 attachment-div" >
+          <img class="mr-2" src="../../../../assets/images/attachment_black.svg">
+            <a class="attachment-display" style="width:300px !important">{{file.name}}</a>
+    
+        </div>
+    
+      </div>
+      <mat-error *ngIf="this.submitted==true && this.file==null">
+        Please upload file.
+      </mat-error>
+    </div>
+    <div>
+      <button type="submit" mat-raised-button class="add_btn" (click)="sendnow()" style="width:430px !important; margin-top: 35px;margin-left: 15px; font-size: 18px;">Send Campaign Now</button>
+    </div>
+    </div>
+   
+
+    <div *ngIf="manager== 'false'">
+      <div class="row mt-2" >
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-11" style="margin-left: 12px;">
+          <label for="firsting" id="attachment_btn" style="font-size: 16px;"><img style="width:20px; height: 20px;"
+                  src="../../../../assets/images/attachment1.png"> Upload .csv file with custom emails.</label>
+          <input type="file" accept=".csv" id="firsting" class="form-control" formControlName="attachmentFile"
+              (change)="onChange($event)">
+      </div>
+      </div>
+    
+      <div class="row mt-2 " *ngIf="changeTriggered==true && this.file!=null">
+        <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 attachment-div" >
+          <img class="mr-2" src="../../../../assets/images/attachment_black.svg">
+            <a class="attachment-display" style="width:300px !important">{{file.name}}</a>
+    
+        </div>
+    
+      </div>
+      <mat-error *ngIf="this.submitted==true && this.file==null">
+        Please upload file.
+      </mat-error>
+
+      <div>
+        <button type="submit" mat-raised-button class="add_btn" (click)="sendnow()" style="width:430px !important; margin-top: 35px;margin-left: 15px; font-size: 18px;">Send Campaign Now</button>
+      </div>
+    </div>
+        
+    </form>
+    
+    
+    
+    

@@ -32,22 +32,36 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
-      name:['',Validators.required],
-      id:['',Validators.required],
-      password:['',Validators.required]
+        name:[''],
+        email:['',Validators.email],
+        jobdesc:['',Validators.required],
+        purpose:['',Validators.required]
     });
   }
   submit(){
+    if (this.signupForm.value.name == "")
+    {
+      this.toastr.error("Please Provide username");
+    }
+    if (this.signupForm.value.jobdesc == "")
+    {
+      this.toastr.error("Please Provide Your Job Description");
+    }
+    if (this.signupForm.value.purpose == "")
+    {
+      this.toastr.error("Please Mention Your Purpose");
+    }
     if(this.signupForm.invalid)
     return;
     let obj={
       "username":this.signupForm.value.name,
-      "email":this.signupForm.value.id,
-      "password":this.signupForm.value.password
+      "email":this.signupForm.value.email,
+      "jobDescription":this.signupForm.value.jobdesc,
+      "purpose":this.signupForm.value.purpose
     }
     this._MainService.signUp(obj).subscribe((data)=>{
       if(data){
-        let dataDialog = { title: 'Account created successfully!' };
+        let dataDialog = { title: 'User Onboarding Request Sent!' };
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {
           width: '513px',
           data: dataDialog

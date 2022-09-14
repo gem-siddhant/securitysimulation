@@ -15,7 +15,7 @@
   font-weight: 700;
   font-size: 25px;
   line-height: 30px;
-  color: #205072;
+  color: #ffffff;
   mix-blend-mode: normal;
   padding: 10px;
   padding-left: 0px;
@@ -29,7 +29,7 @@ a{
   font-weight: 700;
   font-size: 18px;
   line-height: 27px; 
-  color: #205072;
+  color: #45198E;;
 }
 .sub-heading-1{
 
@@ -38,8 +38,9 @@ font-style: normal;
 font-weight: normal;
 font-size: 12px;
 line-height: 150%;
-color: #205072;
+color: #626262;
 padding-right: 4px;
+
 }
 
 .justify{
@@ -55,7 +56,8 @@ padding-top: 10px;
 }
 span.underline{
   padding-bottom:3px;
-  border-bottom: 1px solid #590b59;
+  border-bottom: 1px solid #45198E;
+  color:#45198E;
   }
 .sub-heading-2{
   font-family: Poppins;
@@ -85,9 +87,9 @@ color: #626262;
   border: none;
   border-radius: 5px;
   height: 60px;
-  width: 280px;
+  width: 243px;
   height: 35px;
-  background: #205072;
+  background: #fbfbfb;
   border-radius: 5px;
   font-family: Poppins;
   font-style: normal;
@@ -95,7 +97,8 @@ color: #626262;
   font-size: 18px;
   line-height: 150%;
   text-align: center;
-  color: #FAFAFA;
+  color: #771CAF;
+  margin-right: 2%;
 }
 
 .box{
@@ -108,13 +111,10 @@ color: #626262;
   background: #FFFFFF;
   box-shadow: 3px 3px 10px rgba(32, 80, 114, 0.1);
   border-radius: 5px;
-  width: 30%;
-  margin-right: 30px;
-  padding-left: 30px;
-  left: 90.74%;
-  right: 90.89%;
-  bottom: 45.61%;
-  background-image: url(../../../../assets/images/card1.jpg);
+  width: 31%;
+  margin-right: 2%;
+
+  background-image: url(../../../../assets/images/finalcard.png);
   background-repeat: no-repeat;
   background-position: right top;
 }
@@ -139,6 +139,7 @@ color: #626262;
 }
 .del{
   margin-left: 80px;
+  overflow-wrap: break-word;
 }
 .clickc{
   padding-top: 5px;
@@ -148,24 +149,27 @@ color: #626262;
   padding-top: 5px;
 }
 .delc{
-  margin-left: 100px;
+  margin-left: 80px;
   padding-top: 5px;
+  overflow-wrap: break-word;
 }
 .archive{
-  align-items:center;background: #205072;
+  align-items:center;background: #fdfdfd;
   border-radius: 7px;
   font-family: Poppins;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
   line-height: 150%;
-  color: azure;
-  width: 20%;
-  margin-top: 20px;
-  margin-left: 38%;
-  margin-bottom: 30px;
+  color: #771CAF;
+  
   border: none;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  
 
+}
+.heading-message{
+  color:#ffffff;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
 }

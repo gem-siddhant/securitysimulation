@@ -1,6 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/AuthGuard/auth.guard';
+import { SchedulelaterComponent } from 'src/app/shared/schedulelater/schedulelater.component';
 import { AddCampaignComponent } from './add-campaign/add-campaign.component';
 import { CampaignViewComponent } from './campaign-view/campaign-view.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -23,7 +24,9 @@ const routes: Routes = [
   path:'add-campaign',
   canActivate:[AuthGuard],
   component:AddCampaignComponent
-},{
+},
+
+{
   path:'dashboard',
   canActivate:[AuthGuard],
   component:DashboardComponent

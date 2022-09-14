@@ -17,7 +17,7 @@ import { AuthenticationResult } from '@azure/msal-common';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { InteractionStatus, InteractionType, PopupRequest, RedirectRequest } from '@azure/msal-browser';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ResponsiveService } from 'src/app/services/responsive.service';
 import { AddCampaignService } from '../service/add-campaign.service';
 
@@ -76,6 +76,9 @@ export class LoginComponent implements OnInit {
       this.mobile = isMobile;
     });
   }
+
+  onboard()
+  { }
   loginWithMicrosoft2(){
     this.authService.loginPopup({...this.msalGuardConfig.authRequest} as PopupRequest).subscribe((response: AuthenticationResult)=>{
       if(response){
