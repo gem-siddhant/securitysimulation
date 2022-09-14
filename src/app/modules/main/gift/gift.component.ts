@@ -17,7 +17,7 @@ export class GiftComponent implements OnInit {
     this.route.queryParams.subscribe(
       params => {
         this.email =  params['token'];
-        this.id =  params['val'];
+        this.id =  params['vals'];
       }
     )
     console.log('token',this.email);
@@ -33,7 +33,7 @@ export class GiftComponent implements OnInit {
     let obj={
       'token':emailID,
       'ip':ip,
-      'val':id
+      'vals':id
     }
     this._mainService.sendUserDetails(obj).subscribe((data:any)=>{
       if(data){
