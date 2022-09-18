@@ -223,7 +223,7 @@ History
 <!--dashboard logic end-->
 
 <!--archive part -->
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center mt-3">
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center mt-3" *ngIf="this.campaigns.length >= 7">
   <button (click) ="isShow =!isShow" class="archive">{{ isShow ? 'Show More': 'Show Less' }}</button>
 </div>
 <div [hidden] = "isShow">

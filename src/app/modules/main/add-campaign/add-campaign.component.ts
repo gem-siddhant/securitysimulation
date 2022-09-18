@@ -137,6 +137,22 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
 
   schedulelater()
   {
+    if(this.phisingForm.value.name == "" || this.phisingForm.value.subject == "" || this.phisingForm.value.desc == "" || this.phisingForm.value.addnote == "" || this.phisingForm.value.footer == "")
+    {
+      this.toastr.error("Please EDIT The Fields")
+      return;
+    }
+    if(this.phisingForm.value.email == "")
+    {
+      this.toastr.error("Please Provide Email")
+      return;
+    }
+    if(this.phisingForm.value.password == "")
+    {
+      this.toastr.error("Please Provide Password")
+      return;
+    }
+
     const dialogRef = this.dialog.open(SchedulelaterComponent, {
       width: '770px',
       height: '330px',
@@ -160,6 +176,21 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
  
   sendcampaign()
   {
+    if(this.phisingForm.value.name == "" || this.phisingForm.value.subject == "" || this.phisingForm.value.desc == "" || this.phisingForm.value.addnote == "" || this.phisingForm.value.footer == "")
+    {
+      this.toastr.error("Please EDIT The Fields")
+      return;
+    }
+    if(this.phisingForm.value.email == "")
+    {
+      this.toastr.error("Please Provide Email")
+      return;
+    }
+    if(this.phisingForm.value.password == "")
+    {
+      this.toastr.error("Please Provide Password")
+      return;
+    }
     const dialogRef = this.dialog.open(SendcampaignComponent, {
       width: '523px',
       height: '330px',

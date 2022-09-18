@@ -26,3 +26,19 @@
     margin-bottom: 7px;
     margin-left: 10px;
   }
+.box{
+  color: white; background-color: #461A8F;
+}
+td:nth-of-type(odd)
+{  
+background-color: white
+}
+td:nth-of-type(even)
+{  
+background-color: rgb(241, 241, 251)
+}
+.error{
+  padding-left: 37%;
+  font-size: 20px;
+  color: #563190;
+}

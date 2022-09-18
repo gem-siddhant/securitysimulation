@@ -48,7 +48,7 @@ export class SchedulelaterComponent implements OnInit {
     this.phisingForm = this.formBuilder.group(
       {
         date:['',Validators.required],
-        time:['',Validators.required],
+        time:[''],
         timezone:[''],
         attachmentFile:[''],
         radio:[''||'false'],
@@ -82,6 +82,16 @@ export class SchedulelaterComponent implements OnInit {
     if(localStorage.getItem('password') == "")
     {
       this.toastr.error("please provide password")
+      return;
+    }
+    if (this.phisingForm.value.time== "")
+    {
+      this.toastr.error("Please Provide Time")
+      return;
+    }
+    if (this.phisingForm.value.timezone== "")
+    {
+      this.toastr.error("Please Provide TimeZone")
       return;
     }
     const formData :any= new FormData();

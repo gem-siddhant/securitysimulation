@@ -23,7 +23,8 @@
   <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
 
-<input placeholder="12hr format" formControlName="time" aria-label="12hr format" [ngxTimepicker]="default" readonly style="margin-left: 30px ;height: 40px; width: 155px;margin-bottom: 20px;">
+
+<input placeholder="12hr format" required formControlName="time" aria-label="12hr format" [ngxTimepicker]="default" readonly style="margin-left: 30px ;height: 40px; width: 155px;margin-bottom: 20px;">
 <ngx-material-timepicker #default [enableKeyboardInput]="true" [theme]="darkTheme"></ngx-material-timepicker>
 
 
@@ -32,7 +33,6 @@
   <mat-select [(value)]="selected" formControlName="timezone">
     <mat-option value="Asia/Pacific">[Asia/Pacific]</mat-option>
     <mat-option value="Asia/Kolkata">[Asia/Kolkata]</mat-option>
-    <mat-option value="IST">[IST]</mat-option>
   </mat-select>
 </mat-form-field>
 
