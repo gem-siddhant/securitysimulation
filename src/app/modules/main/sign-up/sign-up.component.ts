@@ -51,6 +51,7 @@ export class SignUpComponent implements OnInit {
     {
       this.toastr.error("Please Mention Your Purpose");
     }
+    const formData :any= new FormData();
     if(this.signupForm.invalid)
     return;
     let obj={
@@ -59,7 +60,9 @@ export class SignUpComponent implements OnInit {
       "jobDescription":this.signupForm.value.jobdesc,
       "purpose":this.signupForm.value.purpose
     }
-    this._MainService.signUp(obj).subscribe((data)=>{
+    let con = JSON.stringify(obj);
+    formData.append("details",con);
+    this._MainService.signUp(formData).subscribe((data)=>{
       if(data){
         let dataDialog = { title: 'User Onboarding Request Sent!' };
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {
