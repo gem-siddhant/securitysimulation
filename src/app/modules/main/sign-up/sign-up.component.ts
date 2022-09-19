@@ -54,15 +54,14 @@ export class SignUpComponent implements OnInit {
     const formData :any= new FormData();
     if(this.signupForm.invalid)
     return;
-    let obj={
-      "username":this.signupForm.value.name,
-      "email":this.signupForm.value.email,
-      "jobDescription":this.signupForm.value.jobdesc,
+    let reqBody={
+      "empName":this.signupForm.value.name,
+      "empEmail":this.signupForm.value.email,
       "purpose":this.signupForm.value.purpose
     }
-    let con = JSON.stringify(obj);
-    formData.append("details",con);
-    this._MainService.signUp(formData).subscribe((data)=>{
+   let con = JSON.stringify(reqBody);
+   
+    this._MainService.signUp(reqBody).subscribe((data)=>{
       if(data){
         let dataDialog = { title: 'User Onboarding Request Sent!' };
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {

@@ -1,3 +1,21 @@
 body{
   background-color: white;
 }
+.content{
+position: absolute;
+width: 107px;
+height: 51px;
+left: 631px;
+top: 479px;
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 34px;
+line-height: 51px;
+/* identical to box height */
+
+text-align: center;
+
+color: #EB3939;
+}
