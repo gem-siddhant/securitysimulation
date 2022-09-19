@@ -21,6 +21,7 @@ import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/co
 })
 export class SignUpComponent implements OnInit {
   signupForm:FormGroup;
+  StoreData:boolean=true;
   constructor(private formBuilder: FormBuilder,
     private _MainService:MainService,
     private _auth:AuthService,
@@ -57,12 +58,15 @@ export class SignUpComponent implements OnInit {
     let reqBody={
       "empName":this.signupForm.value.name,
       "empEmail":this.signupForm.value.email,
+      'jobDescription':this.signupForm.value.jobdesc,
       "purpose":this.signupForm.value.purpose
     }
    let con = JSON.stringify(reqBody);
    
+   this.StoreData=false;
     this._MainService.signUp(reqBody).subscribe((data)=>{
       if(data){
+        this.StoreData=true;
         let dataDialog = { title: 'User Onboarding Request Sent!' };
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {
           width: '513px',
@@ -72,7 +76,26 @@ export class SignUpComponent implements OnInit {
           this.router.navigate(['main/login']);
         })
       }
-    })
+    },
+    (err)=>{
+      this.StoreData=true;
+       if(err.status==200){
+         console.log('err',err);
+       let dataDialog = { title: 'User Onboarding Request Sent!' };
+        const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+          width: '513px',
+          data: dataDialog
+        });
+        dialogRef.afterClosed().subscribe(()=>{
+          this.router.navigate(['main/add-campaign']);
+        })
+      }
+      else{
+        this.toastr.error("Error in adding campaign.");
+      }
+    }
+    
+    )
   }
 
 }

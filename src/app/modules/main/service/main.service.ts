@@ -16,7 +16,11 @@ export class MainService {
      console.log('send user data',obj);
     return this.http.post<any>('register/click', obj);
    }
-   
+   senddetails(obj:any)
+   {
+    console.log('send user data',obj);
+    return this.http.post<any>('admin/response', obj);
+   }
    getCompaignDetails(id:any){
     let test:any=Number(id);
     return this.http.post<any>('task', test);

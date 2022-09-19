@@ -24,6 +24,7 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
+import { OnboardresComponent } from './onboard/onboardres/onboardres.component';
 @NgModule({
   declarations: [
     GiftComponent,
@@ -31,7 +32,8 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
     LoginComponent,
     DashboardComponent,
     CampaignViewComponent,
-    SignUpComponent
+    SignUpComponent,
+    OnboardresComponent
   ],
   imports: [
     CommonModule,
