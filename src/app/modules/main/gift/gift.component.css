@@ -1,5 +1,7 @@
-body{
-  background-color: white;
+
+.cont{
+  color: #461A8F;
+  font-weight: 500;
 }
 .content{
 position: absolute;

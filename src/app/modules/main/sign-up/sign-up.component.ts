@@ -14,6 +14,8 @@ import { MainService } from '../service/main.service';
 import { ToastrService } from 'ngx-toastr';
 import { DialogRole, MatDialog } from '@angular/material/dialog';
 import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
+import { ThemePalette } from '@angular/material/core';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -22,6 +24,10 @@ import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/co
 export class SignUpComponent implements OnInit {
   signupForm:FormGroup;
   StoreData:boolean=true;
+  color: ThemePalette = 'primary';
+  value = 50;
+  api_hit=false;
+  mode: ProgressSpinnerMode = 'indeterminate';
   constructor(private formBuilder: FormBuilder,
     private _MainService:MainService,
     private _auth:AuthService,
@@ -73,7 +79,7 @@ export class SignUpComponent implements OnInit {
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{
-          this.router.navigate(['main/login']);
+          this.router.navigate(['main/sign-up']);
         })
       }
     },
@@ -81,7 +87,7 @@ export class SignUpComponent implements OnInit {
       this.StoreData=true;
        if(err.status==200){
          console.log('err',err);
-       let dataDialog = { title: 'User Onboarding Request Sent!' };
+       let dataDialog = { title: ' Onboarding Request Sent!' };
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {
           width: '513px',
           data: dataDialog
