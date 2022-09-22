@@ -1,6 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/AuthGuard/auth.guard';
+import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
 import { SchedulelaterComponent } from 'src/app/shared/schedulelater/schedulelater.component';
 import { AddCampaignComponent } from './add-campaign/add-campaign.component';
 import { CampaignViewComponent } from './campaign-view/campaign-view.component';
@@ -42,6 +43,10 @@ const routes: Routes = [
 {
   path:'onboard',
   component:OnboardresComponent
+},
+{
+  path:'shared',
+  component:ConfirmationModalComponent
 }
 ];
 

@@ -107,8 +107,16 @@ export class SignUpComponent implements OnInit {
           this.router.navigate(['main/add-campaign']);
         })
       }
-      else{
-        this.toastr.error("Error in adding campaign.");
+      else if (err.status==409)
+      {
+        let dataDialog = { title: 'Your Request is still under Process' };
+        const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+          width: '513px',
+          data: dataDialog
+        });
+        dialogRef.afterClosed().subscribe(()=>{
+          this.router.navigate(['main/add-campaign']);
+        })
       }
     }
     

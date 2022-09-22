@@ -48,10 +48,10 @@ sendapproverdata(name:any,email:any,status:any)
 
     }
   },
-  (err)=>{
+  (err)=>{ //link expired or request is already responded for the user.
   if(err.status==208)
   {
-    let dataDialog = { title: 'You have Already Been Onboarded!' };
+    let dataDialog = { title: 'Request for this User is already responded' };
     const dialogRef = this.dialog.open(ConfirmationModalComponent, {
       width: '513px',
       data: dataDialog
@@ -60,6 +60,7 @@ sendapproverdata(name:any,email:any,status:any)
       this.router.navigate(['main/add-campaign']);
     })
   }
+
 }
   )
 }

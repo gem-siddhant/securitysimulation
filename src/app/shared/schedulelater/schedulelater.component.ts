@@ -63,9 +63,22 @@ export class SchedulelaterComponent implements OnInit {
     // const reader = new FileReader();
     // reader.readAsText(this.file);
     // reader.onload = () => {
-    //     console.log(count(reader.result));
+      
+    //   console.log(reader.result)
+
     // };
-    
+    const reader = new FileReader();
+    reader.readAsText(this.file);
+    reader.onload = () => {
+      let text = reader.result; 
+      //convert text to json here
+      var json = this.csvJSON(text);
+      console.log(json)
+    };
+   
+  }
+  csvJSON(text: string | ArrayBuffer | null) {
+    throw new Error('Method not implemented.');
   }
   
   schedulelater(){
