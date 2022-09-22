@@ -23,8 +23,8 @@ export class OnboardresComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(
       params => {
-        this.name =  params['approver'];
-        this.email =  params['email'];
+        this.name =  params['token'];
+        this.email =  params['value'];
         this.status = params['status'];
       }
     )
@@ -37,8 +37,8 @@ export class OnboardresComponent implements OnInit {
 sendapproverdata(name:any,email:any,status:any)
 {
   let obj = {
-    'approver':name,
-    'email':email,
+    'token':name,
+    'value':email,
     'status':status
   }
   console.log(obj)
