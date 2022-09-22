@@ -96,6 +96,17 @@ export class SignUpComponent implements OnInit {
           this.router.navigate(['main/add-campaign']);
         })
       }
+      else if(err.status==208)
+      {
+        let dataDialog = { title: 'You have Already Been Onboarded!' };
+        const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+          width: '513px',
+          data: dataDialog
+        });
+        dialogRef.afterClosed().subscribe(()=>{
+          this.router.navigate(['main/add-campaign']);
+        })
+      }
       else{
         this.toastr.error("Error in adding campaign.");
       }

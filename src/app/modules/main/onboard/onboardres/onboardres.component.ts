@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
 import { MainService } from '../../service/main.service';
 
 @Component({
@@ -13,7 +15,10 @@ export class OnboardresComponent implements OnInit {
   name:any;
   status: any;
   email:any;
-  constructor(private route:ActivatedRoute,private http:HttpClient,private _mainService:MainService) { }
+  constructor(private route:ActivatedRoute,
+    private dialog:MatDialog,
+    private router:Router,
+    private http:HttpClient,private _mainService:MainService) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(
@@ -40,7 +45,22 @@ sendapproverdata(name:any,email:any,status:any)
   this._mainService.senddetails(obj).subscribe((data:any)=>{
     if(data){
       console.log('data sent');
+
     }
-  })
+  },
+  (err)=>{
+  if(err.status==208)
+  {
+    let dataDialog = { title: 'You have Already Been Onboarded!' };
+    const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+      width: '513px',
+      data: dataDialog
+    });
+    dialogRef.afterClosed().subscribe(()=>{
+      this.router.navigate(['main/add-campaign']);
+    })
+  }
+}
+  )
 }
 }
