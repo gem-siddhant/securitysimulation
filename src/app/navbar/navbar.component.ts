@@ -64,6 +64,7 @@ Logout(){
 toogletag(content:any )
 {
   this.toastr.show(content);
+  this.toastr.toastrConfig.positionClass = 'toast-top-center';
 }
 scheduled()
 {
@@ -77,6 +78,7 @@ scheduled()
     const dialogRef = this.dialog.open(ScheduleCampComponent, {
     width: '650px',
     height: '350px', 
+    
     });
     this.campaigns = data
     let i =1;
@@ -108,3 +110,7 @@ console.log(a)
 // }
 //}
 }
+function positionClass(content: any, positionClass: any, arg2: string) {
+  throw new Error('Function not implemented.');
+}
+

@@ -42,3 +42,8 @@ background-color: rgb(241, 241, 251)
   font-size: 20px;
   color: #563190;
 }
+.toast-center-center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+ }

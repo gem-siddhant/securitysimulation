@@ -37,6 +37,7 @@ import { ScheduleCampComponent } from './shared/schedule-camp/schedule-camp.comp
 import { MatDialogModule } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
 import { RescheduleComponent } from './shared/reschedule/reschedule.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
@@ -80,6 +81,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     NgxMaterialTimepickerModule,
     ReactiveFormsModule,
     MatDialogModule,
+    MatTooltipModule
   ],
   providers: [ LoaderService,
     {

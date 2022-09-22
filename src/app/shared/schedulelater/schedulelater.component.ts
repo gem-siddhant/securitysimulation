@@ -8,8 +8,10 @@ import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { NgxMaterialTimepickerTheme } from 'ngx-material-timepicker';
 import { ToastrService } from 'ngx-toastr';
+import { count } from 'rxjs';
 import { AddCampaignService } from 'src/app/modules/main/service/add-campaign.service';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
+
 @Component({
   selector: 'app-schedulelater',
   templateUrl: './schedulelater.component.html',
@@ -58,6 +60,11 @@ export class SchedulelaterComponent implements OnInit {
   onChange(event: any) {
     this.changeTriggered = true;
     this.file = event.target.files[0];
+    // const reader = new FileReader();
+    // reader.readAsText(this.file);
+    // reader.onload = () => {
+    //     console.log(count(reader.result));
+    // };
     
   }
   
@@ -135,6 +142,8 @@ export class SchedulelaterComponent implements OnInit {
       }
       else{
         formData.append("file",this.file)
+        
+        console.log(this.file.size)
       }
     }
     else
