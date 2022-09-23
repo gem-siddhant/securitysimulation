@@ -40,7 +40,7 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {
     this.signupForm = this.formBuilder.group({
-        name:[''],
+        name:['',Validators.required],
         email:['',Validators.email],
         jobdesc:['',Validators.required],
         purpose:['',Validators.required]
@@ -98,7 +98,7 @@ export class SignUpComponent implements OnInit {
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{
-          this.router.navigate(['main/add-campaign']);
+          this.router.navigate(['main/sign-up']);
         })
       }
       else if(err.status==208)
@@ -110,7 +110,7 @@ export class SignUpComponent implements OnInit {
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{
-          this.router.navigate(['main/add-campaign']);
+          this.router.navigate(['main/sign-up']);
         })
       }
       else if (err.status==409)
@@ -122,7 +122,7 @@ export class SignUpComponent implements OnInit {
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{
-          this.router.navigate(['main/add-campaign']);
+          this.router.navigate(['main/sign-up']);
         })
       }
       else if (err.status==403)
@@ -134,7 +134,7 @@ export class SignUpComponent implements OnInit {
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{
-          this.router.navigate(['main/add-campaign']);
+          this.router.navigate(['main/sign-up']);
         })
       }
     }
