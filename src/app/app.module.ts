@@ -38,6 +38,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
 import { RescheduleComponent } from './shared/reschedule/reschedule.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { InfomodalComponent } from './shared/infomodal/infomodal.component';
 
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
@@ -56,7 +57,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     SchedulelaterComponent,
     SendcampaignComponent,
     ScheduleCampComponent,
-    RescheduleComponent
+    RescheduleComponent,
+    InfomodalComponent
   ],
   imports: [
     BrowserModule,

@@ -44,10 +44,6 @@ const routes: Routes = [
   path:'onboard',
   component:OnboardresComponent
 },
-{
-  path:'shared',
-  component:ConfirmationModalComponent
-}
 ];
 
 @NgModule({

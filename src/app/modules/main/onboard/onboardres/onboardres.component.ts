@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
+import { InfomodalComponent } from 'src/app/shared/infomodal/infomodal.component';
 import { MainService } from '../../service/main.service';
 
 @Component({
@@ -51,9 +52,10 @@ sendapproverdata(name:any,email:any,status:any)
   (err)=>{ //link expired or request is already responded for the user.
   if(err.status==208)
   {
-    let dataDialog = { title: 'Request for this User is already responded' };
-    const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+    let dataDialog = { title: 'Request is already taken care of' };
+    const dialogRef = this.dialog.open(InfomodalComponent, {
       width: '513px',
+      height: '350px',
       data: dataDialog
     });
     dialogRef.afterClosed().subscribe(()=>{

@@ -16,6 +16,7 @@ import { DialogRole, MatDialog } from '@angular/material/dialog';
 import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { InfomodalComponent } from 'src/app/shared/infomodal/infomodal.component';
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
@@ -48,11 +49,15 @@ export class SignUpComponent implements OnInit {
   submit(){
     if (this.signupForm.value.name == "")
     {
-      this.toastr.error("Please Provide username");
+      this.toastr.error("Please Provide name");
     }
     if (this.signupForm.value.jobdesc == "")
     {
-      this.toastr.error("Please Provide Your Job Description");
+      this.toastr.error("Please Provide Your Designation");
+    }
+    if (this.signupForm.value.email == "")
+    {
+      this.toastr.error("Please Provide Email ");
     }
     if (this.signupForm.value.purpose == "")
     {
@@ -73,7 +78,7 @@ export class SignUpComponent implements OnInit {
     this._MainService.signUp(reqBody).subscribe((data)=>{
       if(data){
         this.StoreData=true;
-        let dataDialog = { title: 'User Onboarding Request Sent!' };
+        let dataDialog = { title: 'Onboarding Request Submitted!' };
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {
           width: '513px',
           data: dataDialog
@@ -87,7 +92,7 @@ export class SignUpComponent implements OnInit {
       this.StoreData=true;
        if(err.status==200){
          console.log('err',err);
-       let dataDialog = { title: ' Onboarding Request Sent!' };
+       let dataDialog = { title: ' Onboarding Request Submitted!' };
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {
           width: '513px',
           data: dataDialog
@@ -99,8 +104,9 @@ export class SignUpComponent implements OnInit {
       else if(err.status==208)
       {
         let dataDialog = { title: 'You have Already Been Onboarded!' };
-        const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+        const dialogRef = this.dialog.open(InfomodalComponent, {
           width: '513px',
+          height: '350px',
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{
@@ -110,8 +116,21 @@ export class SignUpComponent implements OnInit {
       else if (err.status==409)
       {
         let dataDialog = { title: 'Your Request is still under Process' };
-        const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+        const dialogRef = this.dialog.open(InfomodalComponent, {
           width: '513px',
+          height: '350px',
+          data: dataDialog
+        });
+        dialogRef.afterClosed().subscribe(()=>{
+          this.router.navigate(['main/add-campaign']);
+        })
+      }
+      else if (err.status==403)
+      {
+        let dataDialog = { title: 'Your are not Authorized to use this application' };
+        const dialogRef = this.dialog.open(InfomodalComponent, {
+          width: '513px',
+          height: '350px',
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{
