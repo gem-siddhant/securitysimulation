@@ -119,23 +119,87 @@
       </mat-form-field>
     </div>
   </div>
+
+  <!--note section-->
+  <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="row first">
+      <p><strong><strong>Note  -</strong>    Only 1500 emails can be delieverd via a single sender Email Id. In case of campaign to be submitted is for more than the limit, it is mandatory to provide multiple sender email IDs</strong></p>
+    </div>
+  </div>
+
+
   
     <!--email and password for simulation-->
   
-    <div class="first  row col-lg-12 col-md-12 col-sm-12 col-xs-6">
+<!--     
+    <div class="first  row col-lg-12 col-md-12 col-sm-12 col-xs-6" >
       <div class="name row">
         <mat-form-field appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0">
           <mat-label>Email for simulation</mat-label>
-          <input matInput type="text" formControlName="email">
+          <input matInput type="text" formControlName="email" >
         </mat-form-field>
  
         <mat-form-field appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0" >
           <mat-label>Password</mat-label>
-          <input matInput type="password" formControlName="password">
+          <input matInput type="password" formControlName="password" >
         </mat-form-field>
       </div>
       &nbsp;
     </div>
+   -->
+
+    <!--logic for entering multiples email and password on a plus button click -->
+  <!-- <button type="button" class="btn btn-primary mb-2" [value]="true" (click)="addAddress()">Provide Email and Password</button> -->
+  <!-- <button type="button" class="btn btn-primary mb-2" [value]="true" (click)="addAddress()"><mat-icon>note_add</mat-icon></button> -->
+
+    <div class="first  row col-lg-12 col-md-12 col-sm-12 col-xs-6" *ngFor="let i =index;let questionCtrl of getcontrols();"  formArrayName="allemails" >
+     
+      <div class="name row" [formGroupName]="i">
+        <mat-form-field appearance="outline" class="col col-lg-6 col-md-6col-sm-12 col-xs-6 ml-0">
+          <mat-label>Email for simulation</mat-label>
+          <input matInput type="text" formControlName="email" >
+        </mat-form-field>
+ 
+        <mat-form-field appearance="outline" class="col col-lg-5 col-md-7 col-sm-12 col-xs-6 ml-0" >
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="password">
+        </mat-form-field>
+     
+        <button type="button" class="btn col col-lg-1 col-md-6 col-sm-12 col-xs-6" [value]="true" (click)="addAddress()" matTooltip="Add Emails" matTooltipPosition="above"><mat-icon class="row col-md-6 col-sm-12 col-xs-6 icon-display" >note_add</mat-icon></button>
+ 
+    </div>
+      &nbsp;
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- <div class="col-6">
+      <button type="button" class="btn btn-primary mb-2" (click)="addAddress()">Add Address</button>
+      <section class="container border mb-4 p-3" *ngFor="let address of addresses; let i = index;">
+        <div class="first  row col-lg-12 col-md-12 col-sm-12 col-xs-6">
+          <div class="name row">
+              
+                <mat-form-field appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0">
+                  <mat-label>Email for simulation</mat-label>
+                  <input matInput type="text" formControlName="email" [(ngModel)]="address.address" name="address_{{address.id}}" placeholder="St. Thomas Apartment"/>
+                </mat-form-field>
+         
+        
+                <mat-form-field appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0" >
+                  <mat-label>Password</mat-label>
+                  <input matInput type="password" formControlName="password" [(ngModel)]="address.street" name="street_{{address.id}}" placeholder="South Street"/>
+                </mat-form-field>
+          </div>
+        </div>
+        </section>
+        </div> -->
+
 
     <!--send attachment-->
 <!--no attachment part-->

@@ -7,7 +7,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AddCampaignService } from 'src/app/modules/main/service/add-campaign.service';
+import { json } from 'stream/consumers';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
+import * as fs from 'fs' 
+
 @Component({
   selector: 'app-sendcampaign',
   templateUrl: './sendcampaign.component.html',
@@ -52,6 +55,7 @@ export class SendcampaignComponent implements OnInit {
   onChange(event: any) {
     this.changeTriggered = true;
     this.file = event.target.files[0];    
+ 
   }
 
   sendnow(){
@@ -93,6 +97,7 @@ export class SendcampaignComponent implements OnInit {
       'sendAttachment': localStorage.getItem('sendAttachment'),
       'attachmentName': localStorage.getItem('attachmentName'),
       'fileContent':localStorage.getItem('fileContent'),
+      'allemails':JSON.parse(localStorage.getItem("users") || "[]")
     }
     console.log(this.phisingForm.value.tzone)
     let con = JSON.stringify(reqBody);

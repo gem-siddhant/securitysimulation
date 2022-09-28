@@ -31,10 +31,13 @@ export class SchedulelaterComponent implements OnInit {
   test: any = null;
   file: File = this.test;
   //manager:any = "true";
+  victcsv : any = [] ;
   options:boolean=true;
   attachment:boolean=true;
   manager:any = localStorage.getItem('Manager');
   changeTriggered=false;
+  text:any;
+  vare:any
   constructor( public dialogRef: MatDialogRef<SchedulelaterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _addCampaign:AddCampaignService,
@@ -60,26 +63,50 @@ export class SchedulelaterComponent implements OnInit {
   onChange(event: any) {
     this.changeTriggered = true;
     this.file = event.target.files[0];
-    // const reader = new FileReader();
-    // reader.readAsText(this.file);
-    // reader.onload = () => {
-      
-    //   console.log(reader.result)
-
-    // };
     const reader = new FileReader();
     reader.readAsText(this.file);
     reader.onload = () => {
-      let text = reader.result; 
+    this.text = reader.result;
+    var lines = this.text.split('\n');
+    var res = []
+    for(var i=0;i<lines.length;i++)
+    {
+      var curr = lines[i].split('\n');
+      var curr = lines[i].replace('\r','');
+      res.push(curr);
+    } 
+    for(var j=0;j<res.length;j++)
+    {
+      if(res[j]==="")
+      {
+        this.toastr.error("There is an additional space in your csv")
+      }
+    }
+    this.vare = JSON.stringify(res);
+    console.log(res.length)  
+  }
+     // this.text.push(reader.result); 
       //convert text to json here
-      var json = this.csvJSON(text);
-      console.log(json)
-    };
+      
+      //console.log(this.victcsv)
+      // var nLines = 0;
+      // for( var i = 0, n = this.text.length;  i < n;  ++i ) {
+      //     if( this.text[i] === '\n' ) {
+      //         ++nLines;
+      //     }
+      //     if(this.text[i] !== '\n' )
+      //     {
+      //       this.vare = this.text[i];
+            
+      //     }
+    // }
+    // console.log(this.vare)
+    // console.log(nLines+1)
+    
+    // };
    
   }
-  csvJSON(text: string | ArrayBuffer | null) {
-    throw new Error('Method not implemented.');
-  }
+
   
   schedulelater(){
     console.log(localStorage.getItem('name'))
@@ -134,6 +161,7 @@ export class SchedulelaterComponent implements OnInit {
       'scheduleDate':scheduledate,
       'scheduleTime':this.phisingForm.value.time,
       'scheduleTimeZone':this.phisingForm.value.timezone,
+      'allemails':JSON.parse(localStorage.getItem("users") || "[]")
     }
     console.log(this.phisingForm.value.tzone)
     let con = JSON.stringify(reqBody);
@@ -167,7 +195,7 @@ export class SchedulelaterComponent implements OnInit {
         this.toastr.error("empty csv can not be uploaded");
       }
       else{
-      formData.append("file",this.file);
+      formData.append("file",this.text);
       }
     }
 

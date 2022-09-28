@@ -64,7 +64,6 @@ Logout(){
 toogletag(content:any )
 {
   this.toastr.show(content);
-  this.toastr.toastrConfig.positionClass = 'toast-top-center';
 }
 scheduled()
 {

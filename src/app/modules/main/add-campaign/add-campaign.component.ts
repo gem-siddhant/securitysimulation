@@ -20,13 +20,15 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { SELECT_PANEL_INDENT_PADDING_X } from '@angular/material/select/select';
-import { delay } from 'rxjs';
+import { config, delay } from 'rxjs';
 import { ExitStatus } from 'typescript';
 import { MatRadioButton } from '@angular/material/radio';
 import { PasswordGrantConstants } from '@azure/msal-common/dist/utils/Constants';
 import { SchedulelaterComponent } from 'src/app/shared/schedulelater/schedulelater.component';
 import { SendcampaignComponent } from 'src/app/shared/sendcampaign/sendcampaign.component';
 import { JsonPipe } from '@angular/common';
+import { add } from './add-camp.model';
+import { Papa } from 'ngx-papaparse';
 
 @Pipe({ name: 'safeHtml'})
 export class SafeHtmlPipe implements PipeTransform  {
@@ -59,11 +61,22 @@ prefilled:any={heading:'',amount:'',rewardType:'',subject:'',description:'',addN
 testhtml:any='';
 options:boolean=true;
 attachment:boolean=true;
+attachment1:boolean=false;
 //manager:any = "true";
+
+
+
+addresses: any = [{
+  email: '',
+  password: ''
+}];
+//addresses: Record<string, unknown>[] = [];
+
 manager:any = localStorage.getItem('Manager');
 @Output() close: EventEmitter<any> = new EventEmitter();
 testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   constructor(private _addCampaign:AddCampaignService,
+    private papa: Papa,
      private formBuilder: FormBuilder,
      private dialog:MatDialog,private router:Router,
      private sanitized: DomSanitizer,
@@ -74,6 +87,8 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   }
 
   ngOnInit(): void {
+  //const addresses = [{}];
+  let emailpass = new FormArray([]);
   this.phisingForm = this.formBuilder.group({
   name:['',Validators.required],
   reward_type:[''],
@@ -82,8 +97,6 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   tempate_select:['',Validators.required],
   attachmentFile:[''],
   subject:['',Validators.required],
-  email:['',Validators.required],
-  password:['',Validators.required],
   radio:[''||'false'],
   addnote:['',Validators.required],
   footer:['',Validators.required],
@@ -91,14 +104,43 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   fileattach:[''||'attachment'],
   date:[''],
   time:[''],
-  filecontent:[''||'Please provide the content that you want in your custom file']
+  filecontent:[''||'Please provide the content that you want in your custom file'],
+  allemails : emailpass
 });
+  this.addAddress();
   }
-  
+
+  addAddress() {
+    console.log(this.phisingForm);
+
+    const emailpassItem = new FormGroup({
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required),
+    });
+   
+    
+    (<FormArray>this.phisingForm.get('allemails')).push(emailpassItem);
+
+    // this.addresses.splice(0,2,{
+    // email:this.phisingForm.value.email,
+    // password: this.phisingForm.value.password
+    // })
+  }
+  getcontrols()
+  {
+    return (this.phisingForm.get('allemails') as FormArray).controls;
+
+  }
   onChange(event: any) {
+    
     this.changeTriggered = true;
     this.file = event.target.files[0];
-    
+    let csvToJson = require('convert-csv-to-json');
+
+    let json = csvToJson.getJsonFromCsv(this.file);
+    for(let i=0; i<json.length;i++){
+        console.log(json[i]);
+    }
   }
   getPreFilledData(id:any){
     this._addCampaign.getPrefilled(id).subscribe((data)=>{
@@ -172,6 +214,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     localStorage.setItem('sendAttachment',this.phisingForm.value.radio2);
     localStorage.setItem('attachmentName',this.phisingForm.value.fileattach);
     localStorage.setItem('fileContent',this.phisingForm.value.filecontent);
+    localStorage.setItem("users", JSON.stringify(this.phisingForm.value.allemails));
   }
  
   sendcampaign()
@@ -209,11 +252,18 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     localStorage.setItem('sendAttachment',this.phisingForm.value.radio2);
     localStorage.setItem('attachmentName',this.phisingForm.value.fileattach);
     localStorage.setItem('fileContent',this.phisingForm.value.filecontent); 
+    localStorage.setItem("users", JSON.stringify(this.phisingForm.value.allemails));
 }
 
   submit(){
+    // this.addresses.splice(0,2,{
+    //   email:this.phisingForm.value.email,
+    //   password: this.phisingForm.value.password
+    // })
+    let email = this.phisingForm.value.allemails[0]; 
+   
     this.submitted=true;
-    console.log(this.phisingForm.value.name)
+    console.log(this.phisingForm.value.allemails)
     if (this.phisingForm.value.name == "")
     {
       this.toastr.error("Please EDIT the name of campaign");
@@ -247,8 +297,9 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       'templateRewardType':this.phisingForm.value.reward_type,
       'templateHeading':this.phisingForm.value.subject,
       'createdBy':localStorage.getItem('email'),
-      'email':this.phisingForm.value.email,
-      'password':this.phisingForm.value.password,
+      'email': email['email'],
+      'password':email['password'],
+      'allemails':this.phisingForm.value.allemails,
       'sendToReporters' : this.phisingForm.value.radio,
       'addNote' : this.phisingForm.value.addnote,
       'emailSignature': this.phisingForm.value.footer,
@@ -262,7 +313,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
 
     let con = JSON.stringify(reqBody);
     formData.append("details",con);
-  
+    formData.append("allemails",this.phisingForm.value.allemails)
     this.StoreData=false;
     this._addCampaign.sendtome(reqBody).subscribe((data)=>{
       if(data){
@@ -295,3 +346,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     });
   }
 }
+function email(email: any) {
+  throw new Error('Function not implemented.');
+}
+
