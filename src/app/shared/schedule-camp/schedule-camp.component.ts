@@ -80,7 +80,7 @@ export class ScheduleCampComponent implements OnInit {
               let dataDialog = { title: 'Campaign ReScheduled Successfully!' };
               this.dialog.open(ConfirmationModalComponent, {
                 width: '400px',
-                height: '380px',
+                height:'400px',
                 data: dataDialog
               });
             }
@@ -92,7 +92,7 @@ export class ScheduleCampComponent implements OnInit {
                let dataDialog = { title: 'Campaign deleted Successfully!' };
                 const dialogRef = this.dialog.open(ConfirmationModalComponent, {
                   width: '400px',
-                  height: '380px',
+                  height:'400px',
                   data: dataDialog
                 });
                 dialogRef.afterClosed().subscribe(()=>{

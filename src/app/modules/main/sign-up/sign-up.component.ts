@@ -81,7 +81,7 @@ export class SignUpComponent implements OnInit {
         let dataDialog = { title: 'Onboarding Request Submitted!' };
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {
           width: '400px',
-          height: '380px',
+          height: '400px',
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{
@@ -96,7 +96,7 @@ export class SignUpComponent implements OnInit {
        let dataDialog = { title: ' Onboarding Request Submitted!' };
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {
           width: '400px',
-          height: '380px',
+          height: '400px',
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{
@@ -108,7 +108,7 @@ export class SignUpComponent implements OnInit {
         let dataDialog = { title: 'You have Already Been Onboarded!' };
         const dialogRef = this.dialog.open(InfomodalComponent, {
           width: '400px',
-          height: '380px',
+          height: '400px',
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{
@@ -120,7 +120,7 @@ export class SignUpComponent implements OnInit {
         let dataDialog = { title: 'Your Request is still under Process' };
         const dialogRef = this.dialog.open(InfomodalComponent, {
           width: '400px',
-          height: '380px',
+          height: '400px',
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{
@@ -132,7 +132,7 @@ export class SignUpComponent implements OnInit {
         let dataDialog = { title: 'Your are not Authorized to use this application' };
         const dialogRef = this.dialog.open(InfomodalComponent, {
           width: '400px',
-          height: '380px',
+          height: '400px',
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{
