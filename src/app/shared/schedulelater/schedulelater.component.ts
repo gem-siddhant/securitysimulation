@@ -89,10 +89,10 @@ export class SchedulelaterComponent implements OnInit {
        
       }
       else{
-        let dataDialog = { title: 'Campaign Schedule Successfully!' };
+        let dataDialog = { title: 'Campaign Scheduled Successfully!' };
         const dialogRef = this.dialog.open(CsvmessageComponent, {
-          width: '470px',
-          height: '430px',
+          width: '400px',
+          height: '380px',
           data:dataDialog 
           
         });
@@ -271,7 +271,7 @@ export class SchedulelaterComponent implements OnInit {
        if(err.status==200){
          console.log('err',err);
          this.dialogRef.close()
-       let dataDialog = { title: 'Campaign Schedule Successfully!' };
+       let dataDialog = { title: 'Campaign Scheduled Successfully!' };
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {
           width: '600px',
           data: dataDialog

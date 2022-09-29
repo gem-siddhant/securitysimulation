@@ -78,10 +78,10 @@ export class SendcampaignComponent implements OnInit {
        
       }
       else{
-        let dataDialog = { title: 'Campaign Schedule Successfully!' };
+        let dataDialog = { title: 'Campaign Successfully!' };
         const dialogRef = this.dialog.open(CsvmessageComponent, {
-          width: '470px',
-          height: '430px',
+          width: '400px',
+          height: '380px',
           data:dataDialog 
           
         });
@@ -190,7 +190,8 @@ export class SendcampaignComponent implements OnInit {
          console.log('err',err);
        let dataDialog = { title: 'Campaign Sent Successfully!' };
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {
-          width: '600px',
+          width: '400px',
+          height: '380px',
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{
