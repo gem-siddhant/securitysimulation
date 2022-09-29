@@ -94,11 +94,13 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   reward_type:[''],
   desc:['',Validators.required],
   reward_amount:[''],
-  tempate_select:['',Validators.required],
+  tempate_select:['',],
   attachmentFile:[''],
   subject:['',Validators.required],
+  //email:['',Validators.required],
+  //password:['',Validators.required],
   radio:[''||'false'],
-  addnote:['',Validators.required],
+  addnote:['',],
   footer:['',Validators.required],
   radio2:[''||'false'],
   fileattach:[''||'attachment'],
@@ -179,22 +181,25 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
 
   schedulelater()
   {
-    if(this.phisingForm.value.name == "" || this.phisingForm.value.subject == "" || this.phisingForm.value.desc == "" || this.phisingForm.value.addnote == "" || this.phisingForm.value.footer == "")
+    let email = this.phisingForm.value.allemails[0];
+    console.log(email['email'])
+    if(this.phisingForm.value.name == "" || this.phisingForm.value.subject == "" || this.phisingForm.value.desc == ""|| this.phisingForm.value.footer == "")
     {
       this.toastr.error("Please EDIT The Fields")
       return;
     }
-    if(this.phisingForm.value.email == "")
+    if(email['email']=="" )
     {
-      this.toastr.error("Please Provide Email")
+      
+      this.toastr.error("Please Provide email")
       return;
     }
-    if(this.phisingForm.value.password == "")
+    if(email['password']=="")
     {
+     
       this.toastr.error("Please Provide Password")
-      return;
+      return; 
     }
-
     const dialogRef = this.dialog.open(SchedulelaterComponent, {
       width: '770px',
       height: '330px',
@@ -219,20 +224,24 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
  
   sendcampaign()
   {
-    if(this.phisingForm.value.name == "" || this.phisingForm.value.subject == "" || this.phisingForm.value.desc == "" || this.phisingForm.value.addnote == "" || this.phisingForm.value.footer == "")
+    let email = this.phisingForm.value.allemails[0];
+    console.log(email['email'])
+    if(this.phisingForm.value.name == "" || this.phisingForm.value.subject == "" || this.phisingForm.value.desc == ""|| this.phisingForm.value.footer == "")
     {
       this.toastr.error("Please EDIT The Fields")
       return;
     }
-    if(this.phisingForm.value.email == "")
+    if(email['email']=="" )
     {
-      this.toastr.error("Please Provide Email")
+      
+      this.toastr.error("Please Provide email")
       return;
     }
-    if(this.phisingForm.value.password == "")
+    if(email['password']=="")
     {
+     
       this.toastr.error("Please Provide Password")
-      return;
+      return; 
     }
     const dialogRef = this.dialog.open(SendcampaignComponent, {
       width: '523px',

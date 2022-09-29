@@ -361,20 +361,26 @@
 
   <!--email and password for simulation-->
 
-  <div class="first  row col-lg-12 col-md-12 col-sm-12 col-xs-6">
-    <div class="name row">
-      <mat-form-field appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0">
+  <div class="first  row col-lg-12 col-md-12 col-sm-12 col-xs-6" *ngFor="let i =index;let questionCtrl of getcontrols();"  formArrayName="allemails" >
+     
+    <div class="name row" [formGroupName]="i">
+      <mat-form-field appearance="outline" class="col col-lg-6 col-md-6col-sm-12 col-xs-6 ml-0">
         <mat-label>Email for simulation</mat-label>
-        <input matInput type="text" formControlName="email">
+        <input matInput type="text" formControlName="email" >
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0" >
+      <mat-form-field appearance="outline" class="col col-lg-5 col-md-7 col-sm-12 col-xs-6 ml-0" >
         <mat-label>Password</mat-label>
         <input matInput type="password" formControlName="password">
       </mat-form-field>
-    </div>
+   
+      <button type="button" class="btn col col-lg-1 col-md-6 col-sm-12 col-xs-6" [value]="true" (click)="addAddress()" matTooltip="Add Emails" matTooltipPosition="above"><mat-icon class="row col-md-6 col-sm-12 col-xs-6 icon-display" >note_add</mat-icon></button>
+
+  </div>
     &nbsp;
   </div>
+
+
 
 <!--send attachment-->
 <!--no attachment part-->
