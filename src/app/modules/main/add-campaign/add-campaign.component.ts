@@ -188,13 +188,13 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       this.toastr.error("Please EDIT The Fields")
       return;
     }
-    if(email['email']=="" )
+    if(email['senderEmail']=="" )
     {
       
       this.toastr.error("Please Provide email")
       return;
     }
-    if(email['password']=="")
+    if(email['senderPassword']=="")
     {
      
       this.toastr.error("Please Provide Password")
@@ -231,13 +231,12 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       this.toastr.error("Please EDIT The Fields")
       return;
     }
-    if(email['email']=="" )
-    {
-      
+    if(email['senderEmail']=="" )
+    {    
       this.toastr.error("Please Provide email")
       return;
     }
-    if(email['password']=="")
+    if(email['senderPassword']=="")
     {
      
       this.toastr.error("Please Provide Password")
@@ -306,9 +305,9 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       'templateRewardType':this.phisingForm.value.reward_type,
       'templateHeading':this.phisingForm.value.subject,
       'createdBy':localStorage.getItem('email'),
-      //'email': email['email'],
-      //'password':email['password'],
-      'sendEmails':this.phisingForm.value.allemails,
+      'email': email['email'],
+      'password':email['password'],
+      //'sendEmails':this.phisingForm.value.allemails,
       'sendToReporters' : this.phisingForm.value.radio,
       'addNote' : this.phisingForm.value.addnote,
       'emailSignature': this.phisingForm.value.footer,

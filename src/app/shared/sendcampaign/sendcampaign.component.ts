@@ -81,7 +81,7 @@ export class SendcampaignComponent implements OnInit {
         let dataDialog = { title: 'Campaign Successfully!' };
         const dialogRef = this.dialog.open(CsvmessageComponent, {
           width: '400px',
-          height:'400px',
+          height:'430px',
           data:dataDialog 
           
         });
