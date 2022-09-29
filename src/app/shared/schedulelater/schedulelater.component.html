@@ -59,6 +59,8 @@
           (change)="onChange($event)">
   </div>
   </div>
+ 
+  <p [innerHTML]="data.content"></p>
 
   <div class="row mt-2 " *ngIf="changeTriggered==true && this.file!=null">
     <div class="col-lg-10 col-md-12 col-sm-12 col-xs-12 attachment-div" >

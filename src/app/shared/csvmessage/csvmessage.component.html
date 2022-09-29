@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <button type="button" class="close" (click)="onClose()"aria-label="Close">
+            <span aria-hidden="true"><i class="material-icons">close</i></span>
+        </button>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mat-dialog-content col-center ml-1 mt-2">
+        <img src="../../../assets/images/information.png" >
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-center mat-dialog-content ml-1 mt-4">
+    <p style="font-size: 18px; font-weight: bolder;padding-left: 3%;">This CSV Does not follow the correct format</p>
+   
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-center mat-dialog-content ml-1 ">
+<p style="font-size: 18px;padding-left: 3%;">Please Follow the mentioned instructions -    </p> 
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-center mat-dialog-content ml-1 ">
+    <ol>
+        <li>CSV should not contain any additional space</li>
+        <li>Each email address should be present in each line</li>
+        <li>Email address should be valid</li>
+    </ol>
+</div>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mat-dialog-content col-center ml-1 mt-4">
+    <button type="submit" mat-raised-button id="ok_btn" (click)="onClose()">OK</button>
+</div>
+</div>
+

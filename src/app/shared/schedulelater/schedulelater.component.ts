@@ -11,12 +11,16 @@ import { ToastrService } from 'ngx-toastr';
 import { count } from 'rxjs';
 import { AddCampaignService } from 'src/app/modules/main/service/add-campaign.service';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
-
+import { Pipe, PipeTransform } from '@angular/core';
+import { title } from 'process';
+import { CsvmessageComponent } from '../csvmessage/csvmessage.component';
 @Component({
   selector: 'app-schedulelater',
   templateUrl: './schedulelater.component.html',
   styleUrls: ['./schedulelater.component.css']
 })
+
+
 export class SchedulelaterComponent implements OnInit {
   StoreData:boolean=true;
   selected = 'None';
@@ -38,6 +42,8 @@ export class SchedulelaterComponent implements OnInit {
   changeTriggered=false;
   text:any;
   vare:any
+  myFooList: any = ['Some Item', 'Item Second', 'Other In Row', 'What to write', 'Blah To Do'];
+ 
   constructor( public dialogRef: MatDialogRef<SchedulelaterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _addCampaign:AddCampaignService,
@@ -48,7 +54,8 @@ export class SchedulelaterComponent implements OnInit {
       this.phisingForm = this.formBuilder.group({});
       this.credsForm = this.formBuilder.group({});
     }
-  
+
+   
   ngOnInit(): void {
     this.phisingForm = this.formBuilder.group(
       {
@@ -77,13 +84,58 @@ export class SchedulelaterComponent implements OnInit {
     } 
     for(var j=0;j<res.length;j++)
     {
-      if(res[j]==="")
+      if(res[j] !="" || res[j].includes('@') || (res[j].split('@').length - 1)==1 )
       {
-        this.toastr.error("There is an additional space in your csv")
+       
+      }
+      else{
+        let dataDialog = { title: 'Campaign Schedule Successfully!' };
+        const dialogRef = this.dialog.open(CsvmessageComponent, {
+          width: '470px',
+          height: '430px',
+          data:dataDialog 
+          
+        });
       }
     }
+
+    // for(var k=0;k<res.length;k++)
+    // {
+    //   if (res[k].includes('@'))
+    //   {
+       
+    //   }
+    //   else{
+    //     let dataDialog = { title: 'Campaign Schedule Successfully!' };
+    //     const dialogRef = this.dialog.open(CsvmessageComponent, {
+    //       width: '470px',
+    //       height: '430px',
+    //       data:dataDialog 
+          
+    //     });
+    //   }
+     
+    // }
+    // for(var k=0;k<res.length;k++)
+    // {
+    //   if ((res[k].split('@').length - 1)==1)
+    //   {
+       
+    //   }
+      // else{
+      //   let dataDialog = { title: 'Campaign Schedule Successfully!' };
+      //   const dialogRef = this.dialog.open(CsvmessageComponent, {
+      //     width: '470px',
+      //     height: '430px',
+      //     data:dataDialog 
+          
+      //   });
+      // }
+     
+    // }
     this.vare = JSON.stringify(res);
     console.log(res.length)  
+  
   }
      // this.text.push(reader.result); 
       //convert text to json here
