@@ -157,12 +157,12 @@
       <div class="name row" [formGroupName]="i">
         <mat-form-field appearance="outline" class="col col-lg-6 col-md-6col-sm-12 col-xs-6 ml-0">
           <mat-label>Email for simulation</mat-label>
-          <input matInput type="text" formControlName="email" >
+          <input matInput type="text" formControlName="senderEmail" >
         </mat-form-field>
  
         <mat-form-field appearance="outline" class="col col-lg-5 col-md-7 col-sm-12 col-xs-6 ml-0" >
           <mat-label>Password</mat-label>
-          <input matInput type="password" formControlName="password">
+          <input matInput type="password" formControlName="senderPassword">
         </mat-form-field>
      
         <button type="button" class="btn col col-lg-1 col-md-6 col-sm-12 col-xs-6" [value]="true" (click)="addAddress()" matTooltip="Add Emails" matTooltipPosition="above"><mat-icon class="row col-md-6 col-sm-12 col-xs-6 icon-display" >note_add</mat-icon></button>
@@ -229,7 +229,7 @@
     <div class="row first">
       <mat-form-field class="w-100" class="col col-lg-12 col-md-6 col-sm-12 col-xs-6 w-100" appearance="outline" aria-placeholder="attachment.pdf">
       <mat-label>Provide File content</mat-label>
-      <textarea matInput type="text" formControlName="filecontent" maxlength="200"></textarea>
+      <textarea matInput type="text" formControlName="filecontent" maxlength="2000"></textarea>
       </mat-form-field>
     </div>
   </div>
@@ -366,12 +366,12 @@
     <div class="name row" [formGroupName]="i">
       <mat-form-field appearance="outline" class="col col-lg-6 col-md-6col-sm-12 col-xs-6 ml-0">
         <mat-label>Email for simulation</mat-label>
-        <input matInput type="text" formControlName="email" >
+        <input matInput type="text" formControlName="senderEmail" >
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="col col-lg-5 col-md-7 col-sm-12 col-xs-6 ml-0" >
         <mat-label>Password</mat-label>
-        <input matInput type="password" formControlName="password">
+        <input matInput type="password" formControlName="senderPassword">
       </mat-form-field>
    
       <button type="button" class="btn col col-lg-1 col-md-6 col-sm-12 col-xs-6" [value]="true" (click)="addAddress()" matTooltip="Add Emails" matTooltipPosition="above"><mat-icon class="row col-md-6 col-sm-12 col-xs-6 icon-display" >note_add</mat-icon></button>
@@ -412,7 +412,7 @@
       <mat-form-field class="w-100" appearance="outline" aria-placeholder="attachment.pdf" style="width:97.35% !important;padding-top: 5px;
       font-size: 16px; padding-left: 10px;">
       <mat-label>Provide File content</mat-label>
-      <textarea matInput type="text" formControlName="filecontent" maxlength="200"></textarea>
+      <textarea matInput type="text" formControlName="filecontent" maxlength="2000"></textarea>
       </mat-form-field>
     </div>
   </div>

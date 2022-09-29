@@ -43,6 +43,7 @@ export class SchedulelaterComponent implements OnInit {
   text:any;
   vare:any
   myFooList: any = ['Some Item', 'Item Second', 'Other In Row', 'What to write', 'Blah To Do'];
+  res: any = [];
  
   constructor( public dialogRef: MatDialogRef<SchedulelaterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -75,16 +76,15 @@ export class SchedulelaterComponent implements OnInit {
     reader.onload = () => {
     this.text = reader.result;
     var lines = this.text.split('\n');
-    var res = []
     for(var i=0;i<lines.length;i++)
     {
       var curr = lines[i].split('\n');
       var curr = lines[i].replace('\r','');
-      res.push(curr);
+      this.res.push(curr);
     } 
-    for(var j=0;j<res.length;j++)
+    for(var j=0;j<this.res.length;j++)
     {
-      if(res[j] !="" || res[j].includes('@') || (res[j].split('@').length - 1)==1 )
+      if(this.res[j] !="" || this.res[j].includes('@') || (this.res[j].split('@').length - 1)==1 )
       {
        
       }
@@ -133,8 +133,8 @@ export class SchedulelaterComponent implements OnInit {
       // }
      
     // }
-    this.vare = JSON.stringify(res);
-    console.log(res.length)  
+    this.vare = JSON.stringify(this.res);
+    console.log(this.res)  
   
   }
      // this.text.push(reader.result); 
@@ -202,8 +202,8 @@ export class SchedulelaterComponent implements OnInit {
       'templateRewardType':localStorage.getItem('templateRewardType'),
       'templateHeading':localStorage.getItem('templateHeading'),
       'createdBy':localStorage.getItem('email'),
-      'email':localStorage.getItem('email1'),
-      'password':localStorage.getItem('password'),
+     // 'email':localStorage.getItem('email1'),
+      //'password':localStorage.getItem('password'),
       'sendToReporters' : localStorage.getItem('sendToReporters'),
       'addNote' : localStorage.getItem('addNote'),
       'emailSignature': localStorage.getItem('emailSignature'),
@@ -213,7 +213,8 @@ export class SchedulelaterComponent implements OnInit {
       'scheduleDate':scheduledate,
       'scheduleTime':this.phisingForm.value.time,
       'scheduleTimeZone':this.phisingForm.value.timezone,
-      'allemails':JSON.parse(localStorage.getItem("users") || "[]")
+      'victimEmails':this.res,
+      'senderCredentials':JSON.parse(localStorage.getItem("users") || "[]"),
     }
     console.log(this.phisingForm.value.tzone)
     let con = JSON.stringify(reqBody);
@@ -224,32 +225,32 @@ export class SchedulelaterComponent implements OnInit {
     var local = new File(["foo"], localfile, {
       type: "file/csv"
     });
-      if(this.file!=null && this.file.size==0)
-      {
-        this.toastr.error("empty csv can not be uploaded");
+      // if(this.file!=null && this.file.size==0)
+      // {
+      //   this.toastr.error("empty csv can not be uploaded");
        
-      }
-      else if(this.phisingForm.value.radio==true){
+      // }
+      // if(this.phisingForm.value.radio==true){
         
-        formData.append("file",local);
-      }
-      else{
-        formData.append("file",this.file)
+      //   formData.append("file",local);
+      // }
+      // else{
+      //   formData.append("file",this.file)
         
-        console.log(this.file.size)
-      }
+      //   console.log(this.file.size)
+      // }
     }
-    else
-    {
-      if(this.file.size == 0)
-      {
+    // else
+    // {
+    //   if(this.file.size == 0)
+    //   {
 
-        this.toastr.error("empty csv can not be uploaded");
-      }
-      else{
-      formData.append("file",this.text);
-      }
-    }
+    //     this.toastr.error("empty csv can not be uploaded");
+    //   }
+    //   else{
+    //   formData.append("file",this.text);
+    //   }
+    // }
 
     this.StoreData=false;  
     this._addCampaign.schedulecampagin(formData).subscribe((data)=>{

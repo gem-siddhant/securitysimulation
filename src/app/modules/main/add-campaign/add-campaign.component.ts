@@ -116,8 +116,8 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     console.log(this.phisingForm);
 
     const emailpassItem = new FormGroup({
-      email: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
+      senderEmail: new FormControl('', Validators.required),
+      senderPassword: new FormControl('', Validators.required),
     });
    
     
