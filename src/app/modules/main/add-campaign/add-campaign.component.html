@@ -4,7 +4,7 @@
   <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value" diameter="50" *ngIf="this.StoreData==false"></mat-progress-spinner>
 </div>
 
-<div class="margin-l">
+<div class="margin-l" style="overflow-x:hidden;">
   <div class="row mb-3 mt-4">
     <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
     <button routerLink="/main/dashboard" class="border-rem">
@@ -19,26 +19,26 @@
 <!--checking whether manager or not-->
   <form [formGroup]="phisingForm">
     <div class="row mb-3">
-      <div class="col-lg-9 col-md-6 col-sm-5 col-xs-5 sub-head">
+      <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 sub-head">
        Choose Template
       </div>
   <div class="row temp-pad ">
 
      <mat-radio-group formControlName="tempate_select" aria-label="Select an option">
     <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> -->
-      <div class=" row col-lg-4 col-md-4 col-sm-2 col-xs-2 inline-block">
+      <div class=" row col-lg-6 col-md-4 col-sm-4 col-xs-2 inline-block">
     <img class="template-image mb-2" src="../../../../assets/images/template1.png" style="width: 100%;">
     <mat-radio-button
     (click)="getPreFilledData(1)" [value]=1 style="color: white;">Amazon Template</mat-radio-button>
   </div>
   <!-- </div> -->
   <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> -->
-    <div class=" row col-lg-4 col-md-2 col-sm-2 col-xs-2 inline-block">
+    <div class=" row col-lg-6 col-md-2 col-sm-2 col-xs-2 inline-block">
     <img class="template-image mb-2" src="../../../../assets/images/accounts.png" style="width: 100%;">
     <mat-radio-button (click)="getPreFilledData(3)" [value]=3 style="color: white;">Accounts Template</mat-radio-button>
     </div>
   <!-- </div> -->
-  <div class=" row col-lg-4 col-md-2 col-sm-2 col-xs-2 inline-block">
+  <div class=" row col-lg-6 col-md-2 col-sm-2 col-xs-2 inline-block">
     <img class="template-image mb-2" src="../../../../assets/images/macbook_template.jpeg" style="width: 100%;">
     <mat-radio-button (click)="getPreFilledData(5)" [value]=5 style="color: white;">IT Template</mat-radio-button>
     </div>
@@ -46,11 +46,11 @@
 </div>
 </div>
 <div *ngIf="manager=='false'">
-  <div class="sub-head row col-lg-9 col-md-6 col-sm-5 col-xs-5">Fill in the details</div>
-  <div class="row" *ngIf="this.phisingForm.value.tempate_select!=0">
-    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 form-box">
-    <div class="first row col-lg-12 col-md-12 col-sm-12 col-xs-6">
-    <div class="name row">
+  <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 sub-head mb-2" style="padding-left:1% ;">Fill in the details</div>
+  <div class="row" *ngIf="this.phisingForm.value.tempate_select!=0" >
+    <div class="col-lg-9 col-md-6 col-sm-6 col-xs-6 form-box" >
+    <div class="first row col-lg-12 col-md-12 col-sm-12 col-xs-6" >
+    <div class="name row" style="padding-top: 2%;">
       <mat-form-field appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0">
         <mat-label>Name of Campaign</mat-label>
         <input matInput type="text" [value]="this.prefilled.heading"  formControlName="name" maxlength="25">
@@ -61,14 +61,9 @@
           <mat-label>Email's Subject</mat-label>
           <input matInput type="text" [value]="this.prefilled.subject" id="in" formControlName="subject" maxlength="70">
         </mat-form-field>
-        &nbsp;
+       
       </div>
-      </div>
-  
-  <div class="row">
-    
-  </div>
-  
+      </div>  
   <!--reward type field-->
   <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
     <div class="row first">
@@ -122,8 +117,8 @@
   
     <!--email and password for simulation-->
   
-    <div class="first  row col-lg-12 col-md-12 col-sm-12 col-xs-6">
-      <div class="name row">
+    <div class="first row col-lg-12 col-md-12 col-sm-12 col-xs-6">
+      <div class="name row ">
         <mat-form-field appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0">
           <mat-label>Email for simulation</mat-label>
           <input matInput type="text" formControlName="email">
@@ -134,21 +129,20 @@
           <input matInput type="password" formControlName="password">
         </mat-form-field>
       </div>
-      &nbsp;
     </div>
 
     <!--send attachment-->
 <!--no attachment part-->
-<div class="row col-lg-6 col-md-6 col-sm-6 col-xs-6">
-  <h3 style="margin-left: 15px;margin-bottom: 5px;font-size: 15px;color: #531D89;" class="row col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0">Send Attachment</h3>
+<div class="row col-lg-8 col-md-12 col-sm-8 col-xs-12">
+  <h3 style="margin-left: 15px;margin-bottom: 5px;font-size: 15px;color: #531D89;" class="col col-lg-4 col-md-4 col-sm-4 col-xs-4 ml-0">Send Attachment</h3>
 
-  <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="false" [checked]="!attachment" style="margin-left:12px;font-size: 11px;margin-right: 2%;" class="col col-lg-1 col-md-3 col-sm-3 col-xs-3" formControlName="radio2"  >No
+  <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="false" [checked]="!attachment" class="row col-lg-2 col-md-2 col-sm-2 col-xs-2" formControlName="radio2"  >No
 
 <!--no attachment part ended-->
 
 <!--send attachment start-->
 
-  <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="true" [checked]="attachment" style="margin-left:12px; font-size: 11px;margin-right: 2%;" class="row col-lg-1 col-md-2 col-sm-3 col-xs-3 p-2" formControlName="radio2"  >Yes
+  <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="true" [checked]="attachment" class="row col-lg-2 col-md-2 col-sm-2 col-xs-2" formControlName="radio2"  >Yes
 </div>
 <!--provide your custom name-->
 <div *ngIf="attachment">
@@ -165,11 +159,10 @@
     <div class="row first">
       <mat-form-field class="w-100" class="col col-lg-12 col-md-6 col-sm-12 col-xs-6 w-100" appearance="outline" aria-placeholder="attachment.pdf">
       <mat-label>Provide File content</mat-label>
-      <textarea matInput type="text" formControlName="filecontent" maxlength="200"></textarea>
+      <textarea matInput type="text" formControlName="filecontent" maxlength="2000"></textarea>
       </mat-form-field>
     </div>
   </div>
-
 </div>
 
 
@@ -221,7 +214,7 @@
 <!--if manager is true-->
 
 <div *ngIf="manager == 'true'">
-<div class="sub-head row col-lg-9 col-md-6 col-sm-5 col-xs-5">Fill in the details</div>
+  <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 sub-head">Fill in the details</div>
 <div class="row" *ngIf="this.phisingForm.value.tempate_select!=0">
   <div class="col-lg-9 col-md-6 col-sm-6 col-xs-6 form-box">
 
@@ -237,7 +230,7 @@
             <mat-label>Email's Subject</mat-label>
             <input matInput type="text" [value]="this.prefilled.subject" id="in" formControlName="subject" maxlength="70">
           </mat-form-field>
-          &nbsp;
+       
         </div>
         </div>
 
@@ -309,7 +302,6 @@
         <input matInput type="password" formControlName="password">
       </mat-form-field>
     </div>
-    &nbsp;
   </div>
 
 <!--send attachment-->
@@ -342,7 +334,7 @@
       <mat-form-field class="w-100" appearance="outline" aria-placeholder="attachment.pdf" style="width:97.35% !important;padding-top: 5px;
       font-size: 16px; padding-left: 10px;">
       <mat-label>Provide File content</mat-label>
-      <textarea matInput type="text" formControlName="filecontent" maxlength="200"></textarea>
+      <textarea matInput type="text" formControlName="filecontent" maxlength="2000"></textarea>
       </mat-form-field>
     </div>
   </div>

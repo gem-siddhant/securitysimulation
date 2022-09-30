@@ -1,30 +1,32 @@
-@media screen and (min-width: 800px){
+
   .img1{
     position: absolute;
+    width: max-content;
     top: 0;
     left: 0;   
     height: 100vh;
     width: 100%;
-  opacity: 1;
+  opacity: 2;
   z-index: 1;
   background-image: url(../../../../assets/images/final_bg_image.png);  
-  background: url(../../../../assets/images/final_bg_image.png) no-repeat center center fixed; 
+  background: url(../../../../assets/images/final_bg_image.png) fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
-    -o-background-size: cover;
     background-size: cover;
-  
+  overflow: hidden; 
   }
+  
   .img3{
   position: absolute;
     top:0;
-    left: 770px;
-    width: 500px;
     height: 610px;
     border-bottom-left-radius: 50%;
     border-top-left-radius: 50%;
   background: #AFDADB;
+  min-width: 100px;
+  max-width:100px
   }
+
   .img2{
     position: absolute;
     top: 0px;
@@ -142,4 +144,4 @@
     border: rgba(0, 0, 0, 0.25);
     z-index: 3;
   }
-  }
+  

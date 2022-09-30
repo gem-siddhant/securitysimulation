@@ -1,18 +1,18 @@
-<html>
+<html style="overflow:hidden;">
     <head>
       
     </head>
-    <body>
-        <div class="row full ">
-            <div class="container-body">
+    <body style="overflow:hidden ;">
+        <div class="row full " [ngClass]="{'offset-2': mobile==true}">
+            <div class="container-body" >
                 <img class="img1">
               <!--  <div class="img3"></div>-->
-                <img class="img4" src="../../../../assets/images/whitegeminilogo.png">
+                <img class="img4" src="../../../../assets/images/whitegeminilogo.png" >
              
                 <div class="pirates-class">
                             <img src="../../../../assets/images/piratelogowithbar.png">
                 </div>
-                <div class="welcome">
+                <div class="welcome" [ngClass]="{'offset-2': mobile==true}">
                     Welcome To 
                 </div>
             
