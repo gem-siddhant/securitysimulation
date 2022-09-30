@@ -125,7 +125,7 @@ i: number = 1;
     this._mainService.getCompaignDetails(id).subscribe((data)=>{
      localStorage.setItem('isactive',data.isActive); 
      this.isendactive = localStorage.getItem('isactive')
-    
+
      if(this.isendactive == 'false')
      {
        this.clickbtn = true;

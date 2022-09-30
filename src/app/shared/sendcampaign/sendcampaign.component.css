@@ -1,0 +1,60 @@
+.attachment-display{
+    text-decoration: none;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    color: #000000;
+    cursor: pointer;
+  }
+  #attachment_btn {
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    border: none;
+    color: #205072;
+  }
+  
+  .attachment-div {
+    display: flex;
+    align-items: center;
+    height: 30px;
+    background-color: #a192b0;
+    margin-left: 21px;
+    border-radius: 5px;
+  }
+  .heading{
+    margin-left: 12px; margin-bottom: 5px;margin-top: 5px;font-size: 25px;
+    color:#531D89;
+  }
+  input[type="radio"] {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Chrome, Safari, Opera */
+    transform: scale(1.5);
+  }
+  .add_btn{
+    background: #66209D;
+    border-radius: 5px;
+    width:418px !important; margin-top: 35px;margin-left: 15px;
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+   }
+   .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -moz-transform: translateX(-50%) translateY(-50%);
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%);
+  }
+  .overlay {
+    height: 100vh;
+    width: 100%;
+    /* background-color: rgba(0, 0, 0, 0.286); */
+    z-index: 99999;
+    top: 0;
+    left: 0;
+    position: fixed;
+  }

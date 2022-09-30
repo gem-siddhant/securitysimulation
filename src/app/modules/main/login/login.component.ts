@@ -17,9 +17,10 @@ import { AuthenticationResult } from '@azure/msal-common';
 import { Subject } from 'rxjs';
 import { filter, takeUntil } from 'rxjs/operators';
 import { InteractionStatus, InteractionType, PopupRequest, RedirectRequest } from '@azure/msal-browser';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ResponsiveService } from 'src/app/services/responsive.service';
 import { AddCampaignService } from '../service/add-campaign.service';
+import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
 
 @Component({
   selector: 'app-login',
@@ -76,11 +77,21 @@ export class LoginComponent implements OnInit {
       this.mobile = isMobile;
     });
   }
+
+  onboard()
+  { }
   loginWithMicrosoft2(){
     this.authService.loginPopup({...this.msalGuardConfig.authRequest} as PopupRequest).subscribe((response: AuthenticationResult)=>{
       if(response){
+       
         console.log("res",response);
         this._authUserService.setToken(response.account?.username,response.accessToken).then(()=>{
+          (err: { status: number; })=>{
+            if(err.status==404)
+            {
+              this.toastr.error("Error in adding campaign.");
+            }
+          }
         this.router.navigate(['/main/dashboard']);
         sessionStorage.clear();
         }).then(()=>{
@@ -95,7 +106,10 @@ export class LoginComponent implements OnInit {
           });
         })
       }
-    })
+   
+    },
+  
+    )
 
   }
   loginWithMicrosoft(){

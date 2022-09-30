@@ -16,7 +16,11 @@ export class MainService {
      console.log('send user data',obj);
     return this.http.post<any>('register/click', obj);
    }
-   
+   senddetails(obj:any)
+   {
+    console.log('send user data',obj);
+    return this.http.post<any>('admin/response', obj);
+   }
    getCompaignDetails(id:any){
     let test:any=Number(id);
     return this.http.post<any>('task', test);
@@ -27,6 +31,16 @@ export class MainService {
     return this.http.post<any>('endCampaign',end);
    }
    signUp(form:any){
-      return this.http.post<any>('add/user',form);
+      return this.http.post<any>('onboard/user',form);
    }
+   onboard(form:any){
+    return this.http.post<any>('add/user',form);
+ }
+  scheduled(email:any){
+    return this.http.post<any>('get/scheduled/tasks',email);
+  }   
+  deleteschedule(jobkey:any)
+  {
+    return this.http.post<any>('delete/job',jobkey);
+  } 
 }

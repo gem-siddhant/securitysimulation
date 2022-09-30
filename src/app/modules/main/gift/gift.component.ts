@@ -20,7 +20,7 @@ export class GiftComponent implements OnInit {
         this.id =  params['vals'];
       }
     )
-    console.log('email',this.email);
+    console.log('token',this.email);
     console.log('id',this.id);
     this.http.get<{ip:string}>('https://jsonip.com')
     .subscribe( data => {
