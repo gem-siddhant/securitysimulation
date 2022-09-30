@@ -77,7 +77,8 @@ export class RescheduleComponent implements OnInit {
         this.StoreData=true;
         let dataDialog = { title: 'Campaign ReScheduled Successfully!' };
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {
-          width: '600px',
+          width: '400px',
+          height:'400px',
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{
@@ -90,7 +91,8 @@ export class RescheduleComponent implements OnInit {
          console.log('err',err);
        let dataDialog = { title: 'Campaign ReSchedule Successfully!' };
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {
-          width: '600px',
+          width: '400px',
+          height:'400px',
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{

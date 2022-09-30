@@ -21,6 +21,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ResponsiveService } from 'src/app/services/responsive.service';
 import { AddCampaignService } from '../service/add-campaign.service';
 import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
+import { InfomodalComponent } from 'src/app/shared/infomodal/infomodal.component';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +34,7 @@ export class LoginComponent implements OnInit {
   loginDisplay = false;
   private readonly _destroying$ = new Subject<void>();
   mobile: boolean = false;
-  
+  status?: number;
   constructor(private formBuilder: FormBuilder,
     private _addCampaign:AddCampaignService,
     private _MainService:MainService,
@@ -47,6 +48,7 @@ export class LoginComponent implements OnInit {
     private msalBroadcastService: MsalBroadcastService,
     private toastr: ToastrService) {
   //  this.loginForm = this.formBuilder.group({});
+
   }
 
   ngOnInit(): void {
@@ -82,16 +84,12 @@ export class LoginComponent implements OnInit {
   { }
   loginWithMicrosoft2(){
     this.authService.loginPopup({...this.msalGuardConfig.authRequest} as PopupRequest).subscribe((response: AuthenticationResult)=>{
+      if (response.tenantId == '') {
+        prompt('Invalid')
+        }
       if(response){
-       
         console.log("res",response);
         this._authUserService.setToken(response.account?.username,response.accessToken).then(()=>{
-          (err: { status: number; })=>{
-            if(err.status==404)
-            {
-              this.toastr.error("Error in adding campaign.");
-            }
-          }
         this.router.navigate(['/main/dashboard']);
         sessionStorage.clear();
         }).then(()=>{
@@ -103,14 +101,19 @@ export class LoginComponent implements OnInit {
                 
               }
             }
+            
           });
         })
       }
    
     },
-  
-    )
-
+ 
+    
+    
+    
+    
+    );
+    
   }
   loginWithMicrosoft(){
     if (this.msalGuardConfig.interactionType === InteractionType.Popup) {

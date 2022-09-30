@@ -201,4 +201,9 @@ div.pair{
 input[type=radio]{
   transform:scale(0.8);
 }
+.icon-display {
+  transform: scale(2);
+  padding-top: 1px;
+
+}
 }
