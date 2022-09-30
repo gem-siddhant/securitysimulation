@@ -85,7 +85,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   email:['',Validators.required],
   password:['',Validators.required],
   radio:[''||'false'],
-  addnote:['',Validators.required],
+  addnote:[''],
   footer:['',Validators.required],
   radio2:[''||'false'],
   fileattach:[''||'attachment'],

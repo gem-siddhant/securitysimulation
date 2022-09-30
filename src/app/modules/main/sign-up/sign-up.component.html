@@ -2,14 +2,14 @@
   <div *ngIf="this.StoreData==false" class="overlay">
     <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value" diameter="50" *ngIf="this.StoreData==false"></mat-progress-spinner>
   </div>
-  <img class="logo" src="../../assets/images/finalpirates.png">
-<div class="row align-c">
+  <img class="logo" src="../../assets/images/finalpirates.png" style="overflow:auto;">
+<div  class="row align-c">
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-head mb-3" style="height:8%;padding-top: 1%;">
     
     <mat-icon >security</mat-icon>
     Onboarding
    </div>
-    <mat-card class="mat">
+    <mat-card class="mat"  >
      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offset-1">
         <form [formGroup]="signupForm">
           <div class="row">
