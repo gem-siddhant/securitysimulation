@@ -40,6 +40,8 @@ import { RescheduleComponent } from './shared/reschedule/reschedule.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { InfomodalComponent } from './shared/infomodal/infomodal.component';
 import { CsvmessageComponent } from './shared/csvmessage/csvmessage.component';
+import { RequestsubmitComponent } from './Onboard/requestsubmit/requestsubmit.component';
+import { MatCardModule } from '@angular/material/card';
 
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
@@ -60,7 +62,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     ScheduleCampComponent,
     RescheduleComponent,
     InfomodalComponent,
-    CsvmessageComponent
+    CsvmessageComponent,
+    RequestsubmitComponent
   ],
   imports: [
     BrowserModule,
@@ -85,7 +88,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     NgxMaterialTimepickerModule,
     ReactiveFormsModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatCardModule
   ],
   providers: [ LoaderService,
     {

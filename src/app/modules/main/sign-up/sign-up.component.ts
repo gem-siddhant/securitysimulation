@@ -92,16 +92,9 @@ export class SignUpComponent implements OnInit {
     (err)=>{
       this.StoreData=true;
        if(err.status==200){
-         console.log('err',err);
-       let dataDialog = { title: ' Onboarding Request Submitted!' };
-        const dialogRef = this.dialog.open(ConfirmationModalComponent, {
-          width: '400px',
-          height: '400px',
-          data: dataDialog
-        });
-        dialogRef.afterClosed().subscribe(()=>{
-          this.router.navigate(['main/sign-up']);
-        })
+        console.log('err',err);
+        this.router.navigate(['Onboard/requestsubmit']);
+        
       }
       else if(err.status==208)
       {

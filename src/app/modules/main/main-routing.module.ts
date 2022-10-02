@@ -1,6 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/AuthGuard/auth.guard';
+import { RequestsubmitComponent } from 'src/app/Onboard/requestsubmit/requestsubmit.component';
 import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
 import { SchedulelaterComponent } from 'src/app/shared/schedulelater/schedulelater.component';
 import { AddCampaignComponent } from './add-campaign/add-campaign.component';
@@ -44,6 +45,10 @@ const routes: Routes = [
   path:'onboard',
   component:OnboardresComponent
 },
+{
+  path:'Onboard/requestsubmit',
+  component:RequestsubmitComponent
+}
 ];
 
 @NgModule({
