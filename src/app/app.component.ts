@@ -18,10 +18,10 @@ export class AppComponent {
   }
   ngOnInit(): void {
     //60 = 1 minute
-    this.bnIdle.startWatching(10).subscribe((res) => {
+    this.bnIdle.startWatching(600).subscribe((res) => {
       if (res && localStorage.getItem("email") !== null) {
         console.log('session expired');
-        let dataDialog = { title: 'Your session in timed out please login again' };
+        let dataDialog = { title: 'Your session is timed out please login again' };
         const dialogRef = this.dialog.open(InfomodalComponent, {
           width: '400px',
           height:'380px',
