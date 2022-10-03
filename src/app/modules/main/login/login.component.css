@@ -14,6 +14,9 @@
     -moz-background-size: cover;
     background-size: cover;
   overflow: hidden; 
+  height: calc(100vh - your-last-item-height);
+  max-width:100%;
+  object-fit: cover;
   }
   
   .img3{
@@ -143,5 +146,9 @@
     justify-content: center;
     border: rgba(0, 0, 0, 0.25);
     z-index: 3;
+  }
+  .align-c{
+    display: flex;
+    align-items: center;
   }
   
