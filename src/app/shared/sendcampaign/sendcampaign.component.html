@@ -42,17 +42,7 @@
    
 
     <div *ngIf="manager== 'false'">
-      <h2 class="heading">Send To Reportees</h2>
-    
-      <div class="radiogrp">
-    <div>
-      <input name="radio"  [(ngModel)]="options" type="radio" [value]="true" [checked]="options" style="margin-left:12px;font-size: 40px;" formControlName="radio"  ><label style="font-size: 20px;padding-left: 5px;color: #626262;">Yes</label>
-     
-    <!--if send via csv is selected -->  
-      <input name="radio" [(ngModel)]="options" type="radio" [value]="false" [checked]="!options" style="margin-left:150px; margin-top: 15px; font-size: 40px;margin-bottom: 10px;" formControlName="radio" ><label style="font-size: 20px;padding-left: 5px;color: #626262;">No</label>
-    </div>
-  </div>
-  <div *ngIf="!options">
+  <div>
       <div class="row mt-2" >
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-11" style="margin-left: 12px;">
           <label for="firsting" id="attachment_btn" style="font-size: 16px;"><img style="width:20px; height: 20px;"

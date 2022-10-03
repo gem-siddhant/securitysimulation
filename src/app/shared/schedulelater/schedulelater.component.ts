@@ -204,7 +204,7 @@ export class SchedulelaterComponent implements OnInit {
       'createdBy':localStorage.getItem('email'),
      // 'email':localStorage.getItem('email1'),
       //'password':localStorage.getItem('password'),
-      'sendToReporters' : localStorage.getItem('sendToReporters'),
+      'sendToReporters' : this.phisingForm.value.radio,
       'addNote' : localStorage.getItem('addNote'),
       'emailSignature': localStorage.getItem('emailSignature'),
       'sendAttachment': localStorage.getItem('sendAttachment'),
