@@ -44,6 +44,7 @@ export class SchedulelaterComponent implements OnInit {
   vare:any
   myFooList: any = ['Some Item', 'Item Second', 'Other In Row', 'What to write', 'Blah To Do'];
   res: any = [];
+  csvcheck : boolean= true;
  
   constructor( public dialogRef: MatDialogRef<SchedulelaterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -96,8 +97,13 @@ export class SchedulelaterComponent implements OnInit {
           data:dataDialog 
           
         });
+        dialogRef.afterClosed().subscribe(()=>{
+          this.router.navigate(['main/add-campaign']);
+        })
+        this.csvcheck = false
       }
     }
+ 
 
     // for(var k=0;k<res.length;k++)
     // {
@@ -161,6 +167,30 @@ export class SchedulelaterComponent implements OnInit {
 
   
   schedulelater(){
+    if(this.csvcheck === false)
+    {
+      return
+    }
+    if (this.res.length)
+    {
+      let ed = Math.round(this.res.length/220)
+      let sender = JSON.parse(localStorage.getItem("users") || "[]");
+      let differe = ed - sender.length
+      if(differe > 0)
+      {
+        let dataDialog = { title: 'Please provide ' + differe + ' more email id and Password' };
+        const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+          width: '400px',
+          height:'400px',
+          data: dataDialog
+        });
+        dialogRef.afterClosed().subscribe(()=>{
+          this.router.navigate(['main/add-campaign']);
+        })
+        return
+      }
+      
+    }
     console.log(localStorage.getItem('name'))
     console.log(localStorage.getItem('file'))
     //this.phisingForm.value.date =  new Date((this.phisingForm.value.dat).utcOffset('+0000').format('YYYY-MM-DD HH:MM'))

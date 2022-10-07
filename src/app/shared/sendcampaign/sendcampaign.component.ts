@@ -36,6 +36,7 @@ export class SendcampaignComponent implements OnInit {
   text:any;
   vare:any;
   res : any = [];
+  csvcheck : boolean= true;
   manager:any = localStorage.getItem('Manager');
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
   public dialogRef: MatDialogRef<SendcampaignComponent>,
@@ -78,13 +79,17 @@ export class SendcampaignComponent implements OnInit {
        
       }
       else{
-        let dataDialog = { title: 'Campaign Successfully!' };
+        let dataDialog = { title: 'Campaign Scheduled Successfully!' };
         const dialogRef = this.dialog.open(CsvmessageComponent, {
           width: '400px',
           height:'430px',
           data:dataDialog 
           
         });
+        dialogRef.afterClosed().subscribe(()=>{
+          this.router.navigate(['main/add-campaign']);
+        })
+        this.csvcheck = false
       }
     }
     this.vare = JSON.stringify(this.res);
@@ -94,6 +99,30 @@ export class SendcampaignComponent implements OnInit {
   }
 
   sendnow(){
+    if(this.csvcheck === false)
+    {
+      return
+    }
+    if (this.res.length)
+    {
+      let ed = Math.round(this.res.length/220)
+      let sender = JSON.parse(localStorage.getItem("users") || "[]");
+      let differe = ed - sender.length
+      if(differe > 0)
+      {
+        let dataDialog = { title: 'Please provide ' + differe + ' more email id and Password' };
+        const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+          width: '400px',
+          height:'400px',
+          data: dataDialog
+        });
+        dialogRef.afterClosed().subscribe(()=>{
+          this.router.navigate(['main/add-campaign']);
+        })
+        return
+      }
+      
+    }
     console.log(localStorage.getItem('name'))
     console.log(localStorage.getItem('file'))
     this.submitted = true;
