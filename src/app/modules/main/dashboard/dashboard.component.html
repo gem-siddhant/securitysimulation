@@ -227,8 +227,8 @@ History
 <!--dashboard logic end-->
 
 <!--archive part -->
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center mt-3">
-  <button (click) ="viewmore()" class="archive">{{ isShow ? 'View More': 'View Less' }}</button>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center mt-3" *ngFor="let element of this.campaigns; let i = index">
+  <button (click) ="viewmore()" class="archive" *ngIf="i==1">{{ isShow ? 'View More': 'View Less' }}</button>
 </div>
 <div [hidden] = "isShow">
   <!--archive part of dashboard starts-->
