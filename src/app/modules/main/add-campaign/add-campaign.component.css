@@ -202,8 +202,9 @@ input[type=radio]{
   transform:scale(0.8);
 }
 .icon-display {
-  transform: scale(1.6);
+  transform: scale(1.2);
   padding-top: 1px;
-  color: white
+  color: white;
+  text-align: center;
 }
 }
