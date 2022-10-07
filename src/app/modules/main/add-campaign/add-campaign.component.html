@@ -22,7 +22,7 @@
       <div class="col-lg-9 col-md-6 col-sm-5 col-xs-5 sub-head">
        Choose Template
       </div>
-  <div class="row temp-pad ">
+  <div class="row temp-pad mb-4">
 
      <mat-radio-group formControlName="tempate_select" aria-label="Select an option">
     <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> -->
@@ -45,11 +45,11 @@
   </mat-radio-group>
 </div>
 </div>
-<div *ngIf="manager=='false'">
-  <div class="sub-head row col-lg-9 col-md-6 col-sm-5 col-xs-5" style="padding-left: 1%;">Fill in the details</div>
+<div *ngIf="manager=='false'" style="margin-bottom: 5%;">
+  <div class="sub-head row col-lg-9 col-md-6 col-sm-5 col-xs-5 mb-5" style="padding-left: 1%;">Fill in the details</div>
   <div class="row" *ngIf="this.phisingForm.value.tempate_select!=0">
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 form-box">
-    <div class="first row col-lg-12 col-md-12 col-sm-12 col-xs-6" style="padding-top: 5%;">
+    <div class="first row col-lg-12 col-md-12 col-sm-12 col-xs-6" style="padding-top: 2%;">
     <div class="name row">
       <mat-form-field appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0">
         <mat-label>Name of Campaign</mat-label>

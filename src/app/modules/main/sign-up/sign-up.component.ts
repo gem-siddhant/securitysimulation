@@ -108,7 +108,7 @@ export class SignUpComponent implements OnInit {
         let dataDialog = { title: 'You have Already Been Onboarded!' };
         const dialogRef = this.dialog.open(InfomodalComponent, {
           width: '400px',
-          height: '400px',
+          height: '340px',
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{
@@ -120,7 +120,7 @@ export class SignUpComponent implements OnInit {
         let dataDialog = { title: 'Your Request is still under Process' };
         const dialogRef = this.dialog.open(InfomodalComponent, {
           width: '400px',
-          height: '400px',
+          height: '330px',
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{
@@ -132,7 +132,7 @@ export class SignUpComponent implements OnInit {
         let dataDialog = { title: 'Your are not Authorized to use this application' };
         const dialogRef = this.dialog.open(InfomodalComponent, {
           width: '400px',
-          height: '400px',
+          height: '350px',
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{

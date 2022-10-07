@@ -96,6 +96,8 @@ export class SchedulelaterComponent implements OnInit {
           data:dataDialog 
           
         });
+        this.res = []
+      
       }
     }
 
@@ -168,6 +170,12 @@ export class SchedulelaterComponent implements OnInit {
     const scheduledate = moment(this.phisingForm.value.date).format("YYYY-MM-DD");
     if(this.phisingForm.invalid)
     return;
+    if(this.res.length==null)
+    {
+      this.toastr.error("Please Check your CSV first")
+      console.log("wrong csv")
+      return
+    }
     if(localStorage.getItem('name')=="" || localStorage.getItem('templateDescription') == "" || localStorage.getItem('templateHeading') == "" || localStorage.getItem('addNote')== "" || localStorage.getItem('emailSignature')=="")
     {
       this.toastr.error("please EDIT the Fields")
