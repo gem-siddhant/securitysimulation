@@ -42,6 +42,7 @@
    
 
     <div *ngIf="manager== 'false'">
+  <div>
       <div class="row mt-2" >
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-11" style="margin-left: 12px;">
           <label for="firsting" id="attachment_btn" style="font-size: 16px;"><img style="width:20px; height: 20px;"
@@ -62,7 +63,7 @@
       <mat-error *ngIf="this.submitted==true && this.file==null">
         Please upload file.
       </mat-error>
-
+    </div>
       <div>
         <button type="submit" mat-raised-button class="add_btn" (click)="sendnow()" style="width:430px !important; margin-top: 35px;margin-left: 15px; font-size: 18px;">Send Campaign Now</button>
       </div>

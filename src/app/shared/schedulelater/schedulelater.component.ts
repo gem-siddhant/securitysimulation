@@ -11,12 +11,16 @@ import { ToastrService } from 'ngx-toastr';
 import { count } from 'rxjs';
 import { AddCampaignService } from 'src/app/modules/main/service/add-campaign.service';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
-
+import { Pipe, PipeTransform } from '@angular/core';
+import { title } from 'process';
+import { CsvmessageComponent } from '../csvmessage/csvmessage.component';
 @Component({
   selector: 'app-schedulelater',
   templateUrl: './schedulelater.component.html',
   styleUrls: ['./schedulelater.component.css']
 })
+
+
 export class SchedulelaterComponent implements OnInit {
   StoreData:boolean=true;
   selected = 'None';
@@ -31,10 +35,17 @@ export class SchedulelaterComponent implements OnInit {
   test: any = null;
   file: File = this.test;
   //manager:any = "true";
+  victcsv : any = [] ;
   options:boolean=true;
   attachment:boolean=true;
   manager:any = localStorage.getItem('Manager');
   changeTriggered=false;
+  text:any;
+  vare:any
+  myFooList: any = ['Some Item', 'Item Second', 'Other In Row', 'What to write', 'Blah To Do'];
+  res: any = [];
+  csvcheck : boolean= true;
+ 
   constructor( public dialogRef: MatDialogRef<SchedulelaterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _addCampaign:AddCampaignService,
@@ -45,7 +56,8 @@ export class SchedulelaterComponent implements OnInit {
       this.phisingForm = this.formBuilder.group({});
       this.credsForm = this.formBuilder.group({});
     }
-  
+
+   
   ngOnInit(): void {
     this.phisingForm = this.formBuilder.group(
       {
@@ -60,28 +72,123 @@ export class SchedulelaterComponent implements OnInit {
   onChange(event: any) {
     this.changeTriggered = true;
     this.file = event.target.files[0];
-    // const reader = new FileReader();
-    // reader.readAsText(this.file);
-    // reader.onload = () => {
-      
-    //   console.log(reader.result)
-
-    // };
     const reader = new FileReader();
     reader.readAsText(this.file);
     reader.onload = () => {
-      let text = reader.result; 
+    this.text = reader.result;
+    var lines = this.text.split('\n');
+    for(var i=0;i<lines.length;i++)
+    {
+      var curr = lines[i].split('\n');
+      var curr = lines[i].replace('\r','');
+      this.res.push(curr);
+    } 
+    for(var j=0;j<this.res.length;j++)
+    {
+      if(this.res[j] !="" || this.res[j].includes('@') || (this.res[j].split('@').length - 1)==1 )
+      {
+       
+      }
+      else{
+        let dataDialog = { title: 'Campaign Scheduled Successfully!' };
+        const dialogRef = this.dialog.open(CsvmessageComponent, {
+          width: '400px',
+          height:'430px',
+          data:dataDialog 
+          
+        });
+        this.res = []
+        this.csvcheck = false
+      }
+    }
+ 
+
+    // for(var k=0;k<res.length;k++)
+    // {
+    //   if (res[k].includes('@'))
+    //   {
+       
+    //   }
+    //   else{
+    //     let dataDialog = { title: 'Campaign Schedule Successfully!' };
+    //     const dialogRef = this.dialog.open(CsvmessageComponent, {
+    //       width: '470px',
+    //       height: '430px',
+    //       data:dataDialog 
+          
+    //     });
+    //   }
+     
+    // }
+    // for(var k=0;k<res.length;k++)
+    // {
+    //   if ((res[k].split('@').length - 1)==1)
+    //   {
+       
+    //   }
+      // else{
+      //   let dataDialog = { title: 'Campaign Schedule Successfully!' };
+      //   const dialogRef = this.dialog.open(CsvmessageComponent, {
+      //     width: '470px',
+      //     height: '430px',
+      //     data:dataDialog 
+          
+      //   });
+      // }
+     
+    // }
+    this.vare = JSON.stringify(this.res);
+    console.log(this.res)  
+  
+  }
+     // this.text.push(reader.result); 
       //convert text to json here
-      var json = this.csvJSON(text);
-      console.log(json)
-    };
+      
+      //console.log(this.victcsv)
+      // var nLines = 0;
+      // for( var i = 0, n = this.text.length;  i < n;  ++i ) {
+      //     if( this.text[i] === '\n' ) {
+      //         ++nLines;
+      //     }
+      //     if(this.text[i] !== '\n' )
+      //     {
+      //       this.vare = this.text[i];
+            
+      //     }
+    // }
+    // console.log(this.vare)
+    // console.log(nLines+1)
+    
+    // };
    
   }
-  csvJSON(text: string | ArrayBuffer | null) {
-    throw new Error('Method not implemented.');
-  }
+
   
   schedulelater(){
+    if(this.csvcheck === false)
+    {
+      return
+    }
+    if (this.res.length)
+    {
+      let ed = Math.round(this.res.length/220)
+      let sender = JSON.parse(localStorage.getItem("users") || "[]");
+      let differe = ed - sender.length
+      if(differe > 0)
+      {
+        let dataDialog = { title: 'Please provide ' + differe + ' more email id and Password' };
+        const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+          width: '400px',
+          height:'400px',
+          data: dataDialog
+        });
+        dialogRef.afterClosed().subscribe(()=>{
+          this.router.navigate(['main/add-campaign']);
+        })
+        return
+      }
+      
+    }
     console.log(localStorage.getItem('name'))
     console.log(localStorage.getItem('file'))
     //this.phisingForm.value.date =  new Date((this.phisingForm.value.dat).utcOffset('+0000').format('YYYY-MM-DD HH:MM'))
@@ -89,6 +196,12 @@ export class SchedulelaterComponent implements OnInit {
     const scheduledate = moment(this.phisingForm.value.date).format("YYYY-MM-DD");
     if(this.phisingForm.invalid)
     return;
+    if(this.res.length==null)
+    {
+      this.toastr.error("Please Check your CSV first")
+      console.log("wrong csv")
+      return
+    }
     if(localStorage.getItem('name')=="" || localStorage.getItem('templateDescription') == "" || localStorage.getItem('templateHeading') == "" || localStorage.getItem('addNote')== "" || localStorage.getItem('emailSignature')=="")
     {
       this.toastr.error("please EDIT the Fields")
@@ -123,9 +236,9 @@ export class SchedulelaterComponent implements OnInit {
       'templateRewardType':localStorage.getItem('templateRewardType'),
       'templateHeading':localStorage.getItem('templateHeading'),
       'createdBy':localStorage.getItem('email'),
-      'email':localStorage.getItem('email1'),
-      'password':localStorage.getItem('password'),
-      'sendToReporters' : localStorage.getItem('sendToReporters'),
+     // 'email':localStorage.getItem('email1'),
+      //'password':localStorage.getItem('password'),
+      'sendToReporters' : this.phisingForm.value.radio,
       'addNote' : localStorage.getItem('addNote'),
       'emailSignature': localStorage.getItem('emailSignature'),
       'sendAttachment': localStorage.getItem('sendAttachment'),
@@ -134,6 +247,8 @@ export class SchedulelaterComponent implements OnInit {
       'scheduleDate':scheduledate,
       'scheduleTime':this.phisingForm.value.time,
       'scheduleTimeZone':this.phisingForm.value.timezone,
+      'victimEmails':this.res,
+      'senderCredentials':JSON.parse(localStorage.getItem("users") || "[]"),
     }
     console.log(this.phisingForm.value.tzone)
     let con = JSON.stringify(reqBody);
@@ -144,32 +259,32 @@ export class SchedulelaterComponent implements OnInit {
     var local = new File(["foo"], localfile, {
       type: "file/csv"
     });
-      if(this.file!=null && this.file.size==0)
-      {
-        this.toastr.error("empty csv can not be uploaded");
+      // if(this.file!=null && this.file.size==0)
+      // {
+      //   this.toastr.error("empty csv can not be uploaded");
        
-      }
-      else if(this.phisingForm.value.radio==true){
+      // }
+      // if(this.phisingForm.value.radio==true){
         
-        formData.append("file",local);
-      }
-      else{
-        formData.append("file",this.file)
+      //   formData.append("file",local);
+      // }
+      // else{
+      //   formData.append("file",this.file)
         
-        console.log(this.file.size)
-      }
+      //   console.log(this.file.size)
+      // }
     }
-    else
-    {
-      if(this.file.size == 0)
-      {
+    // else
+    // {
+    //   if(this.file.size == 0)
+    //   {
 
-        this.toastr.error("empty csv can not be uploaded");
-      }
-      else{
-      formData.append("file",this.file);
-      }
-    }
+    //     this.toastr.error("empty csv can not be uploaded");
+    //   }
+    //   else{
+    //   formData.append("file",this.text);
+    //   }
+    // }
 
     this.StoreData=false;  
     this._addCampaign.schedulecampagin(formData).subscribe((data)=>{
@@ -178,7 +293,8 @@ export class SchedulelaterComponent implements OnInit {
         this.StoreData=true;
         let dataDialog = { title: 'Campaign Schedule Successfully!' };
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {
-          width: '600px',
+          width: '400px',
+          height:'400px',
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{
@@ -190,9 +306,10 @@ export class SchedulelaterComponent implements OnInit {
        if(err.status==200){
          console.log('err',err);
          this.dialogRef.close()
-       let dataDialog = { title: 'Campaign Schedule Successfully!' };
+       let dataDialog = { title: 'Campaign Scheduled Successfully!' };
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {
-          width: '600px',
+          width: '400px',
+          height:'400px',
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{

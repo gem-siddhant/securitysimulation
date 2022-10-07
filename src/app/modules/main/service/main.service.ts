@@ -12,6 +12,10 @@ export class MainService {
    getAllCampaigns(email:any){
     return this.http.post<any>('dashboard', email);
    }
+   viewmorecamp(email:any)
+   {
+    return this.http.post<any>('viewMore', email);
+   }
    sendUserDetails(obj:any){
      console.log('send user data',obj);
     return this.http.post<any>('register/click', obj);
