@@ -202,8 +202,8 @@ input[type=radio]{
   transform:scale(0.8);
 }
 .icon-display {
-  transform: scale(2);
+  transform: scale(1.6);
   padding-top: 1px;
-
+  color: white
 }
 }

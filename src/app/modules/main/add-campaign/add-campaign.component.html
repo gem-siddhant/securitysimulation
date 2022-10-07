@@ -46,10 +46,10 @@
 </div>
 </div>
 <div *ngIf="manager=='false'">
-  <div class="sub-head row col-lg-9 col-md-6 col-sm-5 col-xs-5">Fill in the details</div>
+  <div class="sub-head row col-lg-9 col-md-6 col-sm-5 col-xs-5" style="padding-left: 1%;">Fill in the details</div>
   <div class="row" *ngIf="this.phisingForm.value.tempate_select!=0">
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 form-box">
-    <div class="first row col-lg-12 col-md-12 col-sm-12 col-xs-6">
+    <div class="first row col-lg-12 col-md-12 col-sm-12 col-xs-6" style="padding-top: 5%;">
     <div class="name row">
       <mat-form-field appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0">
         <mat-label>Name of Campaign</mat-label>
@@ -61,7 +61,7 @@
           <mat-label>Email's Subject</mat-label>
           <input matInput type="text" [value]="this.prefilled.subject" id="in" formControlName="subject" maxlength="70">
         </mat-form-field>
-        &nbsp;
+      
       </div>
       </div>
   
@@ -165,10 +165,12 @@
           <input matInput type="password" formControlName="senderPassword">
         </mat-form-field>
      
-        <button type="button" class="btn col col-lg-1 col-md-6 col-sm-12 col-xs-6" [value]="true" (click)="addAddress()" matTooltip="Add Emails" matTooltipPosition="above"><mat-icon class="row col-md-6 col-sm-12 col-xs-6 icon-display" >note_add</mat-icon></button>
- 
+        <button type="button" *ngIf="i==0"  style="background-color:#66209D;" class=" col col-lg-1 col-md-6 col-sm-12 col-xs-6" [value]="true" (click)="addAddress()" matTooltip="Add Emails" matTooltipPosition="above"><mat-icon class="col col-md-6 col-sm-12 col-xs-6 icon-display" >add_circle_outline</mat-icon></button>
+      
+      <button *ngIf="i>0"  style="background-color:#66209D;"   type="button" (click)="onRemoveQuestion(i)" class="btn btn-outline-danger col col-lg-1 col-md-6 col-sm-12 col-xs-6 pr-1"><mat-icon class="col col-md-6 col-sm-12 col-xs-6 icon-display" style="margin-left: 3%;">highlight_off</mat-icon>
+       </button>
     </div>
-      &nbsp;
+
     </div>
 
 
@@ -285,11 +287,11 @@
 <!--if manager is true-->
 
 <div *ngIf="manager == 'true'">
-<div class="sub-head row col-lg-9 col-md-6 col-sm-5 col-xs-5">Fill in the details</div>
+<div class="sub-head row col-lg-9 col-md-6 col-sm-5 col-xs-5" style="padding-left:1% ;">Fill in the details</div>
 <div class="row" *ngIf="this.phisingForm.value.tempate_select!=0">
   <div class="col-lg-9 col-md-6 col-sm-6 col-xs-6 form-box">
 
-    <div class="first row col-lg-12 col-md-12 col-sm-12 col-xs-6">
+    <div class="first row col-lg-12 col-md-12 col-sm-12 col-xs-6" style="padding-top:2% ;">
       <div class="name row">
         <mat-form-field appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0">
           <mat-label>Name of Campaign</mat-label>
@@ -301,7 +303,7 @@
             <mat-label>Email's Subject</mat-label>
             <input matInput type="text" [value]="this.prefilled.subject" id="in" formControlName="subject" maxlength="70">
           </mat-form-field>
-          &nbsp;
+     
         </div>
         </div>
 
@@ -364,20 +366,21 @@
   <div class="first  row col-lg-12 col-md-12 col-sm-12 col-xs-6" *ngFor="let i =index;let questionCtrl of getcontrols();"  formArrayName="allemails" >
      
     <div class="name row" [formGroupName]="i">
-      <mat-form-field appearance="outline" class="col col-lg-6 col-md-6col-sm-12 col-xs-6 ml-0">
+      <mat-form-field appearance="outline" class="col col-lg-5 col-md-6col-sm-12 col-xs-6 ml-0">
         <mat-label>Email for simulation</mat-label>
         <input matInput type="text" formControlName="senderEmail" >
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="col col-lg-5 col-md-7 col-sm-12 col-xs-6 ml-0" >
+      <mat-form-field appearance="outline" class="row col-lg-6 col-md-7 col-sm-12 col-xs-6 ml-0" >
         <mat-label>Password</mat-label>
         <input matInput type="password" formControlName="senderPassword">
       </mat-form-field>
    
-      <button type="button" class="btn col col-lg-1 col-md-6 col-sm-12 col-xs-6" [value]="true" (click)="addAddress()" matTooltip="Add Emails" matTooltipPosition="above"><mat-icon class="row col-md-6 col-sm-12 col-xs-6 icon-display" >note_add</mat-icon></button>
-
+      <button type="button"  style="background-color:#66209D;" *ngIf="i==0" class="btn col col-lg-1 col-md-6 col-sm-12 col-xs-6" [value]="true" (click)="addAddress()"  ><mat-icon class="col col-md-6 col-sm-12 col-xs-6 icon-display" matTooltip="Emails" >add_circle_outline</mat-icon></button>
+      
+      <button *ngIf="i>0" style="background-color:#66209D;" type="button" (click)="onRemoveQuestion(i)" class="btn btn-outline-danger col col-lg-1 col-md-6 col-sm-12 col-xs-6 pr-1"><mat-icon class="col col-md-6 col-sm-12 col-xs-6 icon-display" style="margin-left: 3%;">highlight_off</mat-icon>
+       </button>
   </div>
-    &nbsp;
   </div>
 
 

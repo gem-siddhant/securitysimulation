@@ -64,7 +64,7 @@ attachment:boolean=true;
 attachment1:boolean=false;
 //manager:any = "true";
 
-
+selectedOption: any = [];
 
 addresses: any = [{
   email: '',
@@ -132,6 +132,18 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     return (this.phisingForm.get('allemails') as FormArray).controls;
 
   }
+  onRemoveQuestion(index: number) {
+    const emailpassItem = new FormGroup({
+      senderEmail: new FormControl('', Validators.required),
+      senderPassword: new FormControl('', Validators.required),
+    });
+    (<FormArray>this.phisingForm.get('allemails')).removeAt(index);
+    this.selectedOption.splice(index, 1);
+
+    console.log(this.phisingForm);
+
+  }
+
   onChange(event: any) {
     
     this.changeTriggered = true;
