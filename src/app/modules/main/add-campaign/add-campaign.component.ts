@@ -27,7 +27,6 @@ import { PasswordGrantConstants } from '@azure/msal-common/dist/utils/Constants'
 import { SchedulelaterComponent } from 'src/app/shared/schedulelater/schedulelater.component';
 import { SendcampaignComponent } from 'src/app/shared/sendcampaign/sendcampaign.component';
 import { JsonPipe } from '@angular/common';
-import { add } from './add-camp.model';
 import { Papa } from 'ngx-papaparse';
 
 @Pipe({ name: 'safeHtml'})
