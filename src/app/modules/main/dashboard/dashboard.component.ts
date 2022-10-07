@@ -5,6 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 import { MatTableDataSource } from '@angular/material/table';
 import { view_data } from '../campaign-view/view.model';
 import * as moment from 'moment';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,6 +15,11 @@ import * as moment from 'moment';
 })
 export class DashboardComponent implements OnInit {
 isShow = true;
+StoreData:boolean=true;
+mode: ProgressSpinnerMode = 'indeterminate';
+color: ThemePalette = 'accent';
+value = 50;
+flag = true;
 dataSource:any;
 creat:any;
 datestring : any;
@@ -60,6 +67,25 @@ dates : any = [];
     },err=>{
       this.toastr.error("Error in loading data");
     })
+    
   }
+
+  viewmore()
+  {
+    this.StoreData=false;
+    this.isShow = !this.isShow
+    this._main.viewmorecamp(localStorage.getItem('email')).subscribe((data)=>{
+      if(data){
+        this.flag = false;
+        this.StoreData=true;
+        this.campaigns=data;
+        
+      }
+    },
+      err=>{
+        this.toastr.error("Error in loading data");
+      })
+     
+    }
 
 }
