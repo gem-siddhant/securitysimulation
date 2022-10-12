@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  //apiUrl: 'https://secsimapi.geminisolutions.com'
-  apiUrl: 'http://localhost:8080'
+  apiUrl: 'https://secsimapi.geminisolutions.com'
+  //apiUrl: 'http://localhost:8080'
 };
 
 /*
