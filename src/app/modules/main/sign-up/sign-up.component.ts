@@ -17,11 +17,14 @@ import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/co
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { InfomodalComponent } from 'src/app/shared/infomodal/infomodal.component';
+import {ErrorStateMatcher} from '@angular/material/core';
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
+
 export class SignUpComponent implements OnInit {
   signupForm:FormGroup;
   StoreData:boolean=true;
