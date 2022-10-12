@@ -320,9 +320,9 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       'sendToReporters' : this.phisingForm.value.radio,
       'addNote' : this.phisingForm.value.addnote,
       'emailSignature': this.phisingForm.value.footer,
-      'sendAttachment': this.phisingForm.value.radio2,
+      'sendAttachment': sendattach,
       'attachmentName': this.phisingForm.value.fileattach,
-      'fileContent':this.phisingForm.value.filecontent,
+      'attachmentText':this.phisingForm.value.filecontent,
     }
     
 
