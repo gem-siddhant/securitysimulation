@@ -90,16 +90,16 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   //const addresses = [{}];
   let emailpass = new FormArray([]);
   this.phisingForm = this.formBuilder.group({
-  name:['',Validators.required],
+  name:[''],
   reward_type:[''],
   desc:['',Validators.required],
   reward_amount:[''],
   tempate_select:['',],
   attachmentFile:[''],
-  subject:['',Validators.required],
+  subject:[''],
   //email:['',Validators.required],
   //password:['',Validators.required],
-  addnote:['',Validators.required],
+  addnote:[''],
   footer:['',Validators.required],
   radio2:[''||'false'],
   fileattach:[''||'attachment'],

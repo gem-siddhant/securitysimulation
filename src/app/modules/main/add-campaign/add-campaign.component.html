@@ -49,19 +49,26 @@
   <div class="sub-head row col-lg-9 col-md-6 col-sm-5 col-xs-5 mb-5" style="padding-left: 1%;">Fill in the details</div>
   <div class="row" *ngIf="this.phisingForm.value.tempate_select!=0">
     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 form-box">
-    <div class="first row col-lg-12 col-md-12 col-sm-12 col-xs-6" style="padding-top: 2%;">
+      <div class="first row col-lg-12 col-md-12 col-sm-12 col-xs-6" style="padding-top: 1%; font-size: larger;color: rgb(109, 184, 114)">
+        <Strong>Note:- </Strong>
+        Please Edit all the fields to create the campaign 
+      </div>
+    <div class="first row col-lg-12 col-md-12 col-sm-12 col-xs-6" style="padding-top: 1%;">
     <div class="name row">
       <mat-form-field appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0">
         <mat-label>Name of Campaign</mat-label>
-        <input matInput type="text" [value]="this.prefilled.heading"  formControlName="name" maxlength="25">
+        <input matInput type="text" [value]="this.prefilled.heading"  #input1 formControlName="name" maxlength="25" required>
+        <mat-error *ngIf="phisingForm.value.name==''">Please Edit/Fill this field</mat-error>
+        <mat-hint align="end" >{{input1.value?.length || 0}}/25</mat-hint>
       </mat-form-field>
     
       
         <mat-form-field  appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6">
           <mat-label>Email's Subject</mat-label>
-          <input matInput type="text" [value]="this.prefilled.subject" id="in" formControlName="subject" maxlength="70">
+          <input matInput type="text" [value]="this.prefilled.subject" id="in" #input2 formControlName="subject" maxlength="70"  required>
+          <mat-error *ngIf="phisingForm.value.subject==''">Please Edit/Fill this field</mat-error>
+          <mat-hint align="end" >{{input2.value?.length || 0}}/70</mat-hint>
         </mat-form-field>
-      
       </div>
       </div>
   
@@ -74,7 +81,9 @@
     <div class="row first">
       <mat-form-field appearance="outline" class="col col-lg-12 col-md-12 col-sm-12 col-xs-6" [ngClass]="{'hide-class':this.prefilled.rewardType==null}">
         <mat-label>Reward Type</mat-label>
-        <input matInput type="text" [value]="this.prefilled.rewardType" formControlName="reward_type">
+        <input matInput type="text" [value]="this.prefilled.rewardType" #input3 formControlName="reward_type" maxlength="50">
+        <mat-error *ngIf="phisingForm.value.reward_type==''">Please Edit/Fill this field</mat-error>
+        <mat-hint align="end" >{{input3.value?.length || 0}}/50</mat-hint>
       </mat-form-field>
     </div>
   </div>
@@ -84,7 +93,9 @@
     <div class="row first">
       <mat-form-field class="w-100" appearance="outline" class="col col-lg-12 col-md-6 col-sm-12 col-xs-6 w-100" [ngClass]="{'hide-class':this.prefilled.amount==null}">
         <mat-label>Amount</mat-label>
-        <input matInput type="number" [value]="this.prefilled.amount" formControlName="reward_amount">
+        <input matInput type="number" [value]="this.prefilled.amount" #input4 formControlName="reward_amount" maxlength="5">
+        <mat-error *ngIf="phisingForm.value.reward_amount==''">Please Edit/Fill this field</mat-error>
+        <mat-hint align="end" >{{input4.value?.length || 0}}/5</mat-hint>
       </mat-form-field>
     </div>
   </div>
@@ -94,7 +105,9 @@
       <div class="row first">
         <mat-form-field class="w-100" appearance="outline" class="col col-lg-12 col-md-6 col-sm-12 col-xs-6 w-100" [ngClass]="{'hide-class':this.prefilled.description==null}">
           <mat-label>Description</mat-label>
-          <textarea matInput type="text" [value]="this.prefilled.description" formControlName="desc" maxlength="1500"></textarea>
+          <textarea matInput type="text" [value]="this.prefilled.description" #input5 formControlName="desc" maxlength="1500"></textarea>
+          <mat-error *ngIf="phisingForm.value.desc==''">Please Edit/Fill this field</mat-error>
+        <mat-hint align="end" >{{input5.value?.length || 0}}/1500</mat-hint>
         </mat-form-field>
       </div>
     </div>
@@ -105,8 +118,10 @@
     <div class="row first">
       <mat-form-field class="w-100" appearance="outline" class="col col-lg-12 col-md-6 col-sm-12 col-xs-6 w-100" [ngClass]="{'hide-class':this.prefilled.addNote==null}">
       <mat-label>Add Note</mat-label>
-      <textarea matInput type="text" [value]="this.prefilled.addNote" formControlName="addnote" maxlength="200"></textarea>
-      </mat-form-field>
+      <textarea matInput type="text" [value]="this.prefilled.addNote" #input6 formControlName="addnote" maxlength="200"></textarea>
+      <mat-error *ngIf="phisingForm.value.addnote==''">Please Edit/Fill this field</mat-error>
+      <mat-hint align="end" >{{input6.value?.length || 0}}/200</mat-hint>
+    </mat-form-field>
     </div>
   </div>
 
@@ -115,8 +130,10 @@
     <div class="row first">
       <mat-form-field class="w-100" appearance="outline" class="col col-lg-12 col-md-6 col-sm-12 col-xs-6 w-100" [ngClass]="{'hide-class':this.prefilled.emailSignature==null}">
       <mat-label>Email Signature</mat-label>
-      <textarea matInput type="text" [value]="this.prefilled.emailSignature" formControlName="footer" maxlength="40"></textarea>
-      </mat-form-field>
+      <textarea matInput type="text" [value]="this.prefilled.emailSignature" #input7 formControlName="footer"  maxlength="40" required></textarea>
+      <mat-error *ngIf="phisingForm.value.footer==''">Please Edit/Fill this field</mat-error>
+      <mat-hint align="end" >{{input7.value?.length || 0}}/40</mat-hint>
+    </mat-form-field>
     </div>
   </div>
 
