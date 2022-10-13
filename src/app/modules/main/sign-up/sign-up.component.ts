@@ -49,6 +49,13 @@ export class SignUpComponent implements OnInit {
         purpose:['',Validators.required]
     });
   }
+  getErrorMessage() {
+    if (this.signupForm.value.email.hasError('')) {
+      return 'You must enter a value';
+    }
+    return 'You must enter a value';
+    // return this.signupForm.value.email.hasError('') ? 'Not a valid email' : '';
+  }
   submit(){
     if (this.signupForm.value.name == "")
     {
@@ -112,6 +119,18 @@ export class SignUpComponent implements OnInit {
         const dialogRef = this.dialog.open(InfomodalComponent, {
           width: '400px',
           height: '340px',
+          data: dataDialog
+        });
+        dialogRef.afterClosed().subscribe(()=>{
+          this.router.navigate(['main/sign-up']);
+        })
+      }
+      else if(err.status==500)
+      {
+        let dataDialog = { title: 'Something Went Wrong please check your details again' };
+        const dialogRef = this.dialog.open(InfomodalComponent, {
+          width: '400px',
+          height: '360px',
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{
