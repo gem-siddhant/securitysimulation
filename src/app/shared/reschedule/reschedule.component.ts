@@ -18,6 +18,7 @@ import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-m
 export class RescheduleComponent implements OnInit {
   StoreData:boolean=true;
   DialogData:any;
+  selected = 'None';
   credsForm:FormGroup;
   phisingForm: FormGroup;
   api_hit:boolean=true;
@@ -44,7 +45,7 @@ export class RescheduleComponent implements OnInit {
       {
         date:['',Validators.required],
         time:['',Validators.required],
-        tzone:['IST'],
+        timezone:['',Validators.required],
       }
     );
   }
@@ -55,6 +56,16 @@ export class RescheduleComponent implements OnInit {
   schedulelater(){
     console.log(localStorage.getItem('name'))
     console.log(localStorage.getItem('file'))
+    if (this.phisingForm.value.time== "")
+    {
+      this.toastr.error("Please Provide Time")
+      return;
+    }
+    if (this.phisingForm.value.timezone== "")
+    {
+      this.toastr.error("Please Provide TimeZone")
+      return;
+    }
     //this.phisingForm.value.date =  new Date((this.phisingForm.value.dat).utcOffset('+0000').format('YYYY-MM-DD HH:MM'))
     this.submitted = true;
     const scheduledate = moment(this.phisingForm.value.date).format("YYYY-MM-DD");
@@ -64,7 +75,7 @@ export class RescheduleComponent implements OnInit {
     let reqBody={
       'scheduleDate':scheduledate,
       'scheduleTime':this.phisingForm.value.time,
-      'scheduleTimeZone':this.phisingForm.value.tzone,
+      'scheduleTimeZone':this.phisingForm.value.timezone,
       'jobKey':localStorage.getItem('jobkey')
     }
     console.log(this.phisingForm.value.tzone)

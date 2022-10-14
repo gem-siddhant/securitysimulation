@@ -101,6 +101,19 @@ export class SchedulelaterComponent implements OnInit {
         this.csvcheck = false
       }
     }
+    if(this.file == null)
+    {
+      let dataDialog = {title:"Empty CSV Cannot be Uploaded"};
+        const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+          width: '400px',
+          height:'400px',
+          data: dataDialog
+        });
+        dialogRef.afterClosed().subscribe(()=>{
+          this.router.navigate(['main/add-campaign']);
+        })
+        return
+    }
  
 
     // for(var k=0;k<res.length;k++)
@@ -168,6 +181,16 @@ export class SchedulelaterComponent implements OnInit {
     if(this.csvcheck === false)
     {
       return
+    }
+    if(this.res.length==0)
+    {
+      let dataDialog = {title:"CSV file not Provided"};
+        const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+          width: '400px',
+          height:'400px',
+          data: dataDialog
+        });
+        return
     }
     if (this.res.length)
     {
@@ -259,6 +282,7 @@ export class SchedulelaterComponent implements OnInit {
     var local = new File(["foo"], localfile, {
       type: "file/csv"
     });
+ 
       // if(this.file!=null && this.file.size==0)
       // {
       //   this.toastr.error("empty csv can not be uploaded");
