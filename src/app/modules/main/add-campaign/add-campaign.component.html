@@ -239,7 +239,9 @@
     <div class="row first">
       <mat-form-field class="w-100" class="col col-lg-12 col-md-6 col-sm-12 col-xs-6 w-100" appearance="outline" aria-placeholder="attachment.pdf">
       <mat-label>Provide the file name</mat-label>
-      <textarea matInput type="text" formControlName="fileattach" maxlength="50"></textarea>
+      <textarea matInput type="text" formControlName="fileattach" #input8 maxlength="50" required></textarea>
+      <mat-error *ngIf="phisingForm.value.fileattach=='' || phisingForm.value.fileattach==null ">Please Edit/Fill Attachement Name</mat-error>
+      <mat-hint align="end" >{{input8.value?.length || 0}}/50</mat-hint>
       </mat-form-field>
     </div>
   </div>
@@ -248,7 +250,9 @@
     <div class="row first">
       <mat-form-field class="w-100" class="col col-lg-12 col-md-6 col-sm-12 col-xs-6 w-100" appearance="outline" aria-placeholder="attachment.pdf">
       <mat-label>Provide File content</mat-label>
-      <textarea matInput type="text" formControlName="filecontent" maxlength="2000"></textarea>
+      <textarea matInput type="text" formControlName="filecontent" #input9 maxlength="2000" required></textarea>
+      <mat-error *ngIf="phisingForm.value.filecontent=='' || phisingForm.value.filecontent==null ">Please Edit/Fill Attachement content</mat-error>
+      <mat-hint align="end" >{{input9.value?.length || 0}}/2000</mat-hint>
       </mat-form-field>
     </div>
   </div>
@@ -444,7 +448,9 @@
       <mat-form-field class="w-100" appearance="outline" aria-placeholder="attachment.pdf" style="width:97.35% !important;padding-top: 5px;
       font-size: 16px; padding-left: 10px;">
       <mat-label>Provide the file name</mat-label>
-      <textarea matInput type="text" formControlName="fileattach" maxlength="15"></textarea>
+      <textarea matInput type="text" formControlName="fileattach" #input8 maxlength="50" required></textarea>
+      <mat-error *ngIf="phisingForm.value.fileattach=='' || phisingForm.value.fileattach==null ">Please Edit/Fill Attachement Name</mat-error>
+      <mat-hint align="end" >{{input8.value?.length || 0}}/50</mat-hint>
       </mat-form-field>
     </div>
   </div>
@@ -454,7 +460,9 @@
       <mat-form-field class="w-100" appearance="outline" aria-placeholder="attachment.pdf" style="width:97.35% !important;padding-top: 5px;
       font-size: 16px; padding-left: 10px;">
       <mat-label>Provide File content</mat-label>
-      <textarea matInput type="text" formControlName="filecontent" maxlength="2000"></textarea>
+      <textarea matInput type="text" formControlName="filecontent" #input9 maxlength="2000" required></textarea>
+      <mat-error *ngIf="phisingForm.value.filecontent=='' || phisingForm.value.filecontent==null ">Please Edit/Fill Attachement content</mat-error>
+      <mat-hint align="end" >{{input9.value?.length || 0}}/2000</mat-hint>
       </mat-form-field>
     </div>
   </div>
