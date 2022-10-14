@@ -101,11 +101,22 @@ export class SendcampaignComponent implements OnInit {
     {
       return
     }
+    if(this.res.length==0)
+    {
+      let dataDialog = {title:"CSV file not Provided"};
+        const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+          width: '400px',
+          height:'400px',
+          data: dataDialog
+        });
+        return
+    }
     if (this.res.length)
     {
       let ed = Math.round(this.res.length/1500)
       let sender = JSON.parse(localStorage.getItem("users") || "[]");
       let differe = ed - sender.length
+      
       if(differe > 0)
       {
         let dataDialog = { title: 'Please provide ' + differe + ' more email id and Password' };
@@ -126,7 +137,7 @@ export class SendcampaignComponent implements OnInit {
     this.submitted = true;
     if(this.phisingForm.invalid)
     return;
-    if(localStorage.getItem('name')=="" || localStorage.getItem('templateDescription') == "" || localStorage.getItem('templateHeading') == "" || localStorage.getItem('emailSignature')=="")
+    if(localStorage.getItem('name')=="" || localStorage.getItem('templateDescription') == "" || localStorage.getItem('templateHeading') == ""  || localStorage.getItem('emailSignature')=="")
     {
       this.toastr.error("please EDIT the Fields")
       return;

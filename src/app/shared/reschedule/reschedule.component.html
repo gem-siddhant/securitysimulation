@@ -23,10 +23,17 @@
       <input placeholder="12hr format" formControlName="time" aria-label="12hr format" [ngxTimepicker]="default" readonly style="margin-left: 30px ;height: 40px; width: 155px;margin-bottom: 20px;">
       <ngx-material-timepicker #default [enableKeyboardInput]="true" [theme]="darkTheme"></ngx-material-timepicker>
       
-    <div>
-      <button type="submit" mat-raised-button class="add_btn" (click)="schedulelater()">Reschedule Campaign</button>
-    </div>
+      <mat-form-field appearance="fill" class="m-4">
+        <mat-label>Select TimeZone</mat-label>
+        <mat-select [(value)]="selected" formControlName="timezone">
+          <mat-option value="Asia/Pacific">[Asia/Pacific]</mat-option>
+          <mat-option value="Asia/Kolkata">[Asia/Kolkata]</mat-option>
+        </mat-select>
+      </mat-form-field>
         
+    <div class="row col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <button type="submit" mat-raised-button class="add_btn" (click)="schedulelater()">ReSchedule Campaign</button>
+    </div>
     </form>
     
     

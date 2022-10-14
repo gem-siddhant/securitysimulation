@@ -111,8 +111,8 @@ export class ScheduleCampComponent implements OnInit {
 Reschedule(job:any)
 {
   const dialogRef = this.dialog.open(RescheduleComponent, {
-    width: '650px',
-    height: '350px', 
+    width: '750px',
+    height: '300px', 
     });  
     localStorage.setItem('jobkey',job)
     this.dialogRef.close();

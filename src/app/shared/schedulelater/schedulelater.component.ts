@@ -45,7 +45,6 @@ export class SchedulelaterComponent implements OnInit {
   myFooList: any = ['Some Item', 'Item Second', 'Other In Row', 'What to write', 'Blah To Do'];
   res: any = [];
   csvcheck : boolean= true;
- 
   constructor( public dialogRef: MatDialogRef<SchedulelaterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _addCampaign:AddCampaignService,
@@ -100,6 +99,19 @@ export class SchedulelaterComponent implements OnInit {
         this.res = []
         this.csvcheck = false
       }
+    }
+    if(this.file == null)
+    {
+      let dataDialog = {title:"Empty CSV Cannot be Uploaded"};
+        const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+          width: '400px',
+          height:'400px',
+          data: dataDialog
+        });
+        dialogRef.afterClosed().subscribe(()=>{
+          this.router.navigate(['main/add-campaign']);
+        })
+        return
     }
  
 
@@ -169,6 +181,16 @@ export class SchedulelaterComponent implements OnInit {
     {
       return
     }
+    if(this.res.length==0)
+    {
+      let dataDialog = {title:"CSV file not Provided"};
+        const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+          width: '400px',
+          height:'400px',
+          data: dataDialog
+        });
+        return
+    }
     if (this.res.length)
     {
       let ed = Math.round(this.res.length/1500)
@@ -194,6 +216,7 @@ export class SchedulelaterComponent implements OnInit {
     //this.phisingForm.value.date =  new Date((this.phisingForm.value.dat).utcOffset('+0000').format('YYYY-MM-DD HH:MM'))
     this.submitted = true;
     const scheduledate = moment(this.phisingForm.value.date).format("YYYY-MM-DD");
+    const currentYear = moment().year();
     if(this.phisingForm.invalid)
     return;
     if(this.res.length==null)
@@ -202,7 +225,7 @@ export class SchedulelaterComponent implements OnInit {
       console.log("wrong csv")
       return
     }
-    if(localStorage.getItem('name')=="" || localStorage.getItem('templateDescription') == "" || localStorage.getItem('templateHeading') == "" || localStorage.getItem('addNote')== "" || localStorage.getItem('emailSignature')=="")
+    if(localStorage.getItem('name')=="" || localStorage.getItem('templateDescription') == "" || localStorage.getItem('templateHeading') == "" || localStorage.getItem('emailSignature')=="")
     {
       this.toastr.error("please EDIT the Fields")
       return;
@@ -259,6 +282,7 @@ export class SchedulelaterComponent implements OnInit {
     var local = new File(["foo"], localfile, {
       type: "file/csv"
     });
+ 
       // if(this.file!=null && this.file.size==0)
       // {
       //   this.toastr.error("empty csv can not be uploaded");

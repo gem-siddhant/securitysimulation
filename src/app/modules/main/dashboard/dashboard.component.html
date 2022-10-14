@@ -227,27 +227,27 @@ History
 <!--dashboard logic end-->
 
 <!--archive part -->
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center mt-3" *ngFor="let element of this.campaigns; let i = index">
-  <button (click) ="viewmore()" class="archive" *ngIf="i==6">{{ isShow ? 'View More': 'View Less' }}</button>
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center mt-3" *ngIf="this.campaigns.length>5">
+  <button (click) ="viewmore()" class="archive">{{ isShow ? 'View More': 'View Less' }}</button>
 </div>
 <div [hidden] = "isShow">
   <!--archive part of dashboard starts-->
   <div class="row mt-3">
-    <div *ngIf="this.campaigns.length==0" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading align-center">
+    <div *ngIf="this.campaigns2.length==0" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading align-center">
       No Campaign added.
     </div>
-    <div *ngFor="let element of this.campaigns; let i = index;" >
-        <div *ngIf="(i)%3==0 && i>=6 " class="row ">
+    <div *ngFor="let element of this.campaigns2; let i= index" >
+      <div  *ngIf="(i)%3==0" class="row ">
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-12 box" >
           
           <a class="tile ">
             <div class="row">
           
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading mt-3" >
-                {{campaigns[i].name}}
+                {{campaigns2[i].name}}
               </div>
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1 " >
-                {{campaigns[i].subject}}
+                {{campaigns2[i].subject}}
               </div>
               <hr id="line-in-box">
               <div class="row mb-4 mt-2">
@@ -258,7 +258,7 @@ History
                 </div>
                 
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2 clickc">
-                  {{campaigns[i].opened}}
+                  {{campaigns2[i].opened}}
                 </div>
               </div>
               </div>
@@ -268,7 +268,7 @@ History
                     Not_Delivered
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2 notdelc">
-                    {{campaigns[i].notDelivered}}
+                    {{campaigns2[i].notDelivered}}
                   </div>
                 </div>
               </div>
@@ -279,7 +279,7 @@ History
                   </div>
                   
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2 delc">
-                    {{campaigns[i].delivered}}
+                    {{campaigns2[i].delivered}}
                   </div>
                   </div>
                   
@@ -299,21 +299,21 @@ History
                 <!--date of creation of campaign-->
                 <div class="col-lg-8 col-md-12 col-sm-12 col-xs-8 sub-heading-1 justify mt-3">
                   <!-- <div class="row"> -->
-                    <p><span style="font-size: 12px;color: #45198E; text-align: right;">{{campaigns[i].created_on}}</span></p>
+                    <p><span style="font-size: 12px;color: #45198E; text-align: right;">{{campaigns2[i].created_on}}</span></p>
                     <!-- </div> -->
                   </div>
               
             </div>
           </a>
           </div>
-          <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 box" *ngIf="(i+1)<this.campaigns.length">
+          <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 box" *ngIf="(i+1)<this.campaigns2.length">
             <a class="tile">
               <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading mt-3" >
-                  {{campaigns[i+1].name}}
+                  {{campaigns2[i+1].name}}
                 </div>
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" >
-                  {{campaigns[i+1].subject}}
+                  {{campaigns2[i+1].subject}}
                 </div>
                 <hr id="line-in-box">
                 <div class="row mb-3 mt-2">
@@ -324,7 +324,7 @@ History
                       </div>
                       
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2 clickc">
-                        {{campaigns[i+1].opened}}
+                        {{campaigns2[i+1].opened}}
                       </div>
                     </div>
                     </div>
@@ -334,7 +334,7 @@ History
                       Not_Delivered
                     </div>
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2 notdelc">
-                      {{campaigns[i+1].notDelivered}}
+                      {{campaigns2[i+1].notDelivered}}
                     </div>
                   </div>
                 </div>
@@ -345,7 +345,7 @@ History
                     </div>
                     
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2 delc">
-                      {{campaigns[i].delivered}}
+                      {{campaigns2[i+1].delivered}}
                     </div>
                     </div>
                     
@@ -364,21 +364,21 @@ History
                   <!--date of creation of campaign-->
                 <div class="col-lg-8 col-md-12 col-sm-12 col-xs-8 sub-heading-1 justify mt-3">
                   <!-- <div class="row"> -->
-                    <p><span style="font-size: 12px;color: #45198E; text-align: right;">{{campaigns[i+1].created_on}}</span></p>
+                    <p><span style="font-size: 12px;color: #45198E; text-align: right;">{{campaigns2[i+1].created_on}}</span></p>
                     <!-- </div> -->
                   </div>
                 
               </div>
             </a>
             </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 box" *ngIf="(i+2)<this.campaigns.length" >
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 box" *ngIf="(i+2)<this.campaigns2.length" >
               <a class="tile">
                 <div class="row">
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading mt-3" >
-                    {{campaigns[i+2].name}}
+                    {{campaigns2[i+2].name}}
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" >
-                    {{campaigns[i+2].subject}}
+                    {{campaigns2[i+2].subject}}
                   </div>
                   <hr id="line-in-box">
                   <div class="row mb-3 mt-2">
@@ -389,7 +389,7 @@ History
                         </div>
                         
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2 clickc">
-                          {{campaigns[i+2].opened}}
+                          {{campaigns2[i+2].opened}}
                         </div>
                       </div>
                       </div>
@@ -399,7 +399,7 @@ History
                         Not_Delivered
                       </div>
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2 notdelc">
-                        {{campaigns[i+2].notDelivered}}
+                        {{campaigns2[i+2].notDelivered}}
                       </div>
                     </div>
                   </div>
@@ -409,7 +409,7 @@ History
                         Delivered
                       </div>
                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading-2 delc">
-                        {{campaigns[i+2].delivered}}
+                        {{campaigns2[i+2].delivered}}
                       </div>
                       </div>
                     </div>
@@ -428,7 +428,7 @@ History
                     <!--date of creation of campaign-->
                     <div class="col-lg-8 col-md-12 col-sm-12 col-xs-8 sub-heading-1 justify mt-3" >
                     <!-- <div class="row"> -->
-                    <p><span style="font-size: 12px;color: #45198E; text-align: right;" >{{campaigns[i+2].created_on}}</span></p>
+                    <p><span style="font-size: 12px;color: #45198E; text-align: right;" >{{campaigns2[i+2].created_on}}</span></p>
                     <!-- </div> -->
                   </div>
 

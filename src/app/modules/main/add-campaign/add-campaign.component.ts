@@ -63,6 +63,7 @@ options:boolean=true;
 attachment:boolean=true;
 attachment1:boolean=false;
 //manager:any = "true";
+i:any=1;
 selectedOption: any = [];
 addresses: any = [{
   email: '',
@@ -85,6 +86,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
 
   ngOnInit(): void {
   //const addresses = [{}];
+  // this.toastr.info("Please select template")
   let emailpass = new FormArray([]);
   this.phisingForm = this.formBuilder.group({
   name:['',Validators.required],
@@ -92,12 +94,10 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   desc:['',Validators.required],
   reward_amount:[''],
   tempate_select:['',],
-  attachmentFile:[''],
   subject:['',Validators.required],
-  radio:[''||'false'],
   //email:['',Validators.required],
   //password:['',Validators.required],
-  addnote:['',Validators.required],
+  addnote:[''],
   footer:['',Validators.required],
   radio2:[''||'false'],
   fileattach:[''||'attachment'],
@@ -130,9 +130,13 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     return (this.phisingForm.get('allemails') as FormArray).controls;
 
   }
+  cleartext()
+  {
+    this.phisingForm.value.allemails.onreset();
+  }
   onRemoveQuestion(index: number) {
     const emailpassItem = new FormGroup({
-      senderEmail: new FormControl('', Validators.required),
+      senderEmail: new FormControl('', Validators.email),
       senderPassword: new FormControl('', Validators.required),
     });
     (<FormArray>this.phisingForm.get('allemails')).removeAt(index);
@@ -141,7 +145,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     console.log(this.phisingForm);
 
   }
-
+  
   onChange(event: any) {
     
     this.changeTriggered = true;
@@ -154,6 +158,23 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     }
   }
   getPreFilledData(id:any){
+    // for(let i=0;i<this.phisingForm.value.allemails.length;i++)
+    // {
+    //   let email = this.phisingForm.value.allemails[i];
+    //   email['senderEmail']=''
+    //   email['senderPassword']=''
+    // }
+    
+    this.i++
+    if(this.i>=3)
+    {
+      this.phisingForm.reset()
+      this.phisingForm.value.radio2 = true
+    }
+    
+    console.log(this.i)
+    console.log(this.phisingForm.value.allemails)
+    
     this._addCampaign.getPrefilled(id).subscribe((data)=>{
       this.prefilled=data;
       if(this.prefilled.heading)
@@ -190,6 +211,20 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
 
   schedulelater()
   {
+    for(let i=0;i<this.phisingForm.value.allemails.length;i++)
+    {
+      let email = this.phisingForm.value.allemails[i];
+      console.log(email['senderEmail'])
+      if(email['senderEmail'].includes('@geminisolution.in') || email['senderEmail'].includes(['@','.']))
+      {
+      }
+      else{
+        this.toastr.error("not a valid email to send campaigns")
+        return
+      }
+    }
+    console.log(this.phisingForm.value.name)
+    console.log(this.phisingForm.value.subject)
     let email = this.phisingForm.value.allemails[0];
     console.log(email['email'])
     if(this.phisingForm.value.name == "" || this.phisingForm.value.subject == "" || this.phisingForm.value.desc == ""|| this.phisingForm.value.footer == "")
@@ -233,6 +268,18 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
  
   sendcampaign()
   {
+    for(let i=0;i<this.phisingForm.value.allemails.length;i++)
+    {
+      let email = this.phisingForm.value.allemails[i];
+      console.log(email['senderEmail'])
+      if(email['senderEmail'].includes('@geminisolution.in') || email['senderEmail'].includes(['@','.']))
+      {
+      }
+      else{
+        this.toastr.error("not a valid email to send campaigns")
+        return
+      }
+    }
     let email = this.phisingForm.value.allemails[0];
     console.log(email['email'])
     if(this.phisingForm.value.name == "" || this.phisingForm.value.subject == "" || this.phisingForm.value.desc == ""|| this.phisingForm.value.footer == "")
@@ -277,8 +324,15 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     //   email:this.phisingForm.value.email,
     //   password: this.phisingForm.value.password
     // })
-    let email = this.phisingForm.value.allemails[0]; 
-   
+    let email = this.phisingForm.value.allemails[0];
+    console.log(email['senderEmail'])
+    if(email['senderEmail'].includes('@geminisolution.in') || email['senderEmail'].includes(['@','.']))
+      {
+      }
+    else{
+      this.toastr.error("not a valid email to send campaigns")
+      return
+      }
     this.submitted=true;
     console.log(this.phisingForm.value.allemails)
     if (this.phisingForm.value.name == "")
@@ -292,10 +346,6 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     if (this.phisingForm.value.desc == "")
     {
       this.toastr.error("Please EDIT the description")
-    }
-    if (this.phisingForm.value.addnote == "")
-    {
-      this.toastr.error("Please EDIT the Add note")
     }
     if (this.phisingForm.value.footer == "")
     {

@@ -17,11 +17,14 @@ import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/co
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { InfomodalComponent } from 'src/app/shared/infomodal/infomodal.component';
+import {ErrorStateMatcher} from '@angular/material/core';
+
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
+
 export class SignUpComponent implements OnInit {
   signupForm:FormGroup;
   StoreData:boolean=true;
@@ -45,6 +48,13 @@ export class SignUpComponent implements OnInit {
         jobdesc:['',Validators.required],
         purpose:['',Validators.required]
     });
+  }
+  getErrorMessage() {
+    if (this.signupForm.value.email.hasError('')) {
+      return 'You must enter a value';
+    }
+    return 'You must enter a value';
+    // return this.signupForm.value.email.hasError('') ? 'Not a valid email' : '';
   }
   submit(){
     if (this.signupForm.value.name == "")
@@ -109,6 +119,18 @@ export class SignUpComponent implements OnInit {
         const dialogRef = this.dialog.open(InfomodalComponent, {
           width: '400px',
           height: '340px',
+          data: dataDialog
+        });
+        dialogRef.afterClosed().subscribe(()=>{
+          this.router.navigate(['main/sign-up']);
+        })
+      }
+      else if(err.status==500)
+      {
+        let dataDialog = { title: 'Something Went Wrong please check your details again' };
+        const dialogRef = this.dialog.open(InfomodalComponent, {
+          width: '400px',
+          height: '360px',
           data: dataDialog
         });
         dialogRef.afterClosed().subscribe(()=>{
