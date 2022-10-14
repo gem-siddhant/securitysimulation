@@ -126,7 +126,7 @@ export class SendcampaignComponent implements OnInit {
     this.submitted = true;
     if(this.phisingForm.invalid)
     return;
-    if(localStorage.getItem('name')=="" || localStorage.getItem('templateDescription') == "" || localStorage.getItem('templateHeading') == "" || localStorage.getItem('addNote')== "" || localStorage.getItem('emailSignature')=="")
+    if(localStorage.getItem('name')=="" || localStorage.getItem('templateDescription') == "" || localStorage.getItem('templateHeading') == ""  || localStorage.getItem('emailSignature')=="")
     {
       this.toastr.error("please EDIT the Fields")
       return;

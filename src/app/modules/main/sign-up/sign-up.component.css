@@ -87,3 +87,10 @@ color: #9B2F9B;
   padding-left: 2%;
   padding-top:1% ;
 }
+.router{
+  text-align: center; 
+  font-size: medium;
+}
+a{
+  text-decoration: none;
+}

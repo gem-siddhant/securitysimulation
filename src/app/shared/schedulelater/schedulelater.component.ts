@@ -202,7 +202,7 @@ export class SchedulelaterComponent implements OnInit {
       console.log("wrong csv")
       return
     }
-    if(localStorage.getItem('name')=="" || localStorage.getItem('templateDescription') == "" || localStorage.getItem('templateHeading') == "" || localStorage.getItem('addNote')== "" || localStorage.getItem('emailSignature')=="")
+    if(localStorage.getItem('name')=="" || localStorage.getItem('templateDescription') == "" || localStorage.getItem('templateHeading') == "" || localStorage.getItem('emailSignature')=="")
     {
       this.toastr.error("please EDIT the Fields")
       return;

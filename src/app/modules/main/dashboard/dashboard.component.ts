@@ -25,6 +25,7 @@ creat:any;
 datestring : any;
 timestring : any;
 campaigns:any=[];
+campaigns2:any=[];
 dates : any = [];
   constructor(private _main:MainService,
     private router:Router,
@@ -78,7 +79,7 @@ dates : any = [];
       if(data){
         this.flag = false;
         this.StoreData=true;
-        this.campaigns=data;
+        this.campaigns2=data;
         
       }
     },
