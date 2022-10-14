@@ -106,7 +106,7 @@
         <mat-form-field class="w-100" appearance="outline" class="col col-lg-12 col-md-6 col-sm-12 col-xs-6 w-100" [ngClass]="{'hide-class':this.prefilled.description==null}">
           <mat-label>Description</mat-label>
           <textarea matInput type="text" [value]="this.prefilled.description" #input5 formControlName="desc" maxlength="1500"></textarea>
-          <mat-error *ngIf="phisingForm.value.desc=='' || phisingForm.value.desc==null">Please Edit/Fill Eamil Description</mat-error>
+          <mat-error *ngIf="phisingForm.value.desc=='' || phisingForm.value.desc==null">Please Edit/Fill Email Description</mat-error>
         <mat-hint align="end" >{{input5.value?.length || 0}}/1500</mat-hint>
         </mat-form-field>
       </div>
