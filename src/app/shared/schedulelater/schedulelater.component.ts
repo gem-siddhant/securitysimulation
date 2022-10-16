@@ -14,6 +14,7 @@ import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-m
 import { Pipe, PipeTransform } from '@angular/core';
 import { title } from 'process';
 import { CsvmessageComponent } from '../csvmessage/csvmessage.component';
+import { dateFormat } from 'highcharts';
 @Component({
   selector: 'app-schedulelater',
   templateUrl: './schedulelater.component.html',
@@ -37,6 +38,8 @@ export class SchedulelaterComponent implements OnInit {
   //manager:any = "true";
   victcsv : any = [] ;
   options:boolean=true;
+  currentdate : any = new Date()
+  maxDate: Date;
   attachment:boolean=true;
   manager:any = localStorage.getItem('Manager');
   changeTriggered=false;
@@ -67,6 +70,8 @@ export class SchedulelaterComponent implements OnInit {
         radio:[''||'false'],
       }
     );
+    const currentYear = new Date().getFullYear();
+    this.maxDate = new Date(currentYear + 1, 6, 31);
   }
   onChange(event: any) {
     this.changeTriggered = true;
