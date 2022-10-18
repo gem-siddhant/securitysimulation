@@ -193,7 +193,7 @@ export class SchedulelaterComponent implements OnInit {
     }
     if (this.res.length)
     {
-      let ed = Math.round(this.res.length/220)
+      let ed = Math.round(this.res.length/1500)
       let sender = JSON.parse(localStorage.getItem("users") || "[]");
       let differe = ed - sender.length
       if(differe > 0)
