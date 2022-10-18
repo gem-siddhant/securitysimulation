@@ -39,6 +39,8 @@ endcampaignId:any;
     nameCampaign:any;
     emailSubject:any;
     desc:any;
+    status:any;
+    remarks:any;
     clickbtn:boolean= false;
 clicked_len:any;
 undelivered_len:any;
@@ -138,6 +140,8 @@ i: number = 1;
        this.nameCampaign=data.template.heading;
        this.emailSubject=data.template.subject;
        this.desc=data.template.description;
+       this.status=data.taskStatus;
+       this.remarks=data.exceptionMessage;
       
        let i=1;
        for(let element of data.result){
