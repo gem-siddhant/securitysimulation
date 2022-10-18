@@ -71,7 +71,8 @@ export class SchedulelaterComponent implements OnInit {
       }
     );
     const currentYear = new Date().getFullYear();
-    this.maxDate = new Date(currentYear + 1, 6, 31);
+    // this.currentdate = new Date(currentYear)
+    this.maxDate = new Date(currentYear + 1,3,31);
   }
   onChange(event: any) {
     this.changeTriggered = true;
