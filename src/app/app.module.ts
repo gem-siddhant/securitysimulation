@@ -85,7 +85,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     NgxMaterialTimepickerModule,
     ReactiveFormsModule,
     MatDialogModule,
-    MatTooltipModule
+    MatTooltipModule,
   ],
   providers: [ LoaderService,
     {
