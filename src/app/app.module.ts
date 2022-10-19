@@ -42,7 +42,7 @@ import { InfomodalComponent } from './shared/infomodal/infomodal.component';
 import { CsvmessageComponent } from './shared/csvmessage/csvmessage.component';
 import { RequestsubmitComponent } from './Onboard/requestsubmit/requestsubmit.component';
 import { MatCardModule } from '@angular/material/card';
-import { NgIdleKeepaliveModule } from '@ng-idle/keepalive'; // this includes the core NgIdleModule but includes keepalive providers for easy wireup
+// import { NgIdleKeepaliveModule } from '@ng-idle/keepalive'; // this includes the core NgIdleModule but includes keepalive providers for easy wireup
 import * as moment from 'moment';
 import { BnNgIdleService } from 'bn-ng-idle';
 
