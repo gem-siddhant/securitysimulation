@@ -25,6 +25,8 @@ export class RescheduleComponent implements OnInit {
   submitted = false;
   test: any = null;
   file: File = this.test;
+  currentdate : any = new Date()
+  maxDate: Date;
   manager:any = "true";
   options:boolean=true;
   attachment:boolean=true;
@@ -48,6 +50,8 @@ export class RescheduleComponent implements OnInit {
         timezone:['',Validators.required],
       }
     );
+    const currentYear = new Date().getFullYear();
+    this.maxDate = new Date(currentYear + 1, 2);
   }
 
   onClose() {
