@@ -113,7 +113,7 @@ export class SendcampaignComponent implements OnInit {
     }
     if (this.res.length)
     {
-      let ed = Math.round(this.res.length/1500)
+      let ed = Math.ceil(this.res.length/1500)
       let sender = JSON.parse(localStorage.getItem("users") || "[]");
       let differe = ed - sender.length
       
