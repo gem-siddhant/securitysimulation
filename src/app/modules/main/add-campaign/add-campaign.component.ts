@@ -65,13 +65,11 @@ attachment1:boolean=false;
 //manager:any = "true";
 i:any=1;
 selectedOption: any = [];
-
 addresses: any = [{
   email: '',
   password: ''
 }];
 //addresses: Record<string, unknown>[] = [];
-
 manager:any = localStorage.getItem('Manager');
 @Output() close: EventEmitter<any> = new EventEmitter();
 testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
@@ -91,13 +89,12 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   // this.toastr.info("Please select template")
   let emailpass = new FormArray([]);
   this.phisingForm = this.formBuilder.group({
-  name:[''],
+  name:['',Validators.required],
   reward_type:[''],
   desc:['',Validators.required],
   reward_amount:[''],
   tempate_select:['',],
-  attachmentFile:[''],
-  subject:[''],
+  subject:['',Validators.required],
   //email:['',Validators.required],
   //password:['',Validators.required],
   addnote:[''],
@@ -375,7 +372,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       'emailSignature': this.phisingForm.value.footer,
       'sendAttachment': sendattach,
       'attachmentName': this.phisingForm.value.fileattach,
-      'attachmentText':this.phisingForm.value.filecontent
+      'attachmentText':this.phisingForm.value.filecontent,
     }
     
 
