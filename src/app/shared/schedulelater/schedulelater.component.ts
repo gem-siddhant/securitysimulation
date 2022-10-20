@@ -14,7 +14,6 @@ import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-m
 import { Pipe, PipeTransform } from '@angular/core';
 import { title } from 'process';
 import { CsvmessageComponent } from '../csvmessage/csvmessage.component';
-import { dateFormat } from 'highcharts';
 @Component({
   selector: 'app-schedulelater',
   templateUrl: './schedulelater.component.html',

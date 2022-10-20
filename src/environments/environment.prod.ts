@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://secsimapi.geminisolutions.com'
+  apiUrl: 'https://devsecsimapi.geminisolutions.com'
 }
