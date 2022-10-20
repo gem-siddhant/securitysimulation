@@ -89,7 +89,8 @@ export class SchedulelaterComponent implements OnInit {
     } 
     for(var j=0;j<this.res.length;j++)
     {
-      if(this.res[j] !="" || this.res[j].includes('@') || (this.res[j].split('@').length - 1)==1 )
+      var format = /[ `!#$%^&*()_+\-=\[\]{};':"\\|,<>\/?~]/;
+      if(this.res[j] !="" && this.res[j].includes('@')==true && (this.res[j].split('@').length - 1)==1 && format.test(this.res[j])==false  )
       {
        
       }
