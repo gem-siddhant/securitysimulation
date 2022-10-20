@@ -96,13 +96,10 @@ i: number = 1;
   filterDrop(){
    
     let filterValue=this.select_val;
-      filterValue = filterValue.trim();
-     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-     if(filterValue.status=='DELIVERED')
-     {
-       this.notdelivered--;
-     }
-     this.dataSource.filter = filterValue;
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    console.log(filterValue)
+    this.dataSource.filter = filterValue;
 
   }
   applyFilter(event: any) {
