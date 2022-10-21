@@ -45,6 +45,8 @@ export class SchedulelaterComponent implements OnInit {
   myFooList: any = ['Some Item', 'Item Second', 'Other In Row', 'What to write', 'Blah To Do'];
   res: any = [];
   csvcheck : boolean= true;
+  currentdate : any = new Date()
+  maxDate: Date;
   constructor( public dialogRef: MatDialogRef<SchedulelaterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _addCampaign:AddCampaignService,
@@ -218,6 +220,7 @@ export class SchedulelaterComponent implements OnInit {
     this.submitted = true;
     const scheduledate = moment(this.phisingForm.value.date).format("YYYY-MM-DD");
     const currentYear = moment().year();
+    this.maxDate = new Date(currentYear + 1, 2);
     if(this.phisingForm.invalid)
     return;
     if(this.res.length==null)

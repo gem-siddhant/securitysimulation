@@ -29,6 +29,8 @@ export class RescheduleComponent implements OnInit {
   options:boolean=true;
   attachment:boolean=true;
   changeTriggered=false;
+  currentdate : any = new Date()
+  maxDate: Date;
   constructor( public dialogRef: MatDialogRef<RescheduleComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _addCampaign:AddCampaignService,
@@ -69,6 +71,8 @@ export class RescheduleComponent implements OnInit {
     //this.phisingForm.value.date =  new Date((this.phisingForm.value.dat).utcOffset('+0000').format('YYYY-MM-DD HH:MM'))
     this.submitted = true;
     const scheduledate = moment(this.phisingForm.value.date).format("YYYY-MM-DD");
+    const currentYear = moment().year();
+    this.maxDate = new Date(currentYear + 1, 11,31);
     if(this.phisingForm.invalid)
     return;
     const formData :any= new FormData();
