@@ -52,6 +52,7 @@ export class AuthService {
       {
         localStorage.setItem('Manager',(item.data.isManager));
         localStorage.setItem('token',(item.message));
+        localStorage.setItem('Profile',item.data.imageURL);
         resolve();   
       }
       else{

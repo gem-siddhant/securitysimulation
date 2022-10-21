@@ -9,8 +9,9 @@
     </div>
     </div>
     <div  *ngIf="this.getUser()" class="col-lg-4 col-md-4 col-sm-4 col-xs-4 vertical-align">
+      <img class="logo" src="profile" routerLink="/main/dashboard" style="padding-right: 10%;">
       <div>
-        <span (click)="scheduled()" style="color: white;font-size: 70px;padding-right: 10px;padding-top: 24px;" matTooltip="Scheduled Campaigns" matTooltipPosition="above"><mat-icon>alarm</mat-icon></span>
+        <span (click)="scheduled()" style="color: white;font-size: 70px;padding-right: 10px;padding-top: 24px;padding-left: 10%" matTooltip="Scheduled Campaigns" matTooltipPosition="above"><mat-icon>alarm</mat-icon></span>
       </div>
         <div>
         <a download href="../../../../assets/pdfs/simulation_user_manual.pdf" id="info" (click)="toogletag(content)" matTooltip="Download Manual" matTooltipPosition="above">
@@ -21,6 +22,7 @@
     <a (click)="Logout()"matTooltip="Logout" matTooltipPosition="above">
       <span style="color: white;padding-top: 2px;" class="material-icons">logout</span>
     </a>
+    
   </mat-icon>
     </div>
     </div>

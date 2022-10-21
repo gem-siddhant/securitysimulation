@@ -44,6 +44,7 @@ export class NavbarComponent implements OnInit {
   currentDate:any;
   campaigns:any;
   content:string="Downloading your User Manual";
+  profile=localStorage.getItem('Profile')
   constructor(private _auth:AuthService,
     private _schedule: MainService,
     private dialog:MatDialog,
