@@ -40,6 +40,20 @@ History
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1 " >
                 {{campaigns[i].subject}}
               </div>
+
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" *ngIf="campaigns[i].taskStatus=='SENT'">
+                Status: <span style="color: rgb(24, 201, 24); font-size: 14px">{{campaigns[i].taskStatus}}</span>
+              </div>
+  
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" *ngIf="campaigns[i].taskStatus=='PENDING'">
+                  Status: <span style="color: rgb(134, 134, 14);">{{campaigns[i].taskStatus}}</span>
+                </div>
+  
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" *ngIf="campaigns[i].taskStatus=='FAILED'">
+                  Status: <span style="color: rgb(123, 10, 10);">{{campaigns[i].taskStatus}}</span>
+                </div>
+
+
               <hr id="line-in-box">
               <div class="row mb-4 mt-2">
               <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 sub-heading-1" >
@@ -104,6 +118,22 @@ History
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" >
                   {{campaigns[i+1].subject}}
                 </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" *ngIf="campaigns[i+1].taskStatus=='SENT'">
+                  Status: <span style="color: rgb(24, 201, 24); font-size: 14px">{{campaigns[i+1].taskStatus}}</span>
+                </div>
+    
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" *ngIf="campaigns[i+1].taskStatus=='PENDING'">
+                    Status: <span style="color: rgb(134, 134, 14);">{{campaigns[i+1].taskStatus}}</span>
+                  </div>
+    
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" *ngIf="campaigns[i+1].taskStatus=='FAILED'">
+                    Status: <span style="color: rgb(123, 10, 10);">{{campaigns[i+1].taskStatus}}</span>
+                  </div>
+
+
+
+
                 <hr id="line-in-box">
                 <div class="row mb-3 mt-2">
                 <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 sub-heading-1 mt-1" >
@@ -166,6 +196,19 @@ History
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" >
                     {{campaigns[i+2].subject}}
                   </div>
+
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" *ngIf="campaigns[i+2].taskStatus=='SENT'">
+                    Status: <span style="color: rgb(24, 201, 24); font-size: 14px">{{campaigns[i+2].taskStatus}}</span>
+                  </div>
+      
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" *ngIf="campaigns[i+2].taskStatus=='PENDING'">
+                      Status: <span style="color: rgb(134, 134, 14);">{{campaigns[i+2].taskStatus}}</span>
+                    </div>
+      
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" *ngIf="campaigns[i+2].taskStatus=='FAILED'">
+                      Status: <span style="color: rgb(123, 10, 10);">{{campaigns[i+2].taskStatus}}</span>
+                    </div>
+
                   <hr id="line-in-box">
                   <div class="row mb-3 mt-2">
                   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 sub-heading-1 mt-1" >
@@ -249,6 +292,19 @@ History
               <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1 " >
                 {{campaigns2[i].subject}}
               </div>
+
+              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" *ngIf="campaigns2[i].taskStatus=='SENT'">
+                Status: <span style="color: rgb(24, 201, 24); font-size: 14px">{{campaigns2[i].taskStatus}}</span>
+              </div>
+  
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" *ngIf="campaigns2[i].taskStatus=='PENDING'">
+                  Status: <span style="color: rgb(134, 134, 14);">{{campaigns2[i].taskStatus}}</span>
+                </div>
+  
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" *ngIf="campaigns2[i].taskStatus=='FAILED'">
+                  Status: <span style="color: rgb(123, 10, 10);">{{campaigns2[i].taskStatus}}</span>
+                </div>
+
               <hr id="line-in-box">
               <div class="row mb-4 mt-2">
               <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 sub-heading-1" >
@@ -315,6 +371,20 @@ History
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" >
                   {{campaigns2[i+1].subject}}
                 </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" *ngIf="campaigns2[i+1].taskStatus=='SENT'">
+                  Status: <span style="color: rgb(24, 201, 24); font-size: 14px">{{campaigns2[i+1].taskStatus}}</span>
+                </div>
+    
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" *ngIf="campaigns2[i+1].taskStatus=='PENDING'">
+                    Status: <span style="color: rgb(134, 134, 14);">{{campaigns2[i+1].taskStatus}}</span>
+                  </div>
+    
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" *ngIf="campaigns2[i+1].taskStatus=='FAILED'">
+                    Status: <span style="color: rgb(123, 10, 10);">{{campaigns2[i+1].taskStatus}}</span>
+                  </div>
+
+
                 <hr id="line-in-box">
                 <div class="row mb-3 mt-2">
                   <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 sub-heading-1" >
@@ -380,6 +450,19 @@ History
                   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" >
                     {{campaigns2[i+2].subject}}
                   </div>
+
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" *ngIf="campaigns2[i+2].taskStatus=='SENT'">
+                    Status: <span style="color: rgb(24, 201, 24); font-size: 14px">{{campaigns2[i+2].taskStatus}}</span>
+                  </div>
+      
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" *ngIf="campaigns2[i+2].taskStatus=='PENDING'">
+                      Status: <span style="color: rgb(134, 134, 14);">{{campaigns2[i+2].taskStatus}}</span>
+                    </div>
+      
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sub-heading mt-1" *ngIf="campaigns2[i+2].taskStatus=='FAILED'">
+                      Status: <span style="color: rgb(123, 10, 10);">{{campaigns2[i+2].taskStatus}}</span>
+                    </div>
+
                   <hr id="line-in-box">
                   <div class="row mb-3 mt-2">
                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 sub-heading-1" >
