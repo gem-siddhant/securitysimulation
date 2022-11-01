@@ -48,7 +48,7 @@
 <div *ngIf="manager=='false'" style="margin-bottom: 5%;">
   <div class="sub-head row col-lg-9 col-md-6 col-sm-5 col-xs-5 mb-5" style="padding-left: 1%;">Fill in the details</div>
   <div class="row" *ngIf="this.phisingForm.value.tempate_select!=0">
-    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 form-box">
+    <div class="col-lg-9 col-md-6 col-sm-6 col-xs-6 form-box">
       <div class="first row col-lg-12 col-md-12 col-sm-12 col-xs-6" style="padding-top: 1%; font-size: medium;color: rgb(169, 23, 23)">
         <Strong>Note:- </Strong>
         Please Edit all the fields to create the campaign 
@@ -223,15 +223,15 @@
     <!--send attachment-->
 <!--no attachment part-->
 <div class="row col-lg-6 col-md-6 col-sm-6 col-xs-6">
-  <h3 style="margin-left: 15px;margin-bottom: 5px;font-size: 15px;color: #531D89;" class="row col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0">Send Attachment</h3>
+  <h3 style="margin-left: 15px;margin-bottom: 5px;font-size: 15px;color: #531D89;" class="row col-lg-6 col-md-6 col-sm-6 col-xs-6 ml-0">Send Attachment</h3>
 
-  <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="false" [checked]="!attachment" style="margin-left:12px;font-size: 11px;margin-right: 2%;" class="col col-lg-1 col-md-3 col-sm-3 col-xs-3" formControlName="radio2"  >No
+  <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="false" [checked]="!attachment" style="font-size: 8px;" class="col col-lg-1 col-md-2 col-sm-2 col-xs-2" formControlName="radio2"  >No
 
 <!--no attachment part ended-->
 
 <!--send attachment start-->
 
-  <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="true" [checked]="attachment" style="margin-left:12px; font-size: 11px;margin-right: 2%;" class="row col-lg-1 col-md-2 col-sm-3 col-xs-3 p-2" formControlName="radio2"  >Yes
+  <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="true" [checked]="attachment" style="margin-left:11px; font-size: 8px; margin-right: 1%;" class="col col-lg-1 col-md-2 col-sm-1 col-xs-1" formControlName="radio2"  >Yes
 </div>
 <!--provide your custom name-->
 <div *ngIf="attachment">
