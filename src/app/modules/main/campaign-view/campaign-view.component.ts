@@ -39,6 +39,8 @@ endcampaignId:any;
     nameCampaign:any;
     emailSubject:any;
     desc:any;
+    status:any;
+    remarks:any;
     clickbtn:boolean= false;
 clicked_len:any;
 undelivered_len:any;
@@ -96,10 +98,13 @@ i: number = 1;
   filterDrop(){
    
     let filterValue=this.select_val;
-    filterValue = filterValue.trim();
-    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-    console.log(filterValue)
-    this.dataSource.filter = filterValue;
+      filterValue = filterValue.trim();
+     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+     if(filterValue.status=='DELIVERED')
+     {
+       this.notdelivered--;
+     }
+     this.dataSource.filter = filterValue;
 
   }
   applyFilter(event: any) {
@@ -135,6 +140,15 @@ i: number = 1;
        this.nameCampaign=data.template.heading;
        this.emailSubject=data.template.subject;
        this.desc=data.template.description;
+       this.status=data.taskStatus;
+       if (data.exceptionMessage==null)
+       {
+        this.remarks="No Remarks"
+       }
+       else{
+        this.remarks=data.exceptionMessage;
+       }
+       
       
        let i=1;
        for(let element of data.result){
@@ -146,20 +160,20 @@ i: number = 1;
         ++i;
 
        }
-       let k=1;
-       for (let element of data.result)
-       {
-         element.id=k;
-         if(element.status=='DELIVERED')
-         {
-           this.delivered_len--;
-         }
-         if(element.status=='CLICKED')
-         {
-           this.delivered_len--;
-         }
-         k++;
-       }
+      //  let k=1;
+      //  for (let element of data.result)
+      //  {
+      //    element.id=k;
+      //    if(element.status=='DELIVERED')
+      //    {
+      //      this.delivered_len--;
+      //    }
+      //    if(element.status=='CLICKED')
+      //    {
+      //      this.delivered_len--;
+      //    }
+      //    k++;
+      //  }
        
 
       
