@@ -1,6 +1,6 @@
 <html style="overflow:hidden;">
     <head>
-      
+        <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
     <body style="overflow:hidden ;">
         <div class="row full " [ngClass]="{'offset-2': mobile==true}">
@@ -8,18 +8,30 @@
                 <img class="img1">
               <!--  <div class="img3"></div>-->
                 <img class="img4" src="../../../../assets/images/whitegeminilogo.png" >
+
+
+
+                <!-- <div class="text-center"> -->
+                    <div  class="logoimg">
+                        <a routerLink="" class="mat-center-horizontal col-lg-12 col-sm-8 col-md-6 col-xs-4 mb-4"><img src="../../../../assets/images/piratelogowithbar.png" alt="logo"
+                               ></a>
+                    </div>
+                <!-- </div> -->
              
-                <div class="pirates-class">
+                <!-- <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 pirates-class">
                             <img src="../../../../assets/images/piratelogowithbar.png">
-                </div>
+                </div> -->
                 <div class="welcome" [ngClass]="{'offset-2': mobile==true}">
                     Welcome To 
+                    
+         
                 </div>
             
                 <div class="row">
-                    <div class="mat-center-horizontal col-lg-12 col-sm-12 col-md-12 col-xs-12 mb-4">
+                    <div class="mat-center-horizontal col-lg-12 col-sm-8 col-md-6 col-xs-4 mb-4">
                     <button mat-raised-button class="btn_login" (click)="loginWithMicrosoft2()">Login With Gemini ID</button>
                 </div>
+              
                 </div>
                 <div class="row">
                   <div class="mat-center-horizontal col-lg-12 col-sm-12 col-md-8 col-xs-12 mb-4">

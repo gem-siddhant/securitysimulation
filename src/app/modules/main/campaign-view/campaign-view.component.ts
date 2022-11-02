@@ -160,23 +160,6 @@ i: number = 1;
         ++i;
 
        }
-      //  let k=1;
-      //  for (let element of data.result)
-      //  {
-      //    element.id=k;
-      //    if(element.status=='DELIVERED')
-      //    {
-      //      this.delivered_len--;
-      //    }
-      //    if(element.status=='CLICKED')
-      //    {
-      //      this.delivered_len--;
-      //    }
-      //    k++;
-      //  }
-       
-
-      
         this.notdelivered = data.notDeliveredCount
         this.pieChartData = [this.clicked_len, this.delivered_len,this.notdelivered];
         this.dataSource = new MatTableDataSource<view_data>(data.result);

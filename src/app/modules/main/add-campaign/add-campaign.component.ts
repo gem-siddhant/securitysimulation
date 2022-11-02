@@ -69,7 +69,6 @@ addresses: any = [{
   email: '',
   password: ''
 }];
-//addresses: Record<string, unknown>[] = [];
 manager:any = localStorage.getItem('Manager');
 @Output() close: EventEmitter<any> = new EventEmitter();
 testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
@@ -85,8 +84,6 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   }
 
   ngOnInit(): void {
-  //const addresses = [{}];
-  // this.toastr.info("Please select template")
   let emailpass = new FormArray([]);
   this.phisingForm = this.formBuilder.group({
   name:['',Validators.required],
@@ -95,8 +92,6 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   reward_amount:[''],
   tempate_select:['',],
   subject:['',Validators.required],
-  //email:['',Validators.required],
-  //password:['',Validators.required],
   addnote:[''],
   footer:['',Validators.required],
   radio2:[''||'false'],
@@ -119,11 +114,6 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
    
     
     (<FormArray>this.phisingForm.get('allemails')).push(emailpassItem);
-
-    // this.addresses.splice(0,2,{
-    // email:this.phisingForm.value.email,
-    // password: this.phisingForm.value.password
-    // })
   }
   getcontrols()
   {
@@ -158,13 +148,6 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     }
   }
   getPreFilledData(id:any){
-    // for(let i=0;i<this.phisingForm.value.allemails.length;i++)
-    // {
-    //   let email = this.phisingForm.value.allemails[i];
-    //   email['senderEmail']=''
-    //   email['senderPassword']=''
-    // }
-    
     this.i++
     if(this.i>=3)
     {
@@ -320,10 +303,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
 }
 
   submit(){
-    // this.addresses.splice(0,2,{
-    //   email:this.phisingForm.value.email,
-    //   password: this.phisingForm.value.password
-    // })
+
     let email = this.phisingForm.value.allemails[0];
     console.log(email['senderEmail'])
     if(email['senderEmail'].includes('@geminisolution.in') || email['senderEmail'].includes(['@','.']))
@@ -366,7 +346,6 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       'createdBy':localStorage.getItem('email'),
       'email': email['senderEmail'],
       'password':email['senderPassword'],
-      //'sendEmails':this.phisingForm.value.allemails,
       'sendToReporters' : this.phisingForm.value.radio,
       'addNote' : this.phisingForm.value.addnote,
       'emailSignature': this.phisingForm.value.footer,
