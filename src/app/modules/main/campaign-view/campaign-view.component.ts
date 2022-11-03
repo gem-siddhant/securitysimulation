@@ -41,6 +41,7 @@ endcampaignId:any;
     desc:any;
     status:any;
     remarks:any;
+    errormsg:any;
     clickbtn:boolean= false;
 clicked_len:any;
 undelivered_len:any;
@@ -148,7 +149,13 @@ i: number = 1;
        else{
         this.remarks=data.exceptionMessage;
        }
-       
+
+       if(data.notDeliveredCount!=0 || data.openedCount!=0 || data.deliveredCount!=0)
+       {
+        this.errormsg="No Data found"
+        console.log(this.errormsg)
+       }
+       console.log(this.dataSource.data)
       
        let i=1;
        for(let element of data.result){
@@ -164,6 +171,8 @@ i: number = 1;
         this.pieChartData = [this.clicked_len, this.delivered_len,this.notdelivered];
         this.dataSource = new MatTableDataSource<view_data>(data.result);
         this.dataSource.sort = this.sort;
+        console.log(this.dataSource.data)
+      
       }
     },err=>{
       this.toastr.error("Error in loading data");

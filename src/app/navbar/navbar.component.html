@@ -9,9 +9,10 @@
     </div>
     </div>
     <div  *ngIf="this.getUser()" class="col-lg-4 col-md-4 col-sm-4 col-xs-4 vertical-align">
-      <img  [src]="profile" style="padding-right: 10%;border-radius: 50%;height: 30px;">
+      <!-- <img  src="../../assets/images/done-tick.svg" style="padding-right: 10%;border-radius: 5%;height: 40px;"> -->
+      <img  [src]="profile" style="padding-right: 10%;border-radius: 5%;height: 40px;">
       <div>
-        <span (click)="scheduled()" style="color: white;font-size: 70px;padding-right: 10px;padding-top: 24px;padding-left: 10%" matTooltip="Scheduled Campaigns" matTooltipPosition="above"><mat-icon>alarm</mat-icon></span>
+        <span (click)="scheduled()" style="color: white;font-size: 70px;padding-right: 10px;padding-top: 24px;" matTooltip="Scheduled Campaigns" matTooltipPosition="above"><mat-icon>alarm</mat-icon></span>
       </div>
         <div>
         <a download href="../../../../assets/pdfs/simulation_user_manual.pdf" id="info" (click)="toogletag(content)" matTooltip="Download Manual" matTooltipPosition="above">
