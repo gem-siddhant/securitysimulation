@@ -105,8 +105,13 @@ i: number = 1;
      {
        this.notdelivered--;
      }
+     this.errormsg=""
      this.dataSource.filter = filterValue;
-
+     console.log(this.dataSource.filteredData.length)
+     if(this.dataSource.filteredData.length==0)
+     {
+      this.errormsg="no data found"
+     }
   }
   applyFilter(event: any) {
     let  filterValue=event.target.value;
@@ -150,11 +155,11 @@ i: number = 1;
         this.remarks=data.exceptionMessage;
        }
 
-       if(data.notDeliveredCount!=0 || data.openedCount!=0 || data.deliveredCount!=0)
-       {
-        this.errormsg="No Data found"
-        console.log(this.errormsg)
-       }
+      //  if(data.notDeliveredCount==0 || data.openedCount==0 || data.deliveredCount==0)
+      //  {
+      //   this.errormsg="No Data found"
+      //   console.log(this.errormsg)
+      //  }
        console.log(this.dataSource.data)
       
        let i=1;
