@@ -109,7 +109,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
 
     const emailpassItem = new FormGroup({
       senderEmail: new FormControl('', Validators.required),
-      senderPassword: new FormControl('', Validators.required),
+      // senderPassword: new FormControl('', Validators.required),
     });
    
     
@@ -127,7 +127,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   onRemoveQuestion(index: number) {
     const emailpassItem = new FormGroup({
       senderEmail: new FormControl('', Validators.email),
-      senderPassword: new FormControl('', Validators.required),
+      // senderPassword: new FormControl('', Validators.required),
     });
     (<FormArray>this.phisingForm.get('allemails')).removeAt(index);
     this.selectedOption.splice(index, 1);
@@ -221,12 +221,12 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       this.toastr.error("Please Provide email")
       return;
     }
-    if(email['senderPassword']=="")
-    {
+    // if(email['senderPassword']=="")
+    // {
      
-      this.toastr.error("Please Provide Password")
-      return; 
-    }
+    //   this.toastr.error("Please Provide Password")
+    //   return; 
+    // }
     const dialogRef = this.dialog.open(SchedulelaterComponent, {
       width: '770px',
       height: '330px',
@@ -239,7 +239,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     localStorage.setItem('templateNo',this.phisingForm.value.tempate_select);
     localStorage.setItem('templateHeading',this.phisingForm.value.subject);
     localStorage.setItem('email1',this.phisingForm.value.email);
-    localStorage.setItem('password',this.phisingForm.value.password);
+    // localStorage.setItem('password',this.phisingForm.value.password);
     localStorage.setItem('sendToReporters', this.phisingForm.value.radio);
     localStorage.setItem('addNote',this.phisingForm.value.addnote);
     localStorage.setItem('emailSignature',this.phisingForm.value.footer);
@@ -275,12 +275,12 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       this.toastr.error("Please Provide email")
       return;
     }
-    if(email['senderPassword']=="")
-    {
+    // if(email['senderPassword']=="")
+    // {
      
-      this.toastr.error("Please Provide Password")
-      return; 
-    }
+    //   this.toastr.error("Please Provide Password")
+    //   return; 
+    // }
     const dialogRef = this.dialog.open(SendcampaignComponent, {
       width: '523px',
       height: '330px',
@@ -292,7 +292,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     localStorage.setItem('templateNo',this.phisingForm.value.tempate_select);
     localStorage.setItem('templateHeading',this.phisingForm.value.subject);
     localStorage.setItem('email1',this.phisingForm.value.email);
-    localStorage.setItem('password',this.phisingForm.value.password);
+    // localStorage.setItem('password',this.phisingForm.value.password);
     localStorage.setItem('sendToReporters', this.phisingForm.value.radio);
     localStorage.setItem('addNote',this.phisingForm.value.addnote);
     localStorage.setItem('emailSignature',this.phisingForm.value.footer);
@@ -345,7 +345,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       'templateHeading':this.phisingForm.value.subject,
       'createdBy':localStorage.getItem('email'),
       'email': email['senderEmail'],
-      'password':email['senderPassword'],
+      // 'password':email['senderPassword'],
       'sendToReporters' : this.phisingForm.value.radio,
       'addNote' : this.phisingForm.value.addnote,
       'emailSignature': this.phisingForm.value.footer,

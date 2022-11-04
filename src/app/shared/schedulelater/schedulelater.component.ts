@@ -242,11 +242,11 @@ export class SchedulelaterComponent implements OnInit {
       this.toastr.error("please provide email id")
       return;
     }
-    if(localStorage.getItem('password') == "")
-    {
-      this.toastr.error("please provide password")
-      return;
-    }
+    // if(localStorage.getItem('password') == "")
+    // {
+    //   this.toastr.error("please provide password")
+    //   return;
+    // }
     if (this.phisingForm.value.time== "")
     {
       this.toastr.error("Please Provide Time")

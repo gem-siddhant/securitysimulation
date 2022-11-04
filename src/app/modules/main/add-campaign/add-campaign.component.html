@@ -147,15 +147,15 @@
     <div class="first  row col-lg-12 col-md-12 col-sm-12 col-xs-6" *ngFor="let i =index;let questionCtrl of getcontrols();"  formArrayName="allemails" >
      
       <div class="name row" [formGroupName]="i">
-        <mat-form-field appearance="outline" class="col col-lg-6 col-md-6col-sm-12 col-xs-6 ml-0">
+        <mat-form-field appearance="outline" class="col col-lg-11 col-md-11 col-sm-11 col-xs-11 ml-0">
           <mat-label>Email for simulation</mat-label>
           <input matInput type="text" formControlName="senderEmail" required>
         </mat-form-field>
  
-        <mat-form-field appearance="outline" class="col col-lg-5 col-md-7 col-sm-12 col-xs-6 ml-0" >
+        <!-- <mat-form-field appearance="outline" class="col col-lg-5 col-md-7 col-sm-12 col-xs-6 ml-0" >
           <mat-label>Password</mat-label>
           <input matInput type="password" formControlName="senderPassword" required>
-        </mat-form-field>
+        </mat-form-field> -->
      
         <button type="button" *ngIf="i==0"  style="background-color:#66209D;" class=" btn col col-lg-1 col-md-12 col-sm-12 col-xs-12" [value]="true" (click)="addAddress()" matTooltip="Add Emails" matTooltipPosition="above"><mat-icon class="icon-display" >add_circle_outline</mat-icon></button>
       
@@ -336,16 +336,16 @@
   <div class="first  row col-lg-12 col-md-12 col-sm-12 col-xs-6" *ngFor="let i =index;let questionCtrl of getcontrols();"  formArrayName="allemails" >
      
     <div class="name row" [formGroupName]="i">
-      <mat-form-field appearance="outline" class="col col-lg-5 col-md-6col-sm-12 col-xs-6 ml-0">
+      <mat-form-field appearance="outline" class="col col-lg-11 col-md-11 col-sm-11 col-xs-11 ml-0">
         <mat-label>Email for simulation</mat-label>
         <input matInput type="text" formControlName="senderEmail" >
         
       </mat-form-field>
 
-      <mat-form-field appearance="outline" class="row col-lg-6 col-md-7 col-sm-12 col-xs-6 ml-0" >
+      <!-- <mat-form-field appearance="outline" class="row col-lg-6 col-md-7 col-sm-12 col-xs-6 ml-0" >
         <mat-label>Password</mat-label>
         <input matInput type="password" formControlName="senderPassword">
-      </mat-form-field>
+      </mat-form-field> -->
    
       <button type="button"  style="background-color:#66209D;" *ngIf="i==0" class="btn col col-lg-1 col-md-6 col-sm-12 col-xs-6" [value]="true" (click)="addAddress()"  ><mat-icon class="col col-md-6 col-sm-12 col-xs-6 icon-display" matTooltip="Emails" >add_circle_outline</mat-icon></button>
       

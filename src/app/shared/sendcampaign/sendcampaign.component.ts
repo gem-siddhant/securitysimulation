@@ -148,11 +148,11 @@ export class SendcampaignComponent implements OnInit {
       this.toastr.error("please provide email id")
       return
     }
-    if(localStorage.getItem('password') == "")
-    {
-      this.toastr.error("please provide password")
-      return
-    }
+    // if(localStorage.getItem('password') == "")
+    // {
+    //   this.toastr.error("please provide password")
+    //   return
+    // }
   
     const formData :any= new FormData();
     let reqBody={
