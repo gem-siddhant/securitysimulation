@@ -61,7 +61,7 @@ i: number = 1;
 @ViewChild(MatSort, { static: true }) sort!: MatSort;
   ngOnInit(): void {
     this.pieChartOptions = this.createOptions();
-    this.pieChartLabels = ['Clicked','Delivered','NotDeliverd'];
+    this.pieChartLabels = ['Clicked','Sent','NotDeliverd'];
     this.pieChartType = 'pie';
     this.pieChartLegend = true;
     this.pieChartPlugins = [pluginLabels];
