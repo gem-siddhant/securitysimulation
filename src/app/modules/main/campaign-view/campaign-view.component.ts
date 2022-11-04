@@ -168,7 +168,7 @@ i: number = 1;
 
        }
         this.notdelivered = data.notDeliveredCount
-        this.pieChartData = [this.clicked_len, this.delivered_len,this.notdelivered];
+        this.pieChartData = [this.clicked_len, this.delivered_len-this.clicked_len,this.notdelivered];
         this.dataSource = new MatTableDataSource<view_data>(data.result);
         this.dataSource.sort = this.sort;
         console.log(this.dataSource.data)
