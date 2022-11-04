@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   //apiUrl: 'https://devsecsimapi.geminisolutions.com'
-  //apiUrl: 'http://localhost:8080'
+ //apiUrl: 'http://localhost:8080/secsim'
   apiUrl: 'https://devapi.geminisolutions.com/secsim'
 };
 
