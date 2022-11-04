@@ -18,7 +18,7 @@ export class AppComponent {
   }
   ngOnInit(): void {
     //60 = 1 minute
-    this.bnIdle.startWatching(600).subscribe((res) => {
+    this.bnIdle.startWatching(60).subscribe((res) => {
       if (res && localStorage.getItem("email") !== null) {
         console.log('session expired');
         let dataDialog = { title: 'Your session is timed out please login again' };
