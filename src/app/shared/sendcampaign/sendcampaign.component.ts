@@ -75,7 +75,7 @@ export class SendcampaignComponent implements OnInit {
     for(var j=0;j<this.res.length;j++)
     {
       var format = /[ `!#$%^&*()_+\-=\[\]{};':"\\|,<>\/?~]/;
-      if(this.res[j] !="" && this.res[j].includes('@')==true && (this.res[j].split('@').length - 1)==1 && format.test(this.res[j])==false  )
+      if(this.res[j] !="" && this.res[j].includes('@')==true && (this.res[j].split('@').length - 1)==1 && format.test(this.res[j])==false && (this.res[j].endsWith("geminisolutions.com") || this.res[j].endsWith("Geminisolutions.com") )  )
       {
        
       }

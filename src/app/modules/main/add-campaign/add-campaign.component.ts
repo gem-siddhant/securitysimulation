@@ -231,7 +231,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       width: '770px',
       height: '330px',
     }); 
-    
+
     localStorage.setItem('name',this.phisingForm.value.name);
     localStorage.setItem('templateRewardType',this.phisingForm.value.reward_type);
     localStorage.setItem('templateDescription',this.phisingForm.value.desc);
@@ -285,6 +285,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       width: '523px',
       height: '330px',
   });
+    // this.phisingForm.value.allemails=null
     localStorage.setItem('name',this.phisingForm.value.name);
     localStorage.setItem('templateRewardType',this.phisingForm.value.reward_type);
     localStorage.setItem('templateDescription',this.phisingForm.value.desc);
@@ -336,6 +337,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     const tempno = JSON.stringify(this.phisingForm.value.tempate_select)
     const sendattach = JSON.stringify(this.phisingForm.value.radio2)
     const formData :any= new FormData();
+    // this.phisingForm.value.allemails=null
     let reqBody={
       'name':this.phisingForm.value.name,
       'templateDescription':this.phisingForm.value.desc,

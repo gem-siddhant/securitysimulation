@@ -58,3 +58,10 @@
     left: 0;
     position: fixed;
   }
+  .note{
+    font-size: medium;
+    color: rgb(169, 23, 23);
+  }
+  .notesub{
+    font-size: large;
+  }
