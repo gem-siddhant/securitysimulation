@@ -1,5 +1,7 @@
 <body>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=false">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
 <div *ngIf="this.StoreData==false" class="overlay">
   <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value" diameter="50" *ngIf="this.StoreData==false"></mat-progress-spinner>
 </div>
@@ -7,9 +9,13 @@
 <div class="margin-l">
   <div class="row mb-3 mt-4">
     <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
     <button routerLink="/main/dashboard" class="border-rem">
-      <mat-icon style="color: white;">keyboard_arrow_left</mat-icon>
-    </button>
+      <mat-icon style="display: inline-flex;
+      vertical-align: middle; transform: scale(1.5);color: white;">keyboard_arrow_left
+      </mat-icon>
+      <!-- <mat-icon style="color: white;">keyboard_arrow_left</mat-icon> -->
+    </button></div>
   </div>
   <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 main-title" style="color: white;">
     Create Phishing Campaign

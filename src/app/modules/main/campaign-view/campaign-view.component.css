@@ -323,7 +323,6 @@ padding-left: 10px;
 }
 .export-btn
   {
-    position: absolute;
     width: 150px;
     border-radius: 5px;
     background-color:  #7A2AB4;
@@ -334,7 +333,8 @@ padding-left: 10px;
     font-weight: 500;
     font-size: 15px;
     text-align: center;
-    position: relative;
+    position: absolute;
+    margin-top: 1.5%;
   }
   .detail{
   position: absolute;
@@ -369,5 +369,5 @@ text-size-adjust: auto;
   font-size: 15px;
   text-align: center;
   position: relative;
-  height: 25px;
+
 }
