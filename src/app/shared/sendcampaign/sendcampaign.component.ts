@@ -102,7 +102,7 @@ export class SendcampaignComponent implements OnInit {
     {
       return
     }
-    if(this.res.length==0)
+    if(this.manager!='true' && this.res.length==0)
     {
       let dataDialog = {title:"CSV file not Provided"};
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {

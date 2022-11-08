@@ -39,12 +39,12 @@
   </div>
   <!-- </div> -->
   <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> -->
-    <div class=" row col-lg-4 col-md-2 col-sm-2 col-xs-2 inline-block">
+    <div class=" row col-lg-4 col-md-2 col-sm-2 col-xs-2 mt-2 inline-block">
     <img class="template-image mb-2" src="../../../../assets/images/accounts.png" style="width: 100%;">
     <mat-radio-button (click)="getPreFilledData(3)" [value]=3 style="color: white;">Accounts Template</mat-radio-button>
     </div>
   <!-- </div> -->
-  <div class=" row col-lg-4 col-md-2 col-sm-2 col-xs-2 inline-block">
+  <div class=" row col-lg-4 col-md-2 col-sm-2 col-xs-2 mt-2 inline-block">
     <img class="template-image mb-2" src="../../../../assets/images/macbook_template.jpeg" style="width: 100%;">
     <mat-radio-button (click)="getPreFilledData(5)"  [value]=5 style="color: white;">IT Template</mat-radio-button>
     </div>
@@ -153,7 +153,7 @@
     <div class="first  row col-lg-12 col-md-12 col-sm-12 col-xs-6" *ngFor="let i =index;let questionCtrl of getcontrols();"  formArrayName="allemails" >
      
       <div class="name row" [formGroupName]="i">
-        <mat-form-field appearance="outline" class="col col-lg-11 col-md-11 col-sm-11 col-xs-11 ml-0">
+        <mat-form-field appearance="outline" class="col col-lg-11 col-md-11 col-sm-11 col-xs-11">
           <mat-label>Email for simulation</mat-label>
           <input matInput type="text" formControlName="senderEmail" required>
         </mat-form-field>
@@ -163,9 +163,9 @@
           <input matInput type="password" formControlName="senderPassword" required>
         </mat-form-field> -->
      
-        <button type="button" *ngIf="i==0"  style="background-color:#66209D;" class=" btn col col-lg-1 col-md-12 col-sm-12 col-xs-12" [value]="true" (click)="addAddress()" matTooltip="Add Emails" matTooltipPosition="above"><mat-icon class="icon-display" >add_circle_outline</mat-icon></button>
+        <button type="button" *ngIf="i==0"  style="background-color:#66209D;" class=" btn col col-lg-1 col-md-8 col-sm-8 col-xs-8 mb-3 mt-1 addemail" [value]="true" (click)="addAddress()" matTooltip="Add Emails" matTooltipPosition="above"><mat-icon class="icon-display" >add_circle_outline</mat-icon></button>
       
-      <button *ngIf="i>0"  style="background-color:#66209D;"   type="button" (click)="onRemoveQuestion(i)" class="btn btn-outline-danger col col-lg-1 col-md-6 col-sm-12 col-xs-6 pr-1"><mat-icon class="col col-md-6 col-sm-12 col-xs-6 icon-display" style="margin-left: 3%;">highlight_off</mat-icon>
+      <button *ngIf="i>0"  style="background-color:#66209D;"   type="button" (click)="onRemoveQuestion(i)" class="btn btn-outline-danger col col-lg-1 col-md-6 col-sm-12 col-xs-6 pr-1 mb-3 mt-1 addemail"><mat-icon class="col col-md-6 col-sm-12 col-xs-6 icon-display" style="margin-left: 3%;">highlight_off</mat-icon>
        </button>
     </div>
 
@@ -348,9 +348,9 @@
         
       </mat-form-field>
    
-      <button type="button"  style="background-color:#66209D;" *ngIf="i==0" class="btn col col-lg-1 col-md-6 col-sm-12 col-xs-6" [value]="true" (click)="addAddress()"  ><mat-icon class="col col-md-6 col-sm-12 col-xs-6 icon-display" matTooltip="Emails" >add_circle_outline</mat-icon></button>
+      <button type="button" *ngIf="i==0"  style="background-color:#66209D;" class=" btn col col-lg-1 col-md-8 col-sm-8 col-xs-8 mb-3 mt-1 addemail" [value]="true" (click)="addAddress()" matTooltip="Add Emails" matTooltipPosition="above"><mat-icon class="icon-display" >add_circle_outline</mat-icon></button>
       
-      <button *ngIf="i>0" style="background-color:#66209D;" type="button" (click)="onRemoveQuestion(i)" class="btn btn-outline-danger col col-lg-1 col-md-6 col-sm-12 col-xs-6 pr-1"><mat-icon class="col col-md-6 col-sm-12 col-xs-6 icon-display" style="margin-left: 3%;">highlight_off</mat-icon>
+      <button *ngIf="i>0"  style="background-color:#66209D;"   type="button" (click)="onRemoveQuestion(i)" class="btn btn-outline-danger col col-lg-1 col-md-6 col-sm-12 col-xs-6 pr-1 mb-3 mt-1 addemail"><mat-icon class="col col-md-6 col-sm-12 col-xs-6 icon-display" style="margin-left: 3%;">highlight_off</mat-icon>
        </button>
   </div>
   </div>
