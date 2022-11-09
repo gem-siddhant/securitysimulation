@@ -154,12 +154,6 @@ i: number = 1;
        else{
         this.remarks=data.exceptionMessage;
        }
-
-      //  if(data.notDeliveredCount==0 || data.openedCount==0 || data.deliveredCount==0)
-      //  {
-      //   this.errormsg="No Data found"
-      //   console.log(this.errormsg)
-      //  }
        console.log(this.dataSource.data)
       
        let i=1;
