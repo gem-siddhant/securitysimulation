@@ -1,5 +1,7 @@
 <body>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=false">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
 <div *ngIf="this.StoreData==false" class="overlay">
   <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value" diameter="50" *ngIf="this.StoreData==false"></mat-progress-spinner>
 </div>
@@ -7,9 +9,13 @@
 <div class="margin-l">
   <div class="row mb-3 mt-4">
     <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1">
+      <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
     <button routerLink="/main/dashboard" class="border-rem">
-      <mat-icon style="color: white;">keyboard_arrow_left</mat-icon>
-    </button>
+      <mat-icon style="display: inline-flex;
+      vertical-align: middle; transform: scale(1.5);color: white;">keyboard_arrow_left
+      </mat-icon>
+      <!-- <mat-icon style="color: white;">keyboard_arrow_left</mat-icon> -->
+    </button></div>
   </div>
   <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10 main-title" style="color: white;">
     Create Phishing Campaign
@@ -33,12 +39,12 @@
   </div>
   <!-- </div> -->
   <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> -->
-    <div class=" row col-lg-4 col-md-2 col-sm-2 col-xs-2 inline-block">
+    <div class=" row col-lg-4 col-md-2 col-sm-2 col-xs-2 mt-2 inline-block">
     <img class="template-image mb-2" src="../../../../assets/images/accounts.png" style="width: 100%;">
     <mat-radio-button (click)="getPreFilledData(3)" [value]=3 style="color: white;">Accounts Template</mat-radio-button>
     </div>
   <!-- </div> -->
-  <div class=" row col-lg-4 col-md-2 col-sm-2 col-xs-2 inline-block">
+  <div class=" row col-lg-4 col-md-2 col-sm-2 col-xs-2 mt-2 inline-block">
     <img class="template-image mb-2" src="../../../../assets/images/macbook_template.jpeg" style="width: 100%;">
     <mat-radio-button (click)="getPreFilledData(5)"  [value]=5 style="color: white;">IT Template</mat-radio-button>
     </div>
@@ -48,7 +54,7 @@
 <div *ngIf="manager=='false'" style="margin-bottom: 5%;">
   <div class="sub-head row col-lg-9 col-md-6 col-sm-5 col-xs-5 mb-5" style="padding-left: 1%;">Fill in the details</div>
   <div class="row" *ngIf="this.phisingForm.value.tempate_select!=0">
-    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 form-box">
+    <div class="col-lg-9 col-md-6 col-sm-6 col-xs-6 form-box">
       <div class="first row col-lg-12 col-md-12 col-sm-12 col-xs-6" style="padding-top: 1%; font-size: medium;color: rgb(169, 23, 23)">
         <Strong>Note:- </Strong>
         Please Edit all the fields to create the campaign 
@@ -144,94 +150,38 @@
     </div>
   </div>
 
-
-  
-    <!--email and password for simulation-->
-  
-<!--     
-    <div class="first  row col-lg-12 col-md-12 col-sm-12 col-xs-6" >
-      <div class="name row">
-        <mat-form-field appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0">
-          <mat-label>Email for simulation</mat-label>
-          <input matInput type="text" formControlName="email" >
-        </mat-form-field>
- 
-        <mat-form-field appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0" >
-          <mat-label>Password</mat-label>
-          <input matInput type="password" formControlName="password" >
-        </mat-form-field>
-      </div>
-      &nbsp;
-    </div>
-   -->
-
-    <!--logic for entering multiples email and password on a plus button click -->
-  <!-- <button type="button" class="btn btn-primary mb-2" [value]="true" (click)="addAddress()">Provide Email and Password</button> -->
-  <!-- <button type="button" class="btn btn-primary mb-2" [value]="true" (click)="addAddress()"><mat-icon>note_add</mat-icon></button> -->
-
     <div class="first  row col-lg-12 col-md-12 col-sm-12 col-xs-6" *ngFor="let i =index;let questionCtrl of getcontrols();"  formArrayName="allemails" >
      
       <div class="name row" [formGroupName]="i">
-        <mat-form-field appearance="outline" class="col col-lg-6 col-md-6col-sm-12 col-xs-6 ml-0">
+        <mat-form-field appearance="outline" class="col col-lg-11 col-md-11 col-sm-11 col-xs-11">
           <mat-label>Email for simulation</mat-label>
           <input matInput type="text" formControlName="senderEmail" required>
         </mat-form-field>
  
-        <mat-form-field appearance="outline" class="col col-lg-5 col-md-7 col-sm-12 col-xs-6 ml-0" >
+        <!-- <mat-form-field appearance="outline" class="col col-lg-5 col-md-7 col-sm-12 col-xs-6 ml-0" >
           <mat-label>Password</mat-label>
           <input matInput type="password" formControlName="senderPassword" required>
-        </mat-form-field>
+        </mat-form-field> -->
      
-        <button type="button" *ngIf="i==0"  style="background-color:#66209D;" class=" btn col col-lg-1 col-md-12 col-sm-12 col-xs-12" [value]="true" (click)="addAddress()" matTooltip="Add Emails" matTooltipPosition="above"><mat-icon class="icon-display" >add_circle_outline</mat-icon></button>
+        <button type="button" *ngIf="i==0"  style="background-color:#66209D;" class=" btn col col-lg-1 col-md-8 col-sm-8 col-xs-8 mb-3 mt-1 addemail" [value]="true" (click)="addAddress()" matTooltip="Add Emails" matTooltipPosition="above"><mat-icon class="icon-display" >add_circle_outline</mat-icon></button>
       
-      <button *ngIf="i>0"  style="background-color:#66209D;"   type="button" (click)="onRemoveQuestion(i)" class="btn btn-outline-danger col col-lg-1 col-md-6 col-sm-12 col-xs-6 pr-1"><mat-icon class="col col-md-6 col-sm-12 col-xs-6 icon-display" style="margin-left: 3%;">highlight_off</mat-icon>
+      <button *ngIf="i>0"  style="background-color:#66209D;"   type="button" (click)="onRemoveQuestion(i)" class="btn btn-outline-danger col col-lg-1 col-md-6 col-sm-12 col-xs-6 pr-1 mb-3 mt-1 addemail"><mat-icon class="col col-md-6 col-sm-12 col-xs-6 icon-display" style="margin-left: 3%;">highlight_off</mat-icon>
        </button>
     </div>
 
     </div>
-
-
-
-
-
-
-
-
-
-    <!-- <div class="col-6">
-      <button type="button" class="btn btn-primary mb-2" (click)="addAddress()">Add Address</button>
-      <section class="container border mb-4 p-3" *ngFor="let address of addresses; let i = index;">
-        <div class="first  row col-lg-12 col-md-12 col-sm-12 col-xs-6">
-          <div class="name row">
-              
-                <mat-form-field appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0">
-                  <mat-label>Email for simulation</mat-label>
-                  <input matInput type="text" formControlName="email" [(ngModel)]="address.address" name="address_{{address.id}}" placeholder="St. Thomas Apartment"/>
-                </mat-form-field>
-         
-        
-                <mat-form-field appearance="outline" class="col col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0" >
-                  <mat-label>Password</mat-label>
-                  <input matInput type="password" formControlName="password" [(ngModel)]="address.street" name="street_{{address.id}}" placeholder="South Street"/>
-                </mat-form-field>
-          </div>
-        </div>
-        </section>
-        </div> -->
-
-
     <!--send attachment-->
 <!--no attachment part-->
 <div class="row col-lg-6 col-md-6 col-sm-6 col-xs-6">
-  <h3 style="margin-left: 15px;margin-bottom: 5px;font-size: 15px;color: #531D89;" class="row col-lg-6 col-md-6 col-sm-12 col-xs-6 ml-0">Send Attachment</h3>
+  <h3 style="margin-left: 15px;margin-bottom: 5px;font-size: 15px;color: #531D89;" class="row col-lg-6 col-md-6 col-sm-6 col-xs-6 ml-0">Send Attachment</h3>
 
-  <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="false" [checked]="!attachment" style="margin-left:12px;font-size: 11px;margin-right: 2%;" class="col col-lg-1 col-md-3 col-sm-3 col-xs-3" formControlName="radio2"  >No
+  <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="false" [checked]="!attachment" style="font-size: 8px;" class="col col-lg-1 col-md-2 col-sm-2 col-xs-2" formControlName="radio2"  >No
 
 <!--no attachment part ended-->
 
 <!--send attachment start-->
 
-  <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="true" [checked]="attachment" style="margin-left:12px; font-size: 11px;margin-right: 2%;" class="row col-lg-1 col-md-2 col-sm-3 col-xs-3 p-2" formControlName="radio2"  >Yes
+  <input name="radio2"  [(ngModel)]="attachment" type="radio" [value]="true" [checked]="attachment" style="margin-left:11px; font-size: 8px; margin-right: 1%;" class="col col-lg-1 col-md-2 col-sm-1 col-xs-1" formControlName="radio2"  >Yes
 </div>
 <!--provide your custom name-->
 <div *ngIf="attachment">
@@ -279,28 +229,11 @@
 
 </div>
 
-<!-- <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-  <div class="btn-group mr-2" role="group" aria-label="First group">
-    <button type="button" class="btn btn-secondary add_btn" (click)="submit()" >Send to me</button>
-  </div>
 
-  <div class="btn-group mr-2" role="group" aria-label="Second group">
-    
-    <button type="button" class="btn btn-secondary add_btn inline-block"  (click)="sendcampaign()">Send Campaign</button>
-  </div>
-
-  <div class="btn-group" role="group" aria-label="Third group">
-    <button type="button" class="btn btn-secondary add_btn inline-block" (click)="schedulelater()" >Schedule Later</button>
-  </div>
-</div> -->
 
 
   </div>
-  <!-- <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 form-box">
-    <div class="preview" [innerHTML]="testFINAL">
-  
-    </div>
-  </div> -->
+
   </div>
   </div>
 
@@ -409,20 +342,15 @@
   <div class="first  row col-lg-12 col-md-12 col-sm-12 col-xs-6" *ngFor="let i =index;let questionCtrl of getcontrols();"  formArrayName="allemails" >
      
     <div class="name row" [formGroupName]="i">
-      <mat-form-field appearance="outline" class="col col-lg-5 col-md-6col-sm-12 col-xs-6 ml-0">
+      <mat-form-field appearance="outline" class="col col-lg-11 col-md-11 col-sm-11 col-xs-11 ml-0">
         <mat-label>Email for simulation</mat-label>
         <input matInput type="text" formControlName="senderEmail" >
         
       </mat-form-field>
-
-      <mat-form-field appearance="outline" class="row col-lg-6 col-md-7 col-sm-12 col-xs-6 ml-0" >
-        <mat-label>Password</mat-label>
-        <input matInput type="password" formControlName="senderPassword">
-      </mat-form-field>
    
-      <button type="button"  style="background-color:#66209D;" *ngIf="i==0" class="btn col col-lg-1 col-md-6 col-sm-12 col-xs-6" [value]="true" (click)="addAddress()"  ><mat-icon class="col col-md-6 col-sm-12 col-xs-6 icon-display" matTooltip="Emails" >add_circle_outline</mat-icon></button>
+      <button type="button" *ngIf="i==0"  style="background-color:#66209D;" class=" btn col col-lg-1 col-md-8 col-sm-8 col-xs-8 mb-3 mt-1 addemail" [value]="true" (click)="addAddress()" matTooltip="Add Emails" matTooltipPosition="above"><mat-icon class="icon-display" >add_circle_outline</mat-icon></button>
       
-      <button *ngIf="i>0" style="background-color:#66209D;" type="button" (click)="onRemoveQuestion(i)" class="btn btn-outline-danger col col-lg-1 col-md-6 col-sm-12 col-xs-6 pr-1"><mat-icon class="col col-md-6 col-sm-12 col-xs-6 icon-display" style="margin-left: 3%;">highlight_off</mat-icon>
+      <button *ngIf="i>0"  style="background-color:#66209D;"   type="button" (click)="onRemoveQuestion(i)" class="btn btn-outline-danger col col-lg-1 col-md-6 col-sm-12 col-xs-6 pr-1 mb-3 mt-1 addemail"><mat-icon class="col col-md-6 col-sm-12 col-xs-6 icon-display" style="margin-left: 3%;">highlight_off</mat-icon>
        </button>
   </div>
   </div>
@@ -469,10 +397,6 @@
   </div>
 </div>
 
-<!--end of file custome name-->
-<!--end of attachment part -->
-
-<!--if send via csv is selected -->
 <div>
   
 </div>
@@ -490,11 +414,7 @@
 
 </div>
 </div>
-<!-- <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 form-box">
-  <div class="preview" [innerHTML]="testFINAL">
 
-  </div>
-</div> -->
 </div>
 
 </div>

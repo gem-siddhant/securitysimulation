@@ -207,4 +207,8 @@ input[type=radio]{
   color: white;
   text-align: center;
 }
+.addemail{
+  height:60px;
+  width: 7.1%;
+}
 }

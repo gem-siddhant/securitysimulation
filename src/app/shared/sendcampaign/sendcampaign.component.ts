@@ -75,7 +75,7 @@ export class SendcampaignComponent implements OnInit {
     for(var j=0;j<this.res.length;j++)
     {
       var format = /[ `!#$%^&*()_+\-=\[\]{};':"\\|,<>\/?~]/;
-      if(this.res[j] !="" && this.res[j].includes('@')==true && (this.res[j].split('@').length - 1)==1 && format.test(this.res[j])==false  )
+      if(this.res[j] !="" && this.res[j].includes('@')==true && (this.res[j].split('@').length - 1)==1 && format.test(this.res[j])==false && (this.res[j].endsWith("geminisolutions.com") || this.res[j].endsWith("Geminisolutions.com") )  )
       {
        
       }
@@ -102,7 +102,7 @@ export class SendcampaignComponent implements OnInit {
     {
       return
     }
-    if(this.res.length==0)
+    if(this.manager!='true' && this.res.length==0)
     {
       let dataDialog = {title:"CSV file not Provided"};
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {
@@ -148,11 +148,11 @@ export class SendcampaignComponent implements OnInit {
       this.toastr.error("please provide email id")
       return
     }
-    if(localStorage.getItem('password') == "")
-    {
-      this.toastr.error("please provide password")
-      return
-    }
+    // if(localStorage.getItem('password') == "")
+    // {
+    //   this.toastr.error("please provide password")
+    //   return
+    // }
   
     const formData :any= new FormData();
     let reqBody={

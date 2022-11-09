@@ -39,6 +39,9 @@ endcampaignId:any;
     nameCampaign:any;
     emailSubject:any;
     desc:any;
+    status:any;
+    remarks:any;
+    errormsg:any;
     clickbtn:boolean= false;
 clicked_len:any;
 undelivered_len:any;
@@ -58,7 +61,7 @@ i: number = 1;
 @ViewChild(MatSort, { static: true }) sort!: MatSort;
   ngOnInit(): void {
     this.pieChartOptions = this.createOptions();
-    this.pieChartLabels = ['Clicked','Delivered','NotDeliverd'];
+    this.pieChartLabels = ['Clicked','Sent','NotDeliverd'];
     this.pieChartType = 'pie';
     this.pieChartLegend = true;
     this.pieChartPlugins = [pluginLabels];
@@ -102,8 +105,13 @@ i: number = 1;
      {
        this.notdelivered--;
      }
+     this.errormsg=""
      this.dataSource.filter = filterValue;
-
+     console.log(this.dataSource.filteredData.length)
+     if(this.dataSource.filteredData.length==0)
+     {
+      this.errormsg="no data found"
+     }
   }
   applyFilter(event: any) {
     let  filterValue=event.target.value;
@@ -138,6 +146,15 @@ i: number = 1;
        this.nameCampaign=data.template.heading;
        this.emailSubject=data.template.subject;
        this.desc=data.template.description;
+       this.status=data.taskStatus;
+       if (data.exceptionMessage==null)
+       {
+        this.remarks="No Remarks"
+       }
+       else{
+        this.remarks=data.exceptionMessage;
+       }
+       console.log(this.dataSource.data)
       
        let i=1;
        for(let element of data.result){
@@ -149,27 +166,12 @@ i: number = 1;
         ++i;
 
        }
-       let k=1;
-       for (let element of data.result)
-       {
-         element.id=k;
-         if(element.status=='DELIVERED')
-         {
-           this.delivered_len--;
-         }
-         if(element.status=='CLICKED')
-         {
-           this.delivered_len--;
-         }
-         k++;
-       }
-       
-
-      
         this.notdelivered = data.notDeliveredCount
-        this.pieChartData = [this.clicked_len, this.delivered_len,this.notdelivered];
+        this.pieChartData = [this.clicked_len, this.delivered_len-this.clicked_len,this.notdelivered];
         this.dataSource = new MatTableDataSource<view_data>(data.result);
         this.dataSource.sort = this.sort;
+        console.log(this.dataSource.data)
+      
       }
     },err=>{
       this.toastr.error("Error in loading data");

@@ -37,6 +37,8 @@ export class SchedulelaterComponent implements OnInit {
   //manager:any = "true";
   victcsv : any = [] ;
   options:boolean=true;
+  currentdate : any = new Date()
+  maxDate: Date;
   attachment:boolean=true;
   manager:any = localStorage.getItem('Manager');
   changeTriggered=false;
@@ -45,8 +47,6 @@ export class SchedulelaterComponent implements OnInit {
   myFooList: any = ['Some Item', 'Item Second', 'Other In Row', 'What to write', 'Blah To Do'];
   res: any = [];
   csvcheck : boolean= true;
-  currentdate : any = new Date()
-  maxDate: Date;
   constructor( public dialogRef: MatDialogRef<SchedulelaterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _addCampaign:AddCampaignService,
@@ -69,6 +69,9 @@ export class SchedulelaterComponent implements OnInit {
         radio:[''||'false'],
       }
     );
+    const currentYear = new Date().getFullYear();
+    // this.currentdate = new Date(currentYear)
+    this.maxDate = new Date(currentYear + 1,3,31);
   }
   onChange(event: any) {
     this.changeTriggered = true;
@@ -78,6 +81,7 @@ export class SchedulelaterComponent implements OnInit {
     reader.onload = () => {
     this.text = reader.result;
     var lines = this.text.split('\n');
+   
     for(var i=0;i<lines.length;i++)
     {
       var curr = lines[i].split('\n');
@@ -87,7 +91,7 @@ export class SchedulelaterComponent implements OnInit {
     for(var j=0;j<this.res.length;j++)
     {
       var format = /[ `!#$%^&*()_+\-=\[\]{};':"\\|,<>\/?~]/;
-      if(this.res[j] !="" && this.res[j].includes('@')==true && (this.res[j].split('@').length - 1)==1 && format.test(this.res[j])==false  )
+      if(this.res[j] !="" && this.res[j].includes('@')==true && (this.res[j].split('@').length - 1)==1 && format.test(this.res[j])==false && (this.res[j].endsWith("geminisolutions.com") || this.res[j].endsWith("Geminisolutions.com") )  )
       {
        
       }
@@ -116,65 +120,9 @@ export class SchedulelaterComponent implements OnInit {
         })
         return
     }
- 
-
-    // for(var k=0;k<res.length;k++)
-    // {
-    //   if (res[k].includes('@'))
-    //   {
-       
-    //   }
-    //   else{
-    //     let dataDialog = { title: 'Campaign Schedule Successfully!' };
-    //     const dialogRef = this.dialog.open(CsvmessageComponent, {
-    //       width: '470px',
-    //       height: '430px',
-    //       data:dataDialog 
-          
-    //     });
-    //   }
-     
-    // }
-    // for(var k=0;k<res.length;k++)
-    // {
-    //   if ((res[k].split('@').length - 1)==1)
-    //   {
-       
-    //   }
-      // else{
-      //   let dataDialog = { title: 'Campaign Schedule Successfully!' };
-      //   const dialogRef = this.dialog.open(CsvmessageComponent, {
-      //     width: '470px',
-      //     height: '430px',
-      //     data:dataDialog 
-          
-      //   });
-      // }
-     
-    // }
     this.vare = JSON.stringify(this.res);
-    console.log(this.res)  
-  
-  }
-     // this.text.push(reader.result); 
-      //convert text to json here
-      
-      //console.log(this.victcsv)
-      // var nLines = 0;
-      // for( var i = 0, n = this.text.length;  i < n;  ++i ) {
-      //     if( this.text[i] === '\n' ) {
-      //         ++nLines;
-      //     }
-      //     if(this.text[i] !== '\n' )
-      //     {
-      //       this.vare = this.text[i];
-            
-      //     }
-    // }
-    // console.log(this.vare)
-    // console.log(nLines+1)
-    
-    // };
+    console.log(this.res.length)  
+  }  
    
   }
 
@@ -184,7 +132,7 @@ export class SchedulelaterComponent implements OnInit {
     {
       return
     }
-    if(this.res.length==0)
+    if(this.manager!='true' && this.res.length==0)
     {
       let dataDialog = {title:"CSV file not Provided"};
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {
@@ -229,7 +177,7 @@ export class SchedulelaterComponent implements OnInit {
       console.log("wrong csv")
       return
     }
-    if(localStorage.getItem('name')=="" || localStorage.getItem('templateDescription') == "" || localStorage.getItem('templateHeading') == "" || localStorage.getItem('emailSignature')=="")
+    if(localStorage.getItem('name')=="" || localStorage.getItem('templateDescription') == "" || localStorage.getItem('templateHeading') == "" || localStorage.getItem('emailSignature')=="" )
     {
       this.toastr.error("please EDIT the Fields")
       return;
@@ -239,11 +187,11 @@ export class SchedulelaterComponent implements OnInit {
       this.toastr.error("please provide email id")
       return;
     }
-    if(localStorage.getItem('password') == "")
-    {
-      this.toastr.error("please provide password")
-      return;
-    }
+    // if(localStorage.getItem('password') == "")
+    // {
+    //   this.toastr.error("please provide password")
+    //   return;
+    // }
     if (this.phisingForm.value.time== "")
     {
       this.toastr.error("Please Provide Time")

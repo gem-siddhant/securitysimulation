@@ -44,6 +44,7 @@ export class NavbarComponent implements OnInit {
   currentDate:any;
   campaigns:any;
   content:string="Downloading your User Manual";
+  profile=localStorage.getItem('Profile')
   constructor(private _auth:AuthService,
     private _schedule: MainService,
     private dialog:MatDialog,
@@ -60,6 +61,7 @@ export class NavbarComponent implements OnInit {
   }
 Logout(){
   this._auth.logout();
+  console.log(this.profile)
 }
 toogletag(content:any )
 {
@@ -89,25 +91,12 @@ scheduled()
       localStorage.setItem('scheduleid',element.id)
       localStorage.setItem('scheduledTime',element.scheduledTime)
     }
-    // if(data.id == '22')
-    // {
-    //   console.log(data)
-    // }
     console.log(this.campaigns)
   }
 });
 let a = localStorage.getItem('heading')
 console.log(a)
 }
-
-// scheduled()
-// {
-//   const dialogRef = this.dialog.open(ScheduleCampComponent, {
-//          width: '523px',
-//          height: '330px',  
-// })
-// }
-//}
 }
 function positionClass(content: any, positionClass: any, arg2: string) {
   throw new Error('Function not implemented.');

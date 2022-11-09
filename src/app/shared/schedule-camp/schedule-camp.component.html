@@ -7,13 +7,11 @@
      <strong style="font-size: 16px;padding-bottom: 5px;">Campaign Name</strong> 
     </div>    
   </div>
-
   <div class="col-xs-4 col-sm-3 col-md-3 col-lg-4 box" *ngIf="this.campaigns.length!=0">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading  mb-2 mt-1">
       <strong  style="font-size: 16px; padding-bottom: 5px;">Scheduled Time</strong> 
      </div>
 </div>
-
 <div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 box" *ngIf="this.campaigns.length!=0">
   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading mt-3">
    </div>
@@ -23,34 +21,9 @@
    </div>
 </div>
 
-
     <div *ngFor="let element of this.campaigns; let i = index" >
         <div *ngIf="i<=5" class="row ">
-
-
-
-        <!-- <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 box" >
-              <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading mt-3" >
-                {{campaigns[i].name}}
-              </div>
-              
-        </div>
-        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 box" >
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading mt-3">
-              {{campaigns[i].scheduledTime}}
-            </div> 
-      </div> -->
-
-      <!--in table formate-->
       <table class = "table row col-lg-12 col-md-12 col-sm-12 col-xs-12 heading mt-1 mr-2">
-        <!-- <thead>
-          <tr>
-            <th scope="col" style="color: white; background-color: #461A8F;" class>Campaign Name</th>
-            <th scope="col" style="color: white; background-color: #461A8F;">Scheduled Time</th>
-            <th scope="col" style="color: white; background-color: #461A8F;"></th>
-          </tr>
-        </thead> -->
- 
         <tbody>
           <tr class="">
             <td class="col-lg-4 col-md-4 col-sm-6 col-xs-4 heading mt-3">{{campaigns[i].name}}</td>
@@ -63,23 +36,6 @@
         </tbody>
 
       </table>
-
-
-
-
-
-      <!-- <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 box" >
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading mt-3" >
-            
-        </div> 
-  </div> -->
-  <!-- <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 box2" >
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading mt-3" >
- 
-        <button class="btn btn-outline-success"  (click)="Reschedule(this.campaigns[i].scheduledJobKey)" style="margin-right: 25px;" title="Reschedule"><mat-icon >alarm_on</mat-icon></button>
-        <button class="btn btn-outline-danger" (click)="deleteschedule(this.campaigns[i].scheduledJobKey)" title="Delete"><mat-icon>delete</mat-icon> </button>
-    </div> 
-</div> -->
 </div>
 </div>
 </div>

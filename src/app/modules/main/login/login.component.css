@@ -62,17 +62,15 @@
   border-radius: 10px;
   }
   
-  .pirates-class{
-  font-family: 'Poppins';
-  font-style: normal;
-  font-weight: 500;
-  position: absolute;
+  .logoimg{
+  position:absolute;
   left: 63.79%;
   right: 10%;
   top: 38.91%;
   bottom: 43.62%;
   color: #205072;
-  z-index: 1;
+  z-index: 3;
+    
   }
   
   .pirate-photo{

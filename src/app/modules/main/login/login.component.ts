@@ -29,7 +29,6 @@ import { InfomodalComponent } from 'src/app/shared/infomodal/infomodal.component
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  //loginForm:FormGroup;
   isIframe = false;
   loginDisplay = false;
   private readonly _destroying$ = new Subject<void>();
@@ -47,7 +46,6 @@ export class LoginComponent implements OnInit {
     private authService: MsalService,
     private msalBroadcastService: MsalBroadcastService,
     private toastr: ToastrService) {
-  //  this.loginForm = this.formBuilder.group({});
 
   }
 
