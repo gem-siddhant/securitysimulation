@@ -27,7 +27,6 @@ intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<an
   if (authToken) {
     apiReq = apiReq.clone({setHeaders: {
       'Authorization': 'Bearer '+authToken,
-      // 'Access-Control-Allow-Origin': '*'
     }});
 }
   return next.handle(apiReq);

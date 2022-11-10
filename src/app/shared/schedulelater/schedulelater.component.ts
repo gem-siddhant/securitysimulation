@@ -70,7 +70,6 @@ export class SchedulelaterComponent implements OnInit {
       }
     );
     const currentYear = new Date().getFullYear();
-    // this.currentdate = new Date(currentYear)
     this.maxDate = new Date(currentYear + 1,3,31);
   }
   onChange(event: any) {
@@ -121,7 +120,6 @@ export class SchedulelaterComponent implements OnInit {
         return
     }
     this.vare = JSON.stringify(this.res);
-    console.log(this.res.length)  
   }  
    
   }
@@ -162,9 +160,6 @@ export class SchedulelaterComponent implements OnInit {
       }
       
     }
-    console.log(localStorage.getItem('name'))
-    console.log(localStorage.getItem('file'))
-    //this.phisingForm.value.date =  new Date((this.phisingForm.value.dat).utcOffset('+0000').format('YYYY-MM-DD HH:MM'))
     this.submitted = true;
     const scheduledate = moment(this.phisingForm.value.date).format("YYYY-MM-DD");
     const currentYear = moment().year();
@@ -174,7 +169,6 @@ export class SchedulelaterComponent implements OnInit {
     if(this.res.length==null)
     {
       this.toastr.error("Please Check your CSV first")
-      console.log("wrong csv")
       return
     }
     if(localStorage.getItem('name')=="" || localStorage.getItem('templateDescription') == "" || localStorage.getItem('templateHeading') == "" || localStorage.getItem('emailSignature')=="" )
@@ -187,11 +181,6 @@ export class SchedulelaterComponent implements OnInit {
       this.toastr.error("please provide email id")
       return;
     }
-    // if(localStorage.getItem('password') == "")
-    // {
-    //   this.toastr.error("please provide password")
-    //   return;
-    // }
     if (this.phisingForm.value.time== "")
     {
       this.toastr.error("Please Provide Time")
@@ -211,8 +200,6 @@ export class SchedulelaterComponent implements OnInit {
       'templateRewardType':localStorage.getItem('templateRewardType'),
       'templateHeading':localStorage.getItem('templateHeading'),
       'createdBy':localStorage.getItem('email'),
-     // 'email':localStorage.getItem('email1'),
-      //'password':localStorage.getItem('password'),
       'sendToReporters' : this.phisingForm.value.radio,
       'addNote' : localStorage.getItem('addNote'),
       'emailSignature': localStorage.getItem('emailSignature'),
@@ -225,7 +212,6 @@ export class SchedulelaterComponent implements OnInit {
       'victimEmails':this.res,
       'senderCredentials':JSON.parse(localStorage.getItem("users") || "[]"),
     }
-    console.log(this.phisingForm.value.tzone)
     let con = JSON.stringify(reqBody);
     formData.append("details",con);
     if(this.manager=='true')
@@ -234,33 +220,7 @@ export class SchedulelaterComponent implements OnInit {
     var local = new File(["foo"], localfile, {
       type: "file/csv"
     });
- 
-      // if(this.file!=null && this.file.size==0)
-      // {
-      //   this.toastr.error("empty csv can not be uploaded");
-       
-      // }
-      // if(this.phisingForm.value.radio==true){
-        
-      //   formData.append("file",local);
-      // }
-      // else{
-      //   formData.append("file",this.file)
-        
-      //   console.log(this.file.size)
-      // }
     }
-    // else
-    // {
-    //   if(this.file.size == 0)
-    //   {
-
-    //     this.toastr.error("empty csv can not be uploaded");
-    //   }
-    //   else{
-    //   formData.append("file",this.text);
-    //   }
-    // }
 
     this.StoreData=false;  
     this._addCampaign.schedulecampagin(formData).subscribe((data)=>{

@@ -61,7 +61,6 @@ export class NavbarComponent implements OnInit {
   }
 Logout(){
   this._auth.logout();
-  console.log(this.profile)
 }
 toogletag(content:any )
 {
@@ -91,11 +90,9 @@ scheduled()
       localStorage.setItem('scheduleid',element.id)
       localStorage.setItem('scheduledTime',element.scheduledTime)
     }
-    console.log(this.campaigns)
   }
 });
 let a = localStorage.getItem('heading')
-console.log(a)
 }
 }
 function positionClass(content: any, positionClass: any, arg2: string) {

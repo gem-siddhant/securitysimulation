@@ -105,11 +105,8 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   }
 
   addAddress() {
-    console.log(this.phisingForm);
-
     const emailpassItem = new FormGroup({
       senderEmail: new FormControl('', Validators.required),
-      // senderPassword: new FormControl('', Validators.required),
     });
    
     
@@ -127,21 +124,15 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   onRemoveQuestion(index: number) {
     const emailpassItem = new FormGroup({
       senderEmail: new FormControl('', Validators.email),
-      // senderPassword: new FormControl('', Validators.required),
     });
     (<FormArray>this.phisingForm.get('allemails')).removeAt(index);
     this.selectedOption.splice(index, 1);
-
-    console.log(this.phisingForm);
-
   }
   
   onChange(event: any) {
-    
     this.changeTriggered = true;
     this.file = event.target.files[0];
     let csvToJson = require('convert-csv-to-json');
-
     let json = csvToJson.getJsonFromCsv(this.file);
     for(let i=0; i<json.length;i++){
         console.log(json[i]);
@@ -154,10 +145,6 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       this.phisingForm.reset()
       this.phisingForm.value.radio2 = true
     }
-    
-    console.log(this.i)
-    console.log(this.phisingForm.value.allemails)
-    
     this._addCampaign.getPrefilled(id).subscribe((data)=>{
       this.prefilled=data;
       if(this.prefilled.heading)
@@ -197,7 +184,6 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     for(let i=0;i<this.phisingForm.value.allemails.length;i++)
     {
       let email = this.phisingForm.value.allemails[i];
-      console.log(email['senderEmail'])
       if(email['senderEmail'].endsWith("@geminisolution.in") || email['senderEmail'].includes(['@','.']))
       {
       }
@@ -206,10 +192,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
         return
       }
     }
-    console.log(this.phisingForm.value.name)
-    console.log(this.phisingForm.value.subject)
     let email = this.phisingForm.value.allemails[0];
-    console.log(email['email'])
     if(this.phisingForm.value.name == "" || this.phisingForm.value.subject == "" || this.phisingForm.value.desc == ""|| this.phisingForm.value.footer == "")
     {
       this.toastr.error("Please EDIT The Fields")
@@ -217,16 +200,9 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     }
     if(email['senderEmail']=="" )
     {
-      
       this.toastr.error("Please Provide email")
       return;
     }
-    // if(email['senderPassword']=="")
-    // {
-     
-    //   this.toastr.error("Please Provide Password")
-    //   return; 
-    // }
     const dialogRef = this.dialog.open(SchedulelaterComponent, {
       width: '770px',
       height: '330px',
@@ -239,7 +215,6 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     localStorage.setItem('templateNo',this.phisingForm.value.tempate_select);
     localStorage.setItem('templateHeading',this.phisingForm.value.subject);
     localStorage.setItem('email1',this.phisingForm.value.email);
-    // localStorage.setItem('password',this.phisingForm.value.password);
     localStorage.setItem('sendToReporters', this.phisingForm.value.radio);
     localStorage.setItem('addNote',this.phisingForm.value.addnote);
     localStorage.setItem('emailSignature',this.phisingForm.value.footer);
@@ -254,7 +229,6 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     for(let i=0;i<this.phisingForm.value.allemails.length;i++)
     {
       let email = this.phisingForm.value.allemails[i];
-      console.log(email['senderEmail'])
       if(email['senderEmail'].endsWith("@geminisolution.in") || email['senderEmail'].includes(['@','.']))
       {
       }
@@ -264,7 +238,6 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       }
     }
     let email = this.phisingForm.value.allemails[0];
-    console.log(email['email'])
     if(this.phisingForm.value.name == "" || this.phisingForm.value.subject == "" || this.phisingForm.value.desc == ""|| this.phisingForm.value.footer == "")
     {
       this.toastr.error("Please EDIT The Fields")
@@ -275,17 +248,10 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       this.toastr.error("Please Provide email")
       return;
     }
-    // if(email['senderPassword']=="")
-    // {
-     
-    //   this.toastr.error("Please Provide Password")
-    //   return; 
-    // }
     const dialogRef = this.dialog.open(SendcampaignComponent, {
       width: '523px',
       height: '330px',
   });
-    // this.phisingForm.value.allemails=null
     localStorage.setItem('name',this.phisingForm.value.name);
     localStorage.setItem('templateRewardType',this.phisingForm.value.reward_type);
     localStorage.setItem('templateDescription',this.phisingForm.value.desc);
@@ -293,7 +259,6 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     localStorage.setItem('templateNo',this.phisingForm.value.tempate_select);
     localStorage.setItem('templateHeading',this.phisingForm.value.subject);
     localStorage.setItem('email1',this.phisingForm.value.email);
-    // localStorage.setItem('password',this.phisingForm.value.password);
     localStorage.setItem('sendToReporters', this.phisingForm.value.radio);
     localStorage.setItem('addNote',this.phisingForm.value.addnote);
     localStorage.setItem('emailSignature',this.phisingForm.value.footer);
@@ -304,9 +269,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
 }
 
   submit(){
-
     let email = this.phisingForm.value.allemails[0];
-    console.log(email['senderEmail'])
     if(email['senderEmail'].endsWith("@geminisolution.in") || email['senderEmail'].includes(['@','.']))
       {
       }
@@ -315,7 +278,6 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       return
       }
     this.submitted=true;
-    console.log(this.phisingForm.value.allemails)
     if (this.phisingForm.value.name == "")
     {
       this.toastr.error("Please EDIT the name of campaign");
@@ -337,7 +299,6 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     const tempno = JSON.stringify(this.phisingForm.value.tempate_select)
     const sendattach = JSON.stringify(this.phisingForm.value.radio2)
     const formData :any= new FormData();
-    // this.phisingForm.value.allemails=null
     let reqBody={
       'name':this.phisingForm.value.name,
       'templateDescription':this.phisingForm.value.desc,
@@ -347,7 +308,6 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       'templateHeading':this.phisingForm.value.subject,
       'createdBy':localStorage.getItem('email'),
       'email': email['senderEmail'],
-      // 'password':email['senderPassword'],
       'sendToReporters' : this.phisingForm.value.radio,
       'addNote' : this.phisingForm.value.addnote,
       'emailSignature': this.phisingForm.value.footer,
@@ -355,10 +315,6 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       'attachmentName': this.phisingForm.value.fileattach,
       'attachmentText':this.phisingForm.value.filecontent,
     }
-    
-
-
-
     let con = JSON.stringify(reqBody);
     formData.append("details",con);
     formData.append("allemails",this.phisingForm.value.allemails)

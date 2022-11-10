@@ -54,7 +54,6 @@ export class SignUpComponent implements OnInit {
       return 'You must enter a value';
     }
     return 'You must enter a value';
-    // return this.signupForm.value.email.hasError('') ? 'Not a valid email' : '';
   }
   submit(){
     if (this.signupForm.value.name == "")

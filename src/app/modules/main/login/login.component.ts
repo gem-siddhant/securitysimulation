@@ -59,8 +59,6 @@ export class LoginComponent implements OnInit {
       .subscribe(() => {
         this.setLoginDisplay();
       });
-
-    console.log('LOGIN COMPONENT');
     this.onResize();
     this._responsiveService.checkWidth();
     if (this._authUserService.checkLogin()) {

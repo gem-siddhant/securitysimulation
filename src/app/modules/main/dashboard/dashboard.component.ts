@@ -46,9 +46,9 @@ dates : any = [];
         this.campaigns=data;
         for(let ele of this.campaigns)
         {
-          console.log(ele.created_on)
+
         }
-        console.log(this.campaigns)
+       
       }
     },err=>{
       this.toastr.error("Error in loading data");

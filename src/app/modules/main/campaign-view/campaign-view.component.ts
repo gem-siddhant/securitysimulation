@@ -107,7 +107,7 @@ i: number = 1;
      }
      this.errormsg=""
      this.dataSource.filter = filterValue;
-     console.log(this.dataSource.filteredData.length)
+     
      if(this.dataSource.filteredData.length==0)
      {
       this.errormsg="no data found"
@@ -153,9 +153,7 @@ i: number = 1;
        }
        else{
         this.remarks=data.exceptionMessage;
-       }
-       console.log(this.dataSource.data)
-      
+       } 
        let i=1;
        for(let element of data.result){
          element.id=i;
@@ -170,7 +168,6 @@ i: number = 1;
         this.pieChartData = [this.clicked_len, this.delivered_len-this.clicked_len,this.notdelivered];
         this.dataSource = new MatTableDataSource<view_data>(data.result);
         this.dataSource.sort = this.sort;
-        console.log(this.dataSource.data)
       
       }
     },err=>{

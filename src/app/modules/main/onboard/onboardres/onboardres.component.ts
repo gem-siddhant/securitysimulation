@@ -29,9 +29,6 @@ export class OnboardresComponent implements OnInit {
         this.status = params['status'];
       }
     )
-    console.log(this.name)
-    console.log(this.email)
-    console.log(this.status)
     this.sendapproverdata(this.name,this.email,this.status);
   }
 
@@ -45,7 +42,6 @@ sendapproverdata(name:any,email:any,status:any)
   console.log(obj)
   this._mainService.senddetails(obj).subscribe((data:any)=>{
     if(data){
-      console.log('data sent');
 
     }
   },

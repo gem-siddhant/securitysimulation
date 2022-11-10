@@ -46,11 +46,7 @@ export class ScheduleCampComponent implements OnInit {
         this.campaigns=data;
         for(let ele of this.campaigns)
         {
-          console.log(ele.taskId)
         }
-        console.log(this.campaigns)
-
-        //this.campaigns=data;
       }
     },err=>{
       this.toastr.error("Error in loading data");
@@ -69,7 +65,6 @@ export class ScheduleCampComponent implements OnInit {
         for(let ele of this.campaigns)
         {
           const jobkey = ele.scheduledJobKey
-          console.log(ele.scheduledJobKey)
           let key = (job)
           let reqbody2 = {
             'jobKey': key

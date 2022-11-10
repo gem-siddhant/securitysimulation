@@ -60,7 +60,6 @@ export class AuthService {
       }
   
     },
-    //(err: { status: number; })=>{ //link expired or request is already responded for the user.
       (err: { status: number; })=>{ //link expired or request is already responded for the user.
         if(err.status==404)
         {

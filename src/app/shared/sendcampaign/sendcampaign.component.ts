@@ -29,7 +29,6 @@ export class SendcampaignComponent implements OnInit {
   mode: ProgressSpinnerMode = 'indeterminate';
   color: ThemePalette = 'primary';
   file: File = this.test;
-  //manager:any = "true";
   options:boolean=true;
   attachment:boolean=true;
   changeTriggered=false;
@@ -92,7 +91,6 @@ export class SendcampaignComponent implements OnInit {
       }
     }
     this.vare = JSON.stringify(this.res);
-    console.log(this.res.length)  
   }  
  
   }
@@ -133,8 +131,6 @@ export class SendcampaignComponent implements OnInit {
       }
       
     }
-    console.log(localStorage.getItem('name'))
-    console.log(localStorage.getItem('file'))
     this.submitted = true;
     if(this.phisingForm.invalid)
     return;
@@ -147,13 +143,7 @@ export class SendcampaignComponent implements OnInit {
     {
       this.toastr.error("please provide email id")
       return
-    }
-    // if(localStorage.getItem('password') == "")
-    // {
-    //   this.toastr.error("please provide password")
-    //   return
-    // }
-  
+    }  
     const formData :any= new FormData();
     let reqBody={
       'name': localStorage.getItem('name'),
@@ -163,8 +153,6 @@ export class SendcampaignComponent implements OnInit {
       'templateRewardType':localStorage.getItem('templateRewardType'),
       'templateHeading':localStorage.getItem('templateHeading'),
       'createdBy':localStorage.getItem('email'),
-      //'email':localStorage.getItem('email1'),
-      //'password':localStorage.getItem('password'),
       'sendToReporters' : this.phisingForm.value.radio,
       'addNote' : localStorage.getItem('addNote'),
       'emailSignature': localStorage.getItem('emailSignature'),
@@ -174,7 +162,6 @@ export class SendcampaignComponent implements OnInit {
       'victimEmails':this.res,
       'senderCredentials':JSON.parse(localStorage.getItem("users") || "[]"),
     }
-    console.log(this.phisingForm.value.tzone)
     let con = JSON.stringify(reqBody);
     formData.append("details",con);
     if(this.manager=='true')
@@ -183,32 +170,7 @@ export class SendcampaignComponent implements OnInit {
     var local = new File(["foo"], localfile, {
       type: "file/csv"
     });
-      // if(this.file!=null && this.file.size==0)
-      // {
-      //   this.toastr.error("empty csv can not be uploaded");
-       
-      // }
-      // if(this.phisingForm.value.radio==true){
-        
-      //   formData.append("file",local);
-      // }
-      // else{
-      //   formData.append("file",this.file)
-      // }
     }
-    // else
-    // {
-    //   if(this.file.size == 0)
-    //   {
-
-    //     this.toastr.error("empty csv can not be uploaded");
-    //   }
-    //   else{
-    //   formData.append("file",this.file);
-    //   }
-    // }
-
-
     this.StoreData=false;
     this._addCampaign.createCampaign(formData).subscribe((data)=>{
       this.dialogRef.close()

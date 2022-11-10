@@ -5,12 +5,10 @@
       <div class="brand-logo">
         <a class="navbar-brand">
       <img class="logo" src="../../assets/images/finalpirates.png" routerLink="/main/dashboard">
-      <!-- <img  src="../../assets/images/p.jpg" class="img-fluid" mat-card-image id="profile-image">     -->
       </a>
     </div>
     </div>
     <div  *ngIf="this.getUser()" class="col-lg-4 col-md-4 col-sm-4 col-xs-4 vertical-align">
-      <!-- <img  src="../../assets/images/p.jpg" class="img-fluid" mat-card-image id="profile-image"> -->
       <img  [src]="profile" class="img-fluid" mat-card-image id="profile-image">
       <div>
         <span (click)="scheduled()" style="color: white;font-size: 70px;padding-right: 10px;padding-top: 24px;" matTooltip="Scheduled Campaigns" matTooltipPosition="above"><mat-icon>alarm</mat-icon></span>

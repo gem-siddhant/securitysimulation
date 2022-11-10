@@ -3,9 +3,6 @@
 </div>
 <form [formGroup]="phisingForm">
     <div *ngIf="manager== 'true'">
-      <!-- <Strong>Note:- </Strong>
-        Please Edit all the fields to create the campaign  -->
-      <!-- </div> -->
       <h2 class="heading">Send To Reportees</h2>
     
       <div class="radiogrp">
@@ -52,7 +49,6 @@
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-11" style="margin-left: 12px;">
           <Strong class="notesub mt-4" >Note:- </Strong>
        <span class="note">Please provide only geminisolutions.com id's in csv</span> 
-      <!-- </div> -->
           <label for="firsting" id="attachment_btn" style="font-size: 16px;" class="mt-4" ><img style="width:20px; height: 20px;"
                   src="../../../../assets/images/attachment1.png"> Upload .csv file with custom emails.</label>
           <input type="file" accept=".csv" id="firsting" class="form-control mt-3" formControlName="attachmentFile"

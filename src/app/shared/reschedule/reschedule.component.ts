@@ -58,8 +58,6 @@ export class RescheduleComponent implements OnInit {
     this.dialogRef.close();
   }  
   schedulelater(){
-    console.log(localStorage.getItem('name'))
-    console.log(localStorage.getItem('file'))
     if (this.phisingForm.value.time== "")
     {
       this.toastr.error("Please Provide Time")
@@ -70,7 +68,6 @@ export class RescheduleComponent implements OnInit {
       this.toastr.error("Please Provide TimeZone")
       return;
     }
-    //this.phisingForm.value.date =  new Date((this.phisingForm.value.dat).utcOffset('+0000').format('YYYY-MM-DD HH:MM'))
     this.submitted = true;
     const scheduledate = moment(this.phisingForm.value.date).format("YYYY-MM-DD");
     const currentYear = moment().year();
@@ -84,7 +81,6 @@ export class RescheduleComponent implements OnInit {
       'scheduleTimeZone':this.phisingForm.value.timezone,
       'jobKey':localStorage.getItem('jobkey')
     }
-    console.log(this.phisingForm.value.tzone)
     let con = JSON.stringify(reqBody);
     formData.append("details",con);
 
