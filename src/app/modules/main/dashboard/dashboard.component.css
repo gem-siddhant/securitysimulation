@@ -29,7 +29,10 @@ a{
   font-weight: 700;
   font-size: 18px;
   line-height: 27px; 
-  color: #45198E;;
+  color: #45198E;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .sub-heading-1{
 
@@ -75,7 +78,9 @@ font-weight: 400;
 font-size: 14px;
 line-height: 21px;
 color: #626262;
-
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
 }
 .body-text{
   font-size: 15px;
