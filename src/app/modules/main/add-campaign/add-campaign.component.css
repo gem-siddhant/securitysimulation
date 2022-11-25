@@ -97,6 +97,7 @@ background: #FFFFFF;
 box-shadow: 3px 3px 10px rgba(32, 80, 114, 0.1);
 border-radius: 5px;
 margin-left: 11%;
+width: 70vmax;
 }
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
   color: #205072;
