@@ -90,50 +90,45 @@ export class LoginComponent implements OnInit {
         this._authUserService.setToken(response.account?.username,response.accessToken).then(()=>{
         this.router.navigate(['/main/dashboard']);
         sessionStorage.clear();
-        }).then(()=>{
-          this._authUserService.getEmployeeDetailBehaviorSubject().subscribe(item => {
-            if (item) {
-              
-              if (item.notifications && this._authUserService.getNotificationModalBoolean()) {
-                this._authUserService.setNotificationModalBoolean(false);
-                
-              }
-            }
-            
-          });
         })
+        // }).then(()=>{
+        //   this._authUserService.getEmployeeDetailBehaviorSubject().subscribe(item => {
+        //     if (item) {
+              
+        //       if (item.notifications && this._authUserService.getNotificationModalBoolean()) {
+        //         this._authUserService.setNotificationModalBoolean(false);
+                
+        //       }
+        //     }
+            
+        //   });
+        // })
       }
    
     },
- 
-    
-    
-    
-    
-    );
-    
+    ); 
   }
-  loginWithMicrosoft(){
-    if (this.msalGuardConfig.interactionType === InteractionType.Popup) {
-      if (this.msalGuardConfig.authRequest){
-        this.authService.loginPopup({...this.msalGuardConfig.authRequest} as PopupRequest)
-          .subscribe((response: AuthenticationResult) => {
-            this.authService.instance.setActiveAccount(response.account);
-          });
-        } else {
-          this.authService.loginPopup()
-            .subscribe((response: AuthenticationResult) => {
-              this.authService.instance.setActiveAccount(response.account);
-            });
-      }
-    } else {
-      if (this.msalGuardConfig.authRequest){
-        this.authService.loginRedirect({...this.msalGuardConfig.authRequest} as RedirectRequest);
-      } else {
-        this.authService.loginRedirect();
-      }
-    }
-  }
+  // loginWithMicrosoft(){
+  //   if (this.msalGuardConfig.interactionType === InteractionType.Popup) {
+  //     if (this.msalGuardConfig.authRequest){
+  //       this.authService.loginPopup({...this.msalGuardConfig.authRequest} as PopupRequest)
+  //         .subscribe((response: AuthenticationResult) => {
+  //           this.authService.instance.setActiveAccount(response.account);
+  //         });
+  //       } else {
+  //         this.authService.loginPopup()
+  //           .subscribe((response: AuthenticationResult) => {
+  //             this.authService.instance.setActiveAccount(response.account);
+  //           });
+  //     }
+  //   } else {
+  //     if (this.msalGuardConfig.authRequest){
+  //       this.authService.loginRedirect({...this.msalGuardConfig.authRequest} as RedirectRequest);
+  //     } else {
+  //       this.authService.loginRedirect();
+  //     }
+  //   }
+  // }
 }
 
 

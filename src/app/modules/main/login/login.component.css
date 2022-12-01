@@ -70,7 +70,9 @@
   top: 38.91%;
   bottom: 43.62%;
   color: #205072;
-  z-index: 3;
+  z-index: 1;
+  max-width: 100vw;
+  max-height: 100px;
     
   }
   
