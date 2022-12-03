@@ -198,7 +198,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     {
       let email = this.phisingForm.value.allemails[i];
       console.log(email['senderEmail'])
-      if(email['senderEmail'].endsWith("@geminisolution.in") || email['senderEmail'].includes(['@','.']))
+      if(email['senderEmail'].includes(['@','.']))
       {
       }
       else{
@@ -255,7 +255,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
     {
       let email = this.phisingForm.value.allemails[i];
       console.log(email['senderEmail'])
-      if(email['senderEmail'].endsWith("@geminisolution.in") || email['senderEmail'].includes(['@','.']))
+      if(email['senderEmail'].includes(['@','.']))
       {
       }
       else{
