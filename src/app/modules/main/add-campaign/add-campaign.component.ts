@@ -307,7 +307,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
 
     let email = this.phisingForm.value.allemails[0];
     console.log(email['senderEmail'])
-    if(email['senderEmail'].endsWith("@geminisolution.in") || email['senderEmail'].includes(['@','.']))
+    if(email['senderEmail'].includes(['@']) && email['senderEmail'].includes(['.']))
       {
       }
     else{
