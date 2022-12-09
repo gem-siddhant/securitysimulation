@@ -10,11 +10,11 @@ import { NgxMaterialTimepickerTheme } from 'ngx-material-timepicker';
 import { ToastrService } from 'ngx-toastr';
 import { count } from 'rxjs';
 import { AddCampaignService } from 'src/app/modules/main/service/add-campaign.service';
-import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 import { Pipe, PipeTransform } from '@angular/core';
 import { title } from 'process';
-import { CsvmessageComponent } from '../csvmessage/csvmessage.component';
-import { SamplecsvComponent } from '../samplecsv/samplecsv.component';
+import { CsvmessageComponent } from 'src/app/shared/csvmessage/csvmessage.component';
+import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
+import { SamplecsvComponent } from 'src/app/shared/samplecsv/samplecsv.component';
 @Component({
   selector: 'app-schedulelater',
   templateUrl: './schedulelater.component.html',

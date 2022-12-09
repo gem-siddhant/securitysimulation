@@ -24,12 +24,11 @@ import { config, delay } from 'rxjs';
 import { ExitStatus } from 'typescript';
 import { MatRadioButton } from '@angular/material/radio';
 import { PasswordGrantConstants } from '@azure/msal-common/dist/utils/Constants';
-import { SchedulelaterComponent } from 'src/app/shared/schedulelater/schedulelater.component';
-
 import { JsonPipe } from '@angular/common';
 import { add } from './add-camp.model';
 import { Papa } from 'ngx-papaparse';
 import { SendcampaignComponent } from '../sendcampaign/sendcampaign.component';
+import { SchedulelaterComponent } from '../schedulelater/schedulelater.component';
 
 @Pipe({ name: 'safeHtml'})
 export class SafeHtmlPipe implements PipeTransform  {

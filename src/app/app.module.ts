@@ -28,7 +28,6 @@ import { MsalGuard, MsalBroadcastService, MsalModule, MsalService, MSAL_GUARD_CO
 import { LoaderService } from './modules/main/service/loader.service';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
-import { SchedulelaterComponent } from './shared/schedulelater/schedulelater.component';
 import { MatInputModule } from '@angular/material/input';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -42,6 +41,7 @@ import { InfomodalComponent } from './shared/infomodal/infomodal.component';
 import { CsvmessageComponent } from './shared/csvmessage/csvmessage.component';
 import { SamplecsvComponent } from './shared/samplecsv/samplecsv.component';
 import { SendcampaignComponent } from './modules/main/sendcampaign/sendcampaign.component';
+import { SchedulelaterComponent } from './modules/main/schedulelater/schedulelater.component';
 
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
