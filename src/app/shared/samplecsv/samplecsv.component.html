@@ -1,0 +1,17 @@
+<div class="row">
+    <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+            <span aria-hidden="true" class="close" (click)="onClose()"aria-label="Close"><i class="material-icons">close</i></span>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-center mat-dialog-content ml-2 mt-4">
+        <p style="font-size: 18px; font-weight: bold;text-align: center;">Please find the below csv for reference</p>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mat-dialog-content col-center ml-1 mt-2">
+        <img src="../../../assets/images/sampleemailcsv.png" >
+</div>
+
+<div class="row col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center mt-2">
+    <!-- <button class="btn btn-outline-success" (click)="Reschedule(this.campaigns[i].scheduledJobKey)" matTooltip="RESCHEDULE" matTooltipPosition="above" style=" margin-left: 15%;"><mat-icon  >alarm_on</mat-icon></button> -->
+    <button onclick="window.open('../../../assets/pdf/samplecsv.csv')" class="btn btn-outline-success right-bottom-center download mb-2 p-2 ">Download Sample CSV</button>
+  </div>
+
+</div>

@@ -1,0 +1,11 @@
+.mat-dialog-content{
+    width: 100%;
+    height: 10%;
+}
+.close{
+    max-width: 3%;
+    max-height: 3%;
+}
+.donwload{
+    width: 10%;
+}
