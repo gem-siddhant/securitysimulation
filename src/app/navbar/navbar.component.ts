@@ -10,7 +10,6 @@ import { MatMenuTrigger } from '@angular/material/menu';
 import { MainService } from '../modules/main/service/main.service';
 import { AuthService } from '../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
-import { SendcampaignComponent } from '../shared/sendcampaign/sendcampaign.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SchedulelaterComponent } from '../shared/schedulelater/schedulelater.component';
 import { Router } from '@angular/router';

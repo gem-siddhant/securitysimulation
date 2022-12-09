@@ -32,7 +32,7 @@ import { SchedulelaterComponent } from './shared/schedulelater/schedulelater.com
 import { MatInputModule } from '@angular/material/input';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SendcampaignComponent } from './shared/sendcampaign/sendcampaign.component';
+
 import { ScheduleCampComponent } from './shared/schedule-camp/schedule-camp.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DatePipe } from '@angular/common';
@@ -41,6 +41,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { InfomodalComponent } from './shared/infomodal/infomodal.component';
 import { CsvmessageComponent } from './shared/csvmessage/csvmessage.component';
 import { SamplecsvComponent } from './shared/samplecsv/samplecsv.component';
+import { SendcampaignComponent } from './modules/main/sendcampaign/sendcampaign.component';
 
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);

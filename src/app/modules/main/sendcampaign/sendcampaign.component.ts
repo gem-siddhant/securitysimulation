@@ -7,12 +7,10 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AddCampaignService } from 'src/app/modules/main/service/add-campaign.service';
+import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
+import { CsvmessageComponent } from 'src/app/shared/csvmessage/csvmessage.component';
+import { SamplecsvComponent } from 'src/app/shared/samplecsv/samplecsv.component';
 import { json } from 'stream/consumers';
-import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
-
-import * as fs from 'fs' 
-import { CsvmessageComponent } from '../csvmessage/csvmessage.component';
-import { SamplecsvComponent } from '../samplecsv/samplecsv.component';
 
 @Component({
   selector: 'app-sendcampaign',
