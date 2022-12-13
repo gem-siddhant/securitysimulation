@@ -42,6 +42,7 @@ import { CsvmessageComponent } from './shared/csvmessage/csvmessage.component';
 import { SamplecsvComponent } from './shared/samplecsv/samplecsv.component';
 import { SendcampaignComponent } from './modules/main/sendcampaign/sendcampaign.component';
 import { SchedulelaterComponent } from './modules/main/schedulelater/schedulelater.component';
+import { ReconfirmModalComponent } from './shared/reconfirm-modal/reconfirm-modal.component';
 
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
@@ -63,7 +64,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     RescheduleComponent,
     InfomodalComponent,
     CsvmessageComponent,
-    SamplecsvComponent
+    SamplecsvComponent,
+    ReconfirmModalComponent
   ],
   imports: [
     BrowserModule,

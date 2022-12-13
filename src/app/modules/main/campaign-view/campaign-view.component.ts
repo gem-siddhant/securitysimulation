@@ -11,6 +11,8 @@ import { elementAt, startWith } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { formatDate } from '@angular/common';
 import { not } from '@angular/compiler/src/output/output_ast';
+import { ReconfirmModalComponent } from 'src/app/shared/reconfirm-modal/reconfirm-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-campaign-view',
@@ -31,6 +33,7 @@ endcampaignId:any;
   constructor(private route: ActivatedRoute,
     private _router: Router,
     private _mainService:MainService,
+    private dialog:MatDialog,
     private toastr: ToastrService) 
     {
        this.viewData={id:0,email:'',ipAddress:'',status:''};
@@ -43,6 +46,7 @@ endcampaignId:any;
     remarks:any;
     errormsg:any;
     clickbtn:boolean= false;
+    campstatus = localStorage.getItem('campstatus')
 clicked_len:any;
 undelivered_len:any;
 delivered_len:any;
@@ -180,17 +184,11 @@ i: number = 1;
 
   endcamp()
   {
-    this.submitted=true;
-    let id: any = Number;
-    id = localStorage.getItem('ID')
-    this.ID= false;
-    this._mainService.endcampaign(id).subscribe((data)=>{
-      if(data)
-      {
-        this.ID=true;
-        this.toastr.info("Campaign ended successfully");
-      }
-    })
+    let campstatus = localStorage.getItem("campstatus")
+    const dialogRef = this.dialog.open(ReconfirmModalComponent, {
+    width: '460px',
+    height: '270px',
+    }); 
   }
 
 }
