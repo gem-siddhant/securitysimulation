@@ -14,7 +14,7 @@ import { HttpClient } from '@angular/common/http';
 import { ThemePalette } from '@angular/material/core';
 import { AddCampaignService } from '../service/add-campaign.service';
 import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
-import { DialogRole, MatDialog } from '@angular/material/dialog';
+import { DialogRole, MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
@@ -29,6 +29,7 @@ import { add } from './add-camp.model';
 import { Papa } from 'ngx-papaparse';
 import { SendcampaignComponent } from '../sendcampaign/sendcampaign.component';
 import { SchedulelaterComponent } from '../schedulelater/schedulelater.component';
+import { CampaignConfirmComponent } from 'src/app/shared/campaign-confirm/campaign-confirm.component';
 
 @Pipe({ name: 'safeHtml'})
 export class SafeHtmlPipe implements PipeTransform  {
@@ -72,7 +73,8 @@ addresses: any = [{
 manager:any = localStorage.getItem('Manager');
 @Output() close: EventEmitter<any> = new EventEmitter();
 testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
-  constructor(private _addCampaign:AddCampaignService,
+  constructor(
+    private _addCampaign:AddCampaignService,
     private papa: Papa,
      private formBuilder: FormBuilder,
      private dialog:MatDialog,private router:Router,
@@ -355,10 +357,6 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       'attachmentName': this.phisingForm.value.fileattach,
       'attachmentText':this.phisingForm.value.filecontent,
     }
-    
-
-
-
     let con = JSON.stringify(reqBody);
     formData.append("details",con);
     formData.append("allemails",this.phisingForm.value.allemails)
