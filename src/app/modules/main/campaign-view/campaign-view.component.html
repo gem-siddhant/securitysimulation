@@ -48,8 +48,8 @@
   <div class="row mt-4">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 left-bottom-center mb-3">
       <!-- <button type="submit" mat-raised-button (click)="endcamp(); clickbtn=true;" [disabled]="clickbtn" class="endcamp p-2" [ngStyle]="{'background-color':clickbtn == false ? '#7A2AB4;' : 'grey' }">End Campaign</button> -->
-      <button type="submit" *ngIf="this.isendactive=='true'" mat-raised-button (click)="endcamp();" class="endcamp p-2"  >End Campaign</button> 
-      <button type="submit" *ngIf="this.isendactive=='false'" mat-raised-button class="endcamp2 p-2"  >End Campaign</button> 
+      <button type="submit" *ngIf="this.isendactive==='true'" mat-raised-button (click)="endcamp();" class="endcamp p-2"  >End Campaign</button> 
+      <button type="submit" *ngIf="this.isendactive==='false'" mat-raised-button class="endcamp2 p-2"  >End Campaign</button> 
     </div>
   </div>
 </div>
