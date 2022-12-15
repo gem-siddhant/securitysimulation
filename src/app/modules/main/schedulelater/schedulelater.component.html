@@ -72,7 +72,7 @@
     </div>
 
   </div>
-  <mat-error *ngIf="this.submitted==true && this.file==null">
+  <mat-error *ngIf="this.submitted===true && this.file==null">
     Please upload file.
   </mat-error>
 </div>
@@ -143,7 +143,7 @@
       </div>
   
     </div>
-    <mat-error *ngIf="this.submitted==true && this.file==null">
+    <mat-error *ngIf="this.submitted===true && this.file==null">
       Please upload file.
     </mat-error>
   </div>
