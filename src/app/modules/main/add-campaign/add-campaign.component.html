@@ -2,7 +2,7 @@
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
-<div *ngIf="this.StoreData===false" class="overlay">
+<div *ngIf="this.StoreData==false" class="overlay">
   <mat-progress-spinner class="spinner" [color]="color" [mode]="mode" [value]="value" diameter="50" *ngIf="this.StoreData==false"></mat-progress-spinner>
 </div>
 
@@ -378,7 +378,7 @@
       font-size: 16px; padding-left: 10px;">
       <mat-label>Provide the file name</mat-label>
       <textarea matInput type="text" formControlName="fileattach" #input8 maxlength="50" required></textarea>
-      <mat-error *ngIf="phisingForm.value.fileattach==='' || phisingForm.value.fileattach===null ">Please Edit/Fill Attachement Name</mat-error>
+      <mat-error *ngIf="phisingForm.value.fileattach==='' || phisingForm.value.fileattach==null ">Please Edit/Fill Attachement Name</mat-error>
       <mat-hint align="end" >{{input8.value?.length || 0}}/50</mat-hint>
       </mat-form-field>
     </div>

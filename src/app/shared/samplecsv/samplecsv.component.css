@@ -8,4 +8,9 @@
 }
 .donwload{
     width: 10%;
+    background-color:#45198E; 
+    color: aliceblue;
+    border: none;
+    outline: none;
+    border-radius: 5%;
 }
