@@ -1,5 +1,14 @@
 
 .maticons{
     transform: scale(1.3);
-
+    font-size: larger;
+    font-weight: 1000;
+    color: rgb(193, 53, 53);
+}
+.confirm{
+    background-color:#45198E; 
+    color: aliceblue;
+    border: none;
+    outline: none;
+    border-radius: 5%;
 }

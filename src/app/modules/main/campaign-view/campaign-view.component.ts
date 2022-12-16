@@ -58,7 +58,8 @@ pieChartLegend!: boolean;
 viewData:view_data;
 select_val:any='';
 dataSource:any;
-test: any= "test"
+killcam:boolean=true;
+test: any= "test";
 displayedColumns: string[] = ['sno','email', 'ip' , 'status'];
 pieChartPlugins:any = [];
 i: number = 1;
@@ -137,7 +138,7 @@ i: number = 1;
     this._mainService.getCompaignDetails(id).subscribe((data)=>{
      localStorage.setItem('isactive',data.isActive); 
      this.isendactive = localStorage.getItem('isactive')
-
+     this.killcam=false;
      if(this.isendactive == 'false')
      {
        this.clickbtn = true;
@@ -187,7 +188,7 @@ i: number = 1;
     let campstatus = localStorage.getItem("campstatus")
     const dialogRef = this.dialog.open(ReconfirmModalComponent, {
     width: '460px',
-    height: '270px',
+    height: '230px',
     }); 
   }
 

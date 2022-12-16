@@ -2,14 +2,14 @@
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
     </div>
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mat-dialog-content col-center ml-1 mt-4" style="padding-left: 50%;">
-<span class="material-icons maticons">warning</span>
+        <span class="maticons">Alert!</span>
 </div>
 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-center mat-dialog-content ml-2 mt-4">
     <p style="font-size: 18px; font-weight: bold;text-align: center; padding-left: 10%;">{{data.title}}</p>
 </div>
 <div>
-    <button class="btn btn-outline-success"  [mat-dialog-close]="true" matTooltip="YES"  matTooltipPosition="above" style=" margin-left: 30%;"><mat-icon  >Yes</mat-icon></button>
-    <button class="btn btn-outline-danger" [mat-dialog-close]="false"  style=" margin-left: 18%;" matTooltip="NO" matTooltipPosition="above"><mat-icon>No</mat-icon> </button>
+    <button class="btn confirm mt-3"  [mat-dialog-close]="true"   matTooltipPosition="above" style=" margin-left: 20%;">Confirm</button>
+    <button class="btn confirm mt-3" [mat-dialog-close]="false"  style=" margin-left: 18%;"  matTooltipPosition="above">Cancel </button>
 </div>
 </div>
 
