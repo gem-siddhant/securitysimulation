@@ -9,6 +9,7 @@ import * as moment from 'moment';
 import { NgxMaterialTimepickerTheme } from 'ngx-material-timepicker';
 import { ToastrService } from 'ngx-toastr';
 import { AddCampaignService } from 'src/app/modules/main/service/add-campaign.service';
+import { CampaignConfirmComponent } from '../campaign-confirm/campaign-confirm.component';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 @Component({
   selector: 'app-reschedule',
@@ -83,7 +84,17 @@ export class RescheduleComponent implements OnInit {
     }
     let con = JSON.stringify(reqBody);
     formData.append("details",con);
+    let dataDialog = { title: 'Are you sure you want to Reschedule your campaign?' };
+    const dialogRef = this.dialog.open(CampaignConfirmComponent, {
+      width: '513px',
+      data: dataDialog
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      console.log(result)
 
+    if(result==true)
+    {
     this.StoreData=false;
     this._addCampaign.reshedule(reqBody).subscribe((data)=>{
       if(data){
@@ -115,7 +126,8 @@ export class RescheduleComponent implements OnInit {
       else{
         this.toastr.error("Error in adding campaign.");
       }
-    });this.dialogRef.close();
+    });
+  }this.dialogRef.close();}) 
   }
   moment(dat: any) {
     throw new Error('Method not implemented.');

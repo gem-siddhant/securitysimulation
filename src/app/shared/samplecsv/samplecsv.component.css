@@ -1,0 +1,15 @@
+.mat-dialog-content{
+    width: 100%;
+    height: 10%;
+}
+.close{
+    max-width: 3%;
+    max-height: 3%;
+}
+.donwload1{
+    background-color:#45198E; 
+    color: aliceblue;
+    border: none;
+    outline: none;
+    border-radius: 5%;
+}

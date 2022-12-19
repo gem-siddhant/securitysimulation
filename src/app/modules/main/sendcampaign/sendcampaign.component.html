@@ -14,7 +14,10 @@
     </div>
   </div>
       <div *ngIf="!options">
-      <div class="row mt-2" >
+        <div class="row" >
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 d-flex flex-row-reverse"  >
+          <mat-icon (click)="samplecsv()" matTooltip="Sample csv" matTooltipPosition="above">info</mat-icon> 
+          </div>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-11" style="margin-left: 12px;">
           <Strong class="notesub mt-2" >Note:- </Strong>
           <span class="note">Please provide only geminisolutions.com id's in csv</span> 
@@ -43,9 +46,12 @@
     </div>
    
 
-    <div *ngIf="manager== 'false'">
+    <div *ngIf="manager=== 'false'">
   <div>
-      <div class="row mt-2" >
+      <div class="row" >
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 d-flex flex-row-reverse"  >
+        <mat-icon (click)="samplecsv()" matTooltip="Sample csv" matTooltipPosition="above">info</mat-icon> 
+        </div>
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-11" style="margin-left: 12px;">
           <Strong class="notesub mt-4" >Note:- </Strong>
        <span class="note">Please provide only geminisolutions.com id's in csv</span> 

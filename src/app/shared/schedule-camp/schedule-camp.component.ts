@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { MainService } from 'src/app/modules/main/service/main.service';
+import { CampaignConfirmComponent } from '../campaign-confirm/campaign-confirm.component';
 
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 import { RescheduleComponent } from '../reschedule/reschedule.component';
@@ -58,6 +59,17 @@ export class ScheduleCampComponent implements OnInit {
     let reqbody = {
       'email': email
     }
+
+    let dataDialog = { title: 'Are you sure you want to delete this scheduled campaign?' };
+    const dialogRef = this.dialog.open(CampaignConfirmComponent, {
+      width: '513px',
+      data: dataDialog
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      console.log(result)
+      if(result==true)
+      {
     this._schedule.scheduled(reqbody).subscribe((data)=>{
       if(data){
         
@@ -100,7 +112,8 @@ export class ScheduleCampComponent implements OnInit {
             })
         }
   }
-});this.dialogRef.close();
+});
+  }this.dialogRef.close(); })
 }
 
 Reschedule(job:any)

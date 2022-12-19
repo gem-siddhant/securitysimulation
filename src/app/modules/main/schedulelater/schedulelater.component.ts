@@ -1,60 +1,78 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
+import { NgxMaterialTimepickerTheme } from 'ngx-material-timepicker';
 import { ToastrService } from 'ngx-toastr';
+import { count } from 'rxjs';
 import { AddCampaignService } from 'src/app/modules/main/service/add-campaign.service';
-import { json } from 'stream/consumers';
-import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
-import * as fs from 'fs' 
-import { CsvmessageComponent } from '../csvmessage/csvmessage.component';
-
+import { Pipe, PipeTransform } from '@angular/core';
+import { title } from 'process';
+import { CsvmessageComponent } from 'src/app/shared/csvmessage/csvmessage.component';
+import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
+import { SamplecsvComponent } from 'src/app/shared/samplecsv/samplecsv.component';
+import { CampaignConfirmComponent } from 'src/app/shared/campaign-confirm/campaign-confirm.component';
 @Component({
-  selector: 'app-sendcampaign',
-  templateUrl: './sendcampaign.component.html',
-  styleUrls: ['./sendcampaign.component.css']
+  selector: 'app-schedulelater',
+  templateUrl: './schedulelater.component.html',
+  styleUrls: ['./schedulelater.component.css']
 })
-export class SendcampaignComponent implements OnInit {
+
+
+export class SchedulelaterComponent implements OnInit {
   StoreData:boolean=true;
+  selected = 'None';
   DialogData:any;
   credsForm:FormGroup;
   phisingForm: FormGroup;
   api_hit:boolean=true;
-  submitted = false;
-  test: any = null;
   value = 50;
   mode: ProgressSpinnerMode = 'indeterminate';
   color: ThemePalette = 'primary';
+  submitted = false;
+  test: any = null;
   file: File = this.test;
+  //manager:any = "true";
+  victcsv : any = [] ;
   options:boolean=true;
+  currentdate : any = new Date()
+  maxDate: Date;
   attachment:boolean=true;
+  manager:any = localStorage.getItem('Manager');
   changeTriggered=false;
   text:any;
-  vare:any;
-  res : any = [];
+  vare:any
+  myFooList: any = ['Some Item', 'Item Second', 'Other In Row', 'What to write', 'Blah To Do'];
+  res: any = [];
   csvcheck : boolean= true;
-  manager:any = localStorage.getItem('Manager');
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any,
-  public dialogRef: MatDialogRef<SendcampaignComponent>,
-  private _addCampaign:AddCampaignService,
-  private dialog:MatDialog,private router:Router,
-  private formBuilder: FormBuilder,
-  private sanitized: DomSanitizer,
-  private toastr:ToastrService) {
-    this.phisingForm = this.formBuilder.group({});
-    this.credsForm = this.formBuilder.group({}); 
-   }
+  constructor( public dialogRef: MatDialogRef<SchedulelaterComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private _addCampaign:AddCampaignService,
+    private dialog:MatDialog,private router:Router,
+    private formBuilder: FormBuilder,
+    private sanitized: DomSanitizer,
+    private toastr:ToastrService ){
+      this.phisingForm = this.formBuilder.group({});
+      this.credsForm = this.formBuilder.group({});
+    }
 
+   
   ngOnInit(): void {
     this.phisingForm = this.formBuilder.group(
       {
+        date:['',Validators.required],
+        time:[''],
+        timezone:[''],
         attachmentFile:[''],
         radio:[''||'false'],
       }
     );
+    const currentYear = new Date().getFullYear();
+    this.maxDate = new Date(currentYear + 1,3,31);
   }
   onChange(event: any) {
     this.changeTriggered = true;
@@ -74,7 +92,7 @@ export class SendcampaignComponent implements OnInit {
     for(var j=0;j<this.res.length;j++)
     {
       var format = /[ `!#$%^&*()_+\-=\[\]{};':"\\|,<>\/?~]/;
-      if(this.res[j] !="" && this.res[j].includes('@')==true && (this.res[j].split('@').length - 1)==1 && format.test(this.res[j])==false && (this.res[j].endsWith("geminisolutions.com") || this.res[j].endsWith("Geminisolutions.com") || this.res[j].endsWith("geminisolutions.us") || this.res[j].endsWith("Geminisolutions.us") )  )
+      if(this.res[j] !="" && this.res[j].includes('@')==true && (this.res[j].split('@').length - 1)==1 && format.test(this.res[j])==false && (this.res[j].endsWith("geminisolutions.com") || this.res[j].endsWith("Geminisolutions.com") )  )
       {
        
       }
@@ -90,12 +108,37 @@ export class SendcampaignComponent implements OnInit {
         this.csvcheck = false
       }
     }
+    if(this.file == null)
+    {
+      let dataDialog = {title:"Empty CSV Cannot be Uploaded"};
+        const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+          width: '400px',
+          height:'400px',
+          data: dataDialog
+        });
+        dialogRef.afterClosed().subscribe(()=>{
+          this.router.navigate(['main/add-campaign']);
+        })
+        return
+    }
     this.vare = JSON.stringify(this.res);
   }  
- 
+   
   }
 
-  sendnow(){
+  samplecsv()
+  {
+    let dataDialog = {title:"CSV file not Provided"};
+    const dialogRef = this.dialog.open(SamplecsvComponent, {
+      width: '650px',
+      height: '330px',
+      data: dataDialog
+    });
+  }
+  schedulelater(){
+
+
+
     if(this.csvcheck === false)
     {
       return
@@ -115,7 +158,6 @@ export class SendcampaignComponent implements OnInit {
       let ed = Math.ceil(this.res.length/1500)
       let sender = JSON.parse(localStorage.getItem("users") || "[]");
       let differe = ed - sender.length
-      
       if(differe > 0)
       {
         let dataDialog = { title: 'Please provide ' + differe + ' more email id and Password' };
@@ -132,9 +174,17 @@ export class SendcampaignComponent implements OnInit {
       
     }
     this.submitted = true;
+    const scheduledate = moment(this.phisingForm.value.date).format("YYYY-MM-DD");
+    const currentYear = moment().year();
+    this.maxDate = new Date(currentYear + 1, 2);
     if(this.phisingForm.invalid)
     return;
-    if(localStorage.getItem('name')=="" || localStorage.getItem('templateDescription') == "" || localStorage.getItem('templateHeading') == ""  || localStorage.getItem('emailSignature')=="")
+    if(this.res.length==null)
+    {
+      this.toastr.error("Please Check your CSV first")
+      return
+    }
+    if(localStorage.getItem('name')=="" || localStorage.getItem('templateDescription') == "" || localStorage.getItem('templateHeading') == "" || localStorage.getItem('emailSignature')=="" )
     {
       this.toastr.error("please EDIT the Fields")
       return;
@@ -142,8 +192,18 @@ export class SendcampaignComponent implements OnInit {
     if(localStorage.getItem('email1') == "")
     {
       this.toastr.error("please provide email id")
-      return
-    }  
+      return;
+    }
+    if (this.phisingForm.value.time== "")
+    {
+      this.toastr.error("Please Provide Time")
+      return;
+    }
+    if (this.phisingForm.value.timezone== "")
+    {
+      this.toastr.error("Please Provide TimeZone")
+      return;
+    }
     const formData :any= new FormData();
     let reqBody={
       'name': localStorage.getItem('name'),
@@ -159,6 +219,9 @@ export class SendcampaignComponent implements OnInit {
       'sendAttachment': localStorage.getItem('sendAttachment'),
       'attachmentName': localStorage.getItem('attachmentName'),
       'fileContent':localStorage.getItem('fileContent'),
+      'scheduleDate':scheduledate,
+      'scheduleTime':this.phisingForm.value.time,
+      'scheduleTimeZone':this.phisingForm.value.timezone,
       'victimEmails':this.res,
       'senderCredentials':JSON.parse(localStorage.getItem("users") || "[]"),
     }
@@ -171,12 +234,34 @@ export class SendcampaignComponent implements OnInit {
       type: "file/csv"
     });
     }
-    this.StoreData=false;
-    this._addCampaign.createCampaign(formData).subscribe((data)=>{
+    // else
+    // {
+    //   if(this.file.size == 0)
+    //   {
+
+    //     this.toastr.error("empty csv can not be uploaded");
+    //   }
+    //   else{
+    //   formData.append("file",this.text);
+    //   }
+    // }
+    let dataDialog = { title: 'Are you sure you want to Schedule campaign' };
+    const dialogRef = this.dialog.open(CampaignConfirmComponent, {
+      width: '513px',
+      data: dataDialog
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      console.log(result)
+   
+    if(result==true)
+    {
+    this.StoreData=false; 
+    this._addCampaign.schedulecampagin(formData).subscribe((data)=>{
       this.dialogRef.close()
       if(data){
         this.StoreData=true;
-        let dataDialog = { title: 'Campaign Sent Successfully!' };
+        let dataDialog = { title: 'Campaign Schedule Successfully!' };
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {
           width: '400px',
           height:'400px',
@@ -190,7 +275,8 @@ export class SendcampaignComponent implements OnInit {
       this.StoreData=true;
        if(err.status==200){
          console.log('err',err);
-       let dataDialog = { title: 'Campaign Sent Successfully!' };
+         this.dialogRef.close()
+       let dataDialog = { title: 'Campaign Scheduled Successfully!' };
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {
           width: '400px',
           height:'400px',
@@ -198,12 +284,32 @@ export class SendcampaignComponent implements OnInit {
         });
         dialogRef.afterClosed().subscribe(()=>{
           this.router.navigate(['main/dashboard']);
-        });
+        })
       }
       else{
         this.toastr.error("Error in adding campaign.");
       }
-  });
- 
+    });
   }
+});
+  }
+  moment(dat: any) {
+    throw new Error('Method not implemented.');
+  }
+  darkTheme: NgxMaterialTimepickerTheme = {
+    container: {
+        bodyBackgroundColor: '#66209D',
+        buttonColor: '#fff'
+    },
+    dial: {
+        dialBackgroundColor: '#66209D',
+    },
+    clockFace: {
+        clockFaceBackgroundColor: '#fff',
+        clockHandColor: '#312936;',
+        clockFaceTimeInactiveColor: 'black'
+    }
+};
+
+
 }
