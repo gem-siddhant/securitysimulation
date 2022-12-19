@@ -7,10 +7,11 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { AddCampaignService } from 'src/app/modules/main/service/add-campaign.service';
+import { CampaignConfirmComponent } from 'src/app/shared/campaign-confirm/campaign-confirm.component';
+import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
+import { CsvmessageComponent } from 'src/app/shared/csvmessage/csvmessage.component';
+import { SamplecsvComponent } from 'src/app/shared/samplecsv/samplecsv.component';
 import { json } from 'stream/consumers';
-import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
-import * as fs from 'fs' 
-import { CsvmessageComponent } from '../csvmessage/csvmessage.component';
 
 @Component({
   selector: 'app-sendcampaign',
@@ -95,6 +96,15 @@ export class SendcampaignComponent implements OnInit {
     console.log(this.res.length)  
   }  
  
+  }
+  samplecsv()
+  {
+    let dataDialog = {title:"CSV file not Provided"};
+    const dialogRef = this.dialog.open(SamplecsvComponent, {
+      width: '650px',
+      height: '330px',
+      data: dataDialog
+    });
   }
 
   sendnow(){
@@ -208,7 +218,19 @@ export class SendcampaignComponent implements OnInit {
     //   }
     // }
 
+    let dataDialog = { title: 'Are you sure you want to send campaign now' };
+    const dialogRef = this.dialog.open(CampaignConfirmComponent, {
+      width: '513px',
+      data: dataDialog
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      console.log(result)
 
+
+
+    if(result==true)
+    {
     this.StoreData=false;
     this._addCampaign.createCampaign(formData).subscribe((data)=>{
       this.dialogRef.close()
@@ -242,6 +264,6 @@ export class SendcampaignComponent implements OnInit {
         this.toastr.error("Error in adding campaign.");
       }
   });
- 
-  }
+}
+  }); }
 }

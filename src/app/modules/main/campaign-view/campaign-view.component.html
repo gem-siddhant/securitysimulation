@@ -46,9 +46,17 @@
 
   </div>
   <div class="row mt-4">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 left-bottom-center mb-3">
-      <button type="submit" mat-raised-button (click)="endcamp(); clickbtn=true;" [disabled]="clickbtn" class="endcamp p-2" [ngStyle]="{'background-color':clickbtn == false ? '#7A2AB4;' : 'grey' }">End Campaign</button>
-  </div>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 left-bottom-center mb-3">
+      <!-- <button type="submit" mat-raised-button (click)="endcamp(); clickbtn=true;" [disabled]="clickbtn" class="endcamp p-2" [ngStyle]="{'background-color':clickbtn == false ? '#7A2AB4;' : 'grey' }">End Campaign</button> -->
+      <button type="submit" *ngIf="this.isendactive==='true' && this.status=='SENT'" mat-raised-button (click)="endcamp();" class="endcamp p-2"  >End Campaign</button> 
+      <button type="submit" *ngIf="this.isendactive==='false' || (this.status=='FAILED' || this.status=='IN PROGRESS') " mat-raised-button class="endcamp2 p-2"  >End Campaign</button> 
+      
+      
+      <button type="submit" *ngIf="this.killcam==false && this.status=='IN PROGRESS'" mat-raised-button (click)="endcamp();" class="killcamp p-2 "  >Kill Campaign</button> 
+      <button type="submit" *ngIf="this.killcam==true || (this.status=='SENT' || this.status=='FAILED') " mat-raised-button class="killcamp2 p-2 "  >Kill Campaign</button> 
+
+
+    </div>
   </div>
 </div>
   <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 mt-1 circle-box">

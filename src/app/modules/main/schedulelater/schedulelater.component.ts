@@ -10,10 +10,12 @@ import { NgxMaterialTimepickerTheme } from 'ngx-material-timepicker';
 import { ToastrService } from 'ngx-toastr';
 import { count } from 'rxjs';
 import { AddCampaignService } from 'src/app/modules/main/service/add-campaign.service';
-import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 import { Pipe, PipeTransform } from '@angular/core';
 import { title } from 'process';
-import { CsvmessageComponent } from '../csvmessage/csvmessage.component';
+import { CsvmessageComponent } from 'src/app/shared/csvmessage/csvmessage.component';
+import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
+import { SamplecsvComponent } from 'src/app/shared/samplecsv/samplecsv.component';
+import { CampaignConfirmComponent } from 'src/app/shared/campaign-confirm/campaign-confirm.component';
 @Component({
   selector: 'app-schedulelater',
   templateUrl: './schedulelater.component.html',
@@ -126,8 +128,19 @@ export class SchedulelaterComponent implements OnInit {
    
   }
 
-  
+  samplecsv()
+  {
+    let dataDialog = {title:"CSV file not Provided"};
+    const dialogRef = this.dialog.open(SamplecsvComponent, {
+      width: '650px',
+      height: '330px',
+      data: dataDialog
+    });
+  }
   schedulelater(){
+
+
+
     if(this.csvcheck === false)
     {
       return
@@ -261,8 +274,18 @@ export class SchedulelaterComponent implements OnInit {
     //   formData.append("file",this.text);
     //   }
     // }
-
-    this.StoreData=false;  
+    let dataDialog = { title: 'Are you sure you want to Schedule campaign' };
+    const dialogRef = this.dialog.open(CampaignConfirmComponent, {
+      width: '513px',
+      data: dataDialog
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      console.log(result)
+   
+    if(result==true)
+    {
+    this.StoreData=false; 
     this._addCampaign.schedulecampagin(formData).subscribe((data)=>{
       this.dialogRef.close()
       if(data){
@@ -296,6 +319,8 @@ export class SchedulelaterComponent implements OnInit {
         this.toastr.error("Error in adding campaign.");
       }
     });
+  }
+});
   }
   moment(dat: any) {
     throw new Error('Method not implemented.');
