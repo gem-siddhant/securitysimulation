@@ -218,7 +218,7 @@ export class SendcampaignComponent implements OnInit {
     //   }
     // }
 
-    let dataDialog = { title: 'Are you sure you want to send campaign now' };
+    let dataDialog = { title: 'Are you sure you want to send campaign now?' };
     const dialogRef = this.dialog.open(CampaignConfirmComponent, {
       width: '513px',
       data: dataDialog
@@ -266,4 +266,8 @@ export class SendcampaignComponent implements OnInit {
   });
 }
   }); }
+
+  onClose() {
+    this.dialogRef.close();
+  }  
 }

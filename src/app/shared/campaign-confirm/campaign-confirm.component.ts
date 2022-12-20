@@ -22,6 +22,9 @@ export class CampaignConfirmComponent implements OnInit {
   {
     
   }
+    onClose() {
+    this.dialogRef.close();
+  } 
   close() {
       this.dialogRef.close();
       this.router.navigate(['main/campaign-view']);

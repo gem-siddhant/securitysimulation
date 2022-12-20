@@ -274,7 +274,7 @@ export class SchedulelaterComponent implements OnInit {
     //   formData.append("file",this.text);
     //   }
     // }
-    let dataDialog = { title: 'Are you sure you want to Schedule campaign' };
+    let dataDialog = { title: 'Are you sure you want to Schedule this campaign?' };
     const dialogRef = this.dialog.open(CampaignConfirmComponent, {
       width: '513px',
       data: dataDialog
@@ -340,5 +340,7 @@ export class SchedulelaterComponent implements OnInit {
     }
 };
 
-
+onClose() {
+  this.dialogRef.close();
+}  
 }

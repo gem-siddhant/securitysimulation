@@ -13,6 +13,8 @@ import { formatDate } from '@angular/common';
 import { not } from '@angular/compiler/src/output/output_ast';
 import { ReconfirmModalComponent } from 'src/app/shared/reconfirm-modal/reconfirm-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { CampaignConfirmComponent } from 'src/app/shared/campaign-confirm/campaign-confirm.component';
+import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
 
 @Component({
   selector: 'app-campaign-view',
@@ -63,6 +65,7 @@ test: any= "test";
 displayedColumns: string[] = ['sno','email', 'ip' , 'status'];
 pieChartPlugins:any = [];
 i: number = 1;
+id: string;
 @ViewChild(MatSort, { static: true }) sort!: MatSort;
   ngOnInit(): void {
     this.pieChartOptions = this.createOptions();
@@ -185,12 +188,83 @@ i: number = 1;
 
   endcamp()
   {
-    this.killcam=true;
-    let campstatus = localStorage.getItem("campstatus")
-    const dialogRef = this.dialog.open(ReconfirmModalComponent, {
-    width: '460px',
-    height: '230px',
-    }); 
-  }
+    this.id = localStorage.getItem('ID')
+    let dataDialog = { title: 'Are you sure you want to End this campaign?' };
+    const dialogRef = this.dialog.open(CampaignConfirmComponent, {
+      width: '513px',
+      data: dataDialog
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      console.log(result)
+      if(result==true)
+      {
+        this._mainService.endcampaign(this.id).subscribe((data)=>{
+          if(data)
+          {
+        localStorage.setItem("Campstatus",data.status)
+        let dataDialog = { title: 'Campaign Ended Successfully!' };
+        const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+          width: '400px',
+          height:'400px',
+          data: dataDialog
+        });
+        dialogRef.afterClosed().subscribe(()=>{
+          this._router.navigate(['main/campaign-view']);
+          window.location.reload()
+        })
+          }
+        })
+      }
 
+  }
+    )
+  }
+  killcamp()
+  {
+    this.id = localStorage.getItem('ID')
+    let dataDialog = { title: 'This functionality is under development' };
+    const dialogRef = this.dialog.open(CampaignConfirmComponent, {
+      width: '513px',
+      data: dataDialog
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      console.log(result)
+    })
+  }
+  // killcamp()
+  // {
+  //   this.id = localStorage.getItem('ID')
+  //   let dataDialog = { title: 'Are you sure you want to kill this campaign?' };
+  //   const dialogRef = this.dialog.open(CampaignConfirmComponent, {
+  //     width: '513px',
+  //     data: dataDialog
+  //   });
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     console.log(`Dialog result: ${result}`);
+  //     console.log(result)
+  //     if(result==true)
+  //     {
+  //       this._mainService.killcampaign(this.id).subscribe((data)=>{
+  //         if(data)
+  //         {
+  //       this.killcam = true    
+  //       localStorage.setItem("Campstatus",data.status)
+  //       let dataDialog = { title: 'Campaign Killed Successfully!' };
+  //       const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+  //         width: '400px',
+  //         height:'400px',
+  //         data: dataDialog
+  //       });
+  //       dialogRef.afterClosed().subscribe(()=>{
+  //         this._router.navigate(['main/campaign-view']);
+  //         window.location.reload()
+  //       })
+  //         }
+  //       })
+  //     }
+
+  // }
+  //   )}
 }
