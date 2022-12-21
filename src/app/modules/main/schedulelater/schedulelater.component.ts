@@ -76,6 +76,7 @@ export class SchedulelaterComponent implements OnInit {
     this.maxDate = new Date(currentYear + 1,3,31);
   }
   onChange(event: any) {
+    this.res=[]
     this.changeTriggered = true;
     this.file = event.target.files[0];
     const reader = new FileReader();
@@ -83,7 +84,6 @@ export class SchedulelaterComponent implements OnInit {
     reader.onload = () => {
     this.text = reader.result;
     var lines = this.text.split('\n');
-   
     for(var i=0;i<lines.length;i++)
     {
       var curr = lines[i].split('\n');
@@ -105,6 +105,7 @@ export class SchedulelaterComponent implements OnInit {
           data:dataDialog 
           
         });
+        // this.dialogRef.close();
         this.res = []
         this.csvcheck = false
       }
@@ -138,14 +139,17 @@ export class SchedulelaterComponent implements OnInit {
     });
   }
   schedulelater(){
-
-
-
-    if(this.csvcheck === false)
+    if(this.csvcheck === false && this.res.length==0) 
     {
+      let dataDialog = { title: 'Campaign Scheduled Successfully!' };
+      const dialogRef = this.dialog.open(CsvmessageComponent, {
+        width: '400px',
+        height:'430px',
+        data:dataDialog 
+      });
       return
     }
-    if(this.manager!='true' && this.res.length==0)
+    if((this.manager!='true') && this.res.length==0)
     {
       let dataDialog = {title:"CSV file not Provided"};
         const dialogRef = this.dialog.open(ConfirmationModalComponent, {
@@ -155,8 +159,13 @@ export class SchedulelaterComponent implements OnInit {
         });
         return
     }
+    if(this.phisingForm.value.radio==true)
+    {
+      this.res=[]
+    }
     if (this.res.length)
     {
+      this.phisingForm.value.radio=false
       let ed = Math.ceil(this.res.length/1500)
       let sender = JSON.parse(localStorage.getItem("users") || "[]");
       let differe = ed - sender.length
@@ -173,7 +182,6 @@ export class SchedulelaterComponent implements OnInit {
         })
         return
       }
-      
     }
     console.log(localStorage.getItem('name'))
     console.log(localStorage.getItem('file'))
@@ -274,6 +282,7 @@ export class SchedulelaterComponent implements OnInit {
     //   formData.append("file",this.text);
     //   }
     // }
+
     let dataDialog = { title: 'Are you sure you want to Schedule this campaign?' };
     const dialogRef = this.dialog.open(CampaignConfirmComponent, {
       width: '513px',
@@ -282,7 +291,6 @@ export class SchedulelaterComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
       console.log(result)
-   
     if(result==true)
     {
     this.StoreData=false; 
@@ -321,6 +329,7 @@ export class SchedulelaterComponent implements OnInit {
     });
   }
 });
+    
   }
   moment(dat: any) {
     throw new Error('Method not implemented.');
