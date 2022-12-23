@@ -58,6 +58,7 @@ export class SendcampaignComponent implements OnInit {
     );
   }
   onChange(event: any) {
+    this.res=[]
     this.changeTriggered = true;
     this.file = event.target.files[0];
     const reader = new FileReader();
@@ -106,8 +107,14 @@ export class SendcampaignComponent implements OnInit {
   }
 
   sendnow(){
-    if(this.csvcheck === false)
+    if(this.csvcheck === false && this.res.length==0) 
     {
+      let dataDialog = { title: 'Campaign Scheduled Successfully!' };
+      const dialogRef = this.dialog.open(CsvmessageComponent, {
+        width: '400px',
+        height:'430px',
+        data:dataDialog 
+      });
       return
     }
     if(this.manager!='true' && this.res.length==0)
@@ -120,8 +127,13 @@ export class SendcampaignComponent implements OnInit {
         });
         return
     }
+    if(this.phisingForm.value.radio==true)
+    {
+      this.res=[]
+    }
     if (this.res.length)
     {
+      this.phisingForm.value.radio=false
       let ed = Math.ceil(this.res.length/1500)
       let sender = JSON.parse(localStorage.getItem("users") || "[]");
       let differe = ed - sender.length
@@ -193,7 +205,7 @@ export class SendcampaignComponent implements OnInit {
     //   }
     // }
 
-    let dataDialog = { title: 'Are you sure you want to send campaign now' };
+    let dataDialog = { title: 'Are you sure you want to send campaign now?' };
     const dialogRef = this.dialog.open(CampaignConfirmComponent, {
       width: '513px',
       data: dataDialog
@@ -241,4 +253,8 @@ export class SendcampaignComponent implements OnInit {
   });
 }
   }); }
+
+  onClose() {
+    this.dialogRef.close();
+  }  
 }
