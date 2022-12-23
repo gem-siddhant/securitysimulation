@@ -36,7 +36,7 @@ export class MainService {
    }
    killcampaign(id:any){
     let end: any= Number(id);
-    return this.http.post<any>('killCampaign',end);
+    return this.http.post<any>('killBtn',end);
    }
    signUp(form:any){
       return this.http.post<any>('onboard/user',form);

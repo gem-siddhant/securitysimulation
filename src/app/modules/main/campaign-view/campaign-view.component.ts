@@ -220,23 +220,10 @@ id: string;
   }
     )
   }
-  killcamp()
-  {
-    this.id = localStorage.getItem('ID')
-    let dataDialog = { title: 'This functionality is under development' };
-    const dialogRef = this.dialog.open(CampaignConfirmComponent, {
-      width: '513px',
-      data: dataDialog
-    });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-      console.log(result)
-    })
-  }
   // killcamp()
   // {
   //   this.id = localStorage.getItem('ID')
-  //   let dataDialog = { title: 'Are you sure you want to kill this campaign?' };
+  //   let dataDialog = { title: 'This functionality is under development' };
   //   const dialogRef = this.dialog.open(CampaignConfirmComponent, {
   //     width: '513px',
   //     data: dataDialog
@@ -244,27 +231,40 @@ id: string;
   //   dialogRef.afterClosed().subscribe(result => {
   //     console.log(`Dialog result: ${result}`);
   //     console.log(result)
-  //     if(result==true)
-  //     {
-  //       this._mainService.killcampaign(this.id).subscribe((data)=>{
-  //         if(data)
-  //         {
-  //       this.killcam = true    
-  //       localStorage.setItem("Campstatus",data.status)
-  //       let dataDialog = { title: 'Campaign Killed Successfully!' };
-  //       const dialogRef = this.dialog.open(ConfirmationModalComponent, {
-  //         width: '400px',
-  //         height:'400px',
-  //         data: dataDialog
-  //       });
-  //       dialogRef.afterClosed().subscribe(()=>{
-  //         this._router.navigate(['main/campaign-view']);
-  //         window.location.reload()
-  //       })
-  //         }
-  //       })
-  //     }
-
+  //   })
   // }
-  //   )}
+  killcamp()
+  {
+    this.id = localStorage.getItem('ID')
+    let dataDialog = { title: 'Are you sure you want to kill this campaign?' };
+    const dialogRef = this.dialog.open(CampaignConfirmComponent, {
+      width: '513px',
+      data: dataDialog
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+      console.log(result)
+      if(result==true)
+      {
+        this._mainService.killcampaign(this.id).subscribe((data)=>{
+          if(data)
+          {
+        this.killcam = true    
+        localStorage.setItem("Campstatus",data.status)
+        let dataDialog = { title: 'Campaign Killed Successfully!' };
+        const dialogRef = this.dialog.open(ConfirmationModalComponent, {
+          width: '400px',
+          height:'400px',
+          data: dataDialog
+        });
+        dialogRef.afterClosed().subscribe(()=>{
+          this._router.navigate(['main/campaign-view']);
+          window.location.reload()
+        })
+          }
+        })
+      }
+
+  }
+    )}
 }

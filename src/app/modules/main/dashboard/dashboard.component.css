@@ -23,6 +23,17 @@
 a{
   text-decoration: none;
 }
+.heading2{
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px; 
+  color: white;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .heading{
   font-family: 'Poppins';
   font-style: normal;
