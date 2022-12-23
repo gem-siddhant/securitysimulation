@@ -259,7 +259,9 @@ id: string;
         });
         dialogRef.afterClosed().subscribe(()=>{
           this._router.navigate(['main/campaign-view']);
-          window.location.reload()
+          setTimeout(function() {
+            location.reload();
+          }, 10000);
         })
           }
         })
