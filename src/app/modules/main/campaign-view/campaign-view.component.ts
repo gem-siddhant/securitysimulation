@@ -253,15 +253,15 @@ id: string;
       console.log(result)
       // setTimeout(function() {
       // }, 10000);
-      this.StoreData=false;
-      const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
-      await sleep(10000);
+      this.StoreData=false;  
       if(result==true)
       {
-        this.StoreData=true;
-        this._mainService.killcampaign(this.id).subscribe((data)=>{
+        this._mainService.killcampaign(this.id).subscribe(async (data)=>{
+          const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
+          await sleep(10000);
           if(data)
-          {
+          {  
+            this.StoreData=true;
         this.killcam = true    
         localStorage.setItem("Campstatus",data.status)
         let dataDialog = { title: 'Campaign Killed Successfully!' };
