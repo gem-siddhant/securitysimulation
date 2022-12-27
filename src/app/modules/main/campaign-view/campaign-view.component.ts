@@ -15,6 +15,7 @@ import { ReconfirmModalComponent } from 'src/app/shared/reconfirm-modal/reconfir
 import { MatDialog } from '@angular/material/dialog';
 import { CampaignConfirmComponent } from 'src/app/shared/campaign-confirm/campaign-confirm.component';
 import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
+import { waitForAsync } from '@angular/core/testing';
 
 @Component({
   selector: 'app-campaign-view',
@@ -26,6 +27,7 @@ import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/co
 export class CampaignViewComponent implements OnInit {
 campaignId:any;
 endcampaignId:any;
+StoreData:boolean=true;
   datenow = new Date();
   nowFormatted: string;
   notdelivered: any;
@@ -244,11 +246,14 @@ id: string;
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
       console.log(result)
+      this.StoreData=false
       if(result==true)
       {
         this._mainService.killcampaign(this.id).subscribe((data)=>{
           if(data)
           {
+        this.StoreData=true
+        // setTimeout(killcamp, 7000);
         this.killcam = true    
         localStorage.setItem("Campstatus",data.status)
         let dataDialog = { title: 'Campaign Killed Successfully!' };
