@@ -168,8 +168,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
-      id:['',Validators.required],
-      password:['',Validators.required]
+      id:[''],
+      password:['']
     });
     if(localStorage.getItem('token')){
       this.router.navigate(["/main/dashboard"]);
