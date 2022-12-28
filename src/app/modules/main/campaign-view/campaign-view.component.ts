@@ -15,7 +15,8 @@ import { ReconfirmModalComponent } from 'src/app/shared/reconfirm-modal/reconfir
 import { MatDialog } from '@angular/material/dialog';
 import { CampaignConfirmComponent } from 'src/app/shared/campaign-confirm/campaign-confirm.component';
 import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
-import { waitForAsync } from '@angular/core/testing';
+import { ThemePalette } from '@angular/material/core';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-campaign-view',
@@ -43,6 +44,9 @@ StoreData:boolean=true;
        this.viewData={id:0,email:'',ipAddress:'',status:''};
        this.nowFormatted = formatDate(this.datenow, 'dd-MM-yyyy', 'en-US');
     }
+    color: ThemePalette = 'accent';
+    value = 50;
+    mode: ProgressSpinnerMode = 'indeterminate';
     nameCampaign:any;
     emailSubject:any;
     desc:any;
@@ -243,17 +247,21 @@ id: string;
       width: '513px',
       data: dataDialog
     });
-    dialogRef.afterClosed().subscribe(result => {
+   
+    dialogRef.afterClosed().subscribe(async result => {
       console.log(`Dialog result: ${result}`);
       console.log(result)
-      this.StoreData=false
+      // setTimeout(function() {
+      // }, 10000);
+      this.StoreData=false;  
       if(result==true)
       {
-        this._mainService.killcampaign(this.id).subscribe((data)=>{
+        this._mainService.killcampaign(this.id).subscribe(async (data)=>{
+          const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
+          await sleep(10000);
           if(data)
-          {
-        this.StoreData=true
-        // setTimeout(killcamp, 7000);
+          {  
+            this.StoreData=true;
         this.killcam = true    
         localStorage.setItem("Campstatus",data.status)
         let dataDialog = { title: 'Campaign Killed Successfully!' };
@@ -264,9 +272,7 @@ id: string;
         });
         dialogRef.afterClosed().subscribe(()=>{
           this._router.navigate(['main/campaign-view']);
-          setTimeout(function() {
-            location.reload();
-          }, 10000);
+          window.location.reload()
         })
           }
         })
