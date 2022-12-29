@@ -41,44 +41,44 @@ export class AuthService {
   getNotificationModalBoolean(){
     return this.notificationBoolean
   }
-  // loginMethod2(creds:any){
-  //   return this.http.post<any>('login', creds);
-  //  }
-  // setToken( email?: any,backend_token?:any) {
-  //   return new Promise<void>((resolve, reject) => {
-  //     localStorage.setItem('email',email);   
-  //     this.loginMethod(email,backend_token).subscribe((item: any)=> {
-  //     if (item)
-  //     {
-  //       localStorage.setItem('Manager',(item.data.isManager));
-  //       localStorage.setItem('token',(item.message));
-  //       localStorage.setItem('Profile',item.data.imageURL);
-  //       resolve();   
-  //     }
-  //     else{
-  //       reject();
-  //     }
+  loginMethod2(creds:any){
+    return this.http.post<any>('login', creds);
+   }
+  setToken( email?: any,backend_token?:any) {
+    return new Promise<void>((resolve, reject) => {
+      localStorage.setItem('email',email);   
+      this.loginMethod(email).subscribe((item: any)=> {
+      if (item)
+      {
+        localStorage.setItem('Manager',(item.data.isManager));
+        localStorage.setItem('token',(item.message));
+        localStorage.setItem('Profile',item.data.imageURL);
+        resolve();   
+      }
+      else{
+        reject();
+      }
   
-  //   },
-  //   //(err: { status: number; })=>{ //link expired or request is already responded for the user.
-  //     (err: { status: number; })=>{ //link expired or request is already responded for the user.
-  //       if(err.status==404)
-  //       {
-  //       let dataDialog = { title: 'You Are NOT Authorized to use this Application' };
-  //        const dialogRef = this.dialog.open(InfomodalComponent, {
-  //          width: '513px',
-  //          data: dataDialog
-  //        });
-  //        dialogRef.afterClosed().subscribe(()=>{
-  //          this.router.navigate(['main/login']);
-  //        })
-  //      }
-  //     }
+    },
+    //(err: { status: number; })=>{ //link expired or request is already responded for the user.
+      (err: { status: number; })=>{ //link expired or request is already responded for the user.
+        if(err.status==404)
+        {
+        let dataDialog = { title: 'You Are NOT Authorized to use this Application' };
+         const dialogRef = this.dialog.open(InfomodalComponent, {
+           width: '513px',
+           data: dataDialog
+         });
+         dialogRef.afterClosed().subscribe(()=>{
+           this.router.navigate(['main/login']);
+         })
+       }
+      }
     
     
-  //   );
-  // })
-  //  }
+    );
+  })
+   }
 
   }
 
