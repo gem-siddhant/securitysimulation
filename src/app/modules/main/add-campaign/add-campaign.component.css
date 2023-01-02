@@ -20,17 +20,16 @@ color: #ffffff;
 background: #461A8F;
 border-radius: 5px;
 align-items: center;
-left: 13%;
+left: 5.5%;
 margin-bottom: 25%;
-
 padding-top:0.5%;
-
+}
+.choose{
+  left:5%;
 }
 .inline-block {
   display: inline-block;
-  padding-left: 60px;
-  width: 340px;
-  height: 100px;
+  
 }
 #attachment_btn {
   font-family: Poppins;
@@ -139,12 +138,12 @@ margin-left: 11%;
 .temp-pad{
   padding-top: 6%;
   text-align: center;
-  padding-right: 8%;
 }
 
 .template-image{
-  height: 350px;
+  height: 300px;
   padding-right: 20px;
+  backdrop-filter: blur(5px);
 }
 .fill-details{
   position: absolute;
@@ -210,5 +209,11 @@ input[type=radio]{
 .addemail{
   height:60px;
   width: 7.1%;
+}
+.custombtn{
+  background-color: #461A8F;
+  color: #FFFFFF;
+  border-radius: 15px;
+  border: none;
 }
 }

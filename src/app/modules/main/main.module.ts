@@ -25,6 +25,7 @@ import { MatTableExporterModule } from 'mat-table-exporter';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { OnboardresComponent } from './onboard/onboardres/onboardres.component';
+import { CustomtemplateComponent } from './customtemplate/customtemplate.component';
 @NgModule({
   declarations: [
     GiftComponent,
@@ -33,7 +34,8 @@ import { OnboardresComponent } from './onboard/onboardres/onboardres.component';
     DashboardComponent,
     CampaignViewComponent,
     SignUpComponent,
-    OnboardresComponent
+    OnboardresComponent,
+    CustomtemplateComponent
   ],
   imports: [
     CommonModule,
