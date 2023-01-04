@@ -71,8 +71,8 @@ addresses: any = [{
   password: ''
 }];
 manager:any = localStorage.getItem('Manager');
-@Output() close: EventEmitter<any> = new EventEmitter();
-testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
+// @Output() close: EventEmitter<any> = new EventEmitter();
+// testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   constructor(
     private _addCampaign:AddCampaignService,
     private papa: Papa,

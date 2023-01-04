@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
@@ -49,6 +49,7 @@ export class SchedulelaterComponent implements OnInit {
   myFooList: any = ['Some Item', 'Item Second', 'Other In Row', 'What to write', 'Blah To Do'];
   res: any = [];
   csvcheck : boolean= true;
+
   constructor( public dialogRef: MatDialogRef<SchedulelaterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _addCampaign:AddCampaignService,
@@ -60,7 +61,6 @@ export class SchedulelaterComponent implements OnInit {
       this.credsForm = this.formBuilder.group({});
     }
 
-   
   ngOnInit(): void {
     this.phisingForm = this.formBuilder.group(
       {
