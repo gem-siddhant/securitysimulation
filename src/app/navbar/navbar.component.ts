@@ -14,7 +14,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { Router } from '@angular/router';
 import { ScheduleCampComponent } from '../shared/schedule-camp/schedule-camp.component';
 import { name } from '@azure/msal-angular/packageMetadata';
-import { ThisReceiver } from '@angular/compiler';
+import { ThisReceiver, ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-navbar',
@@ -27,6 +27,8 @@ export class NavbarComponent implements OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   durationInSeconds = 5;
   empId: any;
+  changecolor: any = 'false';
+  changecountercheck: number = 0;
   navBool:boolean=false;
   mobile: boolean;
   isLoggedIn: boolean = false;
@@ -41,8 +43,12 @@ export class NavbarComponent implements OnInit {
   unreadData:any;
   currentDate:any;
   campaigns:any;
+  theme:string=''
+  color:string=''
+  currenttheme: string = sessionStorage.getItem('theme')
   content:string="Downloading your User Manual";
   profile=localStorage.getItem('Profile')
+  static changecolor: any;
   constructor(private _auth:AuthService,
     private _schedule: MainService,
     private dialog:MatDialog,
@@ -50,9 +56,8 @@ export class NavbarComponent implements OnInit {
     private toastr:ToastrService) {
     this.mobile = false;
   }
-
-  ngOnInit() {
-
+  
+ngOnInit() {
   }
   getUser(){
     return localStorage.getItem('token');
@@ -64,6 +69,27 @@ Logout(){
 toogletag(content:any )
 {
   this.toastr.show(content);
+}
+changetheme()
+{
+  this.changecountercheck++;
+  if(this.changecountercheck == 1)
+  {
+  this.changecolor = 'true';
+  console.log("dark theme on ")
+  console.log(this.changecolor)
+  sessionStorage.setItem('theme',this.changecolor)
+  }
+  if(this.changecountercheck == 2)
+  {
+    this.changecolor = 'false';
+    this.changecountercheck = 0
+    console.log("light theme on")
+    console.log(this.changecolor)
+    sessionStorage.setItem('theme',this.changecolor)
+  }
+
+  console.log(this.changecountercheck)
 }
 scheduled()
 {
@@ -95,8 +121,6 @@ scheduled()
 let a = localStorage.getItem('heading')
 console.log(a)
 }
-}
-function positionClass(content: any, positionClass: any, arg2: string) {
-  throw new Error('Function not implemented.');
+
 }
 

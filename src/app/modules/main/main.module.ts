@@ -1,3 +1,4 @@
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
@@ -25,6 +26,8 @@ import { MatTableExporterModule } from 'mat-table-exporter';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { OnboardresComponent } from './onboard/onboardres/onboardres.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ɵAnimationGroupPlayer } from '@angular/animations';
 @NgModule({
   declarations: [
     GiftComponent,
@@ -54,7 +57,8 @@ import { OnboardresComponent } from './onboard/onboardres/onboardres.component';
     ToastrModule.forRoot(),
     MatProgressSpinnerModule,
     MatDatepickerModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+    MatSlideToggleModule
   ]
 })
 export class MainModule { }

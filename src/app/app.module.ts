@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -93,6 +94,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     ReactiveFormsModule,
     MatDialogModule,
     MatTooltipModule,
+    MatSlideToggleModule
   ],
   providers: [ LoaderService,
     {

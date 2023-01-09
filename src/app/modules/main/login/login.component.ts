@@ -1,4 +1,5 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, HostBinding, Inject, OnInit } from '@angular/core';
+import {light} from 'src/app/shared/themes/light-theme/lightcolor';
 import {
   FormGroup,
   FormGroupDirective,
@@ -22,6 +23,7 @@ import { ResponsiveService } from 'src/app/services/responsive.service';
 import { AddCampaignService } from '../service/add-campaign.service';
 import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
 import { InfomodalComponent } from 'src/app/shared/infomodal/infomodal.component';
+import { ThemePalette } from '@angular/material/core';
 
 @Component({
   selector: 'app-login',
@@ -31,6 +33,7 @@ import { InfomodalComponent } from 'src/app/shared/infomodal/infomodal.component
 export class LoginComponent implements OnInit {
   isIframe = false;
   loginDisplay = false;
+  loginForm:FormGroup;
   private readonly _destroying$ = new Subject<void>();
   mobile: boolean = false;
   status?: number;
@@ -48,8 +51,11 @@ export class LoginComponent implements OnInit {
     private toastr: ToastrService) {
 
   }
+  color:string='';
 
   ngOnInit(): void {
+    this.color = light.button;
+    console.log(this.color)
     this.isIframe = window !== window.parent && !window.opener;
     this.msalBroadcastService.inProgress$
       .pipe(
@@ -59,7 +65,14 @@ export class LoginComponent implements OnInit {
       .subscribe(() => {
         this.setLoginDisplay();
       });
-
+      localStorage.setItem('email',"ayush.tiwary@Geminisolutions.com")
+        this.loginForm = this.formBuilder.group({
+            id:[''],
+            password:['']
+          });
+          if(localStorage.getItem('email')){
+            this.router.navigate(["/main/dashboard"]);
+          }
     console.log('LOGIN COMPONENT');
     this.onResize();
     this._responsiveService.checkWidth();
@@ -111,6 +124,28 @@ export class LoginComponent implements OnInit {
     },
     );
   }
+  submit(){
+      console.log("login form hit")
+        if(this.loginForm.invalid)
+        return;
+        let obj={
+          "email":"ayush.tiwary@Geminisolutions.com",
+        }
+        this._auth.loginMethod(obj).subscribe((data)=>{
+          if(data){
+            console.log(data.data);
+            console.log(data.message);
+            // localStorage.setItem('token',data.message);
+            localStorage.setItem('email',data.data.email);
+            this.router.navigate(["/main/dashboard"]);
+          }
+        },err=>{
+          this.toastr.error("Error in loading data");
+        })
+      }
+    
+
+
   // loginWithMicrosoft(){
   //   if (this.msalGuardConfig.interactionType === InteractionType.Popup) {
   //     if (this.msalGuardConfig.authRequest){
