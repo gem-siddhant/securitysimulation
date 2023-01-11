@@ -90,3 +90,9 @@
   .btn:focus {
     box-shadow: none;
   }
+  .name{
+    display: inline-block;
+  }
+  .first{
+    display: inline-block;
+  }
