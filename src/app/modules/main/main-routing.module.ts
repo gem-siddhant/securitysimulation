@@ -2,6 +2,7 @@ import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/AuthGuard/auth.guard';
 import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
+import { PageNotFoundComponent } from 'src/app/shared/page-not-found/page-not-found.component';
 import { AddCampaignComponent } from './add-campaign/add-campaign.component';
 import { CampaignViewComponent } from './campaign-view/campaign-view.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -19,8 +20,8 @@ const routes: Routes = [
   component:LoginComponent
 },
   {
-  path:'gifts',
-  component: GiftComponent,
+  path:'page404',
+  component: PageNotFoundComponent,
 },{
   path:'add-campaign',
   canActivate:[AuthGuard],
