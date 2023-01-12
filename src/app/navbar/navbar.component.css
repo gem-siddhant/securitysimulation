@@ -1,23 +1,23 @@
 .navbar {
-  background: blue;
+  background: linear-gradient(180deg, #013E3F 0%, #01243C 100%);
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
-  position: sticky;
   top: 0px;
-  z-index: 200;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 1rem;
+  z-index: 2;
+  display:inline-block;
   padding-right: 0;
   height: 100vh;
   position: fixed;
 }
-.vertical-align {
-  display: flex;
-justify-content: end;
-  align-items: center;
+.sidebar{
+  display: block;
+  margin-left: 1vw;
+  margin-top: 3vh;
 }
-
+@media screen and (max-height: 450px) {
+  #navbar { 
+ display: none;
+  }
+ }
 .logo{
   margin-left: 8%;
   height: 40px;
@@ -30,16 +30,4 @@ justify-content: end;
   border: none;
   background:transparent; 
   padding: 20px;
-}
-.logo1{
-  margin-left: 8%;
-  height: 40px;
-  border-radius: 50%;
-}
-#profile-image {
-  border-radius: 50%;
-  height: 40px;
-  width: 40px;
-  margin-left: 5%;
-  margin-right: 5%;
 }

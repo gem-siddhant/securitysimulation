@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, ViewChildren, QueryList, Inject, Injectable } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { imgconst } from '../shared/Constants/constants';
 import {
   MatSnackBar,
   MatSnackBarHorizontalPosition,
@@ -45,6 +46,7 @@ export class NavbarComponent implements OnInit {
   campaigns:any;
   theme:string=''
   color:string=''
+  simulationlogo :string = '';
   currenttheme: string = sessionStorage.getItem('theme')
   content:string="Downloading your User Manual";
   profile=localStorage.getItem('Profile')
@@ -58,6 +60,7 @@ export class NavbarComponent implements OnInit {
   }
   
 ngOnInit() {
+  this.simulationlogo = imgconst.simulationlog
   }
   getUser(){
     return localStorage.getItem('token');
