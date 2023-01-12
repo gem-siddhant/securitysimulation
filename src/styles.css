@@ -20,7 +20,7 @@ body {
    
    /* Set a background color that will be displayed
    while the background image is loading */
-   /* background: white */
+   background: rgb(121, 60, 60);
    
 }
 .timepicker-overlay {
