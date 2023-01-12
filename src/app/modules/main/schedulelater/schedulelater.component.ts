@@ -255,7 +255,7 @@ export class SchedulelaterComponent implements OnInit {
     console.log(this.phisingForm.value.tzone)
     let con = JSON.stringify(reqBody);
     formData.append("details",con);
-    const dummyimg = "../../../../assets/images/click.png"
+    const dummyimg = "../dumyimg/click.png"
     var fallbackimg = new File(["foo"], dummyimg, {
       type: "file/png"
     });
@@ -264,7 +264,11 @@ export class SchedulelaterComponent implements OnInit {
       formData.append('file',this.imgfile)
     }
     else{
-      formData.append('file',fallbackimg)
+      const localfile = "\dumyimg\click.png"
+      var local = new File(["foo"], localfile, {
+        type: "file/csv"
+      });
+      formData.append('file',local)
     }
     if(this.manager=='true')
     {

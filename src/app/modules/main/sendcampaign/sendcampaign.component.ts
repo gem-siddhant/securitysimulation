@@ -42,6 +42,7 @@ export class SendcampaignComponent implements OnInit {
   csvcheck : boolean= true;
   manager:any = localStorage.getItem('Manager');
   message:any;
+  dummyimg: File;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
   public dialogRef: MatDialogRef<SendcampaignComponent>,
   private _addCampaign:AddCampaignService,
@@ -203,23 +204,21 @@ export class SendcampaignComponent implements OnInit {
     console.log(this.phisingForm.value.tzone)
     let con = JSON.stringify(reqBody);
     formData.append("details",con);
-    const dummyimg = "../../../../assets/images/click.png"
-    var fallbackimg = new File(["foo"], dummyimg, {
-      type: "file/png"
-    });
     if(this.imgfile!=null)
     {
       formData.append('file',this.imgfile)
     }
     else{
-      formData.append('file',fallbackimg)
+      const localfile = "\dumyimg\click.png"
+      var local = new File(["foo"], localfile, {
+        type: "file/png"
+      });
+      formData.append('file',local)
     }
     if(this.manager=='true')
     {
-    const localfile = "../../../../assets/pdf/fallbackcsv.csv"
-    var local = new File(["foo"], localfile, {
-      type: "file/csv"
-    });
+    
+   
       // if(this.file!=null && this.file.size==0)
       // {
       //   this.toastr.error("empty csv can not be uploaded");
