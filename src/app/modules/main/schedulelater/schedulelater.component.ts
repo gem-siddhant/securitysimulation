@@ -255,7 +255,17 @@ export class SchedulelaterComponent implements OnInit {
     console.log(this.phisingForm.value.tzone)
     let con = JSON.stringify(reqBody);
     formData.append("details",con);
-    formData.append('file',this.imgfile)
+    const dummyimg = "../../../../assets/images/click.png"
+    var fallbackimg = new File(["foo"], dummyimg, {
+      type: "file/png"
+    });
+    if(this.imgfile!=null)
+    {
+      formData.append('file',this.imgfile)
+    }
+    else{
+      formData.append('file',fallbackimg)
+    }
     if(this.manager=='true')
     {
     const localfile = "../../../../assets/pdf/fallbackcsv.csv"
