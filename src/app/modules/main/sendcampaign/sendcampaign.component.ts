@@ -5,6 +5,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { ThrottlingConstants } from '@azure/msal-common/dist/utils/Constants';
 import { ToastrService } from 'ngx-toastr';
 import { AddCampaignService } from 'src/app/modules/main/service/add-campaign.service';
 import { CampaignConfirmComponent } from 'src/app/shared/campaign-confirm/campaign-confirm.component';
@@ -12,7 +13,7 @@ import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/co
 import { CsvmessageComponent } from 'src/app/shared/csvmessage/csvmessage.component';
 import { SamplecsvComponent } from 'src/app/shared/samplecsv/samplecsv.component';
 import { json } from 'stream/consumers';
-
+import { FormdataService } from '../service/formdata.service';
 @Component({
   selector: 'app-sendcampaign',
   templateUrl: './sendcampaign.component.html',
@@ -27,6 +28,7 @@ export class SendcampaignComponent implements OnInit {
   submitted = false;
   test: any = null;
   value = 50;
+  imgfile:File;
   mode: ProgressSpinnerMode = 'indeterminate';
   color: ThemePalette = 'primary';
   file: File = this.test;
@@ -38,12 +40,15 @@ export class SendcampaignComponent implements OnInit {
   res : any = [];
   csvcheck : boolean= true;
   manager:any = localStorage.getItem('Manager');
+  message:any;
+  dummyimg: File;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any,
   public dialogRef: MatDialogRef<SendcampaignComponent>,
   private _addCampaign:AddCampaignService,
   private dialog:MatDialog,private router:Router,
   private formBuilder: FormBuilder,
   private sanitized: DomSanitizer,
+  private shared: FormdataService,
   private toastr:ToastrService) {
     this.phisingForm = this.formBuilder.group({});
     this.credsForm = this.formBuilder.group({}); 
@@ -107,6 +112,8 @@ export class SendcampaignComponent implements OnInit {
   }
 
   sendnow(){
+    this.message = this.shared.getMessage()
+    this.imgfile = this.shared.getfile()
     if(this.csvcheck === false && this.res.length==0) 
     {
       let dataDialog = { title: 'Campaign Scheduled Successfully!' };
@@ -156,42 +163,69 @@ export class SendcampaignComponent implements OnInit {
     this.submitted = true;
     if(this.phisingForm.invalid)
     return;
-    if(localStorage.getItem('name')=="" || localStorage.getItem('templateDescription') == "" || localStorage.getItem('templateHeading') == ""  || localStorage.getItem('emailSignature')=="")
-    {
-      this.toastr.error("please EDIT the Fields")
-      return;
-    }
-    if(localStorage.getItem('email1') == "")
-    {
-      this.toastr.error("please provide email id")
-      return
-    }  
+    // if(localStorage.getItem('name')=="" || localStorage.getItem('templateDescription') == "" || localStorage.getItem('templateHeading') == ""  || localStorage.getItem('emailSignature')=="")
+    // {
+    //   this.toastr.error("please EDIT the Fields")
+    //   return;
+    // }
+    // if(localStorage.getItem('email1') == "")
+    // {
+    //   this.toastr.error("please provide email id")
+    //   return
+    // }
+    // if(localStorage.getItem('password') == "")
+    // {
+    //   this.toastr.error("please provide password")
+    //   return
+    // }
+  
     const formData :any= new FormData();
     let reqBody={
-      'name': localStorage.getItem('name'),
-      'templateDescription':localStorage.getItem('templateDescription'),
-      'templateAmount':localStorage.getItem('templateAmount'),
-      'templateNo':localStorage.getItem('templateNo'),
-      'templateRewardType':localStorage.getItem('templateRewardType'),
-      'templateHeading':localStorage.getItem('templateHeading'),
-      'createdBy':localStorage.getItem('email'),
+      'name': this.message.name,
+      'templateDescription': this.message.templateDescription,
+      'templateAmount':this.message.templateAmount,
+      'templateNo':this.message.templateNo,
+      'templateRewardType':this.message.templateRewardType,
+      'templateHeading':this.message.templateHeading,
+      'createdBy':this.message.createdBy,
       'sendToReporters' : this.phisingForm.value.radio,
-      'addNote' : localStorage.getItem('addNote'),
-      'emailSignature': localStorage.getItem('emailSignature'),
-      'sendAttachment': localStorage.getItem('sendAttachment'),
-      'attachmentName': localStorage.getItem('attachmentName'),
-      'fileContent':localStorage.getItem('fileContent'),
+      'addNote': this.message.addNote,
+      'emailSignature': this.message.emailSignature,
+      'sendAttachment':this.message.sendAttachment,
+      'attachmentName':this.message.attachmentName,
+      'fileContent':this.message.fileContent,
       'victimEmails':this.res,
       'senderCredentials':JSON.parse(localStorage.getItem("users") || "[]"),
     }
     let con = JSON.stringify(reqBody);
     formData.append("details",con);
+    if(this.imgfile!=null)
+    {
+      formData.append('file',this.imgfile)
+    }
+    else{
+      const localfile = "\dumyimg\click.png"
+      var local = new File(["foo"], localfile, {
+        type: "file/png"
+      });
+      formData.append('file',local)
+    }
     if(this.manager=='true')
     {
-    const localfile = "../../../../assets/pdf/fallbackcsv.csv"
-    var local = new File(["foo"], localfile, {
-      type: "file/csv"
-    });
+    
+   
+      // if(this.file!=null && this.file.size==0)
+      // {
+      //   this.toastr.error("empty csv can not be uploaded");
+       
+      // }
+      // if(this.phisingForm.value.radio==true){
+        
+      //   formData.append("file",local);
+      // }
+      // else{
+      //   formData.append("file",this.file)
+      // }
     }
     // else
     // {

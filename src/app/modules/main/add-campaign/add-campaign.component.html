@@ -24,37 +24,57 @@
 
 <!--checking whether manager or not-->
   <form [formGroup]="phisingForm">
-    <div class="row mb-3">
-      <div class="col-lg-9 col-md-6 col-sm-5 col-xs-5 sub-head">
-       Choose Template
-      </div>
-  <div class="row temp-pad mb-4">
+    <div class="container">
+      <div class="row mb-3 ">
+        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 offset-1 sub-head">
+         Choose Template
+        </div>
+  </div>
 
+  <div class="row temp-pad mb-4">
      <mat-radio-group formControlName="tempate_select" aria-label="Select an option">
-    <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> -->
-      <div class=" row col-lg-4 col-md-4 col-sm-2 col-xs-2 inline-block">
-    <img class="template-image mb-2" src="../../../../assets/images/template1.png" style="width: 100%;">
+    <div class="container align-center col-lg-12 mx-auto">
+      <div class=" row col-lg-3 col-md-3 col-sm-6 col-xs-6 inline-block ">
+    <img class="template-image mb-2" src="../../../../assets/images/template1.png" style="width: 100%; ">
     <mat-radio-button
     (click)="getPreFilledData(1)" [value]=1 style="color: white;">Amazon Template</mat-radio-button>
   </div>
-  <!-- </div> -->
+
   <!-- <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2"> -->
-    <div class=" row col-lg-4 col-md-2 col-sm-2 col-xs-2 mt-2 inline-block">
+    <div class=" row col-lg-3 col-md-3 col-sm-6 col-xs-6 mt-2 inline-block">
     <img class="template-image mb-2" src="../../../../assets/images/accounts.png" style="width: 100%;">
     <mat-radio-button (click)="getPreFilledData(3)" [value]=3 style="color: white;">Accounts Template</mat-radio-button>
     </div>
   <!-- </div> -->
-  <div class=" row col-lg-4 col-md-2 col-sm-2 col-xs-2 mt-2 inline-block">
+  <div class=" row col-lg-3 col-md-3 col-sm-6 col-xs-6 mt-2 inline-block">
     <img class="template-image mb-2" src="../../../../assets/images/macbook_template.jpeg" style="width: 100%;">
     <mat-radio-button (click)="getPreFilledData(5)"  [value]=5 style="color: white;">IT Template</mat-radio-button>
+    </div>
+
+    <div class=" row col-lg-3 col-md-3 col-sm-6 col-xs-6 mt-2 inline-block">
+      <img class="template-image mb-2" src="../../../../assets/images/customtemp.jpg" style="width: 96%;">
+      <mat-radio-button (click)="getPreFilledData(0)" [value]=0 style="color: white;">Custom template</mat-radio-button>
+    </div>
     </div>
   </mat-radio-group>
 </div>
 </div>
+
+
+<div class="container mt-4 align-center offset-4" >
+  <div class="row col-lg-4 col-md-4 col-sm-4 col-xs-4">
+    <button routerLink="/main/customtemplate" class="btn btn-block align-center mt-2 custombtn pop-on-hover" *ngIf="this.phisingForm.value.tempate_select=='0'">Create your own custom template</button>
+  </div>
+</div>
+
 <div *ngIf="manager==='false'" style="margin-bottom: 5%;">
-  <div class="sub-head row col-lg-9 col-md-6 col-sm-5 col-xs-5 mb-5" style="padding-left: 1%;">Fill in the details</div>
   <div class="row" *ngIf="this.phisingForm.value.tempate_select!=0">
-    <div class="col-lg-9 col-md-6 col-sm-6 col-xs-6 form-box">
+    <div class="row mb-3 ">
+      <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 offset-1 choose sub-head">
+       Choose Template
+      </div>
+</div>
+    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 form-box">
       <div class="first row col-lg-12 col-md-12 col-sm-12 col-xs-6" style="padding-top: 1%; font-size: medium;color: rgb(169, 23, 23)">
         <Strong>Note:- </Strong>
         Please Edit all the fields to create the campaign 

@@ -44,6 +44,7 @@ import { SendcampaignComponent } from './modules/main/sendcampaign/sendcampaign.
 import { SchedulelaterComponent } from './modules/main/schedulelater/schedulelater.component';
 import { ReconfirmModalComponent } from './shared/reconfirm-modal/reconfirm-modal.component';
 import { CampaignConfirmComponent } from './shared/campaign-confirm/campaign-confirm.component';
+import { AddCampaignComponent } from './modules/main/add-campaign/add-campaign.component';
 
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
