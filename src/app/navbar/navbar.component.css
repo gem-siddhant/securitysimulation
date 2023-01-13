@@ -3,31 +3,71 @@
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
   top: 0px;
   z-index: 2;
-  display:inline-block;
+  display:block;
+  height: 100%;
   padding-right: 0;
-  height: 100vh;
   position: fixed;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.navbar::-webkit-scrollbar-thumb{
+  background-color: #013E3F;
+  border-radius: 10px;
+}
+.navbar::-webkit-scrollbar {
+  width: 2px;               /* width of the entire scrollbar */
 }
 .sidebar{
   display: block;
   margin-left: 1vw;
   margin-top: 3vh;
+  padding: 2rem;
 }
-@media screen and (max-height: 450px) {
-  #navbar { 
+@media screen and (max-height: 500px) {
+  .navbar { 
  display: none;
   }
  }
-.logo{
-  margin-left: 8%;
-  height: 40px;
-  
+.topbar{
+  position: sticky;
 }
-.logout{
-  margin-right: 10%;
+
+
+.texttype{
+  font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 18px;
+/* identical to box height */
+color: #FFFFFF;
+mix-blend-mode: normal;
 }
-#info{
-  border: none;
-  background:transparent; 
-  padding: 20px;
+
+.create{
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  text-align: center;
+  color: #013E40;
+}
+@media screen and (min-height: 800px) {
+.create { 
+ display: none;
+  }
+ }
+.campbtn{
+float:right;
+margin-top: 20vh;
+position: relative;
+border-radius: 5%;
+}
+
+
+
+mat-icon{
+ margin-block-end: auto;
 }

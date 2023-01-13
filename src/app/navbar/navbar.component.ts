@@ -47,6 +47,7 @@ export class NavbarComponent implements OnInit {
   theme:string=''
   color:string=''
   simulationlogo :string = '';
+  logoutlogo : string = '';
   currenttheme: string = sessionStorage.getItem('theme')
   content:string="Downloading your User Manual";
   profile=localStorage.getItem('Profile')
@@ -61,6 +62,7 @@ export class NavbarComponent implements OnInit {
   
 ngOnInit() {
   this.simulationlogo = imgconst.simulationlog
+  this.logoutlogo = imgconst.logoutlog
   }
   getUser(){
     return localStorage.getItem('token');
