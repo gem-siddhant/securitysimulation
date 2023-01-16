@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ViewChildren, QueryList, Inject, Injectable } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewChildren, QueryList, Inject, Injectable, EventEmitter, Output } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { imgconst } from '../shared/Constants/constants';
@@ -24,6 +24,7 @@ import { ThisReceiver, ThrowStmt } from '@angular/compiler';
 })
 
 export class NavbarComponent implements OnInit {
+  @Output() sidenav: EventEmitter<any> = new EventEmitter();
   horizontalPosition: MatSnackBarHorizontalPosition = 'end';
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
   durationInSeconds = 5;
@@ -52,6 +53,8 @@ export class NavbarComponent implements OnInit {
   content:string="Downloading your User Manual";
   profile=localStorage.getItem('Profile')
   static changecolor: any;
+  isOpen = false;
+  isSideBarOpened = true;
   constructor(private _auth:AuthService,
     private _schedule: MainService,
     private dialog:MatDialog,
@@ -75,6 +78,11 @@ toogletag(content:any )
 {
   this.toastr.show(content);
 }
+toggle()
+{
+  this.sidenav.emit();
+}
+// }
 changetheme()
 {
   this.changecountercheck++;

@@ -1,3 +1,68 @@
+.navbar {
+  background: linear-gradient(180deg, #013E3F 0%, #01243C 100%);
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  top: 0px;
+  z-index: 2;
+  display:inline-block;
+  height: 100%;
+  padding-right: 0;
+  position: fixed;
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.navbar::-webkit-scrollbar-thumb{
+  background-color: #013E3F;
+  border-radius: 10px;
+}
+.navbar::-webkit-scrollbar {
+  width: 2px;               /* width of the entire scrollbar */
+}
 .sidebar{
-  position: relative;
+  display: inline-block;
+  margin-left: 1vw;
+  margin-top: 3vh;
+  padding: 2rem;
+}
+
+.topbar{
+  position: sticky;
+}
+
+#nav{
+  z-index: 2;
+}
+
+.texttype{
+  font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 12px;
+line-height: 18px;
+/* identical to box height */
+color: #FFFFFF;
+mix-blend-mode: normal;
+}
+
+.create{
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  text-align: center;
+  color: #013E40;
+  border-radius: 10px
+}
+.campbtn{
+margin-top: 25vh;
+position: relative;
+width: 30vh;
+}
+
+.home{
+  width:20vw;
+  margin-left: 20% ;
+}
+mat-icon{
+ margin-block-end: auto;
 }

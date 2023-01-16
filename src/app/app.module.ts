@@ -46,6 +46,8 @@ import { SchedulelaterComponent } from './modules/main/schedulelater/schedulelat
 import { ReconfirmModalComponent } from './shared/reconfirm-modal/reconfirm-modal.component';
 import { CampaignConfirmComponent } from './shared/campaign-confirm/campaign-confirm.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import {MatToolbarModule} from '@angular/material/toolbar'
 
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
@@ -96,7 +98,10 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     ReactiveFormsModule,
     MatDialogModule,
     MatTooltipModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatToolbarModule
   ],
   providers: [ LoaderService,
     {
