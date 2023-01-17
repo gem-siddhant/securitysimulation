@@ -1,7 +1,18 @@
 .t1{
   width: 100%;
 }
-
+.body::-webkit-scrollbar-thumb{
+  background-color: #013E3F;
+  border-radius: 10px;
+}
+.body::-webkit-scrollbar{
+  display: none;
+  background-color: #013E3F;
+  border-radius: 10px;
+}
+.body::-webkit-scrollbar {
+  width: 1px;               /* width of the entire scrollbar */
+}
 .event-tile{
   display:block;
   transition: ease-in-out 0.4s;
