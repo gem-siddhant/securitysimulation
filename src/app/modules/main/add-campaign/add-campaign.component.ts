@@ -8,6 +8,7 @@ import {
   FormArray,
   NgForm,
 } from "@angular/forms";
+import { FormdataService } from '../service/formdata.service'; 
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatDatepickerToggle } from '@angular/material/datepicker';
 import { HttpClient } from '@angular/common/http';
@@ -71,9 +72,10 @@ addresses: any = [{
   password: ''
 }];
 manager:any = localStorage.getItem('Manager');
-@Output() close: EventEmitter<any> = new EventEmitter();
-testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
+// @Output() close: EventEmitter<any> = new EventEmitter();
+// testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   constructor(
+    private shared: FormdataService,
     private _addCampaign:AddCampaignService,
     private papa: Papa,
      private formBuilder: FormBuilder,
@@ -96,6 +98,7 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
   subject:['',Validators.required],
   addnote:[''],
   footer:['',Validators.required],
+  radio:[''||'false'],
   radio2:[''||'false'],
   fileattach:[''||'attachment'],
   date:[''],
@@ -223,32 +226,45 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       this.toastr.error("Please Provide email")
       return;
     }
-    // if(email['senderPassword']=="")
-    // {
-     
-    //   this.toastr.error("Please Provide Password")
-    //   return; 
-    // }
+    let req  = {
+      'name': this.phisingForm.value.name,
+      'templateDescription':this.phisingForm.value.desc,
+      'templateAmount':this.phisingForm.value.reward_amount.toString(),
+      'templateNo':this.phisingForm.value.tempate_select,
+      'templateRewardType':this.phisingForm.value.reward_type,
+      'templateHeading':this.phisingForm.value.subject,
+      'createdBy':localStorage.getItem('email'),
+      'sendToReporters' : this.phisingForm.value.radio,
+      'addNote' : this.phisingForm.value.addnote,
+      'emailSignature': this.phisingForm.value.footer,
+      'sendAttachment': this.phisingForm.value.radio2,
+      'attachmentName': this.phisingForm.value.fileattach,
+      'fileContent':this.phisingForm.value.filecontent,
+      
+    }
+    localStorage.setItem("users", JSON.stringify(this.phisingForm.value.allemails));
     const dialogRef = this.dialog.open(SchedulelaterComponent, {
       width: '770px',
       height: '330px',
     }); 
 
-    localStorage.setItem('name',this.phisingForm.value.name);
-    localStorage.setItem('templateRewardType',this.phisingForm.value.reward_type);
-    localStorage.setItem('templateDescription',this.phisingForm.value.desc);
-    localStorage.setItem('templateAmount',this.phisingForm.value.reward_amount);
-    localStorage.setItem('templateNo',this.phisingForm.value.tempate_select);
-    localStorage.setItem('templateHeading',this.phisingForm.value.subject);
-    localStorage.setItem('email1',this.phisingForm.value.email);
-    // localStorage.setItem('password',this.phisingForm.value.password);
-    localStorage.setItem('sendToReporters', this.phisingForm.value.radio);
-    localStorage.setItem('addNote',this.phisingForm.value.addnote);
-    localStorage.setItem('emailSignature',this.phisingForm.value.footer);
-    localStorage.setItem('sendAttachment',this.phisingForm.value.radio2);
-    localStorage.setItem('attachmentName',this.phisingForm.value.fileattach);
-    localStorage.setItem('fileContent',this.phisingForm.value.filecontent);
-    localStorage.setItem("users", JSON.stringify(this.phisingForm.value.allemails));
+    this.shared.setMessage(req)
+ 
+    // localStorage.setItem('name',this.phisingForm.value.name);
+    // localStorage.setItem('templateRewardType',this.phisingForm.value.reward_type);
+    // localStorage.setItem('templateDescription',this.phisingForm.value.desc);
+    // localStorage.setItem('templateAmount',this.phisingForm.value.reward_amount);
+    // localStorage.setItem('templateNo',this.phisingForm.value.tempate_select);
+    // localStorage.setItem('templateHeading',this.phisingForm.value.subject);
+    // localStorage.setItem('email1',this.phisingForm.value.email);
+    // // localStorage.setItem('password',this.phisingForm.value.password);
+    // localStorage.setItem('sendToReporters', this.phisingForm.value.radio);
+    // localStorage.setItem('addNote',this.phisingForm.value.addnote);
+    // localStorage.setItem('emailSignature',this.phisingForm.value.footer);
+    // localStorage.setItem('sendAttachment',this.phisingForm.value.radio2);
+    // localStorage.setItem('attachmentName',this.phisingForm.value.fileattach);
+    // localStorage.setItem('fileContent',this.phisingForm.value.filecontent);
+    // localStorage.setItem("users", JSON.stringify(this.phisingForm.value.allemails));
   }
  
   sendcampaign()
@@ -277,32 +293,44 @@ testFINAL=this.sanitized.bypassSecurityTrustHtml(this.testhtml)
       this.toastr.error("Please Provide email")
       return;
     }
-    // if(email['senderPassword']=="")
-    // {
-     
-    //   this.toastr.error("Please Provide Password")
-    //   return; 
-    // }
+    let req  = {
+      'name': this.phisingForm.value.name,
+      'templateDescription':this.phisingForm.value.desc,
+      'templateAmount':this.phisingForm.value.reward_amount.toString(),
+      'templateNo':this.phisingForm.value.tempate_select,
+      'templateRewardType':this.phisingForm.value.reward_type,
+      'templateHeading':this.phisingForm.value.subject,
+      'createdBy':localStorage.getItem('email'),
+      'sendToReporters' : this.phisingForm.value.radio,
+      'addNote' : this.phisingForm.value.addnote,
+      'emailSignature': this.phisingForm.value.footer,
+      'sendAttachment': this.phisingForm.value.radio2,
+      'attachmentName': this.phisingForm.value.fileattach,
+      'fileContent':this.phisingForm.value.filecontent,
+      
+    }
+    localStorage.setItem("users", JSON.stringify(this.phisingForm.value.allemails));
     const dialogRef = this.dialog.open(SendcampaignComponent, {
       width: '523px',
       height: '330px',
   });
+  this.shared.setMessage(req)
     // this.phisingForm.value.allemails=null
-    localStorage.setItem('name',this.phisingForm.value.name);
-    localStorage.setItem('templateRewardType',this.phisingForm.value.reward_type);
-    localStorage.setItem('templateDescription',this.phisingForm.value.desc);
-    localStorage.setItem('templateAmount',this.phisingForm.value.reward_amount);
-    localStorage.setItem('templateNo',this.phisingForm.value.tempate_select);
-    localStorage.setItem('templateHeading',this.phisingForm.value.subject);
-    localStorage.setItem('email1',this.phisingForm.value.email);
-    // localStorage.setItem('password',this.phisingForm.value.password);
-    localStorage.setItem('sendToReporters', this.phisingForm.value.radio);
-    localStorage.setItem('addNote',this.phisingForm.value.addnote);
-    localStorage.setItem('emailSignature',this.phisingForm.value.footer);
-    localStorage.setItem('sendAttachment',this.phisingForm.value.radio2);
-    localStorage.setItem('attachmentName',this.phisingForm.value.fileattach);
-    localStorage.setItem('fileContent',this.phisingForm.value.filecontent); 
-    localStorage.setItem("users", JSON.stringify(this.phisingForm.value.allemails));
+    // localStorage.setItem('name',this.phisingForm.value.name);
+    // localStorage.setItem('templateRewardType',this.phisingForm.value.reward_type);
+    // localStorage.setItem('templateDescription',this.phisingForm.value.desc);
+    // localStorage.setItem('templateAmount',this.phisingForm.value.reward_amount);
+    // localStorage.setItem('templateNo',this.phisingForm.value.tempate_select);
+    // localStorage.setItem('templateHeading',this.phisingForm.value.subject);
+    // localStorage.setItem('email1',this.phisingForm.value.email);
+    // // localStorage.setItem('password',this.phisingForm.value.password);
+    // localStorage.setItem('sendToReporters', this.phisingForm.value.radio);
+    // localStorage.setItem('addNote',this.phisingForm.value.addnote);
+    // localStorage.setItem('emailSignature',this.phisingForm.value.footer);
+    // localStorage.setItem('sendAttachment',this.phisingForm.value.radio2);
+    // localStorage.setItem('attachmentName',this.phisingForm.value.fileattach);
+    // localStorage.setItem('fileContent',this.phisingForm.value.filecontent); 
+    // localStorage.setItem("users", JSON.stringify(this.phisingForm.value.allemails));
 }
 
   submit(){

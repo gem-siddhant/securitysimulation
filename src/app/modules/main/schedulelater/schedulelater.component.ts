@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
@@ -16,6 +16,7 @@ import { CsvmessageComponent } from 'src/app/shared/csvmessage/csvmessage.compon
 import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
 import { SamplecsvComponent } from 'src/app/shared/samplecsv/samplecsv.component';
 import { CampaignConfirmComponent } from 'src/app/shared/campaign-confirm/campaign-confirm.component';
+import { FormdataService } from '../service/formdata.service';
 @Component({
   selector: 'app-schedulelater',
   templateUrl: './schedulelater.component.html',
@@ -31,6 +32,7 @@ export class SchedulelaterComponent implements OnInit {
   phisingForm: FormGroup;
   api_hit:boolean=true;
   value = 50;
+  imgfile:File;
   mode: ProgressSpinnerMode = 'indeterminate';
   color: ThemePalette = 'primary';
   submitted = false;
@@ -49,18 +51,19 @@ export class SchedulelaterComponent implements OnInit {
   myFooList: any = ['Some Item', 'Item Second', 'Other In Row', 'What to write', 'Blah To Do'];
   res: any = [];
   csvcheck : boolean= true;
+  message: any;
   constructor( public dialogRef: MatDialogRef<SchedulelaterComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _addCampaign:AddCampaignService,
     private dialog:MatDialog,private router:Router,
     private formBuilder: FormBuilder,
     private sanitized: DomSanitizer,
+    private shared:FormdataService,
     private toastr:ToastrService ){
       this.phisingForm = this.formBuilder.group({});
       this.credsForm = this.formBuilder.group({});
     }
 
-   
   ngOnInit(): void {
     this.phisingForm = this.formBuilder.group(
       {
@@ -74,6 +77,7 @@ export class SchedulelaterComponent implements OnInit {
     const currentYear = new Date().getFullYear();
     // this.currentdate = new Date(currentYear)
     this.maxDate = new Date(currentYear + 1,3,31);
+    
   }
   onChange(event: any) {
     this.res=[]
@@ -139,6 +143,10 @@ export class SchedulelaterComponent implements OnInit {
     });
   }
   schedulelater(){
+    this.message = this.shared.getMessage()
+    this.imgfile = this.shared.getfile()
+    console.log(this.imgfile)
+    console.log("send to reportees",this.message.sendToReporters)
     if(this.csvcheck === false && this.res.length==0) 
     {
       let dataDialog = { title: 'Campaign Scheduled Successfully!' };
@@ -198,16 +206,16 @@ export class SchedulelaterComponent implements OnInit {
       console.log("wrong csv")
       return
     }
-    if(localStorage.getItem('name')=="" || localStorage.getItem('templateDescription') == "" || localStorage.getItem('templateHeading') == "" || localStorage.getItem('emailSignature')=="" )
-    {
-      this.toastr.error("please EDIT the Fields")
-      return;
-    }
-    if(localStorage.getItem('email1') == "")
-    {
-      this.toastr.error("please provide email id")
-      return;
-    }
+    // if(this.message.name=="" || this.message.templateDescription == "" || this.message.templateHeading == "" || this.message.emailSignature=="" )
+    // {
+    //   this.toastr.error("please EDIT the Fields")
+    //   return;
+    // }
+    // if(this.message.email1 == "")
+    // {
+    //   this.toastr.error("please provide email id")
+    //   return;
+    // }
     // if(localStorage.getItem('password') == "")
     // {
     //   this.toastr.error("please provide password")
@@ -225,21 +233,19 @@ export class SchedulelaterComponent implements OnInit {
     }
     const formData :any= new FormData();
     let reqBody={
-      'name': localStorage.getItem('name'),
-      'templateDescription':localStorage.getItem('templateDescription'),
-      'templateAmount':localStorage.getItem('templateAmount'),
-      'templateNo':localStorage.getItem('templateNo'),
-      'templateRewardType':localStorage.getItem('templateRewardType'),
-      'templateHeading':localStorage.getItem('templateHeading'),
-      'createdBy':localStorage.getItem('email'),
-     // 'email':localStorage.getItem('email1'),
-      //'password':localStorage.getItem('password'),
+      'name': this.message.name,
+      'templateDescription': this.message.templateDescription,
+      'templateAmount':this.message.templateAmount,
+      'templateNo':this.message.templateNo,
+      'templateRewardType':this.message.templateRewardType,
+      'templateHeading':this.message.templateHeading,
+      'createdBy':this.message.createdBy,
       'sendToReporters' : this.phisingForm.value.radio,
-      'addNote' : localStorage.getItem('addNote'),
-      'emailSignature': localStorage.getItem('emailSignature'),
-      'sendAttachment': localStorage.getItem('sendAttachment'),
-      'attachmentName': localStorage.getItem('attachmentName'),
-      'fileContent':localStorage.getItem('fileContent'),
+      'addNote': this.message.addNote,
+      'emailSignature': this.message.emailSignature,
+      'sendAttachment':this.message.sendAttachment,
+      'attachmentName':this.message.attachmentName,
+      'fileContent':this.message.fileContent,
       'scheduleDate':scheduledate,
       'scheduleTime':this.phisingForm.value.time,
       'scheduleTimeZone':this.phisingForm.value.timezone,
@@ -249,6 +255,21 @@ export class SchedulelaterComponent implements OnInit {
     console.log(this.phisingForm.value.tzone)
     let con = JSON.stringify(reqBody);
     formData.append("details",con);
+    const dummyimg = "../dumyimg/click.png"
+    var fallbackimg = new File(["foo"], dummyimg, {
+      type: "file/png"
+    });
+    if(this.imgfile!=null)
+    {
+      formData.append('file',this.imgfile)
+    }
+    else{
+      const localfile = "\dumyimg\click.png"
+      var local = new File(["foo"], localfile, {
+        type: "file/csv"
+      });
+      formData.append('file',local)
+    }
     if(this.manager=='true')
     {
     const localfile = "../../../../assets/pdf/fallbackcsv.csv"

@@ -28,6 +28,7 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { OnboardresComponent } from './onboard/onboardres/onboardres.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ɵAnimationGroupPlayer } from '@angular/animations';
+import { CustomtemplateComponent } from './customtemplate/customtemplate.component';
 @NgModule({
   declarations: [
     GiftComponent,
@@ -36,7 +37,8 @@ import { ɵAnimationGroupPlayer } from '@angular/animations';
     DashboardComponent,
     CampaignViewComponent,
     SignUpComponent,
-    OnboardresComponent
+    OnboardresComponent,
+    CustomtemplateComponent
   ],
   imports: [
     CommonModule,

@@ -48,6 +48,7 @@ import { CampaignConfirmComponent } from './shared/campaign-confirm/campaign-con
 import { SideBarComponent } from './side-bar/side-bar.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar'
+import { AddCampaignComponent } from './modules/main/add-campaign/add-campaign.component';
 
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);

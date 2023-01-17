@@ -4,6 +4,7 @@ import { AuthGuard } from 'src/app/AuthGuard/auth.guard';
 import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
 import { AddCampaignComponent } from './add-campaign/add-campaign.component';
 import { CampaignViewComponent } from './campaign-view/campaign-view.component';
+import { CustomtemplateComponent } from './customtemplate/customtemplate.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GiftComponent } from './gift/gift.component';
 import { LoginComponent } from './login/login.component';
@@ -43,6 +44,11 @@ const routes: Routes = [
   path:'onboard',
   component:OnboardresComponent
 },
+{
+  path:'customtemplate',
+  canActivate:[AuthGuard],
+  component:CustomtemplateComponent
+}
 ];
 
 @NgModule({
