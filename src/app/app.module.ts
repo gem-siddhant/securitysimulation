@@ -46,6 +46,7 @@ import { SchedulelaterComponent } from './modules/main/schedulelater/schedulelat
 import { ReconfirmModalComponent } from './shared/reconfirm-modal/reconfirm-modal.component';
 import { CampaignConfirmComponent } from './shared/campaign-confirm/campaign-confirm.component';
 import { SideBarComponent } from './side-bar/side-bar.component';
+import { DeleteModalComponent } from './shared/delete-modal/delete-modal.component';
 
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
@@ -70,7 +71,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     SamplecsvComponent,
     ReconfirmModalComponent,
     CampaignConfirmComponent,
-    SideBarComponent
+    SideBarComponent,
+    DeleteModalComponent
   ],
   imports: [
     BrowserModule,

@@ -28,6 +28,8 @@ import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { OnboardresComponent } from './onboard/onboardres/onboardres.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ɵAnimationGroupPlayer } from '@angular/animations';
+import { ScheduledCampaignsComponent } from './scheduled-campaigns/scheduled-campaigns.component';
+import { RescheduleCampaignModalComponent } from './reschedule-campaign-modal/reschedule-campaign-modal.component';
 @NgModule({
   declarations: [
     GiftComponent,
@@ -36,7 +38,9 @@ import { ɵAnimationGroupPlayer } from '@angular/animations';
     DashboardComponent,
     CampaignViewComponent,
     SignUpComponent,
-    OnboardresComponent
+    OnboardresComponent,
+    ScheduledCampaignsComponent,
+    RescheduleCampaignModalComponent
   ],
   imports: [
     CommonModule,
