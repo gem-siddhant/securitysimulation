@@ -29,6 +29,7 @@ import { OnboardresComponent } from './onboard/onboardres/onboardres.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ɵAnimationGroupPlayer } from '@angular/animations';
 import { CustomtemplateComponent } from './customtemplate/customtemplate.component';
+import { DashboardAdminComponent } from './dashboard/dashboard-admin/dashboard-admin/dashboard-admin.component';
 @NgModule({
   declarations: [
     GiftComponent,
@@ -38,7 +39,8 @@ import { CustomtemplateComponent } from './customtemplate/customtemplate.compone
     CampaignViewComponent,
     SignUpComponent,
     OnboardresComponent,
-    CustomtemplateComponent
+    CustomtemplateComponent,
+    DashboardAdminComponent
   ],
   imports: [
     CommonModule,
