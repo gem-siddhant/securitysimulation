@@ -1,4 +1,8 @@
 .analytics{
-    display: flex;
-    justify-content: space-between;
+    display:inline-flex;
+
+    
+}
+.maintitle{
+    background-color: aquamarine;
 }
