@@ -25,6 +25,8 @@ import { MatTableExporterModule } from 'mat-table-exporter';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { OnboardresComponent } from './onboard/onboardres/onboardres.component';
+import { ScheduledCampaignsComponent } from './scheduled-campaigns/scheduled-campaigns.component';
+import { RescheduleCampaignModalComponent } from './reschedule-campaign-modal/reschedule-campaign-modal.component';
 @NgModule({
   declarations: [
     GiftComponent,
@@ -33,7 +35,9 @@ import { OnboardresComponent } from './onboard/onboardres/onboardres.component';
     DashboardComponent,
     CampaignViewComponent,
     SignUpComponent,
-    OnboardresComponent
+    OnboardresComponent,
+    ScheduledCampaignsComponent,
+    RescheduleCampaignModalComponent
   ],
   imports: [
     CommonModule,

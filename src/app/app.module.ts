@@ -44,6 +44,7 @@ import { SendcampaignComponent } from './modules/main/sendcampaign/sendcampaign.
 import { SchedulelaterComponent } from './modules/main/schedulelater/schedulelater.component';
 import { ReconfirmModalComponent } from './shared/reconfirm-modal/reconfirm-modal.component';
 import { CampaignConfirmComponent } from './shared/campaign-confirm/campaign-confirm.component';
+import { DeleteModalComponent } from './shared/delete-modal/delete-modal.component';
 
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
@@ -67,7 +68,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     CsvmessageComponent,
     SamplecsvComponent,
     ReconfirmModalComponent,
-    CampaignConfirmComponent
+    CampaignConfirmComponent,
+    DeleteModalComponent
   ],
   imports: [
     BrowserModule,
