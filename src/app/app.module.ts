@@ -49,6 +49,7 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar'
 import { AddCampaignComponent } from './modules/main/add-campaign/add-campaign.component';
+import { DeleteModalComponent } from './shared/delete-modal/delete-modal.component';
 
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
@@ -73,7 +74,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     SamplecsvComponent,
     ReconfirmModalComponent,
     CampaignConfirmComponent,
-    SideBarComponent
+    SideBarComponent,
+    DeleteModalComponent
   ],
   imports: [
     BrowserModule,

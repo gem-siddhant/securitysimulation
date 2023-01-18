@@ -9,6 +9,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { GiftComponent } from './gift/gift.component';
 import { LoginComponent } from './login/login.component';
 import { OnboardresComponent } from './onboard/onboardres/onboardres.component';
+import { ScheduledCampaignsComponent } from './scheduled-campaigns/scheduled-campaigns.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
@@ -48,6 +49,11 @@ const routes: Routes = [
   path:'customtemplate',
   canActivate:[AuthGuard],
   component:CustomtemplateComponent
+  
+},
+{
+path:'scheduledCampaigns',
+component:ScheduledCampaignsComponent
 }
 ];
 
