@@ -29,7 +29,7 @@
             <td class="col-lg-4 col-md-4 col-sm-6 col-xs-4 heading mt-3">{{campaigns[i].name}}</td>
             <td class="col-lg-4 col-md-4 col-sm-6 col-xs-4 heading mt-3"> {{campaigns[i].scheduledTime}}</td>
             <td class="col-lg-4 col-md-4 col-sm-6 col-xs-6 heading mt-3">
-              <button class="btn btn-outline-success" (click)="Reschedule(this.campaigns[i].scheduledJobKey)" matTooltip="RESCHEDULE" matTooltipPosition="above" style=" margin-left: 15%;"><mat-icon  >alarm_on</mat-icon></button>
+              <button class="btn btn-outline-success" (click)="Reschedule(this.campaigns[i].scheduledJobKey)" matTooltip="RESCHEDULE" matTooltipPosition="above" style=" margin-left: 15%;"><mat-icon>alarm_on</mat-icon></button>
               <button class="btn btn-outline-danger" (click)="deleteschedule(this.campaigns[i].scheduledJobKey)" style=" margin-left: 15%;" matTooltip="DELETE" matTooltipPosition="above"><mat-icon>delete</mat-icon> </button>
             </td>
           </tr>

@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
+import { CampaignConfirmComponent } from 'src/app/shared/campaign-confirm/campaign-confirm.component';
 import { DeleteModalComponent } from 'src/app/shared/delete-modal/delete-modal.component';
+import { RescheduleComponent } from 'src/app/shared/reschedule/reschedule.component';
 import { RescheduleCampaignModalComponent } from '../reschedule-campaign-modal/reschedule-campaign-modal.component';
 import { MainService } from '../service/main.service';
 export interface PeriodicElement {
@@ -35,7 +37,7 @@ export class ScheduledCampaignsComponent implements OnInit {
   scheduledCampaigns() {
     const email = localStorage.getItem('email');
     let reqbody = {
-      'email': "ayush.tiwary@geminisolutions.com"
+      'email': email
     }
     this._schedule.scheduled(reqbody).subscribe((data) => {
       if (data) {
@@ -46,15 +48,16 @@ export class ScheduledCampaignsComponent implements OnInit {
     })
   }
   onEdit(element: any) {
-    const dialogRef = this.dialog.open(RescheduleCampaignModalComponent, {
+    const dialogRef = this.dialog.open(RescheduleComponent, {
       data: element,
     });
-    console.log("Edit Works", element);
   }
   onDelete(element: any) {
-    const dialogRef = this.dialog.open(DeleteModalComponent, {
-      data: element,
+    let dataDialog = { title: 'Do you really want to delete this campaign??' };
+    const dialogRef = this.dialog.open(CampaignConfirmComponent, {
+      width: '500px',
+      height: '315px', 
+      data: dataDialog,
     });
-    console.log("Delete Works", element);
   }
 }
