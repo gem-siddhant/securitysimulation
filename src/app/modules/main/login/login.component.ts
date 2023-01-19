@@ -76,9 +76,10 @@ export class LoginComponent implements OnInit {
     console.log('LOGIN COMPONENT');
     this.onResize();
     this._responsiveService.checkWidth();
+    
+    // will be used to authorization control
     if (this._authUserService.checkLogin()) {
-      
-      this.router.navigate(['/main/dashboard']);
+      this.router.navigate(['/main/Admindashboard']);
     }
     this._authUserService.setNotificationModalBoolean(true)
   }
@@ -106,7 +107,7 @@ export class LoginComponent implements OnInit {
       if(response){
         console.log("res",response);
         this._authUserService.setToken(response.account?.username,response.accessToken).then(()=>{
-        this.router.navigate(['/main/dashboard']);
+        this.router.navigate(['/main/Admindashboard']);
         sessionStorage.clear();
         }).then(()=>{
           this._authUserService.getEmployeeDetailBehaviorSubject().subscribe(item => {

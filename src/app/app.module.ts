@@ -49,6 +49,7 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar'
 import { AddCampaignComponent } from './modules/main/add-campaign/add-campaign.component';
+import {MatDividerModule} from '@angular/material/divider';
 
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
@@ -102,7 +103,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MatSlideToggleModule,
     BrowserAnimationsModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatDividerModule
   ],
   providers: [ LoaderService,
     {

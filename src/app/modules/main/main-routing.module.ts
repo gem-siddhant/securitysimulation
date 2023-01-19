@@ -29,11 +29,12 @@ const routes: Routes = [
   component:AddCampaignComponent
 },
 
+// {
+//   path:'dashboard',
+//   canActivate:[AuthGuard],
+//   component:DashboardComponent
+// },
 {
-  path:'dashboard',
-  canActivate:[AuthGuard],
-  component:DashboardComponent
-},{
   path:'view/:id',
   canActivate:[AuthGuard],
   component:CampaignViewComponent
@@ -46,12 +47,12 @@ const routes: Routes = [
   component:OnboardresComponent
 },
 {
-  path:'customtemplate',
+  path:'Customtemplate',
   canActivate:[AuthGuard],
   component:CustomtemplateComponent
 },
 {
-  path:'dashboard/dashboard-admin',
+  path:'Admindashboard',
   canActivate:[AuthGuard],
   component:DashboardAdminComponent
 }

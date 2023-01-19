@@ -1,8 +1,28 @@
 .analytics{
     display:inline-flex;
-
-    
 }
 .maintitle{
     background-color: aquamarine;
+    align-items: flex-start;
+}
+.matcards{
+    background: #38A3A5;
+    box-shadow: 0px 4px 20px rgba(56, 163, 165, 0.48);
+}
+.textcolor{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #F7F7F7;
+}
+.counttext{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 60px;
+    text-transform: uppercase;
+    color: #38A3A5;
 }
