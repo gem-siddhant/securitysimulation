@@ -33,7 +33,7 @@ export class DashboardAdminComponent implements OnInit {
     this._main.getAllCampaigns(localStorage.getItem('email')).subscribe((data)=>{
       if(data){
         this.campaigns=data;
-        this.dataSource = new MatTableDataSource<view_data>(data);
+        this.dataSource = new MatTableDataSource(data);
         this.dataSource = this.dataSource.filteredData
         console.log(this.dataSource)
         for(let ele of this.campaigns2)
@@ -68,7 +68,7 @@ export class DashboardAdminComponent implements OnInit {
     this._main.viewmorecamp(localStorage.getItem('email')).subscribe((data)=>{
       if(data){
         this.campaigns2=data;
-        this.dataSource = new MatTableDataSource<view_data>(data);
+        this.dataSource = new MatTableDataSource(data);
         this.dataSource = this.dataSource.filteredData
         for(let ele of this.campaigns2)
         {
