@@ -1,11 +1,11 @@
 .timepicker-overlay {
-    z-index: 1100 !important;
-  }
-  
-  .timepicker-backdrop-overlay {
-    z-index: 1100 !important;
-  }
-  mat-sidenav-container,
+  z-index: 1100 !important;
+}
+
+.timepicker-backdrop-overlay {
+  z-index: 1100 !important;
+}
+mat-sidenav-container,
 mat-sidenav-content,
 mat-sidenav {
   background-color: transparent;
@@ -13,7 +13,11 @@ mat-sidenav {
 mat-sidenav-content {
   overflow-x: hidden;
 }
-
 mat-sidenav {
-  width: 170px;
+  width: 307px;
+  position: fixed;
+  background: linear-gradient(180deg, #013e3f 0%, #01243c 100%);
+}
+.side-nav-height {
+  min-height: 94vh;
 }

@@ -31,6 +31,7 @@ import { ɵAnimationGroupPlayer } from '@angular/animations';
 import { CustomtemplateComponent } from './customtemplate/customtemplate.component';
 import { ScheduledCampaignsComponent } from './scheduled-campaigns/scheduled-campaigns.component';
 import { RescheduleCampaignModalComponent } from './reschedule-campaign-modal/reschedule-campaign-modal.component';
+import { CampaignsModule } from './campaigns/campaigns.module';
 @NgModule({
   declarations: [
     GiftComponent,
@@ -47,6 +48,7 @@ import { RescheduleCampaignModalComponent } from './reschedule-campaign-modal/re
   imports: [
     CommonModule,
     MainRoutingModule,
+    CampaignsModule,
     HttpClientModule,
     MatRadioModule,
     MatTableExporterModule,

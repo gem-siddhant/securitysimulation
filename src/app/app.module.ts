@@ -50,6 +50,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar'
 import { AddCampaignComponent } from './modules/main/add-campaign/add-campaign.component';
 import { DeleteModalComponent } from './shared/delete-modal/delete-modal.component';
+import {MatListModule} from '@angular/material/list'; 
+import { ResponsiveService } from './services/responsive.service';
 
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
@@ -104,7 +106,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MatSlideToggleModule,
     BrowserAnimationsModule,
     MatSidenavModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatListModule
   ],
   providers: [ LoaderService,
     {
@@ -119,7 +122,10 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MsalGuard,
     MsalBroadcastService, 
     { provide: 'BASE_API_URL', useValue: environment.apiUrl },
-    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptorService, multi: true }],
+    { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptorService, multi: true },
+    ResponsiveService,
+  
+  ],
       bootstrap: [AppComponent] 
     })
 export class AppModule { }

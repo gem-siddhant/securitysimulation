@@ -7,7 +7,8 @@ import { Subject, BehaviorSubject, Observable } from "rxjs";
 export class ResponsiveService {
 
     public isMobile = new Subject();
-    public screenWidth: string;
+    public screenStatus = new Subject<String>();
+    public screenWidth: String;
 
 
     constructor() {
@@ -18,6 +19,12 @@ export class ResponsiveService {
     onMobileChange(status: boolean) {
         this.isMobile.next(status);
     }
+    screenStatusChange(status : String){
+        this.screenStatus.next(status);
+    }
+    getScreenStatus() : Observable<String> {
+        return this.screenStatus.asObservable();
+    }
 
     getMobileStatus(): Observable<any> {
         return this.isMobile.asObservable();
@@ -25,7 +32,11 @@ export class ResponsiveService {
 
     public checkWidth() {
         var width = window.innerWidth;
-        if (width <= 768) {
+        if (width <= 576) {
+            this.screenWidth = 'xs';
+            this.onMobileChange(true);
+        }
+        else if (width <= 768) {
             this.screenWidth = 'sm';
             this.onMobileChange(true);
         } else if (width > 768 && width <= 992) {
@@ -35,6 +46,7 @@ export class ResponsiveService {
             this.screenWidth = 'lg';
             this.onMobileChange(false);
         }
+        this.screenStatusChange(this.screenWidth);
     }
 
 }

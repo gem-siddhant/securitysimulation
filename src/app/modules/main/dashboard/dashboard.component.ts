@@ -7,6 +7,7 @@ import { view_data } from '../campaign-view/view.model';
 import * as moment from 'moment';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { ThemePalette } from '@angular/material/core';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,9 +30,11 @@ campaigns2:any=[];
 dates : any = [];
   constructor(private _main:MainService,
     private router:Router,
-    private toastr:ToastrService) { }
+    private toastr:ToastrService,
+    private commonService : CommonService) { }
 @ViewChild('dataContainer') dataContainer: ElementRef | undefined;
   ngOnInit(): void {
+    this.commonService.setLoginStatus(true);
     this.getAllCampaigns();
     this.dataSource = new MatTableDataSource<view_data>([]);
   }

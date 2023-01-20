@@ -1,12 +1,15 @@
-<app-navbar (sidenav)="sidenav.toggle()" >
-</app-navbar>
-<mat-sidenav-container>
-    <mat-sidenav #sidenav="matSidenav" mode="side" opened>
-        <app-side-bar></app-side-bar>
-  
-    </mat-sidenav>
-    <mat-sidenav-content>
-        <router-outlet></router-outlet>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-
+<app-navbar (sidenav)="toggle()"> </app-navbar>
+<mat-sidenav-container class="side-nav-height">
+  <mat-sidenav
+    [opened]="getSideNavOpened()"
+    (opened)="open()"
+    (closed)="close()"
+    [mode]="sideNavMode"
+    *ngIf="getLoginStatus()"
+  >
+    <app-side-bar></app-side-bar>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

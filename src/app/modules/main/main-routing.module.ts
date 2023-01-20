@@ -13,52 +13,62 @@ import { ScheduledCampaignsComponent } from './scheduled-campaigns/scheduled-cam
 import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
-  {path:'',
-  component:LoginComponent
-},
   {
-  path:'login',
-  component:LoginComponent
-},
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full',
+  },
   {
-  path:'gifts',
-  component: GiftComponent,
-},{
-  path:'add-campaign',
-  canActivate:[AuthGuard],
-  component:AddCampaignComponent
-},
-
-{
-  path:'dashboard',
-  canActivate:[AuthGuard],
-  component:DashboardComponent
-},{
-  path:'view/:id',
-  canActivate:[AuthGuard],
-  component:CampaignViewComponent
-},{
-  path:'sign-up',
-  component:SignUpComponent
-},
-{
-  path:'onboard',
-  component:OnboardresComponent
-},
-{
-  path:'customtemplate',
-  canActivate:[AuthGuard],
-  component:CustomtemplateComponent
-  
-},
-{
-path:'scheduledCampaigns',
-component:ScheduledCampaignsComponent
-}
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'gifts',
+    component: GiftComponent,
+  },
+  {
+    path: 'add-campaign',
+    canActivate: [AuthGuard],
+    component: AddCampaignComponent,
+  },
+  {
+    path: 'dashboard',
+    canActivate: [AuthGuard],
+    component: DashboardComponent,
+  },
+  {
+    path: 'view/:id',
+    canActivate: [AuthGuard],
+    component: CampaignViewComponent,
+  },
+  {
+    path: 'sign-up',
+    component: SignUpComponent,
+  },
+  {
+    path: 'onboard',
+    component: OnboardresComponent,
+  },
+  {
+    path: 'customtemplate',
+    canActivate: [AuthGuard],
+    component: CustomtemplateComponent,
+  },
+  {
+    path:'scheduledCampaigns',
+    canActivate: [AuthGuard],
+    component:ScheduledCampaignsComponent
+  },
+  {
+    path: 'campaign',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./campaigns/campaigns.module').then((m) => m.CampaignsModule),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class MainRoutingModule { }
+export class MainRoutingModule {}

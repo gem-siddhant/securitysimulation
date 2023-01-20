@@ -13,7 +13,11 @@ import { InfomodalComponent } from '../shared/infomodal/infomodal.component';
 export class AuthService {
   notificationBoolean: boolean = false;
   mail = new BehaviorSubject<any>(null);
-  constructor(private http:HttpClient,private router:Router,private toastr: ToastrService,private dialog: MatDialog) {
+  constructor(
+    private http:HttpClient,
+    private router:Router,
+    private toastr: ToastrService,
+    private dialog: MatDialog) {
     
    }
   checkLogin(){

@@ -24,6 +24,7 @@ import { AddCampaignService } from '../service/add-campaign.service';
 import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
 import { InfomodalComponent } from 'src/app/shared/infomodal/infomodal.component';
 import { ThemePalette } from '@angular/material/core';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-login',
@@ -48,12 +49,15 @@ export class LoginComponent implements OnInit {
     private msalService:MsalService,@Inject(MSAL_GUARD_CONFIG) private msalGuardConfig: MsalGuardConfiguration,
     private authService: MsalService,
     private msalBroadcastService: MsalBroadcastService,
-    private toastr: ToastrService) {
+    private toastr: ToastrService,
+    private commonService : CommonService
+    ) {
 
   }
   color:string='';
 
   ngOnInit(): void {
+    this.commonService.setLoginStatus(false);
     this.color = light.button;
     console.log(this.color)
     this.isIframe = window !== window.parent && !window.opener;
