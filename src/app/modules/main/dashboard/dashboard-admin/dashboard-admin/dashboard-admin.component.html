@@ -1,235 +1,236 @@
 
 <div class="row col-lg-12 col-sm-12 col-md-12 col-xs-12 m-2 analytics card-container">
-<div class="row" >
-<!-- total no of campaign  -->
-<div class="col-lg-3 col-sm-12 col-md-12 col-xs-6 mt-2 ">
-    <mat-card  [class.mat-elevation-z8]=true class="matcount">
-            <mat-card-content mat-card-image class="matcards" >                             
-            <p class="col-lg-12 col-sm-12 col-md-12 col-xs-12 mb-1 mt-1 textcolor">
-                &nbsp;   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.7425 5.33356H4.88892C3.5925 5.33356 2.34881 5.84866 1.43193 6.76549C0.515051 7.68236 0 8.926 0 10.2225C0 11.5189 0.515102 12.7625 1.43193 13.6794C2.34881 14.5963 3.59245 15.1114 4.88892 15.1114H5.52801L7.26531 22.0599C7.55063 23.2004 8.57463 24 9.74985 24H9.75025C10.5649 24 11.3342 23.6248 11.8356 22.9828C12.337 22.3405 12.5143 21.5036 12.3169 20.7129L10.9166 15.1108H11.7614L19.9992 19.8801C20.2742 20.0392 20.6133 20.0398 20.8885 19.8811C21.1635 19.7224 21.3333 19.4287 21.3333 19.1109V12.6408L23.392 11.954C23.7551 11.8332 24 11.4937 24 11.111V9.33319C24 8.95045 23.7552 8.61095 23.392 8.49011L21.3333 7.80338V0.888833C21.3333 0.564825 21.1573 0.26661 20.8734 0.110267C20.5897 -0.0458827 20.2437 -0.0355665 19.9698 0.137252L11.7425 5.33356ZM7.36075 15.1114L8.99012 21.6292C9.07722 21.978 9.39052 22.2225 9.74965 22.2225H9.75004C10.0171 22.2225 10.2697 22.0995 10.434 21.8887C10.5985 21.6784 10.6568 21.4038 10.5919 21.1447L9.08339 15.1114L7.36075 15.1114ZM19.5554 17.5695V2.50207L12.8887 6.7122V13.7101L19.5554 17.5696V17.5695ZM5.77751 13.3336H11.1109V7.11134H5.77751V13.3336ZM3.99972 7.24087C3.50904 7.3871 3.05744 7.65376 2.68863 8.02223C2.1051 8.60574 1.77748 9.3968 1.77748 10.2222C1.77748 11.0476 2.10506 11.8387 2.68863 12.4222C3.05748 12.7906 3.50905 13.0573 3.99972 13.2035V7.24087ZM21.3332 9.6778V10.7667L22.2221 10.4703V9.97425L21.3332 9.6778Z" fill="white"/>
-            </svg> &nbsp;  
-                Total No of campaigns</p>          
-            </mat-card-content>
-            <p class="counttext" >
-                {{totalcampaigncount}}
-                &nbsp; 
-                <mat-spinner class="float-right" *ngIf="mode === 'determinate'" [diameter]="50" strokeWidth="10"
-                      class="circle "
-                      [color]="'green'"
-                      [mode]="mode"
-                      [value]="value"
-                      
-                    >
-                    </mat-spinner>
-                 </p>
-    </mat-card>
-</div>
-
-<!-- no of ended campaigns  -->
-<div class="col-lg-3 col-sm-12 col-md-12 col-xs-12 mt-2">
-    <mat-card [class.mat-elevation-z8]=true  class="matcount">
-            <mat-card-content mat-card-image class="matcards" >                             
-            <p class="col-lg-12 col-sm-12 col-md-12 col-xs-12 mb-1 mt-1 textcolor">
-                &nbsp;   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.7425 5.33356H4.88892C3.5925 5.33356 2.34881 5.84866 1.43193 6.76549C0.515051 7.68236 0 8.926 0 10.2225C0 11.5189 0.515102 12.7625 1.43193 13.6794C2.34881 14.5963 3.59245 15.1114 4.88892 15.1114H5.52801L7.26531 22.0599C7.55063 23.2004 8.57463 24 9.74985 24H9.75025C10.5649 24 11.3342 23.6248 11.8356 22.9828C12.337 22.3405 12.5143 21.5036 12.3169 20.7129L10.9166 15.1108H11.7614L19.9992 19.8801C20.2742 20.0392 20.6133 20.0398 20.8885 19.8811C21.1635 19.7224 21.3333 19.4287 21.3333 19.1109V12.6408L23.392 11.954C23.7551 11.8332 24 11.4937 24 11.111V9.33319C24 8.95045 23.7552 8.61095 23.392 8.49011L21.3333 7.80338V0.888833C21.3333 0.564825 21.1573 0.26661 20.8734 0.110267C20.5897 -0.0458827 20.2437 -0.0355665 19.9698 0.137252L11.7425 5.33356ZM7.36075 15.1114L8.99012 21.6292C9.07722 21.978 9.39052 22.2225 9.74965 22.2225H9.75004C10.0171 22.2225 10.2697 22.0995 10.434 21.8887C10.5985 21.6784 10.6568 21.4038 10.5919 21.1447L9.08339 15.1114L7.36075 15.1114ZM19.5554 17.5695V2.50207L12.8887 6.7122V13.7101L19.5554 17.5696V17.5695ZM5.77751 13.3336H11.1109V7.11134H5.77751V13.3336ZM3.99972 7.24087C3.50904 7.3871 3.05744 7.65376 2.68863 8.02223C2.1051 8.60574 1.77748 9.3968 1.77748 10.2222C1.77748 11.0476 2.10506 11.8387 2.68863 12.4222C3.05748 12.7906 3.50905 13.0573 3.99972 13.2035V7.24087ZM21.3332 9.6778V10.7667L22.2221 10.4703V9.97425L21.3332 9.6778Z" fill="white"/>
-            </svg> &nbsp;  
-                Ended Campaigns</p>
-            </mat-card-content>
-            <p class="counttext">
-                {{endedcount}}
-                &nbsp; 
-                <mat-progress-spinner class="float-right" *ngIf="mode === 'determinate'" [diameter]="50" strokeWidth="10"
-                      class="circle "
-                      [color]="'green'"
-                      [mode]="mode"
-                      [value]="this.endedanalytics"
-                    >
-                    </mat-progress-spinner>
-            </p>
-    </mat-card>
-</div>
-
-<!-- no of killed campaign  -->
-<div class="col-lg-3 col-sm-12 col-md-12 col-xs-12 mt-2">
-    <mat-card [class.mat-elevation-z8]=true  class="matcount">
-            <mat-card-content mat-card-image class="matcards" >                 
-            <p class="col-lg-12 col-sm-12 col-md-12 col-xs-12 mb-1 mt-1 textcolor">
-                &nbsp;   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.7425 5.33356H4.88892C3.5925 5.33356 2.34881 5.84866 1.43193 6.76549C0.515051 7.68236 0 8.926 0 10.2225C0 11.5189 0.515102 12.7625 1.43193 13.6794C2.34881 14.5963 3.59245 15.1114 4.88892 15.1114H5.52801L7.26531 22.0599C7.55063 23.2004 8.57463 24 9.74985 24H9.75025C10.5649 24 11.3342 23.6248 11.8356 22.9828C12.337 22.3405 12.5143 21.5036 12.3169 20.7129L10.9166 15.1108H11.7614L19.9992 19.8801C20.2742 20.0392 20.6133 20.0398 20.8885 19.8811C21.1635 19.7224 21.3333 19.4287 21.3333 19.1109V12.6408L23.392 11.954C23.7551 11.8332 24 11.4937 24 11.111V9.33319C24 8.95045 23.7552 8.61095 23.392 8.49011L21.3333 7.80338V0.888833C21.3333 0.564825 21.1573 0.26661 20.8734 0.110267C20.5897 -0.0458827 20.2437 -0.0355665 19.9698 0.137252L11.7425 5.33356ZM7.36075 15.1114L8.99012 21.6292C9.07722 21.978 9.39052 22.2225 9.74965 22.2225H9.75004C10.0171 22.2225 10.2697 22.0995 10.434 21.8887C10.5985 21.6784 10.6568 21.4038 10.5919 21.1447L9.08339 15.1114L7.36075 15.1114ZM19.5554 17.5695V2.50207L12.8887 6.7122V13.7101L19.5554 17.5696V17.5695ZM5.77751 13.3336H11.1109V7.11134H5.77751V13.3336ZM3.99972 7.24087C3.50904 7.3871 3.05744 7.65376 2.68863 8.02223C2.1051 8.60574 1.77748 9.3968 1.77748 10.2222C1.77748 11.0476 2.10506 11.8387 2.68863 12.4222C3.05748 12.7906 3.50905 13.0573 3.99972 13.2035V7.24087ZM21.3332 9.6778V10.7667L22.2221 10.4703V9.97425L21.3332 9.6778Z" fill="white"/>
-            </svg> &nbsp;  
-                Killed Campaigns</p>
-            </mat-card-content>
-            <p class="counttext">
-                {{killedcount}}
-                &nbsp; 
-                <mat-progress-spinner  cclass="my-spinner" *ngIf="mode === 'determinate'" [diameter]="50" strokeWidth="10"
-                      class="circle"
-                      
-                      [mode]="mode"
-                      [value]="this.killedanalytics"
-                    >
-                    </mat-progress-spinner>
-            </p>
-    </mat-card>
-</div>
-
-<!-- no of sent campaign  -->
-<div class="col-lg-3 col-sm-12 col-md-12 col-xs-12 mt-2">
-    <mat-card [class.mat-elevation-z8]=true  class="matcount">
-            <mat-card-content mat-card-image class="matcards" >                             
-            <p class="col-lg-12 col-sm-12 col-md-12 col-xs-12 mb-1 mt-1 textcolor">
-                &nbsp;   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.7425 5.33356H4.88892C3.5925 5.33356 2.34881 5.84866 1.43193 6.76549C0.515051 7.68236 0 8.926 0 10.2225C0 11.5189 0.515102 12.7625 1.43193 13.6794C2.34881 14.5963 3.59245 15.1114 4.88892 15.1114H5.52801L7.26531 22.0599C7.55063 23.2004 8.57463 24 9.74985 24H9.75025C10.5649 24 11.3342 23.6248 11.8356 22.9828C12.337 22.3405 12.5143 21.5036 12.3169 20.7129L10.9166 15.1108H11.7614L19.9992 19.8801C20.2742 20.0392 20.6133 20.0398 20.8885 19.8811C21.1635 19.7224 21.3333 19.4287 21.3333 19.1109V12.6408L23.392 11.954C23.7551 11.8332 24 11.4937 24 11.111V9.33319C24 8.95045 23.7552 8.61095 23.392 8.49011L21.3333 7.80338V0.888833C21.3333 0.564825 21.1573 0.26661 20.8734 0.110267C20.5897 -0.0458827 20.2437 -0.0355665 19.9698 0.137252L11.7425 5.33356ZM7.36075 15.1114L8.99012 21.6292C9.07722 21.978 9.39052 22.2225 9.74965 22.2225H9.75004C10.0171 22.2225 10.2697 22.0995 10.434 21.8887C10.5985 21.6784 10.6568 21.4038 10.5919 21.1447L9.08339 15.1114L7.36075 15.1114ZM19.5554 17.5695V2.50207L12.8887 6.7122V13.7101L19.5554 17.5696V17.5695ZM5.77751 13.3336H11.1109V7.11134H5.77751V13.3336ZM3.99972 7.24087C3.50904 7.3871 3.05744 7.65376 2.68863 8.02223C2.1051 8.60574 1.77748 9.3968 1.77748 10.2222C1.77748 11.0476 2.10506 11.8387 2.68863 12.4222C3.05748 12.7906 3.50905 13.0573 3.99972 13.2035V7.24087ZM21.3332 9.6778V10.7667L22.2221 10.4703V9.97425L21.3332 9.6778Z" fill="white"/>
-            </svg> &nbsp;  
-                Sent Campaigns</p>         
-            </mat-card-content>
-            <p class="float-left counttext">
-                {{sentcount}}   &nbsp; 
-                <mat-progress-spinner class="float-right" *ngIf="mode === 'determinate'" [diameter]="50" strokeWidth="10"
-                      class="circle"
-                      [color]="color"
-                      [mode]="mode"
-                      [value]="this.sendanalytics"
-                    >
-                    </mat-progress-spinner>
-            </p>
-    </mat-card>
-</div>
-
-
-<div class="col-lg-4 mt-4">
-  <span class="btn btn-primary">Recent Campaigns</span>
-</div>
-
-<!-- table data  -->
-
-<div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 mt-2 inline-flex materialTableHeader tabledata">
-    <table mat-table matTableExporter [dataSource]="dataSource" class=" w-100" >
-        <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef  class="matcards" > Name </th>
-            <td mat-cell *matCellDef="let ele" class="matcontents">
-              <mat-card class="mat-elevation-z0 tablemat mt-2 mb-2">
-              {{ele.name}}
-            </mat-card>
-           </td>
-        </ng-container>
-
-          <ng-container matColumnDef="opened">
-            <th  mat-header-cell *matHeaderCellDef  class="matcards" >Clicked</th>
-            <td mat-cell *matCellDef="let ele" class="matcontents">
-              <mat-card class="mat-elevation-z0 tablemat mt-2 mb-2">
-              {{ele.opened}}
-            </mat-card>
-            </td>
+  <div class="row" >
+  <!-- total no of campaign  -->
+  <div class="col-lg-3 col-sm-12 col-md-12 col-xs-6 mt-2 ">
+      <mat-card  [class.mat-elevation-z8]=true class="matcount">
+              <mat-card-content mat-card-image class="matcards" >                             
+              <p class="col-lg-12 col-sm-12 col-md-12 col-xs-12 mb-1 mt-1 textcolor">
+                  &nbsp;   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M11.7425 5.33356H4.88892C3.5925 5.33356 2.34881 5.84866 1.43193 6.76549C0.515051 7.68236 0 8.926 0 10.2225C0 11.5189 0.515102 12.7625 1.43193 13.6794C2.34881 14.5963 3.59245 15.1114 4.88892 15.1114H5.52801L7.26531 22.0599C7.55063 23.2004 8.57463 24 9.74985 24H9.75025C10.5649 24 11.3342 23.6248 11.8356 22.9828C12.337 22.3405 12.5143 21.5036 12.3169 20.7129L10.9166 15.1108H11.7614L19.9992 19.8801C20.2742 20.0392 20.6133 20.0398 20.8885 19.8811C21.1635 19.7224 21.3333 19.4287 21.3333 19.1109V12.6408L23.392 11.954C23.7551 11.8332 24 11.4937 24 11.111V9.33319C24 8.95045 23.7552 8.61095 23.392 8.49011L21.3333 7.80338V0.888833C21.3333 0.564825 21.1573 0.26661 20.8734 0.110267C20.5897 -0.0458827 20.2437 -0.0355665 19.9698 0.137252L11.7425 5.33356ZM7.36075 15.1114L8.99012 21.6292C9.07722 21.978 9.39052 22.2225 9.74965 22.2225H9.75004C10.0171 22.2225 10.2697 22.0995 10.434 21.8887C10.5985 21.6784 10.6568 21.4038 10.5919 21.1447L9.08339 15.1114L7.36075 15.1114ZM19.5554 17.5695V2.50207L12.8887 6.7122V13.7101L19.5554 17.5696V17.5695ZM5.77751 13.3336H11.1109V7.11134H5.77751V13.3336ZM3.99972 7.24087C3.50904 7.3871 3.05744 7.65376 2.68863 8.02223C2.1051 8.60574 1.77748 9.3968 1.77748 10.2222C1.77748 11.0476 2.10506 11.8387 2.68863 12.4222C3.05748 12.7906 3.50905 13.0573 3.99972 13.2035V7.24087ZM21.3332 9.6778V10.7667L22.2221 10.4703V9.97425L21.3332 9.6778Z" fill="white"/>
+              </svg> &nbsp;  
+                  Total No of campaigns</p>          
+              </mat-card-content>
+              <p class="counttext" >
+                  {{totalcampaigncount}}
+                  &nbsp; 
+                  <mat-spinner class="float-right" *ngIf="mode === 'determinate'" [diameter]="50" strokeWidth="10"
+                        class="circle "
+                        [color]="'green'"
+                        [mode]="mode"
+                        [value]="value"
+                        
+                      >
+                      </mat-spinner>
+                   </p>
+      </mat-card>
+  </div>
+  
+  <!-- no of ended campaigns  -->
+  <div class="col-lg-3 col-sm-12 col-md-12 col-xs-12 mt-2">
+      <mat-card [class.mat-elevation-z8]=true  class="matcount">
+              <mat-card-content mat-card-image class="matcards" >                             
+              <p class="col-lg-12 col-sm-12 col-md-12 col-xs-12 mb-1 mt-1 textcolor">
+                  &nbsp;   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M11.7425 5.33356H4.88892C3.5925 5.33356 2.34881 5.84866 1.43193 6.76549C0.515051 7.68236 0 8.926 0 10.2225C0 11.5189 0.515102 12.7625 1.43193 13.6794C2.34881 14.5963 3.59245 15.1114 4.88892 15.1114H5.52801L7.26531 22.0599C7.55063 23.2004 8.57463 24 9.74985 24H9.75025C10.5649 24 11.3342 23.6248 11.8356 22.9828C12.337 22.3405 12.5143 21.5036 12.3169 20.7129L10.9166 15.1108H11.7614L19.9992 19.8801C20.2742 20.0392 20.6133 20.0398 20.8885 19.8811C21.1635 19.7224 21.3333 19.4287 21.3333 19.1109V12.6408L23.392 11.954C23.7551 11.8332 24 11.4937 24 11.111V9.33319C24 8.95045 23.7552 8.61095 23.392 8.49011L21.3333 7.80338V0.888833C21.3333 0.564825 21.1573 0.26661 20.8734 0.110267C20.5897 -0.0458827 20.2437 -0.0355665 19.9698 0.137252L11.7425 5.33356ZM7.36075 15.1114L8.99012 21.6292C9.07722 21.978 9.39052 22.2225 9.74965 22.2225H9.75004C10.0171 22.2225 10.2697 22.0995 10.434 21.8887C10.5985 21.6784 10.6568 21.4038 10.5919 21.1447L9.08339 15.1114L7.36075 15.1114ZM19.5554 17.5695V2.50207L12.8887 6.7122V13.7101L19.5554 17.5696V17.5695ZM5.77751 13.3336H11.1109V7.11134H5.77751V13.3336ZM3.99972 7.24087C3.50904 7.3871 3.05744 7.65376 2.68863 8.02223C2.1051 8.60574 1.77748 9.3968 1.77748 10.2222C1.77748 11.0476 2.10506 11.8387 2.68863 12.4222C3.05748 12.7906 3.50905 13.0573 3.99972 13.2035V7.24087ZM21.3332 9.6778V10.7667L22.2221 10.4703V9.97425L21.3332 9.6778Z" fill="white"/>
+              </svg> &nbsp;  
+                  Ended Campaigns</p>
+              </mat-card-content>
+              <p class="counttext">
+                  {{endedcount}}
+                  &nbsp; 
+                  <mat-progress-spinner class="float-right" *ngIf="mode === 'determinate'" [diameter]="50" strokeWidth="10"
+                        class="circle "
+                        [color]="'green'"
+                        [mode]="mode"
+                        [value]="this.endedanalytics"
+                      >
+                      </mat-progress-spinner>
+              </p>
+      </mat-card>
+  </div>
+  
+  <!-- no of killed campaign  -->
+  <div class="col-lg-3 col-sm-12 col-md-12 col-xs-12 mt-2">
+      <mat-card [class.mat-elevation-z8]=true  class="matcount">
+              <mat-card-content mat-card-image class="matcards" >                 
+              <p class="col-lg-12 col-sm-12 col-md-12 col-xs-12 mb-1 mt-1 textcolor">
+                  &nbsp;   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M11.7425 5.33356H4.88892C3.5925 5.33356 2.34881 5.84866 1.43193 6.76549C0.515051 7.68236 0 8.926 0 10.2225C0 11.5189 0.515102 12.7625 1.43193 13.6794C2.34881 14.5963 3.59245 15.1114 4.88892 15.1114H5.52801L7.26531 22.0599C7.55063 23.2004 8.57463 24 9.74985 24H9.75025C10.5649 24 11.3342 23.6248 11.8356 22.9828C12.337 22.3405 12.5143 21.5036 12.3169 20.7129L10.9166 15.1108H11.7614L19.9992 19.8801C20.2742 20.0392 20.6133 20.0398 20.8885 19.8811C21.1635 19.7224 21.3333 19.4287 21.3333 19.1109V12.6408L23.392 11.954C23.7551 11.8332 24 11.4937 24 11.111V9.33319C24 8.95045 23.7552 8.61095 23.392 8.49011L21.3333 7.80338V0.888833C21.3333 0.564825 21.1573 0.26661 20.8734 0.110267C20.5897 -0.0458827 20.2437 -0.0355665 19.9698 0.137252L11.7425 5.33356ZM7.36075 15.1114L8.99012 21.6292C9.07722 21.978 9.39052 22.2225 9.74965 22.2225H9.75004C10.0171 22.2225 10.2697 22.0995 10.434 21.8887C10.5985 21.6784 10.6568 21.4038 10.5919 21.1447L9.08339 15.1114L7.36075 15.1114ZM19.5554 17.5695V2.50207L12.8887 6.7122V13.7101L19.5554 17.5696V17.5695ZM5.77751 13.3336H11.1109V7.11134H5.77751V13.3336ZM3.99972 7.24087C3.50904 7.3871 3.05744 7.65376 2.68863 8.02223C2.1051 8.60574 1.77748 9.3968 1.77748 10.2222C1.77748 11.0476 2.10506 11.8387 2.68863 12.4222C3.05748 12.7906 3.50905 13.0573 3.99972 13.2035V7.24087ZM21.3332 9.6778V10.7667L22.2221 10.4703V9.97425L21.3332 9.6778Z" fill="white"/>
+              </svg> &nbsp;  
+                  Killed Campaigns</p>
+              </mat-card-content>
+              <p class="counttext">
+                  {{killedcount}}
+                  &nbsp; 
+                  <mat-progress-spinner  cclass="my-spinner" *ngIf="mode === 'determinate'" [diameter]="50" strokeWidth="10"
+                        class="circle"
+                        
+                        [mode]="mode"
+                        [value]="this.killedanalytics"
+                      >
+                      </mat-progress-spinner>
+              </p>
+      </mat-card>
+  </div>
+  
+  <!-- no of sent campaign  -->
+  <div class="col-lg-3 col-sm-12 col-md-12 col-xs-12 mt-2">
+      <mat-card [class.mat-elevation-z8]=true  class="matcount">
+              <mat-card-content mat-card-image class="matcards" >                             
+              <p class="col-lg-12 col-sm-12 col-md-12 col-xs-12 mb-1 mt-1 textcolor">
+                  &nbsp;   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M11.7425 5.33356H4.88892C3.5925 5.33356 2.34881 5.84866 1.43193 6.76549C0.515051 7.68236 0 8.926 0 10.2225C0 11.5189 0.515102 12.7625 1.43193 13.6794C2.34881 14.5963 3.59245 15.1114 4.88892 15.1114H5.52801L7.26531 22.0599C7.55063 23.2004 8.57463 24 9.74985 24H9.75025C10.5649 24 11.3342 23.6248 11.8356 22.9828C12.337 22.3405 12.5143 21.5036 12.3169 20.7129L10.9166 15.1108H11.7614L19.9992 19.8801C20.2742 20.0392 20.6133 20.0398 20.8885 19.8811C21.1635 19.7224 21.3333 19.4287 21.3333 19.1109V12.6408L23.392 11.954C23.7551 11.8332 24 11.4937 24 11.111V9.33319C24 8.95045 23.7552 8.61095 23.392 8.49011L21.3333 7.80338V0.888833C21.3333 0.564825 21.1573 0.26661 20.8734 0.110267C20.5897 -0.0458827 20.2437 -0.0355665 19.9698 0.137252L11.7425 5.33356ZM7.36075 15.1114L8.99012 21.6292C9.07722 21.978 9.39052 22.2225 9.74965 22.2225H9.75004C10.0171 22.2225 10.2697 22.0995 10.434 21.8887C10.5985 21.6784 10.6568 21.4038 10.5919 21.1447L9.08339 15.1114L7.36075 15.1114ZM19.5554 17.5695V2.50207L12.8887 6.7122V13.7101L19.5554 17.5696V17.5695ZM5.77751 13.3336H11.1109V7.11134H5.77751V13.3336ZM3.99972 7.24087C3.50904 7.3871 3.05744 7.65376 2.68863 8.02223C2.1051 8.60574 1.77748 9.3968 1.77748 10.2222C1.77748 11.0476 2.10506 11.8387 2.68863 12.4222C3.05748 12.7906 3.50905 13.0573 3.99972 13.2035V7.24087ZM21.3332 9.6778V10.7667L22.2221 10.4703V9.97425L21.3332 9.6778Z" fill="white"/>
+              </svg> &nbsp;  
+                  Sent Campaigns</p>         
+              </mat-card-content>
+              <p class="float-left counttext">
+                  {{sentcount}}   &nbsp; 
+                  <mat-progress-spinner class="float-right" *ngIf="mode === 'determinate'" [diameter]="50" strokeWidth="10"
+                        class="circle"
+                        [color]="color"
+                        [mode]="mode"
+                        [value]="this.sendanalytics"
+                      >
+                      </mat-progress-spinner>
+              </p>
+      </mat-card>
+  </div>
+  
+  
+  <div class="col-lg-4 mt-4">
+    <span class="btn btn-primary">Recent Campaigns</span>
+  </div>
+  
+  <!-- table data  -->
+  
+  <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 mt-2 inline-flex materialTableHeader tabledata ">
+      <table mat-table matTableExporter [dataSource]="dataSource" class=" w-100 mat-elevation-z8" >
+          <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef  class="matcards" > Name </th>
+              <td mat-cell *matCellDef="let ele" class="matcontents">
+                <mat-card class="mat-elevation-z0 tablemat mt-2 mb-2">
+                {{ele.name}}
+              </mat-card>
+             </td>
           </ng-container>
-
-          <ng-container matColumnDef="delivered">
-            <th mat-header-cell *matHeaderCellDef   class="matcards" >Delivered</th>
-            <td  mat-cell *matCellDef="let ele" class="matcontents">
-              <mat-card class="mat-elevation-z0 tablemat mt-2 mb-2">
-              {{ele.delivered}}
-            </mat-card>
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="notDelivered">
-            <th  mat-header-cell *matHeaderCellDef  class="matcards" >Not Delivered</th>
-            <td mat-cell *matCellDef="let ele" class="matcontents">
-              <mat-card class="mat-elevation-z0 tablemat mt-2 mb-2">
-              {{ele.notDelivered}}
-            </mat-card>
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="created_on">
-            <th  mat-header-cell *matHeaderCellDef  class="matcards" >Time</th>
-            <td  mat-cell *matCellDef="let ele" class="matcontents">
-              <mat-card class="mat-elevation-z0 tablemat mt-2 mb-2">
-              {{ele.created_on}}
-            </mat-card>
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="taskStatus">
-            <th  mat-header-cell *matHeaderCellDef   class="matcards" >Status</th>
-            <td  mat-cell *matCellDef="let ele" class="matcontents">
-              <mat-card class="mat-elevation-z0 tablemat mt-2 mb-2">
-              {{ele.taskStatus}}
-            </mat-card>
-            </td>
-          </ng-container>
-
-       
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-    <div class="col-lg-4 mt-3 mb-3" *ngIf="this.campaigns.length>5">
-      <button class="btn btn-primary" (click)="isShow=!isShow" >{{ isShow ? 'View Less': 'View More' }}</button>
-    </div>
-
-<!-- view more section  -->
-<div *ngIf="isShow">
-<table mat-table matTableExporter [dataSource]="dataSource2" class=" w-100  tabledata">
-  <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef   class="matcards" > Name </th>
-      <td mat-cell *matCellDef="let ele" class="matcontents">
-        <mat-card class="mat-elevation-z0 tablemat mt-2 mb-2"> 
-          {{ele.name}} 
+  
+            <ng-container matColumnDef="opened">
+              <th  mat-header-cell *matHeaderCellDef  class="matcards" >Clicked</th>
+              <td mat-cell *matCellDef="let ele" class="matcontents">
+                <mat-card class="mat-elevation-z0 tablemat mt-2 mb-2">
+                {{ele.opened}}
+              </mat-card>
+              </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="delivered">
+              <th mat-header-cell *matHeaderCellDef   class="matcards" >Delivered</th>
+              <td  mat-cell *matCellDef="let ele" class="matcontents">
+                <mat-card class="mat-elevation-z0 tablemat mt-2 mb-2">
+                {{ele.delivered}}
+              </mat-card>
+              </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="notDelivered">
+              <th  mat-header-cell *matHeaderCellDef  class="matcards" >Not Delivered</th>
+              <td mat-cell *matCellDef="let ele" class="matcontents">
+                <mat-card class="mat-elevation-z0 tablemat mt-2 mb-2">
+                {{ele.notDelivered}}
+              </mat-card>
+              </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="created_on">
+              <th  mat-header-cell *matHeaderCellDef  class="matcards" >Time</th>
+              <td  mat-cell *matCellDef="let ele" class="matcontents">
+                <mat-card class="mat-elevation-z0 tablemat mt-2 mb-2">
+                {{ele.created_on}}
+              </mat-card>
+              </td>
+            </ng-container>
+  
+            <ng-container matColumnDef="taskStatus">
+              <th  mat-header-cell *matHeaderCellDef   class="matcards" >Status</th>
+              <td  mat-cell *matCellDef="let ele" class="matcontents">
+                <mat-card class="mat-elevation-z0 tablemat mt-2 mb-2">
+                {{ele.taskStatus}}
+              </mat-card>
+              </td>
+            </ng-container>
+  
+         
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <div class="col-lg-4 mt-3 mb-3" *ngIf="this.campaigns.length>5">
+        <button class="btn btn-primary" (click)="isShow=!isShow" >{{ isShow ? 'View Less': 'View More' }}</button>
+      </div>
+  
+  <!-- view more section  -->
+  <div *ngIf="isShow">
+  <table mat-table matTableExporter [dataSource]="dataSource2" class=" w-100 mat-elevation-z8 tabledata">
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef   class="matcards" > Name </th>
+        <td mat-cell *matCellDef="let ele" class="matcontents">
+          <mat-card class="mat-elevation-z0 tablemat mt-2 mb-2"> 
+            {{ele.name}} 
+          </mat-card>
+          </td>
+    </ng-container>
+  
+      <ng-container matColumnDef="opened">
+        <th  mat-header-cell *matHeaderCellDef  class="matcards" >Clicked</th>
+        <td mat-cell *matCellDef="let ele" class="matcontents">
+          <mat-card  class="mat-elevation-z0 tablemat mt-2 mb-2">
+          {{ele.opened}}
         </mat-card>
         </td>
-  </ng-container>
-
-    <ng-container matColumnDef="opened">
-      <th  mat-header-cell *matHeaderCellDef  class="matcards" >Clicked</th>
-      <td mat-cell *matCellDef="let ele" class="matcontents">
-        <mat-card  class="mat-elevation-z0 tablemat mt-2 mb-2">
-        {{ele.opened}}
-      </mat-card>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="delivered">
-      <th mat-header-cell *matHeaderCellDef   class="matcards" >Delivered</th>
-      <td  mat-cell *matCellDef="let ele" class="matcontents">
-        <mat-card class="mat-elevation-z0 tablemat mt-2 mb-2">
-        {{ele.delivered}}
-      </mat-card>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="notDelivered">
-      <th  mat-header-cell *matHeaderCellDef  class="matcards" >Not Delivered</th>
-      <td mat-cell *matCellDef="let ele" class="matcontents">
-        <mat-card class="mat-elevation-z0 tablemat mt-2 mb-2">
-        {{ele.notDelivered}}
-      </mat-card>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="created_on">
-      <th  mat-header-cell *matHeaderCellDef  class="matcards" >Time</th>
-      <td  mat-cell *matCellDef="let ele" class="matcontents">
-        <mat-card class="mat-elevation-z0 tablemat mt-2 mb-2">
-        {{ele.created_on}}
-      </mat-card>
-      </td>
-    </ng-container>
-
-    <ng-container matColumnDef="taskStatus">
-      <th  mat-header-cell *matHeaderCellDef   class="matcards" >Status</th>
-      <td  mat-cell *matCellDef="let ele" class="matcontents">
-        <mat-card  class="mat-elevation-z0 tablemat mt-2 mb-2">
-        {{ele.taskStatus}}
-      </mat-card>
-      </td>
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-</div>
-
-</div>
-</div>
-</div>
-
+      </ng-container>
+  
+      <ng-container matColumnDef="delivered">
+        <th mat-header-cell *matHeaderCellDef   class="matcards" >Delivered</th>
+        <td  mat-cell *matCellDef="let ele" class="matcontents">
+          <mat-card class="mat-elevation-z0 tablemat mt-2 mb-2">
+          {{ele.delivered}}
+        </mat-card>
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="notDelivered">
+        <th  mat-header-cell *matHeaderCellDef  class="matcards" >Not Delivered</th>
+        <td mat-cell *matCellDef="let ele" class="matcontents">
+          <mat-card class="mat-elevation-z0 tablemat mt-2 mb-2">
+          {{ele.notDelivered}}
+        </mat-card>
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="created_on">
+        <th  mat-header-cell *matHeaderCellDef  class="matcards" >Time</th>
+        <td  mat-cell *matCellDef="let ele" class="matcontents">
+          <mat-card class="mat-elevation-z0 tablemat mt-2 mb-2">
+          {{ele.created_on}}
+        </mat-card>
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="taskStatus">
+        <th  mat-header-cell *matHeaderCellDef   class="matcards" >Status</th>
+        <td  mat-cell *matCellDef="let ele" class="matcontents">
+          <mat-card  class="mat-elevation-z0 tablemat mt-2 mb-2">
+          {{ele.taskStatus}}
+        </mat-card>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  </div>
+  
+  </div>
+  </div>
+  </div>
+  
+  

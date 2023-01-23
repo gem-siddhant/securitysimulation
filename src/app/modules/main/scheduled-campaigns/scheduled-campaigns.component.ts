@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CommonService } from 'src/app/services/common.service';
 import { CampaignConfirmComponent } from 'src/app/shared/campaign-confirm/campaign-confirm.component';
 import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
 import { DeleteModalComponent } from 'src/app/shared/delete-modal/delete-modal.component';
@@ -33,11 +34,13 @@ export class ScheduledCampaignsComponent implements OnInit {
   campaigns: any =[]
   StoreData: boolean = false;
   constructor(
+    private commonService : CommonService,
     private router:Router,
     private _schedule: MainService, private toastr: ToastrService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.scheduledCampaigns();
+    this.commonService.setLoginStatus(true);
   }
 
   scheduledCampaigns() {
