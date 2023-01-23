@@ -132,7 +132,7 @@ export class LoginComponent implements OnInit {
         let obj={
           "email":"ayush.tiwary@Geminisolutions.com",
         }
-        this._auth.loginMethod(obj).subscribe((data)=>{
+        this._auth.loginMethod2(obj).subscribe((data)=>{
           if(data){
             console.log(data.data);
             console.log(data.message);

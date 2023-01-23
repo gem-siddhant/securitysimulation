@@ -11,7 +11,7 @@ mat-sidenav {
   background-color: transparent;
 }
 mat-sidenav-content {
-  overflow-x: hidden;
+  overflow-x: auto;
 }
 
 mat-sidenav {

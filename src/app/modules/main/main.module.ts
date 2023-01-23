@@ -30,6 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ɵAnimationGroupPlayer } from '@angular/animations';
 import { CustomtemplateComponent } from './customtemplate/customtemplate.component';
 import { DashboardAdminComponent } from './dashboard/dashboard-admin/dashboard-admin/dashboard-admin.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 @NgModule({
   declarations: [
     GiftComponent,
@@ -62,7 +63,8 @@ import { DashboardAdminComponent } from './dashboard/dashboard-admin/dashboard-a
     MatProgressSpinnerModule,
     MatDatepickerModule,
     NgxMaterialTimepickerModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatPaginatorModule 
   ]
 })
 export class MainModule { }
