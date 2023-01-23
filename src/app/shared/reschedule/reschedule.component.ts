@@ -136,15 +136,15 @@ export class RescheduleComponent implements OnInit {
   }
   darkTheme: NgxMaterialTimepickerTheme = {
     container: {
-        bodyBackgroundColor: '#66209D',
+        bodyBackgroundColor: '#38A3A5',
         buttonColor: '#fff'
     },
     dial: {
-        dialBackgroundColor: '#66209D',
+        dialBackgroundColor: '#38A3A5',
     },
     clockFace: {
         clockFaceBackgroundColor: '#fff',
-        clockHandColor: '#312936;',
+        clockHandColor: '#38A3A5;',
         clockFaceTimeInactiveColor: 'black'
     }
 };

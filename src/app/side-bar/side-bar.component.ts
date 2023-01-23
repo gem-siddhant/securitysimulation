@@ -1,8 +1,12 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
+import { MainService } from '../modules/main/service/main.service';
 import { AuthService } from '../services/auth.service';
 import { CommonService } from '../services/common.service';
 import { ResponsiveService } from '../services/responsive.service';
 import { imgconst } from '../shared/Constants/constants';
+import { ScheduleCampComponent } from '../shared/schedule-camp/schedule-camp.component';
 @Component({
   selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',

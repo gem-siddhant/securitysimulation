@@ -30,7 +30,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ɵAnimationGroupPlayer } from '@angular/animations';
 import { CustomtemplateComponent } from './customtemplate/customtemplate.component';
 import { ScheduledCampaignsComponent } from './scheduled-campaigns/scheduled-campaigns.component';
-import { RescheduleCampaignModalComponent } from './reschedule-campaign-modal/reschedule-campaign-modal.component';
 import { CampaignsModule } from './campaigns/campaigns.module';
 @NgModule({
   declarations: [
@@ -43,7 +42,6 @@ import { CampaignsModule } from './campaigns/campaigns.module';
     OnboardresComponent,
     CustomtemplateComponent,
     ScheduledCampaignsComponent,
-    RescheduleCampaignModalComponent
   ],
   imports: [
     CommonModule,

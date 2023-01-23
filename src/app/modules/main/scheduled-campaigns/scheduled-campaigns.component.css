@@ -89,4 +89,5 @@ th.mat-header-cell {
   flex-direction: column;
   flex-wrap: wrap;
   align-content: space-around;
+  height: 95vh;
 }

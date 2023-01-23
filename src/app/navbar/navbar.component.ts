@@ -104,36 +104,6 @@ changetheme()
 
   console.log(this.changecountercheck)
 }
-scheduled()
-{
- const email = localStorage.getItem('email');
- let reqbody = {
-  'email': email
- }
- this._schedule.scheduled(reqbody).subscribe((data)=>{
-  if(data)
-  {
-    const dialogRef = this.dialog.open(ScheduleCampComponent, {
-    width: '650px',
-    height: '350px', 
-    
-    });
-    this.campaigns = data
-    let i =1;
-    for(let element of this.campaigns)
-    {
-      localStorage.setItem('createdon', element.createdOn)
-      localStorage.setItem('name',element.name)
-      localStorage.setItem('jobkey',element.scheduledJobKey)
-      localStorage.setItem('scheduleid',element.id)
-      localStorage.setItem('scheduledTime',element.scheduledTime)
-    }
-    console.log(this.campaigns)
-  }
-});
-let a = localStorage.getItem('heading')
-console.log(a)
-}
 
 }
 
