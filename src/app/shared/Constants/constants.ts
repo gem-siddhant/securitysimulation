@@ -8,3 +8,7 @@ export const imgconst = {
     amazonTempImg : "../../../../../assets/images/template1.png",
     shiledSelectedImg : "../../../../../assets/images/shield-selected.png"
 }
+
+export const colorconst = {
+    sendanalyticscolor : "#38A3A5"
+}

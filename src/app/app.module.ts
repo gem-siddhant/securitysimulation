@@ -52,6 +52,7 @@ import { AddCampaignComponent } from './modules/main/add-campaign/add-campaign.c
 import { DeleteModalComponent } from './shared/delete-modal/delete-modal.component';
 import {MatListModule} from '@angular/material/list'; 
 import { ResponsiveService } from './services/responsive.service';
+import {MatDividerModule} from '@angular/material/divider';
 
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
@@ -107,7 +108,8 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     BrowserAnimationsModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    MatDividerModule
   ],
   providers: [ LoaderService,
     {

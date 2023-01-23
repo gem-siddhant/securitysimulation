@@ -5,6 +5,7 @@ import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/co
 import { AddCampaignComponent } from './add-campaign/add-campaign.component';
 import { CampaignViewComponent } from './campaign-view/campaign-view.component';
 import { CustomtemplateComponent } from './customtemplate/customtemplate.component';
+import { DashboardAdminComponent } from './dashboard/dashboard-admin/dashboard-admin/dashboard-admin.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { GiftComponent } from './gift/gift.component';
 import { LoginComponent } from './login/login.component';
@@ -32,9 +33,9 @@ const routes: Routes = [
     component: AddCampaignComponent,
   },
   {
-    path: 'dashboard',
+    path: 'dashboard-admin',
     canActivate: [AuthGuard],
-    component: DashboardComponent,
+    component: DashboardAdminComponent,
   },
   {
     path: 'view/:id',

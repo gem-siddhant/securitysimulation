@@ -69,20 +69,21 @@ export class LoginComponent implements OnInit {
       .subscribe(() => {
         this.setLoginDisplay();
       });
-      localStorage.setItem('email',"ayush.tiwary@Geminisolutions.com")
+      // localStorage.setItem('email',"ayush.tiwary@Geminisolutions.com")
         this.loginForm = this.formBuilder.group({
             id:[''],
             password:['']
           });
           if(localStorage.getItem('email')){
-            this.router.navigate(["/main/dashboard"]);
+            this.router.navigate(["/main/Admindashboard"]);
           }
     console.log('LOGIN COMPONENT');
     this.onResize();
     this._responsiveService.checkWidth();
+    
+    // will be used to authorization control
     if (this._authUserService.checkLogin()) {
-      
-      this.router.navigate(['/main/dashboard']);
+      this.router.navigate(['/main/dashboard-admin']);
     }
     this._authUserService.setNotificationModalBoolean(true)
   }
@@ -110,7 +111,7 @@ export class LoginComponent implements OnInit {
       if(response){
         console.log("res",response);
         this._authUserService.setToken(response.account?.username,response.accessToken).then(()=>{
-        this.router.navigate(['/main/dashboard']);
+        this.router.navigate(['/main/dashboard-admin']);
         sessionStorage.clear();
         }).then(()=>{
           this._authUserService.getEmployeeDetailBehaviorSubject().subscribe(item => {
@@ -135,7 +136,7 @@ export class LoginComponent implements OnInit {
         let obj={
           "email":"ayush.tiwary@Geminisolutions.com",
         }
-        this._auth.loginMethod(obj).subscribe((data)=>{
+        this._auth.loginMethod2(obj).subscribe((data)=>{
           if(data){
             console.log(data.data);
             console.log(data.message);

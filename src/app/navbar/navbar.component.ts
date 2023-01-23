@@ -33,7 +33,6 @@ export class NavbarComponent implements OnInit {
   changecountercheck: number = 0;
   navBool:boolean=false;
   mobile: boolean;
-  isLoggedIn: boolean = false;
   notifications: any;
   notifyData: any;
   dropdownData: any;

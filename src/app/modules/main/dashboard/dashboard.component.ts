@@ -68,7 +68,6 @@ dates : any = [];
         this.flag = false;
         this.StoreData=true;
         this.campaigns2=data;
-        
       }
     },
       err=>{

@@ -31,6 +31,7 @@ import { ɵAnimationGroupPlayer } from '@angular/animations';
 import { CustomtemplateComponent } from './customtemplate/customtemplate.component';
 import { ScheduledCampaignsComponent } from './scheduled-campaigns/scheduled-campaigns.component';
 import { CampaignsModule } from './campaigns/campaigns.module';
+import { DashboardAdminComponent } from './dashboard/dashboard-admin/dashboard-admin/dashboard-admin.component';
 @NgModule({
   declarations: [
     GiftComponent,
@@ -42,6 +43,7 @@ import { CampaignsModule } from './campaigns/campaigns.module';
     OnboardresComponent,
     CustomtemplateComponent,
     ScheduledCampaignsComponent,
+    DashboardAdminComponent
   ],
   imports: [
     CommonModule,
@@ -64,7 +66,7 @@ import { CampaignsModule } from './campaigns/campaigns.module';
     MatProgressSpinnerModule,
     MatDatepickerModule,
     NgxMaterialTimepickerModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
   ]
 })
 export class MainModule { }

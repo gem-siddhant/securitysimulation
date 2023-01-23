@@ -39,6 +39,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
   ngOnInit(): void {
     this.checkMobile();
     this.onResize();
+    console.log(localStorage.getItem('token'))
   }
   getSideNavOpened(): boolean {
     return this.commonService.getSideNavOpened();
