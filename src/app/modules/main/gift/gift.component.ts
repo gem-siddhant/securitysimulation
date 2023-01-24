@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { MainService } from '../service/main.service';
 @Component({
@@ -11,9 +12,19 @@ export class GiftComponent implements OnInit {
   email:any;
   ipAddress: any;
   id:any;
-  constructor(private route:ActivatedRoute,private http:HttpClient,private _mainService:MainService) { }
+  loginForm:FormGroup;
+
+
+  constructor(private route:ActivatedRoute,private http:HttpClient,private _mainService:MainService,private formBuilder: FormBuilder) 
+  {
+    this.loginForm = this.formBuilder.group({});
+   }
 
   ngOnInit(): void {
+    this.loginForm = this.formBuilder.group({
+      id:['',Validators.required],
+      password:['',Validators.required],
+    });
     this.route.queryParams.subscribe(
       params => {
         this.email =  params['token'];
@@ -29,6 +40,7 @@ export class GiftComponent implements OnInit {
     })
 
   }
+
   sendData(emailID:any,ip:any,id:any){
     let obj={
       'token':emailID,

@@ -26,6 +26,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 import { OnboardresComponent } from './onboard/onboardres/onboardres.component';
 import { CustomtemplateComponent } from './customtemplate/customtemplate.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 @NgModule({
   declarations: [
     GiftComponent,
@@ -35,7 +36,8 @@ import { CustomtemplateComponent } from './customtemplate/customtemplate.compone
     CampaignViewComponent,
     SignUpComponent,
     OnboardresComponent,
-    CustomtemplateComponent
+    CustomtemplateComponent,
+    ErrorPageComponent
   ],
   imports: [
     CommonModule,
