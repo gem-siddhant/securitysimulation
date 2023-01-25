@@ -20,6 +20,10 @@ export class MainService {
      console.log('send user data',obj);
     return this.http.post<any>('register/click', obj);
    }
+   sendrecordeddetails(obj:any)
+   {
+    return this.http.post<any>('register/submit', obj);
+   }
    senddetails(obj:any)
    {
     console.log('send user data',obj);

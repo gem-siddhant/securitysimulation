@@ -74,18 +74,22 @@ export class ScheduleCampComponent implements OnInit {
       console.log(result)
       if(result==true)
       {
-    this._schedule.scheduled(reqbody).subscribe((data)=>{
-      if(data){
-        
-        this.campaigns=data;
-        for(let ele of this.campaigns)
-        {
-          const jobkey = ele.scheduledJobKey
-          console.log(ele.scheduledJobKey)
-          let key = (job)
+        let key = (job)
           let reqbody2 = {
             'jobKey': key
           }
+    // this._schedule.scheduled(reqbody).subscribe((data)=>{
+    //   if(data){
+        
+    //     this.campaigns=data;
+    //     for(let ele of this.campaigns)
+    //     {
+    //       const jobkey = ele.scheduledJobKey
+    //       console.log(ele.scheduledJobKey)
+    //       let key = (job)
+    //       let reqbody2 = {
+    //         'jobKey': key
+    //       }
           this._schedule.deleteschedule(reqbody2).subscribe((data)=>{
             if (data)
             {
@@ -109,16 +113,17 @@ export class ScheduleCampComponent implements OnInit {
                 });
                 dialogRef.afterClosed().subscribe(()=>{
                   this.router.navigate(['main/dashboard']);
+                  window.location.reload()
                 })
               }
               else{
                 
               }
-            })
-        }
-  }
+            // })
+  //       }
+  // }
 });
-  }this.dialogRef.close(); })
+  } })
 }
 
 Reschedule(job:any)
@@ -128,7 +133,6 @@ Reschedule(job:any)
     height: '300px', 
     });  
     localStorage.setItem('jobkey',job)
-    this.dialogRef.close();
 }
 }
 

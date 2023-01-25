@@ -99,7 +99,7 @@ export class CustomtemplateComponent implements OnInit {
         let dataDialog = { title: 'Image uploaded is not in correct format' };
         const dialogRef = this.dialog.open(InfomodalComponent, {
           width: '400px',
-          height:'330px',
+          height:'350px',
           data:dataDialog 
         });
      this.imgupload = true
@@ -147,7 +147,7 @@ schedulelater()
 {
   if(this.wrongimageuploaded==true)
   {
-    let dataDialog = { title: 'Image uploaded is not in correct format' };
+    let dataDialog = { title: 'Image uploaded is not in the correct format' };
     const dialogRef = this.dialog.open(InfomodalComponent, {
       width: '400px',
       height:'330px',

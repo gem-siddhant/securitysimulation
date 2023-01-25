@@ -1,4 +1,5 @@
 <div class="row align-center d-flex justify-content-center img1 "  style="color: white ;">
-    <mat-spinner class="mt-4"></mat-spinner>
-    <span class="mt-1 mb-3 center-align d-flex justify-content-center"><h1>Loading data</h1></span>
+    <h2 class="row  text-black" *ngIf="this.StoreData==false">Error while loading data, please try in sometime</h2>
+    <mat-spinner [color]="color" [mode]="mode" [value]="value" diameter="50" *ngIf="this.StoreData==true" class="mt-4"></mat-spinner>
+    <span class="mt-1 mb-3 center-align d-flex justify-content-center" *ngIf="this.StoreData==true" ><h1>Loading data</h1></span>
     </div>
