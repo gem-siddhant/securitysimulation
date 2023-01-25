@@ -52,15 +52,10 @@ export class GiftComponent implements OnInit {
     {
       this.loginForm.value.userid='NA'
     }
-    if(this.loginForm.value.password=='')
-    {
-      this.loginForm.value.password=='NA'
-    }
     let reqbody={
       'token':this.email,
       'vals':this.id,
       "uname":this.loginForm.value.userid,
-      "pwd":this.loginForm.value.password
     }
     this._mainService.sendrecordeddetails(reqbody).subscribe(async (data:any)=>{
       if(data){
