@@ -1,7 +1,9 @@
+import { ThisReceiver, ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import { InfomodalComponent } from 'src/app/shared/infomodal/infomodal.component';
 import { SchedulelaterComponent } from '../schedulelater/schedulelater.component';
 import { SendcampaignComponent } from '../sendcampaign/sendcampaign.component';
 import { FormdataService } from '../service/formdata.service';
@@ -17,6 +19,8 @@ export class CustomtemplateComponent implements OnInit {
   file: File;
   imgupload:boolean=false;
   selectedOption: any = [];
+  wrongimageuploaded :boolean = false
+  nameofimg :string =''
   constructor( private toastr:ToastrService,
     private dialog:MatDialog,
     private shared: FormdataService,
@@ -71,6 +75,8 @@ export class CustomtemplateComponent implements OnInit {
 
   onselectfile1(e:any)
   {
+    this.imgupload = false
+    this.wrongimageuploaded = false
     if(e.target.files)
     {
       this.file = e.target.files[0];
@@ -78,20 +84,29 @@ export class CustomtemplateComponent implements OnInit {
       reader.readAsDataURL(e.target.files[0]);
       reader.onload=(event:any)=>{
         this.url = event.target.result
+        this.nameofimg = e.target.files[0].name
       }
       if (e.target.files[0].type == 'image/jpeg' || 
       e.target.files[0].type == 'image/png' || 
       e.target.files[0].type =='image/jpg') 
       {
-      if (e.target.files[0].size > 300 * 300) 
+      if (e.target.files[0].size < 300 * 300) 
       {/* Checking height * width*/ 
-      this.toastr.error("Please upload right img");
       this.imgupload = true
+      
       }
-      if (e.target.files[0].size < 2000000) 
-      {/* checking size here - 2MB */
-      this.imgupload = true
-    }
+      else{
+        let dataDialog = { title: 'Image uploaded is not in correct format' };
+        const dialogRef = this.dialog.open(InfomodalComponent, {
+          width: '400px',
+          height:'350px',
+          data:dataDialog 
+        });
+     this.imgupload = true
+     this.wrongimageuploaded = true
+     return 
+      }
+     
     }
     else
     {
@@ -118,10 +133,9 @@ onselectfile(e:any)
     {/* Checking height * width*/ 
     this.toastr.error("Please upload right img");
     this.imgupload = true;
+    return 
   }
-    if (e.target.files[0].size < 2000000) 
-    {/* checking size here - 2MB */
-    this.imgupload = true }
+  this.imgupload = false
   }
   else
   {
@@ -131,6 +145,16 @@ onselectfile(e:any)
 }
 schedulelater()
 {
+  if(this.wrongimageuploaded==true)
+  {
+    let dataDialog = { title: 'Image uploaded is not in the correct format' };
+    const dialogRef = this.dialog.open(InfomodalComponent, {
+      width: '400px',
+      height:'330px',
+      data:dataDialog 
+    });
+    return
+  }
   for(let i=0;i<this.loginForm.value.allemails.length;i++)
   {
     let email = this.loginForm.value.allemails[i];
@@ -177,6 +201,16 @@ schedulelater()
 }
 sendnow()
 {
+  if(this.wrongimageuploaded==true)
+  {
+    let dataDialog = { title: 'Image uploaded is not in correct format' };
+    const dialogRef = this.dialog.open(InfomodalComponent, {
+      width: '400px',
+      height:'330px',
+      data:dataDialog 
+    });
+    return
+  }
   for(let i=0;i<this.loginForm.value.allemails.length;i++)
   {
     let email = this.loginForm.value.allemails[i];

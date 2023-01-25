@@ -6,6 +6,7 @@ import { AddCampaignComponent } from './add-campaign/add-campaign.component';
 import { CampaignViewComponent } from './campaign-view/campaign-view.component';
 import { CustomtemplateComponent } from './customtemplate/customtemplate.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 import { GiftComponent } from './gift/gift.component';
 import { LoginComponent } from './login/login.component';
 import { OnboardresComponent } from './onboard/onboardres/onboardres.component';
@@ -20,9 +21,15 @@ const routes: Routes = [
   component:LoginComponent
 },
   {
-  path:'gifts',
+  path:'misapprasial-login',
   component: GiftComponent,
-},{
+},
+{
+  path:'mis-apprasialportal-dashboard',
+  component: ErrorPageComponent,
+}
+
+,{
   path:'add-campaign',
   canActivate:[AuthGuard],
   component:AddCampaignComponent

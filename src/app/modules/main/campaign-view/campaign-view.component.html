@@ -141,6 +141,31 @@
           <td class="myDesc txt-col" mat-cell *matCellDef="let element" ><a id="status-id">{{element.status}}</a></td>
         </ng-container>
 
+        <!--Clicked count-->
+        <ng-container matColumnDef="clickedCount">
+          <th class="head" mat-header-cell *matHeaderCellDef mat-sort-header="clickedCount">Clicked Count</th>
+          <td class="myDesc txt-col" mat-cell *matCellDef="let element" >{{element.clickedCount}}</td>
+        </ng-container>
+
+        <!--Form submitted-->
+        <ng-container matColumnDef="formSubmit">
+          <th class="head" mat-header-cell *matHeaderCellDef mat-sort-header="submitted">Submitted form</th>
+          <td class="myDesc txt-col" mat-cell *matCellDef="let element" >{{element.formSubmit}}</td>
+        </ng-container>
+
+          <!--Form submitted count-->
+          <ng-container matColumnDef="submitCount">
+            <th class="head" mat-header-cell *matHeaderCellDef mat-sort-header="submitCount">Submit Count</th>
+            <td class="myDesc txt-col" mat-cell *matCellDef="let element" >{{element.submitCount}}</td>
+          </ng-container>
+        
+        <!--Username provided-->
+        <ng-container matColumnDef="username">
+          <th class="head" mat-header-cell *matHeaderCellDef mat-sort-header="username">Submited username</th>
+          <td class="myDesc txt-col" mat-cell *matCellDef="let element" >{{element.username}}
+         </td>
+        </ng-container>
+
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

@@ -121,6 +121,7 @@ export class RescheduleComponent implements OnInit {
         });
         dialogRef.afterClosed().subscribe(()=>{
           this.router.navigate(['main/dashboard']);
+          window.location.reload()
         })
       }
       else{

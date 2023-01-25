@@ -1,9 +1,4 @@
-.full{
-  height: 100vh;
-  width: 100%;
-background-size:contain;
-background-repeat: repeat;
-}
+
 mat-card{
   border-radius: 10px;
 }
@@ -38,14 +33,16 @@ color: white;
   display: flex;
   justify-content: center;
 }
-.img1{
-  position: absolute;
-  width: max-content;
-  top: 0;
-  left: 0;   
-  height: 100%;
-  width: 100%;
-  z-index: -1;
+.full{
+  background-image: url(../../../../assets/images/final_bg_image.png);  
+  position:fixed;
+  height: 100vh;
+  z-index:5;
+  background: url(../../../../assets/images/final_bg_image.png) relative; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  overflow-x: auto;
 /* opacity: 2;
 z-index: -1;
 background-image: url(../../../../assets/images/final_bg_image.png);  
@@ -57,6 +54,11 @@ overflow: hidden;  */
   
    
 }
+@media screen and (max-width: 800px) {
+  .img1 {
+     background-color: aliceblue;
+   }
+ }
 #add_btn {
   border: none;
   border-radius: 5px;
@@ -114,5 +116,6 @@ text-decoration: none;
   color: white;
   border: none;
   border-radius: 20px;
-  width:60vw;
+  width:40vw;
+
 }
