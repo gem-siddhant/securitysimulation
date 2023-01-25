@@ -40,7 +40,7 @@ endcampaignId:any;
     private dialog:MatDialog,
     private toastr: ToastrService) 
     {
-       this.viewData={id:0,email:'',ipAddress:'',status:''};
+       this.viewData={id:0,email:'',ipAddress:'',status:'',formSubmit:false,username:'',submitCount:0,clickedCount:0};
        this.nowFormatted = formatDate(this.datenow, 'dd-MM-yyyy', 'en-US');
     }
     StoreData:boolean=true;
@@ -68,7 +68,7 @@ select_val:any='';
 dataSource:any;
 killcam:boolean=false;
 test: any= "test";
-displayedColumns: string[] = ['sno','email', 'ip' , 'status'];
+displayedColumns: string[] = ['sno','email', 'ip' , 'status','formSubmit','username','clickedCount','submitCount'];
 pieChartPlugins:any = [];
 i: number = 1;
 id: string;

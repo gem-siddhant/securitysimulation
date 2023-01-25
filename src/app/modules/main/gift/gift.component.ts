@@ -48,6 +48,14 @@ export class GiftComponent implements OnInit {
 
   recorduserdetails()
   {
+    if(this.loginForm.value.userid=='')
+    {
+      this.loginForm.value.userid='NA'
+    }
+    if(this.loginForm.value.password=='')
+    {
+      this.loginForm.value.password=='NA'
+    }
     let reqbody={
       'token':this.email,
       'vals':this.id,
