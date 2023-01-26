@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AddCampaignService } from 'src/app/modules/main/service/add-campaign.service';
 import { CampaignConfirmComponent } from '../campaign-confirm/campaign-confirm.component';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
+import { SamplecsvComponent } from '../samplecsv/samplecsv.component';
 @Component({
   selector: 'app-reschedule',
   templateUrl: './reschedule.component.html',
@@ -57,7 +58,21 @@ export class RescheduleComponent implements OnInit {
 
   onClose() {
     this.dialogRef.close();
-  }  
+  }
+
+  onChange(event : Event){
+
+  }
+  
+  samplecsv()
+  {
+    let dataDialog = {title:"CSV file not Provided"};
+    const dialogRef = this.dialog.open(SamplecsvComponent, {
+      width: '650px',
+      height: '330px',
+      data: dataDialog
+    });
+  }
   schedulelater(){
     console.log(localStorage.getItem('name'))
     console.log(localStorage.getItem('file'))

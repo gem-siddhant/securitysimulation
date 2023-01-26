@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
 import { CampaignsRoutingModule } from './campaigns-routing.module';
 import { CampaignTemplatesComponent } from './campaign-templates/campaign-templates.component';
 import { TemplateFormComponent } from './template-form/template-form.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -12,8 +11,8 @@ import { TemplateFormComponent } from './template-form/template-form.component';
     TemplateFormComponent
   ],
   imports: [
-    CommonModule,
-    CampaignsRoutingModule
+    SharedModule,
+    CampaignsRoutingModule,
   ]
 })
 export class CampaignsModule { }

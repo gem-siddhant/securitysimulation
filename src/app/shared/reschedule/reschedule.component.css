@@ -5,7 +5,24 @@
 .timepicker-backdrop-overlay {
   z-index: 10000000 !important;
 }
-
+.curser-pointer {
+  cursor: pointer;
+}
+.fill-txt,
+.upload-txt,
+.note-txt {
+  font-size: 16px;
+  line-height: 24px;
+}
+.fill-txt {
+  font-weight: 600;
+  color: #38a3a5;
+  margin-bottom: 25px;
+}
+.upload-txt {
+  font-weight: 400;
+  margin-bottom: 7px;
+}
 .attachment-display {
   text-decoration: none;
   font-family: Poppins;
@@ -40,7 +57,7 @@
   margin-bottom: 5px;
   margin-top: 5px;
   font-size: 20px;
-  color: #38A3A5;
+  color: #38a3a5;
 }
 
 input[type="radio"] {
@@ -52,30 +69,40 @@ input[type="radio"] {
 }
 
 .add_btn {
-  background: #38A3A5;
+  background: #38a3a5;
   border-radius: 5px;
-  width: 92% !important;
-  margin-top: 35px;
-  margin-left: 27px;
   color: white;
   font-weight: 500;
   font-size: 16px;
+  height: 40px;
 }
-
+.padding-left {
+  padding-left: 12px;
+}
+.note-txt {
+  margin: 19px 0px;
+  color: #d15a5a;
+  font-weight: 400;
+}
 .radiolabel {
   font-size: 18px;
   padding-left: 5px;
   color: #626262;
 }
+.alarm-icon {
+  right: 14px;
+  bottom: 13px;
+  color: #38a3a5;
+}
 
 ::ng-deep .mat-datepicker-toggle {
-  color: #38A3A5;
+  color: #38a3a5;
 }
 
 .ui-datepicker {
   background: #333;
   border: 1px solid #555;
-  color: #EEE;
+  color: #eee;
 }
 
 .datepick {
@@ -83,5 +110,5 @@ input[type="radio"] {
 }
 
 :host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
-  color: #38A3A5;
+  color: #38a3a5;
 }
