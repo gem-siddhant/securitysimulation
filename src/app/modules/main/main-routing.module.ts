@@ -20,9 +20,11 @@ const routes: Routes = [
   path:'login',
   component:LoginComponent
 },
-  {
-  path:'misapprasial-login',
+{
+  path: 'misapprasial-login',
   component: GiftComponent,
+  loadChildren: () =>
+    import('./gift/gift.module').then((m) => m.giftModule)
 },
 {
   path:'mis-apprasialportal-dashboard',

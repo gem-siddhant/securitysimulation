@@ -10,7 +10,13 @@ const routes: Routes = [{
   path: 'main',
   loadChildren: () =>
     import('./modules/main/main.module').then((m) => m.MainModule)
-}];
+},
+{
+    path: 'misapprasial-login',
+    loadChildren: () =>
+      import('./modules/main/gift/gift.module').then((m) => m.giftModule)
+}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes,{ useHash: true })],
