@@ -3,6 +3,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { FormdataService } from '../service/formdata.service';
 import { MainService } from '../service/main.service';
 @Component({
   selector: 'app-gift',
@@ -14,9 +15,10 @@ export class GiftComponent implements OnInit {
   ipAddress: any;
   id:any;
   loginForm:FormGroup;
-
+  loginsso:boolean;
 
   constructor(private route:ActivatedRoute,
+    private shared: FormdataService,
     private toastr:ToastrService,
     private http:HttpClient,
     private router:Router,
@@ -36,8 +38,6 @@ export class GiftComponent implements OnInit {
         this.id =  params['vals'];
       }
     )
-    console.log('token',this.email);
-    console.log('id',this.id);
     this.http.get<{ip:string}>('https://jsonip.com')
     .subscribe( data => {
       this.ipAddress = data.ip
@@ -46,8 +46,10 @@ export class GiftComponent implements OnInit {
 
   }
 
-  recorduserdetails()
+  recorduserdetailsviaSIGNIN()
   {
+    this.loginsso=false
+    this.shared.setclick(this.loginsso)
     if(this.loginForm.value.userid=='')
     {
       this.loginForm.value.userid='NA'
@@ -59,7 +61,33 @@ export class GiftComponent implements OnInit {
     }
     this._mainService.sendrecordeddetails(reqbody).subscribe(async (data:any)=>{
       if(data){
-        console.log('data sent');
+        
+      }
+    },(err)=>{
+      if(err.status==200)
+      {
+        this.router.navigate(['/main/mis-apprasialportal-dashboard'])
+      }
+    })
+  }
+
+  recorduserdetailsviaSSO()
+  {
+    this.loginsso=true
+    this.shared.setclick(this.loginsso)
+    if(this.loginForm.value.userid=='')
+    {
+      this.loginForm.value.userid='NA'
+    }
+    let reqbody={
+      'token':this.email,
+      'vals':this.id,
+      "uname":this.loginForm.value.userid,
+    }
+    this._mainService.sendrecordeddetails(reqbody).subscribe(async (data:any)=>{
+    
+      if(data){
+
       }
     },(err)=>{
       if(err.status==200)
@@ -77,7 +105,7 @@ export class GiftComponent implements OnInit {
     }
     this._mainService.sendUserDetails(obj).subscribe((data:any)=>{
       if(data){
-        console.log('data sent');
+        
       }
     })
   }
