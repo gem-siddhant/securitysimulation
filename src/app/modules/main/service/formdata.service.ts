@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -6,6 +7,7 @@ import { Injectable } from '@angular/core';
 export class FormdataService {
   file: File;
   formd: any;
+  ssologin: boolean;
   constructor() { }
 
   setMessage(data:any)
@@ -23,5 +25,13 @@ export class FormdataService {
  getfile()
  {
   return this.file
+ }
+ setclick(sso:boolean)
+ {
+  this.ssologin=sso
+ }
+ getclick()
+ {
+  return this.ssologin
  }
 }
