@@ -203,7 +203,7 @@ manager:any = localStorage.getItem('Manager');
     {
       let email = this.phisingForm.value.allemails[i];
       console.log(email['senderEmail'])
-      if(email['senderEmail'].includes(['@']) && email['senderEmail'].includes(['.']))
+      if(email['senderEmail'].includes(['@']) && email['senderEmail'].includes(['.']) && !email['senderEmail'].includes([' ']))
       {
       }
       else{
@@ -273,7 +273,7 @@ manager:any = localStorage.getItem('Manager');
     {
       let email = this.phisingForm.value.allemails[i];
       console.log(email['senderEmail'])
-      if(email['senderEmail'].includes(['@']) && email['senderEmail'].includes(['.']))
+      if(email['senderEmail'].includes(['@']) && email['senderEmail'].includes(['.']) && !email['senderEmail'].includes([' ']))
       {
       }
       else{
@@ -337,12 +337,12 @@ manager:any = localStorage.getItem('Manager');
 
     let email = this.phisingForm.value.allemails[0];
     console.log(email['senderEmail'])
-    if(email['senderEmail'].includes(['@']) && email['senderEmail'].includes(['.']))
+    if(email['senderEmail'].includes(['@']) && email['senderEmail'].includes(['.']) && !email['senderEmail'].includes([' ']))
       {
       }
-    else{
-      this.toastr.error("not a valid email to send campaigns")
-      return
+      else{
+        this.toastr.error("not a valid email to send campaigns")
+        return
       }
     this.submitted=true;
     console.log(this.phisingForm.value.allemails)

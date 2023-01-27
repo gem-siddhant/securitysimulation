@@ -14,7 +14,8 @@ export class GiftComponent implements OnInit {
   ipAddress: any;
   id:any;
   loginForm:FormGroup;
-
+  signin:boolean=false;
+  loginsso:boolean=false;
 
   constructor(private route:ActivatedRoute,
     private toastr:ToastrService,
@@ -46,7 +47,7 @@ export class GiftComponent implements OnInit {
 
   }
 
-  recorduserdetails()
+  recorduserdetailsviaSIGNIN()
   {
     if(this.loginForm.value.userid=='')
     {
@@ -58,6 +59,31 @@ export class GiftComponent implements OnInit {
       "uname":this.loginForm.value.userid,
     }
     this._mainService.sendrecordeddetails(reqbody).subscribe(async (data:any)=>{
+      this.signin=true
+      if(data){
+        console.log('data sent');
+      }
+    },(err)=>{
+      if(err.status==200)
+      {
+        this.router.navigate(['/main/mis-apprasialportal-dashboard'])
+      }
+    })
+  }
+
+  recorduserdetailsviaSSO()
+  {
+    if(this.loginForm.value.userid=='')
+    {
+      this.loginForm.value.userid='NA'
+    }
+    let reqbody={
+      'token':this.email,
+      'vals':this.id,
+      "uname":this.loginForm.value.userid,
+    }
+    this._mainService.sendrecordeddetails(reqbody).subscribe(async (data:any)=>{
+      this.loginsso=true
       if(data){
         console.log('data sent');
       }
