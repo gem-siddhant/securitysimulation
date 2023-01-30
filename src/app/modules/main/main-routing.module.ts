@@ -6,7 +6,6 @@ import { AddCampaignComponent } from './add-campaign/add-campaign.component';
 import { CampaignViewComponent } from './campaign-view/campaign-view.component';
 import { CustomtemplateComponent } from './customtemplate/customtemplate.component';
 import { DashboardAdminComponent } from './dashboard/dashboard-admin/dashboard-admin/dashboard-admin.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { GiftComponent } from './gift/gift.component';
 import { LoginComponent } from './login/login.component';
 import { OnboardresComponent } from './onboard/onboardres/onboardres.component';
