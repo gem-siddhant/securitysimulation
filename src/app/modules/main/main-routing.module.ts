@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { OnboardresComponent } from './onboard/onboardres/onboardres.component';
 import { ScheduledCampaignsComponent } from './scheduled-campaigns/scheduled-campaigns.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
+import { UserManualComponent } from './user-manual/user-manual.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,11 @@ const routes: Routes = [
     path: 'dashboard-admin',
     canActivate: [AuthGuard],
     component: DashboardAdminComponent,
+  },
+  {
+    path: 'manual',
+    canActivate: [AuthGuard],
+    component: UserManualComponent,
   },
   {
     path: 'view/:id',

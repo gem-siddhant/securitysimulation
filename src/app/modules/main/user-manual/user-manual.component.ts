@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-user-manual',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserManualComponent implements OnInit {
 
-  constructor() { }
+  content: any
+  constructor( private commonService : CommonService,private toastr:ToastrService) { }
 
   ngOnInit(): void {
+    this.commonService.setLoginStatus(true);
   }
+  toogletag(content:any )
+{
+  this.toastr.show(content);
+}
 
 }
