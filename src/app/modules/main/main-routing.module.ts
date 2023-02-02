@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/AuthGuard/auth.guard';
 import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
 import { AddCampaignComponent } from './add-campaign/add-campaign.component';
-import { CampaignViewComponent } from './campaign-view/campaign-view.component';
+import { CampaignViewComponent } from './analytics/campaign-view/campaign-view.component';
 import { CustomtemplateComponent } from './customtemplate/customtemplate.component';
 import { DashboardAdminComponent } from './dashboard/dashboard-admin/dashboard-admin/dashboard-admin.component';
 import { GiftComponent } from './gift/gift.component';
@@ -71,6 +71,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./campaigns/campaigns.module').then((m) => m.CampaignsModule),
   },
+  {
+    path: 'analytics',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./analytics/analytics.module').then((m) => m.AnalyticsModule),
+  }
 ];
 
 @NgModule({

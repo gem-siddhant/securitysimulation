@@ -3,7 +3,6 @@ import { MainRoutingModule } from './main-routing.module';
 import { GiftComponent } from './gift/gift.component';
 import { AddCampaignComponent } from './add-campaign/add-campaign.component';
 import { LoginComponent } from './login/login.component';
-import { CampaignViewComponent } from './campaign-view/campaign-view.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { OnboardresComponent } from './onboard/onboardres/onboardres.component';
 import { CustomtemplateComponent } from './customtemplate/customtemplate.component';
@@ -16,7 +15,6 @@ import { UserManualComponent } from './user-manual/user-manual.component';
     GiftComponent,
     AddCampaignComponent,
     LoginComponent,
-    CampaignViewComponent,
     SignUpComponent,
     OnboardresComponent,
     CustomtemplateComponent,
