@@ -5,12 +5,23 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'main',
-    pathMatch: 'full',
+    pathMatch: 'full'
+  },
+  {
+    path: '',
+    redirectTo: 'client-onboard',
+    pathMatch: 'full'
   },
   {
     path: 'main',
     loadChildren: () =>
       import('./modules/main/main.module').then((m) => m.MainModule),
+  },
+
+  {
+    path: 'client-onboard',
+    loadChildren: () =>
+      import('./modules/client-onboard/client-onboard.module').then((m) => m.ClientOnboardModule),
   },
   
 ];
