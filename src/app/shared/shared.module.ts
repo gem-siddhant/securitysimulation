@@ -32,6 +32,8 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { MatTableExporterModule } from 'mat-table-exporter';
 import { ChartsModule } from 'ng2-charts';
 import { ToastrModule } from 'ngx-toastr';
+import { SendCampaignModalComponent } from './send-campaign-modal/send-campaign-modal.component';
+import { DownloadCsvModalComponent } from './download-csv-modal/download-csv-modal.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { ToastrModule } from 'ngx-toastr';
     InfomodalComponent,
     CsvmessageComponent,
     SamplecsvComponent,
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    SendCampaignModalComponent,
+    DownloadCsvModalComponent
   ],
   imports: [
     CommonModule,

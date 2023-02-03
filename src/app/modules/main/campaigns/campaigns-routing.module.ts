@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/AuthGuard/auth.guard';
 import { CampaignTemplatesComponent } from './campaign-templates/campaign-templates.component';
+import { CustomFormComponent } from './custom-form/custom-form.component';
 import { TemplateFormComponent } from './template-form/template-form.component';
 
 const routes: Routes = [
@@ -19,6 +20,11 @@ const routes: Routes = [
     path : 'template-form/:id',
     canActivate: [AuthGuard],
     component: TemplateFormComponent,
+  },
+  {
+    path : 'custom-form',
+    canActivate: [AuthGuard],
+    component: CustomFormComponent,
   }
 ];
 

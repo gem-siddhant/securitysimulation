@@ -1,0 +1,34 @@
+.upload-txt,
+.note-txt {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 500;
+}
+.upload-txt {
+  margin-bottom: 7px;
+}
+.send-btn,
+.cancel-btn {
+  border-radius: 5px;
+  border: 0px;
+  font-weight: 500;
+  font-size: 16px;
+  height: 4vh;
+}
+.note-txt {
+  margin: 19px 0px;
+  color: #d15a5a;
+}
+.cancel-btn {
+  border: 1px solid #38a3a5;
+  background-color: white;
+  color: #38a3a5;
+}
+.send-btn {
+  background: #38a3a5;
+  color: white;
+}
+.font-style {
+  font-family: "Poppins";
+  font-style: normal;
+}

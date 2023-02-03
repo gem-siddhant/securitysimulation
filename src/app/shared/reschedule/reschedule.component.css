@@ -108,7 +108,3 @@ input[type="radio"] {
 .datepick {
   padding-left: 2.69%;
 }
-
-:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
-  color: #38a3a5;
-}

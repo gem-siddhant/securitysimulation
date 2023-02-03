@@ -12,13 +12,14 @@ export class CampaignTemplatesComponent implements OnInit {
 
   screenSize : String;
   selectedTemplate : Number;
+  
   constructor(
     private commonService : CommonService,
     private responsiveService : ResponsiveService,
     private router: Router,
   ) {
     this.screenSize = 'lg';
-    this.selectedTemplate = 0;
+    this.selectedTemplate = -1;
    }
 
   ngOnInit(): void {
@@ -26,6 +27,7 @@ export class CampaignTemplatesComponent implements OnInit {
     this.checkScreenStatus();
     this.onResize();
   }
+
   checkScreenStatus() : void {
     this.responsiveService.getScreenStatus().subscribe((screenSize : String) => {
       if (screenSize) {
@@ -33,24 +35,33 @@ export class CampaignTemplatesComponent implements OnInit {
       }
     });
   }
+
   isScreenSizeXs() : boolean{
     return this.screenSize === 'xs';
   }
+
   onResize() : void{
     this.responsiveService.checkWidth();
   }
+
   setSelectedTemplate(val : Number) : void{
     if(this.selectedTemplate === val)
-      this.selectedTemplate = 0;
+      this.selectedTemplate = -1;
     else
       this.selectedTemplate = val;
   }
+
   isTemplateSelected() : boolean{
-      return this.selectedTemplate !==0;
+      return this.selectedTemplate !==-1;
   }
+
   navigateToTemplateForm() : void{
-    this.router.navigate(['/main/campaign/template-form',this.selectedTemplate]);
+    if(this.selectedTemplate == 0){
+      this.router.navigate(['/main/campaign/custom-form']);  
+    }
+    else{
+      this.router.navigate(['/main/campaign/template-form',this.selectedTemplate]);
+    }
   }
-  
 
 }

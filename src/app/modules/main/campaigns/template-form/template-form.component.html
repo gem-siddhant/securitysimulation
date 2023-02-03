@@ -31,6 +31,13 @@
               formControlName="name"
               matInput
             />
+            <mat-error
+              *ngIf="
+                this.templateForm.controls['name'].errors != null &&
+                this.templateForm.controls['name']['errors']['isInvalid']
+              "
+              >{{ this.templateForm.controls['name']['errors']['message']}}</mat-error
+            >
           </mat-form-field>
 
           <mat-form-field
@@ -44,6 +51,13 @@
               formControlName="subject"
               matInput
             />
+            <mat-error
+              *ngIf="
+                this.templateForm.controls['subject'].errors != null &&
+                this.templateForm.controls['subject']['errors']['isInvalid']
+              "
+              >{{ this.templateForm.controls['subject']['errors']['message']}}</mat-error
+            >
           </mat-form-field>
         </div>
 
@@ -59,6 +73,13 @@
             formControlName="rewardType"
             matInput
           />
+          <mat-error
+              *ngIf="
+                this.templateForm.controls['rewardType'].errors != null &&
+                this.templateForm.controls['rewardType']['errors']['isInvalid']
+              "
+              >{{ this.templateForm.controls['rewardType']['errors']['message']}}</mat-error
+            >
         </mat-form-field>
 
         <mat-form-field
@@ -75,6 +96,13 @@
             oninput="validity.valid||(value='');"
             placeholder="Mentorship Duration"
           />
+          <mat-error
+              *ngIf="
+                this.templateForm.controls['rewardAmount'].errors != null &&
+                this.templateForm.controls['rewardAmount']['errors']['isInvalid']
+              "
+              >{{ this.templateForm.controls['rewardAmount']['errors']['message']}}</mat-error
+            >
         </mat-form-field>
 
         <mat-form-field class="w-100" appearance="outline">
@@ -86,6 +114,13 @@
             matInput
             maxlength="1500"
           ></textarea>
+          <mat-error
+              *ngIf="
+                this.templateForm.controls['description'].errors != null &&
+                this.templateForm.controls['description']['errors']['isInvalid']
+              "
+              >{{ this.templateForm.controls['description']['errors']['message']}}</mat-error
+            >
         </mat-form-field>
 
         <mat-form-field class="w-100" appearance="outline">
@@ -97,6 +132,13 @@
             matInput
             maxlength="200"
           ></textarea>
+          <mat-error
+              *ngIf="
+                this.templateForm.controls['note'].errors != null &&
+                this.templateForm.controls['note']['errors']['isInvalid']
+              "
+              >{{ this.templateForm.controls['note']['errors']['message']}}</mat-error
+            >
         </mat-form-field>
 
         <mat-form-field class="w-100" appearance="outline">
@@ -107,6 +149,13 @@
             formControlName="emailSignature"
             matInput
           />
+          <mat-error
+              *ngIf="
+                this.templateForm.controls['emailSignature'].errors != null &&
+                this.templateForm.controls['emailSignature']['errors']['isInvalid']
+              "
+              >{{ this.templateForm.controls['emailSignature']['errors']['message']}}</mat-error
+            >
         </mat-form-field>
 
         <div
@@ -120,7 +169,11 @@
               class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-10"
             >
               <mat-label>Email for simulation</mat-label>
-              <input matInput type="text" formControlName="senderEmail" />
+              <input matInput type="text" formControlName="senderEmail" class="input-text" />
+              <mat-error
+              *ngIf="isEmailFieldInvalid(mailId)"
+              >{{ emailFieldErrorMessage(mailId)}}</mat-error
+            >
             </mat-form-field>
             <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-2 p-1">
               <button
@@ -138,7 +191,10 @@
         </div>
 
         <span class="radio-title">Send Attachment : </span>
-        <mat-radio-group formControlName="sendAttachment">
+        <mat-radio-group
+          (change)="changeAttachmentStatus($event)"
+          formControlName="sendAttachment"
+        >
           <mat-radio-button class="radio-text" [value]="false"
             >No&emsp;</mat-radio-button
           >
@@ -181,12 +237,14 @@
             <button class="w-100 preview-btn rounded">Preview</button>
           </div>
           <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-2">
-            <button (click)="scheduleCampaign()" class="w-100 schedule-btn rounded">
+            <button (click)="scheduleCampaign()" class="w-100 schedule-btn rounded" type="submit">
               Schedule Campaign
             </button>
           </div>
           <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-            <button (click)="sendCampaign()" class="w-100 send-btn rounded">Send Campaign</button>
+            <button (click)="sendCampaign()" class="w-100 send-btn rounded" type="submit">
+              Send Campaign
+            </button>
           </div>
         </div>
       </form>

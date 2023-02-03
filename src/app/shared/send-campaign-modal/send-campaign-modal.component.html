@@ -1,0 +1,45 @@
+<div class="container">
+  <form [formGroup]="sendCampaignForm">
+    <div class="row m-0 mb-3 mt-3 font-style">
+      <div class="m-0 p-0 col-md-8 note-txt">
+        Note :- Please provide only geminisolutions.com id's in csv
+      </div>
+      <div class="p-0 m-0 col-md-1 d-flex align-items-center">
+        <mat-icon
+          [mat-dialog-close]="true"
+          (click)="samplecsv()"
+          matTooltip="Sample csv"
+          >info</mat-icon
+        >
+      </div>
+    </div>
+    <div class="upload-txt">Upload .csv file with custom email</div>
+    <div class="mb-3">
+      <input
+        type="file"
+        accept=".csv"
+        id="firsting"
+        class="form-control"
+        formControlName="attachmentFile"
+        (change)="onChange($event)"
+      />
+    </div>
+    <div class="row">
+      <div class="col-lg-5 col-md-5 col-sm-12 col-12 pl-1 mb-2">
+        <button [mat-dialog-close]="true" class="cancel-btn w-100">
+          Cancel
+        </button>
+      </div>
+      <div class="col-lg-5 col-md-5 col-sm-12 col-12 pl-1">
+        <button
+          type="submit"
+          [mat-dialog-close]="true"
+          class="send-btn w-100"
+          (click)="sendCampaign()"
+        >
+          Send Campaign
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

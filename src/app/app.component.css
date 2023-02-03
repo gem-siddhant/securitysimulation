@@ -1,19 +1,28 @@
 .timepicker-overlay {
-   z-index: 1100 !important;
-  }
+  z-index: 1100 !important;
+}
   
 .timepicker-backdrop-overlay {
-   z-index: 1100 !important;
+  z-index: 1100 !important;
 }
 mat-sidenav-container,mat-sidenav-content,mat-sidenav {
-   background-color: transparent;}
-   
+  background-color: transparent;
+}
+
 mat-sidenav-content {
   overflow-x: hidden;
 }
 mat-sidenav {
-   width: 307px; position: fixed; background: linear-gradient(180deg, #013e3f 0%, #01243c 100%);
-  }
+  width: 307px;
+  position: fixed;
+  background: linear-gradient(180deg, #013e3f 0%, #01243c 100%);
+}
 .side-nav-height {
-   min-height: 94vh;
-  }
+  min-height: 94vh;
+}
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-subscript-wrapper {
+  padding: 0px !important;
+}
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: #38a3a5;
+}

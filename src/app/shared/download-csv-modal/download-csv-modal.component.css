@@ -1,0 +1,30 @@
+.download-btn,
+.cancel-btn {
+  border-radius: 5px;
+  border: 0px;
+  font-weight: 500;
+  font-size: 16px;
+  height: 4vh;
+}
+.download-csv-text, .eg-text {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #38a3a5;
+}
+.eg-text{
+    color: black;
+}
+.font-style {
+  font-family: "Poppins";
+  font-style: normal;
+}
+.cancel-btn {
+  border: 1px solid #38a3a5;
+  background-color: white;
+  color: #38a3a5;
+}
+.download-btn {
+  background: #38a3a5;
+  color: white;
+}
