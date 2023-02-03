@@ -7,7 +7,6 @@ import { CampaignConfirmComponent } from 'src/app/shared/campaign-confirm/campai
 import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
 import { DeleteModalComponent } from 'src/app/shared/delete-modal/delete-modal.component';
 import { RescheduleComponent } from 'src/app/shared/reschedule/reschedule.component';
-import { ScheduleCampComponent } from 'src/app/shared/schedule-camp/schedule-camp.component';
 import { MainService } from '../service/main.service';
 export interface PeriodicElement {
   date: string;

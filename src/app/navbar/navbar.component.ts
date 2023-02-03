@@ -13,7 +13,6 @@ import { AuthService } from '../services/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { ScheduleCampComponent } from '../shared/schedule-camp/schedule-camp.component';
 import { name } from '@azure/msal-angular/packageMetadata';
 import { ThisReceiver, ThrowStmt } from '@angular/compiler';
 

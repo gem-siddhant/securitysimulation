@@ -6,7 +6,6 @@ import { AuthService } from '../services/auth.service';
 import { CommonService } from '../services/common.service';
 import { ResponsiveService } from '../services/responsive.service';
 import { imgconst } from '../shared/Constants/constants';
-import { ScheduleCampComponent } from '../shared/schedule-camp/schedule-camp.component';
 @Component({
   selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',

@@ -15,7 +15,6 @@ import { SamplecsvComponent } from './samplecsv/samplecsv.component';
 import { CsvmessageComponent } from './csvmessage/csvmessage.component';
 import { InfomodalComponent } from './infomodal/infomodal.component';
 import { RescheduleComponent } from './reschedule/reschedule.component';
-import { ScheduleCampComponent } from './schedule-camp/schedule-camp.component';
 import { ReconfirmModalComponent } from './reconfirm-modal/reconfirm-modal.component';
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 import { CampaignConfirmComponent } from './campaign-confirm/campaign-confirm.component';
@@ -39,7 +38,6 @@ import { ToastrModule } from 'ngx-toastr';
     DeleteModalComponent,
     ReconfirmModalComponent,
     CampaignConfirmComponent,
-    ScheduleCampComponent,
     RescheduleComponent,
     InfomodalComponent,
     CsvmessageComponent,
