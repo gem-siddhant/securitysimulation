@@ -1,32 +1,6 @@
-
-<nav *ngIf="this.getUser()" class="navbar col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
-  <div class="row w-300  col-lg-12 col-md-12 col-sm-12 col-xs-12 " style="width: 100%;">
-    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-      <div class="brand-logo">
-        <a class="navbar-brand">
-      <img class="logo" src="../../assets/images/finalpirates.png" routerLink="/main/dashboard">
-      <!-- <img  src="../../assets/images/p.jpg" class="img-fluid" mat-card-image id="profile-image">     -->
-      </a>
-    </div>
-    </div>
-    <div  *ngIf="this.getUser()" class="col-lg-4 col-md-4 col-sm-4 col-xs-4 vertical-align">
-      <!-- <img  src="../../assets/images/p.jpg" class="img-fluid" mat-card-image id="profile-image"> -->
-      <img  [src]="profile" class="img-fluid" mat-card-image id="profile-image">
-      <div>
-        <span (click)="scheduled()" style="color: white;font-size: 70px;padding-right: 10px;padding-top: 24px;" matTooltip="Scheduled Campaigns" matTooltipPosition="above"><mat-icon>alarm</mat-icon></span>
-      </div>
-        <div>
-        <a download href="../../../../assets/pdfs/simulation_user_manual.pdf" id="info" (click)="toogletag(content)" matTooltip="Download Manual" matTooltipPosition="above">
-          <span class="material-icons" style="color: white;font-size: 26px;height:20px;padding-right: 10px;padding-top: 10px;">article</span>
-        </a>
-    </div>
-        <mat-icon class="logout">
-    <a (click)="Logout()"matTooltip="Logout" matTooltipPosition="above">
-      <span style="color: white;padding-top: 2px;" class="material-icons">logout</span>
-    </a>
-    
-  </mat-icon>
-    </div>
-    </div>
-</nav>
+<div *ngIf="this.getUser()" class="col-lg-12 col-md-12 col-sm-12 col-xs-12  bg-white topbar">
+  <button mat-button (click)="toggle()" class="menubtn" >
+    <mat-icon style="color: black;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">menu</mat-icon>
+</button>
+</div>
 

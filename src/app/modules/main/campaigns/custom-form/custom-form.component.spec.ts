@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ScheduleCampComponent } from './schedule-camp.component';
+import { CustomFormComponent } from './custom-form.component';
 
-describe('ScheduleCampComponent', () => {
-  let component: ScheduleCampComponent;
-  let fixture: ComponentFixture<ScheduleCampComponent>;
+describe('CustomFormComponent', () => {
+  let component: CustomFormComponent;
+  let fixture: ComponentFixture<CustomFormComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ScheduleCampComponent ]
+      declarations: [ CustomFormComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ScheduleCampComponent);
+    fixture = TestBed.createComponent(CustomFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,0 +1,184 @@
+<div class="container">
+  <div class="mt-4 font-style d-flex align-items-center">
+    <svg
+      width="20"
+      height="24"
+      viewBox="0 0 20 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M10 23.5712C10 23.5712 0 20.08 0 13.9285V3.57124L10 0L20 3.57124V13.9285C19.9998 20.0801 10 23.5712 10 23.5712ZM18.5713 4.81628L10 1.78577L1.42871 4.81628V13.6042C1.42871 18.8236 10 21.7857 10 21.7857C10 21.7857 18.5713 18.8236 18.5713 13.6042V4.81628ZM10 20.7143C10 20.7143 2.50012 18.0698 2.50012 13.4096V5.5634L10 2.85761L17.4999 5.5634V13.4096C17.4999 18.0697 10 20.7143 10 20.7143Z"
+        fill="#38A3A5"
+      />
+    </svg>
+    <span class="choose-temp-txt"
+      >Please edit all the fields to create the campaign</span
+    >
+  </div>
+
+  <div class="upload-img"></div>
+
+  <div class="custom-temp-form row">
+    <div class="temp-img col-lg-6 col-md-12 mt-4 mb-4">
+      <img
+        src="../../../../../assets/images/accounts.png"
+        width="100%"
+        height="550px"
+        class="rounded"
+      />
+      <div class="mt-3 mb-2">Update Template</div>
+      <form class="font-style" [formGroup]="templateForm">
+        <input
+          type="file"
+          accept="image/*"
+          id="firsting"
+          class="form-control"
+          (change)="onChange($event)"
+        />
+      </form>
+    </div>
+    <div class="temp-form col-lg-6 col-md-12 mt-4 mb-4">
+      <mat-card
+        [ngClass]="{ 'h-100': !isScreenSizeMd() }"
+        class="mat-card mb-4 rounded"
+      >
+        <form class="font-style mb-4" [formGroup]="templateForm">
+          <div class="row">
+            <mat-form-field
+              class="w-100"
+              appearance="outline"
+            >
+              <mat-label class="label-text">Name Of Campaign</mat-label>
+              <input
+                class="input-text"
+                type="text"
+                formControlName="name"
+                matInput
+              />
+            </mat-form-field>
+
+            <mat-form-field
+              class="w-100"
+              appearance="outline"
+            >
+              <mat-label class="label-text">Email's Subject</mat-label>
+              <input
+                class="input-text"
+                type="text"
+                formControlName="subject"
+                matInput
+              />
+            </mat-form-field>
+          </div>
+
+          <div class="mb-3">
+            <span class="radio-title">Add Description : </span>
+            <mat-radio-group formControlName="addDescription">
+              <mat-radio-button class="radio-text" [value]="false"
+                >No&emsp;</mat-radio-button
+              >
+              <mat-radio-button class="radio-text" [value]="true"
+                >Yes</mat-radio-button
+              >
+            </mat-radio-group>
+          </div>
+
+          <mat-form-field
+            *ngIf="isAddDescriptionTrue()"
+            class="w-100"
+            appearance="outline"
+          >
+            <mat-label class="label-text">Description</mat-label>
+            <textarea
+              class="input-text"
+              type="text"
+              formControlName="description"
+              matInput
+              maxlength="1500"
+            ></textarea>
+          </mat-form-field>
+
+          <mat-form-field
+            *ngIf="isAddDescriptionTrue()"
+            class="w-100"
+            appearance="outline"
+          >
+            <mat-label class="label-text">Add Note</mat-label>
+            <textarea
+              class="input-text"
+              type="text"
+              formControlName="note"
+              matInput
+              maxlength="200"
+            ></textarea>
+          </mat-form-field>
+
+          <mat-form-field class="w-100" appearance="outline">
+            <mat-label class="label-text">Email Signature</mat-label>
+            <input
+              class="input-text"
+              type="text"
+              formControlName="emailSignature"
+              matInput
+            />
+          </mat-form-field>
+
+          <div
+            class="col-lg-12 col-md-12 col-sm-12 col-12"
+            *ngFor="let mailId = index; let questionCtrl; of: getcontrols()"
+            formArrayName="allEmails"
+          >
+            <div class="row" [formGroupName]="mailId">
+              <mat-form-field
+                appearance="outline"
+                class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-10"
+              >
+                <mat-label>Email for simulation</mat-label>
+                <input matInput type="text" formControlName="senderEmail" />
+              </mat-form-field>
+              <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-2 p-1">
+                <button
+                  type="button"
+                  class="buttons w-75 h-75 border-0 rounded d-flex align-items-center justify-content-center"
+                  (click)="emailFieldOperation(mailId)"
+                >
+                  <div *ngIf="mailId === 0" class="plus text-white">+</div>
+                  <mat-icon *ngIf="mailId > 0" class="cross text-white"
+                    >clear</mat-icon
+                  >
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div
+            [ngClass]="{
+              'position-absolute bottom-0 w-100': !isScreenSizeMd()
+            }"
+            class="row d-flex justify-content-center mt-4 mb-3"
+          >
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-2">
+              <button class="w-100 preview-btn rounded">Preview</button>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-2">
+              <button
+                (click)="scheduleCampaign()"
+                class="w-100 schedule-btn rounded"
+              >
+                Schedule Campaign
+              </button>
+            </div>
+            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
+              <button (click)="sendCampaign()" class="w-100 send-btn rounded">
+                Send Campaign
+              </button>
+            </div>
+          </div>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>

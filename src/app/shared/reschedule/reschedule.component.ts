@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 import { AddCampaignService } from 'src/app/modules/main/service/add-campaign.service';
 import { CampaignConfirmComponent } from '../campaign-confirm/campaign-confirm.component';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
+import { DownloadCsvModalComponent } from '../download-csv-modal/download-csv-modal.component';
 @Component({
   selector: 'app-reschedule',
   templateUrl: './reschedule.component.html',
@@ -49,6 +50,7 @@ export class RescheduleComponent implements OnInit {
         date:['',Validators.required],
         time:['',Validators.required],
         timezone:['',Validators.required],
+        attachmentFile : ['']
       }
     );
     const currentYear = new Date().getFullYear();
@@ -57,7 +59,20 @@ export class RescheduleComponent implements OnInit {
 
   onClose() {
     this.dialogRef.close();
-  }  
+  }
+
+  onChange(event : Event){
+
+  }
+  
+  samplecsv(){
+    this.dialogRef.close();
+    let dataDialog = {title:"CSV file not Provided"};
+    const dialogRef = this.dialog.open(DownloadCsvModalComponent, {
+      width: '770px',
+      data: dataDialog
+    });
+  }
   schedulelater(){
     console.log(localStorage.getItem('name'))
     console.log(localStorage.getItem('file'))
@@ -137,15 +152,15 @@ export class RescheduleComponent implements OnInit {
   }
   darkTheme: NgxMaterialTimepickerTheme = {
     container: {
-        bodyBackgroundColor: '#66209D',
+        bodyBackgroundColor: '#38A3A5',
         buttonColor: '#fff'
     },
     dial: {
-        dialBackgroundColor: '#66209D',
+        dialBackgroundColor: '#38A3A5',
     },
     clockFace: {
         clockFaceBackgroundColor: '#fff',
-        clockHandColor: '#312936;',
+        clockHandColor: '#38A3A5;',
         clockFaceTimeInactiveColor: 'black'
     }
 };

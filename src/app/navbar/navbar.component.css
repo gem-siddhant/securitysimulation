@@ -1,43 +1,8 @@
-.navbar {
-  background: linear-gradient(118.72deg, #480075 24.47%, #3966DC 164.13%);
-  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
-  position: sticky;
-  top: 0px;
-  z-index: 200;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 1rem;
-  padding-right: 0;
-}
-.vertical-align {
-  display: flex;
-justify-content: end;
-  align-items: center;
-}
-
-.logo{
-  margin-left: 8%;
-  height: 40px;
+.topbar{
+  height: 48px;
+  position:sticky;
   
 }
-.logout{
-  margin-right: 10%;
-}
-#info{
-  border: none;
-  background:transparent; 
-  padding: 20px;
-}
-.logo1{
-  margin-left: 8%;
-  height: 40px;
-  border-radius: 50%;
-}
-#profile-image {
-  border-radius: 50%;
-  height: 40px;
-  width: 40px;
-  margin-left: 5%;
-  margin-right: 5%;
+.menubtn{
+ float: right;
 }

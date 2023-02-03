@@ -5,7 +5,6 @@ html, body { height: 100%; }
 body {
    margin: 0;
    background-color: #e2f4f4;
-   background-image: url('./assets/images/finalbgimg.png');
    background-position: center center;
 
    /* Background image doesn't tile */
@@ -21,7 +20,6 @@ body {
    
    /* Set a background color that will be displayed
    while the background image is loading */
-   background-color: #464646;
    
 }
 .timepicker-overlay {
@@ -30,4 +28,15 @@ body {
 
 .timepicker-backdrop-overlay {
   z-index: 1100 !important;
+}
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+  background-color:  #38A3A5 !important;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle {
+  background-color:  #38A3A5 !important;
+}
+
+.mat-radio-button .mat-radio-outer-circle {
+  border-color:  #38A3A5 !important;
 }

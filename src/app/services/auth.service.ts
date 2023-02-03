@@ -13,7 +13,11 @@ import { InfomodalComponent } from '../shared/infomodal/infomodal.component';
 export class AuthService {
   notificationBoolean: boolean = false;
   mail = new BehaviorSubject<any>(null);
-  constructor(private http:HttpClient,private router:Router,private toastr: ToastrService,private dialog: MatDialog) {
+  constructor(
+    private http:HttpClient,
+    private router:Router,
+    private toastr: ToastrService,
+    private dialog: MatDialog) {
     
    }
   checkLogin(){
@@ -25,8 +29,11 @@ export class AuthService {
   logout(){
     localStorage.clear();
     this.router.navigate(["/main/login"]);
-
   }
+
+  loginMethod(creds:any){
+    return this.http.post<any>('login', creds);
+   }
 
   getEmployeeDetailBehaviorSubject(): Observable<any> {
 
@@ -38,16 +45,13 @@ export class AuthService {
   getNotificationModalBoolean(){
     return this.notificationBoolean
   }
-  loginMethod(creds: string, token:string): Observable<any>{
-    const obj={
-      'email' :creds
-    }
+  loginMethod2(creds:any){
     return this.http.post<any>('login', creds);
    }
   setToken( email?: any,backend_token?:any) {
     return new Promise<void>((resolve, reject) => {
       localStorage.setItem('email',email);   
-      this.loginMethod(email,backend_token).subscribe((item: any)=> {
+      this.loginMethod(email).subscribe((item: any)=> {
       if (item)
       {
         localStorage.setItem('Manager',(item.data.isManager));

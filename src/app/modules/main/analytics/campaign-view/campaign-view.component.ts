@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MainService } from '../service/main.service';
+import { MainService } from '../../service/main.service';
 import { ChartType, ChartOptions, Chart } from 'chart.js';
 import { SingleDataSet, Label } from 'ng2-charts';
 import * as pluginLabels from 'chartjs-plugin-labels';
@@ -17,6 +17,7 @@ import { CampaignConfirmComponent } from 'src/app/shared/campaign-confirm/campai
 import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { CommonService } from 'src/app/services/common.service';
 
 @Component({
   selector: 'app-campaign-view',
@@ -28,6 +29,7 @@ import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 export class CampaignViewComponent implements OnInit {
 campaignId:any;
 endcampaignId:any;
+StoreData:boolean=true;
   datenow = new Date();
   nowFormatted: string;
   notdelivered: any;
@@ -35,6 +37,7 @@ endcampaignId:any;
   ID: boolean = true;
   isendactive: any;
   constructor(private route: ActivatedRoute,
+    private commonService : CommonService,
     private _router: Router,
     private _mainService:MainService,
     private dialog:MatDialog,
@@ -43,7 +46,6 @@ endcampaignId:any;
        this.viewData={id:0,email:'',ipAddress:'',status:'',formSubmit:false,username:'',submitCount:0,clickedCount:0};
        this.nowFormatted = formatDate(this.datenow, 'dd-MM-yyyy', 'en-US');
     }
-    StoreData:boolean=true;
     color: ThemePalette = 'accent';
     value = 50;
     mode: ProgressSpinnerMode = 'indeterminate';
@@ -74,6 +76,7 @@ i: number = 1;
 id: string;
 @ViewChild(MatSort, { static: true }) sort!: MatSort;
   ngOnInit(): void {
+    this.commonService.setLoginStatus(true);
     this.pieChartOptions = this.createOptions();
     this.pieChartLabels = ['Clicked','Sent','NotDeliverd'];
     this.pieChartType = 'pie';

@@ -1,0 +1,72 @@
+.font-style {
+  font-family: "Poppins";
+  font-style: normal;
+}
+.choose-temp-txt {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  color: #545454;
+  margin-left: 13px;
+}
+
+.amazon-temp-back-img {
+  background-image: url(../../../../../assets/images/template1.png);
+}
+.acount-temp-back-img {
+  background-image: url(../../../../../assets/images/accounts.png);
+}
+.it-temp-back-img {
+  background-image: url(../../../../../assets/images/macbook_template.jpeg);
+}
+.custom-temp-back-img {
+  background-image: url(../../../../../assets/images/custom-template.png);
+}
+.amazon-temp-back-img,
+.acount-temp-back-img,
+.it-temp-back-img,
+.custom-temp-back-img {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.img-not-xs,
+.img-xs {
+  background-color: white;
+  background: #ffffff;
+  box-shadow: 3px 3px 10px rgba(32, 80, 114, 0.1);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.img-not-xs {
+  height: 365px;
+  width: 100%;
+}
+.img-xs {
+  height: 465px;
+  width: 85%;
+}
+.custom-shadow, .cutom-shadow-selected{
+  border-radius: 0px 0px 3px 3px;
+}
+.custom-shadow {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #01253d 100%);
+  filter: drop-shadow(3px 3px 10px rgba(32, 80, 114, 0.1));
+  /* height: 50%; */
+}
+.cutom-shadow-selected{
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.73) 0%, #38A3A5 100%);
+  box-shadow: 3px 3px 10px rgba(32, 80, 114, 0.1);
+  /* height: 100%; */
+}
+.create-camp-btn {
+  background: #38a3a5;
+  box-shadow: 0px 4px 10px rgba(35, 154, 191, 0.3);
+  border: 0px;
+}
+.btn-text {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: white;
+}

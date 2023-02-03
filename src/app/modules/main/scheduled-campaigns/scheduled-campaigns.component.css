@@ -1,0 +1,93 @@
+table {
+  width: 100%;
+}
+
+.buttonCss {
+  cursor: pointer;
+}
+
+.text {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  color: #545454;
+  margin-left: 8px;
+}
+
+.bg {
+  background: #F5F5F5;
+}
+
+.mat-cell {
+  padding: 8px 30px 8px 0;
+  background-color:
+    #EBF6F6;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+
+}
+
+::ng-deep th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+  border-bottom-width: 10px !important;
+  border-bottom-color: white !important;
+
+}
+
+th.mat-header-cell {
+  color: white;
+  background-color: #38A3A5;
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.row-css {
+  padding: 15px 0px 15px 0px;
+  display: flex;
+  align-items: center;
+}
+
+.filter-css {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.filter-box-css {
+  border: 1px solid #38A3A5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #F5F5F5;
+  color: #38A3A5;
+  padding: 1px 4px 1px 8px;
+
+}
+
+.filter-text-css {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #38A3A5;
+}
+
+.image-NSCss {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-around;
+  height: 95vh;
+}

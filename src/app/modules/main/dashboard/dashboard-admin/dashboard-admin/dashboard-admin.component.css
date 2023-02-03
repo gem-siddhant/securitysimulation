@@ -1,0 +1,87 @@
+.analytics{
+    display:inline-flex;
+    overflow-x: auto;
+}
+.maintitle{
+    background-color: aquamarine;
+    align-items: flex-start;
+}
+.matcards{
+    background: #38A3A5;
+    box-shadow: 0px 4px 20px rgba(56, 163, 165, 0.48);
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-transform: capitalize;
+    color: #FFFFFF;
+}
+.matcount{
+    box-shadow: 0px 4px 20px rgba(56, 163, 165, 0.48);
+    border-radius: 10px;
+    display: block;
+}
+.tablemat{
+    border-right: none !important;
+    background: #e9fdfd;
+    border-radius: 5px;
+}
+.my-spinner path {
+    stroke: red;
+  }
+.textcolor{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #F7F7F7;
+}
+.counttext{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 60px;
+    text-transform: uppercase;
+    color: #38A3A5;
+}
+.circle{
+    stroke: #d62d20 !important;
+    float: right;
+    border: #38A3A5;
+    border-radius: 10px !important;
+}
+
+table{
+    border-radius: 10px !important;
+}
+.matcontents{
+    color: black;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    text-transform: capitalize;
+}
+.mat-row:nth-child(even){
+    background-color:white
+}
+ 
+.mat-row:nth-child(odd){
+    background-color: white;
+}
+.btn {
+    background: #38A3A5;
+    box-shadow: none;
+    border: none;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+}

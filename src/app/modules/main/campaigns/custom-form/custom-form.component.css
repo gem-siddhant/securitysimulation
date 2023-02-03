@@ -1,0 +1,54 @@
+.font-style {
+  font-family: "Poppins";
+  font-style: normal;
+}
+.choose-temp-txt {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 27px;
+  color: #545454;
+  margin-left: 13px;
+}
+.inner-container {
+  margin: 0px 50px;
+}
+.buttons {
+  background-color: #38a3a5;
+}
+.plus,
+.cross {
+  font-size: 33px;
+  font-weight: 500;
+}
+.cross {
+  width: 33px;
+  height: 33px;
+}
+.mat-card {
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+}
+.radio-title,
+.radio-text {
+  margin-right: 23px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 27px;
+}
+.radio-text {
+  font-weight: 400;
+}
+.preview-btn,
+.schedule-btn,
+.send-btn {
+  height: 40px;
+  border: 1px solid #38a3a5;
+}
+.preview-btn,
+.schedule-btn {
+  background-color: white;
+  color: #38a3a5;
+}
+.send-btn {
+  background-color: #38a3a5;
+  color: white;
+}

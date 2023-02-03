@@ -1,0 +1,68 @@
+<section class="mt-1">
+    <div class="container-fluid bg">
+        <div *ngIf="dataSource.data.length" class="row row-css">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <img src="../../../../assets/images/scheduleImage.svg">
+                <span class="text">Scheduled campaign list</span>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 filter-css">
+                <div class="filter-box-css">
+                    <span class="filter-text-css">Filter By</span>
+                    <mat-icon >keyboard_arrow_down</mat-icon>
+                </div>
+            </div>
+        </div>
+        <div class="mat-elevation-z8">
+            <table *ngIf="dataSource.data.length" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+                <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+                <!-- Campaign Name Column -->
+                <ng-container matColumnDef="campaignName">
+                    <th mat-header-cell *matHeaderCellDef> Campaign Name </th>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="date">
+                    <th mat-header-cell *matHeaderCellDef> Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.scheduledDate}} </td>
+                </ng-container>
+
+                <!-- Weight Column -->
+                <ng-container matColumnDef="time">
+                    <th mat-header-cell *matHeaderCellDef> Time </th>
+                    <td mat-cell *matCellDef="let element"> {{element.scheduledTime}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="timeZone">
+                    <th mat-header-cell *matHeaderCellDef> Time Zone </th>
+                    <td mat-cell *matCellDef="let element"> {{element.scheduledTimeZone}} </td>
+                </ng-container>
+
+                <!-- Symbol Column -->
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef> Actions </th>
+                    <td mat-cell *matCellDef="let element">
+                        <span class="buttonCss" (click)="onEdit(element.scheduledJobKey)">Edit</span>
+                        <span> | </span>
+                        <span class="buttonCss" (click)="onDelete(element.scheduledJobKey)">Delete</span>
+                    </td>
+
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+            <div *ngIf="!dataSource.data.length" class="no_record center-align">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 image-NSCss">
+
+                    <img src="../../../../assets/images/noCampaignsFoundImage.svg">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
