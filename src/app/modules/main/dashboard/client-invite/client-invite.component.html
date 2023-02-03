@@ -1,0 +1,92 @@
+<div class="row" >
+ <div class="col">   
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <Strong>Invite</Strong>
+            </div>
+            <div class="mt-1">
+                <p>By this invite client will get an invitation link to onboard to Simulation</p>
+            </div>
+            <form [formGroup]="inviteform" >
+              <div class="row mt-2">
+                <div class="col-lg-12 col-md-6 col-sm-6 col-xs-6">
+                  <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Official Client Email</mat-label>
+                    <input matInput type="text" formControlName="clientmail">
+                  </mat-form-field>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                  <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Point of contact mail</mat-label>
+                    <input matInput type="text" formControlName="pocmail">
+                  </mat-form-field>
+                </div>
+
+
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Plan</mat-label>
+                        <mat-select matNativeControl required formControlName="plan">
+                          <mat-option value="silver">Silver</mat-option>
+                          <mat-option value="gold">Gold</mat-option>
+                          <mat-option value="platinum">Plantinum</mat-option>   
+                        </mat-select>
+                    </mat-form-field>
+                  </div>
+
+
+
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Currency</mat-label>
+                        <mat-select matNativeControl required formControlName="currency">
+                          <mat-option value="INR">INR</mat-option>
+                          <mat-option value="USD">USD</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <mat-form-field class="w-100" appearance="outline">
+                      <mat-label>Cost</mat-label>
+                      <input matInput type="text" formControlName="cost">
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Contract Start date</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="startdate" >
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker ></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+
+                  
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <mat-form-field class="w-100" appearance="outline">
+                        <mat-label>Contract End date</mat-label>
+                        <input matInput [matDatepicker]="picker2" formControlName="enddate" >
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                        <mat-datepicker #picker2 ></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+               
+                  <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 mt-2">
+                    <button type="submit" mat-raised-button class="col-lg-12 btn btn-primary float-left" id="add_btn" (click)="close()" >Cancel</button>
+                </div>
+
+                  <div class="col-xs-6 col-sm-4 col-md-4 col-lg-4 mt-2">
+                    <button type="submit" mat-raised-button  class="col-lg-12  btn btn-primary float-left" id="add_btn" (click)="sendinvite()">Send Invite</button>
+                </div>
+
+              </div>
+            </form>
+          </div>
+
+      </div>
+</div> 
+</div>

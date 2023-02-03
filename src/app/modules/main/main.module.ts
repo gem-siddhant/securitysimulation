@@ -11,6 +11,7 @@ import { ScheduledCampaignsComponent } from './scheduled-campaigns/scheduled-cam
 import { DashboardAdminComponent } from './dashboard/dashboard-admin/dashboard-admin/dashboard-admin.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { UserManualComponent } from './user-manual/user-manual.component';
+import { ClientInviteComponent } from './dashboard/client-invite/client-invite.component';
 @NgModule({
   declarations: [
     GiftComponent,
@@ -22,7 +23,8 @@ import { UserManualComponent } from './user-manual/user-manual.component';
     CustomtemplateComponent,
     ScheduledCampaignsComponent,
     DashboardAdminComponent,
-    UserManualComponent
+    UserManualComponent,
+    ClientInviteComponent
   ],
   imports: [
     SharedModule,

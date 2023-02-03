@@ -1,0 +1,10 @@
+.btn:focus{
+    box-shadow:none;
+    border: none;
+  }
+  .btn{
+    background-color:#38A3A5;
+  }
+strong{
+    color: #38A3A5;
+}

@@ -20,6 +20,9 @@ import { SideBarComponent } from './side-bar/side-bar.component';
 import { ResponsiveService } from './services/responsive.service';
 import { SharedModule } from './shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EmpOnboardComponent } from './modules/employee-onboarding/emp-onboard/emp-onboard.component';
+import { PasswordDialogComponent } from './modules/employee-onboarding/password-dialog/password-dialog.component';
+import { OfficialDetailsComponent } from './modules/employee-onboarding/official-details/official-details.component';
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
 }

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
+import { ClientInviteComponent } from '../modules/main/dashboard/client-invite/client-invite.component';
 import { MainService } from '../modules/main/service/main.service';
 import { AuthService } from '../services/auth.service';
 import { CommonService } from '../services/common.service';
@@ -20,7 +21,8 @@ export class SideBarComponent implements OnInit {
   constructor(
     private _auth: AuthService,
     private responsiveService: ResponsiveService,
-    private commonService: CommonService
+    private commonService: CommonService,
+    private dialog:MatDialog
   ) {
     this.mobile = false;
   }
@@ -57,5 +59,13 @@ export class SideBarComponent implements OnInit {
 
   Logout() {
     this._auth.logout();
+  }
+
+  inviteclient()
+  {
+    const dialogRef = this.dialog.open(ClientInviteComponent, {
+      width: '800px',
+      height: '470px',
+    }); 
   }
 }

@@ -13,6 +13,11 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: '',
+    redirectTo: 'employee-onboard',
+    pathMatch: 'full'
+  },
+  {
     path: 'main',
     loadChildren: () =>
       import('./modules/main/main.module').then((m) => m.MainModule),
@@ -24,6 +29,11 @@ const routes: Routes = [
       import('./modules/client-onboard/client-onboard.module').then((m) => m.ClientOnboardModule),
   },
   
+  {
+    path: 'employee-onboard',
+    loadChildren: () =>
+      import('./modules/employee-onboarding/emp-onboard.module').then((m) => m.EmpOnboardModule),
+  },
 ];
 
 @NgModule({
