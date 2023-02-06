@@ -1,19 +1,6 @@
 <div class="container font-style mb-4">
   <div class="mt-4 d-flex align-items-center">
-    <svg
-      width="20"
-      height="24"
-      viewBox="0 0 20 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M10 23.5712C10 23.5712 0 20.08 0 13.9285V3.57124L10 0L20 3.57124V13.9285C19.9998 20.0801 10 23.5712 10 23.5712ZM18.5713 4.81628L10 1.78577L1.42871 4.81628V13.6042C1.42871 18.8236 10 21.7857 10 21.7857C10 21.7857 18.5713 18.8236 18.5713 13.6042V4.81628ZM10 20.7143C10 20.7143 2.50012 18.0698 2.50012 13.4096V5.5634L10 2.85761L17.4999 5.5634V13.4096C17.4999 18.0697 10 20.7143 10 20.7143Z"
-        fill="#38A3A5"
-      />
-    </svg>
+    <img [src]="this.shieldImg"/>
     <span class="choose-temp-txt"
       >Choose any one template to create campaign</span
     >
@@ -30,7 +17,7 @@
         class="p-2"
         (click)="setSelectedTemplate(1)"
       >
-        <div class="amazon-temp-back-img d-flex align-items-end w-100 h-100">
+        <div class="amazon-temp-back-img d-flex align-items-end w-100 h-100" [style.background-image]="this.amazonTemplateImg">
           <div
             [ngClass]="{
               'cutom-shadow-selected h-100 position-relative align-items-center justify-content-center':
@@ -42,7 +29,7 @@
             <div class="d-flex align-items-center justify-content-center">
               <img
                 *ngIf="this.selectedTemplate === 1"
-                src="../../../../../assets/images/shield-selected.png"
+                [src]="this.selectedShieldImg"
               />
             </div>
             <div class="p-2 text-white position-absolute bottom-0 start-0">
@@ -63,7 +50,7 @@
         class="p-2"
         (click)="setSelectedTemplate(3)"
       >
-        <div class="acount-temp-back-img d-flex align-items-end w-100 h-100">
+        <div class="acount-temp-back-img d-flex align-items-end w-100 h-100" [style.background-image]="this.accountTemplateImg">
           <div
             [ngClass]="{
               'cutom-shadow-selected h-100 position-relative align-items-center justify-content-center':
@@ -75,7 +62,7 @@
             <div class="d-flex align-items-center justify-content-center">
               <img
                 *ngIf="this.selectedTemplate === 3"
-                src="../../../../../assets/images/shield-selected.png"
+                [src]="this.selectedShieldImg"
               />
             </div>
             <div class="p-2 text-white position-absolute bottom-0 start-0">
@@ -96,7 +83,7 @@
         class="p-2"
         (click)="setSelectedTemplate(5)"
       >
-        <div class="it-temp-back-img d-flex align-items-end w-100 h-100">
+        <div class="it-temp-back-img d-flex align-items-end w-100 h-100" [style.background-image]="this.itTemplateImg">
           <div
             [ngClass]="{
               'cutom-shadow-selected h-100 position-relative align-items-center justify-content-center':
@@ -108,7 +95,7 @@
             <div class="d-flex align-items-center justify-content-center">
               <img
                 *ngIf="this.selectedTemplate === 5"
-                src="../../../../../assets/images/shield-selected.png"
+                [src]="this.selectedShieldImg"
               />
             </div>
             <div class="p-2 text-white position-absolute bottom-0 start-0">
@@ -129,7 +116,7 @@
         class="p-2"
         (click)="setSelectedTemplate(0)"
       >
-        <div class="custom-temp-back-img d-flex align-items-end w-100 h-100">
+        <div class="custom-temp-back-img d-flex align-items-end w-100 h-100" [style.background-image]="this.customTemplateImg">
           <div
             [ngClass]="{
               'cutom-shadow-selected h-100 position-relative align-items-center justify-content-center':
@@ -141,7 +128,7 @@
             <div class="d-flex align-items-center justify-content-center">
               <img
                 *ngIf="this.selectedTemplate === 0"
-                src="../../../../../assets/images/shield-selected.png"
+                [src]="this.selectedShieldImg"
               />
             </div>
             <div class="p-2 text-white position-absolute bottom-0 start-0">

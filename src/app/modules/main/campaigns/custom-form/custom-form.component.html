@@ -1,40 +1,45 @@
 <div class="container">
+  
   <div class="mt-4 font-style d-flex align-items-center">
-    <svg
-      width="20"
-      height="24"
-      viewBox="0 0 20 24"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M10 23.5712C10 23.5712 0 20.08 0 13.9285V3.57124L10 0L20 3.57124V13.9285C19.9998 20.0801 10 23.5712 10 23.5712ZM18.5713 4.81628L10 1.78577L1.42871 4.81628V13.6042C1.42871 18.8236 10 21.7857 10 21.7857C10 21.7857 18.5713 18.8236 18.5713 13.6042V4.81628ZM10 20.7143C10 20.7143 2.50012 18.0698 2.50012 13.4096V5.5634L10 2.85761L17.4999 5.5634V13.4096C17.4999 18.0697 10 20.7143 10 20.7143Z"
-        fill="#38A3A5"
-      />
-    </svg>
-    <span class="choose-temp-txt"
-      >Please edit all the fields to create the campaign</span
-    >
+    <img src="../../../../../assets/images/shield.svg"/>
+    <span *ngIf="this.uploadedImage !== ''" class="choose-temp-txt">Please edit all the fields to create the campaign</span>
+    <span *ngIf="this.uploadedImage === ''" class="choose-temp-txt">Please upload a template  of your choice</span>
   </div>
 
-  <div class="upload-img"></div>
+  <div *ngIf="this.uploadedImage === ''" class="d-flex justify-content-center align-items-center upload-img-container">
+    <div>
+      <img src="../../../../../assets/images/upload-image.svg"/>
+    
+      <div class="text-center mt-4">Please make sure image is less than 2 mb.</div>
+      <div class="text-center mt-2">Please make sure image is less than 300 x 300</div>
+      <div class="d-flex justify-content-center mt-4">
+        <form class="font-style" [formGroup]="templateForm">
+          <input
+            hidden
+            type="file"
+            accept="image/*"
+            (change)="onChange($event)"
+            #uploadimg
+          />
+        </form>
+        <button (click)="uploadimg.click()" class="upload-btn">Upload Template</button>
+      </div>
+    </div>
+  </div>
 
-  <div class="custom-temp-form row">
+  <div *ngIf="this.uploadedImage !== ''" class="custom-temp-form row">
     <div class="temp-img col-lg-6 col-md-12 mt-4 mb-4">
       <img
-        src="../../../../../assets/images/accounts.png"
+        [src]="this.uploadedImage"
         width="100%"
         height="550px"
         class="rounded"
       />
-      <div class="mt-3 mb-2">Update Template</div>
+      <div class="mt-3 mb-2 upload-text font-style">Update Template</div>
       <form class="font-style" [formGroup]="templateForm">
         <input
           type="file"
           accept="image/*"
-          id="firsting"
           class="form-control"
           (change)="onChange($event)"
         />

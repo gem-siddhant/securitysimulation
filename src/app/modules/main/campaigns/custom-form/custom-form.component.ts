@@ -18,6 +18,7 @@ export class CustomFormComponent implements OnInit {
   templateId : Number;
   templateForm: FormGroup;
   screenSize : String;
+  uploadedImage : string | ArrayBuffer;
   constructor(
     private commonService : CommonService,
     private responsiveService : ResponsiveService,
@@ -27,6 +28,7 @@ export class CustomFormComponent implements OnInit {
   ) { 
     this.templateId = 4;
     this.templateForm = this.formBuilder.group({});
+    this.uploadedImage = '';
   }
 
   ngOnInit(): void {
@@ -62,8 +64,15 @@ export class CustomFormComponent implements OnInit {
     return this.screenSize === 'md';
   }
 
-  onChange(event : Event) : void{
-
+  onChange(event : any) : void{
+    let reader = new FileReader();
+    if(event.target.files && event.target.files.length > 0) {
+      let file = event.target.files[0];
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.uploadedImage = reader.result;
+      };
+    }
   }
 
   onResize() : void{

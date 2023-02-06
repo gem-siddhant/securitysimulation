@@ -9,19 +9,6 @@
   color: #545454;
   margin-left: 13px;
 }
-
-.amazon-temp-back-img {
-  background-image: url(../../../../../assets/images/template1.png);
-}
-.acount-temp-back-img {
-  background-image: url(../../../../../assets/images/accounts.png);
-}
-.it-temp-back-img {
-  background-image: url(../../../../../assets/images/macbook_template.jpeg);
-}
-.custom-temp-back-img {
-  background-image: url(../../../../../assets/images/custom-template.png);
-}
 .amazon-temp-back-img,
 .acount-temp-back-img,
 .it-temp-back-img,

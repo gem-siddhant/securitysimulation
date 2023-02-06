@@ -7,6 +7,8 @@ import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs';
 import { CommonService } from 'src/app/services/common.service';
 import { ResponsiveService } from 'src/app/services/responsive.service';
+import { AlertModalComponent } from 'src/app/shared/alert-modal/alert-modal.component';
+import { imgconst } from 'src/app/shared/Constants/constants';
 import { RescheduleComponent } from 'src/app/shared/reschedule/reschedule.component';
 import { SendCampaignModalComponent } from 'src/app/shared/send-campaign-modal/send-campaign-modal.component';
 import { CampaignsService } from '../services/campaigns.service';
@@ -21,6 +23,7 @@ export class TemplateFormComponent implements OnInit {
 
   templateId : Number;
   templateForm: FormGroup;
+  shieldImg : String;
   constructor(
     private commonService : CommonService,
     private responsiveService : ResponsiveService,
@@ -30,6 +33,7 @@ export class TemplateFormComponent implements OnInit {
     private campaignService : CampaignsService,
     private toastr : ToastrService
   ) { 
+    this.shieldImg = imgconst.shiledImg;
     this.templateId = 0;
     this.templateForm = this.formBuilder.group({});
   }
@@ -111,8 +115,11 @@ export class TemplateFormComponent implements OnInit {
   }
 
   opneSendCampaignModal() : void{
-    const dialogRef = this.dialog.open(SendCampaignModalComponent, {
-      width: '700px',
+    // const dialogRef = this.dialog.open(SendCampaignModalComponent, {
+    //   width: '700px',
+    // });
+    const dialogRef = this.dialog.open(AlertModalComponent, {
+      width: '454px',
     });
     
     dialogRef.afterClosed().subscribe({

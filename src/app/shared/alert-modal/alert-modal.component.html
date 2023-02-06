@@ -1,0 +1,20 @@
+<div class="container font-style">
+    <div class="d-flex justify-content-center">
+        <img src="../../../assets/images/warning.svg"/>
+    </div>
+    <div class="alert-title text-center mt-2">Alert!!</div>
+    <div class="alert-text text-center mt-2">Do you want to send this campaign?</div>
+
+    <div class="row mt-4 justify-content-center">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-6 pl-1 mb-2">
+          <button class="no-btn w-100" [mat-dialog-close]="true">
+            No
+          </button>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-6 pl-1">
+          <button [mat-dialog-close]="true" class="yes-btn w-100">
+            Yes
+          </button>
+        </div>
+      </div>
+</div>

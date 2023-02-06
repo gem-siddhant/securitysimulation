@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { CommonService } from 'src/app/services/common.service';
 import { ResponsiveService } from 'src/app/services/responsive.service';
-
+import { imgconst } from 'src/app/shared/Constants/constants';
 @Component({
   selector: 'app-campaign-templates',
   templateUrl: './campaign-templates.component.html',
@@ -12,14 +13,27 @@ export class CampaignTemplatesComponent implements OnInit {
 
   screenSize : String;
   selectedTemplate : Number;
+  shieldImg : String;
+  selectedShieldImg : String;
+  amazonTemplateImg : SafeStyle;
+  customTemplateImg : SafeStyle;
+  itTemplateImg : SafeStyle;
+  accountTemplateImg : SafeStyle;
   
   constructor(
     private commonService : CommonService,
     private responsiveService : ResponsiveService,
     private router: Router,
+    private sanitizer:DomSanitizer
   ) {
     this.screenSize = 'lg';
     this.selectedTemplate = -1;
+    this.shieldImg = imgconst.shiledImg;
+    this.selectedShieldImg = imgconst.shiledSelectedImg;
+    this.amazonTemplateImg = sanitizer.bypassSecurityTrustStyle(`url(${imgconst.amazonTempImg})`);
+    this.accountTemplateImg = sanitizer.bypassSecurityTrustStyle(`url(${imgconst.accountTempImg})`);
+    this.itTemplateImg = sanitizer.bypassSecurityTrustStyle(`url(${imgconst.itTempImg})`);
+    this.customTemplateImg = sanitizer.bypassSecurityTrustStyle(`url(${imgconst.customTempImg})`);
    }
 
   ngOnInit(): void {

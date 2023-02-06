@@ -1,0 +1,37 @@
+.font-style {
+  font-family: "Poppins";
+  font-style: normal;
+}
+.alert-title,
+.alert-text {
+  color: #545454;
+}
+.alert-title {
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 45px;
+  text-transform: capitalize;
+}
+.alert-text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.yes-btn,
+.no-btn {
+  border-radius: 5px;
+  border: 0px;
+  font-weight: 500;
+  font-size: 16px;
+  height: 5vh;
+}
+.no-btn {
+  border: 1px solid #38a3a5;
+  background-color: white;
+  color: #38a3a5;
+}
+.yes-btn {
+  background: #38a3a5;
+  color: white;
+}
