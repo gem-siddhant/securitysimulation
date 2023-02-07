@@ -2,17 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators, AbstractControl} from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatRadioChange } from '@angular/material/radio';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
-import { take } from 'rxjs';
+import { Observable, take } from 'rxjs';
 import { CommonService } from 'src/app/services/common.service';
 import { ResponsiveService } from 'src/app/services/responsive.service';
 import { AlertModalComponent } from 'src/app/shared/alert-modal/alert-modal.component';
+import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
 import { imgconst } from 'src/app/shared/Constants/constants';
-import { RescheduleComponent } from 'src/app/shared/reschedule/reschedule.component';
 import { SendCampaignModalComponent } from 'src/app/shared/send-campaign-modal/send-campaign-modal.component';
 import { CampaignsService } from '../services/campaigns.service';
 import { customValidator } from '../validation/custom.validation';
+import { ScheduledModel, PreviewFormData, SendFormData, ScehduleFormData, CreateCampaignStatus } from './template-form.model';
 
 @Component({
   selector: 'app-template-form',
@@ -24,6 +26,9 @@ export class TemplateFormComponent implements OnInit {
   templateId : Number;
   templateForm: FormGroup;
   shieldImg : String;
+  employeesList : String[];
+  victimEmails : String[];
+  scheduledData : ScheduledModel;
   constructor(
     private commonService : CommonService,
     private responsiveService : ResponsiveService,
@@ -36,6 +41,9 @@ export class TemplateFormComponent implements OnInit {
     this.shieldImg = imgconst.shiledImg;
     this.templateId = 0;
     this.templateForm = this.formBuilder.group({});
+    this.employeesList = [] as String[];
+    this.victimEmails = [] as String[];
+    this.scheduledData = {} as ScheduledModel;
   }
 
   ngOnInit(): void {
@@ -54,12 +62,13 @@ export class TemplateFormComponent implements OnInit {
       emailSignature : [""],
       fileName : [""],
       fileContent : [""],
-      sendAttachment : [false],
+      sendAttachment : [true],
       allEmails : new FormArray([new FormGroup({
         senderEmail: new FormControl('', Validators.required),
       })]),
     });
     this.getPreFilledData(this.templateId);
+    this.changeAttachmentStatus();
   }
 
   addEmailField() : void {
@@ -96,47 +105,163 @@ export class TemplateFormComponent implements OnInit {
   isAmazonTemplateSelected() : boolean{
     return this.templateId === 1;
   }
+
   isEmailFieldInvalid(index: number) : boolean{
     let obj = (<FormGroup>((<FormArray>(this.templateForm.get('allEmails')))['controls'][index])).controls['senderEmail'].errors;
     return(obj !=null && obj['isInvalid']); 
   }
+
   emailFieldErrorMessage(index: number) : String{
     let obj = (<FormGroup>((<FormArray>(this.templateForm.get('allEmails')))['controls'][index])).controls['senderEmail'].errors;
     return obj['message']; 
   }
 
-  sendCampaign(){
-    console.log(this.templateForm.invalid);
-    this.opneSendCampaignModal();
-    if(!this.templateForm.invalid)
-    {
+  openSendOrScheduleModal(btnTitle : String) : void{
+    let dialogRef : MatDialogRef<SendCampaignModalComponent>;
+    let alertTitle = '';
+    dialogRef = this.dialog.open(SendCampaignModalComponent, {
+      width: '759px',
+      data: btnTitle
+    });
+    if(btnTitle === 'Send'){
+      alertTitle = "Do you want to send this campaign?";
+    }
+    else{
+      alertTitle = "Do you want to schedule this campaign?";
     }
 
+    dialogRef.afterClosed().pipe(take(1)).subscribe({
+      next : (dialogData)=>{
+        if(dialogData.sendClicked){
+          this.victimEmails = dialogData.victimEmails;
+          if(dialogData.scheduledData != null){
+            this.scheduledData = dialogData.scheduledData;
+          }
+          this.openAlertModal(alertTitle, btnTitle);
+        }
+      },
+      error : (error)=>{
+        this.toastr.error('Error while sending campaign')
+      }
+    })
   }
 
-  opneSendCampaignModal() : void{
-    // const dialogRef = this.dialog.open(SendCampaignModalComponent, {
-    //   width: '700px',
-    // });
-    const dialogRef = this.dialog.open(AlertModalComponent, {
+  openAlertModal(alertTitle : String, btnTitle : String) : void{
+    const alertDialogRef = this.dialog.open(AlertModalComponent, {
       width: '454px',
+      data : {
+        title: alertTitle
+      }
     });
-    
-    dialogRef.afterClosed().subscribe({
-      next : (data)=>{},
-      error : (error)=>{this.toastr.error('Error while scheduling campaign')}
+    alertDialogRef.afterClosed().pipe(take(1)).subscribe({
+      next : (alertDialogData)=>{
+        if(alertDialogData.yesClicked){
+          
+          this.sendOrScheduleCampaign(btnTitle);
+          console.log(this.templateForm.value);
+          console.log(this.victimEmails);
+          console.log(this.scheduledData);
+        }
+      },
     })
   }
 
-  scheduleCampaign() : void{
-    const dialogRef = this.dialog.open(RescheduleComponent, {
-      width: '700px',
+  checkFormData(btnTitle : String) : void{
+    if(!this.templateForm.invalid)
+    {
+      if(btnTitle === 'Preview'){
+        this.sendOrScheduleCampaign(btnTitle);
+      }
+      else{
+        this.openSendOrScheduleModal(btnTitle);
+      }
+    }
+  }
+
+  sendOrScheduleCampaign(btnTitle : String) : void{
+    let sendDataFunction : Observable<CreateCampaignStatus | String>;
+    const dispatchData = new FormData();
+    const imagePath = "\dumyimg\click.png";
+    const binaryImage = new File(["foo"], imagePath, {
+      type: "file/png"
     });
-    
-    dialogRef.afterClosed().subscribe({
-      next : (data)=>{},
-      error : (error)=>{this.toastr.error('Error while scheduling campaign')}
+    const email = this.templateForm.value.allEmails;
+    let formData : ScehduleFormData | SendFormData | PreviewFormData;
+    if(btnTitle === 'Send'){
+      formData = {} as SendFormData
+    }
+    else if(btnTitle === 'Schedule'){
+      formData = {} as ScehduleFormData;
+    }
+    else{
+      formData = {} as PreviewFormData;
+    }
+    formData.addNote = this.templateForm.value.note;
+    formData.attachmentName = this.templateForm.value.fileName;
+    formData.createdBy = localStorage.getItem('email');
+    formData.emailSignature = this.templateForm.value.emailSignature; 
+    formData.name = this.templateForm.value.name;
+    formData.sendAttachment = String(this.templateForm.value.sendAttachment); 
+    formData.sendToReporters = 'false';
+    formData.templateAmount = this.templateForm.value.rewardAmount;
+    formData.templateDescription = this.templateForm.value.description;
+    formData.templateHeading = this.templateForm.value.subject;
+    formData.templateNo = String(this.templateForm.value.templateType);
+    formData.templateRewardType = this.templateForm.value.rewardType;
+    if(btnTitle === 'Preview'){
+      (formData as PreviewFormData).attachmentText = this.templateForm.value.fileContent;
+      (formData as PreviewFormData).email = email[0]['senderEmail'];
+      
+    }
+    else if(btnTitle === 'Send'){
+      (formData as SendFormData).victimEmails = this.victimEmails;
+      (formData as SendFormData).senderCredentials = email;
+      (formData as SendFormData).fileContent = this.templateForm.value.fileContent;
+    }
+    else if(btnTitle === 'Schedule'){
+      (formData as ScehduleFormData).victimEmails = this.victimEmails;
+      (formData as ScehduleFormData).senderCredentials = email;
+      (formData as ScehduleFormData).fileContent = this.templateForm.value.fileContent;
+      (formData as ScehduleFormData).scheduleDate = moment(this.scheduledData.date).format("YYYY-MM-DD");
+      (formData as ScehduleFormData).scheduleTime = this.scheduledData.time;
+      (formData as ScehduleFormData).scheduleTimeZone = this.scheduledData.timezone;
+    }
+
+    const stringifyFormData = JSON.stringify(formData);
+    dispatchData.append('details',stringifyFormData);
+    dispatchData.append('file',binaryImage)
+
+    if(btnTitle === 'Schedule'){
+      (sendDataFunction as Observable<String>) = this.campaignService.schedulecampagin(dispatchData);
+    }
+    else if(btnTitle === 'Send'){
+      (sendDataFunction as Observable<CreateCampaignStatus>) = this.campaignService.createCampaign(dispatchData);
+    }
+    else{
+      (sendDataFunction as Observable<String>) = this.campaignService.sendtome(formData as PreviewFormData);
+    }
+
+    sendDataFunction.pipe(take(1)).subscribe({
+      next : (data) =>{
+        this.opneConfirmationModal();
+      },
+      error : (error)=>{
+        if(error.status !==200){
+          this.toastr.error('Error while sending campaign')
+        }
+        else{
+          this.opneConfirmationModal();
+        }
+      }
     })
+  }
+
+  opneConfirmationModal() : void{
+    let dataDialog = { title: 'Campaign Sent to you Successfully!' };
+    this.dialog.open(ConfirmationModalComponent, {
+      width: '513px',
+      data: dataDialog
+    });
   }
 
   getPreFilledData(id:Number) : void{
@@ -152,9 +277,9 @@ export class TemplateFormComponent implements OnInit {
           rewardType : [data.rewardType ? data.rewardType : '',[customValidator(data.rewardType,'reward type', this.templateId)]],
           rewardAmount : [data.amount ? data.amount : '0',[customValidator(data.amount,'reward amount', this.templateId)]],
           emailSignature : [data.emailSignature,[customValidator(data.emailSignature,'signature')]],
-          fileName : [(this.templateId==1) ? "attachment" : ''],
-          fileContent : [(this.templateId==1) ? "Please provide the content that you want in your custom file" : ''],
-          sendAttachment : [(this.templateId==1) ? true : false],
+          fileName : ["attachment",[customValidator('', 'file name')]],
+          fileContent : ["Please provide the content that you want in your custom file",[customValidator('', 'file content')]],
+          sendAttachment : [true],
           allEmails : new FormArray([new FormGroup({
             senderEmail: new FormControl('', customValidator('','email')),
           })]),
@@ -165,11 +290,10 @@ export class TemplateFormComponent implements OnInit {
         this.toastr.error("Error while loading data");
       }
     })
-    this.changeAttachmentStatus();
   }
 
   changeAttachmentStatus(event? : MatRadioChange) : void{
-    if((this.templateId === 1 && !event) || (event && event.value===true)){
+    if(!event || (event && event.value===true)){
       this.templateForm.get("fileName").setValidators([customValidator('', 'file name')]);
       this.templateForm.get("fileContent").setValidators([customValidator('', 'file content')]);
       this.templateForm.get("sendAttachment").setValue(true);
@@ -179,6 +303,8 @@ export class TemplateFormComponent implements OnInit {
       this.templateForm.get("fileContent").clearValidators();
       this.templateForm.get("sendAttachment").setValue(false);
     }
+    this.templateForm.get("fileName").updateValueAndValidity()
+    this.templateForm.get("fileContent").updateValueAndValidity()
   }
 
 }

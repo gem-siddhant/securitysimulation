@@ -2,7 +2,7 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 export function customValidator(prevValue: String, inputName : String, templateId? : Number): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const currValue = control.value.toString();
-    if(templateId !== 1 && inputName === "reward type")
+    if(templateId && templateId !== 1 && (inputName === "reward type")) //|| inputName === "file name" || inputName === "file content"))
       return null;
     if(inputName === "reward amount"){
       if(templateId ===1)
@@ -17,7 +17,7 @@ export function customValidator(prevValue: String, inputName : String, templateI
       return null;
     }
     if (currValue != null && currValue == '') {
-        return { isInvalid: true, message: `${inputName} is reuired` };
+        return { isInvalid: true, message: `${inputName} is required` };
     }
     if (currValue.toLowerCase() === prevValue.toLowerCase()) {
       return { isInvalid: true, message: `Please edit ${inputName} field` };

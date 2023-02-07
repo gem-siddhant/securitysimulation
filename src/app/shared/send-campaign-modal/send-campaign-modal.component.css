@@ -13,7 +13,7 @@
   border: 0px;
   font-weight: 500;
   font-size: 16px;
-  height: 4vh;
+  height: 5vh;
 }
 .note-txt {
   margin: 19px 0px;
@@ -31,4 +31,25 @@
 .font-style {
   font-family: "Poppins";
   font-style: normal;
+}
+
+.ui-datepicker {
+  background: #333;
+  border: 1px solid #555;
+  color: #eee;
+}
+
+.datepick {
+  padding-left: 2.69%;
+}
+.alarm-icon {
+  right: 0;
+  bottom: 13px;
+  color: #38a3a5;
+}
+
+.vertical-align{
+  display: inline-flex;
+  vertical-align: bottom;
+  color: black
 }

@@ -1,18 +1,77 @@
 <div class="container">
-  <form [formGroup]="sendCampaignForm">
-    <div class="row m-0 mb-3 mt-3 font-style">
-      <div class="m-0 p-0 col-md-8 note-txt">
-        Note :- Please provide only geminisolutions.com id's in csv
-      </div>
-      <div class="p-0 m-0 col-md-1 d-flex align-items-center">
-        <mat-icon
-          [mat-dialog-close]="true"
-          (click)="samplecsv()"
-          matTooltip="Sample csv"
-          >info</mat-icon
-        >
-      </div>
+  <form [formGroup]="sendCampaignForm" class="font-style">
+    <div class="row d-flex justify-content-center" *ngIf="isCampaignTypeSchedule()">
+      <mat-form-field
+        class="col-lg-4 col-md-4 col-sm-12 col-12"
+        appearance="outline"
+      >
+        <mat-label>Choose a date (MM/DD/YYYY)</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="date"
+          [min]="currentdate"
+          [max]="maxDate"
+        />
+        <mat-error
+          *ngIf="
+            this.sendCampaignForm.controls['date'].errors != null &&
+            this.sendCampaignForm.controls['date']['errors']['isInvalid']"
+          >{{ this.sendCampaignForm.controls['date']['errors']['message']}}</mat-error>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <mat-form-field
+        class="col-lg-4 col-md-4 col-sm-12 col-12"
+        appearance="outline"
+      >
+        <mat-label>12 hrs format</mat-label>
+        <input
+          matInput
+          [ngxTimepicker]="timePicker"
+          [format]="12"
+          formControlName="time"
+        />
+        <mat-error
+          *ngIf="
+            this.sendCampaignForm.controls['time'].errors != null &&
+            this.sendCampaignForm.controls['time']['errors']['isInvalid']"
+          >{{ this.sendCampaignForm.controls['time']['errors']['message']}}</mat-error>
+        <mat-icon class="position-absolute alarm-icon">alarm_on</mat-icon>
+        <mat-timepicker-toggle matSuffix></mat-timepicker-toggle>
+        <ngx-material-timepicker
+          #timePicker
+          [enableKeyboardInput]="true"
+        ></ngx-material-timepicker>
+      </mat-form-field>
+
+      <mat-form-field
+        class="col-lg-4 col-md-4 col-sm-12 col-12"
+        appearance="outline"
+      >
+        <mat-label>Select Time Zone</mat-label>
+        <mat-select [(value)]="selected" formControlName="timezone">
+          <mat-option value="Canada/Pacific">PST [Canada/Pacific]</mat-option>
+          <mat-option value="Asia/Kolkata">IST [Asia/Kolkata]</mat-option>
+        </mat-select>
+        <mat-error
+          *ngIf="
+            this.sendCampaignForm.controls['timezone'].errors != null &&
+            this.sendCampaignForm.controls['timezone']['errors']['isInvalid']"
+          >{{ this.sendCampaignForm.controls['timezone']['errors']['message']}}</mat-error>
+      </mat-form-field>
     </div>
+    <div class="m-0 p-0 col-md-12 note-txt">
+        Note :- Please provide only geminisolutions.com id's in csv
+        
+        <mat-icon class="vertical-align"
+        [mat-dialog-close]="true"
+        (click)="samplecsv()"
+        matTooltip="Sample csv"
+        >info</mat-icon
+      >
+      </div>
     <div class="upload-txt">Upload .csv file with custom email</div>
     <div class="mb-3">
       <input
@@ -23,21 +82,21 @@
         formControlName="attachmentFile"
         (change)="onChange($event)"
       />
+      <mat-error class="mt-2" *ngIf="this.submitted && (!this.changeTriggered || (this.changeTriggered && this.csvError !==''))">{{this.csvError}}</mat-error>
     </div>
     <div class="row">
       <div class="col-lg-5 col-md-5 col-sm-12 col-12 pl-1 mb-2">
-        <button [mat-dialog-close]="true" class="cancel-btn w-100">
+        <button class="cancel-btn w-100" (click)="close()">
           Cancel
         </button>
       </div>
       <div class="col-lg-5 col-md-5 col-sm-12 col-12 pl-1">
         <button
           type="submit"
-          [mat-dialog-close]="true"
           class="send-btn w-100"
-          (click)="sendCampaign()"
+          (click)="dispatchCampaign()"
         >
-          Send Campaign
+          {{this.typeOfCampaign}} Campaign
         </button>
       </div>
     </div>

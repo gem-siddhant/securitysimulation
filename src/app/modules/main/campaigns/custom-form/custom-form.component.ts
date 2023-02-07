@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { take } from 'rxjs';
 import { CommonService } from 'src/app/services/common.service';
@@ -18,17 +19,22 @@ export class CustomFormComponent implements OnInit {
   templateId : Number;
   templateForm: FormGroup;
   screenSize : String;
-  uploadedImage : string | ArrayBuffer;
+  uploadedImage : SafeUrl;
+  changeTrigger : boolean;
+  imgSource : ArrayBuffer | string;
   constructor(
     private commonService : CommonService,
     private responsiveService : ResponsiveService,
     private formBuilder : FormBuilder,
     private router: ActivatedRoute,
     private dialog: MatDialog,
+    private sanitizer : DomSanitizer
   ) { 
     this.templateId = 4;
     this.templateForm = this.formBuilder.group({});
     this.uploadedImage = '';
+    this.changeTrigger = false;
+    this.imgSource = '';
   }
 
   ngOnInit(): void {
@@ -67,10 +73,16 @@ export class CustomFormComponent implements OnInit {
   onChange(event : any) : void{
     let reader = new FileReader();
     if(event.target.files && event.target.files.length > 0) {
+      this.changeTrigger = true;
       let file = event.target.files[0];
+      if(file.size > (2*1024*1024))
+        return;
+      else
+        this.changeTrigger = false;
       reader.readAsDataURL(file);
       reader.onload = () => {
-        this.uploadedImage = reader.result;
+        this.uploadedImage = this.sanitizer.bypassSecurityTrustUrl(String(reader.result));
+        this.imgSource = reader.result;
       };
     }
   }

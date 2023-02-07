@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { blob } from 'stream/consumers';
+import { Component, Inject, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { customValidator } from 'src/app/modules/main/campaigns/validation/custom.validation';
 import { DownloadCsvModalComponent } from '../download-csv-modal/download-csv-modal.component';
-import { SamplecsvComponent } from '../samplecsv/samplecsv.component';
 
 @Component({
   selector: 'app-send-campaign-modal',
@@ -15,21 +14,59 @@ export class SendCampaignModalComponent implements OnInit {
   victimEmails : String[];
   isAttachmentInvalid : boolean;
   changeTriggered : boolean;
+  csvError : String;
+  submitted : boolean;
+  selected : String;
+  currentdate :Date
+  maxDate: Date;
+  typeOfCampaign : String;
   constructor(
-    public dialogRef: MatDialogRef<SendCampaignModalComponent>,
+    private dialogRef: MatDialogRef<SendCampaignModalComponent>,
     private dialog: MatDialog,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    @Inject(MAT_DIALOG_DATA) public data: String,
   ) {
     this.sendCampaignForm = this.formBuilder.group({});
     this.victimEmails = [] as String[];
     this.changeTriggered = false;
+    this.csvError = 'Please upload csv file';
+    this.submitted = false;
+    this.currentdate = new Date();
+    this.selected = 'None';
+    this.maxDate = new Date((new Date()).getFullYear() + 1, 2);
+    this.typeOfCampaign = this.data;
   }
 
   ngOnInit(): void {
     this.sendCampaignForm = this.formBuilder.group({
-      attachmentFile: [''],
-    });
+      date:['',[customValidator('', 'date')]],
+      time:['',[customValidator('', 'time')]],
+      timezone:['',[customValidator('', 'time zone')]],
+      attachmentFile : ['']
+    })
+    this.setValidations();
   }
+
+  setValidations() : void{
+    if(this.isCampaignTypeSchedule()){
+      this.sendCampaignForm.get("date").setValidators([customValidator('', 'date')]);
+      this.sendCampaignForm.get("time").setValidators([customValidator('', 'time')]);
+      this.sendCampaignForm.get("timezone").setValidators([customValidator('', 'time zone')]);
+    }
+    else{
+      this.sendCampaignForm.get("date").clearValidators();
+      this.sendCampaignForm.get("time").clearValidators();
+      this.sendCampaignForm.get("timezone").clearValidators();
+    }
+    this.sendCampaignForm.get("date").updateValueAndValidity();
+    this.sendCampaignForm.get("time").updateValueAndValidity();
+    this.sendCampaignForm.get("attachmentFile").updateValueAndValidity();  
+  }
+
+  isCampaignTypeSchedule() : boolean{
+    return this.typeOfCampaign === 'Schedule';
+  }
+
 
   samplecsv(): void {
     let dataDialog = { title: 'CSV file not Provided' };
@@ -41,6 +78,7 @@ export class SendCampaignModalComponent implements OnInit {
 
   onChange(event: any) {
     this.victimEmails = [];
+    this.csvError = '';
     this.changeTriggered = true;
     const reader = new FileReader();
     reader.readAsText(event.target.files[0]);
@@ -59,14 +97,25 @@ export class SendCampaignModalComponent implements OnInit {
           (email.endsWith('geminisolutions.com') ||
             email.endsWith('Geminisolutions.com'))
         ) {
+          this.csvError = '';
           this.victimEmails.push(email);
         } else {
-          console.log('Invalid email format')
+          this.csvError = `Format of ${email} is invalid`;
           this.victimEmails = [];
+          return;
         }
       }
     };
   }
 
-  sendCampaign(): void {}
+  dispatchCampaign(): void {
+    this.submitted = true;
+    if(!this.sendCampaignForm.invalid && this.changeTriggered && this.csvError === ''){
+      this.dialogRef.close({sendClicked : true, victimEmails : this.victimEmails, scheduledData : this.typeOfCampaign === 'send' ? null : this.sendCampaignForm.value});
+    }
+  }
+
+  close() : void{
+    this.dialogRef.close({sendClicked : false});
+  }
 }

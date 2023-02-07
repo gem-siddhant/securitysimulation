@@ -24,6 +24,7 @@
         </form>
         <button (click)="uploadimg.click()" class="upload-btn">Upload Template</button>
       </div>
+      <mat-error class="d-flex justify-content-center mt-2" *ngIf="this.changeTrigger && this.uploadedImage === ''">Image size should be less than 2mb</mat-error>
     </div>
   </div>
 

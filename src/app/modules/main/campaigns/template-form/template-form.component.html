@@ -221,15 +221,15 @@
         </mat-form-field>
         <div class="row d-flex justify-content-center mt-4 mb-3">
           <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-2">
-            <button class="w-100 preview-btn rounded">Preview</button>
+            <button (click)="checkFormData('Preview')" class="w-100 preview-btn rounded">Preview</button>
           </div>
           <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-2">
-            <button (click)="scheduleCampaign()" class="w-100 schedule-btn rounded" type="submit">
+            <button (click)="checkFormData('Schedule')" class="w-100 schedule-btn rounded" type="submit">
               Schedule Campaign
             </button>
           </div>
           <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-            <button (click)="sendCampaign()" class="w-100 send-btn rounded" type="submit">
+            <button (click)="checkFormData('Send')" class="w-100 send-btn rounded" type="submit">
               Send Campaign
             </button>
           </div>

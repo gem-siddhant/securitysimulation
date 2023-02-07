@@ -209,7 +209,7 @@ export class SendcampaignComponent implements OnInit {
       formData.append('file',this.imgfile)
     }
     else{
-      const localfile = "\dumyimg\click.png"
+      const localfile = "\dumyimg\click.png";
       var local = new File(["foo"], localfile, {
         type: "file/png"
       });
