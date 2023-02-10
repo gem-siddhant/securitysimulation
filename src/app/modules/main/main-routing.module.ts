@@ -72,6 +72,12 @@ const routes: Routes = [
       import('./campaigns/campaigns.module').then((m) => m.CampaignsModule),
   },
   {
+    path: 'employee-csv',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./employee-csv/employee-csv.module').then((m) => m.EmployeeCsvModule),
+  },
+  {
     path: 'analytics',
     canActivate: [AuthGuard],
     loadChildren: () =>

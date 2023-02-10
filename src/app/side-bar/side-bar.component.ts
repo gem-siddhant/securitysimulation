@@ -1,11 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { ToastrService } from 'ngx-toastr';
-import { MainService } from '../modules/main/service/main.service';
 import { AuthService } from '../services/auth.service';
 import { CommonService } from '../services/common.service';
 import { ResponsiveService } from '../services/responsive.service';
 import { imgconst } from '../shared/Constants/constants';
+import { iconConst } from '../shared/Constants/constants';
 @Component({
   selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',
@@ -13,24 +11,38 @@ import { imgconst } from '../shared/Constants/constants';
 })
 export class SideBarComponent implements OnInit {
   @Output() sidenav: EventEmitter<any> = new EventEmitter();
-  simulationlogo: string = '';
-  logoutlogo: string = '';
+  simulationlogo: String;
+  logoutlogo: String;
   mobile: boolean;
+  dashIcon : String;
+  manualIcon : String;
+  campIcon : String;
+  scheduleIcon : String;
+  analyticsIcon : String;
+  employeecsvIcon : String;
+
   constructor(
     private _auth: AuthService,
     private responsiveService: ResponsiveService,
-    private commonService: CommonService
+    private commonService: CommonService,
   ) {
     this.mobile = false;
+    this.simulationlogo = imgconst.simulationlog;
+    this.logoutlogo = iconConst.logoutIcon;
+    this.dashIcon = iconConst.dashboardIcon;
+    this.manualIcon = iconConst.manualIcon;
+    this.analyticsIcon = iconConst.analyticsIcon;
+    this.scheduleIcon = iconConst.scheduledIcon;
+    this.employeecsvIcon = iconConst.employeeCsvIcon;
+    this.campIcon = iconConst.campaignIcon;
   }
 
   ngOnInit(): void {
-    this.simulationlogo = imgconst.simulationlog;
-    this.logoutlogo = imgconst.logoutlog;
     this.checkMobile();
     this.onResize();
   }
-  checkMobile() {
+
+  checkMobile() : void {
     this.responsiveService.getMobileStatus().subscribe((isMobile) => {
       if (isMobile) {
         this.mobile = true;
@@ -39,22 +51,22 @@ export class SideBarComponent implements OnInit {
       }
     });
   }
-  onResize() {
+  
+  onResize() : void {
     this.responsiveService.checkWidth();
   }
-  getUser() {
-    return localStorage.getItem('token');
-  }
-  toggle() {
+
+  toggle() : void {
     this.sidenav.emit();
   }
-  close() {
+
+  close() : void {
     if (this.mobile) {
       this.commonService.setSideNavOpened(false);
     }
   }
 
-  Logout() {
+  Logout() : void {
     this._auth.logout();
   }
 }
