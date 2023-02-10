@@ -1,6 +1,6 @@
 
 body{
-    background-image: url("../../../../assets/images/new_design_bg_img.png");
+    background-image: url("../../../../assets/images/onboardimg.png");
     background-size: cover;
     background-repeat: repeat;
     background-attachment: fixed;
@@ -33,4 +33,15 @@ body{
   .textdesign{
     color:#38A3A5;
   }
-  
+  :host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline{
+    color: white;
+    border-radius: 5px;
+    border: 1px;
+  }
+  .color-white{
+    color:white;
+  }
+  ::ng-deep .mat-form-field-label, .mat-form-field-input {
+    /*change color of label*/
+    color: white!important;
+   }

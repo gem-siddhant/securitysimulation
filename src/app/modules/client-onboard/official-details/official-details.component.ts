@@ -18,7 +18,7 @@ export class OfficialDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.onboardform = this.formBuilder.group({
-      email:[''],
+      email:[{value:'',disable: true}],
       fname:[''],
       lname:[''],
       designation:[''],

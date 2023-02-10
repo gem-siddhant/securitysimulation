@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-onboard',
@@ -10,18 +11,29 @@ import { Router } from '@angular/router';
 export class OnboardComponent implements OnInit {
   onboardform:FormGroup;
   sentotp:boolean = false;
-  constructor(private formBuilder: FormBuilder, private router:Router,) { 
+  constructor(private formBuilder: FormBuilder, 
+    private toastr:ToastrService,
+    private router:Router,) { 
     this.onboardform = this.formBuilder.group({});
   }
 
   ngOnInit(): void {
     this.onboardform = this.formBuilder.group({
       email:['',Validators.email],
-      otp:['',Validators.email],
+      otp:['',Validators.required],
       
   });
   }
   routeto(){
+    if (this.onboardform.value.otp=='')
+    {
+      this.toastr.error("Please enter OTP",undefined,
+      {
+        positionClass: 'toast-top-center'
+      }
+      );
+      return;
+    }
     this.router.navigate(['client-onboard/generate-password'])
   }
   sendotp()

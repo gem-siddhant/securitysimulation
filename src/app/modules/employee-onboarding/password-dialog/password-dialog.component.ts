@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { EmpServiceService } from '../Services/emp-service.service';
 import { ConfirmPasswordValidator } from "./confirm-password.validator";
 
@@ -13,6 +14,7 @@ export class PasswordDialogComponent implements OnInit {
   onboardform:FormGroup;
   constructor(private formBuilder: FormBuilder,
     private router:Router,
+    private toastr:ToastrService,
     private shared: EmpServiceService) {
       this.onboardform = this.formBuilder.group({})
      }
@@ -20,8 +22,8 @@ export class PasswordDialogComponent implements OnInit {
   ngOnInit(): void {
     this.onboardform = this.formBuilder.group(
       {
-      password:['',Validators.email],
-      confirmpass:['',Validators.email],
+      password:['',Validators.required],
+      confirmpass:['',Validators.required],
   },
 
   );
@@ -30,11 +32,26 @@ export class PasswordDialogComponent implements OnInit {
 
   
   routeto(){
+    if(this.onboardform.value.password == "" ||  this.onboardform.value.confirmpass == "")
+    {
+      this.toastr.error("Please create your password", undefined, {
+        positionClass: 'toast-top-center'
+   })
+      return
+    }
+    if(this.onboardform.value.password != this.onboardform.value.confirmpass)
+    {
+      this.toastr.error("Password not matched", undefined, {
+        positionClass: 'toast-top-center'
+      });
+      return
+    }
+    else{
     let req = {
-      'password': this.onboardform.value.createpass
+      'password': this.onboardform.value.password
     }
     this.shared.setpassword(req)
     this.router.navigate(['employee-onboard/official-details'])
   }
-
+  }
 }

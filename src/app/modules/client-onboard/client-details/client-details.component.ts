@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,10 +15,16 @@ export class ClientDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.onboardform = this.formBuilder.group({
-      clientname:[''],
-      clientaddress:[''],
-      officialemail:[''],
-      contact:[''],
+      clientname:[{ value: '', disabled: true },
+      [
+        Validators.required,
+        Validators.email,
+        Validators.minLength(5),
+        Validators.pattern(/^\S+@\S+\.\S+$/),
+      ],],
+      clientaddress:[{ value: '', disabled: true }],
+      officialemail:[{ value: '', disabled: true }],
+      contact:[{ value: '', disabled: true }],
   });
   }
   routeto(){

@@ -64,8 +64,8 @@ export class SideBarComponent implements OnInit {
   inviteclient()
   {
     const dialogRef = this.dialog.open(ClientInviteComponent, {
-      width: '800px',
-      height: '470px',
+      width: '840px',
+      height: '570px',
     }); 
   }
 }

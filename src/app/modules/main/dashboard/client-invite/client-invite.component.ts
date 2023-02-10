@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { DashboardapiService } from '../dashboard-services/dashboardapi.service';
 
 @Component({
   selector: 'app-client-invite',
@@ -14,7 +15,9 @@ export class ClientInviteComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<ClientInviteComponent>,
     private formBuilder: FormBuilder, 
     private router:Router,
-    private toastr:ToastrService,) { }
+    private toastr:ToastrService,
+    private _inviteclient: DashboardapiService
+    ) { }
 
   ngOnInit(): void {
     this.inviteform = this.formBuilder.group({
@@ -24,7 +27,12 @@ export class ClientInviteComponent implements OnInit {
       currency:['',Validators.required],
       cost:['',Validators.required],
       startdate:['',Validators.required],
-      enddate:['',Validators.required]
+      enddate:['',Validators.required],
+      admincount:['',Validators.required],
+      usercount:['',Validators.required],
+      contact:['',Validators.required],
+      address:['',Validators.required],
+      officialemail:['',Validators.required]
   });
   }
 
@@ -34,6 +42,27 @@ export class ClientInviteComponent implements OnInit {
   }
   sendinvite()
   {
-
+    let req = {
+    'representativeEmail': this.inviteform.value.pocmail,
+    "planName": this.inviteform.value.plan,
+    "currency": this.inviteform.value.currency,
+    "yearlyCost": this.inviteform.value.cost,
+    "noOfAdmins": this.inviteform.value.admincount,
+    "userLimit": this.inviteform.value.usercount,
+    "clientName": this.inviteform.value.clientmail,
+    "clientAddress": this.inviteform.value.address,
+    "officialEmail": this.inviteform.value.officialemail,
+    "clientContactNumber": this.inviteform.value.contact,
+    "startDate": this.inviteform.value.startdate,
+    "endDate": this.inviteform.value.enddate,
+    "invitedBy":"ayush.tiwary@geminisolutions.com"
+    }
+    this._inviteclient.inviteclient(req).subscribe((data)=>
+    {
+      if(data)
+      {
+        console.log("invite client done")
+      }
+    })
   }
 }
