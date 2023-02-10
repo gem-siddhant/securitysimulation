@@ -64,6 +64,13 @@
                 formControlName="name"
                 matInput
               />
+              <mat-error
+              *ngIf="
+                this.templateForm.controls['name'].errors != null &&
+                this.templateForm.controls['name']['errors']['isInvalid']
+              "
+              >{{ this.templateForm.controls['name']['errors']['message']}}</mat-error
+            >
             </mat-form-field>
 
             <mat-form-field
@@ -77,12 +84,19 @@
                 formControlName="subject"
                 matInput
               />
+              <mat-error
+              *ngIf="
+                this.templateForm.controls['subject'].errors != null &&
+                this.templateForm.controls['subject']['errors']['isInvalid']
+              "
+              >{{ this.templateForm.controls['subject']['errors']['message']}}</mat-error
+            >
             </mat-form-field>
           </div>
 
           <div class="mb-3">
             <span class="radio-title">Add Description : </span>
-            <mat-radio-group formControlName="addDescription">
+            <mat-radio-group formControlName="addDescription" (change)="onChangeAddDescription($event)">
               <mat-radio-button class="radio-text" [value]="false"
                 >No&emsp;</mat-radio-button
               >
@@ -105,6 +119,13 @@
               matInput
               maxlength="1500"
             ></textarea>
+            <mat-error
+              *ngIf="
+                this.templateForm.controls['description'].errors != null &&
+                this.templateForm.controls['description']['errors']['isInvalid']
+              "
+              >{{ this.templateForm.controls['description']['errors']['message']}}</mat-error
+            >
           </mat-form-field>
 
           <mat-form-field
@@ -120,6 +141,13 @@
               matInput
               maxlength="200"
             ></textarea>
+            <mat-error
+              *ngIf="
+                this.templateForm.controls['note'].errors != null &&
+                this.templateForm.controls['note']['errors']['isInvalid']
+              "
+              >{{ this.templateForm.controls['note']['errors']['message']}}</mat-error
+            >
           </mat-form-field>
 
           <mat-form-field class="w-100" appearance="outline">
@@ -130,6 +158,13 @@
               formControlName="emailSignature"
               matInput
             />
+            <mat-error
+              *ngIf="
+                this.templateForm.controls['emailSignature'].errors != null &&
+                this.templateForm.controls['emailSignature']['errors']['isInvalid']
+              "
+              >{{ this.templateForm.controls['emailSignature']['errors']['message']}}</mat-error
+            >
           </mat-form-field>
 
           <div
@@ -144,6 +179,9 @@
               >
                 <mat-label>Email for simulation</mat-label>
                 <input matInput type="text" formControlName="senderEmail" />
+                <mat-error
+                  *ngIf="isEmailFieldInvalid(mailId)"
+                  >{{ emailFieldErrorMessage(mailId)}}</mat-error>
               </mat-form-field>
               <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-2 p-1">
                 <button
@@ -162,23 +200,23 @@
 
           <div
             [ngClass]="{
-              'position-absolute bottom-0 w-100': !isScreenSizeMd()
+              'position-absolute bottom-0 w-100': !isScreenMobile()
             }"
             class="row d-flex justify-content-center mt-4 mb-3"
           >
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-2">
-              <button class="w-100 preview-btn rounded">Preview</button>
+              <button class="w-100 preview-btn rounded" (click)="checkFormData('Preview')">Preview</button>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-2">
               <button
-                (click)="scheduleCampaign()"
+                (click)="checkFormData('Schedule')"
                 class="w-100 schedule-btn rounded"
               >
                 Schedule Campaign
               </button>
             </div>
             <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12">
-              <button (click)="sendCampaign()" class="w-100 send-btn rounded">
+              <button (click)="checkFormData('Send')" class="w-100 send-btn rounded">
                 Send Campaign
               </button>
             </div>

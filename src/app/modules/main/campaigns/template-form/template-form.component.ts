@@ -26,7 +26,6 @@ export class TemplateFormComponent implements OnInit {
   templateId : Number;
   templateForm: FormGroup;
   shieldImg : String;
-  employeesList : String[];
   victimEmails : String[];
   scheduledData : ScheduledModel;
   constructor(
@@ -41,7 +40,6 @@ export class TemplateFormComponent implements OnInit {
     this.shieldImg = imgconst.shiledImg;
     this.templateId = 0;
     this.templateForm = this.formBuilder.group({});
-    this.employeesList = [] as String[];
     this.victimEmails = [] as String[];
     this.scheduledData = {} as ScheduledModel;
   }
@@ -132,7 +130,7 @@ export class TemplateFormComponent implements OnInit {
 
     dialogRef.afterClosed().pipe(take(1)).subscribe({
       next : (dialogData)=>{
-        if(dialogData.sendClicked){
+        if(dialogData &&  dialogData.sendClicked){
           this.victimEmails = dialogData.victimEmails;
           if(dialogData.scheduledData != null){
             this.scheduledData = dialogData.scheduledData;
@@ -149,9 +147,7 @@ export class TemplateFormComponent implements OnInit {
   openAlertModal(alertTitle : String, btnTitle : String) : void{
     const alertDialogRef = this.dialog.open(AlertModalComponent, {
       width: '454px',
-      data : {
-        title: alertTitle
-      }
+      data :  alertTitle
     });
     alertDialogRef.afterClosed().pipe(take(1)).subscribe({
       next : (alertDialogData)=>{

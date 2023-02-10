@@ -203,6 +203,13 @@
             matInput
             maxlength="50"
           ></textarea>
+          <mat-error
+              *ngIf="
+                this.templateForm.controls['fileName'].errors != null &&
+                this.templateForm.controls['fileName']['errors']['isInvalid']
+              "
+              >{{ this.templateForm.controls['fileName']['errors']['message']}}</mat-error
+            >
         </mat-form-field>
 
         <mat-form-field
@@ -218,6 +225,13 @@
             matInput
             maxlength="2000"
           ></textarea>
+          <mat-error
+              *ngIf="
+                this.templateForm.controls['fileContent'].errors != null &&
+                this.templateForm.controls['fileContent']['errors']['isInvalid']
+              "
+              >{{ this.templateForm.controls['fileContent']['errors']['message']}}</mat-error
+            >
         </mat-form-field>
         <div class="row d-flex justify-content-center mt-4 mb-3">
           <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-2">

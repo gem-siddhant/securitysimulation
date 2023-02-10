@@ -19,7 +19,6 @@ export class CampaignsService {
   }
   
   createCampaign(formData: FormData) : Observable<CreateCampaignStatus>{
-    console.log(formData)
     return this.http.post<CreateCampaignStatus>('upload', formData);
   }
 

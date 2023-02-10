@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { customValidator } from 'src/app/modules/main/campaigns/validation/custom.validation';
@@ -106,6 +106,10 @@ export class SendCampaignModalComponent implements OnInit {
         }
       }
     };
+  }
+  @ViewChild('timePicker') timePicker: any;
+  openFromIcon(timePicker: { open: () => void }) {
+    timePicker.open();
   }
 
   dispatchCampaign(): void {

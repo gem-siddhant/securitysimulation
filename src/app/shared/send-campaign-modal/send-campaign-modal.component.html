@@ -10,6 +10,7 @@
           matInput
           [matDatepicker]="picker"
           formControlName="date"
+          readonly
           [min]="currentdate"
           [max]="maxDate"
         />
@@ -31,6 +32,7 @@
           matInput
           [ngxTimepicker]="timePicker"
           [format]="12"
+          readonly
           formControlName="time"
         />
         <mat-error
@@ -38,8 +40,8 @@
             this.sendCampaignForm.controls['time'].errors != null &&
             this.sendCampaignForm.controls['time']['errors']['isInvalid']"
           >{{ this.sendCampaignForm.controls['time']['errors']['message']}}</mat-error>
-        <mat-icon class="position-absolute alarm-icon">alarm_on</mat-icon>
-        <mat-timepicker-toggle matSuffix></mat-timepicker-toggle>
+        <mat-icon (click)="openFromIcon(timePicker)" matSuffix class="alarm-icon">alarm_on</mat-icon>
+        <!-- <mat-timepicker-toggle matSuffix></mat-timepicker-toggle> -->
         <ngx-material-timepicker
           #timePicker
           [enableKeyboardInput]="true"

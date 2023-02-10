@@ -1,7 +1,7 @@
 // img contants
 export const imgconst = {
     simulationlog : "../../../assets/images/finalpirates.png",
-    logoutlog : "../../assets/images/logout.svg",
+    logoutlog : "../../assets/icons/logout.svg",
     customTempImg : "../../../../../assets/images/custom-template.png",
     itTempImg : "../../../../../assets/images/macbook_template.jpeg",
     accountTempImg : "../../../../../assets/images/accounts.png",
@@ -12,7 +12,7 @@ export const imgconst = {
 
 // icon contants
 export const iconConst = {
-    logoutIcon : "../../assets/images/logout.svg",
+    logoutIcon : "../../assets/icons/logout.svg",
     dashboardIcon : "../../assets/icons/dashboard-icon.svg",
     campaignIcon : "../../assets/icons/campaign-icon.svg",
     employeeCsvIcon : "../../assets/icons/employee-csv-icon.svg",
