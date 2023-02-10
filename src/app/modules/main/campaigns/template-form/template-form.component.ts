@@ -56,7 +56,7 @@ export class TemplateFormComponent implements OnInit {
       subject : [""],
       note : [""],
       rewardType : [""],
-      rewardAmount : ['0'],
+      rewardAmount : [''],
       emailSignature : [""],
       fileName : [""],
       fileContent : [""],
@@ -154,9 +154,6 @@ export class TemplateFormComponent implements OnInit {
         if(alertDialogData.yesClicked){
           
           this.sendOrScheduleCampaign(btnTitle);
-          console.log(this.templateForm.value);
-          console.log(this.victimEmails);
-          console.log(this.scheduledData);
         }
       },
     })
