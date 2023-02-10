@@ -130,19 +130,20 @@ export class LoginComponent implements OnInit {
     );
   }
   submit(){
+    // this.router.navigate(["main/dashboard-admin"]);
       console.log("login form hit")
         if(this.loginForm.invalid)
         return;
         let obj={
-          "email":"ayush.tiwary@Geminisolutions.com",
+          "email":this.loginForm.value.id,
+          "password":this.loginForm.value.password
         }
         this._auth.loginMethod2(obj).subscribe((data)=>{
           if(data){
-            console.log(data.data);
-            console.log(data.message);
-            // localStorage.setItem('token',data.message);
-            localStorage.setItem('email',data.data.email);
-            this.router.navigate(["/main/dashboard"]);
+            console.log(data.token);
+            localStorage.setItem('token',data.token);
+            // localStorage.setItem('email',data.data.email);
+            this.router.navigate(["main/dashboard-admin"]);
           }
         },err=>{
           this.toastr.error("Error in loading data");

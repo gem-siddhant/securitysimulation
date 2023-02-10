@@ -46,7 +46,7 @@ export class AuthService {
     return this.notificationBoolean
   }
   loginMethod2(creds:any){
-    return this.http.post<any>('login', creds);
+    return this.http.post<any>('authenticate', creds);
    }
   setToken( email?: any,backend_token?:any) {
     return new Promise<void>((resolve, reject) => {
@@ -55,7 +55,7 @@ export class AuthService {
       if (item)
       {
         localStorage.setItem('Manager',(item.data.isManager));
-        localStorage.setItem('token',(item.message));
+        // localStorage.setItem('token',"eyJhbGciOiJIUzI1NiJ9.eyJyb2xlcyI6WyJBRE1JTiJdLCJzdWIiOiJURVNUIiwiaWF0IjoxNjc2MDI0NzY4LCJleHAiOjE2NzYwMjYyMDh9.MnlCgOnfjUXouigi0DMtfI21bN5e2ruKEYVP7wXdcTk");
         localStorage.setItem('Profile',item.data.imageURL);
         resolve();   
       }
