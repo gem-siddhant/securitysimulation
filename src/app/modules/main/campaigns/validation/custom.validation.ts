@@ -23,7 +23,7 @@ export function customValidator(prevValue: String, inputName : String, templateI
     if (currValue != null && currValue == '') {
         return { isInvalid: true, message: `${inputName} is required` };
     }
-    if (currValue.toLowerCase() === prevValue.toLowerCase()) {
+    if (currValue.toString().toLowerCase() === prevValue.toString().toLowerCase()) {
       return { isInvalid: true, message: `Please edit ${inputName} field` };
     }
     return null;

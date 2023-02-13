@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { EmployeeCsvRoutingModule } from './employee-csv-routing.module';
 import { EmployeeCsvDashboardComponent } from './employee-csv-dashboard/employee-csv-dashboard.component';
 import { ClientDetailsComponent } from './client-details/client-details.component';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 
 @NgModule({
@@ -13,6 +14,7 @@ import { ClientDetailsComponent } from './client-details/client-details.componen
   ],
   imports: [
     CommonModule,
+    SharedModule,
     EmployeeCsvRoutingModule
   ]
 })
