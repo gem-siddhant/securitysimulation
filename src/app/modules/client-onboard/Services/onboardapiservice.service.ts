@@ -19,4 +19,8 @@ export class OnboardapiserviceService {
  {
   return this.http.post<any>(clientonboardapi.clientonboardsubmit,obj)
  }
+ checkexpiration(obj:any)
+ {
+  return this.http.post<any>(clientonboardapi.linkexpiration,obj)
+ }
 }

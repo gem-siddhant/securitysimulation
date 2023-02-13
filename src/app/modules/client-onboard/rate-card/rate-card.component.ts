@@ -82,8 +82,8 @@ export class RateCardComponent implements OnInit {
     let req = {
       'username':this.officedetails.username,
       'password':this.passworddetails.password,
-      'firstname':this.officedetails.firstname,
-      'lastname':this.officedetails.lastname,
+      'firstName':this.officedetails.firstname,
+      'lastName':this.officedetails.lastname,
       'designation':this.officedetails.designation,
       'managerId':this.officedetails.managerId,
       'department':this.officedetails.department,
