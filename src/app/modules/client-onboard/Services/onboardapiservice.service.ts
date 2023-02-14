@@ -33,10 +33,10 @@ export class OnboardapiserviceService {
  }
  getClientDetails(clientid: any)
  {
-  return this.http.post<any>(clientonboardapi.clientinfoprefilleddata,clientid )
+  return this.http.get<any>(clientonboardapi.clientinfoprefilleddata+clientid )
  }
  getPlanDetails(planid: any)
  {
-  return this.http.post<any>(clientonboardapi.clientplanprefilleddata,planid )
+  return this.http.get<any>(clientonboardapi.clientplanprefilleddata+planid )
  }
 }

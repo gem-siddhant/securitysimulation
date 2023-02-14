@@ -31,7 +31,7 @@ export class OfficialDetailsComponent implements OnInit {
   }
   routeto(){
     let req = {
-      'username':this.onboardform.value.email,
+      'username':this.clientemail,
       'firstname':this.onboardform.value.fname,
       'lastname':this.onboardform.value.lname,
       'designation':this.onboardform.value.designation,

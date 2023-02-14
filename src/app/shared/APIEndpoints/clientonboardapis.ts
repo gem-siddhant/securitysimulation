@@ -3,6 +3,6 @@ export const clientonboardapi = {
     linkexpiration : "check/Expiration",
     sendotpclient : "send/otp/to/employee",
     validateclientotp : "validate/otp",
-    clientplanprefilleddata : "get/planDetails",
-    clientinfoprefilleddata : "get/clientInfo"
+    clientplanprefilleddata : "get/planDetails/",
+    clientinfoprefilleddata : "get/clientInfo/"
 }
