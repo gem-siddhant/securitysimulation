@@ -7,6 +7,7 @@ import { AnyTxtRecord } from 'dns';
 export class ClientOnboardService {
   passdata: any;
   officialdetails : any;
+  parameters : any;
   constructor() { 
   }
 
@@ -30,5 +31,14 @@ export class ClientOnboardService {
     return this.officialdetails
   }
 
+//passing query params data
+setemail(data:any)
+{
+  this.parameters=data
+}
+getemail()
+{
+  return this.parameters
+}
 
 }

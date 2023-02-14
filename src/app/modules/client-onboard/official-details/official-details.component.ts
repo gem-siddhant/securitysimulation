@@ -10,6 +10,7 @@ import { ClientOnboardService } from '../Services/client-onboard.service';
 })
 export class OfficialDetailsComponent implements OnInit {
   onboardform:FormGroup;
+  clientemail : any; 
   constructor(private formBuilder: FormBuilder, 
     private router:Router,
     private shared: ClientOnboardService) {
@@ -17,13 +18,15 @@ export class OfficialDetailsComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    
+    this.clientemail = this.shared.getemail().clientemail
     this.onboardform = this.formBuilder.group({
-      email:[{value:'',disable: true}],
-      fname:[''],
-      lname:[''],
-      designation:[''],
-      managerid:[''],
-      dept:[''],
+      email:[{value:'',disabled: true}],
+      fname:['', Validators.required],
+      lname:['', Validators.required],
+      designation:['', Validators.required],
+      managerid:['', Validators.required],
+      dept:['', Validators.required],
   });
   }
   routeto(){

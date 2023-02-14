@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 export class EmpServiceService {
   passdata: any;
   officialdetails : any;
+  parameters: any;
   constructor() { }
 
   // passing password data 
@@ -27,4 +28,13 @@ export class EmpServiceService {
   {
     return this.officialdetails
   }
+
+  setemail(data:any)
+{
+  this.parameters=data
+}
+getemail()
+{
+  return this.parameters
+}
 }

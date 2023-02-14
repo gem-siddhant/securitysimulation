@@ -23,4 +23,20 @@ export class OnboardapiserviceService {
  {
   return this.http.post<any>(clientonboardapi.linkexpiration,obj)
  }
+ sendotptoclient(email:any)
+ {
+  return this.http.post<any>(clientonboardapi.sendotpclient,email)
+ }
+ validateclientotp(otp:any)
+ {
+  return this.http.post<any>(clientonboardapi.validateclientotp,otp)
+ }
+ getClientDetails(clientid: any)
+ {
+  return this.http.post<any>(clientonboardapi.clientinfoprefilleddata,clientid )
+ }
+ getPlanDetails(planid: any)
+ {
+  return this.http.post<any>(clientonboardapi.clientplanprefilleddata,planid )
+ }
 }

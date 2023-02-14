@@ -18,8 +18,11 @@ export class RateCardComponent implements OnInit {
   arrayBuffer: any;
   file: File;
   listofemp:any;
-  res : any = [];
+  res : [];
   vare:any;
+  prefilled: {clientPlanId:{planName:'',yearlyCost:''},createdDate:'',endDate:'',clientContactNumber:''};
+  planid: any;
+  clientid : any;
   constructor(private formBuilder: FormBuilder, 
     private shared: ClientOnboardService,
     private router:Router,
@@ -28,13 +31,16 @@ export class RateCardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.planid = this.shared.getemail().planid
+    this.clientid = this.shared.getemail().clientid
     this.onboardform = this.formBuilder.group({
-      planname:[''],
-      plancost:[''],
-      startdate:[''],
-      enddate:[''],
+      planname:[{value:'',disabled:true}],
+      plancost:[{value:'',disabled:true}],
+      startdate:[{value:'',disabled:true}],
+      enddate:[{value:'',disabled:true}],
       sendinviteenow:[''||false]
   });
+  this.getprefilledclient()
   }
 
   onFileChange(ev:any) {
@@ -55,6 +61,16 @@ export class RateCardComponent implements OnInit {
     }
   }
 
+  getprefilledclient()
+  {
+    this._onboardclient.getClientDetails(this.clientid).subscribe((data)=>
+    {
+      if(data)
+      {
+        this.prefilled = data
+      }
+    })
+  }
   // Upload() {
   //   this.res=[]
   //   let fileReader = new FileReader();
@@ -87,9 +103,9 @@ export class RateCardComponent implements OnInit {
       'designation':this.officedetails.designation,
       'managerId':this.officedetails.managerId,
       'department':this.officedetails.department,
-      'contactNumber':'123456789',
-      'clientId':0,
-      'planId':0,
+      'contactNumber': this.prefilled.clientContactNumber,
+      'clientId':this.clientid,
+      'planId':this.planid,
       'onboardEmployees':this.onboardform.value.sendinviteenow,
       'employeeDetails': this.vare
     }
