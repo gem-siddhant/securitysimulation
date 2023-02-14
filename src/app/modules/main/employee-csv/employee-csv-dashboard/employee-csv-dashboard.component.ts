@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatTableDataSource } from '@angular/material/table';
 import { CommonService } from 'src/app/services/common.service';
 
@@ -76,7 +77,8 @@ export class EmployeeCsvDashboardComponent implements OnInit {
   ];
   displayColumns: String[];
   employeeCsvTable: MatTableDataSource<EmployeeCsv>;
-  constructor(private commonService: CommonService) {
+  employeeCsvForm: FormGroup;
+  constructor(private commonService: CommonService, private formBuilder : FormBuilder) {
     this.displayColumns = [
       "name",
       'emailId',
@@ -85,10 +87,18 @@ export class EmployeeCsvDashboardComponent implements OnInit {
       'department',
       'action',
     ];
+    this.employeeCsvForm = this.formBuilder.group({});
     this.employeeCsvTable = new MatTableDataSource<EmployeeCsv>(this.dummyData);
   }
 
   ngOnInit(): void {
     this.commonService.setLoginStatus(true);
+    this.employeeCsvForm = this.formBuilder.group({
+      searchText : [''],
+      filterType : [[]]
+    });
+  }
+  applyFilter(){
+    
   }
 }

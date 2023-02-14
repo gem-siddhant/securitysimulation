@@ -40,3 +40,13 @@ body {
 .mat-radio-button .mat-radio-outer-circle {
   border-color:  #38A3A5 !important;
 }
+.input-error-top-margin{
+  margin-top: 13px;
+}
+.textarea-error-top-margin{
+  margin-top: 16px;
+}
+.font-style {
+  font-family: "Poppins";
+  font-style: normal;
+}
