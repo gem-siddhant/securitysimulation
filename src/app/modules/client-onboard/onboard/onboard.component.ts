@@ -90,7 +90,11 @@ export class OnboardComponent implements OnInit {
       );
       return;
     }
-    this.clientservice.validateclientotp(this.onboardform.value.otp).subscribe((data)=>
+    let req = {
+      'otp':this.onboardform.value.otp,
+      'email': this.clientemail
+    }
+    this.clientservice.validateclientotp(req).subscribe((data)=>
     {
       if(data)
       {
@@ -112,7 +116,10 @@ export class OnboardComponent implements OnInit {
   { 
     this.sentotp=true
     console.log("otpsenttoclient")
-    this.clientservice.sendotptoclient(this.clientemail).subscribe((data)=>
+    let req = {
+      'email': this.clientemail
+    }
+    this.clientservice.sendotptoclient(req).subscribe((data)=>
     {
       if(data)
       {
