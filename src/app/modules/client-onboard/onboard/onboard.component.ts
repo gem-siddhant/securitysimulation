@@ -41,7 +41,7 @@ export class OnboardComponent implements OnInit {
         this.clientid = params["ClientID"]
       }
     )
-    this.clientemail = "ayush.tiwary@geminisolutions.com"
+    // this.clientemail = "ayush.tiwary@geminisolutions.com"
     let param = {
       'clientname': this.clientname,
       'planid': this.planid,
