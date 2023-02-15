@@ -26,4 +26,9 @@ export class EmponboardapiService {
   {
     return this.http.get<any>(emponboardapis.clientinfoprefilleddata+userid)
   }
+  submituserdetails(obj:any)
+  {
+    return this.http.get<any>(emponboardapis.useronboardsubmit,obj)
+
+  }
 }

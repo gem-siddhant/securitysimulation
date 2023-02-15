@@ -63,7 +63,7 @@ getPrefilledUserDetails()
   routeto(){
     this.passworddetails = this.shared.getpassword()
     let req = {
-      'username':this.userid,
+      'username':this.useremail,
       'password':this.passworddetails.password,
       'firstname':this.onboardform.value.fname,
       'lastname':this.onboardform.value.lname,
@@ -71,6 +71,13 @@ getPrefilledUserDetails()
       'managerId':this.onboardform.value.managerid,
       'department':this.onboardform.value.dept,
     }
+    this._useronboardapi.submituserdetails(req).subscribe((data)=>
+    {
+      if(data)
+      {
+        console.log("client onboard done")
+      }
+    })
     this.toastr.success("You are successfully onboarded");
     console.log(req)
    
