@@ -16,10 +16,8 @@ export class EmpOnboardComponent implements OnInit {
   sentotp:boolean = false;
   checkemailexp: any;
   linkexpired: boolean = false;
-  clientname:any;
-  clientid:any;
-  planid:any;
-  clientemail:any;
+  userid:any;
+  useremail:any;
   constructor(private formBuilder: FormBuilder,
     private toastr:ToastrService,
     private router:Router,
@@ -32,18 +30,14 @@ export class EmpOnboardComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(
       params => {
-        this.checkemailexp = params["LinkExpiraition"]
-        this.clientname = params["ClientName"]
-        this.planid = params["PlanId"]
-        this.clientemail = params["Email"]
-        this.clientid = params["ClientID"]
+        this.checkemailexp = params["expiration"]
+        this.useremail = params["email"]
+        this.userid = params["userId"]
       }
     )
     let param = {
-      'clientname': this.clientname,
-      'planid': this.planid,
-      'clientid': this.clientid,
-      'clientemail':this.clientemail
+      'userid': this.userid,
+      'useremail':this.useremail,
     }
     this.shared.setemail(param)
     console.log("inside onboard")
@@ -86,11 +80,39 @@ export class EmpOnboardComponent implements OnInit {
       );
       return;
     }
-    this.router.navigate(['employee-onboard/generate-password'])
+    let req = {
+      'otp':this.onboardform.value.otp,
+      'email': this.useremail
+    }
+    this._emponbaord.validateclientotp(req).subscribe((data)=>
+    {
+      if(data)
+      {
+        this.router.navigate(['employee-onboard/generate-password'])
+      }
+      else{
+        this.toastr.error("Incorrect OTP",undefined,
+      {
+        positionClass: 'toast-top-center'
+      }
+      );
+      }
+    })
+    // this.router.navigate(['employee-onboard/generate-password'])
   }
   sendotp()
   {
-    this.sentotp=true
+    console.log("otpsenttoclient")
+    let req = {
+      'email': this.useremail
+    }
+    this._emponbaord.sendotptoclient(req).subscribe((data)=>
+    {
+      if(data)
+      {
+        this.sentotp=true
+      }
+    })
   }
 
 }

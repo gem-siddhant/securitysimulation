@@ -114,7 +114,7 @@ export class OnboardComponent implements OnInit {
   // generating otp 
   sendotp()
   { 
-    this.sentotp=true
+    // this.sentotp=true
     console.log("otpsenttoclient")
     let req = {
       'email': this.clientemail

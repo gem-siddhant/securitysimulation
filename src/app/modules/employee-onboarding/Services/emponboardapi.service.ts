@@ -14,4 +14,16 @@ export class EmponboardapiService {
   {
     return this.http.post<any>(emponboardapis.linkexpirationcheck,obj)
   }
+  sendotptoclient(email:any)
+  {
+   return this.http.post<any>(emponboardapis.sendotpclient,email)
+  }
+  validateclientotp(otp:any)
+  {
+    return this.http.post<any>(emponboardapis.validateclientotp,otp)
+  }
+  getUserDetails(email:any)
+  {
+    return this.http.get<any>(emponboardapis.clientinfoprefilleddata+email)
+  }
 }

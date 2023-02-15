@@ -69,7 +69,6 @@ export class LoginComponent implements OnInit {
       .subscribe(() => {
         this.setLoginDisplay();
       });
-      // localStorage.setItem('email',"ayush.tiwary@Geminisolutions.com")
         this.loginForm = this.formBuilder.group({
             id:[''],
             password:['']
@@ -140,10 +139,13 @@ export class LoginComponent implements OnInit {
         }
         this._auth.loginMethod2(obj).subscribe((data)=>{
           if(data){
-            console.log(data.token);
+            let jwtToken = JSON.parse(window.atob(data.token.split(".")[1]));
+            let role = JSON.parse(window.atob(data.token.split(".")[1]))
+            localStorage.setItem('role',role.roles)
+            localStorage.setItem('email',jwtToken.sub);
             localStorage.setItem('token',data.token);
-            // localStorage.setItem('email',data.data.email);
             this.router.navigate(["main/dashboard-admin"]);
+
           }
         },err=>{
           this.toastr.error("Error in loading data");
