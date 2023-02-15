@@ -98,17 +98,20 @@ export class OnboardComponent implements OnInit {
     {
       if(data)
       {
+        console.log(data.message)
         // this.router.navigate(['client-onboard/generate-password'])
-      }
-      else{
+      if(data.message=='Invalid OTP'){
         this.toastr.error("Incorrect OTP",undefined,
       {
         positionClass: 'toast-top-center'
       }
       );
       }
+      else{
+        this.router.navigate(['client-onboard/generate-password'])
+      }
+    }
     })
-    this.router.navigate(['client-onboard/generate-password'])
   }
 
   // generating otp 

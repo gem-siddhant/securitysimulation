@@ -55,7 +55,7 @@ export class ClientInviteComponent implements OnInit {
     "clientContactNumber": this.inviteform.value.contact,
     "startDate": this.inviteform.value.startdate,
     "endDate": this.inviteform.value.enddate,
-    "invitedBy":"ayush.tiwary@geminisolutions.com"
+    "invitedBy":localStorage.getItem('email')
     }
     this._inviteclient.inviteclient(req).subscribe((data)=>
     {

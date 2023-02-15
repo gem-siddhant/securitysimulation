@@ -65,11 +65,6 @@ getPrefilledUserDetails()
     let req = {
       'username':this.useremail,
       'password':this.passworddetails.password,
-      'firstname':this.onboardform.value.fname,
-      'lastname':this.onboardform.value.lname,
-      'designation':this.onboardform.value.designation,
-      'managerId':this.onboardform.value.managerid,
-      'department':this.onboardform.value.dept,
     }
     this._useronboardapi.submituserdetails(req).subscribe((data)=>
     {
