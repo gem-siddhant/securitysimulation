@@ -102,6 +102,7 @@ export class EmpOnboardComponent implements OnInit {
   }
   sendotp()
   {
+    this.sentotp=true
     console.log("otpsenttoclient")
     let req = {
       'email': this.useremail

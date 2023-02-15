@@ -14,6 +14,7 @@ export class OfficialDetailsComponent implements OnInit {
   onboardform:FormGroup;
   passworddetails : any;
   userid:any;
+  useremail : string;
   prefilled = {userInfo: {
     infoId: 0,
     firstName: '',
@@ -31,14 +32,16 @@ export class OfficialDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.userid = this.shared.getemail().userid
+    this.useremail = this.shared.getemail().useremail
     this.onboardform = this.formBuilder.group({
-      email:[''],
-      fname:[''],
-      lname:[''],
-      designation:[''],
-      managerid:[''],
-      dept:[''],
+      email:[{ value:'',disabled: true}],
+      fname:[{ value:'',disabled: true}],
+      lname:[{ value:'',disabled: true}],
+      designation:[{ value:'',disabled: true}],
+      managerid:[{ value:'',disabled: true}],
+      dept:[{ value:'',disabled: true}],
   });
+  this.getPrefilledUserDetails()
   }
 getPrefilledUserDetails()
 {

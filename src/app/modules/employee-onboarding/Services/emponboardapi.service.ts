@@ -22,8 +22,8 @@ export class EmponboardapiService {
   {
     return this.http.post<any>(emponboardapis.validateclientotp,otp)
   }
-  getUserDetails(email:any)
+  getUserDetails(userid:any)
   {
-    return this.http.get<any>(emponboardapis.clientinfoprefilleddata+email)
+    return this.http.get<any>(emponboardapis.clientinfoprefilleddata+userid)
   }
 }
