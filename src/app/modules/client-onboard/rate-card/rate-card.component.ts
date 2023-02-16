@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ClientOnboardService } from '../Services/client-onboard.service';
 import * as XLSX from 'xlsx';
 import { OnboardapiserviceService } from '../Services/onboardapiservice.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-rate-card',
@@ -26,6 +27,7 @@ export class RateCardComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, 
     private shared: ClientOnboardService,
     private router:Router,
+    private toastr:ToastrService,
     private _onboardclient: OnboardapiserviceService) { 
     this.onboardform = this.formBuilder.group({})
   }
@@ -115,7 +117,18 @@ export class RateCardComponent implements OnInit {
       {
         console.log("client onboar done")
       }
+    },(err)=>{
+      if(err.status!=200)
+      {
+        this.toastr.error("Error while submitting",undefined,
+        {
+          positionClass: 'toast-top-center'
+        }
+        );
+      }
+      else{
+        this.router.navigate(['client-onboard/Onboarded'])
+      }
     })
-    this.router.navigate(['client-onboard/Onboarded'])
   }
 }

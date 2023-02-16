@@ -88,16 +88,27 @@ export class EmpOnboardComponent implements OnInit {
     {
       if(data)
       {
-        this.router.navigate(['employee-onboard/generate-password'])
+        
       }
-      else{
+      if(data.message=='Invalid OTP'){
         this.toastr.error("Incorrect OTP",undefined,
       {
         positionClass: 'toast-top-center'
       }
       );
       }
-    })
+    },(err)=>{
+      if(err.status!=200)
+      {
+        this.toastr.error("Something Went Wrong",undefined,
+        {
+          positionClass: 'toast-top-center'
+        }
+        );
+      }
+    }
+    
+    )
     // this.router.navigate(['employee-onboard/generate-password'])
   }
   sendotp()
@@ -111,6 +122,17 @@ export class EmpOnboardComponent implements OnInit {
     {
       if(data)
       {
+      }
+    },(err)=>{
+      if(err.status!=200)
+      {
+        this.toastr.error("Something Went Wrong",undefined,
+        {
+          positionClass: 'toast-top-center'
+        }
+        );
+      }
+      else{
         this.sentotp=true
       }
     })

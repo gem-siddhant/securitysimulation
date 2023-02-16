@@ -9,6 +9,18 @@ export const imgconst = {
     shiledSelectedImg : "../../../../../assets/images/shield-selected.png"
 }
 
+// icon constants
+export const iconconst = {
+    phishedcampsemp : "../../../assets/icons/phishedcamp.png"
+}
+
 export const colorconst = {
     sendanalyticscolor : "#38A3A5"
+}
+
+// role constants 
+export const roles = {
+    ADMIN : 'ADMIN',
+    USER : 'USER',
+    SUPER_ADMIN : 'SUPERADMIN'
 }

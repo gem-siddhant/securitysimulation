@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { DashboardapiService } from '../dashboard-services/dashboardapi.service';
+import { DashboardapiService } from '../../../dashboard-services/dashboardapi.service';
 
 @Component({
   selector: 'app-client-invite',
@@ -63,6 +63,23 @@ export class ClientInviteComponent implements OnInit {
       {
         console.log("invite client done")
       }
-    })
+    },(err)=>
+    {
+      if(err.status!=200)
+      {
+        this.toastr.error("Error while submitting form", undefined ,
+        {
+          positionClass:"toast-top-center"
+        })
+      }
+      else{
+        this.toastr.success("Successfully Invited Client", undefined , 
+        {
+          positionClass : "toast-top-center"
+        })
+        this.dialogRef.close();
+      }
+    }
+    )
   }
 }

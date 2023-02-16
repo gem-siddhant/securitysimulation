@@ -107,10 +107,16 @@ export class OnboardComponent implements OnInit {
       }
       );
       }
-      else{
-        this.router.navigate(['client-onboard/generate-password'])
-      }
     }
+    },(err)=>{
+      if(err.status!=200)
+      {
+        this.toastr.error("Something Went Wrong",undefined,
+        {
+          positionClass: 'toast-top-center'
+        }
+        );
+      }
     })
   }
 
@@ -126,6 +132,17 @@ export class OnboardComponent implements OnInit {
     {
       if(data)
       {
+      }
+    },(err)=>{
+      if(err.status!=200)
+      {
+        this.toastr.error("Something Went Wrong",undefined,
+        {
+          positionClass: 'toast-top-center'
+        }
+        );
+      }
+      else{
         this.sentotp=true
       }
     })

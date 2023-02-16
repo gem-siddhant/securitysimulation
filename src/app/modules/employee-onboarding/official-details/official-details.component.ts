@@ -72,9 +72,22 @@ getPrefilledUserDetails()
       {
         console.log("client onboard done")
       }
+    },(err)=>{
+      if(err.status!=200)
+      {
+        this.toastr.error("Error while submitting",undefined,
+        {
+          positionClass: 'toast-top-center'
+        }
+        );
+      }
+      else{
+        this.toastr.error("You are successfully onboarded",undefined,
+        {
+          positionClass: 'toast-top-center'
+        }
+        );
+      }
     })
-    this.toastr.success("You are successfully onboarded");
-    console.log(req)
-   
   }
 }
