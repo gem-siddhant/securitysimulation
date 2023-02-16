@@ -117,6 +117,9 @@ export class OnboardComponent implements OnInit {
         }
         );
       }
+      else{
+        this.router.navigate(['client-onboard/generate-password'])
+      }
     })
   }
 

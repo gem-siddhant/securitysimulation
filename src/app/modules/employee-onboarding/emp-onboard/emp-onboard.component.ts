@@ -30,7 +30,7 @@ export class EmpOnboardComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(
       params => {
-        this.checkemailexp = params["expiration"]
+        this.checkemailexp = params["LinkExpiraition"]
         this.useremail = params["email"]
         this.userid = params["userId"]
       }
@@ -106,11 +106,13 @@ export class EmpOnboardComponent implements OnInit {
         }
         );
       }
+      else{
+        this.router.navigate(['employee-onboard/generate-password'])
+      }
     }
-    
     )
-    // this.router.navigate(['employee-onboard/generate-password'])
   }
+  
   sendotp()
   {
     this.sentotp=true
