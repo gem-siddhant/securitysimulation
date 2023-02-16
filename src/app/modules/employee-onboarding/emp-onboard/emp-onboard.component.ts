@@ -97,6 +97,10 @@ export class EmpOnboardComponent implements OnInit {
       }
       );
       }
+      if(data.message=='Valid OTP')
+      {
+        this.router.navigate(['employee-onboard/generate-password'])
+      }
     },(err)=>{
       if(err.status!=200)
       {
@@ -105,9 +109,6 @@ export class EmpOnboardComponent implements OnInit {
           positionClass: 'toast-top-center'
         }
         );
-      }
-      else{
-        this.router.navigate(['employee-onboard/generate-password'])
       }
     }
     )

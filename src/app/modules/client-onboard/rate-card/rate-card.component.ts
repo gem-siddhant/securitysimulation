@@ -116,6 +116,7 @@ export class RateCardComponent implements OnInit {
       if(data)
       {
         console.log("client onboar done")
+        this.router.navigate(['client-onboard/Onboarded'])
       }
     },(err)=>{
       if(err.status!=200)
