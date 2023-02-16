@@ -112,7 +112,7 @@ export class EmpOnboardComponent implements OnInit {
     }
     )
   }
-  
+
   sendotp()
   {
     this.sentotp=true
@@ -133,9 +133,6 @@ export class EmpOnboardComponent implements OnInit {
           positionClass: 'toast-top-center'
         }
         );
-      }
-      else{
-        this.sentotp=true
       }
     })
   }
