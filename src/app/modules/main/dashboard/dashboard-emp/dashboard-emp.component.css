@@ -6,17 +6,7 @@
     background-color: aquamarine;
     align-items: flex-start;
 }
-.matcards{
-    background: #38A3A5;
-    box-shadow: 0px 4px 20px rgba(56, 163, 165, 0.48);
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 21px;
-    text-transform: capitalize;
-    color: #FFFFFF;
-}
+
 .matcount{
     box-shadow: 0px 4px 20px rgba(56, 163, 165, 0.48);
     border-radius: 10px;
@@ -57,16 +47,7 @@
 table{
     border-radius: 10px !important;
 }
-.matcontents{
-    color: black;
-    border: none;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 21px;
-    text-transform: capitalize;
-}
+
 .mat-row:nth-child(even){
     background-color:white
 }
@@ -98,3 +79,45 @@ table{
     align-items: center;
     justify-content: flex-end;
   }
+
+  ::ng-deep th.mat-header-cell,
+  td.mat-cell,
+  td.mat-footer-cell {
+    border-bottom-width: 10px !important;
+    border-bottom-color: white !important;
+  }
+  th.mat-header-cell {
+    color: white;
+    background-color: #38A3A5;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+  }
+  .mat-table{    
+    border-radius: 12px;
+    overflow:hidden !important;
+}
+
+  .mat-cell {
+    padding: 8px 30px 8px 0;
+    background-color:#F8F8F8;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    color: #000000;
+  
+  }
+
+  .matcards{
+    background: #38A3A5;
+    box-shadow: 0px 4px 20px rgba(56, 163, 165, 0.48);
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    text-transform: capitalize;
+    color: #FFFFFF;
+}

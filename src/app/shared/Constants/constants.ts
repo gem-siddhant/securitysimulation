@@ -11,7 +11,7 @@ export const imgconst = {
 
 // icon constants
 export const iconconst = {
-    phishedcampsemp : "../../../assets/icons/phishedcamp.png"
+    phishedcampsemp : "../../../assets/icons/ela"
 }
 
 export const colorconst = {

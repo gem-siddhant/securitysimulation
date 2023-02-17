@@ -71,6 +71,8 @@ getPrefilledUserDetails()
       if(data)
       {
         console.log("client onboard done")
+        this.router.navigate(['client-onboard/Onboarded'])
+        this.toastr.success("Employee onboarded successfully")
       }
     },(err)=>{
       if(err.status!=200)

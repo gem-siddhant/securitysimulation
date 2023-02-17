@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { ThemePalette } from '@angular/material/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
 import { DashboardapiService } from '../../../dashboard-services/dashboardapi.service';
 
 @Component({
@@ -12,9 +15,15 @@ import { DashboardapiService } from '../../../dashboard-services/dashboardapi.se
 })
 export class ClientInviteComponent implements OnInit {
   inviteform: FormGroup;
+  StoreData:boolean=true;
+  color: ThemePalette = 'primary';
+  value = 50;
+  api_hit=false;
+  mode: ProgressSpinnerMode = 'indeterminate';
   constructor(public dialogRef: MatDialogRef<ClientInviteComponent>,
     private formBuilder: FormBuilder, 
     private router:Router,
+    private dialog:MatDialog,
     private toastr:ToastrService,
     private _inviteclient: DashboardapiService
     ) { }
@@ -42,6 +51,9 @@ export class ClientInviteComponent implements OnInit {
   }
   sendinvite()
   {
+    this.close()
+    this.toastr.success("Invite sent")
+    this.StoreData=true;
     let req = {
     'representativeEmail': this.inviteform.value.pocmail,
     "planName": this.inviteform.value.plan,
@@ -61,25 +73,16 @@ export class ClientInviteComponent implements OnInit {
     {
       if(data)
       {
-        console.log("invite client done")
+        
       }
-    },(err)=>
-    {
-      if(err.status!=200)
-      {
-        this.toastr.error("Error while submitting form", undefined ,
-        {
-          positionClass:"toast-top-center"
-        })
+    },(err)=>{
+      this.StoreData=true;
+       if(err.status==200){
+         this.toastr.success("Invite sent")
       }
       else{
-        this.toastr.success("Successfully Invited Client", undefined , 
-        {
-          positionClass : "toast-top-center"
-        })
-        this.dialogRef.close();
+        this.toastr.error("Error in adding campaign.");
       }
-    }
-    )
+    })
   }
 }
