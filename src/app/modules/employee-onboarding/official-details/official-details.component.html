@@ -1,0 +1,86 @@
+<body>
+    <div class="row bgimg">
+        <div class="text-light d-flex justify-content-center flex-column text-center mt-1 col-lg-6 col-md-11 col-sm-11 col-xs-11 logo ">
+                  <div class="example-full-width col-lg-12 col-md-12 col-sm-12 col-xs-12 heading mt-2" >
+                      <img src="../../../../assets/images/whitegeminilogo.png" class="img2" alt="img2">
+                    </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading welcome mt-5">
+                  Welcome To
+                </div>
+                <div class="col-lg-12 col-md-12 align-center mt-5">
+                  <img src="../../../../assets/images/piratelogowithbar.png" alt="img1">
+                  </div>
+        </div>
+
+<div class="col form d-flex justify-content-center flex-column">
+    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 m-3">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 h6 text-black float-left">
+                <svg width="20" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M10 23.5712C10 23.5712 0 20.08 0 13.9285V3.57124L10 0L20 3.57124V13.9285C19.9998 20.0801 10 23.5712 10 23.5712ZM18.5713 4.81628L10 1.78577L1.42871 4.81628V13.6042C1.42871 18.8236 10 21.7857 10 21.7857C10 21.7857 18.5713 18.8236 18.5713 13.6042V4.81628ZM10 20.7143C10 20.7143 2.50012 18.0698 2.50012 13.4096V5.5634L10 2.85761L17.4999 5.5634V13.4096C17.4999 18.0697 10 20.7143 10 20.7143Z" fill="#38A3A5"/>
+                    </svg> &nbsp;
+                <span class="textdesign">Fill in the Official details</span>                    
+            </div>
+          <div class="row">
+           
+            <form [formGroup]="onboardform">
+              <div class="row">
+        <!-- email id  -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="text" formControlName="email" class="text-white" [(ngModel)]="this.useremail" [value]="this.useremail">
+                  </mat-form-field>
+                </div>
+
+        <!-- first name  -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>First name</mat-label>
+                    <input matInput type="text" formControlName="fname" #input1 class="text-white" [(ngModel)]="this.prefilled.userInfo.firstName" [value]="this.prefilled.userInfo.firstName">
+                  </mat-form-field>
+                </div>
+
+        <!-- last name  -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <mat-form-field class="w-100" appearance="outline">
+                      <mat-label>Last name</mat-label>
+                      <input matInput type="text" formControlName="lname" #input2 class="text-white" [(ngModel)]="this.prefilled.userInfo.lastName" [value]="this.prefilled.userInfo.lastName">
+                    </mat-form-field>
+                  </div>
+
+        <!-- designation  -->
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <mat-form-field class="w-100" appearance="outline">
+                      <mat-label>Designation</mat-label>
+                      <input matInput type="text" formControlName="designation" #input3 class="text-white" [(ngModel)]="this.prefilled.userInfo.designation" [value]="this.prefilled.userInfo.designation">
+                    </mat-form-field>
+                  </div>
+
+        <!-- Manager id  -->
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <mat-form-field class="w-100" appearance="outline">
+                      <mat-label>Manager Id</mat-label>
+                      <input matInput type="text" formControlName="managerid" #input4 class="text-white" [(ngModel)]="this.prefilled.userInfo.managerId" [value]="this.prefilled.userInfo.managerId">
+                    </mat-form-field>
+                  </div>
+
+
+        <!-- department  -->
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <mat-form-field class="w-100" appearance="outline">
+                      <mat-label>Department</mat-label>
+                      <input matInput type="text" formControlName="dept" #input5 class="text-white" [(ngModel)]="this.prefilled.userInfo.department" [value]="this.prefilled.userInfo.department">
+                    </mat-form-field>
+                  </div>
+
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-3 text-center">
+                    <button type="submit" mat-raised-button class="btn btn-primary" id="add_btn" (click)="routeto()">PROCEED</button>
+                </div>
+              </div>
+            </form>
+          </div>
+      </div>
+</div>
+</div>
+</body>
+

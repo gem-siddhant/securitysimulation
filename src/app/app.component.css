@@ -13,10 +13,8 @@ mat-sidenav-content {
   overflow-x: hidden;
 }
 mat-sidenav {
-  width: 307px;
-  position: fixed;
-  background: linear-gradient(180deg, #013e3f 0%, #01243c 100%);
-}
+   width: 250px; position: fixed; background: linear-gradient(180deg, #013e3f 0%, #01243c 100%);
+  }
 .side-nav-height {
   min-height: 94vh;
 }

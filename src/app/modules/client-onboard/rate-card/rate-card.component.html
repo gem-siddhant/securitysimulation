@@ -1,0 +1,100 @@
+<body>
+    <div class="row bgimg">
+        <div class="text-light d-flex justify-content-center flex-column text-center mt-1 col-lg-6 col-md-11 col-sm-11 col-xs-11 logo ">
+                  <div class="example-full-width col-lg-12 col-md-12 col-sm-12 col-xs-12 heading mt-2" >
+                      <img src="../../../../assets/images/whitegeminilogo.png" class="img2">
+                    </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading welcome mt-5">
+                  Welcome To
+                </div>
+                <div class="col-lg-12 col-md-12 align-center mt-5">
+                  <img src="../../../../assets/images/piratelogowithbar.png">
+                  </div>
+        </div>
+
+<div class="col form d-flex justify-content-center flex-column">
+    <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 m-3">
+
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 h6 text-white float-left">
+                <svg width="20" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M10 23.5712C10 23.5712 0 20.08 0 13.9285V3.57124L10 0L20 3.57124V13.9285C19.9998 20.0801 10 23.5712 10 23.5712ZM18.5713 4.81628L10 1.78577L1.42871 4.81628V13.6042C1.42871 18.8236 10 21.7857 10 21.7857C10 21.7857 18.5713 18.8236 18.5713 13.6042V4.81628ZM10 20.7143C10 20.7143 2.50012 18.0698 2.50012 13.4096V5.5634L10 2.85761L17.4999 5.5634V13.4096C17.4999 18.0697 10 20.7143 10 20.7143Z" fill="#38A3A5"/>
+                    </svg> &nbsp;
+                <span class="textdesign">Rate card</span>                    
+            </div>
+          <div class="row">
+   
+            <form [formGroup]="onboardform" >
+              <div class="row">
+        
+        <!-- plan name  -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Plan Name</mat-label>
+                    <input matInput type="text" formControlName="planname" class="text-white" [(ngModel)]="this.prefilled.clientPlanId.planName" [value]="this.prefilled.clientPlanId.planName">
+                  </mat-form-field>
+                </div>
+
+        <!-- plan cost  -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                  <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>Cost</mat-label>
+                    <input matInput type="text" formControlName="plancost" class="text-white" [(ngModel)]="this.prefilled.clientPlanId.yearlyCost" [value]="this.prefilled.clientPlanId.yearlyCost">
+                  </mat-form-field>
+                </div>
+
+        <!-- start date  -->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <mat-form-field class="w-100" appearance="outline">
+                      <mat-label>Start Date</mat-label>
+                      <input matInput type="text" formControlName="startdate" class="text-white" [(ngModel)]="this.prefilled.createdDate" [value]="this.prefilled.createdDate">
+                    </mat-form-field>
+                  </div>
+
+        <!-- end date  -->
+                  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <mat-form-field class="w-100" appearance="outline">
+                      <mat-label>End Date</mat-label>
+                      <input matInput type="text" formControlName="enddate" class="text-white" [(ngModel)]="this.prefilled.endDate" [value]="this.prefilled.endDate">
+                    </mat-form-field>
+                  </div>
+
+        
+        <!-- upload message  -->
+        <div class="col-lg-12">
+          <p class="text-white">Please Upload an Excel file of employees
+           <span><mat-icon class="text-white align-center">info</mat-icon></span> 
+          </p>     
+        </div>
+        <!-- upload employee csv  -->
+        <div class="mt-1">
+            <input type="file" (change)="onFileChange($event)" class="text-white" />
+        </div>
+
+        <div class="mt-2">
+            <div class="form-check">
+                <input
+                  mdbCheckbox
+                  class="form-check-input"
+                  type="checkbox"
+                  [value]="true"
+                  id="flexCheckChecked"
+                  [checked]="false"
+                  formControlName="sendinviteenow"
+                />
+                <label class="form-check-label text-white" for="flexCheckChecked" class="text-white">
+                    Sent invitees to onboard employees now ?
+                </label>
+              </div>
+        </div>
+
+                  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-3 text-center">
+                    <button type="submit" mat-raised-button class="btn btn-primary" id="add_btn" (click)="routeto()">PROCEED</button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+      </div>
+</div>
+</div>
+</body>

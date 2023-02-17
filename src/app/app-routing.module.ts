@@ -5,18 +5,35 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'main',
-    pathMatch: 'full',
+    pathMatch: 'full'
+  },
+  {
+    path: '',
+    redirectTo: 'client-onboard',
+    pathMatch: 'full'
+  },
+  {
+    path: '',
+    redirectTo: 'employee-onboard',
+    pathMatch: 'full'
   },
   {
     path: 'main',
     loadChildren: () =>
       import('./modules/main/main.module').then((m) => m.MainModule),
   },
+
   {
-    path: 'misapprasial-login',
+    path: 'client-onboard',
     loadChildren: () =>
-      import('./modules/main/gift/gift.module').then((m) => m.giftModule)
-  }
+      import('./modules/client-onboard/client-onboard.module').then((m) => m.ClientOnboardModule),
+  },
+  
+  {
+    path: 'employee-onboard',
+    loadChildren: () =>
+      import('./modules/employee-onboarding/emp-onboard.module').then((m) => m.EmpOnboardModule),
+  },
 ];
 
 @NgModule({

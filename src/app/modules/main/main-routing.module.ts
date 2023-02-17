@@ -6,6 +6,8 @@ import { AddCampaignComponent } from './add-campaign/add-campaign.component';
 import { CampaignViewComponent } from './analytics/campaign-view/campaign-view.component';
 import { CustomtemplateComponent } from './customtemplate/customtemplate.component';
 import { DashboardAdminComponent } from './dashboard/dashboard-admin/dashboard-admin/dashboard-admin.component';
+import { DashboardEmpComponent } from './dashboard/dashboard-emp/dashboard-emp.component';
+import { DashboardSuperAdminComponent } from './dashboard/dashboard-super-admin/dashboad-landing/dashboard-super-admin.component';
 import { GiftComponent } from './gift/gift.component';
 import { LoginComponent } from './login/login.component';
 import { OnboardresComponent } from './onboard/onboardres/onboardres.component';
@@ -33,9 +35,19 @@ const routes: Routes = [
     component: AddCampaignComponent,
   },
   {
-    path: 'dashboard-admin',
+    path: 'Admin',
     canActivate: [AuthGuard],
     component: DashboardAdminComponent,
+  },
+  {
+    path: 'Employee',
+    canActivate: [AuthGuard],
+    component: DashboardEmpComponent,
+  },
+  {
+    path: 'Superadmin',
+    canActivate: [AuthGuard],
+    component: DashboardSuperAdminComponent,
   },
   {
     path: 'manual',

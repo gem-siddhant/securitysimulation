@@ -1,9 +1,14 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
+import { ClientInviteComponent } from '../modules/main/dashboard/dashboard-super-admin/Client-invite/client-invite/client-invite.component';
+import { MainService } from '../modules/main/service/main.service';
 import { AuthService } from '../services/auth.service';
 import { CommonService } from '../services/common.service';
 import { ResponsiveService } from '../services/responsive.service';
 import { imgconst } from '../shared/Constants/constants';
 import { iconConst } from '../shared/Constants/constants';
+import { roles } from '../shared/Constants/constants';
 @Component({
   selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',
@@ -21,10 +26,14 @@ export class SideBarComponent implements OnInit {
   analyticsIcon : String;
   employeecsvIcon : String;
 
+  roleuser : boolean = false;
+  rolesa : boolean = false;
+  roleadmin : boolean = false;
   constructor(
     private _auth: AuthService,
     private responsiveService: ResponsiveService,
     private commonService: CommonService,
+    private dialog:MatDialog
   ) {
     this.mobile = false;
     this.simulationlogo = imgconst.simulationlog;
@@ -40,6 +49,7 @@ export class SideBarComponent implements OnInit {
   ngOnInit(): void {
     this.checkMobile();
     this.onResize();
+    this.setRole();
   }
 
   checkMobile() : void {
@@ -51,8 +61,22 @@ export class SideBarComponent implements OnInit {
       }
     });
   }
-  
-  onResize() : void {
+  setRole()
+  {
+    if(localStorage.getItem('role')==roles.USER)
+    {
+      this.roleuser = true
+    }
+    else if(localStorage.getItem('role')==roles.ADMIN)
+    {
+      this.roleadmin = true
+    }
+    else if(localStorage.getItem('role')==roles.SUPER_ADMIN)
+    {
+      this.rolesa = true
+    }
+  }
+  onResize() {
     this.responsiveService.checkWidth();
   }
 
@@ -68,5 +92,13 @@ export class SideBarComponent implements OnInit {
 
   Logout() : void {
     this._auth.logout();
+  }
+
+  inviteclient()
+  {
+    const dialogRef = this.dialog.open(ClientInviteComponent, {
+      width: '840px',
+      height: '570px',
+    }); 
   }
 }

@@ -21,11 +21,8 @@ import { InteractionStatus, InteractionType, PopupRequest, RedirectRequest } fro
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ResponsiveService } from 'src/app/services/responsive.service';
 import { AddCampaignService } from '../service/add-campaign.service';
-import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
-import { InfomodalComponent } from 'src/app/shared/infomodal/infomodal.component';
-import { ThemePalette } from '@angular/material/core';
 import { CommonService } from 'src/app/services/common.service';
-
+import { roles } from 'src/app/shared/Constants/constants';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -38,6 +35,7 @@ export class LoginComponent implements OnInit {
   private readonly _destroying$ = new Subject<void>();
   mobile: boolean = false;
   status?: number;
+  role : number = 0
   constructor(private formBuilder: FormBuilder,
     private _addCampaign:AddCampaignService,
     private _MainService:MainService,
@@ -69,7 +67,6 @@ export class LoginComponent implements OnInit {
       .subscribe(() => {
         this.setLoginDisplay();
       });
-      // localStorage.setItem('email',"ayush.tiwary@Geminisolutions.com")
         this.loginForm = this.formBuilder.group({
             id:[''],
             password:['']
@@ -96,13 +93,22 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  setRole()
+  {
+    if(localStorage.getItem('role')==roles.USER)
+    {
+      this.role = 3
+    }
+    else if(localStorage.getItem('role')==roles.ADMIN)
+    {
+      this.role = 2
+    }
+    else if(localStorage.getItem('role')==roles.SUPER_ADMIN)
+    {
+      this.role = 1
+    }
+  }
 
-
-
-
-
-  onboard()
-  { }
   loginWithMicrosoft2(){
     this.authService.loginPopup({...this.msalGuardConfig.authRequest} as PopupRequest).subscribe((response: AuthenticationResult)=>{
       if (response.tenantId == '') {
@@ -130,112 +136,42 @@ export class LoginComponent implements OnInit {
     );
   }
   submit(){
+    // this.router.navigate(["main/dashboard-admin"]);
       console.log("login form hit")
         if(this.loginForm.invalid)
         return;
         let obj={
-          "email":"ayush.tiwary@Geminisolutions.com",
+          "email":this.loginForm.value.id,
+          "password":this.loginForm.value.password
         }
         this._auth.loginMethod2(obj).subscribe((data)=>{
           if(data){
-            console.log(data.data);
-            console.log(data.message);
-            // localStorage.setItem('token',data.message);
-            localStorage.setItem('email',data.data.email);
-            this.router.navigate(["/main/dashboard"]);
+            let jwtToken = JSON.parse(window.atob(data.token.split(".")[1]));
+            let role = JSON.parse(window.atob(data.token.split(".")[1]))
+            localStorage.setItem('role',role.roles)
+            localStorage.setItem('email',jwtToken.sub);
+            localStorage.setItem('token',data.token);
+            this.setRole()
+            if(this.role==3)
+            {
+              this.router.navigate(["main/Employee"]);
+            }
+            else if(this.role==2){
+              this.router.navigate(["main/Admin"]);
+            }
+            else{
+              this.router.navigate(["main/Superadmin"]);
+            }
           }
-        },err=>{
-          this.toastr.error("Error in loading data");
+        },(err)=>{
+          if(err.status!=200)
+          {
+            this.toastr.error("Invalid Credentials",undefined,
+            {
+              positionClass: 'toast-top-center'
+            }
+            );
+          }
         })
       }
-    
-
-
-  // loginWithMicrosoft(){
-  //   if (this.msalGuardConfig.interactionType === InteractionType.Popup) {
-  //     if (this.msalGuardConfig.authRequest){
-  //       this.authService.loginPopup({...this.msalGuardConfig.authRequest} as PopupRequest)
-  //         .subscribe((response: AuthenticationResult) => {
-  //           this.authService.instance.setActiveAccount(response.account);
-  //         });
-  //       } else {
-  //         this.authService.loginPopup()
-  //           .subscribe((response: AuthenticationResult) => {
-  //             this.authService.instance.setActiveAccount(response.account);
-  //           });
-  //     }
-  //   } else {
-  //     if (this.msalGuardConfig.authRequest){
-  //       this.authService.loginRedirect({...this.msalGuardConfig.authRequest} as RedirectRequest);
-  //     } else {
-  //       this.authService.loginRedirect();
-  //     }
-  //   }
-  // }
 }
-
-
-// Login for role based approach 
-
-// import { Component, OnInit } from '@angular/core';
-// import {
-//   FormGroup,
-//   FormGroupDirective,
-//   FormBuilder,
-//   FormControl,
-//   Validators,
-//   FormArray,
-//   NgForm,
-// } from "@angular/forms";
-// import { Router } from '@angular/router';
-// import { AuthService } from 'src/app/services/auth.service';
-// import { MainService } from '../service/main.service';
-// import { ToastrService } from 'ngx-toastr';
-
-// @Component({
-//   selector: 'app-login',
-//   templateUrl: './login.component.html',
-//   styleUrls: ['./login.component.css']
-// })
-// export class LoginComponent implements OnInit {
-//   loginForm:FormGroup;
-//   showPassword: boolean;
-//   constructor(private formBuilder: FormBuilder,
-//     private _MainService:MainService,
-//     private _auth:AuthService,
-//     private router:Router,
-//     private toastr: ToastrService) {
-//     this.loginForm = this.formBuilder.group({});
-//   }
-
-//   ngOnInit(): void {
-//     localStorage.setItem('email',"ayush.tiwary@Geminisolutions.com")
-//     this.loginForm = this.formBuilder.group({
-//       id:[''],
-//       password:['']
-//     });
-//     if(localStorage.getItem('email')){
-//       this.router.navigate(["/main/dashboard"]);
-//     }
-//   }
-//   submit(){
-   
-//     if(this.loginForm.invalid)
-//     return;
-//     let obj={
-//       "email":"ayush.tiwary@Geminisolutions.com",
-//     }
-//     this._auth.loginMethod(obj).subscribe((data)=>{
-//       if(data){
-//         console.log(data.data);
-//         console.log(data.message);
-//         // localStorage.setItem('token',data.message);
-//         localStorage.setItem('email',data.data.email);
-//         this.router.navigate(["/main/dashboard"]);
-//       }
-//     },err=>{
-//       this.toastr.error("Error in loading data");
-//     })
-//   }
-
-// }
