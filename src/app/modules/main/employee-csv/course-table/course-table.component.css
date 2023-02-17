@@ -1,0 +1,34 @@
+td,
+th {
+  height: 60px !important;
+  font-size: 14px;
+  line-height: 21px;
+}
+th {
+  background: #38a3a5;
+  font-weight: 600;
+}
+td {
+  font-weight: 400;
+}
+td:first-of-type,
+th:first-of-type {
+  padding-left: 15px !important;
+}
+td:last-of-type,
+th:last-of-type {
+  padding-right: 15px !important;
+}
+.tdata-row {
+  background: #f8f8f8;
+  color: #545454;
+}
+.start-corner {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.end-corner {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-weight: 600;
+}

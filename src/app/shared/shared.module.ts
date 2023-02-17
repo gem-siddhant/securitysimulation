@@ -35,6 +35,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { SendCampaignModalComponent } from './send-campaign-modal/send-campaign-modal.component';
 import { DownloadCsvModalComponent } from './download-csv-modal/download-csv-modal.component';
 import { AlertModalComponent } from './alert-modal/alert-modal.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { AlertModalComponent } from './alert-modal/alert-modal.component';
     MatTableExporterModule,
     ChartsModule,
     ToastrModule.forRoot(),
+    MatTabsModule
   ],
   exports : [
     CommonModule,
@@ -105,6 +107,7 @@ import { AlertModalComponent } from './alert-modal/alert-modal.component';
     MatTableExporterModule,
     ChartsModule,
     ToastrModule,
+    MatTabsModule
   ]
 })
 export class SharedModule { }

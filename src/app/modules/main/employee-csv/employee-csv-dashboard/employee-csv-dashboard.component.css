@@ -1,37 +1,3 @@
-td,
-th {
-  height: 60px !important;
-  font-size: 14px;
-  line-height: 21px;
-}
-th {
-  background: #38a3a5;
-  font-weight: 600;
-}
-td {
-  font-weight: 400;
-}
-td:first-of-type,
-th:first-of-type {
-  padding-left: 15px !important;
-}
-td:last-of-type,
-th:last-of-type {
-  padding-right: 15px !important;
-}
-.tdata-row {
-  background: #f8f8f8;
-  color: #545454;
-}
-.start-corner {
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-.end-corner {
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  font-weight: 600;
-}
 .employee-text {
   font-weight: 600;
   font-size: 18px;
@@ -42,22 +8,4 @@ th:last-of-type {
 .upload-csv-btn {
   height: 55px;
   background: #38a3a5;
-}
-
-.csv-table {
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-}
-
-.csv-table::-webkit-scrollbar {
-   height: 9px;
-}
-
-.csv-table::-webkit-scrollbar-track {
-   -webkit-box-shadow: inset 0 0 6px #ffffff; 
-   border-radius: 20px;
-}
-
-.csv-table::-webkit-scrollbar-thumb {
-   border-radius: 20px;
-   background: lightgray;
 }

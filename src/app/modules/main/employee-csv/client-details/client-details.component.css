@@ -1,0 +1,30 @@
+.client-title {
+  background: #38a3a5;
+  border: 8px;
+}
+.top-rounded-border {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+.bottom-border-rounded {
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.client-img {
+  height: 167px;
+  width: 167px;
+}
+.client-detail-key {
+  color: #545454;
+  font-weight: 600;
+}
+.client-detail-value {
+  color: #929292;
+  font-weight: 500;
+}
+.client-detail-key,
+.client-detail-value {
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: capitalize;
+}

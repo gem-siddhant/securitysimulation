@@ -1,0 +1,108 @@
+<div class="overflow-auto bg-white pb-2 mb-4 common-container">
+  <table
+    mat-table
+    [dataSource]="courseTable"
+    class="mat-elevation-z0 font-style w-100"
+  >
+    <ng-container matColumnDef="courseName">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        class="p-3 border-0 text-center text-white"
+      >
+        Course Name
+      </th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        class="pt-2 pb-1 border-0 text-center"
+      >
+        <div class="tdata-row start-corner p-3 h-100">
+          {{ element.courseName }}
+        </div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="courseTime">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        class="p-3 border-0 text-center text-white"
+      >
+        Course Time
+      </th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        class="pt-2 pb-1 border-0 text-center"
+      >
+        <div class="tdata-row p-3 h-100">{{ element.courseTime }}</div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="assignedDate">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        class="p-3 border-0 text-center text-white"
+      >
+        Assigned Date
+      </th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        class="pt-2 pb-1 border-0 text-center"
+      >
+        <div class="tdata-row p-3 h-100">{{ element.assignedDate }}</div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="completionDate">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        class="p-3 border-0 text-center text-white"
+      >
+        Completion Date
+      </th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        class="pt-2 pb-1 border-0 text-center"
+      >
+        <div class="tdata-row p-3 h-100">{{ element.completionDate }}</div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="courseScore">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        class="p-3 border-0 text-center text-white"
+      >
+        Course Score
+      </th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        class="pt-2 pb-1 border-0 text-center"
+      >
+        <div class="tdata-row p-3 h-100">{{ element.courseScore }}</div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        class="p-3 border-0 text-center text-white"
+      >
+        Status
+      </th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        class="pt-2 pb-1 border-0 text-center"
+      >
+        <div class="tdata-row p-3 h-100">{{ element.status }}</div>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayColumns"></tr>
+  </table>
+</div>

@@ -1,1 +1,103 @@
-<p>client-details works!</p>
+<div class="container mt-4 font-style">
+  <div class="common-container">
+    <div class="client-title text-white top-rounded-border p-3">
+      Client - Tata Consultancy Services
+    </div>
+    <div class="bg-white bottom-border-rounded row pt-4 pb-4 m-0">
+      <div class="col-lg-3 d-flex justify-content-center">
+        <img
+          src="../../../../../assets/images/random-person.svg"
+          class="client-img"
+        />
+      </div>
+      <div class="col-lg-9 p-0">
+        <div class="row h-100 w-100 m-0">
+          <div class="col-lg-6">
+            <div>
+            <div class="p-2">
+              <span class="client-detail-key">Official Email Id :&nbsp;</span
+              ><span class="client-detail-value">udit.gupta@gmail.com</span>
+            </div>
+            <div class="p-2">
+              <span class="client-detail-key">Employee Id :&nbsp;</span
+              ><span class="client-detail-value">GSI G 1639</span>
+            </div>
+            <div class="p-2">
+              <span class="client-detail-key">Designation :&nbsp;</span
+              ><span class="client-detail-value">Software Engineer L1</span>
+            </div>
+            <div class="p-2">
+              <span class="client-detail-key">Simulation Score :&nbsp;</span>
+              <span class="client-detail-value">560</span>
+            </div>
+        </div>
+          </div>
+          <div class="col-lg-6">
+            <div>
+            <div class="p-2">
+              <span class="client-detail-key">Reporting Manager :&nbsp;</span>
+              <span class="client-detail-value">Shubham Bhardwaj</span>
+            </div>
+            <div class="p-2">
+              <span class="client-detail-key">Contact Number :&nbsp;</span>
+              <span class="client-detail-value">8882029879</span>
+            </div>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form [formGroup]="searchForm">
+    <div class="row">
+      <div class="col-lg-8">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label class="label-text">Search by course name</mat-label>
+          <input
+            class="input-text"
+            type="text"
+            formControlName="searchText"
+            maxlength="25"
+            matInput
+          />
+        </mat-form-field>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-5 col-6">
+        <mat-form-field class="w-100" appearance="outline">
+          <mat-label class="label-text">Filter</mat-label>
+          <mat-select
+            formControlName="filterType"
+            placeholder="Select"
+            (selectionChange)="applyFilter()"
+            disableOptionCentering
+          >
+            <mat-option class="input-text" value="name">Course Name</mat-option>
+            <mat-option class="input-text" value="department"
+              >Course Score</mat-option
+            >
+            <mat-option class="input-text" value="manager">Status</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+  <mat-tab-group mat-align-tabs="start">
+    <mat-tab label="course">
+      <ng-template mat-tab-label>Courses List</ng-template>
+      <ng-template matTabContent>
+        <app-course-table
+          [searchText]="searchForm.value.searchText"
+          [filterType]="searchForm.value.filterType"
+        ></app-course-table>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="simulation">
+      <ng-template mat-tab-label>Simulation</ng-template>
+      <ng-template matTabContent>
+        <app-course-table
+          [searchText]="searchForm.value.searchText"
+          [filterType]="searchForm.value.filterType"
+        ></app-course-table> </ng-template
+    ></mat-tab>
+  </mat-tab-group>
+</div>

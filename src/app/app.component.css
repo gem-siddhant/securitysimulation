@@ -29,7 +29,26 @@ mat-sidenav {
 }
 :host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
   color: #38a3a5;
+  background: white;
 }
 ::ng-deep .mat-datepicker-toggle {
   color: #38a3a5;
 }
+::ng-deep .mat-ink-bar {
+  margin: 10px auto !important;
+  border-radius: 5px !important;
+  border-bottom: 5px solid #38a3a5;
+}
+::ng-deep .mat-tab-label {
+  margin-bottom: 11px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  letter-spacing: 0.02em;
+}
+::ng-deep .mat-tab-label-active {
+  color: #38a3a5;
+}
+
