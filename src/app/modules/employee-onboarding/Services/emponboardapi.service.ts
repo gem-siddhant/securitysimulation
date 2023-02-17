@@ -28,7 +28,7 @@ export class EmponboardapiService {
   }
   submituserdetails(obj:any)
   {
-    return this.http.get<any>(emponboardapis.useronboardsubmit,obj)
+    return this.http.post<any>(emponboardapis.useronboardsubmit,obj)
 
   }
 }
