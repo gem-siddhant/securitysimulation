@@ -1,7 +1,6 @@
 export interface EmployeeCsv {
-  id: number;
   name: string;
-  emailId: string;
+  email: string;
   employeeId: string;
   manager: string;
   department: string;
@@ -13,5 +12,12 @@ export interface CourseDetails {
   assignedDate: string;
   completionDate: string;
   courseScore: number;
+  status: string;
+}
+
+export interface SimulationDetails{
+  name: string;
+  date: string;
+  time: string;
   status: string;
 }

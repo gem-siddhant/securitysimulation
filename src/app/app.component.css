@@ -29,7 +29,6 @@ mat-sidenav {
 }
 :host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
   color: #38a3a5;
-  background: white;
 }
 ::ng-deep .mat-datepicker-toggle {
   color: #38a3a5;
