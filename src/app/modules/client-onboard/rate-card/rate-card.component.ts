@@ -21,7 +21,7 @@ export class RateCardComponent implements OnInit {
   listofemp:any;
   res : [];
   vare:any;
-  prefilled: {clientPlanId:{planName:'',yearlyCost:''},createdDate:'',endDate:'',clientContactNumber:''};
+  prefilled: {clientPlanId:{planName:'',yearlyCost:'',createdDate:'',endDate:''},clientContactNumber:''};
   planid: any;
   clientid : any;
   constructor(private formBuilder: FormBuilder, 
