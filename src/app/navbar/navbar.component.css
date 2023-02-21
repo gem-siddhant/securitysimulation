@@ -4,5 +4,14 @@
   
 }
 .menubtn{
- float: right;
+ float: left;
+}
+@media screen and (min-width: 992px) {
+  .menubtn {
+    display: none;
+  }
+}
+.demo{
+  float: right;
+  width: 10%;
 }

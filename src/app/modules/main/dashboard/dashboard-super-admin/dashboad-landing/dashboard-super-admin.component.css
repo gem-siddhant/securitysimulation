@@ -12,14 +12,6 @@
     border-radius: 10px;
     display: block;
 }
-.tablemat{
-    border-right: none !important;
-    background: #e9fdfd;
-    border-radius: 5px;
-}
-.my-spinner path {
-    stroke: red;
-  }
 .textcolor{
     font-family: 'Poppins';
     font-style: normal;
@@ -38,22 +30,9 @@
     color: #38A3A5;
 }
 .circle{
-    stroke: #d62d20 !important;
     float: right;
     border: #38A3A5;
     border-radius: 10px !important;
-}
-
-table{
-    border-radius: 10px !important;
-}
-
-.mat-row:nth-child(even){
-    background-color:white
-}
- 
-.mat-row:nth-child(odd){
-    background-color: white;
 }
 .btn {
     font-family: 'Poppins';
@@ -85,8 +64,7 @@ table{
   td.mat-footer-cell {
     border-bottom-width: 10px !important;
     border-bottom-color: white !important;
-    border-right-width: 10 !important;
-    border-left-width: 10 !important ;
+    
   }
   th.mat-header-cell {
     color: white;
@@ -97,17 +75,16 @@ table{
     font-size: 14px;
   }
   .mat-cell {
-    padding: 8px 30px 8px 0;
     background-color:#F8F8F8;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
     font-size: 12px;
     color: #000000;
-  
   }
   .mat-table{    
-    border-radius: 12px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
     overflow:hidden !important;
 }
   .matcards{

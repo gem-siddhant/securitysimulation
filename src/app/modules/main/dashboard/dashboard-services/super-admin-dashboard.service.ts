@@ -13,4 +13,20 @@ export class SuperAdminDashboardService {
   {
     return this.http.get<any>(superadminapis.allClients)
   }
+  pendingCount() 
+  {
+    return this.http.get<any>(superadminapis.pendingCount)
+  }
+  acceptedCount()
+  {
+    return this.http.get<any>(superadminapis.acceptedCount)
+  }
+  inviteSent()
+  {
+    return this.http.get<any>(superadminapis.inviteCount)
+  }
+  totalClientCount()
+  {
+    return this.http.get<any>(superadminapis.clientCount)
+  }
 }
