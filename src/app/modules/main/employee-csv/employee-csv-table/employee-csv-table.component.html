@@ -8,14 +8,14 @@
       <th
         mat-header-cell
         *matHeaderCellDef
-        class="p-3 border-0 text-center text-white"
+        class="pl-3 border-0 text-white"
       >
-        Name
+      <div class="p-3">Name</div>
       </th>
       <td
         mat-cell
         *matCellDef="let element"
-        class="pt-2 pb-1 border-0 text-center"
+        class="pt-2 pb-1 border-0"
       >
         <div class="tdata-row start-corner p-3 h-100">{{ element.name }}</div>
       </td>
@@ -24,14 +24,14 @@
       <th
         mat-header-cell
         *matHeaderCellDef
-        class="p-3 border-0 text-center text-white"
+        class="pl-3 border-0 text-white"
       >
-        Email Id
+      <div class="p-3">Email Id</div>
       </th>
       <td
         mat-cell
         *matCellDef="let element"
-        class="pt-2 pb-1 border-0 text-center"
+        class="pt-2 pb-1 border-0"
       >
         <div class="tdata-row p-3 h-100">{{ element.email }}</div>
       </td>
@@ -40,14 +40,14 @@
       <th
         mat-header-cell
         *matHeaderCellDef
-        class="p-3 border-0 text-center text-white"
+        class="pl-3 border-0 text-white"
       >
-        Employee Id
+      <div class="p-3">Employee Id</div>
       </th>
       <td
         mat-cell
         *matCellDef="let element"
-        class="pt-2 pb-1 border-0 text-center"
+        class="pt-2 pb-1 border-0"
       >
         <div class="tdata-row p-3 h-100">{{ element.employeeId }}</div>
       </td>
@@ -56,14 +56,14 @@
       <th
         mat-header-cell
         *matHeaderCellDef
-        class="p-3 border-0 text-center text-white"
+        class="pl-3 border-0 text-white"
       >
-        Manager
+      <div class="p-3">Manager</div>
       </th>
       <td
         mat-cell
         *matCellDef="let element"
-        class="pt-2 pb-1 border-0 text-center"
+        class="pt-2 pb-1 border-0"
       >
         <div class="tdata-row p-3 h-100">{{ element.manager === null ? '-' :  element.manager}}</div>
       </td>
@@ -72,14 +72,14 @@
       <th
         mat-header-cell
         *matHeaderCellDef
-        class="p-3 border-0 text-center text-white"
+        class="pl-3 border-0 text-white"
       >
-        Department
+      <div class="p-3">Department</div>
       </th>
       <td
         mat-cell
         *matCellDef="let element"
-        class="pt-2 pb-1 border-0 text-center"
+        class="pt-2 pb-1 border-0"
       >
         <div class="tdata-row p-3 h-100">{{ element.department }}</div>
       </td>
@@ -88,17 +88,17 @@
       <th
         mat-header-cell
         *matHeaderCellDef
-        class="p-3 border-0 text-center text-white"
+        class="pl-3 border-0 text-white"
       >
-        Action
+      <div class="p-3">Action</div>
       </th>
       <td
         mat-cell
         *matCellDef="let element"
-        class="pt-2 pb-1 border-0 text-center"
+        class="pt-2 pb-1 border-0"
       >
         <div
-          class="d-flex justify-content-center p-3 h-100 text-dark tdata-row end-corner"
+          class="d-flex p-3 h-100 text-dark tdata-row end-corner"
         >
           <div role="button" (click)="navigateToClientDetails(element.employeeId)">View</div>
           <div>&ensp;|&ensp;</div>
@@ -109,4 +109,10 @@
     <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayColumns"></tr>
   </table>
+  <div *ngIf="!employeeCsvTable.data.length" class="d-flex justify-content-center align-items-center no-data-container">
+    <div class="text-center">
+        <img src="../../../../../assets/images/cross-icon.svg" />
+        <div class="text-center font-style mt-3">No records found!</div>
+    </div>
+  </div>
 </div>

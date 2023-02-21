@@ -71,3 +71,6 @@ body {
 .border-rounded{
   border-radius: 8px;
 }
+.no-data-container{
+  height: 400px;
+}

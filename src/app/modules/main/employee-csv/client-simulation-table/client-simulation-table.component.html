@@ -8,15 +8,14 @@
       <th
         mat-header-cell
         *matHeaderCellDef
-        class="p-3 border-0 text-center text-white"
+        class="pl-3 border-0 text-white"
       >
-        {{ isCourseTabOpened ? "Course " : "" }}
-        Name
+      <div class="p-3">{{ isCourseTabOpened ? "Course " : "" }}Name</div>
       </th>
       <td
         mat-cell
         *matCellDef="let element"
-        class="pt-2 pb-1 border-0 text-center"
+        class="pt-2 pb-1 border-0"
       >
         <div class="tdata-row start-corner p-3 h-100">
           {{ element.name }}
@@ -27,14 +26,14 @@
       <th
         mat-header-cell
         *matHeaderCellDef
-        class="p-3 border-0 text-center text-white"
+        class="pl-3 border-0 text-white"
       >
-        Course Time
+      <div class="p-3">{{ isCourseTabOpened ? "Course " : "" }}Time</div>
       </th>
       <td
         mat-cell
         *matCellDef="let element"
-        class="pt-2 pb-1 border-0 text-center"
+        class="pt-2 pb-1 border-0"
       >
         <div class="tdata-row p-3 h-100">{{ element.time }}</div>
       </td>
@@ -44,15 +43,15 @@
         [hidden]="isCourseTabOpened"
         mat-header-cell
         *matHeaderCellDef
-        class="p-3 border-0 text-center text-white"
+        class="pl-3 border-0 text-white"
       >
-        Date
+      <div class="p-3">Date</div>
       </th>
       <td
         [hidden]="isCourseTabOpened"
         mat-cell
         *matCellDef="let element"
-        class="pt-2 pb-1 border-0 text-center"
+        class="pt-2 pb-1 border-0"
       >
         <div class="tdata-row p-3 h-100">{{ element.date }}</div>
       </td>
@@ -62,15 +61,15 @@
       [hidden]="!isCourseTabOpened"
         mat-header-cell
         *matHeaderCellDef
-        class="p-3 border-0 text-center text-white"
+        class="pl-3 border-0 text-white"
       >
-        Assigned Date
+      <div class="p-3">Assigned Date</div>
       </th>
       <td
       [hidden]="!isCourseTabOpened"
         mat-cell
         *matCellDef="let element"
-        class="pt-2 pb-1 border-0 text-center"
+        class="pt-2 pb-1 border-0"
       >
         <div class="tdata-row p-3 h-100">{{ element.assignedDate }}</div>
       </td>
@@ -80,15 +79,15 @@
       [hidden]="!isCourseTabOpened"
         mat-header-cell
         *matHeaderCellDef
-        class="p-3 border-0 text-center text-white"
+        class="pl-3 border-0 text-white"
       >
-        Completion Date
+      <div class="p-3">Completion Date</div>
       </th>
       <td
       [hidden]="!isCourseTabOpened"
         mat-cell
         *matCellDef="let element"
-        class="pt-2 pb-1 border-0 text-center"
+        class="pt-2 pb-1 border-0"
       >
         <div class="tdata-row p-3 h-100">{{ element.completionDate }}</div>
       </td>
@@ -98,15 +97,15 @@
       [hidden]="!isCourseTabOpened"
         mat-header-cell
         *matHeaderCellDef
-        class="p-3 border-0 text-center text-white"
+        class="pl-3 border-0 text-white"
       >
-        Course Score
+      <div class="p-3">Course Score</div>
       </th>
       <td
       [hidden]="!isCourseTabOpened"
         mat-cell
         *matCellDef="let element"
-        class="pt-2 pb-1 border-0 text-center"
+        class="pt-2 pb-1 border-0"
       >
         <div class="tdata-row p-3 h-100">{{ element.courseScore }}</div>
       </td>
@@ -115,14 +114,14 @@
       <th
         mat-header-cell
         *matHeaderCellDef
-        class="p-3 border-0 text-center text-white"
+        class="pl-3 border-0 text-white"
       >
-        Status
+      <div class="p-3">Status</div>
       </th>
       <td
         mat-cell
         *matCellDef="let element"
-        class="pt-2 pb-1 border-0 text-center"
+        class="pt-2 pb-1 border-0"
       >
         <div class="tdata-row p-3 h-100">{{ element.status }}</div>
       </td>
@@ -130,4 +129,10 @@
     <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayColumns"></tr>
   </table>
+  <div *ngIf="!courseSimulationTable.data.length" class="d-flex justify-content-center align-items-center no-data-container">
+    <div class="text-center">
+        <img src="../../../../../assets/images/cross-icon.svg" />
+        <div class="text-center font-style mt-3">No records found!</div>
+    </div>
+  </div>
 </div>
