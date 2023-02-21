@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { CommonService } from 'src/app/services/common.service';
@@ -27,6 +29,10 @@ export class DashboardEmpComponent implements OnInit {
   phishedanalytics: number = 0;
   campcompletedanalytics: number = 0;
   scoreanalytics: number = 0;
+  select_val:any='';
+  errormsg: string = '';
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
   constructor(private commonService : CommonService,
     private _dashboardapi: EmpDashboardService,
     private toastr:ToastrService
@@ -54,6 +60,36 @@ export class DashboardEmpComponent implements OnInit {
       this.toastr.error("Error in loading data");
       }
     })
+  }
+  sortAndPaginate() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+  applyFilter(event: any) {
+    let  filterValue=event.target.value;
+     filterValue = filterValue.trim(); // Remove whitespace
+     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+     this.dataSource.filter = filterValue;
+
+   }
+   sortData(sort: MatSort) {
+    this.dataSource.sortingDataAccessor = (data: any, sortHeaderId: string): string => {
+      if (typeof data[sortHeaderId] === 'string') {
+        return data[sortHeaderId].toLocaleLowerCase();
+      }
+      return data[sortHeaderId];
+    }
+  }
+  filterDrop(){
+    this.errormsg = ''
+    let filterValue=this.select_val;
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+     if(this.dataSource.filteredData.length==0)
+     {
+      this.errormsg="no data found"
+     }
   }
 
   gettotalCampaignsCompleted(){
@@ -101,6 +137,8 @@ export class DashboardEmpComponent implements OnInit {
       {
         this.campaigns=data;
         this.dataSource = new MatTableDataSource(data);
+        this.sortAndPaginate()
+        this.dataSource.sort = this.sort;
       }
     },(err)=>
     {
