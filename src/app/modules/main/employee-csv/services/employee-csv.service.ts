@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { EmployeeCsv } from '../employee-client.model';
+import { ClientDetails, EmployeeCsv } from '../employee-client.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +25,7 @@ export class EmployeeCsvService {
     return this.http.post<Array<EmployeeCsv>>('get/all/employees',reqObj);
   }
 
-  getEmployeeCsvDetails(userId : string){
-    return this.http.post('get/employee/csv/details',userId)
+  getEmployeeCsvDetails(userId : number) : Observable<ClientDetails>{
+    return this.http.post<ClientDetails>('get/employee/csv/details',userId)
   }
 }

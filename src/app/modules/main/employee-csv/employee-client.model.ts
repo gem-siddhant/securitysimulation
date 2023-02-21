@@ -5,19 +5,26 @@ export interface EmployeeCsv {
   manager: string;
   department: string;
 }
-export interface CourseDetails {
-  id: number;
-  courseName: string;
-  courseTime: string;
+
+export interface CommonSimulationCourseDetails {
+  name: string;
+  time: string;
+  status: string;
+}
+export interface SimulationDetails extends CommonSimulationCourseDetails {
+  date: string;
+}
+export interface CourseDetails extends CommonSimulationCourseDetails {
   assignedDate: string;
   completionDate: string;
   courseScore: number;
-  status: string;
 }
-
-export interface SimulationDetails{
-  name: string;
-  date: string;
-  time: string;
-  status: string;
+export interface ClientDetails {
+  contact: string;
+  courses: CourseDetails[];
+  designation: string;
+  employeeId: string;
+  manager: string;
+  officialMailId: string;
+  simulation: SimulationDetails[];
 }

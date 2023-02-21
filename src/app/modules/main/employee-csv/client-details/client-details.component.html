@@ -16,15 +16,15 @@
             <div>
             <div class="p-2">
               <span class="client-detail-key">Official Email Id :&nbsp;</span
-              ><span class="client-detail-value">udit.gupta@gmail.com</span>
+              ><span class="client-detail-value">{{clientDetails.officialMailId}}</span>
             </div>
             <div class="p-2">
               <span class="client-detail-key">Employee Id :&nbsp;</span
-              ><span class="client-detail-value">GSI G 1639</span>
+              ><span class="client-detail-value">{{clientDetails.officialMailId}}</span>
             </div>
             <div class="p-2">
               <span class="client-detail-key">Designation :&nbsp;</span
-              ><span class="client-detail-value">Software Engineer L1</span>
+              ><span class="client-detail-value">{{clientDetails.designation}}</span>
             </div>
             <div class="p-2">
               <span class="client-detail-key">Simulation Score :&nbsp;</span>
@@ -36,11 +36,11 @@
             <div>
             <div class="p-2">
               <span class="client-detail-key">Reporting Manager :&nbsp;</span>
-              <span class="client-detail-value">Shubham Bhardwaj</span>
+              <span class="client-detail-value">{{clientDetails.manager}}</span>
             </div>
             <div class="p-2">
               <span class="client-detail-key">Contact Number :&nbsp;</span>
-              <span class="client-detail-value">8882029879</span>
+              <span class="client-detail-value">{{clientDetails.contact}}</span>
             </div>
         </div>
           </div>
@@ -85,19 +85,23 @@
     <mat-tab label="course">
       <ng-template mat-tab-label>Courses List</ng-template>
       <ng-template matTabContent>
-        <app-course-table
+        <app-client-simulation-table
+          [isCourseTabOpened] = "true"
+          [tableData]="clientDetails.courses"
           [searchText]="searchForm.value.searchText"
           [filterType]="searchForm.value.filterType"
-        ></app-course-table>
+        ></app-client-simulation-table>
       </ng-template>
     </mat-tab>
     <mat-tab label="simulation">
       <ng-template mat-tab-label>Simulation</ng-template>
       <ng-template matTabContent>
-        <app-course-table
+        <app-client-simulation-table
+          [isCourseTabOpened] = "false"
+          [tableData]="clientDetails.simulation"
           [searchText]="searchForm.value.searchText"
           [filterType]="searchForm.value.filterType"
-        ></app-course-table> </ng-template
+        ></app-client-simulation-table> </ng-template
     ></mat-tab>
   </mat-tab-group>
 </div>

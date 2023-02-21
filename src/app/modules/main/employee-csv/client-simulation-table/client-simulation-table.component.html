@@ -1,16 +1,17 @@
 <div class="overflow-auto bg-white pb-2 mb-4 common-container">
   <table
     mat-table
-    [dataSource]="courseTable"
+    [dataSource]="courseSimulationTable"
     class="mat-elevation-z0 font-style w-100"
   >
-    <ng-container matColumnDef="courseName">
+    <ng-container matColumnDef="name">
       <th
         mat-header-cell
         *matHeaderCellDef
         class="p-3 border-0 text-center text-white"
       >
-        Course Name
+        {{ isCourseTabOpened ? "Course " : "" }}
+        Name
       </th>
       <td
         mat-cell
@@ -18,11 +19,11 @@
         class="pt-2 pb-1 border-0 text-center"
       >
         <div class="tdata-row start-corner p-3 h-100">
-          {{ element.courseName }}
+          {{ element.name }}
         </div>
       </td>
     </ng-container>
-    <ng-container matColumnDef="courseTime">
+    <ng-container matColumnDef="time">
       <th
         mat-header-cell
         *matHeaderCellDef
@@ -35,11 +36,30 @@
         *matCellDef="let element"
         class="pt-2 pb-1 border-0 text-center"
       >
-        <div class="tdata-row p-3 h-100">{{ element.courseTime }}</div>
+        <div class="tdata-row p-3 h-100">{{ element.time }}</div>
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="date">
+      <th
+        [hidden]="isCourseTabOpened"
+        mat-header-cell
+        *matHeaderCellDef
+        class="p-3 border-0 text-center text-white"
+      >
+        Date
+      </th>
+      <td
+        [hidden]="isCourseTabOpened"
+        mat-cell
+        *matCellDef="let element"
+        class="pt-2 pb-1 border-0 text-center"
+      >
+        <div class="tdata-row p-3 h-100">{{ element.date }}</div>
       </td>
     </ng-container>
     <ng-container matColumnDef="assignedDate">
       <th
+      [hidden]="!isCourseTabOpened"
         mat-header-cell
         *matHeaderCellDef
         class="p-3 border-0 text-center text-white"
@@ -47,6 +67,7 @@
         Assigned Date
       </th>
       <td
+      [hidden]="!isCourseTabOpened"
         mat-cell
         *matCellDef="let element"
         class="pt-2 pb-1 border-0 text-center"
@@ -56,6 +77,7 @@
     </ng-container>
     <ng-container matColumnDef="completionDate">
       <th
+      [hidden]="!isCourseTabOpened"
         mat-header-cell
         *matHeaderCellDef
         class="p-3 border-0 text-center text-white"
@@ -63,6 +85,7 @@
         Completion Date
       </th>
       <td
+      [hidden]="!isCourseTabOpened"
         mat-cell
         *matCellDef="let element"
         class="pt-2 pb-1 border-0 text-center"
@@ -72,6 +95,7 @@
     </ng-container>
     <ng-container matColumnDef="courseScore">
       <th
+      [hidden]="!isCourseTabOpened"
         mat-header-cell
         *matHeaderCellDef
         class="p-3 border-0 text-center text-white"
@@ -79,6 +103,7 @@
         Course Score
       </th>
       <td
+      [hidden]="!isCourseTabOpened"
         mat-cell
         *matCellDef="let element"
         class="pt-2 pb-1 border-0 text-center"

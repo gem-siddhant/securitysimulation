@@ -65,7 +65,7 @@
         *matCellDef="let element"
         class="pt-2 pb-1 border-0 text-center"
       >
-        <div class="tdata-row p-3 h-100">{{ element.manager }}</div>
+        <div class="tdata-row p-3 h-100">{{ element.manager === null ? '-' :  element.manager}}</div>
       </td>
     </ng-container>
     <ng-container matColumnDef="department">
@@ -100,7 +100,7 @@
         <div
           class="d-flex justify-content-center p-3 h-100 text-dark tdata-row end-corner"
         >
-          <div role="button" (click)="navigateToClientDetails(element.id)">View</div>
+          <div role="button" (click)="navigateToClientDetails(element.employeeId)">View</div>
           <div>&ensp;|&ensp;</div>
           <div role="button">Remove</div>
         </div>
