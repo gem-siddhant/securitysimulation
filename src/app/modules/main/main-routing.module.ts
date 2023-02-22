@@ -8,7 +8,7 @@ import { CustomtemplateComponent } from './customtemplate/customtemplate.compone
 import { DashboardAdminComponent } from './dashboard/dashboard-admin/dashboard-admin/dashboard-admin.component';
 import { DashboardEmpComponent } from './dashboard/dashboard-emp/dashboard-emp.component';
 import { DashboardSuperAdminComponent } from './dashboard/dashboard-super-admin/dashboad-landing/dashboard-super-admin.component';
-import { GiftComponent } from './gift/gift.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 import { LoginComponent } from './login/login.component';
 import { OnboardresComponent } from './onboard/onboardres/onboardres.component';
 import { ScheduledCampaignsComponent } from './scheduled-campaigns/scheduled-campaigns.component';
@@ -27,7 +27,7 @@ const routes: Routes = [
   },
   {
     path: 'gifts',
-    component: GiftComponent,
+    component: ErrorPageComponent,
   },
   {
     path: 'add-campaign',

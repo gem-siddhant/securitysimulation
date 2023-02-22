@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { MainRoutingModule } from './main-routing.module';
-import { GiftComponent } from './gift/gift.component';
 import { AddCampaignComponent } from './add-campaign/add-campaign.component';
 import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './sign-up/sign-up.component';

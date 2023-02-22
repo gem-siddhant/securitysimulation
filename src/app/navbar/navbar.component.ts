@@ -71,6 +71,11 @@ ngOnInit() {
 Logout(){
   this._auth.logout();
   console.log(this.profile)
+  localStorage.clear()
+  window.onunload = () => {
+    // Clear the local storage
+    window.localStorage.clear()
+ }
 }
 toogletag(content:any )
 {
