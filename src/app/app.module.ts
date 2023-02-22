@@ -24,6 +24,8 @@ import { EmpOnboardComponent } from './modules/employee-onboarding/emp-onboard/e
 import { PasswordDialogComponent } from './modules/employee-onboarding/password-dialog/password-dialog.component';
 import { OfficialDetailsComponent } from './modules/employee-onboarding/official-details/official-details.component';
 import { MatIconModule } from '@angular/material/icon';
+import { LoadSpinnerComponent } from './loader/load-spinner/load-spinner.component';
+import { LoadSpinnerInterceptor } from './loader/intercepter/load-spinner.interceptor';
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
 }
@@ -40,6 +42,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     SchedulelaterComponent,
     SendcampaignComponent,
     SideBarComponent,
+    LoadSpinnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +65,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     MsalBroadcastService, 
     { provide: 'BASE_API_URL', useValue: environment.apiUrl },
     { provide: HTTP_INTERCEPTORS, useClass: ApiInterceptorService, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: LoadSpinnerInterceptor, multi: true },
     ResponsiveService,
   
   ],

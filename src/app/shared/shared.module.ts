@@ -78,7 +78,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatTableExporterModule,
     ChartsModule,
     ToastrModule.forRoot(),
-    MatTabsModule
+    MatTabsModule,
+    MatProgressSpinnerModule
   ],
   exports : [
     CommonModule,
@@ -107,7 +108,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatTableExporterModule,
     ChartsModule,
     ToastrModule,
-    MatTabsModule
+    MatTabsModule,
+    MatProgressSpinnerModule
   ]
 })
 export class SharedModule { }
