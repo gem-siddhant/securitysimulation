@@ -3,7 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/app/AuthGuard/auth.guard';
 import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
 import { AddCampaignComponent } from './add-campaign/add-campaign.component';
-import { CampaignViewComponent } from './analytics/campaign-view/campaign-view.component';
 import { CustomtemplateComponent } from './customtemplate/customtemplate.component';
 import { DashboardAdminComponent } from './dashboard/dashboard-admin/dashboard-admin/dashboard-admin.component';
 import { DashboardEmpComponent } from './dashboard/dashboard-emp/dashboard-emp.component';
@@ -34,11 +33,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     component: AddCampaignComponent,
   },
-  {
-    path: 'Admin',
-    canActivate: [AuthGuard],
-    component: DashboardAdminComponent,
-  },
+  // {
+  //   path: 'Admin',
+  //   canActivate: [AuthGuard],
+  //   component: DashboardAdminComponent,
+  // },
   {
     path: 'Employee',
     canActivate: [AuthGuard],
@@ -54,11 +53,11 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     component: UserManualComponent,
   },
-  {
-    path: 'view/:id',
-    canActivate: [AuthGuard],
-    component: CampaignViewComponent,
-  },
+  // {
+  //   path: 'view/:id',
+  //   canActivate: [AuthGuard],
+  //   component: CampaignViewComponent,
+  // },
   {
     path: 'sign-up',
     component: SignUpComponent,
@@ -88,6 +87,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     loadChildren: () =>
       import('./employee-csv/employee-csv.module').then((m) => m.EmployeeCsvModule),
+  },
+  {
+    path: 'Admin',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./dashboard/dashboard-admin/dashboard-admin.module').then((m) => m.DashboardAdminModule),
   },
   {
     path: 'analytics',

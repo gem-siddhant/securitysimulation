@@ -1,7 +1,7 @@
 .topbar{
   height: 48px;
   position:sticky;
-  
+
 }
 .menubtn{
  float: left;
@@ -14,4 +14,10 @@
 .demo{
   float: right;
   width: 10%;
+}
+.userInfo{
+  float:right;
+}
+.profile{
+  transform: scale(1.5);
 }

@@ -21,7 +21,7 @@ export class CampaignListComponent implements OnInit {
   dataSource: any;
   dataSource2: any;
   isShow = true;
-  displayedColumns: string[] = ['name','opened','delivered','notDelivered','created_on','taskStatus','taskid'];
+  displayedColumns: string[] = ['name','opened','delivered','notDelivered','created_on','taskStatus'];
   mode: ProgressSpinnerMode = 'determinate';
   color:any;
   bufferValue = 75;
@@ -120,6 +120,6 @@ export class CampaignListComponent implements OnInit {
 
     Routeview(element:any)
     {
-      this.router.navigate(['main/view',element]);
+      this.router.navigate(['main/analytics/campaigndetails',element]);
     }
 }

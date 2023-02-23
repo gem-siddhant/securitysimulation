@@ -26,6 +26,7 @@ import { OfficialDetailsComponent } from './modules/employee-onboarding/official
 import { MatIconModule } from '@angular/material/icon';
 import { LoadSpinnerComponent } from './loader/load-spinner/load-spinner.component';
 import { LoadSpinnerInterceptor } from './loader/intercepter/load-spinner.interceptor';
+import { MatMenuModule } from '@angular/material/menu';
 export function MSALInstanceFactory(): IPublicClientApplication {
   return new PublicClientApplication(msalConfig);
 }
@@ -50,6 +51,7 @@ export function MSALGuardConfigFactory(): MsalGuardConfiguration {
     SharedModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    MatMenuModule
   ],
   providers: [ LoaderService,
     {

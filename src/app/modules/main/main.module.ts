@@ -21,7 +21,6 @@ import { MatIconModule } from '@angular/material/icon';
     OnboardresComponent,
     CustomtemplateComponent,
     ScheduledCampaignsComponent,
-    DashboardAdminComponent,
     UserManualComponent,
     ClientInviteComponent,
     DashboardEmpComponent,

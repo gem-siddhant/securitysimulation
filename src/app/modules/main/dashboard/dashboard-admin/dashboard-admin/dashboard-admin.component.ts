@@ -8,6 +8,7 @@ import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { MatPaginator } from '@angular/material/paginator';
 import { CommonService } from 'src/app/services/common.service';
+import { MatSort } from '@angular/material/sort';
 @Component({
   selector: 'app-dashboard-admin',
   templateUrl: './dashboard-admin.component.html',
@@ -22,8 +23,9 @@ export class DashboardAdminComponent implements OnInit {
   totalcampaigncount: number =0;
   dataSource: any;
   dataSource2: any;
+  select_val:any='';
   isShow = true;
-  displayedColumns: string[] = ['name','opened','delivered','notDelivered','created_on','taskStatus'];
+  displayedColumns: string[] = ['name','opened','delivered','notDelivered','created_on','taskStatus','taskid'];
   mode: ProgressSpinnerMode = 'determinate';
   color:any;
   bufferValue = 75;
@@ -36,9 +38,8 @@ export class DashboardAdminComponent implements OnInit {
     private commonService : CommonService,
     private router:Router,
     private toastr:ToastrService) { }
-  
     @ViewChild(MatPaginator) paginator: MatPaginator;
-
+    @ViewChild(MatSort, { static: true }) sort: MatSort;
     ngAfterViewInit() {
       this.dataSource.paginator = this.paginator;
     }
@@ -125,4 +126,39 @@ export class DashboardAdminComponent implements OnInit {
       })
      
     }
+    Routeview(element:any)
+    {
+      this.router.navigate(['main/Admin/campaigndetails',element]);
+    }
+    sortAndPaginate() {
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    }
+  
+    applyFilter(event: any) {
+      let  filterValue=event.target.value;
+       filterValue = filterValue.trim(); // Remove whitespace
+       filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+       this.dataSource.filter = filterValue;
+  
+     }
+     sortData(sort: MatSort) {
+      this.dataSource.sortingDataAccessor = (data: any, sortHeaderId: string): string => {
+        if (typeof data[sortHeaderId] === 'string') {
+          return data[sortHeaderId].toLocaleLowerCase();
+        }
+        return data[sortHeaderId];
+      }
+    }
+    filterDrop(){
+      let filterValue=this.select_val;
+      filterValue = filterValue.trim();
+      filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+      this.dataSource.filter = filterValue;
+      //  if(this.dataSource.filteredData.length==0)
+      //  {
+      //   this.errormsg="no data found"
+      //  }
+    }
+  
 }

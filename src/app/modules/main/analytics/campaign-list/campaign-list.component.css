@@ -67,13 +67,21 @@ table{
     line-height: 21px;
     text-transform: capitalize;
 }
-.mat-row:nth-child(even){
-    background-color:white
+::ng-deep th.mat-header-cell,
+td.mat-cell,
+td.mat-footer-cell {
+  border-bottom-width: 10px !important;
+  border-bottom-color: white !important;
+  
 }
- 
-.mat-row:nth-child(odd){
-    background-color: white;
-}
+th.mat-header-cell {
+    color: white;
+    background-color: #38A3A5;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+  }
 .btn {
     background: #38A3A5;
     box-shadow: none;
@@ -85,9 +93,17 @@ table{
     line-height: 24px;
     text-align: center;
 }
-.buttonCss {
-    cursor: pointer;
-    border: none;
-    text-decoration: none;
-    background: none;
+.mat-cell {
+    background-color:#F8F8F8;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    color: #000000;
   }
+
+  .mat-table{    
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    overflow:hidden !important;
+}

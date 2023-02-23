@@ -3,6 +3,21 @@
   <button mat-button (click)="toggle()" class="menubtn" >
     <mat-icon style="color: black;" class="col-lg-12 col-md-12 col-sm-12 col-xs-12">menu</mat-icon>
 </button>
+
+<div class="d-flex flex-row userInfo">
+  <div>
+    <mat-icon class="profile mt-2">account_circle</mat-icon>
+  </div>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon class="arrow-color">arrow_drop_down</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu" class="mt-3">
+      <button mat-menu-item  (click)="Logout()">
+          <mat-icon class="logout-color">power_settings_new</mat-icon>
+          <span class="dropdown-buttons">Logout</span>
+      </button>
+  </mat-menu>
 </div>
+
 </div>
 

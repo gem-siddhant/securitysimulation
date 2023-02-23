@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { MainService } from '../../service/main.service';
 import { ChartType, ChartOptions, Chart } from 'chart.js';
 import { SingleDataSet, Label } from 'ng2-charts';
 import * as pluginLabels from 'chartjs-plugin-labels';
@@ -18,6 +17,8 @@ import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/co
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { CommonService } from 'src/app/services/common.service';
+import { MainService } from '../../../service/main.service';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-campaign-view',
@@ -43,7 +44,7 @@ StoreData:boolean=true;
     private dialog:MatDialog,
     private toastr: ToastrService) 
     {
-       this.viewData={id:0,email:'',ipAddress:'',status:'',formSubmit:false,username:'',submitCount:0,clickedCount:0};
+       this.viewData={id:0,email:'',ipAddress:'',status:''};
        this.nowFormatted = formatDate(this.datenow, 'dd-MM-yyyy', 'en-US');
     }
     color: ThemePalette = 'accent';
@@ -70,11 +71,12 @@ select_val:any='';
 dataSource:any;
 killcam:boolean=false;
 test: any= "test";
-displayedColumns: string[] = ['sno','email', 'ip' , 'status','formSubmit','username','clickedCount','submitCount'];
+displayedColumns: string[] = ['sno','email', 'ip' , 'status',];
 pieChartPlugins:any = [];
 i: number = 1;
 id: string;
 @ViewChild(MatSort, { static: true }) sort!: MatSort;
+@ViewChild(MatPaginator) paginator: MatPaginator;
   ngOnInit(): void {
     this.commonService.setLoginStatus(true);
     this.pieChartOptions = this.createOptions();
@@ -130,6 +132,11 @@ id: string;
       this.errormsg="no data found"
      }
   }
+  sortAndPaginate() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
   applyFilter(event: any) {
     let  filterValue=event.target.value;
      filterValue = filterValue.trim(); // Remove whitespace
@@ -186,6 +193,10 @@ id: string;
         this.notdelivered = data.notDeliveredCount
         this.pieChartData = [this.clicked_len, this.delivered_len-this.clicked_len,this.notdelivered];
         this.dataSource = new MatTableDataSource<view_data>(data.result);
+        if(this.dataSource.length>10)
+        {
+        this.sortAndPaginate()
+        }
         this.dataSource.sort = this.sort;
         console.log(this.dataSource.data)
       
