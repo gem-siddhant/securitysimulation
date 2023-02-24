@@ -84,6 +84,7 @@ export class EmpOnboardComponent implements OnInit {
       'otp':this.onboardform.value.otp,
       'email': this.useremail
     }
+    // this.router.navigate(['employee-onboard/generate-password'])
     this._emponbaord.validateclientotp(req).subscribe((data)=>
     {
       if(data)

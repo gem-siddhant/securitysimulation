@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import * as moment from 'moment';
 import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
 import { DashboardapiService } from '../../../dashboard-services/dashboardapi.service';
 
@@ -20,6 +21,7 @@ export class ClientInviteComponent implements OnInit {
   value = 50;
   api_hit=false;
   mode: ProgressSpinnerMode = 'indeterminate';
+
   constructor(public dialogRef: MatDialogRef<ClientInviteComponent>,
     private formBuilder: FormBuilder, 
     private router:Router,
@@ -51,6 +53,8 @@ export class ClientInviteComponent implements OnInit {
   }
   sendinvite()
   {
+    const startDate = moment(this.inviteform.value.startdate).format("MM-DD-YYYY");
+    const endDate = moment(this.inviteform.value.enddate).format("MM-DD-YYYY");
     this.close()
     this.toastr.success("Invite sent")
     this.StoreData=true;
@@ -65,8 +69,8 @@ export class ClientInviteComponent implements OnInit {
     "clientAddress": this.inviteform.value.address,
     "officialEmail": this.inviteform.value.officialemail,
     "clientContactNumber": this.inviteform.value.contact,
-    "startDate": this.inviteform.value.startdate,
-    "endDate": this.inviteform.value.enddate,
+    "startDate": startDate,
+    "endDate": endDate,
     "invitedBy":localStorage.getItem('email')
     }
     this._inviteclient.inviteclient(req).subscribe((data)=>

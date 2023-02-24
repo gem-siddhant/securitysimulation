@@ -11,6 +11,13 @@ import { ClientOnboardService } from '../Services/client-onboard.service';
 })
 export class PasswordDialogComponent implements OnInit {
   onboardform:FormGroup;
+  password = '';
+  passwordStrength = '';
+  passwordStrengthClasses = {
+    weak: true,
+    medium: false,
+    strong: false
+  };
   constructor(private formBuilder: FormBuilder,
     private router:Router,
     private toastr:ToastrService,
@@ -24,6 +31,32 @@ export class PasswordDialogComponent implements OnInit {
       confirmpass:['',[Validators.required]]
   });
   }
+
+  checkPasswordStrength() {
+    if (this.password.length < 8) {
+      this.passwordStrength = 'Weak';
+      this.passwordStrengthClasses = {
+        weak: true,
+        medium: false,
+        strong: false
+      };
+    } else if (this.password.length >= 8 && this.password.length < 12) {
+      this.passwordStrength = 'Medium';
+      this.passwordStrengthClasses = {
+        weak: false,
+        medium: true,
+        strong: false
+      };
+    } else {
+      this.passwordStrength = 'Strong';
+      this.passwordStrengthClasses = {
+        weak: false,
+        medium: false,
+        strong: true
+      };
+    }
+  }
+  
   routeto(){
     if(this.onboardform.value.password == "" ||  this.onboardform.value.confirmpass == "")
     {
