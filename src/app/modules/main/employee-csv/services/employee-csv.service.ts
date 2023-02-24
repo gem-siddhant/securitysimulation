@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ClientDetails, EmployeeCsv } from '../employee-client.model';
+import { ClientDetails, EmployeeCsv, UpdateEmployeeCsv } from '../employee-client.model';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +14,8 @@ export class EmployeeCsvService {
     return this.http.delete<string>(`delete/employee/${userId}`)
   }
 
-  updateEmployeesCsv(){
-
+  updateEmployeesCsv(csvData : UpdateEmployeeCsv) : Observable<any>{
+    return this.http.post<any>('update/employee/csv',csvData)
   }
 
   getAllEmployees(emailId : string) : Observable<Array<EmployeeCsv>> {

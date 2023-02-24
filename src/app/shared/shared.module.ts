@@ -36,6 +36,7 @@ import { SendCampaignModalComponent } from './send-campaign-modal/send-campaign-
 import { DownloadCsvModalComponent } from './download-csv-modal/download-csv-modal.component';
 import { AlertModalComponent } from './alert-modal/alert-modal.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { CsvUploadModalComponent } from './csv-upload-modal/csv-upload-modal.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     ConfirmationModalComponent,
     SendCampaignModalComponent,
     DownloadCsvModalComponent,
-    AlertModalComponent
+    AlertModalComponent,
+    CsvUploadModalComponent
   ],
   imports: [
     CommonModule,

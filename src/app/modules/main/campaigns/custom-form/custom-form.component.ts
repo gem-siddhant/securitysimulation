@@ -3,7 +3,7 @@ import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, Valida
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatRadioChange } from '@angular/material/radio';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, take } from 'rxjs';
@@ -38,6 +38,7 @@ export class CustomFormComponent implements OnInit {
     private responsiveService : ResponsiveService,
     private formBuilder : FormBuilder,
     private router: ActivatedRoute,
+    private route: Router,
     private dialog: MatDialog,
     private sanitizer : DomSanitizer,
     private toastr : ToastrService,
@@ -304,10 +305,18 @@ export class CustomFormComponent implements OnInit {
   }
 
   opneConfirmationModal() : void{
-    let dataDialog = { title: 'Campaign Sent to you Successfully!' };
-    this.dialog.open(ConfirmationModalComponent, {
+    let dataDialog = { title: 'Campaign Sent Successfully!' };
+    let dialogRef = this.dialog.open(ConfirmationModalComponent, {
       width: '513px',
       data: dataDialog
+    });
+    dialogRef.afterClosed().pipe(take(1)).subscribe({
+      next: (data) => {
+        this.route.navigate(['/main/Admin']);      
+      },
+      error: (error) => {
+        this.toastr.error('Error while closing modal');
+      },
     });
   } 
 }

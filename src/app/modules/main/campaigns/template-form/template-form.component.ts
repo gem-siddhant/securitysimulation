@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators, AbstractControl} from '@angular/forms';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatRadioChange } from '@angular/material/radio';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { Observable, take } from 'rxjs';
@@ -33,6 +33,7 @@ export class TemplateFormComponent implements OnInit {
     private responsiveService : ResponsiveService,
     private formBuilder : FormBuilder,
     private router: ActivatedRoute,
+    private route : Router,
     private dialog: MatDialog,
     private campaignService : CampaignsService,
     private toastr : ToastrService
@@ -250,10 +251,18 @@ export class TemplateFormComponent implements OnInit {
   }
 
   opneConfirmationModal() : void{
-    let dataDialog = { title: 'Campaign Sent to you Successfully!' };
-    this.dialog.open(ConfirmationModalComponent, {
+    let dataDialog = { title: 'Campaign Sent Successfully!' };
+    let dialogRef = this.dialog.open(ConfirmationModalComponent, {
       width: '513px',
       data: dataDialog
+    });
+    dialogRef.afterClosed().pipe(take(1)).subscribe({
+      next: (data) => {
+        this.route.navigate(['/main/Admin']);      
+      },
+      error: (error) => {
+        this.toastr.error('Error while closing modal');
+      },
     });
   }
 

@@ -32,7 +32,7 @@ export class EmployeeCsvTableComponent implements OnInit {
   ngOnInit(): void {
   }
   ngOnChanges(){
-    console.log(this.searchText, this.filterType);
+    console.log(this.searchText, this.filterType, this.tableData);
     this.employeeCsvTable = new MatTableDataSource<EmployeeCsv>(this.tableData);
   }
   navigateToClientDetails(userId : number){

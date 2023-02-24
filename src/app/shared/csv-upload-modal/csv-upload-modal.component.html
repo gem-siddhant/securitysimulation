@@ -1,0 +1,37 @@
+<div class="m-0 p-0 col-md-12 note-txt">
+    Note :- Please provide only geminisolutions.com id's in csv
+    
+    <mat-icon class="vertical-align"
+    [mat-dialog-close]="true"
+    (click)="downloadXlsx()"
+    matTooltip="Sample csv"
+    >info</mat-icon
+  >
+  </div>
+<div class="upload-txt">Upload .csv file with custom email</div>
+<div class="mb-3">
+  <input
+    type="file"
+    accept=".xlsx"
+    id="firsting"
+    class="form-control"
+    (change)="onChange($event)"
+  />
+  <mat-error class="mt-2" *ngIf="this.submitted && (!this.changeTriggered || (this.changeTriggered && this.csvError !==''))">{{this.csvError}}</mat-error>
+</div>
+<div class="row">
+  <div class="col-lg-5 col-md-5 col-sm-12 col-12 pl-1 mb-2">
+    <button class="cancel-btn w-100" (click)="close()">
+      Cancel
+    </button>
+  </div>
+  <div class="col-lg-5 col-md-5 col-sm-12 col-12 pl-1">
+    <button
+      type="submit"
+      class="send-btn w-100"
+      (click)="updateCsv()"
+    >
+      Update Employees
+    </button>
+  </div>
+</div>

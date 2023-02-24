@@ -1,16 +1,12 @@
-<div class="row">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <button type="button" class="close" (click)="onClose()"aria-label="Close">
-            <span aria-hidden="true"><i class="material-icons">close</i></span>
-        </button>
+<div class="container font-style">
+  <div class="d-flex justify-content-center">
+    <img src="../../../assets/images/done-tick.svg" />
+  </div>
+  <div class="alert-title text-center mt-4">{{ data.title }}</div>
+
+  <div class="row mt-4 justify-content-center">
+    <div class="col-lg-6 col-md-6 col-sm-6 col-6 mt-2">
+      <button class="yes-btn w-100" (click)="onClose()">OK</button>
     </div>
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mat-dialog-content col-center ml-1 mt-4" style="padding-left: 15%;">
-<img src="../../../assets/images/done-tick.svg" >
-</div>
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 col-center mat-dialog-content ml-1 mt-4" >
-    <p style="font-size: 15px;text-align: center;padding-left: 12%;">{{data.title}}</p>
-</div>
-<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mat-dialog-content col-center ml-1 mt-4" style="padding-left: 15%;">
-    <button type="submit" mat-raised-button id="ok_btn" (click)="onClose()">OK</button>
-</div>
+  </div>
 </div>

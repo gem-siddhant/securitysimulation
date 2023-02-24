@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs';
 import { CommonService } from 'src/app/services/common.service';
-import { EmployeeCsv } from '../employee-client.model';
+import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
+import { CsvUploadModalComponent } from 'src/app/shared/csv-upload-modal/csv-upload-modal.component';
+import { EmployeeCsv, EmployeeExcelData, UpdateEmployeeCsv} from '../employee-client.model';
 import { EmployeeCsvService } from '../services/employee-csv.service';
 
 @Component({
@@ -19,7 +22,9 @@ export class EmployeeCsvDashboardComponent implements OnInit {
   constructor(private commonService: CommonService, 
     private formBuilder : FormBuilder, 
     private employeeCsvService : EmployeeCsvService,
-    private toastr : ToastrService) {
+    private toastr : ToastrService,
+    private dialog : MatDialog
+  ) {
     this.searchForm = this.formBuilder.group({});
     this.employeeCsvTable = [] as EmployeeCsv[];
     this.emailId = '';
@@ -34,9 +39,26 @@ export class EmployeeCsvDashboardComponent implements OnInit {
       filterType : ['']
     });
   }
-  
-  applyFilter(){
-    
+
+  applyFilter() {}
+
+  opneConfirmationModal(): void {
+    let dataDialog = { title: 'Employees Added Successfully!' };
+    let dialogRef = this.dialog.open(ConfirmationModalComponent, {
+      width: '513px',
+      data: dataDialog,
+    });
+    dialogRef
+      .afterClosed()
+      .pipe(take(1))
+      .subscribe({
+        next: (data) => {
+          this.getAllEmployees();
+        },
+        error: (error) => {
+          this.toastr.error('Error while uploading data');
+        },
+      });
   }
 
   getAllEmployees(){
@@ -45,8 +67,43 @@ export class EmployeeCsvDashboardComponent implements OnInit {
         this.employeeCsvTable = data;
       },
       error : (error)=>{
-        this.toastr.error('Error while loading client details')
+        this.toastr.error('Error while loading client details');
       }
-    })
+    });
+  }
+
+  openUploadCsvModal(): void {
+    let dataDialog = { title: 'Campaign Sent to you Successfully!' };
+    let dialogRef: MatDialogRef<CsvUploadModalComponent>;
+    dialogRef = this.dialog.open(CsvUploadModalComponent, {
+      width: '513px',
+    });
+    dialogRef
+      .afterClosed()
+      .pipe(take(1))
+      .subscribe({
+        next: (data) => {
+          if (data.sendClicked) {
+            this.updateEmployeeCsv(data.employeeCsvData);
+          }
+        },
+        error: (error) => {
+          this.toastr.error('Error while closing modal');
+        },
+      });
+  }
+
+  updateEmployeeCsv(employeeDetails: EmployeeExcelData[]): void {
+    let csvData: UpdateEmployeeCsv = {} as UpdateEmployeeCsv;
+    csvData.email = this.emailId;
+    csvData.employeeDetails = employeeDetails;
+    this.employeeCsvService.updateEmployeesCsv(csvData).pipe(take(1)).subscribe({
+      next: (data) => {
+        this.opneConfirmationModal();
+      },
+      error: (erro) => {
+        this.toastr.error('Error while sending data');
+      },
+    });
   }
 }

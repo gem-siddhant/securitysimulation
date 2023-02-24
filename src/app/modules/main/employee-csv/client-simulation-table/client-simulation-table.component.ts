@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { CourseDetails, SimulationDetails } from '../employee-client.model';
 
@@ -15,6 +16,10 @@ export class ClientSimulationTableComponent implements OnInit {
   @Input() filterType : string;
   @Input() tableData : CourseDetails[] | SimulationDetails[];
   @Input() isCourseTabOpened : boolean
+  pageEvent: PageEvent;
+  tablePageIndex : number;
+  noOfRows: number;
+  tableLength : number;
   constructor() {
     this.displayColumns = [
       "name",
@@ -26,14 +31,56 @@ export class ClientSimulationTableComponent implements OnInit {
       'status',
     ];
     this.courseSimulationTable = new MatTableDataSource<CourseDetails | SimulationDetails>();
+    this.pageEvent = new PageEvent();
+    this.tablePageIndex = 0;
+    this.noOfRows = 5;
+    this.tableLength = 0;
   }
 
   ngOnInit(): void {
+    this.tableLength = this.tableData.length;
+    this.getData();
   }
 
   ngOnChanges(){
     console.log(this.searchText, this.filterType);
     this.courseSimulationTable = new MatTableDataSource<CourseDetails | SimulationDetails>(this.tableData);
+  }
+
+  ngAfterViewChecked(): void {
+    if (this.courseSimulationTable.data.length != 0) {
+      const list = document.getElementsByClassName("mat-paginator-range-label");
+      this.tableLength > 0
+        ? (list[0].innerHTML =
+            "Page: " +
+            (this.tablePageIndex + 1).toString() +
+            " of " +
+            Math.ceil(this.tableLength / this.noOfRows))
+        : (list[0].innerHTML = "Page: 0 of 0");
+    }
+  }
+
+  paginationData(){
+    let startIndex = this.tablePageIndex*this.noOfRows;
+    let endIndex = (this.tablePageIndex + 1) * this.noOfRows;
+    let paginatedTable = new Array<CourseDetails | SimulationDetails>();
+    for(let i=startIndex; i< this.tableLength && i<endIndex;i++){
+      paginatedTable.push(this.tableData[i]);
+    }
+    this.courseSimulationTable = new MatTableDataSource<CourseDetails | SimulationDetails>(paginatedTable);
+
+  }
+
+  getData(event?: PageEvent): PageEvent {
+    if (event) {
+      this.noOfRows = event.pageSize;
+      this.tablePageIndex = event.pageIndex;
+    }
+    this.paginationData();
+    if (event) {
+      return event;
+    }
+    return new PageEvent();
   }
 
 }

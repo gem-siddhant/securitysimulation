@@ -135,4 +135,13 @@
         <div class="text-center font-style mt-3">No records found!</div>
     </div>
   </div>
+  <mat-paginator
+    class="mt-4 mb-4 rounded"
+    [pageSizeOptions]="[5,10]"
+    [pageIndex]="tablePageIndex"
+    (page)="pageEvent = getData($event)"
+    [length]="tableLength"
+    showFirstLastButtons
+  >
+  </mat-paginator>
 </div>

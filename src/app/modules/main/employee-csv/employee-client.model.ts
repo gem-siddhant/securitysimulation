@@ -28,3 +28,16 @@ export interface ClientDetails {
   officialMailId: string;
   simulation: SimulationDetails[];
 }
+export interface EmployeeExcelData {
+  contactNumber: number;
+  department: string;
+  designation: string;
+  firstName: string;
+  lastName: string;
+  managerId: number;
+  username: string;
+}
+export interface UpdateEmployeeCsv{
+  email : string;
+  employeeDetails : EmployeeExcelData[];
+}
