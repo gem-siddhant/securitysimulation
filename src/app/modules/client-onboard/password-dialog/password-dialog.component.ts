@@ -79,13 +79,6 @@ export class PasswordDialogComponent implements OnInit {
    })
       return
     }
-    if(this.onboardform.value.createpass != this.onboardform.value.confirmpass)
-    {
-      this.toastr.error("Password not matched", undefined, {
-        positionClass: 'toast-top-center'
-      });
-      return
-    }
     else
     {
     let req = {

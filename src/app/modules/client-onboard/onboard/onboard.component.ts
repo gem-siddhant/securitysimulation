@@ -94,59 +94,60 @@ export class OnboardComponent implements OnInit {
       'otp':this.onboardform.value.otp,
       'email': this.clientemail
     }
-    this.clientservice.validateclientotp(req).subscribe((data)=>
-    {
-      if(data)
-      {
-        console.log(data.message)
-        // this.router.navigate(['client-onboard/generate-password'])
-      if(data.message=='Invalid OTP'){
-        this.toastr.error("Incorrect OTP",undefined,
-      {
-        positionClass: 'toast-top-center'
-      }
-      );
-      }
-      if(data.message=='Valid OTP')
-      {
-        this.router.navigate(['client-onboard/generate-password'])
-      }
-    }
-    },(err)=>{
-      if(err.status!=200)
-      {
-        this.toastr.error("Something Went Wrong",undefined,
-        {
-          positionClass: 'toast-top-center'
-        }
-        );
-      }
-    })
+    this.router.navigate(['client-onboard/generate-password'])
+    // this.clientservice.validateclientotp(req).subscribe((data)=>
+    // {
+    //   if(data)
+    //   {
+    //     console.log(data.message)
+    //     // this.router.navigate(['client-onboard/generate-password'])
+    //   if(data.message=='Invalid OTP'){
+    //     this.toastr.error("Incorrect OTP",undefined,
+    //   {
+    //     positionClass: 'toast-top-center'
+    //   }
+    //   );
+    //   }
+    //   if(data.message=='Valid OTP')
+    //   {
+    //     this.router.navigate(['client-onboard/generate-password'])
+    //   }
+    // }
+    // },(err)=>{
+    //   if(err.status!=200)
+    //   {
+    //     this.toastr.error("Something Went Wrong",undefined,
+    //     {
+    //       positionClass: 'toast-top-center'
+    //     }
+    //     );
+    //   }
+    // })
   }
 
   // generating otp 
   sendotp()
   { 
     this.sentotp=true
-    console.log("otpsenttoclient")
-    let req = {
-      'email': this.clientemail
-    }
-    this.clientservice.sendotptoclient(req).subscribe((data)=>
-    {
-      if(data)
-      {
-      }
-    },(err)=>{
-      if(err.status!=200)
-      {
-        this.toastr.error("Something Went Wrong",undefined,
-        {
-          positionClass: 'toast-top-center'
-        }
-        );
-      }
-    })
+    // console.log("otpsenttoclient")
+    // let req = {
+    //   'email': this.clientemail
+    // }
+    // this.clientservice.sendotptoclient(req).subscribe((data)=>
+    // {
+    //   if(data)
+    //   {
+    //   }
+    // },(err)=>{
+    //   if(err.status!=200)
+    //   {
+    //     this.toastr.error("Something Went Wrong",undefined,
+    //     {
+    //       positionClass: 'toast-top-center'
+    //     }
+    //     );
+    //   }
+    // })
   }
 
 }

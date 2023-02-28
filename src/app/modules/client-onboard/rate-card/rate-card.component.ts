@@ -24,6 +24,7 @@ export class RateCardComponent implements OnInit {
   prefilled: {clientPlanId:{planName:'',yearlyCost:'',createdDate:'',endDate:''},clientContactNumber:''};
   planid: any;
   clientid : any;
+  emailcheck : boolean = false
   constructor(private formBuilder: FormBuilder, 
     private shared: ClientOnboardService,
     private router:Router,
@@ -60,7 +61,26 @@ export class RateCardComponent implements OnInit {
           console.log(data)
           this.vare = (data)
         })
+     
+    for(var i=0;i<this.vare.length;i++)
+    {
+      let email = this.vare[i].username
+      this.emailcheck = /^([a-zA-Z0-9_.+-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,})+$/.test(email)
+      console.log(this.emailcheck)
+      if(this.emailcheck==false)
+      {
+        console.log(this.emailcheck)
+        this.toastr.error("Email id provided is not in correct format",undefined,
+        {
+          positionClass: 'toast-top-center'
+        }
+        );
+        return
+      }
     }
+    }
+   
+    
   }
 
   getprefilledclient()
@@ -116,7 +136,12 @@ export class RateCardComponent implements OnInit {
       if(data)
       {
         console.log("client onboar done")
-        this.router.navigate(['client-onboard/Onboarded'])
+        this.router.navigate(['main/login'])
+        this.toastr.success("Onboarded successfully",undefined,
+        {
+          positionClass: 'toast-top-center'
+        }
+        );
       }
     },(err)=>{
       if(err.status!=200)

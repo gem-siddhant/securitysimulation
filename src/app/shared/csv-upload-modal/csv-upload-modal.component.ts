@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { EmployeeExcelData } from 'src/app/modules/main/employee-csv/employee-client.model';
 import * as XLSX from 'xlsx';
 
@@ -13,7 +14,9 @@ export class CsvUploadModalComponent implements OnInit {
   changeTriggered: boolean;
   submitted: boolean;
   excelData : EmployeeExcelData[];
-  constructor(private dialogRef: MatDialogRef<CsvUploadModalComponent>) {
+  emailcheck : boolean = false
+  constructor(private dialogRef: MatDialogRef<CsvUploadModalComponent>,
+    private toastr:ToastrService,) {
     this.csvError = '';
     this.changeTriggered = false;
     this.submitted = false;
@@ -36,6 +39,22 @@ export class CsvUploadModalComponent implements OnInit {
         const data = XLSX.utils.sheet_to_json(workbook.Sheets[sheet]) as EmployeeExcelData[];
         this.excelData = data;
       });
+      for(var i=0;i<this.excelData.length;i++)
+      {
+        let email = this.excelData[i].username
+        this.emailcheck = /^([a-zA-Z0-9_.+-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,})+$/.test(email)
+        console.log(this.emailcheck)
+        if(this.emailcheck==false)
+        {
+          console.log(this.emailcheck)
+          this.toastr.error("Email id provided is not in correct format",undefined,
+          {
+            positionClass: 'toast-top-center'
+          }
+          );
+          return
+        }
+      }
     };
   }
 

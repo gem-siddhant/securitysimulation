@@ -36,11 +36,7 @@
   height: 40px;
   border: 1px solid #38A3A5;
 }
-.preview-btn, .schedule-btn{
-  background-color: white;
-  color: #38A3A5;
-}
-.send-btn{
+.send-btn,.preview-btn, .schedule-btn{
   background-color: #38A3A5;
   color: white;
 }

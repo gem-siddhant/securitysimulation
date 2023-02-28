@@ -28,8 +28,8 @@
 }
 .no-btn {
   border: 1px solid #38a3a5;
-  background-color: white;
-  color: #38a3a5;
+  background: #38a3a5;
+  color: white;
 }
 .yes-btn {
   background: #38a3a5;
