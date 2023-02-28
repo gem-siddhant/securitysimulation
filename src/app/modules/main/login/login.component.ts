@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
   mobile: boolean = false;
   status?: number;
   role : number = 0
+  showPassword = false;
   constructor(private formBuilder: FormBuilder,
     private _addCampaign:AddCampaignService,
     private _MainService:MainService,
@@ -83,6 +84,9 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/main/dashboard-admin']);
     }
     this._authUserService.setNotificationModalBoolean(true)
+  }
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
   }
   setLoginDisplay() {
     this.loginDisplay = this.authService.instance.getAllAccounts().length > 0;
