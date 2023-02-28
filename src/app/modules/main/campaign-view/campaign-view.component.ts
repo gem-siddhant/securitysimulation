@@ -174,6 +174,10 @@ id: string;
          if(!element.ipAddress){
           element.ipAddress='NA';
          }
+         if(!element.username)
+         {
+          element.username='NA'
+         }
 
         ++i;
 

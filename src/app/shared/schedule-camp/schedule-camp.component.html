@@ -2,40 +2,48 @@
   <div *ngIf="this.campaigns.length==0" class=" error">
     No Campaign added
   </div>
-  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-4 box" *ngIf="this.campaigns.length!=0">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading mb-2 mt-1">
-     <strong style="font-size: 16px;padding-bottom: 5px;">Campaign Name</strong> 
-    </div>    
-  </div>
-  <div class="col-xs-4 col-sm-3 col-md-3 col-lg-4 box" *ngIf="this.campaigns.length!=0">
-    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading  mb-2 mt-1">
-      <strong  style="font-size: 16px; padding-bottom: 5px;">Scheduled Time</strong> 
-     </div>
-</div>
-<div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 box" *ngIf="this.campaigns.length!=0">
-  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading mt-3">
-   </div>
-</div>
-<div class="col-xs-3 col-sm-3 col-md-3 col-lg-2 box" *ngIf="this.campaigns.length!=0"> 
-  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 heading mt-3">
-   </div>
-</div>
+<div>
+  <table mat-table matTableExporter [dataSource]="dataSource" class=" w-100" *ngIf="this.campaigns.length!=0" >
+    <ng-container matColumnDef="name" >
+        <th mat-header-cell *matHeaderCellDef>Campaign name </th>
+        <td mat-cell *matCellDef="let ele" >
+          <div class="start-corner">{{ele.name}}</div>
+       </td>
+    </ng-container>
 
-    <div *ngFor="let element of this.campaigns; let i = index" >
-        <div class="row ">
-      <table class = "table row col-lg-12 col-md-12 col-sm-12 col-xs-12 heading mt-1 mr-2">
-        <tbody>
-          <tr class="">
-            <td class="col-lg-4 col-md-4 col-sm-6 col-xs-4 heading mt-3">{{campaigns[i].name}}</td>
-            <td class="col-lg-4 col-md-4 col-sm-6 col-xs-4 heading mt-3"> {{campaigns[i].scheduledTime}}</td>
-            <td class="col-lg-4 col-md-4 col-sm-6 col-xs-6 heading mt-3">
-              <button class="btn btn-outline-success" (click)="Reschedule(this.campaigns[i].scheduledJobKey)" matTooltip="RESCHEDULE" matTooltipPosition="above" style=" margin-left: 15%;"><mat-icon  >alarm_on</mat-icon></button>
-              <button class="btn btn-outline-danger" (click)="deleteschedule(this.campaigns[i].scheduledJobKey)" style=" margin-left: 15%;" matTooltip="DELETE" matTooltipPosition="above"><mat-icon>delete</mat-icon> </button>
-            </td>
-          </tr>
-        </tbody>
+      <ng-container matColumnDef="scheduledDate">
+        <th  mat-header-cell *matHeaderCellDef >Scheduled date</th>
+        <td mat-cell *matCellDef="let ele" >
+          {{ele.scheduledDate}}
+        </td>
+      </ng-container>
 
-      </table>
-</div>
+      <ng-container matColumnDef="scheduledTime">
+        <th mat-header-cell *matHeaderCellDef >Scheduled time</th>
+        <td  mat-cell *matCellDef="let ele">
+          {{ele.scheduledTime}}
+        </td>
+      </ng-container>
+     
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let element">
+          <strong class="h6"> <span class="buttonCss" (click)="Reschedule(element.scheduledJobKey)">
+              <!-- <button class="btn btn-outline-success"  matTooltip="RESCHEDULE" matTooltipPosition="above" ><mat-icon  >alarm_on</mat-icon></button> -->
+          <button class="action">Edit  </button>  
+            </span></strong> 
+            <span> | </span>
+           <!-- &nbsp; -->
+            <strong class="h6"><span class="buttonCss" (click)="deleteschedule(element.scheduledJobKey)">
+              <!-- <button class="btn btn-outline-danger" matTooltip="DELETE" matTooltipPosition="above"><mat-icon>delete</mat-icon></button> -->
+           <button class="action">Delete</button>
+            </span></strong> 
+        </td>
+    </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
 </div>
 </div>

@@ -172,9 +172,7 @@ padding-left: 10px;
     color: white;
     margin-left: 30px;
   }
-  ::ng-deep #sel .mat-form-field-underline {
-    display: none;
-  }
+
   .position-fix{
     position: sticky;
     left: 0;
@@ -211,17 +209,17 @@ padding-left: 10px;
   }
   th{
     
-    background:  #E6F2F8;
+    background:  #7A2AB4;
     font-family: Poppins;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
     letter-spacing: 0.02em;
-    color: #205072;
+    color: white
   }
   #status-id{
-    color: #38A3A5;
+    color: #000101;
   }
   th.mat-header-cell, td.mat-cell, td.mat-footer-cell {
     border-bottom-width: 1px;
@@ -279,7 +277,6 @@ padding-left: 10px;
   }
   
   #tablepart{
-    background-color: #d6eafa;
     font-family: "Poppins", sans-serif;
     font-weight: 300
   }
@@ -288,36 +285,6 @@ padding-left: 10px;
     height: 100vh
   }
   
-  .search {
-    position: relative;
-    box-shadow: 0 0 40px rgba(51, 51, 51, .1);
-    width: 130%;
-    margin-top: 7%;
-    margin-left:20%;
-  }
-  #filter{
-    padding-left: 25%;
-  }
-  
-  .search input:focus {
-    box-shadow: none;
-    border: 2px solid blue
-  }
-  
-  .search .fa-search {
-    position: absolute;
-    top: 20px;
-    width: 200px;
-  }
-  
-  .search button {
-    position: absolute;
-    top: 5px;
-    right: 15px;
-    height: 50px;
-    background:transparent;
-    background-color: #531D89;
-  }
 .height {
   height: 100vh
 }
@@ -342,11 +309,6 @@ box-shadow: 3px 3px 10px rgba(32, 80, 114, 0.1);
 border-radius: 5px;
 text-size-adjust: auto;
   }
-.materialTableHeader{
-  background-color: #531D89;
-  color: white;
-  margin-bottom: 10px;
-}
 .form-control{
   width: 100%;
 }
@@ -438,3 +400,38 @@ text-size-adjust: auto;
   left: 0;
   position: fixed;
 }
+.materialTableHeader
+{
+  color: black;
+}
+.searchcss{
+border-color: white;
+display: inline-flex;
+font-family: Poppins;
+font-style: normal;
+font-weight: 500;
+font-size: 16px;
+line-height: 27px;
+letter-spacing: 0.02em;
+color: white;
+}
+.filtercss{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+::placeholder{
+  color: #ffffff;
+  text-align: start;
+}
+
+:host ::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+  color: white;
+  border-radius: 5px;
+  border: 5px ;
+}
+::ng-deep .mat-select-value, ::ng-deep .mat-select-placeholder {
+  color: white;
+}
+

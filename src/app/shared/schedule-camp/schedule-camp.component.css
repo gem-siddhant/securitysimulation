@@ -29,14 +29,14 @@
 .box{
   color: white; background-color: #461A8F;
 }
-td:nth-of-type(odd)
+/* td:nth-of-type(odd)
 {  
 background-color: white
 }
 td:nth-of-type(even)
 {  
 background-color: rgb(241, 241, 251)
-}
+} */
 .error{
   padding-left: 37%;
   font-size: 20px;
@@ -46,4 +46,18 @@ background-color: rgb(241, 241, 251)
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+ }
+ th.mat-header-cell
+ {
+  background-color: #563190;
+  color: white;
+  align: center;
+  font-size: 16px;
+ }
+ td.mat-cell{
+  text-align: start;
+ }
+ .action{
+  background-color: white;
+  border: none;
  }

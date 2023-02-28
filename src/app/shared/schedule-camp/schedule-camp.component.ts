@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatTableDataSource } from '@angular/material/table';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
@@ -23,6 +24,8 @@ export class ScheduleCampComponent implements OnInit {
   credsForm:FormGroup;
   campaigns:any=[];
   latest_Date:any;
+  dataSource: any;
+  displayedColumns : string[] = ['name','scheduledDate','scheduledTime','actions']
   constructor(public dialogRef: MatDialogRef<ScheduleCampComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _main:MainService,
@@ -45,9 +48,7 @@ export class ScheduleCampComponent implements OnInit {
       if(data){
         
         this.campaigns=data;
-        for(let ele of this.campaigns)
-        {
-        }
+        this.dataSource = new MatTableDataSource(data)
       }
     },err=>{
       this.toastr.error("Error in loading data");

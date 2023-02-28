@@ -111,11 +111,15 @@ text-decoration: none;
   color: #ffffff;
   text-align: center;
 }
-.btns{
+.btn{
   background-color: #D125FF;
   color: white;
-  border: none;
+  border:  none;
   border-radius: 20px;
   width:40vw;
 
+}
+.btn:focus{
+  box-shadow:none;
+  border: none;
 }
