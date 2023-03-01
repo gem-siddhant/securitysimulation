@@ -94,12 +94,13 @@ export class OnboardComponent implements OnInit {
       'otp':this.onboardform.value.otp,
       'email': this.clientemail
     }
+    // this.router.navigate(['client-onboard/generate-password'])
     this.clientservice.validateclientotp(req).subscribe((data)=>
     {
       if(data)
       {
         console.log(data.message)
-        // this.router.navigate(['client-onboard/generate-password'])
+        this.router.navigate(['client-onboard/generate-password'])
       if(data.message=='Invalid OTP'){
         this.toastr.error("Incorrect OTP",undefined,
       {

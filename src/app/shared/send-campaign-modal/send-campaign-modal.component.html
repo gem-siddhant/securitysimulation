@@ -87,12 +87,12 @@
       <mat-error class="mt-2" *ngIf="this.submitted && (!this.changeTriggered || (this.changeTriggered && this.csvError !==''))">{{this.csvError}}</mat-error>
     </div>
     <div class="row">
-      <div class="col-lg-5 col-md-5 col-sm-12 col-12 pl-1 mb-2">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-12 pl-1 mb-2">
         <button class="cancel-btn w-100" (click)="close()">
           Cancel
         </button>
       </div>
-      <div class="col-lg-5 col-md-5 col-sm-12 col-12 pl-1">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-12 pl-1">
         <button
           type="submit"
           class="send-btn w-100"

@@ -24,9 +24,9 @@ export class OfficialDetailsComponent implements OnInit {
       email:[{value:'',disabled: true}],
       fname:['', Validators.required],
       lname:['', Validators.required],
-      designation:['', Validators.required],
-      managerid:['', Validators.required],
-      dept:['', Validators.required],
+      // designation:['', Validators.required],
+      // managerid:['', Validators.required],
+      // dept:['', Validators.required],
   });
   }
   routeto(){
@@ -34,11 +34,11 @@ export class OfficialDetailsComponent implements OnInit {
       'username':this.clientemail,
       'firstname':this.onboardform.value.fname,
       'lastname':this.onboardform.value.lname,
-      'designation':this.onboardform.value.designation,
-      'managerId':this.onboardform.value.managerid,
-      'department':this.onboardform.value.dept,
+      // 'designation':this.onboardform.value.designation,
+      // 'managerId':this.onboardform.value.managerid,
+      // 'department':this.onboardform.value.dept,
     }
     this.shared.setoffdetails(req)
-    this.router.navigate(['client-onboard/client-details'])
+    this.router.navigate(['client-onboard/plan-details'])
   }
 }
