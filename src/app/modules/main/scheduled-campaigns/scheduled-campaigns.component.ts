@@ -28,7 +28,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 
 export class ScheduledCampaignsComponent implements OnInit {
-  displayedColumns: string[] = ['campaignName', 'date', 'time', 'timeZone', 'actions'];
+  displayedColumns: string[] = ['campaignName', 'time', 'actions'];
   dataSource = new MatTableDataSource([]);
   campaigns: any =[]
   StoreData: boolean = false;

@@ -45,3 +45,10 @@ body{
     /*change color of label*/
     color: white!important;
    }
+mat-icon{
+  background-color: white;
+  color:black;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+}

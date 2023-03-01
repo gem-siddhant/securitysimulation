@@ -62,7 +62,11 @@
         <!-- upload message  -->
         <div class="col-lg-12">
           <p class="text-white">Please Upload an Excel file of employees
-           <span><mat-icon class="text-white align-center">info</mat-icon></span> 
+           <span>    
+          <button mat-icon-button class="mat-button-icon-lg" aria-label="Info" (click)="downloadexcel()">
+            <mat-icon matTooltip="Sample csv" position="above">i</mat-icon>
+          </button>
+        </span> 
           </p>     
         </div>
         <!-- upload employee csv  -->

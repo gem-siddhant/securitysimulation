@@ -21,7 +21,8 @@ export class ClientInviteComponent implements OnInit {
   value = 50;
   api_hit=false;
   mode: ProgressSpinnerMode = 'indeterminate';
-
+  errormsg : boolean = false;
+  currentdate = new Date()
   constructor(public dialogRef: MatDialogRef<ClientInviteComponent>,
     private formBuilder: FormBuilder, 
     private router:Router,
@@ -51,13 +52,31 @@ export class ClientInviteComponent implements OnInit {
   {
     this.dialogRef.close();
   }
+
+  errorCheck()
+  {
+    if(this.inviteform.value.clientmail== ""||
+      this.inviteform.value.plan=="" ||
+      this.inviteform.value.pocmail == "" ||
+      this.inviteform.value.currency == "" ||
+      this.inviteform.value.cost == "" ||
+      this.inviteform.value.admincount == "" || 
+      this.inviteform.value.usercount == "" ||
+      this.inviteform.value.address == "" ||
+      this.inviteform.value.officialemail == "" ||
+      this.inviteform.value.contact == "" 
+      )
+      {
+        this.errormsg = true
+        return
+      }
+  }
   sendinvite()
   {
+    this.errorCheck()
     const startDate = moment(this.inviteform.value.startdate).format("MM-DD-YYYY");
     const endDate = moment(this.inviteform.value.enddate).format("MM-DD-YYYY");
-    this.close()
-    this.toastr.success("Invite sent")
-    this.StoreData=true;
+    
     let req = {
     'representativeEmail': this.inviteform.value.pocmail,
     "planName": this.inviteform.value.plan,
@@ -73,6 +92,8 @@ export class ClientInviteComponent implements OnInit {
     "endDate": endDate,
     "invitedBy":localStorage.getItem('email')
     }
+    if(!this.errormsg)
+    {
     this._inviteclient.inviteclient(req).subscribe((data)=>
     {
       if(data)
@@ -81,12 +102,14 @@ export class ClientInviteComponent implements OnInit {
       }
     },(err)=>{
       this.StoreData=true;
-       if(err.status==200){
-         this.toastr.success("Invite sent")
+       if(err.status!=200){
+        this.toastr.error("Error in adding campaign.");
       }
       else{
-        this.toastr.error("Error in adding campaign.");
+        this.toastr.success("Invite sent");
+        this.close()
       }
     })
   }
+}
 }

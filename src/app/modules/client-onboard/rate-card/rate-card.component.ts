@@ -157,4 +157,7 @@ export class RateCardComponent implements OnInit {
       }
     })
   }
+  downloadexcel(): void {
+    window.open('../../../assets/pdf/sample-employee-csv.xlsx');
+  }
 }

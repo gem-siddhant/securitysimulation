@@ -106,6 +106,13 @@ th.mat-header-cell {
     background-color: #F8F8F8;
     font-weight: bolder;
 }
-.start-corner {
-    margin-left: 5vw;
+  .btnrecent {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 27px;
+    text-transform: capitalize;
+    color: #545454;
+    border: none;
   }
