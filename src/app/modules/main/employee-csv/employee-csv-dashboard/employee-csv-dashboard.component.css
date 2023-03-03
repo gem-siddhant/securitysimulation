@@ -6,6 +6,21 @@
   color: #545454;
 }
 .upload-csv-btn {
-  height: 55px;
+  height: 40px;
   background: #38a3a5;
+}
+.input-text{
+  height: 40px;
+  border: 1px solid #38a3a5;
+  font-size: 14px;
+  font-family: poppins;
+}
+.input-text:focus {
+  outline: none;
+}
+select{
+  color: #38a3a5;
+}
+select>option{
+  color: black;
 }

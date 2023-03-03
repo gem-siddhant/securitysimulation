@@ -1,13 +1,14 @@
 <div class="m-0 p-0 col-md-12 note-txt">
-    Note :- Please provide only geminisolutions.com id's in your excel 
-    
-    <mat-icon class="vertical-align"
+  Note :- Please provide only geminisolutions.com id's in your excel
+
+  <mat-icon
+    class="vertical-align"
     [mat-dialog-close]="true"
     (click)="downloadXlsx()"
     matTooltip="Sample csv"
     >info</mat-icon
   >
-  </div>
+</div>
 <div class="upload-txt">Upload excel file with custom email</div>
 <div class="mb-3">
   <input
@@ -17,13 +18,29 @@
     class="form-control"
     (change)="onChange($event)"
   />
-  <mat-error class="mt-2" *ngIf="this.submitted && (!this.changeTriggered || (this.changeTriggered && this.csvError !==''))">{{this.csvError}}</mat-error>
+  <mat-error
+    class="mt-2"
+    *ngIf="
+      this.submitted &&
+      (!this.changeTriggered || (this.changeTriggered && this.csvError !== ''))
+    "
+    >{{ this.csvError }}</mat-error
+  >
 </div>
+<mat-selection-list
+class="mb-3"
+  (selectionChange)="selectionChange($event)"
+>
+  <mat-list-option value="onboard" checkboxPosition="before">
+    Onboard Employees
+  </mat-list-option>
+  <mat-list-option value="refresh" checkboxPosition="before">
+    Refresh Employees
+  </mat-list-option>
+</mat-selection-list>
 <div class="row">
   <div class="col-lg-6 col-md-6 col-sm-12 col-12 pl-1 mb-2">
-    <button class="cancel-btn w-100" (click)="close()">
-      Cancel
-    </button>
+    <button class="cancel-btn w-100" (click)="close()">Cancel</button>
   </div>
   <div class="col-lg-6 col-md-6 col-sm-12 col-12 pl-1">
     <button

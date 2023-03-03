@@ -1,4 +1,4 @@
-<div class="overflow-auto bg-white pb-2 mb-4 common-container">
+<div class="overflow-auto bg-white mb-2 common-container">
   <table
     mat-table
     [dataSource]="courseSimulationTable"
@@ -136,8 +136,8 @@
     </div>
   </div>
   <mat-paginator
-    class="mt-4 mb-4 rounded"
-    [pageSizeOptions]="[5,10]"
+    class="mt-1 mb-4 rounded"
+    [pageSizeOptions]="[5]"
     [pageIndex]="tablePageIndex"
     (page)="pageEvent = getData($event)"
     [length]="tableLength"

@@ -2,24 +2,24 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { EmployeeCsv } from '../employee-client.model';
-import { EmployeeCsvService } from '../services/employee-csv.service';
 
 @Component({
   selector: 'app-employee-csv-table',
   templateUrl: './employee-csv-table.component.html',
-  styleUrls: ['./employee-csv-table.component.css']
+  styleUrls: ['./employee-csv-table.component.css'],
 })
 export class EmployeeCsvTableComponent implements OnInit {
-
   employeeCsvTable: MatTableDataSource<EmployeeCsv>;
   displayColumns: string[];
-  @Input() searchText : string;
-  @Input() filterType : string;
-  @Input() tableData : EmployeeCsv[];
+  @Input() searchText: string;
+  @Input() filterType: string;
+  @Input() tableData: EmployeeCsv[];
 
-  constructor(private router: Router, private employeeCsvService : EmployeeCsvService) {
+  constructor(
+    private router: Router,
+  ) {
     this.displayColumns = [
-      "name",
+      'name',
       'email',
       'employeeId',
       'manager',
@@ -27,15 +27,30 @@ export class EmployeeCsvTableComponent implements OnInit {
       'action',
     ];
     this.employeeCsvTable = new MatTableDataSource<EmployeeCsv>();
-   }
+  }
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+  ngOnChanges() {
+    this.employeeCsvTable = new MatTableDataSource<EmployeeCsv>(this.filteredTable());
   }
-  ngOnChanges(){
-    console.log(this.searchText, this.filterType, this.tableData);
-    this.employeeCsvTable = new MatTableDataSource<EmployeeCsv>(this.tableData);
+  navigateToClientDetails(userId: number) {
+    this.router.navigate(['/main/employee-csv/client-details', userId]);
   }
-  navigateToClientDetails(userId : number){
-    this.router.navigate(['/main/employee-csv/client-details',userId]);
+  filteredTable() : EmployeeCsv[] {
+    let csvTableData = this.tableData.filter((data) => {
+      if (this.filterType === 'empName') {
+        return data.name.indexOf(this.searchText) > -1;
+      } else if (this.filterType === 'empId') {
+        return data.employeeId.indexOf(this.searchText) > -1;
+      } else if (this.filterType === 'emailId') {
+        return data.email.indexOf(this.searchText) > -1;
+      }
+      return (
+        data.name.indexOf(this.searchText) > -1 ||
+        data.employeeId.indexOf(this.searchText) > -1 ||
+        data.email.indexOf(this.searchText) > -1
+      );
+    });
+    return csvTableData;
   }
 }

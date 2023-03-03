@@ -7,8 +7,8 @@ import { Subject, BehaviorSubject, Observable } from "rxjs";
 export class ResponsiveService {
 
     public isMobile = new Subject();
-    public screenStatus = new Subject<String>();
-    public screenWidth: String;
+    public screenStatus = new Subject<string>();
+    public screenWidth: string;
 
 
     constructor() {
@@ -19,10 +19,10 @@ export class ResponsiveService {
     onMobileChange(status: boolean) {
         this.isMobile.next(status);
     }
-    screenStatusChange(status : String){
+    screenStatusChange(status : string){
         this.screenStatus.next(status);
     }
-    getScreenStatus() : Observable<String> {
+    getScreenStatus() : Observable<string> {
         return this.screenStatus.asObservable();
     }
 

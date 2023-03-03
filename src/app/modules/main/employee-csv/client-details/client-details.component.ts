@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs';
 import { CommonService } from 'src/app/services/common.service';
+import { ResponsiveService } from 'src/app/services/responsive.service';
 import { ClientDetails, CourseDetails, SimulationDetails } from '../employee-client.model';
 import { EmployeeCsvService } from '../services/employee-csv.service';
 
@@ -16,14 +17,17 @@ export class ClientDetailsComponent implements OnInit {
   searchForm: FormGroup;
   userId : number;
   clientDetails : ClientDetails;
+  screenSize : string;
   constructor(private commonService : CommonService,
     private formBuilder : FormBuilder,
     private router: ActivatedRoute,
     private employeeCsvService : EmployeeCsvService,
+    private responsiveService : ResponsiveService,
     private toastr : ToastrService) { 
     this.searchForm = this.formBuilder.group({});
     this.userId = 0;
     this.clientDetails = {} as ClientDetails;
+    this.screenSize = '';
   }
 
   ngOnInit(): void {
@@ -37,6 +41,8 @@ export class ClientDetailsComponent implements OnInit {
       searchText : [''],
       filterType : ['']
     });
+    this.checkScreenStatus();
+    this.onResize();
   }
 
   applyFilter(){
@@ -53,4 +59,27 @@ export class ClientDetailsComponent implements OnInit {
     })
   }
 
+  checkScreenStatus() : void {
+    this.responsiveService.getScreenStatus().subscribe((screenSize : string) => {
+      if (screenSize) {
+        this.screenSize=screenSize;
+      }
+    });
+  }
+
+  isScreenSizeXs() : boolean{
+    return this.screenSize === 'xs';
+  }
+
+  isScreenSizeSmall() : boolean{
+    return this.screenSize === 'sm';
+  }
+
+  isScreenSizeMedium() : boolean{
+    return this.screenSize === 'md';
+  }
+
+  onResize() : void{
+    this.responsiveService.checkWidth();
+  }
 }

@@ -1,7 +1,7 @@
 <div class="container mt-4 font-style">
   <div class="common-container">
     <div class="client-title text-white top-rounded-border p-3">
-      Client - Tata Consultancy Services
+      Employee Details
     </div>
     <div class="bg-white bottom-border-rounded row pt-4 pb-4 m-0">
       <div class="col-lg-3 d-flex justify-content-center">
@@ -14,73 +14,63 @@
         <div class="row h-100 w-100 m-0">
           <div class="col-lg-6">
             <div>
-            <div class="p-2">
-              <span class="client-detail-key">Official Email Id :&nbsp;</span
-              ><span class="client-detail-value">{{clientDetails.officialMailId}}</span>
+              <div class="p-2">
+                <span class="client-detail-key">Official Email Id :&nbsp;</span>
+                <span class="client-detail-value">{{clientDetails.officialMailId}}</span>
+              </div>
+              <div class="p-2">
+                <span class="client-detail-key">Employee Id :&nbsp;</span>
+                <span class="client-detail-value">{{clientDetails.employeeId}}</span>
+              </div>
+              <div class="p-2">
+                <span class="client-detail-key">Designation :&nbsp;</span>
+                <span class="client-detail-value">{{clientDetails.designation}}</span>
+              </div>
+              <button *ngIf="!isScreenSizeMedium() && !isScreenSizeSmall() && !isScreenSizeXs()" class="m-2 p-2 remove-btn rounded">Remove Employee</button>
             </div>
-            <div class="p-2">
-              <span class="client-detail-key">Employee Id :&nbsp;</span
-              ><span class="client-detail-value">{{clientDetails.employeeId}}</span>
-            </div>
-            <div class="p-2">
-              <span class="client-detail-key">Designation :&nbsp;</span
-              ><span class="client-detail-value">{{clientDetails.designation}}</span>
-            </div>
-            <div class="p-2">
-              <span class="client-detail-key">Simulation Score :&nbsp;</span>
-              <span class="client-detail-value">560</span>
-            </div>
-        </div>
           </div>
           <div class="col-lg-6">
             <div>
-            <div class="p-2">
-              <span class="client-detail-key">Reporting Manager Id :&nbsp;</span>
-              <span class="client-detail-value">{{clientDetails.manager}}</span>
+              <div class="p-2">
+                <span class="client-detail-key">Reporting Manager Id :&nbsp;</span>
+                <span class="client-detail-value">{{clientDetails.manager}}</span>
+              </div>
+              <div class="p-2">
+                <span class="client-detail-key">Contact Number :&nbsp;</span>
+                <span class="client-detail-value">{{clientDetails.contact}}</span>
+              </div>
+              <div class="p-2">
+                <span class="client-detail-key">Simulation Score :&nbsp;</span>
+                <span class="client-detail-value">560</span>
+              </div>
+              <button *ngIf="isScreenSizeMedium() || isScreenSizeSmall() || isScreenSizeXs()" class="m-2 p-2 remove-btn rounded">Remove Employee</button>
             </div>
-            <div class="p-2">
-              <span class="client-detail-key">Contact Number :&nbsp;</span>
-              <span class="client-detail-value">{{clientDetails.contact}}</span>
-            </div>
-        </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!-- <form [formGroup]="searchForm">
-    <div class="row">
+  <div class="position-relative mt-4">
+  <form [formGroup]="searchForm" class="position-absolute serach-form w-50" *ngIf="!isScreenSizeMedium() && !isScreenSizeSmall() && !isScreenSizeXs()">
+    <div class="row w-100">
       <div class="col-lg-8">
-        <mat-form-field class="w-100" appearance="outline">
-          <mat-label class="label-text">Search by course name</mat-label>
-          <input
-            class="input-text"
-            type="text"
-            formControlName="searchText"
-            maxlength="25"
-            matInput
-          />
-        </mat-form-field>
+        <input
+              class="input-text w-100 rounded p-3"
+              type="text"
+              formControlName="searchText"
+              maxlength="25"
+              placeholder="Search by course name"
+            />
       </div>
       <div class="col-lg-4 col-md-4 col-sm-5 col-6">
-        <mat-form-field class="w-100" appearance="outline">
-          <mat-label class="label-text">Filter</mat-label>
-          <mat-select
-            formControlName="filterType"
-            placeholder="Select"
-            (selectionChange)="applyFilter()"
-            disableOptionCentering
-          >
-            <mat-option class="input-text" value="name">Course Name</mat-option>
-            <mat-option class="input-text" value="department"
-              >Course Score</mat-option
-            >
-            <mat-option class="input-text" value="manager">Status</mat-option>
-          </mat-select>
-        </mat-form-field>
+        <select name="languages" id="lang" class="w-100 input-text rounded p-2" formControlName="filterType">
+          <option value="" hidden>Filter By</option>
+          <option class="p-2" value="name">Name</option>
+          <option class="p-2" value="status">Status</option>
+        </select>
       </div>
     </div>
-  </form> -->
+  </form>
   <mat-tab-group mat-align-tabs="start">
     <mat-tab label="course">
       <ng-template mat-tab-label>Courses List</ng-template>
@@ -104,4 +94,5 @@
         ></app-client-simulation-table> </ng-template
     ></mat-tab>
   </mat-tab-group>
+</div>
 </div>

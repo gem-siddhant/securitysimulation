@@ -14,13 +14,15 @@ export class CsvUploadModalComponent implements OnInit {
   changeTriggered: boolean;
   submitted: boolean;
   excelData : EmployeeExcelData[];
-  emailcheck : boolean = false
+  emailcheck : boolean = false;
+  matOptionSet : Map<string,boolean>;
   constructor(private dialogRef: MatDialogRef<CsvUploadModalComponent>,
     private toastr:ToastrService,) {
     this.csvError = '';
     this.changeTriggered = false;
     this.submitted = false;
     this.excelData = [] as EmployeeExcelData[];
+    this.matOptionSet = new Map<string,boolean>();
   }
 
   ngOnInit(): void {}
@@ -61,7 +63,12 @@ export class CsvUploadModalComponent implements OnInit {
   updateCsv(): void {
     this.submitted = true;
     if (this.changeTriggered && this.csvError === '') {
-      this.dialogRef.close({ sendClicked: true, employeeCsvData: this.excelData });
+      this.dialogRef.close({ 
+        sendClicked: true, 
+        employeeCsvData: this.excelData, 
+        onBoardEmployees : this.matOptionSet.get('onboard') === undefined ? false : this.matOptionSet.get('onboard'), 
+        refreshEmployees :  this.matOptionSet.get('refresh') === undefined ? false : this.matOptionSet.get('refresh') 
+      });
     }
   }
   close(): void {
@@ -69,5 +76,10 @@ export class CsvUploadModalComponent implements OnInit {
   }
   downloadXlsx(): void {
     window.open('../../../assets/pdf/sample-employee-csv.xlsx');
+  }
+
+  selectionChange(event : any) : void{
+    let selectedBoolean = this.matOptionSet.get(event.options[0]._value);
+    this.matOptionSet.set(event.options[0]._value,!selectedBoolean);
   }
 }

@@ -117,9 +117,24 @@ export class CustomFormComponent implements OnInit {
       else
         this.changeTrigger = false;
       reader.readAsDataURL(this.imageFile);
-      reader.onload = () => {
+      reader.onload = (e: any) => {
+        const image = new Image();
+        image.src = e.target.result;
+        image.onload = (rs : any) => {
+          const img_height = rs.currentTarget['height'];
+          const img_width = rs.currentTarget['width'];
+          console.log(img_height, img_width);
+          if(img_height> 300){
+
+          }
+          if(img_width >300){
+            
+          }
+        };
+        
         this.uploadedImage = this.sanitizer.bypassSecurityTrustUrl(String(reader.result));
-        this.imgSource = reader.result;
+        this.imgSource = e.target.result;
+        console.log(this.imgSource);
       };
     }
   }

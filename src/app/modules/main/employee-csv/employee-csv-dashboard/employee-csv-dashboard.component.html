@@ -1,42 +1,28 @@
 <div class="container mt-4">
   <div class="row font-style mb-3">
-    <div class="col-xl-2 align-self-center employee-text">
+    <div class="col-xl-2 col-lg-3 align-self-center employee-text mb-2">
       Employees({{employeeCsvTable.length}})
     </div>
-    <form class="col-xl-10" [formGroup]="searchForm">
+    <form (keydown.enter)="$event.preventDefault()" class="col-xl-10 col-lg-9" [formGroup]="searchForm">
       <div class="row">
-        <div class="col-lg-6">
-          <mat-form-field class="w-100" appearance="outline">
-            <mat-label class="label-text">Search by employee name, emp. id, email id</mat-label>
-            <input
-              class="input-text"
-              type="text"
-              formControlName="searchText"
-              maxlength="25"
-              matInput
-            />
-          </mat-form-field>
+        <div class="col-lg-6 mb-2">
+          <input
+            class="input-text w-100 rounded p-3"
+            type="text"
+            formControlName="searchText"
+            maxlength="25"
+            placeholder="Search by employee name, emp. id, email id"
+          />
         </div>
-        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5 col-6">
-          <mat-form-field class="w-100" appearance="outline">
-            <mat-label class="label-text">Filter</mat-label>
-            <mat-select
-              formControlName="filterType"
-              placeholder="Select"
-              (selectionChange)="applyFilter()"
-              disableOptionCentering
-            >
-              <mat-option class="input-text" value="name">Name</mat-option>
-              <mat-option class="input-text" value="department"
-                >Department</mat-option
-              >
-              <mat-option class="input-text" value="manager"
-                >Manager</mat-option
-              >
-            </mat-select>
-          </mat-form-field>
+        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5 col-6 mb-2">
+          <select name="languages" id="lang" class="w-100 input-text rounded p-2" formControlName="filterType">
+            <option value="" hidden>Filter By</option>
+            <option class="p-2" value="empName">Name</option>
+            <option class="p-2" value="emailId">Email Id</option>
+            <option class="p-2" value="empId">Employee Id</option>
+          </select>
         </div>
-        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5 col-6 d-flex align-items-center">
+        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-5 col-6 d-flex align-items-center mb-2">
           <button (click)="openUploadCsvModal()" class="w-100 text-white border-0 rounded upload-csv-btn">
             Update Emp Excel
           </button>

@@ -40,4 +40,6 @@ export interface EmployeeExcelData {
 export interface UpdateEmployeeCsv{
   email : string;
   employeeDetails : EmployeeExcelData[];
+  onboardEmployee : boolean;
+  refresh : boolean;
 }

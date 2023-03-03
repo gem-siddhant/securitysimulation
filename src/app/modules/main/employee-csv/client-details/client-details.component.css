@@ -27,3 +27,28 @@
   font-size: 14px;
   line-height: 21px;
 }
+.serach-form{
+  z-index: 2;
+  right: 0;
+  top: 5px;
+}
+.input-text{
+  height: 40px;
+  border: 1px solid #38a3a5;
+  font-size: 14px;
+  font-family: poppins;
+}
+.input-text:focus {
+  outline: none;
+}
+select{
+  color: #38a3a5;
+}
+select>option{
+  color: black;
+}
+.remove-btn{
+  background: white;
+  color: #38A3A5;
+  border: 1px solid #38A3A5;
+}

@@ -84,7 +84,7 @@ export class EmployeeCsvDashboardComponent implements OnInit {
       .subscribe({
         next: (data) => {
           if (data.sendClicked) {
-            this.updateEmployeeCsv(data.employeeCsvData);
+            this.updateEmployeeCsv(data.employeeCsvData, data.onBoardEmployees, data.refreshEmployees);
           }
         },
         error: (error) => {
@@ -93,10 +93,12 @@ export class EmployeeCsvDashboardComponent implements OnInit {
       });
   }
 
-  updateEmployeeCsv(employeeDetails: EmployeeExcelData[]): void {
+  updateEmployeeCsv(employeeDetails: EmployeeExcelData[], onBoardEmployees : boolean, refreshEmployees : boolean): void {
     let csvData: UpdateEmployeeCsv = {} as UpdateEmployeeCsv;
     csvData.email = this.emailId;
     csvData.employeeDetails = employeeDetails;
+    csvData.onboardEmployee = onBoardEmployees;
+    csvData.refresh = refreshEmployees;
     this.employeeCsvService.updateEmployeesCsv(csvData).pipe(take(1)).subscribe({
       next: (data) => {
         this.opneConfirmationModal();

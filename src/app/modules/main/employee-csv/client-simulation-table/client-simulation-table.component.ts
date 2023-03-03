@@ -14,7 +14,7 @@ export class ClientSimulationTableComponent implements OnInit {
   courseSimulationTable: MatTableDataSource<CourseDetails | SimulationDetails>;
   @Input() searchText : string;
   @Input() filterType : string;
-  @Input() tableData : CourseDetails[] | SimulationDetails[];
+  @Input() tableData : (CourseDetails | SimulationDetails)[];
   @Input() isCourseTabOpened : boolean
   pageEvent: PageEvent;
   tablePageIndex : number;
@@ -38,13 +38,11 @@ export class ClientSimulationTableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.tableLength = this.tableData.length;
-    this.getData();
   }
 
   ngOnChanges(){
-    console.log(this.searchText, this.filterType);
-    this.courseSimulationTable = new MatTableDataSource<CourseDetails | SimulationDetails>(this.tableData);
+    this.tableLength = this.tableData ? this.filteredTable().length : 0
+    this.getData();
   }
 
   ngAfterViewChecked(): void {
@@ -65,7 +63,7 @@ export class ClientSimulationTableComponent implements OnInit {
     let endIndex = (this.tablePageIndex + 1) * this.noOfRows;
     let paginatedTable = new Array<CourseDetails | SimulationDetails>();
     for(let i=startIndex; i< this.tableLength && i<endIndex;i++){
-      paginatedTable.push(this.tableData[i]);
+      paginatedTable.push(this.filteredTable()[i]);
     }
     this.courseSimulationTable = new MatTableDataSource<CourseDetails | SimulationDetails>(paginatedTable);
 
@@ -83,4 +81,19 @@ export class ClientSimulationTableComponent implements OnInit {
     return new PageEvent();
   }
 
+  filteredTable() : (CourseDetails | SimulationDetails)[] {
+    let csvTableData = this.tableData.filter((data) => {
+      if (this.filterType === 'name') {
+        return data.name.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1;
+      } else if (this.filterType === 'status') {
+        return data.status.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1;
+      }
+      return (
+        data.name.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1 ||
+        data.status.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1
+      );
+    });
+    return csvTableData;
+  }
+  
 }
