@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { superadminapis } from 'src/app/shared/APIEndpoints/superadmindashboardapi';
+import { superadminapis, superadminclientdetails } from 'src/app/shared/APIEndpoints/superadmindashboardapi';
 
 @Injectable({
   providedIn: 'root'
@@ -28,5 +28,9 @@ export class SuperAdminDashboardService {
   totalClientCount()
   {
     return this.http.get<any>(superadminapis.clientCount)
+  }
+  getDetailedClientData(clientId:any)
+  {
+    return this.http.get<any>(superadminclientdetails.detailallclient+clientId);
   }
 }

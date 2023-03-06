@@ -6,3 +6,9 @@ export const superadminapis = {
     acceptedCount : 'accepted/count',
     detailedClient : 'get/client/'
 }
+
+// detailed client apis
+
+export const superadminclientdetails = {
+    detailallclient : 'get/client/',
+}
