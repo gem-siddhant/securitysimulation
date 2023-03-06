@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CommonService } from 'src/app/services/common.service';
 import { ClientOnboardService } from '../Services/client-onboard.service';
 import { OnboardapiserviceService } from '../Services/onboardapiservice.service';
 
@@ -26,7 +27,8 @@ export class OnboardComponent implements OnInit {
     private router:Router,
     private route:ActivatedRoute,
     private shared: ClientOnboardService,
-    private clientservice: OnboardapiserviceService
+    private clientservice: OnboardapiserviceService,
+    private commonService : CommonService 
     ) { 
     this.onboardform = this.formBuilder.group({});
   }
@@ -34,11 +36,11 @@ export class OnboardComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParams.subscribe(
       params => {
-        this.checkemailexp = params["LinkExpiraition"]
-        this.clientname = params["ClientName"]
-        this.planid = params["PlanId"]
-        this.clientemail = params["Email"]
-        this.clientid = params["ClientID"]
+        this.checkemailexp = this.commonService.decrypt(params["v5"]); //params["LinkExpiraition"]
+        this.clientname = this.commonService.decrypt(params["v1"]); //params["ClientName"]
+        this.planid = this.commonService.decrypt(params["v2"]); //params["PlanId"]
+        this.clientemail = this.commonService.decrypt(params["v3"]); //params["Email"]
+        this.clientid = this.commonService.decrypt(params["v4"]); //params["ClientID"]
       }
     )
     // this.clientemail = "ayush.tiwary@geminisolutions.com"
