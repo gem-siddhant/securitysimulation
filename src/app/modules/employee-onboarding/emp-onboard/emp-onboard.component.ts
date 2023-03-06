@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { CommonService } from 'src/app/services/common.service';
 import { ClientOnboardService } from '../../client-onboard/Services/client-onboard.service';
 import { EmpServiceService } from '../Services/emp-service.service';
 import { EmponboardapiService } from '../Services/emponboardapi.service';
@@ -23,16 +24,17 @@ export class EmpOnboardComponent implements OnInit {
     private router:Router,
     private route:ActivatedRoute,
     private shared: EmpServiceService,
-    private _emponbaord: EmponboardapiService) { 
+    private _emponbaord: EmponboardapiService,
+    private commonService : CommonService) { 
     this.onboardform = this.formBuilder.group({});
   }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(
       params => {
-        this.checkemailexp = params["LinkExpiraition"]
-        this.useremail = params["email"]
-        this.userid = params["userId"]
+        this.checkemailexp = this.commonService.decrypt(params["v3"]);
+        this.useremail = this.commonService.decrypt(params["v2"]);
+        this.userid = this.commonService.decrypt(params["v1"]);
       }
     )
     let param = {
