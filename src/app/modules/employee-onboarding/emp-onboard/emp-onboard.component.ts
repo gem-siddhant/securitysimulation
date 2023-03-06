@@ -46,7 +46,7 @@ export class EmpOnboardComponent implements OnInit {
     }
     this._emponbaord.checkexpiration(reqbody).subscribe((data:any)=>
     {
-      if(data)
+      if(data || !data)
       {
         if(data==false)
         {
