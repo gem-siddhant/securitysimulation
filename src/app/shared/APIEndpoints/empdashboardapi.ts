@@ -4,3 +4,8 @@ export const empdashboardapis = {
     totalcampaigns : "employee/totalCampaigns",
     tabledetails : "employee/dashboaard"
 }
+
+//analytics apis
+export const analyticsapis = {
+    totaloffenders : "get/repeated/offenders"
+}

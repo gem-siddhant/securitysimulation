@@ -107,3 +107,15 @@ th.mat-header-cell {
     border-top-right-radius: 12px;
     overflow:hidden !important;
 }
+.detailbtn
+{
+    background-color: #e2f4f4;;
+    border: none;
+    box-shadow: none;
+}
+.card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  

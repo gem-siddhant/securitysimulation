@@ -13,6 +13,7 @@ import { ClientInviteComponent } from './dashboard/dashboard-super-admin/Client-
 import { DashboardEmpComponent } from './dashboard/dashboard-emp/dashboard-emp.component';
 import { DashboardSuperAdminComponent } from './dashboard/dashboard-super-admin/dashboad-landing/dashboard-super-admin.component';
 import { MatIconModule } from '@angular/material/icon';
+import { ClientdetailsComponent } from './dashboard/dashboard-super-admin/Client-view/clientdetails/clientdetails.component';
 @NgModule({
   declarations: [
     AddCampaignComponent,
@@ -24,7 +25,6 @@ import { MatIconModule } from '@angular/material/icon';
     UserManualComponent,
     ClientInviteComponent,
     DashboardEmpComponent,
-    DashboardSuperAdminComponent
   ],
   imports: [
     SharedModule,
