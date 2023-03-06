@@ -98,3 +98,14 @@
     text-transform: capitalize;
     color: #FFFFFF;
 }
+.viewbtn{
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  text-transform: capitalize;
+  color: #545454;
+  border: none;
+  background-color: #F8F8F8;
+}

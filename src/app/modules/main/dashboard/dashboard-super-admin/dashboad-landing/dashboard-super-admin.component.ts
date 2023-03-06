@@ -3,6 +3,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CommonService } from 'src/app/services/common.service';
 import { SuperAdminDashboardService } from '../../dashboard-services/super-admin-dashboard.service';
@@ -31,6 +32,7 @@ export class DashboardSuperAdminComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   constructor(private commonService : CommonService,
     private _superadmindashboard : SuperAdminDashboardService,
+    private router:Router,
     private toastr:ToastrService
     ) { }
 
@@ -140,5 +142,9 @@ export class DashboardSuperAdminComponent implements OnInit {
         })
       }
     })
+  }
+  Routeview(element:any)
+  {
+    this.router.navigate(['main/Superadmin/Clientdetails',element]);
   }
 }

@@ -53,11 +53,6 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     component: UserManualComponent,
   },
-  // {
-  //   path: 'view/:id',
-  //   canActivate: [AuthGuard],
-  //   component: CampaignViewComponent,
-  // },
   {
     path: 'sign-up',
     component: SignUpComponent,
@@ -93,6 +88,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     loadChildren: () =>
       import('./dashboard/dashboard-admin/dashboard-admin.module').then((m) => m.DashboardAdminModule),
+  },
+  {
+    path: 'Superadmin',
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./dashboard/dashboard-super-admin/dashboard-superadmin.module').then((m) => m.DashboardSuperAdminModule),
   },
   {
     path: 'analytics',
