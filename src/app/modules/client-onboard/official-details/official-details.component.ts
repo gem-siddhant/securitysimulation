@@ -22,8 +22,8 @@ export class OfficialDetailsComponent implements OnInit {
     this.clientemail = this.shared.getemail().clientemail
     this.onboardform = this.formBuilder.group({
       email:[{value:'',disabled: true}],
-      fname:['', Validators.required],
-      lname:['', Validators.required],
+      fname:['', [Validators.required,Validators.pattern('^[a-zA-Z]*$')]],
+      lname:['', [Validators.required,Validators.pattern('^[a-zA-Z]*$')]],
       // designation:['', Validators.required],
       // managerid:['', Validators.required],
       // dept:['', Validators.required],

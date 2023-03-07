@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { EmponboardapiService } from '../../employee-onboarding/Services/emponboardapi.service';
 import { LoginService } from '../services/login.service';
 
 @Component({
@@ -19,6 +20,9 @@ export class ResetPasswordComponent implements OnInit {
     medium: false,
     strong: false
   };
+  emailexp : any;
+  email : any;
+  linkexpired: boolean = false;
   criteria = [
     { name: 'Minimum length of 8 characters', met: false },
     { name: 'At least one uppercase letter', met: false },
@@ -27,8 +31,10 @@ export class ResetPasswordComponent implements OnInit {
   ];
   constructor(private formBuilder: FormBuilder,
     private router:Router,
+    private route: ActivatedRoute,
     private toastr:ToastrService,
-    private _login:LoginService) { 
+    private _login:LoginService,
+    private _emponbaord: EmponboardapiService) { 
       this.resetForm = this.formBuilder.group({})
     }
 
@@ -38,6 +44,34 @@ export class ResetPasswordComponent implements OnInit {
       password:['',Validators.required],
       confirmpass:['',this.confirmPasswordValidator],
   },)
+  this.route.queryParams.subscribe(
+    params => {
+      this.emailexp = params["expirationTime"]
+      this.email = params["email"]
+    }
+  )
+  let reqbody = {
+    'expirationTime': this.emailexp
+  }
+  this._emponbaord.checkexpiration(reqbody).subscribe((data:any)=>
+  {
+    if(data || !data)
+    {
+      if(data==false)
+      {
+        this.linkexpired = true
+      }
+      if(this.linkexpired == true)
+      {
+        this.toastr.error("Onboard link has Expired",undefined,
+        {
+          positionClass: 'toast-top-center'
+        }
+        );
+        return;
+      }
+    }
+  })
   }
   updateCriteria(password: string): void {
     this.criteria[0].met = password.length >= 8;
@@ -73,4 +107,35 @@ export class ResetPasswordComponent implements OnInit {
     return null;
   }
 
+  resetpassword()
+  {
+    let req = {
+      'email' : this.email,
+      'password' : this.resetForm.value.password
+    }
+    this._login.resetPassword(req).subscribe((data)=>
+    {
+      if(data)
+      {
+
+      }
+    },(err)=>{
+      if(err.status!=200)
+      {
+        this.toastr.error("Something Went Wrong",undefined,
+        {
+          positionClass: 'toast-top-center'
+        }
+        );
+      }
+      else{
+        this.toastr.success("Your Password is updated",undefined,
+        {
+          positionClass: 'toast-top-center'
+        }
+        );
+        this.router.navigate(['main/login'])
+      }
+    })
+  }
 }

@@ -23,6 +23,7 @@ export class ClientInviteComponent implements OnInit {
   mode: ProgressSpinnerMode = 'indeterminate';
   errormsg : boolean = false;
   currentdate = new Date()
+  financialYearEnd = new Date(this.currentdate.getFullYear() + 1, 2, 31);
   constructor(public dialogRef: MatDialogRef<ClientInviteComponent>,
     private formBuilder: FormBuilder, 
     private router:Router,
