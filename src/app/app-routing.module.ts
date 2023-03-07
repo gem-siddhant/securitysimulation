@@ -34,6 +34,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./modules/employee-onboarding/emp-onboard.module').then((m) => m.EmpOnboardModule),
   },
+
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./modules/login/login.module').then((m) => m.LoginModule),
+  },
 ];
 
 @NgModule({
