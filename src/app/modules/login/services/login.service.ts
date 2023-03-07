@@ -14,4 +14,8 @@ export class LoginService {
   {
     return this.http.post<any>(loginapi.forgotpassword,obj)
   }
+  resetPassword(obj:any)
+  {
+    return this.http.post<any>(loginapi.resetpassword,obj)
+  }
 }
