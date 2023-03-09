@@ -63,7 +63,7 @@ export class ResetPasswordComponent implements OnInit {
       }
       if(this.linkexpired == true)
       {
-        this.toastr.error("Onboard link has Expired",undefined,
+        this.toastr.error("Reset password link has Expired",undefined,
         {
           positionClass: 'toast-top-center'
         }
