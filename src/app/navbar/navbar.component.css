@@ -1,23 +1,57 @@
-.topbar{
+.topbar {
   height: 48px;
-  position:sticky;
-
+  position: sticky;
 }
-.menubtn{
- float: left;
+.menubtn {
+  float: left;
 }
 @media screen and (min-width: 992px) {
   .menubtn {
     display: none;
   }
 }
-.demo{
+.demo {
   float: right;
   width: 10%;
 }
-.userInfo{
-  float:right;
+.userInfo {
+  float: right;
 }
-.profile{
+.profile {
   transform: scale(1.5);
+}
+.back-btn {
+  color: #38a3a5;
+  font-size: 30px;
+}
+.down-btn{
+  color: #38a3a5;
+  font-size: 35px;
+}
+.navbar {
+  height: 70px;
+  background: white;
+}
+.user-img {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+.screen-title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  color: #022b3d;
+  padding-left: 10px;
+}
+.user-detail {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  color: #303030;
+}
+.back-btn-margin{
+  margin-left: 7px;
+  margin-right: 7px;
 }

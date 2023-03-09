@@ -56,6 +56,8 @@ export class CampaignListComponent implements OnInit {
 
   ngOnInit(): void {
     this.commonService.setLoginStatus(true);
+    this.commonService.setNavTitle('Analytics');
+    this.commonService.setScreenRouting('');
     this.getAllCampaigns();
     this.viewmore();
     this.getRepeatativeoffender()

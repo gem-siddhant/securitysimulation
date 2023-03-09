@@ -79,6 +79,8 @@ id: string;
 @ViewChild(MatPaginator) paginator: MatPaginator;
   ngOnInit(): void {
     this.commonService.setLoginStatus(true);
+    this.commonService.setNavTitle('Detail View');
+    this.commonService.setScreenRouting('/main/Admin');
     this.pieChartOptions = this.createOptions();
     this.pieChartLabels = ['Clicked','Sent','NotDeliverd'];
     this.pieChartType = 'pie';

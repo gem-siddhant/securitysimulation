@@ -1,5 +1,5 @@
 <app-load-spinner></app-load-spinner>
-<app-navbar (sidenav)="toggle()"> </app-navbar>
+<!-- <app-navbar (sidenav)="toggle()"> </app-navbar> -->
 <mat-sidenav-container class="side-nav-height">
   <mat-sidenav
     [opened]="getSideNavOpened()"
@@ -11,6 +11,7 @@
     <app-side-bar></app-side-bar>
   </mat-sidenav>
   <mat-sidenav-content>
+    <app-navbar *ngIf="this.commonService.getLoginStatus()" (sidenav)="toggle()"> </app-navbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
