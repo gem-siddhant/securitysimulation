@@ -26,7 +26,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
 
   constructor(
     private responsiveService: ResponsiveService,
-    private commonService: CommonService,
+    public commonService: CommonService,
     private cd: ChangeDetectorRef
   ) {
     this.mobile = false;

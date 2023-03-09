@@ -39,6 +39,8 @@ export class ScheduledCampaignsComponent implements OnInit {
 
   ngOnInit(): void {
     this.commonService.setLoginStatus(true);
+    this.commonService.setNavTitle('Scheduled Campaign');
+    this.commonService.setScreenRouting('');
     this.scheduledCampaigns();
   }
 

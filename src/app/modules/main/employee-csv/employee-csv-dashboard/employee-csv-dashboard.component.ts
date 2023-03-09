@@ -32,6 +32,8 @@ export class EmployeeCsvDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.commonService.setLoginStatus(true);
+    this.commonService.setNavTitle('Employee Csv');
+    this.commonService.setScreenRouting('');
     this.emailId = localStorage.getItem('email');
     this.getAllEmployees();
     this.searchForm = this.formBuilder.group({
