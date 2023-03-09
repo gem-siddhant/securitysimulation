@@ -34,21 +34,21 @@ export class ClientInviteComponent implements OnInit {
 
   ngOnInit(): void {
     this.inviteform = this.formBuilder.group({
-      clientmail:['',Validators.required],
-      pocmail:['',Validators.required],
+      clientmail:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9]*$')]],
+      pocmail:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]],
       plan:['',Validators.required],
       currency:['',Validators.required],
-      cost:['',Validators.required],
+      cost:['',[Validators.required]],
       startdate:['',Validators.required],
       enddate:['',Validators.required],
-      admincount:['',Validators.required],
-      usercount:['',Validators.required],
-      contact:['',Validators.required],
+      admincount:['',[Validators.required]],
+      usercount:['',[Validators.required]],
+      contact:['',[Validators.required,Validators.pattern('^[0-9]*$')]],
       address:['',Validators.required],
-      officialemail:['',Validators.required]
+      officialemail:['',[Validators.required,Validators.pattern('^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$')]]
   });
   }
-
+  
   close()
   {
     this.dialogRef.close();
