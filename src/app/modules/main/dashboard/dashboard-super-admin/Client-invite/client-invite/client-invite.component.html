@@ -22,6 +22,9 @@
                     <mat-error class="mt-3" *ngIf="this.errormsg">Please provide organization name</mat-error>
                     <mat-hint class="mt-3" align="end" >{{input1.value?.length || 0}}/100</mat-hint>
                   </mat-form-field>
+                  <div *ngIf="this.inviteform.get('clientmail').invalid && (this.inviteform.get('clientmail').dirty || this.inviteform.get('clientmail').touched)">
+                    <div *ngIf="this.inviteform.get('clientmail').hasError('pattern')" class="text-black mt-1">No Special characters are allowed</div>
+                  </div>
                 </div>
 
               <!-- client official address  -->                          
@@ -42,6 +45,9 @@
                     <mat-error class="mt-3" *ngIf="this.errormsg">Please provide client mail</mat-error>
                     <mat-hint class="mt-3" align="end" >{{input3.value?.length || 0}}/100</mat-hint>
                   </mat-form-field>
+                  <div *ngIf="this.inviteform.get('officialemail').invalid && (this.inviteform.get('officialemail').dirty || this.inviteform.get('officialemail').touched)">
+                    <div *ngIf="this.inviteform.get('officialemail').hasError('pattern')" class="text-black mt-1">Please provide valid official email</div>
+                  </div>
                 </div>
 
               <!-- point of contact mail  -->
@@ -52,6 +58,9 @@
                     <mat-error class="mt-3" *ngIf="this.errormsg">Please provide client point of contact email</mat-error>
                     <mat-hint class="mt-3" align="end" >{{input4.value?.length || 0}}/100</mat-hint>
                   </mat-form-field>
+                  <div *ngIf="this.inviteform.get('pocmail').invalid && (this.inviteform.get('pocmail').dirty || this.inviteform.get('pocmail').touched)">
+                    <div *ngIf="this.inviteform.get('pocmail').hasError('pattern')" class="text-black mt-1">Please provide valid email id</div>
+                  </div>
                 </div>
 
               
@@ -119,6 +128,9 @@
                       <mat-error class="mt-3" *ngIf="this.errormsg">Please provide client contact number</mat-error>
                       <mat-hint class="mt-3" align="end" >{{input8.value?.length || 0}}/11</mat-hint>
                     </mat-form-field>
+                    <div *ngIf="this.inviteform.get('contact').invalid && (this.inviteform.get('contact').dirty || this.inviteform.get('contact').touched)">
+                      <div *ngIf="this.inviteform.get('contact').hasError('pattern')" class="text-black mt-1">Only numbers are allowed</div>
+                    </div>
                   </div>
                 
                 <!-- contract start date  -->
@@ -151,7 +163,7 @@
                 </div>
 
                   <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 mt-4">
-                    <button type="submit" mat-raised-button  class="col-lg-12  btn btn-primary w-100" id="add_btn" (click)="sendinvite()">Send Invite</button>
+                    <button type="submit" mat-raised-button  [disabled]="this.inviteform.invalid" class="col-lg-12  btn btn-primary w-100" id="add_btn" (click)="sendinvite()">Send Invite</button>
                 </div>
 
               </div>

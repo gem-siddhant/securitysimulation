@@ -51,7 +51,7 @@ export class ResetPasswordComponent implements OnInit {
     }
   )
   let reqbody = {
-    'expirationTime': this.emailexp
+    'expirationTime': (this.email).split('?')[1].split('=')[1]
   }
   this._emponbaord.checkexpiration(reqbody).subscribe((data:any)=>
   {
@@ -110,7 +110,7 @@ export class ResetPasswordComponent implements OnInit {
   resetpassword()
   {
     let req = {
-      'email' : this.email,
+      'email' : (this.email).split('?')[0],
       'password' : this.resetForm.value.password
     }
     this._login.resetPassword(req).subscribe((data)=>
