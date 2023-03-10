@@ -32,6 +32,8 @@ export class ClientDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.commonService.setLoginStatus(true);
+    this.commonService.setNavTitle('Employee');
+    this.commonService.setScreenRouting('main/employee-csv/dashboard');
     this.router.paramMap.pipe(take(1)).subscribe((params) =>{
       this.userId = Number(params?.get("id"));
     })

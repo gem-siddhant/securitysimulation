@@ -55,6 +55,8 @@ export class CustomFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.commonService.setLoginStatus(true);
+    this.commonService.setNavTitle('Campaign');
+    this.commonService.setScreenRouting('/main/campaign/templates');
     this.screenSize = 'lg';
     this.router.paramMap.pipe(take(1)).subscribe((params) =>{
       this.templateId = Number(params?.get("id"));
@@ -262,7 +264,7 @@ export class CustomFormComponent implements OnInit {
       },
       error : (error)=>{
         if(error.status !==200){
-          this.toastr.error('Error while sending campaign')
+          this.toastr.error(error)
         }
         else{
           this.opneConfirmationModal();
@@ -296,7 +298,7 @@ export class CustomFormComponent implements OnInit {
         }
       },
       error : (error)=>{
-        this.toastr.error('Error while sending campaign')
+        this.toastr.error(error)
       }
     })
   }
@@ -330,7 +332,7 @@ export class CustomFormComponent implements OnInit {
         this.route.navigate(['/main/Admin']);      
       },
       error: (error) => {
-        this.toastr.error('Error while closing modal');
+        this.toastr.error(error);
       },
     });
   } 

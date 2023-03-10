@@ -47,6 +47,8 @@ export class TemplateFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.commonService.setLoginStatus(true);
+    this.commonService.setNavTitle('Campaign');
+    this.commonService.setScreenRouting('/main/campaign/templates');
     this.router.paramMap.pipe(take(1)).subscribe((params) =>{
       this.templateId = Number(params?.get("id"));
     })
@@ -140,7 +142,7 @@ export class TemplateFormComponent implements OnInit {
         }
       },
       error : (error)=>{
-        this.toastr.error('Error while sending campaign')
+        this.toastr.error(error)
       }
     })
   }
@@ -241,7 +243,7 @@ export class TemplateFormComponent implements OnInit {
       },
       error : (error)=>{
         if(error.status !==200){
-          this.toastr.error('Error while sending campaign')
+          this.toastr.error(error)
         }
         else{
           this.opneConfirmationModal();
@@ -261,7 +263,7 @@ export class TemplateFormComponent implements OnInit {
         this.route.navigate(['/main/Admin']);      
       },
       error: (error) => {
-        this.toastr.error('Error while closing modal');
+        this.toastr.error(error);
       },
     });
   }
@@ -289,7 +291,7 @@ export class TemplateFormComponent implements OnInit {
       }
       },
       error : (error)=>{
-        this.toastr.error("Error while loading data");
+        this.toastr.error(error);
       }
     })
   }

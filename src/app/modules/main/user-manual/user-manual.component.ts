@@ -14,6 +14,8 @@ export class UserManualComponent implements OnInit {
 
   ngOnInit(): void {
     this.commonService.setLoginStatus(true);
+    this.commonService.setNavTitle('Manual');
+    this.commonService.setScreenRouting('');
   }
   toogletag(content:any )
 {

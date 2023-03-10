@@ -45,6 +45,8 @@ export class DashboardAdminComponent implements OnInit {
     }
   ngOnInit(): void {
     this.commonService.setLoginStatus(true);
+    this.commonService.setNavTitle('Dashboard');
+    this.commonService.setScreenRouting('');
     this.getAllCampaigns();
     this.viewmore();
     this.dataSource = new MatTableDataSource<view_data>([]);
