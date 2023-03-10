@@ -8,9 +8,10 @@ import { ToastrService } from 'ngx-toastr';
 import { CommonService } from 'src/app/services/common.service';
 import { ScriptElementKindModifier } from 'typescript';
 import { MainService } from '../../service/main.service';
-import { AnalyticsService } from '../analytics-service/analytics.service';
+
 import * as pluginLabels from 'chartjs-plugin-labels';
 import * as Chart from 'chart.js';
+import { AnalyticsService } from '../analytics-service/analytics.service';
 @Component({
   selector: 'app-campaign-list',
   templateUrl: './campaign-list.component.html',
@@ -19,14 +20,17 @@ import * as Chart from 'chart.js';
 export class CampaignListComponent implements OnInit {
   campaigns:any=[];
   campaigns2:any=[];
+  campaigns3:Map<string, any>;
   sentcount: number = 0;
   endedcount: number=0;
   killedcount: number=0;
   totalcampaigncount: number =0;
   dataSource: any;
   dataSource2: any;
+  dataSource3: any
   isShow = true;
-  displayedColumns: string[] = ['name','opened','delivered','notDelivered','created_on','taskStatus'];
+  displayedColumns: string[] = ['name','opened','delivered'];
+  displayedColumns2: string[] = ['name of manager','total phished employees']
   mode: ProgressSpinnerMode = 'determinate';
   color:any;
   bufferValue = 75;
@@ -48,6 +52,10 @@ export class CampaignListComponent implements OnInit {
   pieChartType!: ChartType;
   pieChartLegend!: boolean;
   pieChartPlugins:any = [];
+  managercount: number = 0;
+  managername : string ='';
+  public taskId: number;
+  public chart: Chart;
   constructor( private commonService : CommonService,
     private _main:MainService,
     private router:Router,
@@ -55,6 +63,7 @@ export class CampaignListComponent implements OnInit {
     private toastr:ToastrService) { }
 
   ngOnInit(): void {
+ 
     this.commonService.setLoginStatus(true);
     this.commonService.setNavTitle('Analytics');
     this.commonService.setScreenRouting('');
@@ -68,9 +77,33 @@ export class CampaignListComponent implements OnInit {
     this.pieChartLegend = true;
     this.pieChartPlugins = [pluginLabels];
     this.piechartdata()
-    Chart.defaults['padding'] = 20;
+    Chart.defaults['padding'] = 50;
+    
+    this.chart = new Chart("canvas", {
+      type: "bar",
+      data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [
+          {
+            label: "# of Votes",
+            data: [12, 19, 3, 5, 2, 3],
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                beginAtZero: true
+              }
+            }
+          ]
+        }
+      }
+    });
   }
-
   private createOptions(): ChartOptions {
     return {
       responsive: true,
@@ -79,7 +112,8 @@ export class CampaignListComponent implements OnInit {
               labels: {
                 render: 'percentage',
                 fontColor: ['green', 'white', 'blue'],
-                precision: 2
+                precision: 2,
+                innerWidth: 10,
               }
           },
           legend: {
@@ -87,7 +121,7 @@ export class CampaignListComponent implements OnInit {
             position: 'left',
             align: 'start',
             fullWidth : true,
-            
+
           }
          
     };
@@ -107,6 +141,36 @@ export class CampaignListComponent implements OnInit {
     })
   }
 
+  getDepartmentwisedata()
+  {
+    this._analytics.getdepartmentwise(this.taskId).subscribe((data)=>
+    {
+      if(data)
+      {
+        console.log(data)
+      }
+    })
+  }
+  
+  getManagerwisedata()
+  {
+    this._analytics.getmanagerwise(this.taskId).subscribe((data)=>
+    {
+      if(data)
+      {
+        console.log(data)
+        this.dataSource3 = new MatTableDataSource(data)
+        this.campaigns3 = data
+        this.campaigns3.forEach((element : any) => {
+          for (let key in element) {
+            this.managername = key
+           }
+          })
+        console.log(this.managername)
+      }
+    })
+    
+  }
   camplistview()
   {
     this.listview = true
@@ -124,8 +188,9 @@ export class CampaignListComponent implements OnInit {
         this.campaigns=data;
         this.dataSource = new MatTableDataSource(data);
         this.dataSource = this.dataSource.filteredData
-        this.pieChartData = [ this.totalcampaigncount,  this.totalclickcount, this.totaldeliveredcount1+this.totaldeliveredcount2];
-        console.log(this.dataSource)
+        this.taskId  = this.dataSource[2].taskId
+        this.getManagerwisedata()
+        // console.log(this.taskId)
         for(let ele of this.campaigns)
         {
           if(ele.taskStatus=='SENT' || ele.taskStatus=='FAILED' || ele.taskStatus=='IN PROGRESS' || ele.taskStatus=='ENDED')
@@ -153,6 +218,8 @@ export class CampaignListComponent implements OnInit {
             this.totaldeliveredcount1 = this.totaldeliveredcount1 + ele.delivered
           }
         }
+        this.pieChartData = [ this.totalcampaigncount,  this.totalclickcount, this.totaldeliveredcount1+this.totaldeliveredcount2];
+        console.log(this.pieChartData)
 
       }
     this.sendanalytics = Math.ceil((this.sentcount/this.totalcampaigncount)*100)
@@ -160,8 +227,7 @@ export class CampaignListComponent implements OnInit {
     this.endedanalytics = Math.ceil((this.endedcount/this.totalcampaigncount)*100)
     },err=>{
       this.toastr.error("Error in loading data");
-    })
-    
+    })    
   }
 
   viewmore()
@@ -172,8 +238,6 @@ export class CampaignListComponent implements OnInit {
         this.campaigns2=data;
         this.dataSource2 = new MatTableDataSource(data);
         this.dataSource2 = this.dataSource2.filteredData
-        this.pieChartData = [ this.totalcampaigncount,  this.totalclickcount, this.totaldeliveredcount1+this.totaldeliveredcount2];
-        console.log(this.dataSource)
         if(this.clickcount==0)
         {
         for(let ele of this.campaigns2)
@@ -204,6 +268,7 @@ export class CampaignListComponent implements OnInit {
           }
         }
       }
+      this.pieChartData = [ this.totalcampaigncount,  this.totalclickcount, this.totaldeliveredcount1+this.totaldeliveredcount2];
     }
     this.sendanalytics = Math.ceil((this.sentcount/this.totalcampaigncount)*100)
     this.killedanalytics = Math.ceil((this.killedcount/this.totalcampaigncount)*100)
@@ -217,7 +282,7 @@ export class CampaignListComponent implements OnInit {
 
     piechartdata()
     {
-      
+      this.pieChartData = [ this.totalcampaigncount,  this.totalclickcount, this.totaldeliveredcount1+this.totaldeliveredcount2];
     }
     Routeview(element:any)
     {

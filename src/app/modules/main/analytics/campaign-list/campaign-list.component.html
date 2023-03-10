@@ -75,11 +75,11 @@
     </div>
     
     
-    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 mt-4" >
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4" >
         <svg width="20" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M10 23.5712C10 23.5712 0 20.08 0 13.9285V3.57124L10 0L20 3.57124V13.9285C19.9998 20.0801 10 23.5712 10 23.5712ZM18.5713 4.81628L10 1.78577L1.42871 4.81628V13.6042C1.42871 18.8236 10 21.7857 10 21.7857C10 21.7857 18.5713 18.8236 18.5713 13.6042V4.81628ZM10 20.7143C10 20.7143 2.50012 18.0698 2.50012 13.4096V5.5634L10 2.85761L17.4999 5.5634V13.4096C17.4999 18.0697 10 20.7143 10 20.7143Z" fill="#38A3A5"/>
             </svg>   &nbsp;          
-      <button class="detailbtn"><span class="text-black h6" (click)="camplistview()">Campaigns List</span></button>
+      <button class="detailbtn"><span class="text-black h6" (click)="camplistview()">Last 6 Campaigns</span></button>
     </div>
 
 
@@ -112,8 +112,8 @@
   </div> -->
     
     <!-- table data  -->
-    
-    <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 mt-2 inline-flex materialTableHeader tabledata" *ngIf="this.listview">
+  
+    <div class="col-lg-6 col-sm-12 col-md-12 col-xs-12 mt-2 materialTableHeader tabledata" *ngIf="this.listview">
         <table mat-table matTableExporter [dataSource]="dataSource" class=" w-100" >
           <ng-container matColumnDef="name">
             <th mat-header-cell *matHeaderCellDef > Name </th>
@@ -136,85 +136,95 @@
             </td>
           </ng-container>
       
-          <ng-container matColumnDef="notDelivered">
+          <!-- <ng-container matColumnDef="notDelivered">
             <th  mat-header-cell *matHeaderCellDef>Not Delivered</th>
             <td mat-cell *matCellDef="let ele" >
               {{ele.notDelivered}}
             </td>
           </ng-container>
-      
-          <ng-container matColumnDef="created_on">
+       -->
+          <!-- <ng-container matColumnDef="created_on">
             <th  mat-header-cell *matHeaderCellDef >Time</th>
             <td  mat-cell *matCellDef="let ele" >
               {{ele.created_on}}
             </td>
-          </ng-container>
+          </ng-container> -->
       
-          <ng-container matColumnDef="taskStatus">
+          <!-- <ng-container matColumnDef="taskStatus">
             <th  mat-header-cell *matHeaderCellDef>Status</th>
             <td  mat-cell *matCellDef="let ele">
               {{ele.taskStatus}}
             </td>
-          </ng-container>
+          </ng-container> -->
 
               <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
-        <div class="col-lg-4 mt-3 mb-3" *ngIf="this.campaigns.length>5">
-          <button class="btn btn-primary" (click)="isShow=!isShow" >{{ isShow ? 'View Less': 'View More' }}</button>
-        </div>
-    
-    <!-- view more section  -->
-    <div *ngIf="isShow">
-    <table mat-table matTableExporter [dataSource]="dataSource2" class=" w-100  tabledata">
-      <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef > Name </th>
-          <td mat-cell *matCellDef="let ele">
-              {{ele.name}} 
-            </td>
-      </ng-container>
-    
-        <ng-container matColumnDef="opened">
-          <th  mat-header-cell *matHeaderCellDef >Clicked</th>
-          <td mat-cell *matCellDef="let ele" >
-            {{ele.opened}}
-          </td>
-        </ng-container>
-    
-        <ng-container matColumnDef="delivered">
-          <th mat-header-cell *matHeaderCellDef>Delivered</th>
-          <td  mat-cell *matCellDef="let ele" >
-            {{ele.delivered}}
-          </td>
-        </ng-container>
-    
-        <ng-container matColumnDef="notDelivered">
-          <th  mat-header-cell *matHeaderCellDef>Not Delivered</th>
-          <td mat-cell *matCellDef="let ele" >
-            {{ele.notDelivered}}
-          </td>
-        </ng-container>
-    
-        <ng-container matColumnDef="created_on">
-          <th  mat-header-cell *matHeaderCellDef >Time</th>
-          <td  mat-cell *matCellDef="let ele" >
-            {{ele.created_on}}
-          </td>
-        </ng-container>
-    
-        <ng-container matColumnDef="taskStatus">
-          <th  mat-header-cell *matHeaderCellDef>Status</th>
-          <td  mat-cell *matCellDef="let ele">
-            {{ele.taskStatus}}
-          </td>
-        </ng-container>
+    </div>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+    <!-- analytics part  -->
+    <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt-2 inline-flex">
+      <mat-card>
+        <p>Overall campaign analytics</p> <br>
+          <div class="card-container">
+            <canvas baseChart *ngIf="pieChartData" class="align-right"
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [chartType]="pieChartType"
+            [options]="pieChartOptions"
+            [plugins]="pieChartPlugins"
+            [legend]="pieChartLegend">
+          </canvas>
+          </div>
+      </mat-card>
     </div>
-    
-    </div>
+
+
+
+    <!-- dept wise phised   -->
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 mt-4" >
+      <svg width="20" height="24" viewBox="0 0 20 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd" d="M10 23.5712C10 23.5712 0 20.08 0 13.9285V3.57124L10 0L20 3.57124V13.9285C19.9998 20.0801 10 23.5712 10 23.5712ZM18.5713 4.81628L10 1.78577L1.42871 4.81628V13.6042C1.42871 18.8236 10 21.7857 10 21.7857C10 21.7857 18.5713 18.8236 18.5713 13.6042V4.81628ZM10 20.7143C10 20.7143 2.50012 18.0698 2.50012 13.4096V5.5634L10 2.85761L17.4999 5.5634V13.4096C17.4999 18.0697 10 20.7143 10 20.7143Z" fill="#38A3A5"/>
+          </svg>   &nbsp;          
+    <button class="detailbtn"><span class="text-black h6" (click)="camplistview()">Manager wise phished</span></button>
+  </div>
+
+  <div class="col-lg-6 col-sm-12 col-md-12 col-xs-12 mt-2 materialTableHeader tabledata" *ngIf="this.listview">
+    <table mat-table matTableExporter [dataSource]="dataSource" class=" w-100" >
+      <ng-container matColumnDef="name of manager">
+        <th mat-header-cell *matHeaderCellDef > Name </th>
+        <td mat-cell *matCellDef="let ele">
+            {{managername}} 
+          </td>
+    </ng-container>
+  
+      <ng-container matColumnDef="total phished employees">
+        <th  mat-header-cell *matHeaderCellDef >total phished employees</th>
+        <td mat-cell *matCellDef="let ele" >
+          {{ele.length}}
+        </td>
+      </ng-container>
+<!--   
+      <ng-container matColumnDef="delivered">
+        <th mat-header-cell *matHeaderCellDef>Delivered</th>
+        <td  mat-cell *matCellDef="let ele" >
+          {{ele.delivered}}
+        </td>
+      </ng-container> -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
+</table>
+</div>
+
+<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 mt-2 inline-flex">
+  <mat-card>
+    <p>Manager wise phished analytics</p> <br>
+      <div class="card-container">
+        <canvas id="canvas" height="145">{{ chart }}</canvas>
+      </div>
+  </mat-card>
+</div>
+
     </div>
     </div>
     

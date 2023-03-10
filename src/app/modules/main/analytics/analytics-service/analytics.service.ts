@@ -14,4 +14,12 @@ export class AnalyticsService {
   {
     return this.http.post<any>(analyticsapis.totaloffenders,obj);
   }
+  getdepartmentwise(taskid:any)
+  {
+    return this.http.get<any>(analyticsapis.departmentwise+taskid)
+  }
+  getmanagerwise(taskId:any)
+  {
+    return this.http.get<any>(analyticsapis.managerwise+taskId)
+  }
 }
