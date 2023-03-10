@@ -190,11 +190,11 @@
   </div>
 
   <div class="col-lg-6 col-sm-12 col-md-12 col-xs-12 mt-2 materialTableHeader tabledata" *ngIf="this.listview">
-    <table mat-table matTableExporter [dataSource]="dataSource" class=" w-100" >
+    <table mat-table matTableExporter [dataSource]="dataSource3" class=" w-100" >
       <ng-container matColumnDef="name of manager">
         <th mat-header-cell *matHeaderCellDef > Name </th>
         <td mat-cell *matCellDef="let ele">
-            {{managername}} 
+            {{ele.name}} 
           </td>
     </ng-container>
   

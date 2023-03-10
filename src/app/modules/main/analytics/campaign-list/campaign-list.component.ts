@@ -20,7 +20,7 @@ import { AnalyticsService } from '../analytics-service/analytics.service';
 export class CampaignListComponent implements OnInit {
   campaigns:any=[];
   campaigns2:any=[];
-  campaigns3:Map<string, any>;
+  campaigns3:Map<string, Array<any>>;
   sentcount: number = 0;
   endedcount: number=0;
   killedcount: number=0;
@@ -60,7 +60,9 @@ export class CampaignListComponent implements OnInit {
     private _main:MainService,
     private router:Router,
     private _analytics:AnalyticsService,
-    private toastr:ToastrService) { }
+    private toastr:ToastrService) {
+      this.campaigns3 = new Map<string,Array<any>>();
+    }
 
   ngOnInit(): void {
  
@@ -78,15 +80,17 @@ export class CampaignListComponent implements OnInit {
     this.pieChartPlugins = [pluginLabels];
     this.piechartdata()
     Chart.defaults['padding'] = 50;
-    
+  }
+
+  createManagerBarChart(nameLabels : Array<string>, totalPhishedLabels : Array<number>) : void{
     this.chart = new Chart("canvas", {
       type: "bar",
       data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        labels: nameLabels,
         datasets: [
           {
-            label: "# of Votes",
-            data: [12, 19, 3, 5, 2, 3],
+            label: "manager wise phished",
+            data: totalPhishedLabels,
             borderWidth: 1
           }
         ]
@@ -95,15 +99,25 @@ export class CampaignListComponent implements OnInit {
         scales: {
           yAxes: [
             {
-              ticks: {
-                beginAtZero: true
+              scaleLabel: {
+                display: true,
+                labelString: 'total phished count'
               }
-            }
+            },
+          ],
+          xAxes: [
+            {
+              scaleLabel: {
+                display: true,
+                labelString: 'names of manager'
+              }
+            },
           ]
         }
       }
     });
   }
+  
   private createOptions(): ChartOptions {
     return {
       responsive: true,
@@ -158,15 +172,22 @@ export class CampaignListComponent implements OnInit {
     {
       if(data)
       {
-        console.log(data)
-        this.dataSource3 = new MatTableDataSource(data)
+        let arr = [];
+        let nameLabels = [];
+        let totalPhishedLabels = [];
         this.campaigns3 = data
-        this.campaigns3.forEach((element : any) => {
-          for (let key in element) {
-            this.managername = key
-           }
-          })
-        console.log(this.managername)
+        for (let key in data) {
+          let obj = {
+            name : key,
+            length: data[key].length
+          }
+          nameLabels.push(key);
+          totalPhishedLabels.push(data[key].length);
+          arr.push(obj);
+          this.managername = key
+         }
+         this.createManagerBarChart(nameLabels,totalPhishedLabels)
+         this.dataSource3 = new MatTableDataSource(arr);
       }
     })
     
