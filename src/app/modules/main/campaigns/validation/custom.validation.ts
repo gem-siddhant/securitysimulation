@@ -2,7 +2,7 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 export function customValidator(prevValue: String, inputName : String, templateId? : Number): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
     const currValue = control.value;
-    const regex = RegExp(/^[a-zA-Z0-9]+\.[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]+$/);
+    const regex = RegExp(/^[a-zA-Z0-9]+\.?[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]{2,3}$/);
     if(templateId && templateId !== 1 && (inputName === "reward type"))
       return null;
     if(inputName === "reward amount"){
