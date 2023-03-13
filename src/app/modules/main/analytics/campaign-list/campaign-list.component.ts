@@ -21,6 +21,7 @@ export class CampaignListComponent implements OnInit {
   campaigns:any=[];
   campaigns2:any=[];
   campaigns3:Map<string, Array<any>>;
+  campaigns4:Map<string, Array<any>>;
   sentcount: number = 0;
   endedcount: number=0;
   killedcount: number=0;
@@ -31,6 +32,7 @@ export class CampaignListComponent implements OnInit {
   isShow = true;
   displayedColumns: string[] = ['name','opened','delivered'];
   displayedColumns2: string[] = ['name of manager','total phished employees']
+  displayedColumns3: string[] = ['name of department','total phished employees']
   mode: ProgressSpinnerMode = 'determinate';
   color:any;
   bufferValue = 75;
@@ -82,7 +84,45 @@ export class CampaignListComponent implements OnInit {
     Chart.defaults['padding'] = 50;
   }
 
+  // manager wise 
   createManagerBarChart(nameLabels : Array<string>, totalPhishedLabels : Array<number>) : void{
+    this.chart = new Chart("canvas", {
+      type: "bar",
+      data: {
+        labels: nameLabels,
+        datasets: [
+          {
+            label: "manager wise phished",
+            data: totalPhishedLabels,
+            borderWidth: 1
+          }
+        ]
+      },
+      options: {
+        scales: {
+          yAxes: [
+            {
+              scaleLabel: {
+                display: true,
+                labelString: 'total phished count'
+              }
+            },
+          ],
+          xAxes: [
+            {
+              scaleLabel: {
+                display: true,
+                labelString: 'names of manager'
+              }
+            },
+          ]
+        }
+      }
+    });
+  }
+
+  // department wise 
+  createDepartmentBarChart(nameLabels : Array<string>, totalPhishedLabels : Array<number>) : void{
     this.chart = new Chart("canvas", {
       type: "bar",
       data: {
@@ -161,7 +201,22 @@ export class CampaignListComponent implements OnInit {
     {
       if(data)
       {
-        console.log(data)
+        let arr = [];
+        let nameLabels = [];
+        let totalPhishedLabels = [];
+        this.campaigns4 = data
+        for (let key in data) {
+          let obj = {
+            name : key,
+            length: data[key].length
+          }
+          nameLabels.push(key);
+          totalPhishedLabels.push(data[key].length);
+          arr.push(obj);
+          this.managername = key
+         }
+         this.createDepartmentBarChart(nameLabels,totalPhishedLabels)
+         this.dataSource3 = new MatTableDataSource(arr);
       }
     })
   }
