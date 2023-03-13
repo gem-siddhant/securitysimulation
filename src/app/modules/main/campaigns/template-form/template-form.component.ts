@@ -47,7 +47,7 @@ export class TemplateFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.commonService.setLoginStatus(true);
-    this.commonService.setNavTitle('Campaign');
+    this.commonService.setNavTitle('Create Campaign');
     this.commonService.setScreenRouting('/main/campaign/templates');
     this.router.paramMap.pipe(take(1)).subscribe((params) =>{
       this.templateId = Number(params?.get("id"));
@@ -117,7 +117,7 @@ export class TemplateFormComponent implements OnInit {
     return obj['message']; 
   }
 
-  openSendOrScheduleModal(btnTitle : String) : void{
+  openSendOrScheduleModal(btnTitle : string) : void{
     let dialogRef : MatDialogRef<SendCampaignModalComponent>;
     let alertTitle = '';
     dialogRef = this.dialog.open(SendCampaignModalComponent, {
@@ -147,7 +147,7 @@ export class TemplateFormComponent implements OnInit {
     })
   }
 
-  openAlertModal(alertTitle : String, btnTitle : String) : void{
+  openAlertModal(alertTitle : String, btnTitle : string) : void{
     const alertDialogRef = this.dialog.open(AlertModalComponent, {
       width: '454px',
       data :  alertTitle
@@ -162,7 +162,7 @@ export class TemplateFormComponent implements OnInit {
     })
   }
 
-  checkFormData(btnTitle : String) : void{
+  checkFormData(btnTitle : string) : void{
     if(!this.templateForm.invalid)
     {
       if(btnTitle === 'Preview'){
@@ -174,7 +174,7 @@ export class TemplateFormComponent implements OnInit {
     }
   }
 
-  sendOrScheduleCampaign(btnTitle : String) : void{
+  sendOrScheduleCampaign(btnTitle : string) : void{
     let sendDataFunction : Observable<CreateCampaignStatus | String>;
     const dispatchData = new FormData();
     const imagePath = "\dumyimg\click.png";
@@ -239,20 +239,20 @@ export class TemplateFormComponent implements OnInit {
 
     sendDataFunction.pipe(take(1)).subscribe({
       next : (data) =>{
-        this.opneConfirmationModal();
+        this.opneConfirmationModal(btnTitle);
       },
       error : (error)=>{
         if(error.status !==200){
           this.toastr.error(error)
         }
         else{
-          this.opneConfirmationModal();
+          this.opneConfirmationModal(btnTitle);
         }
       }
     })
   }
 
-  opneConfirmationModal() : void{
+  opneConfirmationModal(btnTitle : string) : void{
     let dataDialog = { title: 'Campaign Sent Successfully!' };
     let dialogRef = this.dialog.open(ConfirmationModalComponent, {
       width: '513px',
@@ -260,7 +260,8 @@ export class TemplateFormComponent implements OnInit {
     });
     dialogRef.afterClosed().pipe(take(1)).subscribe({
       next: (data) => {
-        this.route.navigate(['/main/Admin']);      
+        if(btnTitle !== 'Preview')
+          this.route.navigate(['/main/Admin']);      
       },
       error: (error) => {
         this.toastr.error(error);

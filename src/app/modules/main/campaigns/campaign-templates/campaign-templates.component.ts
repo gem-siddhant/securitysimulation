@@ -38,7 +38,7 @@ export class CampaignTemplatesComponent implements OnInit {
 
   ngOnInit(): void {
     this.commonService.setLoginStatus(true);
-    this.commonService.setNavTitle('Campaigns');
+    this.commonService.setNavTitle('Templates');
     this.commonService.setScreenRouting('');
     this.checkScreenStatus();
     this.onResize();
