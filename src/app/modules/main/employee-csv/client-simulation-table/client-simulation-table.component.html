@@ -18,7 +18,7 @@
         class="pt-2 pb-1 border-0"
       >
         <div class="tdata-row start-corner p-3 h-100">
-          {{ element.name }}
+          {{ element.name ? element.name : '-' }}
         </div>
       </td>
     </ng-container>
@@ -35,7 +35,7 @@
         *matCellDef="let element"
         class="pt-2 pb-1 border-0"
       >
-        <div class="tdata-row p-3 h-100">{{ element.time }}</div>
+        <div class="tdata-row p-3 h-100">{{ element.time ? element.time : '-' }}</div>
       </td>
     </ng-container>
     <ng-container matColumnDef="date">
@@ -71,7 +71,7 @@
         *matCellDef="let element"
         class="pt-2 pb-1 border-0"
       >
-        <div class="tdata-row p-3 h-100">{{ element.assignedDate }}</div>
+        <div class="tdata-row p-3 h-100">{{getModifiedDate(element.assignedDate)}}</div>
       </td>
     </ng-container>
     <ng-container matColumnDef="completionDate">
@@ -89,7 +89,7 @@
         *matCellDef="let element"
         class="pt-2 pb-1 border-0"
       >
-        <div class="tdata-row p-3 h-100">{{ element.completionDate }}</div>
+        <div class="tdata-row p-3 h-100">{{ getModifiedDate(element.completionDate) }}</div>
       </td>
     </ng-container>
     <ng-container matColumnDef="courseScore">
@@ -107,7 +107,7 @@
         *matCellDef="let element"
         class="pt-2 pb-1 border-0"
       >
-        <div class="tdata-row p-3 h-100">{{ element.courseScore }}</div>
+        <div class="tdata-row p-3 h-100">{{ element.learningScore ? element.learningScore : '-' }}</div>
       </td>
     </ng-container>
     <ng-container matColumnDef="status">
@@ -123,7 +123,7 @@
         *matCellDef="let element"
         class="pt-2 pb-1 border-0"
       >
-        <div class="tdata-row p-3 h-100">{{ element.status }}</div>
+        <div class="tdata-row p-3 h-100">{{ element.status ? element.status : '-' }}</div>
       </td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>

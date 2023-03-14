@@ -17,7 +17,8 @@ export interface SimulationDetails extends CommonSimulationCourseDetails {
 export interface CourseDetails extends CommonSimulationCourseDetails {
   assignedDate: string;
   completionDate: string;
-  courseScore: number;
+  learningId: number;
+  learningScore: number;
 }
 export interface ClientDetails {
   contact: string;
@@ -37,9 +38,9 @@ export interface EmployeeExcelData {
   managerId: number;
   username: string;
 }
-export interface UpdateEmployeeCsv{
-  email : string;
-  employeeDetails : EmployeeExcelData[];
-  onboardEmployee : boolean;
-  refresh : boolean;
+export interface UpdateEmployeeCsv {
+  email: string;
+  employeeDetails: EmployeeExcelData[];
+  onboardEmployee: boolean;
+  refresh: boolean;
 }
