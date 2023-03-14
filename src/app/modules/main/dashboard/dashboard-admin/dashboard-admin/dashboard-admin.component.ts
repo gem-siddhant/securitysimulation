@@ -9,6 +9,8 @@ import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { MatPaginator } from '@angular/material/paginator';
 import { CommonService } from 'src/app/services/common.service';
 import { MatSort } from '@angular/material/sort';
+import { MatDialog } from '@angular/material/dialog';
+import { DashboardpopupmodalComponent } from 'src/app/shared/Modals/dashboardpopupmodal/dashboardpopupmodal.component';
 @Component({
   selector: 'app-dashboard-admin',
   templateUrl: './dashboard-admin.component.html',
@@ -37,6 +39,7 @@ export class DashboardAdminComponent implements OnInit {
   constructor(private _main:MainService,
     private commonService : CommonService,
     private router:Router,
+    private dialog:MatDialog,
     private toastr:ToastrService) { }
     @ViewChild(MatPaginator) paginator: MatPaginator;
     @ViewChild(MatSort, { static: true }) sort: MatSort;
@@ -88,6 +91,12 @@ export class DashboardAdminComponent implements OnInit {
     
   }
 
+  allcamps()
+  {
+    const dialogRef = this.dialog.open(DashboardpopupmodalComponent, {
+      width: '900px',
+    });
+  }
   viewmore()
   {
     this.isShow = !this.isShow

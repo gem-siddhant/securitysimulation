@@ -11,10 +11,10 @@
             </svg> &nbsp;  
                 Total No of campaigns</p>          
             </mat-card-content>
-            <p class="counttext" >
+           <a (click)="allcamps()"> <p class="counttext" >
                 {{totalcampaigncount}}
                 &nbsp; 
-                 </p>
+                 </p></a>
     </mat-card>
 </div>
 
@@ -28,7 +28,7 @@
             </svg> &nbsp;  
                 Ended Campaigns</p>
             </mat-card-content>
-            <p class="counttext">
+           <a (click)="allcamps()"> <p class="counttext">
                 {{endedcount}}
                 &nbsp; 
                 <!-- <mat-progress-spinner class="float-right" *ngIf="mode === 'determinate'" [diameter]="50" strokeWidth="10"
@@ -36,7 +36,7 @@
                       [color]="'green'"
                     >
                     </mat-progress-spinner> -->
-            </p>
+            </p></a>
     </mat-card>
 </div>
 
