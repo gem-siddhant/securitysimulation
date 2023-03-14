@@ -24,7 +24,7 @@
         </form>
         <button (click)="uploadimg.click()" class="upload-btn">Upload Template</button>
       </div>
-      <mat-error class="d-flex justify-content-center mt-2" *ngIf="this.changeTrigger && this.uploadedImage === ''">Image size should be less than 2mb</mat-error>
+      <mat-error class="d-flex justify-content-center mt-2" *ngIf="this.changeTrigger && this.uploadedImage === ''">{{this.imgErrorMessage}}</mat-error>
     </div>
   </div>
 
@@ -45,6 +45,7 @@
           (change)="onChange($event)"
         />
       </form>
+      <mat-error class="mt-2" *ngIf="this.changeTrigger && this.imgErrorMessage !== ''">{{this.imgErrorMessage}}</mat-error>
     </div>
     <div class="temp-form col-lg-6 col-md-12 mt-4 mb-4">
       <mat-card

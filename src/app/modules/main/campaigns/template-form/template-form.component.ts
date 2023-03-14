@@ -243,7 +243,7 @@ export class TemplateFormComponent implements OnInit {
       },
       error : (error)=>{
         if(error.status !==200){
-          this.toastr.error(error)
+          this.toastr.error(error.error)
         }
         else{
           this.opneConfirmationModal(btnTitle);
@@ -292,7 +292,7 @@ export class TemplateFormComponent implements OnInit {
       }
       },
       error : (error)=>{
-        this.toastr.error(error);
+        this.toastr.error(error.error);
       }
     })
   }

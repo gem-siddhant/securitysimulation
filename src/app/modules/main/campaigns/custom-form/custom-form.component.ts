@@ -33,6 +33,7 @@ export class CustomFormComponent implements OnInit {
   victimEmails : String[];
   scheduledData : ScheduledModel;
   imageFile : File
+  imgErrorMessage : string;
   constructor(
     private commonService : CommonService,
     private responsiveService : ResponsiveService,
@@ -51,6 +52,7 @@ export class CustomFormComponent implements OnInit {
     this.imgSource = '';
     this.victimEmails = [] as String[];
     this.scheduledData = {} as ScheduledModel;
+    this.imgErrorMessage = '';
   }
 
   ngOnInit(): void {
@@ -114,8 +116,10 @@ export class CustomFormComponent implements OnInit {
     if(event.target.files && event.target.files.length > 0) {
       this.changeTrigger = true;
       this.imageFile = event.target.files[0];
-      if(this.imageFile.size > (2*1024*1024))
+      if(this.imageFile.size > (2*1024*1024)){
+        this.imgErrorMessage = 'Image Size should be less than 2mb'
         return;
+      }
       else
         this.changeTrigger = false;
       reader.readAsDataURL(this.imageFile);
@@ -187,7 +191,7 @@ export class CustomFormComponent implements OnInit {
   }
 
   checkFormData(btnTitle : string) : void{
-    if(!this.templateForm.invalid)
+    if(!this.templateForm.invalid && this.imgErrorMessage === '')
     {
       if(btnTitle === 'Preview'){
         this.sendOrScheduleCampaign(btnTitle);
@@ -269,7 +273,7 @@ export class CustomFormComponent implements OnInit {
       },
       error : (error)=>{
         if(error.status !==200){
-          this.toastr.error(error)
+          this.toastr.error(error.error)
         }
         else{
           this.opneConfirmationModal(btnTitle);
