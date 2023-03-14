@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import * as moment from 'moment';
 import { CourseDetails, SimulationDetails } from '../employee-client.model';
 
 @Component({
@@ -41,7 +42,7 @@ export class ClientSimulationTableComponent implements OnInit {
   }
 
   ngOnChanges(){
-    this.tableLength = this.tableData ? this.filteredTable().length : 0
+    this.tableLength = this.tableData ? this.filteredTable().length : 0;
     this.getData();
   }
 
@@ -56,6 +57,13 @@ export class ClientSimulationTableComponent implements OnInit {
             Math.ceil(this.tableLength / this.noOfRows))
         : (list[0].innerHTML = "Page: 0 of 0");
     }
+  }
+
+  getModifiedDate(val : string) : string{
+    if(val){
+      return moment(val).format('DD-MM-YYYY');
+    }
+    return '-';
   }
 
   paginationData(){
@@ -89,8 +97,8 @@ export class ClientSimulationTableComponent implements OnInit {
         return data.status.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1;
       }
       return (
-        data.name.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1 ||
-        data.status.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1
+        data.name?.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1 ||
+        data.status?.toLowerCase().indexOf(this.searchText.toLowerCase()) > -1
       );
     });
     return csvTableData;
