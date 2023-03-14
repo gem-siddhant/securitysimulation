@@ -45,7 +45,7 @@ export class ClientInviteComponent implements OnInit {
       usercount:['',[Validators.required]],
       contact:['',[Validators.required,Validators.pattern('^[0-9]*$')]],
       address:['',Validators.required],
-      officialemail:['',[Validators.required,Validators.pattern('^(https?:\/\/)?([\da-z.-]+)\.([a-z.]{2,6})([/\w .-]*)*\/?$')]]
+      officialemail:['',[Validators.required,Validators.pattern(RegExp(/^[a-zA-Z0-9]+\.?[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]{2,3}$/))]]
   });
   }
   

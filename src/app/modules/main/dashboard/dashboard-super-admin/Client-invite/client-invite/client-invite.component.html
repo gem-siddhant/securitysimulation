@@ -46,7 +46,7 @@
                     <mat-hint class="mt-3" align="end" >{{input3.value?.length || 0}}/100</mat-hint>
                   </mat-form-field>
                   <div *ngIf="this.inviteform.get('officialemail').invalid && (this.inviteform.get('officialemail').dirty || this.inviteform.get('officialemail').touched)">
-                    <div *ngIf="this.inviteform.get('officialemail').hasError('pattern')" class="text-black mt-1">Please provide valid official email</div>
+                    <div *ngIf="this.inviteform.get('officialemail').hasError('pattern')" class="text-danger mt-1">Please provide valid official email</div>
                   </div>
                 </div>
 
