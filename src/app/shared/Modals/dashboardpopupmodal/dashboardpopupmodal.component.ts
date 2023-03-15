@@ -1,5 +1,6 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Console } from 'console';
@@ -15,48 +16,88 @@ import { CommonService } from 'src/app/services/common.service';
 export class DashboardpopupmodalComponent implements OnInit {
   dataSource:any;
   dataSource2:any;
+  dataSource3:any;
+  dataSource4:any;
+  totaldata : any = [];
   campaigns:any=[];
-  tile1:boolean=false;
-  tile2:boolean=false;
+  campaigns2:any=[];
+  campaigns3:any=[];
+  campaigns4:any=[];
+  finaldata :any = [];
+  finalcampaigns:any;
+  viewtab : any;
+  errormsg = ""
   displayedColumns: string[] = ['name','opened','delivered','notDelivered','created_on','taskStatus','taskid'];
   constructor(private _main:MainService,
     private commonService : CommonService,
     private router:Router,
     private dialog:MatDialog,
+    public dialogRef:MatDialogRef<DashboardpopupmodalComponent>,
     private toastr:ToastrService) { }
-
+    @ViewChild(MatPaginator) paginator: MatPaginator;
   ngOnInit(): void {
     this.commonService.setLoginStatus(true);
+    this.viewtab=this.commonService.getbuttonclick()
+    console.log(this.viewtab)
     this.getAllCampaigns();
   }
+
   getAllCampaigns(){
     this._main.getAllCampaigns(localStorage.getItem('email')).subscribe((data)=>{
       if(data){
-        this.campaigns=data;
+        this.totaldata =data
         console.log(this.campaigns)
-        let sentcamps:any=[];
-        for(let ele of this.campaigns)
+        for(let ele of this.totaldata)
         {
-          if(ele.taskStatus=='SENT')
+          if(ele.taskStatus=='SENT' || ele.taskStatus=='ENDED' || ele.taskStatus=='FAILED')
           {
-            this.tile1=true
-            sentcamps.push(ele)
+            this.campaigns.push(ele)
           }
-          this.dataSource = new MatTableDataSource(sentcamps)
+          this.dataSource = new MatTableDataSource(this.campaigns)
+          if(ele.taskStatus=='ENDED' || ele.taskStatus=='SENT')
+          {
+            this.campaigns2.push(ele)
+          }
+          this.dataSource2 = new MatTableDataSource(this.campaigns2)
+          if(ele.taskStatus=='FAILED' || ele.taskStatus=='KILLED')
+          {
+            this.campaigns3.push(ele)
+          }
+          this.dataSource3 = new MatTableDataSource(this.campaigns3)
+          if(ele.taskStatus=='INPROGRESS' || ele.taskStatus=='SCHEDULED')
+          {
+            this.campaigns4.push(ele)
+          }
+          this.dataSource4 = new MatTableDataSource(this.campaigns4)
         }
 
-        let endedcamps:any=[];
-        for(let ele of this.campaigns)
+        if(this.viewtab=='ALL')
         {
-          if(ele.taskStatus=='ENDED')
-          {
-            this.tile2 = true
-            endedcamps.push(ele)
-          }
-          this.dataSource2 = new MatTableDataSource(endedcamps)
+          this.finaldata = this.dataSource
+          this.finalcampaigns = this.campaigns
         }
-        
-      
+        else if(this.viewtab=='COMPLETED')
+        {
+          this.finaldata = this.dataSource2
+          this.finalcampaigns = this.campaigns2
+        }
+        else if(this.viewtab=='FAILURE')
+        {
+          this.finaldata = this.dataSource3
+          this.finalcampaigns = this.campaigns3
+        }
+        else if(this.viewtab=='LAST')
+        {
+          this.finaldata = this.dataSource4
+          this.finalcampaigns = this.campaigns4
+        }
+        this.finaldata.paginator = this.paginator;
+        console.log(this.finaldata.filteredData.length)
+        this.errormsg=""
+        if(this.finaldata.filteredData.length==0)
+        {
+         this.errormsg="no data found"
+        }
       }
     },err=>{
       this.toastr.error("Error in loading data");
@@ -68,4 +109,12 @@ export class DashboardpopupmodalComponent implements OnInit {
     this.router.navigate(['main/Admin/campaigndetails',element]);
     this.dialog.closeAll()
   }
+  scheduleroute()
+  {
+    this.router.navigate(['main/scheduledCampaigns']);
+    this.dialog.closeAll()
+  }
+  onClose() {
+    this.dialogRef.close();
+  }  
 }

@@ -1,5 +1,5 @@
 table{
-    border-radius: 10px !important;
+    border-radius: 5px !important;
 }
 .matcontents{
     color: black;
@@ -66,4 +66,9 @@ th.mat-header-cell {
     text-transform: capitalize;
     color: #545454;
     border: none;
+  }
+  .close{
+    background-color: white;
+    border: none;
+    float: right;
   }
