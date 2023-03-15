@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/fo
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { EmpServiceService } from '../Services/emp-service.service';
+import { EmponboardapiService } from '../Services/emponboardapi.service';
 import { ConfirmPasswordValidator } from "./confirm-password.validator";
 
 @Component({
@@ -15,6 +16,7 @@ export class PasswordDialogComponent implements OnInit {
   password = '';
   Passwordmetcriteria = false;
   showPassword = false;
+  useremail:string = '';
   passwordStrengthClasses = {
     weak: true,
     medium: false,
@@ -29,11 +31,13 @@ export class PasswordDialogComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
     private router:Router,
     private toastr:ToastrService,
-    private shared: EmpServiceService) {
+    private shared: EmpServiceService,
+    private _useronboardapi : EmponboardapiService) {
       this.onboardform = this.formBuilder.group({})
      }
 
   ngOnInit(): void {
+    this.useremail = this.shared.getemail().useremail
     this.onboardform = this.formBuilder.group(
       {
       password:['',Validators.required],
@@ -82,14 +86,28 @@ export class PasswordDialogComponent implements OnInit {
       return
     }
     else{
-    let req = {
-      'password': this.onboardform.value.password
-    }
-    this.shared.setpassword(req)
-    this.router.navigate(['main/login'])
-    this.toastr.success("Onboarded Successfully", undefined, {
-      positionClass: 'toast-top-center'
- })
+      let req = {
+        'username':this.useremail,
+        'password':this.onboardform.value.password
+      }
+      this._useronboardapi.submituserdetails(req).subscribe((data)=>
+      {
+        if(data)
+        {
+          console.log("client onboard done")
+          this.router.navigate(['main/login'])
+          this.toastr.success("Employee onboarded successfully")
+        }
+      },(err)=>{
+        if(err.status!=200)
+        {
+          this.toastr.error("Error while submitting",undefined,
+          {
+            positionClass: 'toast-top-center'
+          }
+          );
+        }
+      })
   }
   }
 }
