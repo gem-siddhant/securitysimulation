@@ -9,7 +9,7 @@ import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { MatPaginator } from '@angular/material/paginator';
 import { CommonService } from 'src/app/services/common.service';
 import { MatSort } from '@angular/material/sort';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DashboardpopupmodalComponent } from 'src/app/shared/Modals/dashboardpopupmodal/dashboardpopupmodal.component';
 @Component({
   selector: 'app-dashboard-admin',
@@ -27,7 +27,7 @@ export class DashboardAdminComponent implements OnInit {
   dataSource2: any;
   select_val:any='';
   isShow = true;
-  displayedColumns: string[] = ['name','opened','delivered','notDelivered','created_on','taskStatus','taskid'];
+  displayedColumns: string[] = ['name','all','opened','delivered','notDelivered','created_on','taskStatus','taskid'];
   mode: ProgressSpinnerMode = 'determinate';
   color:any;
   bufferValue = 75;
@@ -51,15 +51,21 @@ export class DashboardAdminComponent implements OnInit {
     this.commonService.setNavTitle('Dashboard');
     this.commonService.setScreenRouting('');
     this.getAllCampaigns();
-    this.viewmore();
+    // this.viewmore();
     this.dataSource = new MatTableDataSource<view_data>([]);
+  }
+  sortAndPaginate() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
   }
   getAllCampaigns(){
     this._main.getAllCampaigns(localStorage.getItem('email')).subscribe((data)=>{
       if(data){
         this.campaigns=data;
         this.dataSource = new MatTableDataSource(data);
-        this.dataSource = this.dataSource.filteredData
+        this.sortAndPaginate()
+        // this.dataSource = this.dataSource.filteredData
+        
         console.log(this.dataSource)
         for(let ele of this.campaigns)
         {
@@ -67,15 +73,15 @@ export class DashboardAdminComponent implements OnInit {
           {
             this.totalcampaigncount++
           }
-          if(ele.taskStatus=='KILLED')
+          if(ele.taskStatus=='KILLED' || ele.taskStatus=='FAILED')
           {
             this.killedcount++
           }
-          if(ele.taskStatus=='ENDED')
+          if(ele.taskStatus=='ENDED' || ele.taskStatus=='SENT')
           {
             this.endedcount++
           }
-          if(ele.taskStatus=='SENT')
+          if(ele.taskStatus=='INPROGRESS' || ele.taskStatus=='SCHEDULED')
           {
             this.sentcount++
           }
@@ -93,8 +99,44 @@ export class DashboardAdminComponent implements OnInit {
 
   allcamps()
   {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.panelClass = 'right-dialog';
+    this.commonService.setbuttonclick('ALL')
+    const dialogRef = this.dialog.open(DashboardpopupmodalComponent,  {
+      width : '990px',
+      // position: { right: 1 + 'px'}, 
+      hasBackdrop : true
+    })
+      // {
+  //     width: '750px',
+      
+  //   });
+  }
+ completedcamps()
+  {
+    this.commonService.setbuttonclick('COMPLETED')
     const dialogRef = this.dialog.open(DashboardpopupmodalComponent, {
-      width: '900px',
+      width : '990px',
+      // position: { right: 1 + 'px'}, 
+      hasBackdrop : true
+    });
+  }
+  failedcamps()
+  {
+    this.commonService.setbuttonclick('FAILURE')
+    const dialogRef = this.dialog.open(DashboardpopupmodalComponent, {
+      width : '990px',
+      // position: { right: 1 + 'px'}, 
+      hasBackdrop : true
+    });
+  }
+  ongoingschedule()
+  {
+    this.commonService.setbuttonclick('LAST')
+    const dialogRef = this.dialog.open(DashboardpopupmodalComponent, {
+      width : '990px',
+      // position: { right: 1 + 'px'}, 
+      hasBackdrop : true
     });
   }
   viewmore()
@@ -141,10 +183,7 @@ export class DashboardAdminComponent implements OnInit {
     {
       this.router.navigate(['main/Admin/campaigndetails',element]);
     }
-    sortAndPaginate() {
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-    }
+
   
     applyFilter(event: any) {
       let  filterValue=event.target.value;

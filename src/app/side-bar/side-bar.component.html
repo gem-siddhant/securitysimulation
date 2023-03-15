@@ -54,7 +54,7 @@
       <a routerLink="/main/campaign/custom-form"></a>
     </div>
   </div>
-  <div [routerLinkActive]="['active-tab']" (click)="close()" *ngIf="this.roleadmin">
+  <!-- <div [routerLinkActive]="['active-tab']" (click)="close()" *ngIf="this.roleadmin">
     <a
     routerLink="/main/scheduledCampaigns"
       mat-list-item
@@ -62,7 +62,7 @@
     <img [src]="this.scheduleIcon" width="20px" height="20px"/>
       <span>Scheduled</span>
     </a>
-  </div>
+  </div> -->
   <div [routerLinkActive]="['active-tab']" (click)="close()" *ngIf="this.roleadmin">
     <a
     routerLink="/main/analytics/campaignlist"

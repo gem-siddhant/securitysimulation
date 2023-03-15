@@ -11,6 +11,7 @@ export class CommonService {
   private navbarTitle : string;
   private key :string;
   private iv : string;
+  private clickbutton :any;
   
   constructor() {
     this.isSideNavOpened = true;
@@ -53,6 +54,14 @@ export class CommonService {
     this.isLoggedIn = val;
   }
 
+  setbuttonclick(val : any) 
+  {
+    this.clickbutton = val
+  }
+  getbuttonclick()
+  {
+    return this.clickbutton
+  }
   encrypt(data: string) : string{
     const keyHex = CryptoJS.enc.Base64.parse(this.key);
     const ivHex = CryptoJS.enc.Base64.parse(this.iv);
