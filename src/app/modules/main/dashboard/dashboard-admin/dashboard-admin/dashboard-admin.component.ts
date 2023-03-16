@@ -36,6 +36,7 @@ export class DashboardAdminComponent implements OnInit {
   sendanalytics: number = 0
   killedanalytics: number= 0;
   endedanalytics: number= 0;
+  errormsg: string = '';
   constructor(private _main:MainService,
     private commonService : CommonService,
     private router:Router,
@@ -65,7 +66,11 @@ export class DashboardAdminComponent implements OnInit {
         this.dataSource = new MatTableDataSource(data);
         this.sortAndPaginate()
         // this.dataSource = this.dataSource.filteredData
-        
+        this.errormsg=""
+        if(this.dataSource.filteredData.length==0)
+        {
+         this.errormsg="no data found"
+        }
         console.log(this.dataSource)
         for(let ele of this.campaigns)
         {
@@ -183,7 +188,11 @@ export class DashboardAdminComponent implements OnInit {
     {
       this.router.navigate(['main/Admin/campaigndetails',element]);
     }
-
+    scheduleroute()
+    {
+      this.router.navigate(['main/scheduledCampaigns']);
+      this.dialog.closeAll()
+    }
   
     applyFilter(event: any) {
       let  filterValue=event.target.value;
