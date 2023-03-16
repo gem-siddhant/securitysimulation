@@ -48,8 +48,8 @@
           <ng-container matColumnDef="taskid">
             <th  mat-header-cell *matHeaderCellDef   >Action</th>
             <td  mat-cell *matCellDef="let ele" >
-                <button class="buttonCss"  (click)="Routeview(ele.taskId)"  *ngIf="ele.taskStatus!='FAILED'">View </button>
-                <button class="buttonCss"  (click)="scheduleroute()" *ngIf="ele.taskStatus=='FAILED'"  >View </button>
+                <button class="buttonCss"  (click)="Routeview(ele.taskId)"  *ngIf="ele.taskStatus!='SCHEDULED'">View </button>
+                <button class="buttonCss"  (click)="scheduleroute()" *ngIf="ele.taskStatus=='SCHEDULED'"  >View </button>
             </td>
           </ng-container>
 
