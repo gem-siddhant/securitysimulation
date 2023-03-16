@@ -19,11 +19,22 @@ export class ApiInterceptorService {
 intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
   let authToken=localStorage.getItem('token')
     let apiReq:any;
-  apiReq = request.clone(
-      {
-          url: `${this.baseUrl}/${request.url}`,
-      }
-  );
+    if(request.url==='https://jsonip.com')
+    {
+      apiReq = request.clone(
+        {
+            url: `${request.url}`,
+        }
+    );
+    }
+    else
+    {
+      apiReq = request.clone(
+          {
+              url: `${this.baseUrl}/${request.url}`,
+          }
+      );
+        }
   if (authToken) {
     apiReq = apiReq.clone({setHeaders: {
       'Authorization': 'Bearer '+authToken,

@@ -14,6 +14,7 @@ import { DashboardEmpComponent } from './dashboard/dashboard-emp/dashboard-emp.c
 import { DashboardSuperAdminComponent } from './dashboard/dashboard-super-admin/dashboad-landing/dashboard-super-admin.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ClientdetailsComponent } from './dashboard/dashboard-super-admin/Client-view/clientdetails/clientdetails.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 @NgModule({
   declarations: [
     AddCampaignComponent,
@@ -25,6 +26,7 @@ import { ClientdetailsComponent } from './dashboard/dashboard-super-admin/Client
     UserManualComponent,
     ClientInviteComponent,
     DashboardEmpComponent,
+    ErrorPageComponent
   ],
   imports: [
     SharedModule,
