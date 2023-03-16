@@ -1,7 +1,6 @@
 
-<div class="row col-lg-12 col-sm-12 col-md-12 col-xs-12 m-2 analytics card-container">
+<div class="row col-lg-12 col-sm-12 col-md-12 col-12 m-2 analytics card-container">
 <div class="row" >
-<!-- total no of campaign  -->
 <div class="col-lg-3 col-sm-12 col-md-12 col-xs-6 mt-2 ">
     <mat-card  [class.mat-elevation-z8]=true class="matcount">
             <mat-card-content mat-card-image class="matcards" >                             
@@ -16,8 +15,6 @@
                  </p></button></a>
     </mat-card>
 </div>
-
-<!-- no of ended campaigns  -->
 <div class="col-lg-3 col-sm-12 col-md-12 col-xs-12 mt-2">
     <mat-card [class.mat-elevation-z8]=true  class="matcount">
             <mat-card-content mat-card-image class="matcards" >                             
@@ -29,16 +26,9 @@
             </mat-card-content>
          <a> <button class="linkbtn" (click)="completedcamps()"> <p class="counttext">
                 {{endedcount}}
-                <!-- <mat-progress-spinner class="float-right" *ngIf="mode === 'determinate'" [diameter]="50" strokeWidth="10"
-                      class="circle "
-                      [color]="'green'"
-                    >
-                    </mat-progress-spinner> -->
             </p></button></a> 
     </mat-card>
 </div>
-
-<!-- no of killed campaign  -->
 <div class="col-lg-3 col-sm-12 col-md-12 col-xs-12 mt-2">
     <mat-card [class.mat-elevation-z8]=true  class="matcount">
             <mat-card-content mat-card-image class="matcards" >                 
@@ -50,16 +40,10 @@
             </mat-card-content>
             <button class="linkbtn" (click)="failedcamps()"><p class="counttext">
                 {{killedcount}}
-                <!-- <mat-progress-spinner  cclass="my-spinner" *ngIf="mode === 'determinate'" [diameter]="50" strokeWidth="10"
-                      class="circle"
-                      
-                    >
-                    </mat-progress-spinner> -->
             </p></button>
     </mat-card>
 </div>
 
-<!-- no of sent campaign  -->
 <div class="col-lg-3 col-sm-12 col-md-12 col-xs-12 mt-2">
     <mat-card [class.mat-elevation-z8]=true  class="matcount">
             <mat-card-content mat-card-image class="matcards" >                             
@@ -71,11 +55,6 @@
             </mat-card-content>
            <button class="linkbtn" (click)="ongoingschedule()"><p class="float-left counttext">
                 {{sentcount}} 
-                <!-- <mat-progress-spinner class="float-right" *ngIf="mode === 'determinate'" [diameter]="50" strokeWidth="10"
-                      class="circle"
-                      [color]="color"
-                    >
-                    </mat-progress-spinner> -->
             </p></button>
     </mat-card>
 </div>
@@ -85,72 +64,21 @@
   <span class="btnrecent">Recent Campaigns</span>
 </div>
 
-<!-- table data  -->
-
 <div class="col-lg-12 col-sm-12 col-md-12 col-xs-12 mt-2 inline-flex materialTableHeader tabledata">
-    <table mat-table matTableExporter [dataSource]="dataSource" class=" w-100"  *ngIf="!errormsg">
-        <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef > Name </th>
-            <td mat-cell *matCellDef="let ele" class="start-corner">
-              {{ele.name}}
-           </td>
-        </ng-container>
-
-        <ng-container matColumnDef="all">
-          <th  mat-header-cell *matHeaderCellDef   >total user</th>
-          <td mat-cell *matCellDef="let ele" >
-            {{ele.opened+ele.delivered+ele.notDelivered}}
-          </td>
-        </ng-container>
-
-          <ng-container matColumnDef="opened">
-            <th  mat-header-cell *matHeaderCellDef   >Clicked</th>
-            <td mat-cell *matCellDef="let ele" >
-              {{ele.opened}}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="delivered">
-            <th mat-header-cell *matHeaderCellDef >Delivered</th>
-            <td  mat-cell *matCellDef="let ele" >
-              {{ele.delivered}}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="notDelivered">
-            <th  mat-header-cell *matHeaderCellDef  >Not Delivered</th>
-            <td mat-cell *matCellDef="let ele" >
-              {{ele.notDelivered}}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="created_on">
-            <th  mat-header-cell *matHeaderCellDef  >Time</th>
-            <td  mat-cell *matCellDef="let ele">
-              {{ele.created_on}}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="taskStatus">
-            <th  mat-header-cell *matHeaderCellDef  >Status</th>
-            <td  mat-cell *matCellDef="let ele">
-              {{ele.taskStatus}}
-            </td>
-          </ng-container>
-
-          <ng-container matColumnDef="taskid">
-            <th  mat-header-cell *matHeaderCellDef   >Action</th>
-            <td  mat-cell *matCellDef="let ele" >
-              <button class="buttonCss"  (click)="Routeview(ele.taskId)"  *ngIf="ele.taskStatus!='SCHEDULED'">View </button>
-              <button class="buttonCss"  (click)="scheduleroute()" *ngIf="ele.taskStatus=='SCHEDULED'"  >View </button>
-            </td>
-          </ng-container>
-
-          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
-
-    <!-- no enteries  -->
+  <mat-tab-group mat-align-tabs="start" (selectedTabChange)="onTabChange($event)">
+    <mat-tab label="Recent Campaigns">
+      <ng-template mat-tab-label>Recent Campaigns</ng-template>
+      <ng-template matTabContent>
+        <ng-container [ngTemplateOutlet]="dashboardTable"></ng-container>
+      </ng-template>
+    </mat-tab>
+    <mat-tab label="Scheduled Campaigns">
+      <ng-template mat-tab-label>Scheduled Campaigns</ng-template>
+      <ng-template matTabContent>
+        <ng-container [ngTemplateOutlet]="dashboardTable"></ng-container>
+      </ng-template>
+    </mat-tab>
+    </mat-tab-group>
     <div *ngIf="errormsg"  class="no_record center-align text-center">
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
@@ -161,8 +89,6 @@
         </div>
       </div>
     </div>
-
-        <!-- pagination  -->
         <div *ngIf="!errormsg">
         <mat-paginator [pageSizeOptions]="[5, 15, 30, 45]" showFirstLastButtons class="position-fix mat-elevation-z8"
         aria-label="Select page of periodic elements">
@@ -170,67 +96,73 @@
     </div>
 
 
-    <!-- <div class="col-lg-4 mt-3 mb-3" *ngIf="this.campaigns.length>5">
-      <button class="btn btn-primary" (click)="isShow=!isShow" >{{ isShow ? 'View Less': 'View More' }}</button>
-    </div> -->
 
-<!-- view more section  -->
-<!-- <div *ngIf="isShow">
-<table mat-table matTableExporter [dataSource]="dataSource2" class=" w-100  tabledata">
-  <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef > <b>Name</b> </th>
+</div>
+</div>
+</div>
+
+<ng-template #dashboardTable>
+  <div class="dash-table">
+  <table mat-table matTableExporter [dataSource]="dashTable" class=" w-100"  *ngIf="!errormsg">
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef > Name </th>
+        <td mat-cell *matCellDef="let ele" class="start-corner">
+          {{ele.name}}
+       </td>
+    </ng-container>
+
+    <ng-container matColumnDef="all">
+      <th  mat-header-cell *matHeaderCellDef>total user</th>
       <td mat-cell *matCellDef="let ele" >
-          {{ele.name}} 
+        {{ele.opened+ele.delivered+ele.notDelivered}}
+      </td>
+    </ng-container>
+
+      <ng-container matColumnDef="opened">
+        <th  mat-header-cell *matHeaderCellDef   >Clicked</th>
+        <td mat-cell *matCellDef="let ele" >
+          {{ele.opened}}
         </td>
-  </ng-container>
+      </ng-container>
 
-    <ng-container matColumnDef="opened">
-      <th  mat-header-cell *matHeaderCellDef  ><b>Clicked</b></th>
-      <td mat-cell *matCellDef="let ele" >
-        {{ele.opened}}
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="delivered">
+        <th mat-header-cell *matHeaderCellDef >Delivered</th>
+        <td  mat-cell *matCellDef="let ele" >
+          {{ele.delivered}}
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="delivered">
-      <strong> <th mat-header-cell *matHeaderCellDef  >Delivered</th></strong>
-      <td  mat-cell *matCellDef="let ele" >
-        {{ele.delivered}}
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="notDelivered">
+        <th  mat-header-cell *matHeaderCellDef  >Not Delivered</th>
+        <td mat-cell *matCellDef="let ele" >
+          {{ele.notDelivered}}
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="notDelivered">
-      <th  mat-header-cell *matHeaderCellDef  >Not Delivered</th>
-      <td mat-cell *matCellDef="let ele" >
-        {{ele.notDelivered}}
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="created_on">
+        <th  mat-header-cell *matHeaderCellDef  >Time</th>
+        <td  mat-cell *matCellDef="let ele">
+          {{ele.created_on}}
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="created_on">
-      <th  mat-header-cell *matHeaderCellDef  >Time</th>
-      <td  mat-cell *matCellDef="let ele">
-        {{ele.created_on}}
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="taskStatus">
+        <th  mat-header-cell *matHeaderCellDef  >Status</th>
+        <td  mat-cell *matCellDef="let ele">
+          {{ele.taskStatus}}
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="taskStatus">
-      <th  mat-header-cell *matHeaderCellDef >Status</th>
-      <td  mat-cell *matCellDef="let ele">
-        {{ele.taskStatus}}
-      </td>
-    </ng-container>
+      <ng-container matColumnDef="taskid">
+        <th  mat-header-cell *matHeaderCellDef   >Action</th>
+        <td  mat-cell *matCellDef="let ele" >
+          <button class="buttonCss"  (click)="Routeview(ele.taskId)"  *ngIf="ele.taskStatus!='SCHEDULED'">View </button>
+          <button class="buttonCss"  (click)="scheduleroute()" *ngIf="ele.taskStatus=='SCHEDULED'"  >View </button>
+        </td>
+      </ng-container>
 
-    <ng-container matColumnDef="taskid">
-      <th  mat-header-cell *matHeaderCellDef  >Action</th>
-      <td  mat-cell *matCellDef="let ele">
-          <button class="buttonCss"  (click)="Routeview(ele.taskId)">View </button>
-      </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table> 
-</div>-->
-
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
 </div>
-</div>
-</div>
+</ng-template>

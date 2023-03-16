@@ -11,6 +11,8 @@ import { CommonService } from 'src/app/services/common.service';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DashboardpopupmodalComponent } from 'src/app/shared/Modals/dashboardpopupmodal/dashboardpopupmodal.component';
+import { MatTabChangeEvent } from '@angular/material/tabs';
+import { take } from 'rxjs';
 @Component({
   selector: 'app-dashboard-admin',
   templateUrl: './dashboard-admin.component.html',
@@ -23,7 +25,8 @@ export class DashboardAdminComponent implements OnInit {
   endedcount: number=0;
   killedcount: number=0;
   totalcampaigncount: number =0;
-  dataSource: any;
+  dashTable : any;
+  dataSource: MatTableDataSource<any>;
   dataSource2: any;
   select_val:any='';
   isShow = true;
@@ -37,41 +40,33 @@ export class DashboardAdminComponent implements OnInit {
   killedanalytics: number= 0;
   endedanalytics: number= 0;
   errormsg: string = '';
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
   constructor(private _main:MainService,
     private commonService : CommonService,
     private router:Router,
     private dialog:MatDialog,
     private toastr:ToastrService) { }
-    @ViewChild(MatPaginator) paginator: MatPaginator;
-    @ViewChild(MatSort, { static: true }) sort: MatSort;
-    ngAfterViewInit() {
-      this.dataSource.paginator = this.paginator;
-    }
+
   ngOnInit(): void {
     this.commonService.setLoginStatus(true);
     this.commonService.setNavTitle('Dashboard');
     this.commonService.setScreenRouting('');
     this.getAllCampaigns();
-    // this.viewmore();
-    this.dataSource = new MatTableDataSource<view_data>([]);
+  }
+  ngAfterViewInit() {
+    this.dashTable.paginator = this.paginator;
   }
   sortAndPaginate() {
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+    this.dashTable.paginator = this.paginator;
+    this.dashTable.sort = this.sort;
   }
   getAllCampaigns(){
-    this._main.getAllCampaigns(localStorage.getItem('email')).subscribe((data)=>{
+    this._main.getAllCampaigns(localStorage.getItem('email')).pipe(take(1)).subscribe((data)=>{
       if(data){
         this.campaigns=data;
         this.dataSource = new MatTableDataSource(data);
-        this.sortAndPaginate()
-        // this.dataSource = this.dataSource.filteredData
-        this.errormsg=""
-        if(this.dataSource.filteredData.length==0)
-        {
-         this.errormsg="no data found"
-        }
-        console.log(this.dataSource)
+        this.onTabChange()
         for(let ele of this.campaigns)
         {
           if(ele.taskStatus=='SENT' || ele.taskStatus=='FAILED' || ele.taskStatus=='IN PROGRESS' || ele.taskStatus=='ENDED')
@@ -219,5 +214,31 @@ export class DashboardAdminComponent implements OnInit {
       //   this.errormsg="no data found"
       //  }
     }
-  
+  onTabChange(event? : MatTabChangeEvent){
+    let tab = 'Recent Campaigns';
+    let tableData: any[] = [];
+    if(event){
+      tab = event.tab.textLabel;
+    }
+    if(tab === 'Recent Campaigns'){
+      if(this.dataSource){
+        tableData = this.dataSource.filteredData.filter((element : any)=>{
+          return element.taskStatus !== 'SCHEDULED';
+        })
+      }
+    }
+    else if(tab === 'Scheduled Campaigns'){
+      if(this.dataSource){
+        tableData = this.dataSource.filteredData.filter((element : any)=>{
+          return element.taskStatus === 'SCHEDULED';
+        })
+      }
+    }
+    this.dashTable = new MatTableDataSource(tableData);
+    this.sortAndPaginate()
+    this.errormsg=""
+    if(this.dashTable.filteredData.length==0){
+      this.errormsg="no data found"
+    }
+  }
 }
