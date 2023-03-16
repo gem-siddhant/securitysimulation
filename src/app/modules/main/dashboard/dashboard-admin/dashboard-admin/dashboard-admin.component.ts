@@ -30,7 +30,7 @@ export class DashboardAdminComponent implements OnInit {
   dataSource2: any;
   select_val:any='';
   isShow = true;
-  displayedColumns: string[] = ['name','all','opened','delivered','notDelivered','created_on','taskStatus','taskid'];
+  displayedColumns: string[] = ['name','all','opened','delivered','notDelivered','date','starttime','endtime','taskStatus','taskid'];
   mode: ProgressSpinnerMode = 'determinate';
   color:any;
   bufferValue = 75;
@@ -62,26 +62,29 @@ export class DashboardAdminComponent implements OnInit {
     this.dashTable.sort = this.sort;
   }
   getAllCampaigns(){
-    this._main.getAllCampaigns(localStorage.getItem('email')).pipe(take(1)).subscribe((data)=>{
+    let req={
+      'email':localStorage.getItem('email')
+    }
+    this._main.getAllCampaigns(req).pipe(take(1)).subscribe((data)=>{
       if(data){
         this.campaigns=data;
         this.dataSource = new MatTableDataSource(data);
         this.onTabChange()
         for(let ele of this.campaigns)
         {
-          if(ele.taskStatus=='SENT' || ele.taskStatus=='FAILED' || ele.taskStatus=='IN PROGRESS' || ele.taskStatus=='ENDED')
+          if(ele.status=='SENT' || ele.status=='FAILED' || ele.status=='IN PROGRESS' || ele.status=='ENDED')
           {
             this.totalcampaigncount++
           }
-          if(ele.taskStatus=='KILLED' || ele.taskStatus=='FAILED')
+          if(ele.status=='KILLED' || ele.status=='FAILED')
           {
             this.killedcount++
           }
-          if(ele.taskStatus=='ENDED' || ele.taskStatus=='SENT')
+          if(ele.status=='ENDED' || ele.status=='SENT')
           {
             this.endedcount++
           }
-          if(ele.taskStatus=='INPROGRESS' || ele.taskStatus=='SCHEDULED')
+          if(ele.status=='INPROGRESS' || ele.status=='SCHEDULED')
           {
             this.sentcount++
           }
@@ -151,7 +154,7 @@ export class DashboardAdminComponent implements OnInit {
         {
         for(let ele of this.campaigns2)
         {
-          if(ele.taskStatus=='SENT' || ele.taskStatus=='FAILED' || ele.taskStatus=='IN PROGRESS' || ele.taskStatus=='ENDED')
+          if(ele.status=='SENT' || ele.taskStatus=='FAILED' || ele.taskStatus=='IN PROGRESS' || ele.taskStatus=='ENDED')
           {
             this.totalcampaigncount++
           }
@@ -223,14 +226,14 @@ export class DashboardAdminComponent implements OnInit {
     if(tab === 'Recent Campaigns'){
       if(this.dataSource){
         tableData = this.dataSource.filteredData.filter((element : any)=>{
-          return element.taskStatus !== 'SCHEDULED';
+          return element.status !== 'SCHEDULED';
         })
       }
     }
     else if(tab === 'Scheduled Campaigns'){
       if(this.dataSource){
         tableData = this.dataSource.filteredData.filter((element : any)=>{
-          return element.taskStatus === 'SCHEDULED';
+          return element.status === 'SCHEDULED';
         })
       }
     }

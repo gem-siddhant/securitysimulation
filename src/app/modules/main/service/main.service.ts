@@ -10,7 +10,7 @@ export class MainService {
 
    }
    getAllCampaigns(email:any){
-    return this.http.post<any>('dashboard', email);
+    return this.http.post<any>('client/dashboard', email);
    }
    viewmorecamp(email:any)
    {

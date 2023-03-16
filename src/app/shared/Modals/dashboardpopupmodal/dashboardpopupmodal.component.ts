@@ -27,7 +27,7 @@ export class DashboardpopupmodalComponent implements OnInit {
   finalcampaigns:any;
   viewtab : any;
   errormsg = ""
-  displayedColumns: string[] = ['name','opened','delivered','notDelivered','created_on','taskStatus','taskid'];
+  displayedColumns: string[] = ['name','all','opened','delivered','notDelivered','date','starttime','endtime','taskStatus','taskid'];
   constructor(private _main:MainService,
     private commonService : CommonService,
     private router:Router,
@@ -43,28 +43,31 @@ export class DashboardpopupmodalComponent implements OnInit {
   }
 
   getAllCampaigns(){
-    this._main.getAllCampaigns(localStorage.getItem('email')).subscribe((data)=>{
+    let req = {
+      'email' : localStorage.getItem('email')
+    }
+    this._main.getAllCampaigns(req).subscribe((data)=>{
       if(data){
         this.totaldata =data
         console.log(this.campaigns)
         for(let ele of this.totaldata)
         {
-          if(ele.taskStatus=='SENT' || ele.taskStatus=='ENDED' || ele.taskStatus=='FAILED')
+          if(ele.status=='SENT' || ele.status=='ENDED' || ele.status=='FAILED')
           {
             this.campaigns.push(ele)
           }
           this.dataSource = new MatTableDataSource(this.campaigns)
-          if(ele.taskStatus=='ENDED' || ele.taskStatus=='SENT')
+          if(ele.status=='ENDED' || ele.status=='SENT')
           {
             this.campaigns2.push(ele)
           }
           this.dataSource2 = new MatTableDataSource(this.campaigns2)
-          if(ele.taskStatus=='FAILED' || ele.taskStatus=='KILLED')
+          if(ele.status=='FAILED' || ele.status=='KILLED')
           {
             this.campaigns3.push(ele)
           }
           this.dataSource3 = new MatTableDataSource(this.campaigns3)
-          if(ele.taskStatus=='INPROGRESS' || ele.taskStatus=='SCHEDULED')
+          if(ele.status=='INPROGRESS' || ele.status=='SCHEDULED')
           {
             this.campaigns4.push(ele)
           }
