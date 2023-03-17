@@ -116,7 +116,7 @@ export class ScheduledCampaignsComponent implements OnInit {
                   data: dataDialog
                 });
                 dialogRef.afterClosed().subscribe(()=>{
-                  this.router.navigate(['main/dashboard']);
+                  this.router.navigate(['main/Admin']);
                 })
               }
               else{
