@@ -11,6 +11,7 @@ import { MainService } from '../../service/main.service';
 import { AnalyticsService } from '../analytics-service/analytics.service';
 import * as pluginLabels from 'chartjs-plugin-labels';
 import * as Chart from 'chart.js';
+import { take } from 'rxjs';
 @Component({
   selector: 'app-campaign-list',
   templateUrl: './campaign-list.component.html',
@@ -26,7 +27,7 @@ export class CampaignListComponent implements OnInit {
   dataSource: any;
   dataSource2: any;
   isShow = true;
-  displayedColumns: string[] = ['name','opened','delivered','notDelivered','created_on','taskStatus'];
+  displayedColumns: string[] = ['name','all','opened','delivered','notDelivered','date','starttime','endtime','taskStatus'];
   mode: ProgressSpinnerMode = 'determinate';
   color:any;
   bufferValue = 75;
@@ -119,38 +120,30 @@ export class CampaignListComponent implements OnInit {
   }
 
   getAllCampaigns(){
-    this._main.getAllCampaigns(localStorage.getItem('email')).subscribe((data)=>{
+    let req={
+      'email':localStorage.getItem('email')
+    }
+    this._main.getAllCampaigns(req).pipe(take(1)).subscribe((data)=>{
       if(data){
         this.campaigns=data;
-        this.dataSource = new MatTableDataSource(data);
-        this.dataSource = this.dataSource.filteredData
-        this.pieChartData = [ this.totalcampaigncount,  this.totalclickcount, this.totaldeliveredcount1+this.totaldeliveredcount2];
-        console.log(this.dataSource)
+        this.dataSource = new MatTableDataSource(this.campaigns);
         for(let ele of this.campaigns)
         {
-          if(ele.taskStatus=='SENT' || ele.taskStatus=='FAILED' || ele.taskStatus=='IN PROGRESS' || ele.taskStatus=='ENDED')
+          if(ele.status=='SENT' || ele.status=='FAILED' || ele.status=='IN PROGRESS' || ele.status=='ENDED')
           {
             this.totalcampaigncount++
           }
-          if(ele.taskStatus=='KILLED')
+          if(ele.status=='KILLED' || ele.status=='FAILED')
           {
             this.killedcount++
           }
-          if(ele.taskStatus=='ENDED')
+          if(ele.status=='ENDED' || ele.status=='SENT')
           {
             this.endedcount++
           }
-          if(ele.taskStatus=='SENT')
+          if(ele.status=='INPROGRESS' || ele.status=='SCHEDULED')
           {
             this.sentcount++
-          }
-          if(ele.opened>0)
-          {
-            this.totalclickcount = this.totalclickcount + ele.opened
-          }
-          if(ele.delivered)
-          {
-            this.totaldeliveredcount1 = this.totaldeliveredcount1 + ele.delivered
           }
         }
 
@@ -161,7 +154,6 @@ export class CampaignListComponent implements OnInit {
     },err=>{
       this.toastr.error("Error in loading data");
     })
-    
   }
 
   viewmore()

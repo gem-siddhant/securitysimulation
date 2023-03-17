@@ -38,11 +38,11 @@ export class ClientInviteComponent implements OnInit {
       pocmail:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]],
       plan:['',Validators.required],
       currency:['',Validators.required],
-      cost:['',[Validators.required]],
+      // cost:['',[Validators.required]],
       startdate:['',Validators.required],
       enddate:['',Validators.required],
-      admincount:['',[Validators.required]],
-      usercount:['',[Validators.required]],
+      // admincount:['',[Validators.required]],
+      // usercount:['',[Validators.required]],
       contact:['',[Validators.required,Validators.pattern('^[0-9]*$')]],
       address:['',Validators.required],
       officialemail:['',[Validators.required,Validators.pattern(RegExp(/^[a-zA-Z0-9]+\.?[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]{2,3}$/))]]
@@ -60,9 +60,6 @@ export class ClientInviteComponent implements OnInit {
       this.inviteform.value.plan=="" ||
       this.inviteform.value.pocmail == "" ||
       this.inviteform.value.currency == "" ||
-      this.inviteform.value.cost == "" ||
-      this.inviteform.value.admincount == "" || 
-      this.inviteform.value.usercount == "" ||
       this.inviteform.value.address == "" ||
       this.inviteform.value.officialemail == "" ||
       this.inviteform.value.contact == "" 
@@ -82,9 +79,9 @@ export class ClientInviteComponent implements OnInit {
     'representativeEmail': this.inviteform.value.pocmail,
     "planName": this.inviteform.value.plan,
     "currency": this.inviteform.value.currency,
-    "yearlyCost": this.inviteform.value.cost,
-    "noOfAdmins": this.inviteform.value.admincount,
-    "userLimit": this.inviteform.value.usercount,
+    // "yearlyCost": this.inviteform.value.cost,
+    // "noOfAdmins": this.inviteform.value.admincount,
+    // "userLimit": this.inviteform.value.usercount,
     "clientName": this.inviteform.value.clientmail,
     "clientAddress": this.inviteform.value.address,
     "officialEmail": this.inviteform.value.officialemail,

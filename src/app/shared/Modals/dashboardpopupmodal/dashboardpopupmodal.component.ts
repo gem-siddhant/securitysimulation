@@ -52,7 +52,7 @@ export class DashboardpopupmodalComponent implements OnInit {
         console.log(this.campaigns)
         for(let ele of this.totaldata)
         {
-          if(ele.status=='SENT' || ele.status=='ENDED' || ele.status=='FAILED')
+          if(ele.status=='SENT' || ele.status=='ENDED' || ele.status=='FAILED' || ele.status=='SCHEDULED')
           {
             this.campaigns.push(ele)
           }
