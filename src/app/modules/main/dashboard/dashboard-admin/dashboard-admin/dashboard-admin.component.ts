@@ -84,7 +84,7 @@ export class DashboardAdminComponent implements OnInit {
           {
             this.endedcount++
           }
-          if(ele.status=='INPROGRESS' || ele.status=='SCHEDULED')
+          if(ele.status=='IN PROGRESS' || ele.status=='SCHEDULED')
           {
             this.sentcount++
           }

@@ -52,7 +52,7 @@ export class DashboardpopupmodalComponent implements OnInit {
         console.log(this.campaigns)
         for(let ele of this.totaldata)
         {
-          if(ele.status=='SENT' || ele.status=='ENDED' || ele.status=='FAILED' || ele.status=='SCHEDULED')
+          if(ele.status=='SENT' || ele.status=='ENDED' || ele.status=='FAILED' || ele.status=='SCHEDULED' || ele.status=='IN PROGRESS')
           {
             this.campaigns.push(ele)
           }
@@ -67,7 +67,7 @@ export class DashboardpopupmodalComponent implements OnInit {
             this.campaigns3.push(ele)
           }
           this.dataSource3 = new MatTableDataSource(this.campaigns3)
-          if(ele.status=='INPROGRESS' || ele.status=='SCHEDULED')
+          if(ele.status=='IN PROGRESS' || ele.status=='SCHEDULED')
           {
             this.campaigns4.push(ele)
           }
