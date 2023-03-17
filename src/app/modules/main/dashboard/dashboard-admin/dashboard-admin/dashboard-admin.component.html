@@ -141,14 +141,14 @@
       <ng-container matColumnDef="starttime">
         <th  mat-header-cell *matHeaderCellDef  >Start Time</th>
         <td  mat-cell *matCellDef="let ele">
-          {{ele.startTime}}
+          {{ele.startTime === null ? '-' :  ele.startTime}}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="endtime">
         <th  mat-header-cell *matHeaderCellDef  >End Time</th>
         <td  mat-cell *matCellDef="let ele">
-          {{ele.endTime}}
+          {{ele.endTime=== null ? '-' :  ele.endTime}}
         </td>
       </ng-container>
 

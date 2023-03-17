@@ -49,7 +49,9 @@
         </mat-select>
       </mat-form-field>
     </div>
-    <div class="row m-0 mb-3 mt-3">
+
+
+    <!-- <div class="row m-0 mb-3 mt-3">
       <div class="m-0 p-0 col-md-8 note-txt">
         Note :- Please provide only geminisolutions.com id's in csv
       </div>
@@ -67,9 +69,9 @@
         formControlName="attachmentFile"
         (change)="onChange($event)"
       />
-    </div>
-    <div class="row">
-      <div class="col-lg-5 col-md-5 col-sm-12 col-12 pl-1 mb-2">
+    </div> -->
+    <div class="row mt-3">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-12 pl-1 mb-2">
         <button
           [mat-dialog-close]="true"
           mat-stroked-button
@@ -79,7 +81,7 @@
           Cancel
         </button>
       </div>
-      <div class="col-lg-5 col-md-5 col-sm-12 col-12 pl-1">
+      <div class="col-lg-6 col-md-6 col-sm-12 col-12 pl-1">
         <button
           type="submit"
           [mat-dialog-close]="true"
@@ -87,7 +89,7 @@
           class="add_btn w-100"
           (click)="schedulelater()"
         >
-          Schedule Campaign
+          Reschedule Campaign
         </button>
       </div>
     </div>

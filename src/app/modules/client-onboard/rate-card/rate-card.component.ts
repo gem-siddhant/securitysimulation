@@ -38,7 +38,7 @@ export class RateCardComponent implements OnInit {
     this.clientid = this.shared.getemail().clientid
     this.onboardform = this.formBuilder.group({
       planname:[{value:'',disabled:true}],
-      plancost:[{value:'',disabled:true}],
+      // plancost:[{value:'',disabled:true}],
       startdate:[{value:'',disabled:true}],
       enddate:[{value:'',disabled:true}],
       sendinviteenow:[''||false]

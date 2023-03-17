@@ -71,7 +71,7 @@ export class ScheduledCampaignsComponent implements OnInit {
       'email': email
     }
 
-    let dataDialog = { title: 'Do you really want to delete this campaign??' };
+    let dataDialog = { title: 'Do you really want to delete this campaign?' };
     const dialogRef = this.dialog.open(CampaignConfirmComponent, {
       width: '500px',
       height: '315px', 
@@ -100,7 +100,7 @@ export class ScheduledCampaignsComponent implements OnInit {
               let dataDialog = { title: 'Campaign ReScheduled Successfully!' };
               this.dialog.open(ConfirmationModalComponent, {
                 width: '400px',
-                height:'400px',
+                height:'200px',
                 data: dataDialog
               });
             }
@@ -112,7 +112,7 @@ export class ScheduledCampaignsComponent implements OnInit {
                let dataDialog = { title: 'Campaign deleted Successfully!' };
                 const dialogRef = this.dialog.open(ConfirmationModalComponent, {
                   width: '400px',
-                  height:'400px',
+                  height:'200px',
                   data: dataDialog
                 });
                 dialogRef.afterClosed().subscribe(()=>{

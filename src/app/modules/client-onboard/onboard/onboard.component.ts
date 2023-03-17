@@ -103,7 +103,6 @@ export class OnboardComponent implements OnInit {
       if(data)
       {
         console.log(data.message)
-        this.router.navigate(['client-onboard/generate-password'])
       if(data.message=='Invalid OTP'){
         this.toastr.error("Incorrect OTP",undefined,
       {
