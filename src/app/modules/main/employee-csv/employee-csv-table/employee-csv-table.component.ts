@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { EmployeeCsv } from '../employee-client.model';
@@ -14,6 +14,7 @@ export class EmployeeCsvTableComponent implements OnInit {
   @Input() searchText: string;
   @Input() filterType: string;
   @Input() tableData: EmployeeCsv[];
+  @Output() deleteEventEmitter : EventEmitter<number>;
 
   constructor(
     private router: Router,
@@ -27,6 +28,7 @@ export class EmployeeCsvTableComponent implements OnInit {
       'action',
     ];
     this.employeeCsvTable = new MatTableDataSource<EmployeeCsv>();
+    this.deleteEventEmitter = new EventEmitter<number>();
   }
 
   ngOnInit(): void {}
@@ -52,5 +54,9 @@ export class EmployeeCsvTableComponent implements OnInit {
       );
     });
     return csvTableData;
+  }
+
+  deleteEmployee(userId : number) : void{
+    this.deleteEventEmitter.emit(userId);
   }
 }

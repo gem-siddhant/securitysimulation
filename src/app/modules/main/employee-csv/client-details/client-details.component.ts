@@ -1,10 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs';
 import { CommonService } from 'src/app/services/common.service';
 import { ResponsiveService } from 'src/app/services/responsive.service';
+import { AlertModalComponent } from 'src/app/shared/alert-modal/alert-modal.component';
+import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
 import { ClientDetails, CourseDetails, SimulationDetails } from '../employee-client.model';
 import { EmployeeCsvService } from '../services/employee-csv.service';
 
@@ -20,10 +23,12 @@ export class ClientDetailsComponent implements OnInit {
   screenSize : string;
   constructor(private commonService : CommonService,
     private formBuilder : FormBuilder,
-    private router: ActivatedRoute,
+    private activatedRouter: ActivatedRoute,
+    private router : Router,
     private employeeCsvService : EmployeeCsvService,
     private responsiveService : ResponsiveService,
-    private toastr : ToastrService) { 
+    private toastr : ToastrService,
+    private dialog : MatDialog) { 
     this.searchForm = this.formBuilder.group({});
     this.userId = 0;
     this.clientDetails = {} as ClientDetails;
@@ -34,7 +39,7 @@ export class ClientDetailsComponent implements OnInit {
     this.commonService.setLoginStatus(true);
     this.commonService.setNavTitle('Employee');
     this.commonService.setScreenRouting('main/employee-csv/dashboard');
-    this.router.paramMap.pipe(take(1)).subscribe((params) =>{
+    this.activatedRouter.paramMap.pipe(take(1)).subscribe((params) =>{
       this.userId = Number(params?.get("id"));
     })
     this.getEmployeeCsvDetails();
@@ -47,10 +52,7 @@ export class ClientDetailsComponent implements OnInit {
     this.onResize();
   }
 
-  applyFilter(){
-    
-  }
-  getEmployeeCsvDetails(){
+  getEmployeeCsvDetails() : void{
     this.employeeCsvService.getEmployeeCsvDetails(this.userId).pipe(take(1)).subscribe({
       next :(data) => {
         this.clientDetails = data;
@@ -83,5 +85,43 @@ export class ClientDetailsComponent implements OnInit {
 
   onResize() : void{
     this.responsiveService.checkWidth();
+  }
+
+  deleteEmployee() : void{
+    const alertTitle = "Do you want to delete the employee?"
+    const alertDialogRef = this.dialog.open(AlertModalComponent, {
+      width: '454px',
+      data :  alertTitle
+    });
+    alertDialogRef.afterClosed().pipe(take(1)).subscribe({
+      next : (alertDialogData)=>{
+        if(alertDialogData.yesClicked){
+          this.employeeCsvService.deleteEmployeeDetails(this.userId).pipe((take(1))).subscribe({
+            next : (data)=>{
+              this.opneConfirmationModal('Employee Deleted Successfully!');
+            },
+            error : (error)=>{
+              this.toastr.error(error.error);
+            }
+          })
+        }
+      },
+    })
+  }
+
+  opneConfirmationModal(confirmationTitle : string): void {
+    let dataDialog = { title: confirmationTitle };
+    let dialogRef = this.dialog.open(ConfirmationModalComponent, {
+      width: '513px',
+      data: dataDialog,
+    });
+    dialogRef
+      .afterClosed()
+      .pipe(take(1))
+      .subscribe({
+        next: (data) => {
+          this.router.navigate(['/main/employee-csv/dashboard']);
+        },
+      });
   }
 }

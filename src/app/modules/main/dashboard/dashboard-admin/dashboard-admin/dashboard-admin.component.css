@@ -6,10 +6,6 @@
     display:inline-flex;
     overflow-x: auto;
 }
-.maintitle{
-    background-color: aquamarine;
-    align-items: flex-start;
-}
 .matcards{
     background: #38A3A5;
     box-shadow: 0px 4px 20px rgba(56, 163, 165, 0.48);
@@ -25,11 +21,6 @@
     box-shadow: 0px 4px 20px rgba(56, 163, 165, 0.48);
     border-radius: 10px;
     display: block;
-}
-.tablemat{
-    border-right: none !important;
-    background: #e9fdfd;
-    border-radius: 5px;
 }
 .my-spinner path {
     stroke: red;
@@ -51,78 +42,6 @@
     text-transform: uppercase;
     color: #38A3A5;
 }
-table{
-  width: 100% !important;
-}
-.matcontents{
-    color: black;
-    border: none;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 21px;
-    text-transform: capitalize;
-}
-::ng-deep th.mat-header-cell,
-td.mat-cell,
-td.mat-footer-cell {
-  border-bottom-width: 10px !important;
-  border-bottom-color: white !important;
-  
-}
-th.mat-header-cell {
-    color: white;
-    background-color: #38A3A5;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-  }
-.btn {
-    background: #38A3A5;
-    box-shadow: none;
-    border: none;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-}
-.mat-cell {
-    background-color:#F8F8F8;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 12px;
-    color: #000000;
-  }
-
-  .mat-table{    
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    overflow:hidden !important;
-}
-.buttonCss
-{
-    border: none;
-    background-color: #F8F8F8;
-    font-weight: bolder;
-}
-  .btnrecent {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 27px;
-    text-transform: capitalize;
-    color: #545454;
-    border: none;
-  }
-  .right-dialog {
-    margin-left: auto;
-  }
   .linkbtn{
     background-color: white;
     border: none;
@@ -131,3 +50,38 @@ th.mat-header-cell {
     color: #38A3A5;
     width: 0.1%
   }
+
+td,
+th {
+  height: 60px !important;
+  font-size: 14px;
+  line-height: 21px;
+}
+th {
+  background: #38a3a5;
+  font-weight: 600;
+}
+td {
+  font-weight: 400;
+}
+td:first-of-type,
+th:first-of-type {
+  padding-left: 15px !important;
+}
+td:last-of-type,
+th:last-of-type {
+  padding-right: 15px !important;
+}
+.tdata-row {
+  background: #f8f8f8;
+  color: #545454;
+}
+.start-corner {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+.end-corner {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-weight: 600;
+}

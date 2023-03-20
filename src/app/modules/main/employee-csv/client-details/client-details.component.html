@@ -26,7 +26,7 @@
                 <span class="client-detail-key">Designation :&nbsp;</span>
                 <span class="client-detail-value">{{clientDetails.designation}}</span>
               </div>
-              <button *ngIf="!isScreenSizeMedium() && !isScreenSizeSmall() && !isScreenSizeXs()" class="m-2 p-2 remove-btn rounded">Remove Employee</button>
+              <button (click)="deleteEmployee()" *ngIf="!isScreenSizeMedium() && !isScreenSizeSmall() && !isScreenSizeXs()" class="m-2 p-2 remove-btn rounded">Remove Employee</button>
             </div>
           </div>
           <div class="col-lg-6">
@@ -43,7 +43,7 @@
                 <span class="client-detail-key">Simulation Score :&nbsp;</span>
                 <span class="client-detail-value">560</span>
               </div>
-              <button *ngIf="isScreenSizeMedium() || isScreenSizeSmall() || isScreenSizeXs()" class="m-2 p-2 remove-btn rounded">Remove Employee</button>
+              <button (click)="deleteEmployee()" *ngIf="isScreenSizeMedium() || isScreenSizeSmall() || isScreenSizeXs()" class="m-2 p-2 remove-btn rounded">Remove Employee</button>
             </div>
           </div>
         </div>

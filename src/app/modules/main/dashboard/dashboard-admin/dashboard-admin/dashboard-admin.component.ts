@@ -25,7 +25,7 @@ export class DashboardAdminComponent implements OnInit {
   endedcount: number=0;
   killedcount: number=0;
   totalcampaigncount: number =0;
-  dashTable : any;
+  dashTable : MatTableDataSource<any>;
   dataSource: MatTableDataSource<any>;
   dataSource2: any;
   select_val:any='';
@@ -46,7 +46,9 @@ export class DashboardAdminComponent implements OnInit {
     private commonService : CommonService,
     private router:Router,
     private dialog:MatDialog,
-    private toastr:ToastrService) { }
+    private toastr:ToastrService) {
+      this.dashTable = new MatTableDataSource<any>();
+    }
 
   ngOnInit(): void {
     this.commonService.setLoginStatus(true);

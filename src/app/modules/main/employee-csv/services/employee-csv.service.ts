@@ -10,8 +10,8 @@ export class EmployeeCsvService {
 
   constructor(private http:HttpClient) { }
 
-  deleteEmployeeDetails(userId : string) : Observable<string>{
-    return this.http.delete<string>(`delete/employee/${userId}`)
+  deleteEmployeeDetails(userId : number) : Observable<string>{
+    return this.http.delete<any>(`delete/employee/${userId}`)
   }
 
   updateEmployeesCsv(csvData : UpdateEmployeeCsv) : Observable<any>{

@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { take } from 'rxjs';
 import { CommonService } from 'src/app/services/common.service';
+import { AlertModalComponent } from 'src/app/shared/alert-modal/alert-modal.component';
 import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/confirmation-modal.component';
 import { CsvUploadModalComponent } from 'src/app/shared/csv-upload-modal/csv-upload-modal.component';
 import { EmployeeCsv, EmployeeExcelData, UpdateEmployeeCsv} from '../employee-client.model';
@@ -42,10 +43,8 @@ export class EmployeeCsvDashboardComponent implements OnInit {
     });
   }
 
-  applyFilter() {}
-
-  opneConfirmationModal(): void {
-    let dataDialog = { title: 'Employees Added Successfully!' };
+  opneConfirmationModal(confirmationTitle : string): void {
+    let dataDialog = { title: confirmationTitle };
     let dialogRef = this.dialog.open(ConfirmationModalComponent, {
       width: '513px',
       data: dataDialog,
@@ -56,9 +55,6 @@ export class EmployeeCsvDashboardComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.getAllEmployees();
-        },
-        error: (error) => {
-          this.toastr.error('Error while uploading data');
         },
       });
   }
@@ -75,7 +71,6 @@ export class EmployeeCsvDashboardComponent implements OnInit {
   }
 
   openUploadCsvModal(): void {
-    let dataDialog = { title: 'Campaign Sent to you Successfully!' };
     let dialogRef: MatDialogRef<CsvUploadModalComponent>;
     dialogRef = this.dialog.open(CsvUploadModalComponent, {
       width: '513px',
@@ -88,10 +83,7 @@ export class EmployeeCsvDashboardComponent implements OnInit {
           if (data.sendClicked) {
             this.updateEmployeeCsv(data.employeeCsvData, data.onBoardEmployees, data.refreshEmployees);
           }
-        },
-        error: (error) => {
-          this.toastr.error('Error while closing modal');
-        },
+        }
       });
   }
 
@@ -103,11 +95,33 @@ export class EmployeeCsvDashboardComponent implements OnInit {
     csvData.refresh = refreshEmployees;
     this.employeeCsvService.updateEmployeesCsv(csvData).pipe(take(1)).subscribe({
       next: (data) => {
-        this.opneConfirmationModal();
+        this.opneConfirmationModal('Employees Added Successfully!');
       },
-      error: (erro) => {
-        this.toastr.error('Error while sending data');
+      error: (error) => {
+        this.toastr.error(error.error);
       },
     });
+  }
+
+  deleteEmployee(userId : number) : void{
+    const alertTitle = "Do you want to delete the employee?"
+    const alertDialogRef = this.dialog.open(AlertModalComponent, {
+      width: '454px',
+      data :  alertTitle
+    });
+    alertDialogRef.afterClosed().pipe(take(1)).subscribe({
+      next : (alertDialogData)=>{
+        if(alertDialogData.yesClicked){
+          this.employeeCsvService.deleteEmployeeDetails(userId).pipe((take(1))).subscribe({
+            next : (data)=>{
+              this.opneConfirmationModal('Employee Deleted Successfully!');
+            },
+            error : (error)=>{
+              this.toastr.error(error.error);
+            }
+          })
+        }
+      },
+    })
   }
 }
