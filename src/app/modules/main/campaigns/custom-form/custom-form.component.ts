@@ -69,6 +69,7 @@ export class CustomFormComponent implements OnInit {
       description : ["", customValidator('','email description')],
       subject : ["", customValidator('','email subject')],
       note : ["", customValidator('','add note')],
+      linkUrl : ["", customValidator('','link url')],
       emailSignature : ["", customValidator('','email signature')],
       addDescription : [false],
       allEmails : emails,
