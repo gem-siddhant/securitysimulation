@@ -6,7 +6,7 @@ import {view_data} from './dashboard-view';
 import { MatTableDataSource } from '@angular/material/table';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { CommonService } from 'src/app/services/common.service';
 import { MatSort } from '@angular/material/sort';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
@@ -40,14 +40,22 @@ export class DashboardAdminComponent implements OnInit {
   killedanalytics: number= 0;
   endedanalytics: number= 0;
   errormsg: string = '';
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  tablePageIndex : number;
+  tableLength : number;
+  noOfRows : number;
+  pageEvent: PageEvent;
+  selectedTab : string;
   constructor(private _main:MainService,
     private commonService : CommonService,
     private router:Router,
     private dialog:MatDialog,
     private toastr:ToastrService) {
       this.dashTable = new MatTableDataSource<any>();
+      this.tablePageIndex = 0;
+      this.noOfRows = 5;
+      this.tableLength = 0;
+      this.pageEvent = new PageEvent();
+      this.selectedTab = 'Recent Campaigns';
     }
 
   ngOnInit(): void {
@@ -56,13 +64,20 @@ export class DashboardAdminComponent implements OnInit {
     this.commonService.setScreenRouting('');
     this.getAllCampaigns();
   }
-  ngAfterViewInit() {
-    this.dashTable.paginator = this.paginator;
+
+  ngAfterViewChecked(): void {
+    if (this.dashTable.data.length != 0) {
+      const list = document.getElementsByClassName("mat-paginator-range-label");
+      this.tableLength > 0
+        ? (list[0].innerHTML =
+            "Page: " +
+            (this.tablePageIndex + 1).toString() +
+            " of " +
+            Math.ceil(this.tableLength / this.noOfRows))
+        : (list[0].innerHTML = "Page: 0 of 0");
+    }
   }
-  sortAndPaginate() {
-    this.dashTable.paginator = this.paginator;
-    this.dashTable.sort = this.sort;
-  }
+
   getAllCampaigns(){
     let req={
       'email':localStorage.getItem('email')
@@ -71,7 +86,8 @@ export class DashboardAdminComponent implements OnInit {
       if(data){
         this.campaigns=data;
         this.dataSource = new MatTableDataSource(data);
-        this.onTabChange()
+        this.getData();
+        // this.onTabChange()
         for(let ele of this.campaigns)
         {
           if(ele.status=='SENT' || ele.status=='FAILED' || ele.status=='IN PROGRESS' || ele.status=='ENDED' || ele.status=='SCHEDULED' || ele.status=='KILLED')
@@ -220,30 +236,54 @@ export class DashboardAdminComponent implements OnInit {
       //  }
     }
   onTabChange(event? : MatTabChangeEvent){
-    let tab = 'Recent Campaigns';
     let tableData: any[] = [];
     if(event){
-      tab = event.tab.textLabel;
+      this.selectedTab = event.tab.textLabel;
+      this.noOfRows = 5;
+      this.tablePageIndex = 0;
     }
-    if(tab === 'Recent Campaigns'){
+    if(this.selectedTab === 'Recent Campaigns'){
       if(this.dataSource){
         tableData = this.dataSource.filteredData.filter((element : any)=>{
           return element.status !== 'SCHEDULED';
         })
       }
     }
-    else if(tab === 'Scheduled Campaigns'){
+    else if(this.selectedTab === 'Scheduled Campaigns'){
       if(this.dataSource){
         tableData = this.dataSource.filteredData.filter((element : any)=>{
           return element.status === 'SCHEDULED';
         })
       }
     }
-    this.dashTable = new MatTableDataSource(tableData);
-    this.sortAndPaginate()
+    this.tableLength = tableData.length;
+    this.paginationData(tableData);
     this.errormsg=""
     if(this.dashTable.filteredData.length==0){
       this.errormsg="no data found"
     }
+  }
+
+  getData(event?: PageEvent): PageEvent {
+    if (event) {
+      this.noOfRows = event.pageSize;
+      this.tablePageIndex = event.pageIndex;
+    }
+    console.log(event);
+    this.onTabChange();
+    if (event) {
+      return event;
+    }
+    return new PageEvent();
+  }
+
+  paginationData(tableData : any[]){
+    let startIndex = this.tablePageIndex*this.noOfRows;
+    let endIndex = (this.tablePageIndex + 1) * this.noOfRows;
+    let paginatedTable = [];
+    for(let i=startIndex; i< this.tableLength && i<endIndex;i++){
+      paginatedTable.push(tableData[i]);
+    }
+    this.dashTable = new MatTableDataSource(paginatedTable);   
   }
 }

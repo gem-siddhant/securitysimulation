@@ -273,9 +273,15 @@
         <div class="text-center font-style mt-3">No records found!</div>
     </div>
   </div>
-  <mat-paginator [pageSizeOptions]="[5, 15, 30, 45]" [length]="dashTable.data.length" showFirstLastButtons
-        aria-label="Select page of periodic elements">
-    </mat-paginator>
+  <mat-paginator 
+    [pageSize]="noOfRows" 
+    [pageSizeOptions]="[5, 15, 30, 45]" 
+    [pageIndex]="tablePageIndex"
+    (page)="pageEvent = getData($event)"
+    [length]="tableLength" 
+    showFirstLastButtons
+    aria-label="Select page">
+  </mat-paginator>
 </div>
 
 
