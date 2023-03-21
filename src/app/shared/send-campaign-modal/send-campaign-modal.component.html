@@ -15,6 +15,7 @@
           [max]="maxDate"
         />
         <mat-error
+        class="mt-2"
           *ngIf="
             this.sendCampaignForm.controls['date'].errors != null &&
             this.sendCampaignForm.controls['date']['errors']['isInvalid']"
@@ -36,6 +37,7 @@
           formControlName="time"
         />
         <mat-error
+        class="mt-2"
           *ngIf="
             this.sendCampaignForm.controls['time'].errors != null &&
             this.sendCampaignForm.controls['time']['errors']['isInvalid']"
@@ -58,6 +60,7 @@
           <mat-option value="Asia/Kolkata">IST [Asia/Kolkata]</mat-option>
         </mat-select>
         <mat-error
+        class="mt-2"
           *ngIf="
             this.sendCampaignForm.controls['timezone'].errors != null &&
             this.sendCampaignForm.controls['timezone']['errors']['isInvalid']"

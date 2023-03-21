@@ -72,7 +72,7 @@ export class DashboardAdminComponent implements OnInit {
         this.onTabChange()
         for(let ele of this.campaigns)
         {
-          if(ele.status=='SENT' || ele.status=='FAILED' || ele.status=='IN PROGRESS' || ele.status=='ENDED' || ele.status=='SCHEDULED')
+          if(ele.status=='SENT' || ele.status=='FAILED' || ele.status=='IN PROGRESS' || ele.status=='ENDED' || ele.status=='SCHEDULED' || ele.status=='KILLED')
           {
             this.totalcampaigncount++
           }
