@@ -279,7 +279,7 @@ export class TemplateFormComponent implements OnInit {
           name : [data.heading,[customValidator(data.heading,'campaign name')]],
           description : [data.description,[customValidator(data.description,'description')]],
           subject : [data.subject,[customValidator(data.subject,'subject')]],
-          note : [data.addNote,[customValidator(data.addNote,'note')]],
+          note : [data.addNote],//,[customValidator(data.addNote,'note')]],
           linkUrl : ['',[customValidator('','link url')]],
           rewardType : [data.rewardType ? data.rewardType : '',[customValidator(data.rewardType,'reward type', this.templateId)]],
           rewardAmount : [data.amount ? data.amount : '0',[customValidator(data.amount,'reward amount', this.templateId)]],

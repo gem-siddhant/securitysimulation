@@ -69,11 +69,12 @@ export class SendCampaignModalComponent implements OnInit {
 
 
   samplecsv(): void {
-    let dataDialog = { title: 'CSV file not Provided' };
-    this.dialog.open(DownloadCsvModalComponent, {
-      width: '700px',
-      data: dataDialog,
-    });
+    window.open('../../../assets/pdf/samplefile.csv');
+    // let dataDialog = { title: 'CSV file not Provided' };
+    // this.dialog.open(DownloadCsvModalComponent, {
+    //   width: '700px',
+    //   data: dataDialog,
+    // });
   }
 
   onChange(event: any) {

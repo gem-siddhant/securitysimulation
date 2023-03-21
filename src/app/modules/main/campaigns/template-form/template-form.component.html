@@ -190,7 +190,7 @@
           <div class="row" [formGroupName]="mailId">
             <mat-form-field
               appearance="outline"
-              class="col-xl-11 col-lg-10 col-md-10 col-sm-10 col-10 pb-3"
+              class="col-12 pb-3"
             >
               <mat-label>Email for simulation</mat-label>
               <input matInput type="text" formControlName="senderEmail" class="input-text" />
@@ -200,7 +200,7 @@
                 >{{ emailFieldErrorMessage(mailId)}}</mat-error
               >
             </mat-form-field>
-            <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-2 p-1">
+            <!-- <div class="col-xl-1 col-lg-2 col-md-2 col-sm-2 col-2 p-1">
               <button
                 type="button"
                 class="buttons w-75 h-75 border-0 rounded d-flex align-items-center justify-content-center"
@@ -211,7 +211,7 @@
                   >clear</mat-icon
                 >
               </button>
-            </div>
+            </div> -->
           </div>
         </div>
 
