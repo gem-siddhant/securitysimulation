@@ -10,11 +10,12 @@ import { DashboardAdminComponent } from './dashboard/dashboard-admin/dashboard-a
 import { SharedModule } from 'src/app/shared/shared.module';
 import { UserManualComponent } from './user-manual/user-manual.component';
 import { ClientInviteComponent } from './dashboard/dashboard-super-admin/Client-invite/client-invite/client-invite.component';
-import { DashboardEmpComponent } from './dashboard/dashboard-emp/dashboard-emp.component';
 import { DashboardSuperAdminComponent } from './dashboard/dashboard-super-admin/dashboad-landing/dashboard-super-admin.component';
 import { MatIconModule } from '@angular/material/icon';
 import { ClientdetailsComponent } from './dashboard/dashboard-super-admin/Client-view/clientdetails/clientdetails.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { EmployeeLearningComponent } from './dashboard/dashboard-emp/employee-learning/employee-learning.component';
+import { DashboardEmpComponent } from './dashboard/dashboard-emp/dashboard-superadmin/dashboard-emp.component';
 @NgModule({
   declarations: [
     AddCampaignComponent,
@@ -25,8 +26,9 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     ScheduledCampaignsComponent,
     UserManualComponent,
     ClientInviteComponent,
+    ErrorPageComponent,
     DashboardEmpComponent,
-    ErrorPageComponent
+    EmployeeLearningComponent
   ],
   imports: [
     SharedModule,

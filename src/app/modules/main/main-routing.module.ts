@@ -5,7 +5,8 @@ import { ConfirmationModalComponent } from 'src/app/shared/confirmation-modal/co
 import { AddCampaignComponent } from './add-campaign/add-campaign.component';
 import { CustomtemplateComponent } from './customtemplate/customtemplate.component';
 import { DashboardAdminComponent } from './dashboard/dashboard-admin/dashboard-admin/dashboard-admin.component';
-import { DashboardEmpComponent } from './dashboard/dashboard-emp/dashboard-emp.component';
+import { DashboardEmpComponent } from './dashboard/dashboard-emp/dashboard-superadmin/dashboard-emp.component';
+import { EmployeeLearningComponent } from './dashboard/dashboard-emp/employee-learning/employee-learning.component';
 import { DashboardSuperAdminComponent } from './dashboard/dashboard-super-admin/dashboad-landing/dashboard-super-admin.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { LoginComponent } from './login/login.component';
@@ -94,6 +95,22 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     loadChildren: () =>
       import('./dashboard/dashboard-super-admin/dashboard-superadmin.module').then((m) => m.DashboardSuperAdminModule),
+  },
+  // {
+  //   path: 'Employee',
+  //   canActivate: [AuthGuard],
+  //   loadChildren: () =>
+  //     import('./dashboard/dashboard-emp/dashboard-employee.module').then((m) => m.DashboardEmployeeModule),
+  // },
+  {
+    path: 'Employee',
+    canActivate: [AuthGuard],
+    component: DashboardEmpComponent,
+  },
+  {
+    path: 'Learning',
+    canActivate: [AuthGuard],
+    component: EmployeeLearningComponent,
   },
   {
     path: 'analytics',

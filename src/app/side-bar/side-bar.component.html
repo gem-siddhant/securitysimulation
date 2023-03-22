@@ -12,6 +12,16 @@
       <span>Dashboard</span>
     </a>
   </div>
+  <div [routerLinkActive]="['active-tab']" (click)="close()" *ngIf="this.roleuser">
+    <a
+      [routerLinkActive]="['active-tab']"
+      mat-list-item
+      routerLink="/main/Learning"
+    >
+    <img [src]="dashIcon" width="20px" height="20px"/>
+      <span>Learning</span>
+    </a>
+  </div>
 
   <div [routerLinkActive]="['active-tab']" (click)="close()" *ngIf="this.rolesa">
     <a

@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { empdashboardapis } from 'src/app/shared/APIEndpoints/empdashboardapi';
+import { empdashboardapis, employeealllearningdetails } from 'src/app/shared/APIEndpoints/empdashboardapi';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +24,10 @@ export class EmpDashboardService {
   getTableDetails(email:any)
   {
     return this.http.post<any>(empdashboardapis.tabledetails,email)
+  }
+  getLearningDetails(email:any)
+  {
+    return this.http.post<any>(employeealllearningdetails.getalldetails,email)
   }
 }
 

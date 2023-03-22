@@ -6,7 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { ToastrService } from 'ngx-toastr';
 import { CommonService } from 'src/app/services/common.service';
 import { iconconst } from 'src/app/shared/Constants/constants';
-import { EmpDashboardService } from '../dashboard-services/emp-dashboard.service';
+import { EmpDashboardService } from '../../dashboard-services/emp-dashboard.service';
 
 
 @Component({

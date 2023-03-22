@@ -9,3 +9,8 @@ export const empdashboardapis = {
 export const analyticsapis = {
     totaloffenders : "get/repeated/offenders"
 }
+
+//employee learning apis 
+export const employeealllearningdetails = {
+    getalldetails : "employee/learnings/dashboard"
+}
