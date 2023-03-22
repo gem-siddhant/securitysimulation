@@ -152,6 +152,8 @@ export class LoginComponent implements OnInit {
           if(data){
             let jwtToken = JSON.parse(window.atob(data.token.split(".")[1]));
             let role = JSON.parse(window.atob(data.token.split(".")[1]))
+            let name = JSON.parse(window.atob(data.token.split(".")[1]))
+            localStorage.setItem('name',jwtToken.name)
             localStorage.setItem('role',role.roles)
             localStorage.setItem('email',jwtToken.sub);
             localStorage.setItem('token',data.token);

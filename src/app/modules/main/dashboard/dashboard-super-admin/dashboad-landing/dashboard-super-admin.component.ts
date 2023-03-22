@@ -128,6 +128,10 @@ export class DashboardSuperAdminComponent implements OnInit {
       
         this.campaigns = data
         this.dataSource = new MatTableDataSource(data)
+        if(this.dataSource.length==0)
+        {
+         this.errormsg="no data found"
+        }
         this.sortAndPaginate()
         this.dataSource.sort = this.sort;
       }

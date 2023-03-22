@@ -169,11 +169,10 @@
         </table>
     
     <!-- if no records are found  -->
-    <div *ngIf="errormsg"  class="col-lg-12 col-sm-12 col-md-12 col-xs-12">
-      <div class="row">
-        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center h1">
-          No Entries Found
-        </div>
+    <div *ngIf="this.errormsg" class="d-flex justify-content-center align-items-center no-data-container bg-white">
+      <div class="text-center">
+          <img src="../../../../../assets/images/cross-icon.svg" />
+          <div class="text-center font-style mt-3">No records found!</div>
       </div>
     </div>
 

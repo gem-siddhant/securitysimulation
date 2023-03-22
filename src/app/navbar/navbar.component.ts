@@ -64,7 +64,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() : void {
     this.simulationlogo = imgconst.simulationlog;
     this.logoutlogo = imgconst.logoutlog;
-    this.username =localStorage.getItem('email');
+    this.username =localStorage.getItem('name');
 
     this.checkMobile();
     this.onResize();
