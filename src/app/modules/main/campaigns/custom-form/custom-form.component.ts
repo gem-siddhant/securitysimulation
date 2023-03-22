@@ -69,7 +69,6 @@ export class CustomFormComponent implements OnInit {
       description : ["", customValidator('','email description')],
       subject : ["", customValidator('','email subject')],
       note : ["", customValidator('','add note')],
-      linkUrl : ["", customValidator('','link url')],
       emailSignature : ["", customValidator('','email signature')],
       addDescription : [false],
       allEmails : emails,
@@ -109,7 +108,11 @@ export class CustomFormComponent implements OnInit {
   }
   
   isScreenMobile() : boolean{
-    return this.screenSize !== 'lg';
+    return (this.screenSize !== 'lg' && this.screenSize !== 'xl');
+  }
+
+  isScreenNotMobile() : boolean{
+    return (this.screenSize === 'lg' || this.screenSize === 'xl');
   }
 
   onChange(event : any) : void{
@@ -121,8 +124,6 @@ export class CustomFormComponent implements OnInit {
         this.imgErrorMessage = 'Image Size should be less than 2mb'
         return;
       }
-      else
-        this.changeTrigger = false;
       reader.readAsDataURL(this.imageFile);
       reader.onload = (e: any) => {
         const image = new Image();
@@ -130,18 +131,17 @@ export class CustomFormComponent implements OnInit {
         image.onload = (rs : any) => {
           const img_height = rs.currentTarget['height'];
           const img_width = rs.currentTarget['width'];
-          console.log(img_height, img_width);
-          if(img_height> 300){
-
+          if(img_height > 300 || img_width > 300){
+            this.imgErrorMessage = 'Image Dimensions should be less than 300 x 300';
+            return;
           }
-          if(img_width >300){
-            
-          }
+          this.changeTrigger = false;
+          this.uploadedImage = this.sanitizer.bypassSecurityTrustUrl(String(reader.result));
         };
-        
-        this.uploadedImage = this.sanitizer.bypassSecurityTrustUrl(String(reader.result));
-        this.imgSource = e.target.result;
-        console.log(this.imgSource);
+        // this.changeTrigger = false;
+        // this.uploadedImage = this.sanitizer.bypassSecurityTrustUrl(String(reader.result));
+        // this.imgSource = e.target.result;
+        // console.log(this.imgSource);
       };
     }
   }

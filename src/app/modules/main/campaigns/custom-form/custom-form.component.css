@@ -66,3 +66,12 @@
   font-size: 14px;
   line-height: 21px;
 }
+.temp-img-mob{
+  height: 500px;
+}
+.temp-img-without-desc{
+  height: 550px;
+}
+.temp-img-with-desc{
+  height: 650px;
+}

@@ -2,7 +2,7 @@
   <form [formGroup]="sendCampaignForm" class="font-style">
     <div class="row d-flex justify-content-center" *ngIf="isCampaignTypeSchedule()">
       <mat-form-field
-        class="col-lg-4 col-md-4 col-sm-12 col-12"
+        class="col-lg-4 col-md-4 col-sm-12 col-12 mb-1"
         appearance="outline"
       >
         <mat-label>Choose a date (MM/DD/YYYY)</mat-label>
@@ -15,7 +15,7 @@
           [max]="maxDate"
         />
         <mat-error
-        class="mt-2"
+        class="input-error-top-margin"
           *ngIf="
             this.sendCampaignForm.controls['date'].errors != null &&
             this.sendCampaignForm.controls['date']['errors']['isInvalid']"
@@ -25,7 +25,7 @@
       </mat-form-field>
 
       <mat-form-field
-        class="col-lg-4 col-md-4 col-sm-12 col-12"
+        class="col-lg-4 col-md-4 col-sm-12 col-12 mb-1"
         appearance="outline"
       >
         <mat-label>12 hrs format</mat-label>
@@ -37,7 +37,7 @@
           formControlName="time"
         />
         <mat-error
-        class="mt-2"
+        class="input-error-top-margin"
           *ngIf="
             this.sendCampaignForm.controls['time'].errors != null &&
             this.sendCampaignForm.controls['time']['errors']['isInvalid']"
@@ -46,12 +46,13 @@
         <!-- <mat-timepicker-toggle matSuffix></mat-timepicker-toggle> -->
         <ngx-material-timepicker
           #timePicker
+          [theme]="darkTheme"
           [enableKeyboardInput]="true"
         ></ngx-material-timepicker>
       </mat-form-field>
 
       <mat-form-field
-        class="col-lg-4 col-md-4 col-sm-12 col-12"
+        class="col-lg-4 col-md-4 col-sm-12 col-12 mb-1"
         appearance="outline"
       >
         <mat-label>Select Time Zone</mat-label>
@@ -60,14 +61,14 @@
           <mat-option value="Asia/Kolkata">IST [Asia/Kolkata]</mat-option>
         </mat-select>
         <mat-error
-        class="mt-2"
+        class="input-error-top-margin"
           *ngIf="
             this.sendCampaignForm.controls['timezone'].errors != null &&
             this.sendCampaignForm.controls['timezone']['errors']['isInvalid']"
           >{{ this.sendCampaignForm.controls['timezone']['errors']['message']}}</mat-error>
       </mat-form-field>
     </div>
-    <div class="m-0 p-0 col-md-12 note-txt">
+    <div class="m-0 mt-2 mb-2 p-0 col-md-12 note-txt">
         Note :- Please provide only geminisolutions.com id's in csv
         
         <mat-icon class="vertical-align"

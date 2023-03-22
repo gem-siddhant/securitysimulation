@@ -58,19 +58,22 @@ export class TemplateFormComponent implements OnInit {
       description : [""],
       subject : [""],
       note : [""],
-      linkUrl : [''],
       rewardType : [""],
       rewardAmount : [''],
       emailSignature : [""],
       fileName : [""],
       fileContent : [""],
+      urlTitle : [""],
+      urlDescription : [""],
       sendAttachment : [true],
+      sendUrlDetails : [false],
       allEmails : new FormArray([new FormGroup({
         senderEmail: new FormControl('', Validators.required),
       })]),
     });
     this.getPreFilledData(this.templateId);
     this.changeAttachmentStatus();
+    this.changeUrlStatus();
   }
 
   addEmailField() : void {
@@ -104,8 +107,16 @@ export class TemplateFormComponent implements OnInit {
     return this.templateForm.value.sendAttachment;
   }
 
+  isSendUrlDetailsTrue() : boolean{
+    return this.templateForm.value.sendUrlDetails;
+  }
+
   isAmazonTemplateSelected() : boolean{
     return this.templateId === 1;
+  }
+
+  isITTemplateSelected() : boolean{
+    return this.templateId === 5;
   }
 
   isEmailFieldInvalid(index: number) : boolean{
@@ -254,7 +265,17 @@ export class TemplateFormComponent implements OnInit {
   }
 
   opneConfirmationModal(btnTitle : string) : void{
-    let dataDialog = { title: 'Campaign Sent Successfully!' };
+    let dialogTitle = "";
+    if(btnTitle === 'Send'){
+      dialogTitle = 'Campaign Sent Successfully!'
+    }
+    else if(btnTitle === 'Schedule'){
+      dialogTitle = 'Campaign Scheduled Successfully!'
+    }
+    else{
+      dialogTitle = 'Campaign Sent to you Successfully!'
+    }
+    let dataDialog = { title: dialogTitle};
     let dialogRef = this.dialog.open(ConfirmationModalComponent, {
       width: '513px',
       data: dataDialog
@@ -279,14 +300,16 @@ export class TemplateFormComponent implements OnInit {
           name : [data.heading,[customValidator(data.heading,'campaign name')]],
           description : [data.description,[customValidator(data.description,'description')]],
           subject : [data.subject,[customValidator(data.subject,'subject')]],
-          note : [data.addNote],//,[customValidator(data.addNote,'note')]],
-          linkUrl : ['',[customValidator('','link url')]],
+          note : [data.addNote],
           rewardType : [data.rewardType ? data.rewardType : '',[customValidator(data.rewardType,'reward type', this.templateId)]],
           rewardAmount : [data.amount ? data.amount : '0',[customValidator(data.amount,'reward amount', this.templateId)]],
           emailSignature : [data.emailSignature,[customValidator(data.emailSignature,'signature')]],
+          urlTitle : [''],
+          urlDescription : [''],
           fileName : ["attachment",[customValidator('', 'file name')]],
           fileContent : ["Please provide the content that you want in your custom file",[customValidator('', 'file content')]],
           sendAttachment : [true],
+          sendUrlDetails : [false],
           allEmails : new FormArray([new FormGroup({
             senderEmail: new FormControl('', customValidator('','email')),
           })]),
@@ -312,6 +335,21 @@ export class TemplateFormComponent implements OnInit {
     }
     this.templateForm.get("fileName").updateValueAndValidity()
     this.templateForm.get("fileContent").updateValueAndValidity()
+  }
+
+  changeUrlStatus(event? : MatRadioChange) : void{
+    if((event && event.value===true)){
+      this.templateForm.get("urlTitle").setValidators([customValidator('', 'url text')]);
+      this.templateForm.get("urlDescription").setValidators([customValidator('', 'url description')]);
+      this.templateForm.get("sendUrlDetails").setValue(true);
+    }
+    else{
+      this.templateForm.get("urlTitle").clearValidators();
+      this.templateForm.get("urlDescription").clearValidators();
+      this.templateForm.get("sendUrlDetails").setValue(false);
+    }
+    this.templateForm.get("urlTitle").updateValueAndValidity()
+    this.templateForm.get("urlDescription").updateValueAndValidity()
   }
 
 }

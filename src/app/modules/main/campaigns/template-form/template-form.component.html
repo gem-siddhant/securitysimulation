@@ -100,28 +100,6 @@
           >
         </mat-form-field>
 
-        <mat-form-field
-          class="w-100 pb-3"
-          appearance="outline"
-        >
-          <mat-label class="label-text">Link Url</mat-label>
-          <input
-            class="input-text"
-            type="text"
-            formControlName="linkUrl"
-            matInput
-            maxlength="100"
-          />
-          <mat-error
-            class="input-error-top-margin"
-            *ngIf="
-              this.templateForm.controls['linkUrl'].errors != null &&
-              this.templateForm.controls['linkUrl']['errors']['isInvalid']"
-              >{{ this.templateForm.controls['linkUrl']['errors']['message']}}</mat-error
-          >
-          <mat-hint class="input-error-top-margin" align = "end">{{templateForm.value.linkUrl.length || 0}}/100</mat-hint>
-        </mat-form-field>
-
         <mat-form-field class="w-100 pb-4" appearance="outline">
           <mat-label class="label-text">Description</mat-label>
           <textarea
@@ -180,6 +158,66 @@
             >{{ this.templateForm.controls['emailSignature']['errors']['message']}}</mat-error
           >
           <mat-hint class="input-error-top-margin" align = "end">{{templateForm.value.emailSignature.length || 0}}/40</mat-hint>
+        </mat-form-field>
+        <div class="mb-3" *ngIf="isITTemplateSelected()">
+          <span class="radio-title">Send Url Details : </span>
+          <mat-radio-group
+            (change)="changeUrlStatus($event)"
+            formControlName="sendUrlDetails"
+          >
+          <mat-radio-button class="radio-text" [value]="false"
+            >No&emsp;</mat-radio-button
+          >
+          <mat-radio-button class="radio-text" [value]="true"
+            >Yes</mat-radio-button
+          >
+          </mat-radio-group>
+        </div>
+
+        <mat-form-field
+        *ngIf="isSendUrlDetailsTrue()"
+          class="w-100 pb-3"
+          appearance="outline"
+        >
+          <mat-label class="label-text">URL Text</mat-label>
+          <input
+            class="input-text"
+            type="text"
+            formControlName="urlTitle"
+            matInput
+            maxlength="50"
+          />
+          <mat-error
+            class="input-error-top-margin"
+            *ngIf="
+              this.templateForm.controls['urlTitle'].errors != null &&
+              this.templateForm.controls['urlTitle']['errors']['isInvalid']"
+              >{{ this.templateForm.controls['urlTitle']['errors']['message']}}</mat-error
+          >
+          <mat-hint class="input-error-top-margin" align = "end">{{templateForm.value.urlTitle.length || 0}}/50</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field
+        *ngIf="isSendUrlDetailsTrue()"
+          class="w-100 pb-3"
+          appearance="outline"
+        >
+          <mat-label class="label-text">URL Description</mat-label>
+          <input
+            class="input-text"
+            type="text"
+            formControlName="urlDescription"
+            matInput
+            maxlength="100"
+          />
+          <mat-error
+            class="input-error-top-margin"
+            *ngIf="
+              this.templateForm.controls['urlDescription'].errors != null &&
+              this.templateForm.controls['urlDescription']['errors']['isInvalid']"
+              >{{ this.templateForm.controls['urlDescription']['errors']['message']}}</mat-error
+          >
+          <mat-hint class="input-error-top-margin" align = "end">{{templateForm.value.urlDescription.length || 0}}/100</mat-hint>
         </mat-form-field>
 
         <div

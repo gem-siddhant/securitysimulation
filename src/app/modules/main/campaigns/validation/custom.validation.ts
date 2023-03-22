@@ -46,7 +46,11 @@ export function customValidator(prevValue: String, inputName : String, templateI
         return { isInvalid: true, message: `${inputName} is required` };
     }
 
-    if(!commonRegex.test(currValue)){
+    if((currValue.length === 1 && currValue[0] === ' ') || (currValue.length === 2 && (currValue[0] === ' ' || currValue[1] === ' '))){
+      return { isInvalid: true, message: `${inputName} should not contain white spaces at the begining and ending of text` };
+    }
+
+    if(!commonRegex.test(currValue) && currValue.length > 2){
       return { isInvalid: true, message: `${inputName} should not contain white spaces at the begining and ending of text` };
     }
 

@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { NgxMaterialTimepickerTheme } from 'ngx-material-timepicker';
 import { customValidator } from 'src/app/modules/main/campaigns/validation/custom.validation';
 import { DownloadCsvModalComponent } from '../download-csv-modal/download-csv-modal.component';
 
@@ -122,5 +123,20 @@ export class SendCampaignModalComponent implements OnInit {
 
   close() : void{
     this.dialogRef.close({sendClicked : false});
+  }
+
+  darkTheme: NgxMaterialTimepickerTheme = {
+    container: {
+        bodyBackgroundColor: '#38A3A5',
+        buttonColor: '#fff'
+    },
+    dial: {
+        dialBackgroundColor: '#38A3A5',
+    },
+    clockFace: {
+        clockFaceBackgroundColor: '#fff',
+        clockHandColor: '#38A3A5;',
+        clockFaceTimeInactiveColor: 'black'
+    }
   }
 }
