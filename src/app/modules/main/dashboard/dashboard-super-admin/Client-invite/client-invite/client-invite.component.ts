@@ -36,13 +36,13 @@ export class ClientInviteComponent implements OnInit {
     this.inviteform = this.formBuilder.group({
       clientmail:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9]*$')]],
       pocmail:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]],
-      plan:['',Validators.required],
-      currency:['',Validators.required],
+      // plan:['',Validators.required],
+      // currency:['',Validators.required],
       // cost:['',[Validators.required]],
       startdate:['',Validators.required],
       enddate:['',Validators.required],
       // admincount:['',[Validators.required]],
-      // usercount:['',[Validators.required]],
+      usercount:['',[Validators.required]],
       contact:['',[Validators.required,Validators.pattern('^[0-9]*$')]],
       address:['',Validators.required],
       officialemail:['',[Validators.required,Validators.pattern(RegExp(/^[a-zA-Z0-9]+\.?[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]{2,3}$/))]]
@@ -77,11 +77,11 @@ export class ClientInviteComponent implements OnInit {
     
     let req = {
     'representativeEmail': this.inviteform.value.pocmail,
-    "planName": this.inviteform.value.plan,
-    "currency": this.inviteform.value.currency,
-    // "yearlyCost": this.inviteform.value.cost,
-    // "noOfAdmins": this.inviteform.value.admincount,
-    // "userLimit": this.inviteform.value.usercount,
+    "planName": 'GOLD',
+    "currency": 'INR',
+    "yearlyCost": 100,
+    "noOfAdmins": 12,
+    "userLimit": this.inviteform.value.usercount,
     "clientName": this.inviteform.value.clientmail,
     "clientAddress": this.inviteform.value.address,
     "officialEmail": this.inviteform.value.officialemail,
