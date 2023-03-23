@@ -1,4 +1,3 @@
-import { THIS_EXPR, ThrowStmt } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -21,7 +20,7 @@ export class RateCardComponent implements OnInit {
   listofemp:any;
   res : [];
   vare:any;
-  prefilled: {clientPlanId:{planName:'',yearlyCost:'',createdDate:'',endDate:''},clientContactNumber:''};
+  prefilled: {clientName : '',clientAddress:'', officialEmail : '',clientPlanId:{createdDate:'',endDate:'',userLimit:''},clientContactNumber:''};
   planid: any;
   clientid : any;
   emailcheck : boolean = false
@@ -37,11 +36,17 @@ export class RateCardComponent implements OnInit {
     this.planid = this.shared.getemail().planid
     this.clientid = this.shared.getemail().clientid
     this.onboardform = this.formBuilder.group({
-      planname:[{value:'',disabled:true}],
+      // planname:[{value:'',disabled:true}],
       // plancost:[{value:'',disabled:true}],
       startdate:[{value:'',disabled:true}],
       enddate:[{value:'',disabled:true}],
-      sendinviteenow:[''||false]
+      sendinviteenow:[''||false],
+      clientName: [{value:'',disabled:true}],
+      clientAddress: [{value:'',disabled:true}],
+      clientOfficialEmail: [{value:'',disabled:true}],
+      clientContactNumber: [{value:'',disabled:true}],
+      userLimit : [{value:'',disabled:true}],
+
   });
   this.getprefilledclient()
   }
@@ -61,24 +66,29 @@ export class RateCardComponent implements OnInit {
           console.log(data)
           this.vare = (data)
         })
-     
-    for(var i=0;i<this.vare.length;i++)
-    {
+    
+    var i = 0;
+    for(i=0;i<this.vare.length;i++){
       let email = this.vare[i].username
       this.emailcheck = /^([a-zA-Z0-9_.+-])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,})+$/.test(email)
       console.log(this.emailcheck)
-      if(this.emailcheck==false)
-      {
+      if(this.emailcheck==false){
         console.log(this.emailcheck)
-        this.toastr.error("Email id provided is not in correct format",undefined,
-        {
+        this.toastr.error("Email id provided is not in correct format",undefined,{
           positionClass: 'toast-top-center'
-        }
-        );
+        });
         return
       }
     }
+    if(i === this.vare.length){
+      if(this.vare.length>Number(this.prefilled.clientPlanId.userLimit)){
+        this.toastr.error("Provided user has exceeded user limit",undefined,{
+          positionClass: 'toast-top-center'
+        });
+        this.emailcheck = false;
+      }
     }
+  }
    
     
   }

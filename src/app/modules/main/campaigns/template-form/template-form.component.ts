@@ -211,7 +211,7 @@ export class TemplateFormComponent implements OnInit {
     formData.name = this.templateForm.value.name;
     formData.sendAttachment = String(this.templateForm.value.sendAttachment); 
     formData.sendToReporters = 'false';
-    formData.templateAmount = this.templateForm.value.rewardAmount;
+    formData.templateAmount = String(this.templateForm.value.rewardAmount);
     formData.templateDescription = this.templateForm.value.description;
     formData.templateHeading = this.templateForm.value.subject;
     formData.templateNo = String(this.templateForm.value.templateType);
