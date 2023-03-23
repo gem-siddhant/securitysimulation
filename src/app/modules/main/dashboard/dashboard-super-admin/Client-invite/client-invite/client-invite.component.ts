@@ -80,7 +80,7 @@ export class ClientInviteComponent implements OnInit {
     "planName": 'GOLD',
     "currency": 'INR',
     "yearlyCost": 100,
-    "noOfAdmins": 12,
+    "noOfAdmins": '12',
     "userLimit": this.inviteform.value.usercount,
     "clientName": this.inviteform.value.clientmail,
     "clientAddress": this.inviteform.value.address,
