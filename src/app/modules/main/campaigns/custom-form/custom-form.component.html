@@ -10,15 +10,15 @@
     <div>
       <img src="../../../../../assets/images/upload_image.png" (click)="uploadimg.click()"/>
     
-      <div class="text-center mt-4">Please make sure image is less than 2 mb.</div>
-      <div class="text-center mt-2">Please make sure image is less than 300 x 300</div>
+      <div class="text-center mt-4">Please make sure image is less than equal to 2 mb.</div>
+      <div class="text-center mt-2">Please make sure image is less than equal to 500 x 500</div>
       <div class="d-flex justify-content-center mt-4">
         <form class="font-style" [formGroup]="templateForm">
           <input
             hidden
             type="file"
             accept="image/*"
-            (change)="onChange($event)"
+            (change)="onUpload($event)"
             #uploadimg
           />
         </form>
@@ -40,15 +40,17 @@
 
       />
       <div>
-        <div class="mt-3 mb-2 upload-text font-style">Update Template</div>
         <form class="font-style" [formGroup]="templateForm">
           <input
+            hidden
             type="file"
             accept="image/*"
             class="form-control"
-            (change)="onChange($event)"
+            (change)="onUpdate($event)"
+            #updateimg
           />
         </form>
+        <button (click)="updateimg.click()" class="update-btn mt-3">Update Template</button>
         <mat-error class="mt-2" *ngIf="this.changeTrigger && this.imgErrorMessage !== ''">{{this.imgErrorMessage}}</mat-error>
       </div>
     </div>
@@ -86,7 +88,7 @@
               class="w-100 pb-3"
               appearance="outline"
             >
-              <mat-label class="label-text">Email's Subject</mat-label>
+              <mat-label class="label-text">Email Subject</mat-label>
               <input
                 class="input-text"
                 type="text"
@@ -107,7 +109,7 @@
           </div>
 
           <div class="mb-3">
-            <span class="radio-title">Add Description : </span>
+            <span class="radio-title">Email Body Required : </span>
             <mat-radio-group formControlName="addDescription" (change)="onChangeAddDescription($event)">
               <mat-radio-button class="radio-text" [value]="false"
                 >No&emsp;</mat-radio-button
@@ -123,7 +125,7 @@
             class="w-100 pb-4"
             appearance="outline"
           >
-            <mat-label class="label-text">Description</mat-label>
+            <mat-label class="label-text">Email Body</mat-label>
             <textarea
               class="input-text"
               type="text"
@@ -147,7 +149,7 @@
             class="w-100 pb-4"
             appearance="outline"
           >
-            <mat-label class="label-text">Add Note</mat-label>
+            <mat-label class="label-text">Email Footer</mat-label>
             <textarea
               class="input-text"
               type="text"
@@ -196,7 +198,7 @@
                 appearance="outline"
                 class="col-12 pb-3"
               >
-                <mat-label>Email for simulation</mat-label>
+                <mat-label>Sender Email For Simulation</mat-label>
                 <input matInput type="text" formControlName="senderEmail" />
                 <mat-error
                   class="input-error-top-margin"

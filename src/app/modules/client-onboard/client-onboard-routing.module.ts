@@ -28,7 +28,7 @@ const routes: Routes = [
     component: OfficialDetailsComponent,
   },
   {
-    path: 'plan-details',
+    path: 'Client-preview',
     component: RateCardComponent,
   },
   {

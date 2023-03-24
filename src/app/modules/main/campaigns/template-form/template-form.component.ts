@@ -94,7 +94,7 @@ export class TemplateFormComponent implements OnInit {
   emailFieldOperation(index: number) : void{
     if(index === 0){
       const emailpassItem = new FormGroup({
-        senderEmail: new FormControl('', customValidator('','email')),
+        senderEmail: new FormControl('', customValidator('','sender email')),
       });
       (<FormArray>this.templateForm.get('allEmails')).push(emailpassItem);
     }
@@ -298,20 +298,20 @@ export class TemplateFormComponent implements OnInit {
         this.templateForm = this.formBuilder.group({
           templateType : [this.templateId],
           name : [data.heading,[customValidator(data.heading,'campaign name')]],
-          description : [data.description,[customValidator(data.description,'description')]],
-          subject : [data.subject,[customValidator(data.subject,'subject')]],
+          description : [data.description,[customValidator(data.description,'email body')]],
+          subject : [data.subject,[customValidator(data.subject,'email subject')]],
           note : [data.addNote],
           rewardType : [data.rewardType ? data.rewardType : '',[customValidator(data.rewardType,'reward type', this.templateId)]],
           rewardAmount : [data.amount ? data.amount : '0',[customValidator(data.amount,'reward amount', this.templateId)]],
-          emailSignature : [data.emailSignature,[customValidator(data.emailSignature,'signature')]],
+          emailSignature : [data.emailSignature,[customValidator(data.emailSignature,'email signature')]],
           urlTitle : [''],
           urlDescription : [''],
-          fileName : ["attachment",[customValidator('', 'file name')]],
-          fileContent : ["Please provide the content that you want in your custom file",[customValidator('', 'file content')]],
+          fileName : ["attachment",[customValidator('', 'name of attachment')]],
+          fileContent : ["Please provide the content that you want in your custom file",[customValidator('', 'content of attachment')]],
           sendAttachment : [true],
           sendUrlDetails : [false],
           allEmails : new FormArray([new FormGroup({
-            senderEmail: new FormControl('', customValidator('','email')),
+            senderEmail: new FormControl('', customValidator('','sender email')),
           })]),
         });
       }
@@ -324,8 +324,8 @@ export class TemplateFormComponent implements OnInit {
 
   changeAttachmentStatus(event? : MatRadioChange) : void{
     if(!event || (event && event.value===true)){
-      this.templateForm.get("fileName").setValidators([customValidator('', 'file name')]);
-      this.templateForm.get("fileContent").setValidators([customValidator('', 'file content')]);
+      this.templateForm.get("fileName").setValidators([customValidator('', 'name of attachment')]);
+      this.templateForm.get("fileContent").setValidators([customValidator('', 'content of attachment')]);
       this.templateForm.get("sendAttachment").setValue(true);
     }
     else{
@@ -339,8 +339,8 @@ export class TemplateFormComponent implements OnInit {
 
   changeUrlStatus(event? : MatRadioChange) : void{
     if((event && event.value===true)){
-      this.templateForm.get("urlTitle").setValidators([customValidator('', 'url text')]);
-      this.templateForm.get("urlDescription").setValidators([customValidator('', 'url description')]);
+      this.templateForm.get("urlTitle").setValidators([customValidator('', 'text before hyperlink')]);
+      this.templateForm.get("urlDescription").setValidators([customValidator('', 'hyperlink text')]);
       this.templateForm.get("sendUrlDetails").setValue(true);
     }
     else{

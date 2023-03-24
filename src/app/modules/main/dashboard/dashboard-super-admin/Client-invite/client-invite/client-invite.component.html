@@ -124,7 +124,7 @@
                   <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 mt-2">
                     <mat-form-field class="w-100" appearance="outline">
                       <mat-label>Contact number</mat-label>
-                      <input matInput type="text" #input8 formControlName="contact" maxlength="11">
+                      <input matInput type="text" #input8 formControlName="contact" maxlength="11" minlength="10">
                       <mat-error class="mt-3" *ngIf="this.errormsg">Please provide client contact number</mat-error>
                       <mat-hint class="mt-3" align="end" >{{input8.value?.length || 0}}/11</mat-hint>
                     </mat-form-field>
