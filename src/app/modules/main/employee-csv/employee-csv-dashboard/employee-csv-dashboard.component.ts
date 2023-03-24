@@ -33,7 +33,7 @@ export class EmployeeCsvDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.commonService.setLoginStatus(true);
-    this.commonService.setNavTitle('Employee Csv');
+    this.commonService.setNavTitle('Organization Data');
     this.commonService.setScreenRouting('');
     this.emailId = localStorage.getItem('email');
     this.getAllEmployees();

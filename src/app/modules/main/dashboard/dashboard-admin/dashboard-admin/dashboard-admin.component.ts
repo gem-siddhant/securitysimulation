@@ -30,7 +30,7 @@ export class DashboardAdminComponent implements OnInit {
   dataSource2: any;
   select_val:any='';
   isShow = true;
-  displayedColumns: string[] = ['name','all','opened','delivered','notDelivered','date','starttime','endtime','taskStatus','taskid'];
+  displayedColumns: string[] = ['name','all','opened','delivered','notDelivered','startDate','endDate','starttime','endtime','taskStatus','taskid'];
   mode: ProgressSpinnerMode = 'determinate';
   color:any;
   bufferValue = 75;

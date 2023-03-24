@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ClientInviteComponent } from '../modules/main/dashboard/dashboard-super-admin/Client-invite/client-invite/client-invite.component';
 import { MainService } from '../modules/main/service/main.service';
@@ -33,7 +34,8 @@ export class SideBarComponent implements OnInit {
     private _auth: AuthService,
     private responsiveService: ResponsiveService,
     private commonService: CommonService,
-    private dialog:MatDialog
+    private dialog:MatDialog,
+    private router : Router
   ) {
     this.mobile = false;
     this.simulationlogo = imgconst.simulationlog;
@@ -100,5 +102,9 @@ export class SideBarComponent implements OnInit {
       width: '940px',
       height: '500px',
     }); 
+  }
+
+  routeToCampaign(){
+    this.router.navigate(["/main/campaign/templates"]);
   }
 }

@@ -22,7 +22,7 @@
                 &nbsp;   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M11.7425 5.33356H4.88892C3.5925 5.33356 2.34881 5.84866 1.43193 6.76549C0.515051 7.68236 0 8.926 0 10.2225C0 11.5189 0.515102 12.7625 1.43193 13.6794C2.34881 14.5963 3.59245 15.1114 4.88892 15.1114H5.52801L7.26531 22.0599C7.55063 23.2004 8.57463 24 9.74985 24H9.75025C10.5649 24 11.3342 23.6248 11.8356 22.9828C12.337 22.3405 12.5143 21.5036 12.3169 20.7129L10.9166 15.1108H11.7614L19.9992 19.8801C20.2742 20.0392 20.6133 20.0398 20.8885 19.8811C21.1635 19.7224 21.3333 19.4287 21.3333 19.1109V12.6408L23.392 11.954C23.7551 11.8332 24 11.4937 24 11.111V9.33319C24 8.95045 23.7552 8.61095 23.392 8.49011L21.3333 7.80338V0.888833C21.3333 0.564825 21.1573 0.26661 20.8734 0.110267C20.5897 -0.0458827 20.2437 -0.0355665 19.9698 0.137252L11.7425 5.33356ZM7.36075 15.1114L8.99012 21.6292C9.07722 21.978 9.39052 22.2225 9.74965 22.2225H9.75004C10.0171 22.2225 10.2697 22.0995 10.434 21.8887C10.5985 21.6784 10.6568 21.4038 10.5919 21.1447L9.08339 15.1114L7.36075 15.1114ZM19.5554 17.5695V2.50207L12.8887 6.7122V13.7101L19.5554 17.5696V17.5695ZM5.77751 13.3336H11.1109V7.11134H5.77751V13.3336ZM3.99972 7.24087C3.50904 7.3871 3.05744 7.65376 2.68863 8.02223C2.1051 8.60574 1.77748 9.3968 1.77748 10.2222C1.77748 11.0476 2.10506 11.8387 2.68863 12.4222C3.05748 12.7906 3.50905 13.0573 3.99972 13.2035V7.24087ZM21.3332 9.6778V10.7667L22.2221 10.4703V9.97425L21.3332 9.6778Z" fill="white"/>
             </svg> &nbsp;  
-                Completed Campaigns</p>
+                Successful Campaigns</p>
             </mat-card-content>
          <a> <button class="linkbtn" (click)="completedcamps()"> <p class="counttext">
                 {{endedcount}}
@@ -69,7 +69,7 @@
       </ng-template>
     </mat-tab>
     <mat-tab label="Scheduled Campaigns">
-      <ng-template mat-tab-label>Scheduled Campaigns</ng-template>
+      <ng-template mat-tab-label>Upcoming Campaigns</ng-template>
       <ng-template matTabContent>
         <ng-container [ngTemplateOutlet]="dashboardTable"></ng-container>
       </ng-template>
@@ -172,13 +172,13 @@
       </td>
     </ng-container>
 
-    <ng-container matColumnDef="date">
+    <ng-container matColumnDef="startDate">
       <th
         mat-header-cell
         *matHeaderCellDef
         class="pl-3 border-0 text-white"
       >
-      <div class="p-3">Date</div>
+      <div class="p-3">Start Date</div>
       </th>
       <td
         mat-cell
@@ -186,6 +186,23 @@
         class="pt-2 pb-1 border-0"
       >
         <div class="tdata-row p-3 h-100">{{ element.startDate }}</div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="endDate">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        class="pl-3 border-0 text-white"
+      >
+      <div class="p-3">End Date</div>
+      </th>
+      <td
+        mat-cell
+        *matCellDef="let element"
+        class="pt-2 pb-1 border-0"
+      >
+        <div class="tdata-row p-3 h-100">{{ element.endDate }}</div>
       </td>
     </ng-container>
     
