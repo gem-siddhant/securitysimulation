@@ -16,6 +16,8 @@ export interface CommonFormData {
   templateHeading: String;
   templateNo: String;
   templateRewardType: String;
+  customText: string;
+  customTextLink : string;
 }
 export interface PreviewFormData extends CommonFormData {
   email: String;

@@ -160,23 +160,8 @@
           >
         </mat-form-field>
 
-        <div class="mb-3" *ngIf="isITTemplateSelected()">
-          <span class="radio-title">Url For Simulation : </span>
-          <mat-radio-group
-            (change)="changeUrlStatus($event)"
-            formControlName="sendUrlDetails"
-          >
-          <mat-radio-button class="radio-text" [value]="false"
-            >No&emsp;</mat-radio-button
-          >
-          <mat-radio-button class="radio-text" [value]="true"
-            >Yes</mat-radio-button
-          >
-          </mat-radio-group>
-        </div>
-
         <mat-form-field
-        *ngIf="isSendUrlDetailsTrue()"
+        *ngIf="isITTemplateSelected()"
           class="w-100 pb-3"
           appearance="outline"
         >
@@ -199,7 +184,7 @@
         </mat-form-field>
 
         <mat-form-field
-        *ngIf="isSendUrlDetailsTrue()"
+        *ngIf="isITTemplateSelected()"
           class="w-100 pb-3"
           appearance="outline"
         >

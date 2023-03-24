@@ -257,6 +257,8 @@ export class CustomFormComponent implements OnInit {
     formData.templateHeading = this.templateForm.value.subject;
     formData.templateNo = '6';
     formData.sendAttachment = 'false';
+    formData.customText = null;
+    formData.customTextLink = null;
     if(btnTitle === 'Preview'){
       (formData as PreviewFormData).email = email[0]['senderEmail'];
       

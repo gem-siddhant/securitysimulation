@@ -66,14 +66,12 @@ export class TemplateFormComponent implements OnInit {
       urlTitle : [""],
       urlDescription : [""],
       sendAttachment : [true],
-      sendUrlDetails : [false],
       allEmails : new FormArray([new FormGroup({
         senderEmail: new FormControl('', Validators.required),
       })]),
     });
     this.getPreFilledData(this.templateId);
     this.changeAttachmentStatus();
-    this.changeUrlStatus();
   }
 
   addEmailField() : void {
@@ -107,9 +105,6 @@ export class TemplateFormComponent implements OnInit {
     return this.templateForm.value.sendAttachment;
   }
 
-  isSendUrlDetailsTrue() : boolean{
-    return this.templateForm.value.sendUrlDetails;
-  }
 
   isAmazonTemplateSelected() : boolean{
     return this.templateId === 1;
@@ -216,6 +211,8 @@ export class TemplateFormComponent implements OnInit {
     formData.templateHeading = this.templateForm.value.subject;
     formData.templateNo = String(this.templateForm.value.templateType);
     formData.templateRewardType = this.templateForm.value.rewardType;
+    formData.customText = this.templateForm.value.urlTitle === "" ? null : this.templateForm.value.urlTitle;
+    formData.customTextLink = this.templateForm.value.urlDescription === "" ? null : this.templateForm.value.urlDescription;
     if(btnTitle === 'Preview'){
       (formData as PreviewFormData).attachmentText = this.templateForm.value.fileContent;
       (formData as PreviewFormData).email = email[0]['senderEmail'];
@@ -309,11 +306,11 @@ export class TemplateFormComponent implements OnInit {
           fileName : ["attachment",[customValidator('', 'name of attachment')]],
           fileContent : ["Please provide the content that you want in your custom file",[customValidator('', 'content of attachment')]],
           sendAttachment : [true],
-          sendUrlDetails : [false],
           allEmails : new FormArray([new FormGroup({
             senderEmail: new FormControl('', customValidator('','sender email')),
           })]),
         });
+        this.changeUrlStatus();
       }
       },
       error : (error)=>{
@@ -337,16 +334,14 @@ export class TemplateFormComponent implements OnInit {
     this.templateForm.get("fileContent").updateValueAndValidity()
   }
 
-  changeUrlStatus(event? : MatRadioChange) : void{
-    if((event && event.value===true)){
+  changeUrlStatus() : void{
+    if(this.templateId === 5){
       this.templateForm.get("urlTitle").setValidators([customValidator('', 'text before hyperlink')]);
       this.templateForm.get("urlDescription").setValidators([customValidator('', 'hyperlink text')]);
-      this.templateForm.get("sendUrlDetails").setValue(true);
     }
     else{
       this.templateForm.get("urlTitle").clearValidators();
       this.templateForm.get("urlDescription").clearValidators();
-      this.templateForm.get("sendUrlDetails").setValue(false);
     }
     this.templateForm.get("urlTitle").updateValueAndValidity()
     this.templateForm.get("urlDescription").updateValueAndValidity()
