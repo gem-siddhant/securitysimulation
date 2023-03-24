@@ -31,7 +31,7 @@ export function customValidator(prevValue: String, inputName : String, templateI
       return null;
     }
 
-    if(inputName === "email"){
+    if(inputName === "sender email"){
       if(currValue === null || currValue === ''){
         return { isInvalid: true, message: `${inputName} is required` };
       }

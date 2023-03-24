@@ -40,10 +40,7 @@
   border: 1px solid #38a3a5;
 }
 .preview-btn,
-.schedule-btn {
-  background-color: white;
-  color: #38a3a5;
-}
+.schedule-btn,
 .send-btn {
   background-color: #38a3a5;
   color: white;
@@ -51,15 +48,20 @@
 .upload-img-container{
   height: 80vh;
 }
-.upload-btn {
+.update-btn,.upload-btn {
   border-radius: 5px;
   border: 0px;
   font-weight: 500;
   font-size: 16px;
   height: 5vh;
-  width: 221px;
   background: #38a3a5;
   color: white;
+}
+.update-btn{
+  width: 100%;
+}
+.upload-btn{
+  width: 221px;
 }
 .upload-text{
   font-weight: 500;

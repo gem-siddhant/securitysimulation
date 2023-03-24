@@ -1,7 +1,7 @@
 <div class="container">
   <div class="mt-4 font-style d-flex align-items-center">
     <img [src]="this.shieldImg"/>
-    <span class="choose-temp-txt">Please edit all the fields to create the campaign</span>
+    <span class="choose-temp-txt">All the fields are mandatory</span>
   </div>
   <div class="inner-container">
     <mat-card class="mat-card mt-4 mb-4 rounded">
@@ -34,7 +34,7 @@
             class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 pb-3"
             appearance="outline"
           >
-            <mat-label class="label-text">Email's Subject</mat-label>
+            <mat-label class="label-text">Email Subject</mat-label>
             <input
               class="input-text"
               type="text"
@@ -54,54 +54,8 @@
           </mat-form-field>
         </div>
 
-        <mat-form-field
-          *ngIf="isAmazonTemplateSelected()"
-          class="w-100 pb-3"
-          appearance="outline"
-        >
-          <mat-label class="label-text">Reward Type</mat-label>
-          <input
-            class="input-text"
-            type="text"
-            formControlName="rewardType"
-            matInput
-            maxlength="50"
-          />
-          <mat-error
-            class="input-error-top-margin"
-            *ngIf="
-              this.templateForm.controls['rewardType'].errors != null &&
-              this.templateForm.controls['rewardType']['errors']['isInvalid']"
-              >{{ this.templateForm.controls['rewardType']['errors']['message']}}</mat-error
-          >
-          <mat-hint class="input-error-top-margin" align = "end">{{templateForm.value.rewardType.length || 0}}/50</mat-hint>
-        </mat-form-field>
-
-        <mat-form-field
-          *ngIf="isAmazonTemplateSelected()"
-          class="w-100 pb-3"
-          appearance="outline"
-        >
-          <mat-label>Amount</mat-label>
-          <input
-            type="number"
-            matInput
-            formControlName="rewardAmount"
-            oninput="validity.valid||(value='');"
-            placeholder="Enter Reward Amount"
-          />
-          <mat-error
-            class="input-error-top-margin"
-            *ngIf="
-              this.templateForm.controls['rewardAmount'].errors != null &&
-              this.templateForm.controls['rewardAmount']['errors']['isInvalid']
-            "
-            >{{ this.templateForm.controls['rewardAmount']['errors']['message']}}</mat-error
-          >
-        </mat-form-field>
-
         <mat-form-field class="w-100 pb-4" appearance="outline">
-          <mat-label class="label-text">Description</mat-label>
+          <mat-label class="label-text">Email Body</mat-label>
           <textarea
             class="input-text"
             type="text"
@@ -121,7 +75,7 @@
         </mat-form-field>
 
         <mat-form-field class="w-100 pb-4" appearance="outline">
-          <mat-label class="label-text">Add Note</mat-label>
+          <mat-label class="label-text">Email Footer</mat-label>
           <textarea
             class="input-text"
             type="text"
@@ -159,8 +113,55 @@
           >
           <mat-hint class="input-error-top-margin" align = "end">{{templateForm.value.emailSignature.length || 0}}/40</mat-hint>
         </mat-form-field>
+
+        <mat-form-field
+          *ngIf="isAmazonTemplateSelected()"
+          class="w-100 pb-3"
+          appearance="outline"
+        >
+          <mat-label class="label-text">Reward Type</mat-label>
+          <input
+            class="input-text"
+            type="text"
+            formControlName="rewardType"
+            matInput
+            maxlength="50"
+          />
+          <mat-error
+            class="input-error-top-margin"
+            *ngIf="
+              this.templateForm.controls['rewardType'].errors != null &&
+              this.templateForm.controls['rewardType']['errors']['isInvalid']"
+              >{{ this.templateForm.controls['rewardType']['errors']['message']}}</mat-error
+          >
+          <mat-hint class="input-error-top-margin" align = "end">{{templateForm.value.rewardType.length || 0}}/50</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field
+          *ngIf="isAmazonTemplateSelected()"
+          class="w-100 pb-3"
+          appearance="outline"
+        >
+          <mat-label>Reward Amount</mat-label>
+          <input
+            type="number"
+            matInput
+            formControlName="rewardAmount"
+            oninput="validity.valid||(value='');"
+            placeholder="Enter Reward Amount"
+          />
+          <mat-error
+            class="input-error-top-margin"
+            *ngIf="
+              this.templateForm.controls['rewardAmount'].errors != null &&
+              this.templateForm.controls['rewardAmount']['errors']['isInvalid']
+            "
+            >{{ this.templateForm.controls['rewardAmount']['errors']['message']}}</mat-error
+          >
+        </mat-form-field>
+
         <div class="mb-3" *ngIf="isITTemplateSelected()">
-          <span class="radio-title">Send Url Details : </span>
+          <span class="radio-title">Url For Simulation : </span>
           <mat-radio-group
             (change)="changeUrlStatus($event)"
             formControlName="sendUrlDetails"
@@ -179,7 +180,7 @@
           class="w-100 pb-3"
           appearance="outline"
         >
-          <mat-label class="label-text">URL Text</mat-label>
+          <mat-label class="label-text">Text Before Hyperlink</mat-label>
           <input
             class="input-text"
             type="text"
@@ -202,7 +203,7 @@
           class="w-100 pb-3"
           appearance="outline"
         >
-          <mat-label class="label-text">URL Description</mat-label>
+          <mat-label class="label-text">Hyperlink Text</mat-label>
           <input
             class="input-text"
             type="text"
@@ -230,7 +231,7 @@
               appearance="outline"
               class="col-12 pb-3"
             >
-              <mat-label>Email for simulation</mat-label>
+              <mat-label>Sender Email For Simulation</mat-label>
               <input matInput type="text" formControlName="senderEmail" class="input-text" />
               <mat-error
                 class="input-error-top-margin"
@@ -253,7 +254,7 @@
           </div>
         </div>
 
-        <span class="radio-title">Send Attachment : </span>
+        <span class="radio-title">Attachment Required : </span>
         <mat-radio-group
           (change)="changeAttachmentStatus($event)"
           formControlName="sendAttachment"
@@ -266,19 +267,21 @@
           >
         </mat-radio-group>
 
+        <div class="position-relative">
+          <span class="position-absolute suffix">.pdf</span>
         <mat-form-field
           *ngIf="isSdenAttachmentTrue()"
           class="w-100 mt-3 pb-4"
           appearance="outline"
         >
-          <mat-label class="label-text">Provide The File Name</mat-label>
-          <textarea
+          <mat-label class="label-text">Name Of Attachment</mat-label>
+          <input
             class="input-text"
             type="text"
             formControlName="fileName"
             matInput
             maxlength="50"
-          ></textarea>
+          />
           <mat-error
             class="textarea-error-top-margin"
             *ngIf="
@@ -289,13 +292,14 @@
           >
           <mat-hint class="textarea-error-top-margin" align = "end">{{templateForm.value.fileName.length || 0}}/50</mat-hint>
         </mat-form-field>
+      </div>
 
         <mat-form-field
           *ngIf="isSdenAttachmentTrue()"
           class="w-100 pb-4"
           appearance="outline"
         >
-          <mat-label class="label-text">Provide The File Content</mat-label>
+          <mat-label class="label-text">Content Of Attachment</mat-label>
           <textarea
             class="input-text"
             type="text"
