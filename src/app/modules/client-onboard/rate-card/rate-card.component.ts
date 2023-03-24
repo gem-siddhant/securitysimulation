@@ -52,6 +52,7 @@ export class RateCardComponent implements OnInit {
   }
 
   onFileChange(ev:any) {
+    this.vare = 0
     this.file = ev.target.files[0];
     const fileReader = new FileReader();
     fileReader.readAsBinaryString(this.file)
