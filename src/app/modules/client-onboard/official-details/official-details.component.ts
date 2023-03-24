@@ -39,6 +39,6 @@ export class OfficialDetailsComponent implements OnInit {
       // 'department':this.onboardform.value.dept,
     }
     this.shared.setoffdetails(req)
-    this.router.navigate(['client-onboard/plan-details'])
+    this.router.navigate(['client-onboard/Client-preview'])
   }
 }
