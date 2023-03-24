@@ -40,3 +40,11 @@
   background-color: #38A3A5;
   color: white;
 }
+.suffix{
+  right:7px;
+  top: 40px;
+  color: grey;
+}
+/* ::ng-deep .mat-form-field-flex {
+  padding: 0 2.75em 0 0.75em !important;
+} */

@@ -66,9 +66,9 @@ export class CustomFormComponent implements OnInit {
     let emails = new FormArray([]);
     this.templateForm = this.formBuilder.group({
       name : ["", customValidator('','campaign name')],
-      description : ["", customValidator('','email description')],
+      description : ["", customValidator('','email body')],
       subject : ["", customValidator('','email subject')],
-      note : ["", customValidator('','add note')],
+      note : [""],
       emailSignature : ["", customValidator('','email signature')],
       addDescription : [false],
       allEmails : emails,
@@ -82,16 +82,16 @@ export class CustomFormComponent implements OnInit {
   onChangeAddDescription(event? : MatRadioChange) : void{
     if(!event || (event && event.value===false)){
       this.templateForm.get("description").clearValidators();
-      this.templateForm.get("note").clearValidators();
+      // this.templateForm.get("note").clearValidators();
       this.templateForm.get("addDescription").setValue(false);
     }
     else{
-      this.templateForm.get("description").setValidators([customValidator('', 'email description')]);
-      this.templateForm.get("note").setValidators([customValidator('', 'add note')]);
+      this.templateForm.get("description").setValidators([customValidator('', 'email body')]);
+      // this.templateForm.get("note").setValidators([customValidator('', 'add note')]);
       this.templateForm.get("addDescription").setValue(true);
     }
     this.templateForm.get("description").updateValueAndValidity();
-    this.templateForm.get("note").updateValueAndValidity();
+    // this.templateForm.get("note").updateValueAndValidity();
     this.templateForm.get("addDescription").updateValueAndValidity();
   }
 
@@ -115,13 +115,14 @@ export class CustomFormComponent implements OnInit {
     return (this.screenSize === 'lg' || this.screenSize === 'xl');
   }
 
-  onChange(event : any) : void{
+  onUpload(event : any) : void{
+    this.imgErrorMessage = '';
     let reader = new FileReader();
     if(event.target.files && event.target.files.length > 0) {
       this.changeTrigger = true;
       this.imageFile = event.target.files[0];
       if(this.imageFile.size > (2*1024*1024)){
-        this.imgErrorMessage = 'Image Size should be less than 2mb'
+        this.imgErrorMessage = 'Image Size should be less than equal to 2mb'
         return;
       }
       reader.readAsDataURL(this.imageFile);
@@ -131,8 +132,8 @@ export class CustomFormComponent implements OnInit {
         image.onload = (rs : any) => {
           const img_height = rs.currentTarget['height'];
           const img_width = rs.currentTarget['width'];
-          if(img_height > 300 || img_width > 300){
-            this.imgErrorMessage = 'Image Dimensions should be less than 300 x 300';
+          if(img_height > 500 || img_width > 500){
+            this.imgErrorMessage = 'Image Dimensions should be less than equal to 500 x 500';
             return;
           }
           this.changeTrigger = false;
@@ -146,13 +147,38 @@ export class CustomFormComponent implements OnInit {
     }
   }
 
+  onUpdate(event : any) : void{
+    let reader = new FileReader();
+    if(event.target.files && event.target.files.length > 0) {
+      this.imageFile = event.target.files[0];
+      if(this.imageFile.size > (2*1024*1024)){
+        this.toastr.error('Image Size should be less than equal to 2mb')
+        return;
+      }
+      reader.readAsDataURL(this.imageFile);
+      reader.onload = (e: any) => {
+        const image = new Image();
+        image.src = e.target.result;
+        image.onload = (rs : any) => {
+          const img_height = rs.currentTarget['height'];
+          const img_width = rs.currentTarget['width'];
+          if(img_height > 500 || img_width > 500){
+            this.toastr.error('Image Dimensions should be less than equal to 500 x 500');
+            return;
+          }
+          this.uploadedImage = this.sanitizer.bypassSecurityTrustUrl(String(reader.result));
+        };
+      };
+    }
+  }
+
   onResize() : void{
     this.responsiveService.checkWidth();
   }
 
   addEmailField() : void {
     const emailpassItem = new FormGroup({
-      senderEmail: new FormControl('', customValidator('','email')),
+      senderEmail: new FormControl('', customValidator('','sender email')),
     });
     (<FormArray>this.templateForm.get('allEmails')).push(emailpassItem);
   }
