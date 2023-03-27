@@ -110,4 +110,9 @@ export class ClientInviteComponent implements OnInit {
     })
   }
 }
+getMinEndDate(){
+  let minEndDate = new Date(this.inviteform.value.startdate);
+  minEndDate.setDate(minEndDate.getDate() + 1);
+  return minEndDate;
+}
 }

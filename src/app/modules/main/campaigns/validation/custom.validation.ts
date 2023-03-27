@@ -4,7 +4,7 @@ export function customValidator(prevValue: String, inputName : String, templateI
     
     const currValue = control.value;
     const emailRegex = RegExp(/^[a-zA-Z0-9]+\.?[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]{2,3}$/);
-    const commonRegex = RegExp(/^[^\s].+[^\s]$/);
+    const commonRegex = RegExp(/^[^\s][\s\S]+[^\s]$/);
 
     if(templateId && templateId !== 1 && (inputName === "reward type")){
       return null;
