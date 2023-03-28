@@ -45,6 +45,9 @@
   top: 40px;
   color: grey;
 }
-/* ::ng-deep .mat-form-field-flex {
-  padding: 0 2.75em 0 0.75em !important;
-} */
+.bottom-padding-input{
+  padding-bottom: 25px;
+}
+.bottom-padding-text{
+  padding-bottom: 30px;
+}

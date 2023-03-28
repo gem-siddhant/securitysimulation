@@ -53,6 +53,11 @@ body {
 .common-container {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
+  overflow: hidden;
+}
+
+.common-container:hover{
+ overflow: auto;
 }
 
 .common-container::-webkit-scrollbar {
