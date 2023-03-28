@@ -5,6 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Console } from 'console';
 import { ToastrService } from 'ngx-toastr';
+import { DashboardCommonService } from 'src/app/modules/main/dashboard/dashboard-services/dashboard-common.service';
 import { MainService } from 'src/app/modules/main/service/main.service';
 import { CommonService } from 'src/app/services/common.service';
 
@@ -32,6 +33,7 @@ export class DashboardpopupmodalComponent implements OnInit {
     private commonService : CommonService,
     private router:Router,
     private dialog:MatDialog,
+    private dashboardcommon : DashboardCommonService,
     public dialogRef:MatDialogRef<DashboardpopupmodalComponent>,
     private toastr:ToastrService) { }
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -47,6 +49,8 @@ export class DashboardpopupmodalComponent implements OnInit {
       'email' : localStorage.getItem('email')
     }
     this._main.getAllCampaigns(req).subscribe((data)=>{
+      data = this.dashboardcommon.getdashboard()
+      console.log(data)
       if(data){
         this.totaldata =data
         console.log(this.campaigns)

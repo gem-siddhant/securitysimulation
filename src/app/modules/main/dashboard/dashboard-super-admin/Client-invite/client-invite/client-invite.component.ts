@@ -23,6 +23,8 @@ export class ClientInviteComponent implements OnInit {
   mode: ProgressSpinnerMode = 'indeterminate';
   errormsg : boolean = false;
   currentdate = new Date()
+  endmindate = new Date()
+  endday = '' 
   financialYearEnd = new Date(this.currentdate.getFullYear() + 1, 2, 31);
   constructor(public dialogRef: MatDialogRef<ClientInviteComponent>,
     private formBuilder: FormBuilder, 
@@ -34,7 +36,7 @@ export class ClientInviteComponent implements OnInit {
 
   ngOnInit(): void {
     this.inviteform = this.formBuilder.group({
-      clientmail:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9]*$')]],
+      clientmail:['',[Validators.required,Validators.pattern(/^\S[^*&^%$#@!]+\S$/)]],
       pocmail:['',[Validators.required,Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')]],
       // plan:['',Validators.required],
       // currency:['',Validators.required],
@@ -42,13 +44,21 @@ export class ClientInviteComponent implements OnInit {
       startdate:['',Validators.required],
       enddate:['',Validators.required],
       // admincount:['',[Validators.required]],
-      usercount:['',[Validators.required]],
+      usercount:['',[Validators.required,Validators.pattern('^[0-9]*$')]],
       contact:['',[Validators.required,Validators.pattern('^[0-9]*$')]],
-      address:['',Validators.required],
-      officialemail:['',[Validators.required,Validators.pattern(RegExp(/^[a-zA-Z0-9]+\.?[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[A-Za-z]{2,3}$/))]]
+      address:['',[Validators.required,Validators.pattern(/^\S.*\S$/)]],
+      officialemail:['',[Validators.required,Validators.pattern(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)]]
   });
+  this.endmindate = new Date(this.inviteform.value.s.getDate() + 1,2,31);
+  console.log(this.endmindate)
+  // this.endday = this.endmindate.toISOString().slice(0,10);
   }
   
+  checkenddate()
+  {
+  
+  console.log(this.endmindate)
+  }
   close()
   {
     this.dialogRef.close();

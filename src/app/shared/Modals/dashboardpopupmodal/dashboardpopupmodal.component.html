@@ -69,8 +69,14 @@
           <ng-container matColumnDef="taskid">
             <th  mat-header-cell *matHeaderCellDef   >Action</th>
             <td  mat-cell *matCellDef="let ele" >
-              <button class="buttonCss"  (click)="Routeview(ele.taskId)"  *ngIf="ele.status!='SCHEDULED'">View </button>
-              <button class="buttonCss"  (click)="scheduleroute()" *ngIf="ele.status=='SCHEDULED'"  >View </button>
+                        <div class="end-corner" role="button"  *ngIf="ele.status!='SCHEDULED'">
+              <img src="../../../../../assets/icons/view_icon.svg"  (click)="Routeview(ele.taskId)" matTooltip="View"
+                  matTooltipPosition="above" />
+          </div>
+          <div class="end-corner" role="button" *ngIf="ele.status=='SCHEDULED'">
+            <img src="../../../../../assets/icons/view_icon.svg"   (click)="scheduleroute()" matTooltip="View"
+                  matTooltipPosition="above" />
+          </div>
             </td>
           </ng-container>
 
@@ -92,7 +98,7 @@
 
 <!-- pagination  -->
       <div *ngIf="!errormsg">
-        <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons class="position-fix mat-elevation-z8"
+        <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons class="mat-elevation-z8"
         aria-label="Select page of periodic elements" >
     </mat-paginator>
     </div>

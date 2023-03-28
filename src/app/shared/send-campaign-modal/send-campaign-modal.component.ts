@@ -139,4 +139,8 @@ export class SendCampaignModalComponent implements OnInit {
         clockFaceTimeInactiveColor: 'black'
     }
   }
+  getCurrentTime(): string {
+    const now = new Date();
+    return `${now.getHours()}:${now.getMinutes()}`;
+  }
 }

@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: devfesim
+  namespace: dev
+  labels:
+    app: devfesim
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: devfesim
+  template:
+    metadata:
+      labels:
+        app: devfesim
+    spec:
+      containers:
+      - name: devfesim
+        image: registry-np.geminisolutions.com/securitysimulation_dev/securitysimulation_dev:latest
+        ports:
+        - name: devfesim
+          containerPort: 8080
+        imagePullPolicy: Always
+      imagePullSecrets:
+        - name: regcred

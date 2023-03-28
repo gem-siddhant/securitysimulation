@@ -39,7 +39,7 @@ export class PasswordDialogComponent implements OnInit {
   });
   }
   updateCriteria(password: string): void {
-    this.criteria[0].met = password.length >= 8;
+    this.criteria[0].met = password.length >= 16;
     this.criteria[1].met = /[A-Z]/.test(password);
     this.criteria[2].met = /[a-z]/.test(password);
     this.criteria[3].met = /\d/.test(password);
