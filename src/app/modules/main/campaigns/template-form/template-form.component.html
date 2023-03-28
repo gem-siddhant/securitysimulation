@@ -239,21 +239,18 @@
           </div>
         </div>
 
-        <span class="radio-title">Attachment Required : </span>
-        <mat-radio-group
-          (change)="changeAttachmentStatus($event)"
-          formControlName="sendAttachment"
-        >
-          <mat-radio-button class="radio-text" [value]="false"
-            >No&emsp;</mat-radio-button
-          >
-          <mat-radio-button class="radio-text" [value]="true"
-            >Yes</mat-radio-button
-          >
-        </mat-radio-group>
+        <div class="row w-100 mb-1">
+          <div>
+            <span class="radio-title">Attachment Required : </span>
+            <ng-container [ngTemplateOutlet]="sendAttachment" *ngIf="!isScreenSizeXs()"></ng-container>
+          </div>
+          <div class="d-flex w-100 mt-1" *ngIf="isScreenSizeXs()">
+            <ng-container [ngTemplateOutlet]="sendAttachment"></ng-container>
+          </div>
+        </div>
 
         <div class="position-relative">
-          <span class="position-absolute suffix">.pdf</span>
+          <span *ngIf="isSdenAttachmentTrue()" class="position-absolute suffix">.pdf</span>
         <mat-form-field
           *ngIf="isSdenAttachmentTrue()"
           class="w-100 mt-3 pb-4"
@@ -302,6 +299,17 @@
           >
           <mat-hint class="textarea-error-top-margin" align = "end">{{templateForm.value.fileContent.length || 0}}/2000</mat-hint>
         </mat-form-field>
+
+        <div class="row w-100">
+          <div>
+            <span class="radio-title">Custom Submit : </span>
+            <ng-container [ngTemplateOutlet]="customSubmitOption" *ngIf="!isScreenSizeXs()"></ng-container>
+          </div>
+          <div class="d-flex w-100 mt-1" *ngIf="isScreenSizeXs()">
+            <ng-container [ngTemplateOutlet]="customSubmitOption"></ng-container>
+          </div>
+        </div>
+
         <div class="row d-flex justify-content-center mt-4 mb-3">
           <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 col-12 mb-2">
             <button (click)="checkFormData('Preview')" class="w-100 preview-btn rounded">Preview</button>
@@ -317,6 +325,20 @@
             </button>
           </div>
         </div>
+        <ng-template #customSubmitOption>
+          <mat-radio-group formControlName="customSubmitOption">
+            <mat-radio-button class="radio-text" [value]="false">No&emsp;</mat-radio-button>
+            <mat-radio-button class="radio-text" [value]="true">Yes</mat-radio-button>
+          </mat-radio-group>
+        </ng-template>
+
+        <ng-template #sendAttachment>
+          <mat-radio-group (change)="changeAttachmentStatus($event)" formControlName="sendAttachment">
+            <mat-radio-button class="radio-text" [value]="false">No&emsp;</mat-radio-button>
+            <mat-radio-button class="radio-text" [value]="true">Yes</mat-radio-button>
+          </mat-radio-group>
+        </ng-template>
+
       </form>
     </mat-card>
   </div>

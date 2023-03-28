@@ -28,6 +28,7 @@ export class TemplateFormComponent implements OnInit {
   shieldImg : String;
   victimEmails : String[];
   scheduledData : ScheduledModel;
+  screenSize : string;
   constructor(
     private commonService : CommonService,
     private responsiveService : ResponsiveService,
@@ -43,6 +44,7 @@ export class TemplateFormComponent implements OnInit {
     this.templateForm = this.formBuilder.group({});
     this.victimEmails = [] as String[];
     this.scheduledData = {} as ScheduledModel;
+    this.screenSize = 'lg';
   }
 
   ngOnInit(): void {
@@ -69,9 +71,12 @@ export class TemplateFormComponent implements OnInit {
       allEmails : new FormArray([new FormGroup({
         senderEmail: new FormControl('', Validators.required),
       })]),
+      customSubmitOption : [false]
     });
     this.getPreFilledData(this.templateId);
     this.changeAttachmentStatus();
+    this.checkScreenStatus();
+    this.onResize();
   }
 
   addEmailField() : void {
@@ -213,6 +218,7 @@ export class TemplateFormComponent implements OnInit {
     formData.templateRewardType = this.templateForm.value.rewardType;
     formData.customText = this.templateForm.value.urlTitle === "" ? null : this.templateForm.value.urlTitle;
     formData.customTextLink = this.templateForm.value.urlDescription === "" ? null : this.templateForm.value.urlDescription;
+    formData.customSubmitOption = this.templateForm.value.customSubmitOption
     if(btnTitle === 'Preview'){
       (formData as PreviewFormData).attachmentText = this.templateForm.value.fileContent;
       (formData as PreviewFormData).email = email[0]['senderEmail'];
@@ -309,6 +315,7 @@ export class TemplateFormComponent implements OnInit {
           allEmails : new FormArray([new FormGroup({
             senderEmail: new FormControl('', customValidator('','sender email')),
           })]),
+          customSubmitOption : [false]
         });
         this.changeUrlStatus();
       }
@@ -345,6 +352,22 @@ export class TemplateFormComponent implements OnInit {
     }
     this.templateForm.get("urlTitle").updateValueAndValidity()
     this.templateForm.get("urlDescription").updateValueAndValidity()
+  }
+
+  checkScreenStatus() : void {
+    this.responsiveService.getScreenStatus().subscribe((screenSize) => {
+      if (screenSize) {
+        this.screenSize=screenSize;
+      }
+    });
+  }
+
+  isScreenSizeXs() : boolean{
+    return this.screenSize === 'xs';
+  }
+
+  onResize() : void{
+    this.responsiveService.checkWidth();
   }
 
 }
