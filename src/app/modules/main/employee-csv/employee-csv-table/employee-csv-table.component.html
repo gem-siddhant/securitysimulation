@@ -105,7 +105,10 @@
             matTooltipPosition="above" />
           </div>
           <div>&ensp;|&ensp;</div>
-          <div role="button" (click)="deleteEmployee(element.employeeId)">Remove</div>
+          <div role="button">
+              <img src="../../../../../assets/icons/delete_icon.svg"  (click)="deleteEmployee(element.employeeId)" matTooltip="Remove"
+                  matTooltipPosition="above" alt="Remove"/>
+          </div>
         </div>
       </td>
     </ng-container>

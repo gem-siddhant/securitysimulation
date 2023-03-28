@@ -14,6 +14,7 @@ export const imgconst = {
 export const iconConst = {
     logoutIcon : "../../assets/icons/logout.svg",
     dashboardIcon : "../../assets/icons/dashboard-icon.svg",
+    learningIcon : "../../assets/icons/learning_icon.svg",
     campaignIcon : "../../assets/icons/campaign-icon.svg",
     employeeCsvIcon : "../../assets/icons/employee-csv-icon.svg",
     analyticsIcon : "../../assets/icons/analytics-icon.svg",

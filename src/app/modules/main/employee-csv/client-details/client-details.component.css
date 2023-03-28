@@ -48,7 +48,21 @@ select>option{
   color: black;
 }
 .remove-btn{
-  background: white;
-  color: #38A3A5;
+  background: #38A3A5;
+  color: white;
   border: 1px solid #38A3A5;
+}
+.profile-pic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 167px;
+  width: 167px;
+  border-radius: 5%;
+  font-weight: bold;
+  font-size: 100px;
+}
+
+.initials {
+  color: #120000;
 }

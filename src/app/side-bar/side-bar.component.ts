@@ -26,6 +26,7 @@ export class SideBarComponent implements OnInit {
   scheduleIcon : String;
   analyticsIcon : String;
   employeecsvIcon : String;
+  learningIcon : String;
 
   roleuser : boolean = false;
   rolesa : boolean = false;
@@ -41,6 +42,7 @@ export class SideBarComponent implements OnInit {
     this.simulationlogo = imgconst.simulationlog;
     this.logoutlogo = iconConst.logoutIcon;
     this.dashIcon = iconConst.dashboardIcon;
+    this.learningIcon = iconConst.learningIcon;
     this.manualIcon = iconConst.manualIcon;
     this.analyticsIcon = iconConst.analyticsIcon;
     this.scheduleIcon = iconConst.scheduledIcon;

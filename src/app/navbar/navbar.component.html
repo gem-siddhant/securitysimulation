@@ -25,11 +25,15 @@
     </div>
     <div class="col-6 d-flex justify-content-end">
       <div class="d-flex align-items-center justify-content-center">
-        <img src="../../assets/images/random-person.svg" class="user-img" />
-      </div>
+        <!-- <img src="../../assets/images/random-person.svg" class="user-img" /> -->
+        <div class="profile-pic" [style.background-color]="backgroundColor">
+          <span class="initials text-white">{{initials}}</span>
+        </div>
+      </div>&nbsp;&nbsp;
       <div class="d-flex align-items-center">
         <div class="user-detail" *ngIf="!this.mobile">
           <div>Welcome!</div>
+          
           <div class="text-capitalize">{{this.username}}</div>
         </div>
         <div>

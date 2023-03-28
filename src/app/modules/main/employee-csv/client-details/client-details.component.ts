@@ -21,6 +21,10 @@ export class ClientDetailsComponent implements OnInit {
   userId : number;
   clientDetails : ClientDetails;
   screenSize : string;
+  username: string;
+  backgroundColor: string;
+  initials: string;
+  initialemail : string;
   constructor(private commonService : CommonService,
     private formBuilder : FormBuilder,
     private activatedRouter: ActivatedRoute,
@@ -50,12 +54,14 @@ export class ClientDetailsComponent implements OnInit {
     });
     this.checkScreenStatus();
     this.onResize();
+    this.backgroundColor = this.getRandomColor();
   }
 
   getEmployeeCsvDetails() : void{
     this.employeeCsvService.getEmployeeCsvDetails(this.userId).pipe(take(1)).subscribe({
       next :(data) => {
         this.clientDetails = data;
+        this.getInitials()
       },
       error : (error)=>{
         this.toastr.error('Error while loading client details');
@@ -123,5 +129,19 @@ export class ClientDetailsComponent implements OnInit {
           this.router.navigate(['/main/employee-csv/dashboard']);
         },
       });
+  }
+
+  getRandomColor() {
+    // const colors = ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4', '#009688', '#4caf50', '#8bc34a', '#cddc39', '#ffeb3b', '#ffc107', '#ff9800', '#ff5722', '#795548', '#607d8b'];
+    const colors = ['#38A3A5']
+    const index = Math.floor(Math.random() * colors.length);
+    return colors[index];
+  }
+
+  getInitials() {
+    this.username = this.clientDetails.officialMailId
+    const parts = this.username.split('.');
+    console.log(parts)
+    this.initialemail = parts.map(part => part[0]).join('').toUpperCase();
   }
 }

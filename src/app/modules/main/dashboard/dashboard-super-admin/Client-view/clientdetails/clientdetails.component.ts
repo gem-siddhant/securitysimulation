@@ -15,6 +15,10 @@ export class ClientdetailsComponent implements OnInit {
   dataSource:any;
   displayedColumns : string[] = ['adminName','adminEmail','addedOn','remove']
   clients :any = [];
+  errormsg: string = '';
+  username: string = '';
+  initialemail: string = '';
+  backgroundColor: string;
   constructor(
     private commonService : CommonService,
     private _superadmindashboard : SuperAdminDashboardService,
@@ -30,6 +34,8 @@ export class ClientdetailsComponent implements OnInit {
     this.clientId = params.get('id');
     });
     this.getClientDetails(this.clientId)
+    this.backgroundColor = this.getRandomColor();
+ 
   }
 
   getClientDetails(id:any)
@@ -40,7 +46,26 @@ export class ClientdetailsComponent implements OnInit {
       {
         this.clients=data
         this.dataSource = new MatTableDataSource(data.clientAdminDetailsList)
+        this.getInitials()
       }
     })
+  }
+  getRandomColor() {
+    // const colors = ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4', '#009688', '#4caf50', '#8bc34a', '#cddc39', '#ffeb3b', '#ffc107', '#ff9800', '#ff5722', '#795548', '#607d8b'];
+    const colors = ['#38A3A5']
+    const index = Math.floor(Math.random() * colors.length);
+    return colors[index];
+  }
+
+  getInitials() {
+    console.log(this.clients)
+    for(let ele of this.clients.clientAdminDetailsList)
+    {
+      this.username = ele.adminName
+      console.log(this.username)
+      const parts = this.username.split(' ');
+      this.initialemail = parts.map(part => part[0]).join('').toUpperCase();
+    }
+    
   }
 }
