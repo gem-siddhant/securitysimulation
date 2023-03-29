@@ -8,7 +8,7 @@ userRemoteConfigs: [[credentialsId: 'admingithub', url: 'git@github.com:Gemini-S
   stage('Nodejs_Build') {
         container('nodejs-12') {
             dir ('secsimdevfe'){
-             sh 'rm -rf package-lock.json'
+            //  sh 'rm -rf package-lock.json'
             //  sh 'npm cache clean --force'
              sh 'npm install' 
              sh 'npm run build'
