@@ -10,9 +10,8 @@ userRemoteConfigs: [[credentialsId: 'admingithub', url: 'git@github.com:Gemini-S
             dir ('secsimdevfe'){
              sh 'rm -rf package-lock.json'
             //  sh 'npm cache clean --force'
-             sh 'npm install --legacy-peer-deps' 
+             sh 'npm install' 
              sh 'npm run build'
-             sh 'npm start'
         }
        }
      }
