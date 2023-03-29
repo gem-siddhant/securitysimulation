@@ -30,6 +30,11 @@ const routes: Routes = [
     component: ErrorPageComponent,
   },
   {
+    path: 'appraisal-portal',
+    loadChildren: () =>
+      import('./appraisal-portal/appraisal-portal.module').then((m) => m.AppraisalPortalModule),
+  },
+  {
     path: 'add-campaign',
     canActivate: [AuthGuard],
     component: AddCampaignComponent,
