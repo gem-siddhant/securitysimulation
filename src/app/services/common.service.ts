@@ -5,14 +5,15 @@ import * as CryptoJS from 'crypto-js';
 })
 export class CommonService {
 
-  private isSideNavOpened : boolean;
-  private isLoggedIn : boolean;
-  private screenRouting : string;
-  private navbarTitle : string;
-  private key :string;
-  private iv : string;
-  private clickbutton :any;
-  
+  private isSideNavOpened: boolean;
+  private isLoggedIn: boolean;
+  private screenRouting: string;
+  private navbarTitle: string;
+  private key: string;
+  private iv: string;
+  private clickbutton: any;
+  private ssologin: boolean;
+
   constructor() {
     this.isSideNavOpened = true;
     this.isLoggedIn = false;
@@ -21,48 +22,46 @@ export class CommonService {
     this.key = "ID1xjvwDeGNRdbap++mGDw==";
     this.iv = "AgVhqbeyn4iz6lWs0+Oezw==";
   }
-  
-  getNavTitle() : string{
+
+  getNavTitle(): string {
     return this.navbarTitle;
   }
-  
-  setNavTitle(val : string) : void{
+
+  setNavTitle(val: string): void {
     this.navbarTitle = val;
   }
-  
-  getScreenRouting() : string{
+
+  getScreenRouting(): string {
     return this.screenRouting
   }
-  
-  setScreenRouting(val : string) : void{
+
+  setScreenRouting(val: string): void {
     this.screenRouting = val;
   }
 
-  getSideNavOpened() : boolean{
+  getSideNavOpened(): boolean {
     return this.isSideNavOpened;
   }
 
-  setSideNavOpened(val : boolean) : void{
+  setSideNavOpened(val: boolean): void {
     this.isSideNavOpened = val;
   }
 
-  getLoginStatus() : boolean{
+  getLoginStatus(): boolean {
     return this.isLoggedIn;
   }
 
-  setLoginStatus(val : boolean) : void{
+  setLoginStatus(val: boolean): void {
     this.isLoggedIn = val;
   }
 
-  setbuttonclick(val : any) 
-  {
+  setbuttonclick(val: any) {
     this.clickbutton = val
   }
-  getbuttonclick()
-  {
+  getbuttonclick() {
     return this.clickbutton
   }
-  encrypt(data: string) : string{
+  encrypt(data: string): string {
     const keyHex = CryptoJS.enc.Base64.parse(this.key);
     const ivHex = CryptoJS.enc.Base64.parse(this.iv);
     const encrypted = CryptoJS.AES.encrypt(data, keyHex, {
@@ -85,5 +84,12 @@ export class CommonService {
       padding: CryptoJS.pad.Pkcs7,
     });
     return decrypted.toString(CryptoJS.enc.Utf8);
+  }
+
+  setClickBoolean(sso: boolean) {
+    this.ssologin = sso
+  }
+  getClickBoolean() {
+    return this.ssologin
   }
 }
