@@ -100,9 +100,15 @@
         <div
           class="d-flex p-3 h-100 text-dark tdata-row end-corner"
         >
-          <div role="button" (click)="navigateToClientDetails(element.employeeId)">View</div>
+          <div role="button" >
+            <img src="../../../../../assets/icons/view_icon.svg"  (click)="navigateToClientDetails(element.employeeId)" matTooltip="View"
+            matTooltipPosition="above" />
+          </div>
           <div>&ensp;|&ensp;</div>
-          <div role="button" (click)="deleteEmployee(element.employeeId)">Remove</div>
+          <div role="button">
+              <img src="../../../../../assets/icons/delete_icon.svg"  (click)="deleteEmployee(element.employeeId)" matTooltip="Remove"
+                  matTooltipPosition="above" alt="Remove"/>
+          </div>
         </div>
       </td>
     </ng-container>

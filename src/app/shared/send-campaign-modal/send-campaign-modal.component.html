@@ -35,6 +35,7 @@
           [format]="12"
           readonly
           formControlName="time"
+          [min]="getCurrentTime()"
         />
         <mat-error
         class="input-error-top-margin"

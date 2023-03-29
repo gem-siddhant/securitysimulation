@@ -28,6 +28,7 @@
           [ngxTimepicker]="timePicker"
           [format]="12"
           formControlName="time"
+          [min]="getCurrentTime()"
         />
         <mat-icon class="position-absolute alarm-icon">alarm_on</mat-icon>
         <mat-timepicker-toggle matSuffix></mat-timepicker-toggle>

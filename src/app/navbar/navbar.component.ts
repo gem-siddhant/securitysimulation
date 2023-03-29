@@ -51,6 +51,9 @@ export class NavbarComponent implements OnInit {
   isOpen = false;
   isSideBarOpened = true;
   username : string;
+  name:string;
+  backgroundColor: string;
+  initials: string;
   constructor(
     private _auth: AuthService,
     private router: Router,
@@ -68,6 +71,8 @@ export class NavbarComponent implements OnInit {
 
     this.checkMobile();
     this.onResize();
+    this.backgroundColor = this.getRandomColor();
+    this.initials = this.getInitials();
   }
 
   Logout() : void {
@@ -117,5 +122,20 @@ export class NavbarComponent implements OnInit {
   }
   isScreenRoutingEmpty() : boolean{
     return this.commonService.getScreenRouting() === '';
+  }
+ 
+  getRandomColor() {
+    // const colors = ['#f44336', '#e91e63', '#9c27b0', '#673ab7', '#3f51b5', '#2196f3', '#03a9f4', '#00bcd4', '#009688', '#4caf50', '#8bc34a', '#cddc39', '#ffeb3b', '#ffc107', '#ff9800', '#ff5722', '#795548', '#607d8b'];
+    const colors = ['#38A3A5']
+    const index = Math.floor(Math.random() * colors.length);
+    return colors[index];
+  }
+
+  getInitials() {
+    this.username =localStorage.getItem('name');
+    this.name = this.username
+    const parts = this.name.split(' ');
+    const initials = parts.map(part => part[0]).join('').toUpperCase();
+    return initials;
   }
 }

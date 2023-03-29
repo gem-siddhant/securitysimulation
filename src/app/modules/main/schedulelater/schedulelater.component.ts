@@ -369,7 +369,10 @@ export class SchedulelaterComponent implements OnInit {
         clockFaceTimeInactiveColor: 'black'
     }
 };
-
+getCurrentTime(): string {
+  const now = new Date();
+  return `${now.getHours()}:${now.getMinutes()}`;
+}
 onClose() {
   this.dialogRef.close();
 }  

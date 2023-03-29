@@ -28,6 +28,8 @@ export class DashboardSuperAdminComponent implements OnInit {
   dataSource: any;
   displayedColumns : string[] = ['clientName','clientEmail','inviteSentOn','inviteStatus','numOfAdmins','view']
   errormsg: string = '';
+  username: string = '';
+  initialemail: string = '';
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
   constructor(private commonService : CommonService,
@@ -40,6 +42,7 @@ export class DashboardSuperAdminComponent implements OnInit {
     this.commonService.setLoginStatus(true);
     this.getAllClient()
     this.getCountDetails()
+
   }
 
   sortAndPaginate() {
@@ -136,19 +139,11 @@ export class DashboardSuperAdminComponent implements OnInit {
         this.dataSource.sort = this.sort;
       }
     },
-    (err)=>
-    {
-      if(err.status!=200)
-      {
-        this.toastr.error("No Client Onboarded yet" , undefined , 
-        {
-          positionClass : 'toaster-top-center'
-        })
-      }
-    })
+    )
   }
   Routeview(element:any)
   {
     this.router.navigate(['main/Superadmin/Clientdetails',element]);
   }
+
 }

@@ -34,23 +34,32 @@ export class ForgotPasswordComponent implements OnInit {
     {
       if(data)
       {
+        if(data.httpStatus=="NOT_FOUND")
+        {
+          this.toastr.error("data.localizedMessage",undefined,
+        {
+          positionClass: 'toast-top-center'
+        }
+        );
+        }
 
       }
     },(err)=>{
       if(err.status!=200)
       {
-        this.toastr.error("Something Went Wrong",undefined,
+        this.toastr.error("Error while sending link",undefined,
         {
           positionClass: 'toast-top-center'
         }
         );
       }
       else{
-        this.toastr.success("Invite Sent to your email",undefined,
+        this.toastr.success("Password reset link sent to your email",undefined,
         {
           positionClass: 'toast-top-center'
         }
         );
+        this.router.navigate(['main/login'])
       }
     })
   }

@@ -78,3 +78,17 @@
     border: none;
     background-color: #F8F8F8;
 }
+.profile-pic {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 167px;
+  width: 167px;
+  border-radius: 5%;
+  font-weight: bold;
+  font-size: 100px;
+}
+
+.initials {
+  color: #120000;
+}

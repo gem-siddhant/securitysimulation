@@ -273,8 +273,14 @@
         <div
           class="d-flex p-3 h-100 text-dark tdata-row end-corner"
         >
-          <div class="end-corner" role="button" (click)="Routeview(element.taskId)"  *ngIf="element.status!='SCHEDULED'">View</div>
-          <div class="end-corner" role="button" (click)="scheduleroute()" *ngIf="element.status=='SCHEDULED'">View</div>
+          <div class="end-corner" role="button"  *ngIf="element.status!='SCHEDULED'">
+              <img src="../../../../../assets/icons/view_icon.svg"  (click)="Routeview(element.taskId)" matTooltip="View"
+                  matTooltipPosition="above" />
+          </div>
+          <div class="end-corner" role="button" *ngIf="element.status=='SCHEDULED'">
+            <img src="../../../../../assets/icons/view_icon.svg"   (click)="scheduleroute()" matTooltip="View"
+                  matTooltipPosition="above" />
+          </div>
         </div>
       </td>
     </ng-container>

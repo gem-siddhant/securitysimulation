@@ -13,6 +13,7 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { DashboardpopupmodalComponent } from 'src/app/shared/Modals/dashboardpopupmodal/dashboardpopupmodal.component';
 import { MatTabChangeEvent } from '@angular/material/tabs';
 import { take } from 'rxjs';
+import { DashboardCommonService } from '../../dashboard-services/dashboard-common.service';
 @Component({
   selector: 'app-dashboard-admin',
   templateUrl: './dashboard-admin.component.html',
@@ -49,6 +50,7 @@ export class DashboardAdminComponent implements OnInit {
     private commonService : CommonService,
     private router:Router,
     private dialog:MatDialog,
+    private dashboardcommon : DashboardCommonService,
     private toastr:ToastrService) {
       this.dashTable = new MatTableDataSource<any>();
       this.tablePageIndex = 0;
@@ -85,6 +87,7 @@ export class DashboardAdminComponent implements OnInit {
     this._main.getAllCampaigns(req).pipe(take(1)).subscribe((data)=>{
       if(data){
         this.campaigns=data;
+        this.dashboardcommon.setdashboard(this.campaigns)
         this.dataSource = new MatTableDataSource(data);
         this.getData();
         // this.onTabChange()
