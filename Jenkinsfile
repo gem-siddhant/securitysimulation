@@ -39,7 +39,7 @@ node('image_builder_trivy') {
           container('docker-image-builder-trivy'){
              kubeconfig(credentialsId: 'KubeConfigCred'){
               sh '/usr/local/bin/kubectl apply -f deployment.yaml -n dev'
-              sh '/usr/local/bin/kubectl rollout restart Deployment mis-ui -n dev'
+              sh '/usr/local/bin/kubectl rollout restart Deployment devfesim -n dev'
              }
           }
         }
