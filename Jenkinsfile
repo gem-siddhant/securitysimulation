@@ -1,4 +1,4 @@
-node('nodejs_runner_14') {
+node('nodejs_runner_16') {
   stage('frontend_checkout') {
          dir ('secsimdevfe') {
          checkout([$class: 'GitSCM', branches: [[name: '*/dev']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg:  [], \
@@ -6,7 +6,7 @@ userRemoteConfigs: [[credentialsId: 'admingithub', url: 'git@github.com:Gemini-S
          }
   }
   stage('Nodejs_Build') {
-        container('nodejs-14') {
+        container('nodejs-16') {
             dir ('secsimdevfe'){
             //  sh 'rm -rf package-lock.json'
             //  sh 'npm cache clean --force'
