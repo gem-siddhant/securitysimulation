@@ -139,16 +139,7 @@ export class DashboardSuperAdminComponent implements OnInit {
         this.dataSource.sort = this.sort;
       }
     },
-    (err)=>
-    {
-      if(err.status!=200)
-      {
-        this.toastr.error("No Client Onboarded yet" , undefined , 
-        {
-          positionClass : 'toaster-top-center'
-        })
-      }
-    })
+    )
   }
   Routeview(element:any)
   {
