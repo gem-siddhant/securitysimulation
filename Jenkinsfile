@@ -11,7 +11,7 @@ userRemoteConfigs: [[credentialsId: 'admingithub', url: 'git@github.com:Gemini-S
              sh 'rm -rf package-lock.json'
              sh 'npm cache clean --force'
              sh 'npm install' 
-             sh 'npm install -g @angular/cli@13.1.0'
+//              sh 'npm install -g @angular/cli@13.1.0'
              sh 'npm run build'
         }
        }
